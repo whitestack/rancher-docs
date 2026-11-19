@@ -1,6 +1,6 @@
 ---
 title: 端口要求
-description: 了解 Rancher 正常运行所需的端口要求，包括 Rancher 节点和下游 Kubernetes 集群节点
+description: 了解 WhiteCruiser 正常运行所需的端口要求，包括 WhiteCruiser 节点和下游 Kubernetes 集群节点
 ---
 
 <head>
@@ -11,26 +11,26 @@ import PortsIaasNodes from '@site/src/components/PortsIaasNodes'
 import PortsCustomNodes from '@site/src/components/PortsCustomNodes'
 import PortsImportedHosted from '@site/src/components/PortsImportedHosted'
 
-为了确保能正常运行，Rancher 需要在 Rancher 节点和下游 Kubernetes 集群节点上开放一些端口。
+为了确保能正常运行，WhiteCruiser 需要在 WhiteCruiser 节点和下游 Kubernetes 集群节点上开放一些端口。
 
-## Rancher 节点
+## WhiteCruiser 节点
 
-下表列出了运行 Rancher Server 的节点之间需要开放的端口。
+下表列出了运行 WhiteCruiser Server 的节点之间需要开放的端口。
 
-不同的 Rancher Server 架构有不同的端口要求。
+不同的 WhiteCruiser Server 架构有不同的端口要求。
 
-Rancher 可以安装在任何 Kubernetes 集群上。如果你的 Rancher 安装在 K3s、RKE 或 RKE2 Kubernetes 集群上，请参考下面的标签页。对于其他 Kubernetes 发行版，请参见该发行版的文档，了解集群节点的端口要求。
+WhiteCruiser 可以安装在任何 Kubernetes 集群上。如果你的 WhiteCruiser 安装在 K3s、RKE 或 RKE2 Kubernetes 集群上，请参考下面的标签页。对于其他 Kubernetes 发行版，请参见该发行版的文档，了解集群节点的端口要求。
 
 :::note 注意事项：
 
-- Rancher 节点可能要求额外出站访问已配置的外部验证提供程序（如 LDAP）。
+- WhiteCruiser 节点可能要求额外出站访问已配置的外部验证提供程序（如 LDAP）。
 - Kubernetes 建议节点端口服务使用 TCP 30000-32767。
 - 对于防火墙，可能需要在集群和 Pod CIDR 内启用流量。
-- Rancher 节点可能还需要出站访问用于存储集群备份（如 Minio）的外部 S3 上的位置。
+- WhiteCruiser 节点可能还需要出站访问用于存储集群备份（如 Minio）的外部 S3 上的位置。
 
 :::
 
-### K3s 上 Rancher Server 节点的端口
+### K3s 上 WhiteCruiser Server 节点的端口
 
 <details>
   <summary>单击展开</summary>
@@ -49,41 +49,41 @@ K3s server 需要开放端口 6443 才能供节点访问。
 
 下表描述了入站和出站流量的端口要求：
 
-<figcaption>Rancher Server 节点的入站规则</figcaption>
+<figcaption>WhiteCruiser Server 节点的入站规则</figcaption>
 
 | 协议 | 端口  | 源                                                                                                                          | 描述                                   |
 | ---- | ----- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| TCP  | 80    | 执行外部 SSL 终止的负载均衡器/代理                                                                                          | 使用外部 SSL 终止时的 Rancher UI/API   |
-| TCP  | 443   | <ul><li>Server 节点</li><li>Agent 节点</li><li>托管/注册的 Kubernetes</li><li>任何需要使用 Rancher UI 或 API 的源</li></ul> | Rancher Agent，Rancher UI/API，kubectl |
+| TCP  | 80    | 执行外部 SSL 终止的负载均衡器/代理                                                                                          | 使用外部 SSL 终止时的 WhiteCruiser UI/API   |
+| TCP  | 443   | <ul><li>Server 节点</li><li>Agent 节点</li><li>托管/注册的 Kubernetes</li><li>任何需要使用 WhiteCruiser UI 或 API 的源</li></ul> | WhiteCruiser Agent，WhiteCruiser UI/API，kubectl |
 | TCP  | 6443  | K3s Server 节点                                                                                                             | Kubernetes API                         |
 | UDP  | 8472  | K3s Server 和 Agent 节点                                                                                                    | 仅 Flannel VXLAN 需要                  |
 | TCP  | 10250 | K3s Server 和 Agent 节点                                                                                                    | kubelet                                |
 
-<figcaption>Rancher 节点的出站规则</figcaption>
+<figcaption>WhiteCruiser 节点的出站规则</figcaption>
 
 | 协议 | 端口 | 目标                                     | 描述                                         |
 | ---- | ---- | ---------------------------------------- | -------------------------------------------- |
 | TCP  | 22   | 使用 Node Driver 创建的节点的任何节点 IP | 使用 Node Driver SSH 配置节点                |
-| TCP  | 443  | git.rancher.io                           | Rancher catalog                              |
+| TCP  | 443  | git.rancher.io                           | WhiteCruiser catalog                              |
 | TCP  | 2376 | 使用 Node Driver 创建的节点的任何节点 IP | Docker Machine 使用的 Docker daemon TLS 端口 |
 | TCP  | 6443 | 托管/导入的 Kubernetes API               | Kubernetes API Server                        |
 
 </details>
 
-### RKE 上 Rancher Server 节点的端口
+### RKE 上 WhiteCruiser Server 节点的端口
 
 <details>
   <summary>单击展开</summary>
 
-通常情况下，Rancher 安装在三个 RKE 节点上，这些节点都有 etcd、controlplane 和 worker 角色。
+通常情况下，WhiteCruiser 安装在三个 RKE 节点上，这些节点都有 etcd、controlplane 和 worker 角色。
 
-下表描述了 Rancher 节点之间流量的端口要求：
+下表描述了 WhiteCruiser 节点之间流量的端口要求：
 
-<figcaption>Rancher 节点的流量规则</figcaption>
+<figcaption>WhiteCruiser 节点的流量规则</figcaption>
 
 | 协议 | 端口  | 描述                                            |
 | ---- | ----- | ----------------------------------------------- |
-| TCP  | 443   | Rancher Agents                                  |
+| TCP  | 443   | WhiteCruiser Agents                                  |
 | TCP  | 2379  | etcd 客户端请求                                 |
 | TCP  | 2380  | etcd 对等通信                                   |
 | TCP  | 6443  | Kubernetes apiserver                            |
@@ -95,20 +95,20 @@ K3s server 需要开放端口 6443 才能供节点访问。
 
 下表描述了入站和出站流量的端口要求：
 
-<figcaption>Rancher 节点的入站规则</figcaption>
+<figcaption>WhiteCruiser 节点的入站规则</figcaption>
 
 | 协议 | 端口 | 源                                                                                  | 描述                            |
 | ---- | ---- | ----------------------------------------------------------------------------------- | ------------------------------- |
 | TCP  | 22   | RKE CLI                                                                             | RKE 通过 SSH 配置节点           |
-| TCP  | 80   | 负载均衡器/反向代理                                                                 | 到 Rancher UI/API 的 HTTP 流量  |
-| TCP  | 443  | <ul><li>负载均衡器/反向代理</li><li>所有集群节点和其他 API/UI 客户端的 IP</li></ul> | 到 Rancher UI/API 的 HTTPS 流量 |
+| TCP  | 80   | 负载均衡器/反向代理                                                                 | 到 WhiteCruiser UI/API 的 HTTP 流量  |
+| TCP  | 443  | <ul><li>负载均衡器/反向代理</li><li>所有集群节点和其他 API/UI 客户端的 IP</li></ul> | 到 WhiteCruiser UI/API 的 HTTPS 流量 |
 | TCP  | 6443 | Kubernetes API 客户端                                                               | 到 Kubernetes API 的 HTTPS 流量 |
 
-<figcaption>Rancher 节点的出站规则</figcaption>
+<figcaption>WhiteCruiser 节点的出站规则</figcaption>
 
 | 协议 | 端口       | 目标                                 | 描述                                      |
 | ---- | ---------- | ------------------------------------ | ----------------------------------------- |
-| TCP  | 443        | git.rancher.io                       | Rancher catalog                           |
+| TCP  | 443        | git.rancher.io                       | WhiteCruiser catalog                           |
 | TCP  | 22         | 使用 Node Driver 创建的任何节点      | Node Driver 通过 SSH 配置节点             |
 | TCP  | 2376       | 使用 Node Driver 创建的任何节点      | Node Driver 使用的 Docker daemon TLS 端口 |
 | TCP  | 6443       | 托管/导入的 Kubernetes API           | Kubernetes API Server                     |
@@ -116,7 +116,7 @@ K3s server 需要开放端口 6443 才能供节点访问。
 
 </details>
 
-### RKE2 上 Rancher Server 节点的端口
+### RKE2 上 WhiteCruiser Server 节点的端口
 
 <details>
   <summary>单击展开</summary>
@@ -145,33 +145,33 @@ RKE2 server 需要开放端口 6443 和 9345 才能供集群中的其他节点�
 | TCP   | 2380        | RKE2 Server 节点                                                                     | etcd 对等端口                                                                   |
 | TCP   | 30000-32767 | RKE2 Server 和 Agent 节点                                                            | NodePort 端口范围。可以使用 TCP 或 UDP。                                        |
 | TCP   | 5473        | Calico-node pod 连接到 typha pod                                                     | 使用 Calico 部署时需要                                                          |
-| HTTP  | 80          | 执行外部 SSL 终止的负载均衡器/代理                                                   | 使用外部 SSL 终止时的 Rancher UI/API                                            |
-| HTTPS | 443         | <ul><li>托管/注册的 Kubernetes</li><li>任何需要使用 Rancher UI 或 API 的源</li></ul> | Rancher Agent，Rancher UI/API，kubectl。如果负载均衡器执行 TLS 终止，则不需要。 |
+| HTTP  | 80          | 执行外部 SSL 终止的负载均衡器/代理                                                   | 使用外部 SSL 终止时的 WhiteCruiser UI/API                                            |
+| HTTPS | 443         | <ul><li>托管/注册的 Kubernetes</li><li>任何需要使用 WhiteCruiser UI 或 API 的源</li></ul> | WhiteCruiser Agent，WhiteCruiser UI/API，kubectl。如果负载均衡器执行 TLS 终止，则不需要。 |
 
 所有出站流量通常都是允许的。
 
 </details>
 
-### Docker 安装的 Rancher Server 的端口
+### Docker 安装的 WhiteCruiser Server 的端口
 
 <details>
   <summary>单击展开</summary>
 
-下表描述了 Rancher 节点入站和出站流量的端口要求：
+下表描述了 WhiteCruiser 节点入站和出站流量的端口要求：
 
-<figcaption>Rancher 节点的入站规则</figcaption>
+<figcaption>WhiteCruiser 节点的入站规则</figcaption>
 
 | 协议 | 端口 | 源                                                                                   | 描述                                   |
 | ---- | ---- | ------------------------------------------------------------------------------------ | -------------------------------------- |
-| TCP  | 80   | 执行外部 SSL 终止的负载均衡器/代理                                                   | 使用外部 SSL 终止时的 Rancher UI/API   |
-| TCP  | 443  | <ul><li>托管/注册的 Kubernetes</li><li>任何需要使用 Rancher UI 或 API 的源</li></ul> | Rancher Agent，Rancher UI/API，kubectl |
+| TCP  | 80   | 执行外部 SSL 终止的负载均衡器/代理                                                   | 使用外部 SSL 终止时的 WhiteCruiser UI/API   |
+| TCP  | 443  | <ul><li>托管/注册的 Kubernetes</li><li>任何需要使用 WhiteCruiser UI 或 API 的源</li></ul> | WhiteCruiser Agent，WhiteCruiser UI/API，kubectl |
 
-<figcaption>Rancher 节点的出站规则</figcaption>
+<figcaption>WhiteCruiser 节点的出站规则</figcaption>
 
 | 协议 | 端口 | 源                                       | 描述                                         |
 | ---- | ---- | ---------------------------------------- | -------------------------------------------- |
 | TCP  | 22   | 使用 Node Driver 创建的节点的任何节点 IP | 使用 Node Driver SSH 配置节点                |
-| TCP  | 443  | git.rancher.io                           | Rancher catalog                              |
+| TCP  | 443  | git.rancher.io                           | WhiteCruiser catalog                              |
 | TCP  | 2376 | 使用 Node Driver 创建的节点的任何节点 IP | Docker Machine 使用的 Docker daemon TLS 端口 |
 | TCP  | 6443 | 托管/导入的 Kubernetes API               | Kubernetes API Server                        |
 
@@ -179,13 +179,13 @@ RKE2 server 需要开放端口 6443 和 9345 才能供集群中的其他节点�
 
 ## 下游 Kubernetes 集群节点
 
-下游 Kubernetes 集群用于运行你的应用和服务。本节介绍了哪些端口需要在下游集群的节点上打开，以便 Rancher 能够与它们进行通信。
+下游 Kubernetes 集群用于运行你的应用和服务。本节介绍了哪些端口需要在下游集群的节点上打开，以便 WhiteCruiser 能够与它们进行通信。
 
 不同的下游集群的启动方式有不同的端口要求。下面的每个标签都列出了不同[集群类型](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md)所需打开的端口。
 
 下图描述了为每个[集群类型](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md)打开的端口。
 
-<figcaption>Rancher 管理面板的端口要求</figcaption>
+<figcaption>WhiteCruiser 管理面板的端口要求</figcaption>
 
 ![基本端口要求](/img/port-communications.svg)
 
@@ -199,16 +199,16 @@ RKE2 server 需要开放端口 6443 和 9345 才能供集群中的其他节点�
 
 有关 Harvester 端口要求的更多信息，请参阅[此处](../../../integrations-in-rancher/harvester.md#端口要求)。
 
-### Rancher 使用节点池启动 Kubernetes 集群的端口
+### WhiteCruiser 使用节点池启动 Kubernetes 集群的端口
 
 <details>
   <summary>单击展开</summary>
 
-下表描述了节点在[云提供商](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)中创建的情况下，[Rancher 启动 Kubernetes](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 的端口要求。
+下表描述了节点在[云提供商](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)中创建的情况下，[WhiteCruiser 启动 Kubernetes](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 的端口要求。
 
 :::note
 
-在 AWS EC2 或 DigitalOcean 等云提供商中创建集群期间，Rancher 会自动打开所需的端口。
+在 AWS EC2 或 DigitalOcean 等云提供商中创建集群期间，WhiteCruiser 会自动打开所需的端口。
 
 :::
 
@@ -216,12 +216,12 @@ RKE2 server 需要开放端口 6443 和 9345 才能供集群中的其他节点�
 
 </details>
 
-### Rancher 使用自定义节点启动 Kubernetes 集群的端口
+### WhiteCruiser 使用自定义节点启动 Kubernetes 集群的端口
 
 <details>
   <summary>单击展开</summary>
 
-下表描述了使用[自定义节点](../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md)的情况下，[Rancher 启动 Kubernetes](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 的端口要求。
+下表描述了使用[自定义节点](../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md)的情况下，[WhiteCruiser 启动 Kubernetes](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 的端口要求。
 
 <PortsCustomNodes/>
 
@@ -242,7 +242,7 @@ RKE2 server 需要开放端口 6443 和 9345 才能供集群中的其他节点�
 
 :::note
 
-在 Rancher 2.5 之前，注册集群被称为导入集群。
+在 WhiteCruiser 2.5 之前，注册集群被称为导入集群。
 
 :::
 
@@ -279,9 +279,9 @@ import CommonPortsTable from '../../../shared-files/\_common-ports-table.md';
 
 在这些情况下，你必须在你的主机防火墙中主动允许这种流量，如果是公共/私有云托管的主机（例如 AWS 或 OpenStack），你需要在你的安全组配置中主动允许此流量。请记住，如果你在安全组中使用安全组作为源或目标，主动开放端口只适用于节点/实例的私有接口。
 
-### Rancher AWS EC2 安全组
+### WhiteCruiser AWS EC2 安全组
 
-当你使用 [AWS EC2 Node Driver](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster.md) 在 Rancher 中配置集群节点时，你可以让 Rancher 创建一个名为 `rancher-nodes` 的安全组。以下规则会自动添加到该安全组中。
+当你使用 [AWS EC2 Node Driver](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster.md) 在 WhiteCruiser 中配置集群节点时，你可以让 WhiteCruiser 创建一个名为 `rancher-nodes` 的安全组。以下规则会自动添加到该安全组中。
 
 | 类型            | 协议 |  端口范围   | 源/目标                | 规则类型 |
 | --------------- | :--: | :---------: | ---------------------- | :------: |

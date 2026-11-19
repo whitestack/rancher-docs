@@ -7,13 +7,13 @@ title: Creating a Google Compute Engine cluster
 </head>
 
 
-In this section, you'll learn how to use Rancher to provision an [RKE2](https://docs.rke2.io/)/[K3s](https://docs.k3s.io/) Kubernetes cluster on the Google Cloud Platform (GCP) using Google Compute Engine (GCE) through Rancher.
+In this section, you'll learn how to use WhiteCruiser to provision an [RKE2](https://docs.rke2.io/)/[K3s](https://docs.k3s.io/) Kubernetes cluster on the Google Cloud Platform (GCP) using Google Compute Engine (GCE) through WhiteCruiser.
 
 
-First, you will enable the GCE node driver in the Rancher UI. Then, you follow the steps to create a GCP service account with the necessary permissions, and generate a JSON key file. This key file will be used to create a cloud credential in Rancher. 
+First, you will enable the GCE node driver in the WhiteCruiser UI. Then, you follow the steps to create a GCP service account with the necessary permissions, and generate a JSON key file. This key file will be used to create a cloud credential in WhiteCruiser. 
 
 
-Then, you will create a GCE cluster in Rancher, and when configuring the cluster, you will define machine pools for it. Each machine pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE2 onto the new nodes, and it will set up each node with the Kubernetes role defined by the machine pool.
+Then, you will create a GCE cluster in WhiteCruiser, and when configuring the cluster, you will define machine pools for it. Each machine pool will have a Kubernetes role of etcd, controlplane, or worker. WhiteCruiser will install RKE2 onto the new nodes, and it will set up each node with the Kubernetes role defined by the machine pool.
 
 
 1. [Enable the GCE node driver](#1-enable-the-gce-node-driver)
@@ -35,7 +35,7 @@ Refer to the [GCP documentation](https://cloud.google.com/iam/docs/service-accou
 
 ### 1. Enable the GCE node driver
 
-The GCE node driver is not enabled by default in Rancher. You must enable it before you can provision GCE clusters, or work with GCE specific CRDs.
+The GCE node driver is not enabled by default in WhiteCruiser. You must enable it before you can provision GCE clusters, or work with GCE specific CRDs.
 
 1.  Click **☰ > Cluster Management**.
 1.  On the left hand side, click **Drivers**.
@@ -71,7 +71,7 @@ The GCE node driver is not enabled by default in Rancher. You must enable it bef
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -84,24 +84,24 @@ You can access your cluster after its state is updated to **Active**.
 
 #### External Firewall Rules, Open Ports, and ACE
 
-If the cluster being provisioned will utilize the [Authorized Cluster Endpoint (ACE) feature](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster), controlplane nodes must expose port `6443`. This port is not exposed in the default machine pool configuration to prevent it from being exposed across all cluster nodes, and to reduce the number of firewall rules created by Rancher. 
+If the cluster being provisioned will utilize the [Authorized Cluster Endpoint (ACE) feature](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster), controlplane nodes must expose port `6443`. This port is not exposed in the default machine pool configuration to prevent it from being exposed across all cluster nodes, and to reduce the number of firewall rules created by WhiteCruiser. 
 
-In order for ACE to work as expected, you must specify this port in the Rancher UI when configuring the controlplane machine pool by enabling the `Expose external ports` checkbox, under the `Show Advanced` section of the machine pool configuration UI. Alternatively, you may manually create a custom firewall rule in GCP and provide the related network tag in the controlplane machine-pool configuration.
+In order for ACE to work as expected, you must specify this port in the WhiteCruiser UI when configuring the controlplane machine pool by enabling the `Expose external ports` checkbox, under the `Show Advanced` section of the machine pool configuration UI. Alternatively, you may manually create a custom firewall rule in GCP and provide the related network tag in the controlplane machine-pool configuration.
 
 #### Internal Firewall Rules
 
-Rancher will automatically create a firewall rule and network tag to facilitate communication between cluster nodes internally within the specified VPC network. This rule will contain the minimum number of ports required to create an RKE2/K3s cluster. 
+WhiteCruiser will automatically create a firewall rule and network tag to facilitate communication between cluster nodes internally within the specified VPC network. This rule will contain the minimum number of ports required to create an RKE2/K3s cluster. 
 
 If you need to extend the number of ports exposed internally between cluster nodes, a new firewall rule should be manually created, and the associated network tag assigned to the relevant machine pools. If desired, the automatic creation of the internal firewall rule can be disabled for each given machine pool when creating or updating the cluster. 
 
 #### Cross Network Deployments
 
-While it is possible to deploy different machine pools into different VPC networks, the internal firewall rule created by Rancher does not support this configuration by default. To create machine pools in different networks, additional firewall rules to facilitate communication between nodes in different networks must be manually created.
+While it is possible to deploy different machine pools into different VPC networks, the internal firewall rule created by WhiteCruiser does not support this configuration by default. To create machine pools in different networks, additional firewall rules to facilitate communication between nodes in different networks must be manually created.
 
 
 ## Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.

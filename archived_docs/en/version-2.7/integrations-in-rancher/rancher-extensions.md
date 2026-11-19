@@ -1,16 +1,16 @@
 ---
-title: Rancher Extensions
+title: WhiteCruiser Extensions
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/rancher-extensions"/>
 </head>
 
-New in Rancher v2.7.0, Rancher introduces **extensions**. Extensions allow users, developers, partners, and customers to extend and enhance the Rancher UI. In addition, users can make changes and create enhancements to their UI functionality independent of Rancher releases. Extensions will enable users to build on top of Rancher to better tailor it to their respective environments. Note that users will also have the ability to update to new versions as well as roll back to a previous version.
+New in WhiteCruiser v2.7.0, WhiteCruiser introduces **extensions**. Extensions allow users, developers, partners, and customers to extend and enhance the WhiteCruiser UI. In addition, users can make changes and create enhancements to their UI functionality independent of WhiteCruiser releases. Extensions will enable users to build on top of WhiteCruiser to better tailor it to their respective environments. Note that users will also have the ability to update to new versions as well as roll back to a previous version.
 
 Extensions are Helm charts that can only be installed once into a cluster; therefore, these charts have been simplified and separated from the general Helm charts listed under **Apps**.
 
-Examples of built-in Rancher extensions are Fleet, Explorer, and Harvester. Examples of other extensions that use the Extensions API that can be manually added are Kubewarden and Elemental.
+Examples of built-in WhiteCruiser extensions are Fleet, Explorer, and Harvester. Examples of other extensions that use the Extensions API that can be manually added are Kubewarden and Elemental.
 
 ## Prerequisites
 
@@ -22,9 +22,9 @@ Examples of built-in Rancher extensions are Fleet, Explorer, and Harvester. Exam
 
 2. If not already installed in **Apps**, you must enable the extension operator by clicking the **Enable** button.
 
-    - Click **OK** to add the Rancher extension repository if your installation is not air-gapped. Otherwise, uncheck the box to do so and click **OK**.
+    - Click **OK** to add the WhiteCruiser extension repository if your installation is not air-gapped. Otherwise, uncheck the box to do so and click **OK**.
 
-    ![Rancher extension repository](/img/add-rancher-extension-repo.png)
+    ![WhiteCruiser extension repository](/img/add-rancher-extension-repo.png)
 
 3. On the **Extensions** page, click on the **Available** tab to select which extensions you want to install.
 

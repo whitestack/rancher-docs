@@ -8,14 +8,14 @@ title: Configuring Microsoft Active Directory Federation Service (SAML)
 
 _Available as of v2.0.7_
 
-If your organization uses Microsoft Active Directory Federation Services (AD FS) for user authentication, you can configure Rancher to allow your users to log in using their AD FS credentials.
+If your organization uses Microsoft Active Directory Federation Services (AD FS) for user authentication, you can configure WhiteCruiser to allow your users to log in using their AD FS credentials.
 
 ## Prerequisites
 
-You must have Rancher installed.
+You must have WhiteCruiser installed.
 
 - Obtain your Rancher Server URL. During AD FS configuration, substitute this URL for the `<RANCHER_SERVER>` placeholder.
-- You must have a global administrator account on your Rancher installation.
+- You must have a global administrator account on your WhiteCruiser installation.
 
 You must have a [Microsoft AD FS Server](https://docs.microsoft.com/en-us/windows-server/identity/active-directory-federation-services) configured.
 
@@ -24,19 +24,19 @@ You must have a [Microsoft AD FS Server](https://docs.microsoft.com/en-us/window
 
 ## Setup Outline
 
-Setting up Microsoft AD FS with Rancher Server requires configuring AD FS on your Active Directory server, and configuring Rancher to utilize your AD FS server. The following pages serve as guides for setting up Microsoft AD FS authentication on your Rancher installation.
+Setting up Microsoft AD FS with WhiteCruiser Server requires configuring AD FS on your Active Directory server, and configuring WhiteCruiser to utilize your AD FS server. The following pages serve as guides for setting up Microsoft AD FS authentication on your WhiteCruiser installation.
 
-- [1. Configuring Microsoft AD FS for Rancher](configure-ms-adfs-for-rancher.md)
-- [2. Configuring Rancher for Microsoft AD FS](configure-rancher-for-ms-adfs.md)
+- [1. Configuring Microsoft AD FS for WhiteCruiser](configure-ms-adfs-for-rancher.md)
+- [2. Configuring WhiteCruiser for Microsoft AD FS](configure-rancher-for-ms-adfs.md)
 
 :::note SAML Provider Caveats:
 
-- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
+- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to WhiteCruiser.
 - When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
-- When adding groups, you must select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+- When adding groups, you must select the group from the drop-down that is next to the text box. WhiteCruiser assumes that any input from the text box is a user.
 - The group drop-down shows only the groups that you are a member of. You will not be able to add groups that you are not a member of.
 
 :::
 
 
-### [Next: Configuring Microsoft AD FS for Rancher](configure-ms-adfs-for-rancher.md)
+### [Next: Configuring Microsoft AD FS for WhiteCruiser](configure-ms-adfs-for-rancher.md) {#next-configuring-microsoft-ad-fs-for-rancher}

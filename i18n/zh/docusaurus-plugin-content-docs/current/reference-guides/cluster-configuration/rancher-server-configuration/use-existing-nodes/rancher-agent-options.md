@@ -1,18 +1,18 @@
 ---
-title: Rancher Agent 选项
+title: WhiteCruiser Agent 选项
 ---
 
-Rancher 在每个节点上部署一个 Agent 来与节点通信。本文描述了可以传递给 Agent 的选项。要使用这些选项，你需要[使用自定义节点创建集群](./use-existing-nodes.md)，并在添加节点时将选项添加到生成的 `docker run` 命令。
+WhiteCruiser 在每个节点上部署一个 Agent 来与节点通信。本文描述了可以传递给 Agent 的选项。要使用这些选项，你需要[使用自定义节点创建集群](./use-existing-nodes.md)，并在添加节点时将选项添加到生成的 `docker run` 命令。
 
-有关 Rancher 如何使用 Node Agent 与下游集群通信的概述，请参阅[产品架构](../../../rancher-manager-architecture/communicating-with-downstream-user-clusters.md#3-node-agents)。
+有关 WhiteCruiser 如何使用 Node Agent 与下游集群通信的概述，请参阅[产品架构](../../../rancher-manager-architecture/communicating-with-downstream-user-clusters.md#3-node-agents)。
 
 ## 通用选项
 
 | 参数 | 环境变量 | 描述 |
 | ---------- | -------------------- | ----------- |
-| `--server` | `CATTLE_SERVER` | 已配置的 Rancher `server-url`，Agent 将通过这个地址连接 Server。 |
-| `--token` | `CATTLE_TOKEN` | 在 Rancher 中注册节点所需的 Token。 |
-| `--ca-checksum` | `CATTLE_CA_CHECKSUM` | 使用已配置的 Rancher `cacerts` 进行 SHA256 校验和验证。 |
+| `--server` | `CATTLE_SERVER` | 已配置的 WhiteCruiser `server-url`，Agent 将通过这个地址连接 Server。 |
+| `--token` | `CATTLE_TOKEN` | 在 WhiteCruiser 中注册节点所需的 Token。 |
+| `--ca-checksum` | `CATTLE_CA_CHECKSUM` | 使用已配置的 WhiteCruiser `cacerts` 进行 SHA256 校验和验证。 |
 | `--node-name` | `CATTLE_NODE_NAME` | 覆盖用于注册节点的主机名（默认为 `hostname -s`）。 |
 | `--label` | `CATTLE_NODE_LABEL` | 向节点添加节点标签。对于多个标签，请传递额外的 `--label` 选项。(`--label key=value`) |
 | `--taints` | `CATTLE_NODE_TAINTS` | 将节点污点添加到节点。对于多个污点，请传递额外的 `--taints` 选项。(`--taints key=value:effect`) |

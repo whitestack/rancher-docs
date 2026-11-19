@@ -8,7 +8,7 @@ title: DNS
 
 The commands/steps listed on this page can be used to check name resolution issues in your cluster.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for WhiteCruiser HA) or are using the embedded kubectl via the UI.
 
 Before running the DNS checks, check the [default DNS provider](../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#default-dns-provider) for your cluster and make sure that [the overlay network is functioning correctly](networking.md#check-if-overlay-network-is-functioning-correctly) as this can also be the reason why DNS resolution (partly) fails.
 
@@ -170,7 +170,7 @@ All queries will now be logged and can be checked using the command in [Check Co
 
 ### Check upstream nameservers in kubedns container
 
-By default, the configured nameservers on the host (in `/etc/resolv.conf`) will be used as upstream nameservers for kube-dns. Sometimes the host will run a local caching DNS nameserver, which means the address in `/etc/resolv.conf` will point to an address in the loopback range (`127.0.0.0/8`) which will be unreachable by the container. In case of Ubuntu 18.04, this is done by `systemd-resolved`. Since Rancher v2.0.7, we detect if `systemd-resolved` is running, and will automatically use the `/etc/resolv.conf` file with the correct upstream nameservers (which is located at `/run/systemd/resolve/resolv.conf`).
+By default, the configured nameservers on the host (in `/etc/resolv.conf`) will be used as upstream nameservers for kube-dns. Sometimes the host will run a local caching DNS nameserver, which means the address in `/etc/resolv.conf` will point to an address in the loopback range (`127.0.0.0/8`) which will be unreachable by the container. In case of Ubuntu 18.04, this is done by `systemd-resolved`. Since WhiteCruiser v2.0.7, we detect if `systemd-resolved` is running, and will automatically use the `/etc/resolv.conf` file with the correct upstream nameservers (which is located at `/run/systemd/resolve/resolv.conf`).
 
 Use the following command to check the upstream nameservers used by the kubedns container:
 

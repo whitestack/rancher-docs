@@ -6,13 +6,13 @@ title: Registered Clusters
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/other-troubleshooting-tips/registered-clusters"/>
 </head>
 
-The commands/steps listed on this page can be used to check clusters that you are registering or that are registered in Rancher.
+The commands/steps listed on this page can be used to check clusters that you are registering or that are registered in WhiteCruiser.
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kubeconfig_from_imported_cluster.yml`)
 
-### Rancher agents
+### WhiteCruiser agents {#rancher-agents}
 
-Communication to the cluster (Kubernetes API via cattle-cluster-agent) and communication to the nodes is done through Rancher agents.
+Communication to the cluster (Kubernetes API via cattle-cluster-agent) and communication to the nodes is done through WhiteCruiser agents.
 
 If the cattle-cluster-agent cannot connect to the configured `server-url`, the cluster will remain in **Pending** state, showing `Waiting for full cluster configuration`.
 
@@ -20,7 +20,7 @@ If the cattle-cluster-agent cannot connect to the configured `server-url`, the c
 
 :::note
 
-cattle-node-agents are only present in clusters created in Rancher with RKE.
+cattle-node-agents are only present in clusters created in WhiteCruiser with RKE.
 
 :::
 

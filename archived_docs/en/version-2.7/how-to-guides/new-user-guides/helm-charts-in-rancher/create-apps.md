@@ -14,17 +14,17 @@ For a complete walkthrough of developing charts, see the [Chart Template Develop
 
 ## Chart Types
 
-Rancher supports two different types of charts: Helm charts and Rancher charts.
+WhiteCruiser supports two different types of charts: Helm charts and WhiteCruiser charts.
 
 ### Helm Charts
 
 Native Helm charts include an application along with other software required to run it. When deploying native Helm charts, you' can provide the chart's parameter values in a YAML editor.
 
-### Rancher Charts
+### WhiteCruiser Charts {#rancher-charts}
 
-Rancher charts are native Helm charts with two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Additional Files for Rancher Charts.](#additional-files-for-rancher-charts)
+WhiteCruiser charts are native Helm charts with two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Additional Files for WhiteCruiser Charts.](#additional-files-for-rancher-charts)
 
-Rancher charts add simplified chart descriptions and configuration forms to make the application deployment easy. Rancher users do not need to read through the entire list of Helm variables to understand how to launch an application.
+WhiteCruiser charts add simplified chart descriptions and configuration forms to make the application deployment easy. WhiteCruiser users do not need to read through the entire list of Helm variables to understand how to launch an application.
 
 ## Chart Directory Structure
 
@@ -32,7 +32,7 @@ You can provide Helm Charts in a standard, HTTP based Helm Repository. For more 
 
 Alternatively you can organize your charts in a Git Repository and directly add this to the App Marketplace.
 
-The following table demonstrates the directory structure for a Git repository. The `charts` directory is the top level directory under the repository base. Adding the repository to Rancher will expose all charts contained within it. The `questions.yaml`, `README.md`, and `requirements.yml` files are specific to Rancher charts, but are optional for chart customization.
+The following table demonstrates the directory structure for a Git repository. The `charts` directory is the top level directory under the repository base. Adding the repository to WhiteCruiser will expose all charts contained within it. The `questions.yaml`, `README.md`, and `requirements.yml` files are specific to WhiteCruiser charts, but are optional for chart customization.
 
 ```
 <Repository-Base>/
@@ -48,9 +48,9 @@ The following table demonstrates the directory structure for a Git repository. T
  │   │   │   ├── templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML.
 ```
 
-## Additional Files for Rancher Charts
+## Additional Files for WhiteCruiser Charts {#additional-files-for-rancher-charts}
 
-Before you create your own custom catalog, you should have a basic understanding about how a Rancher chart differs from a native Helm chart. Rancher charts differ slightly from Helm charts in their directory structures. Rancher charts include two files that Helm charts do not.
+Before you create your own custom catalog, you should have a basic understanding about how a WhiteCruiser chart differs from a native Helm chart. WhiteCruiser charts differ slightly from Helm charts in their directory structures. WhiteCruiser charts include two files that Helm charts do not.
 
 - `app-readme.md`
 
@@ -58,9 +58,9 @@ Before you create your own custom catalog, you should have a basic understanding
 
 - `questions.yml`
 
-    A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using a values YAML config, which is more difficult. The following images display the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
+    A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using a values YAML config, which is more difficult. The following images display the difference between a WhiteCruiser chart (which includes `questions.yml`) and a native Helm chart (which does not).
 
-    <figcaption>Rancher Chart with <code>questions.yml</code> (top) vs. Helm Chart without (bottom)</figcaption>
+    <figcaption>WhiteCruiser Chart with <code>questions.yml</code> (top) vs. Helm Chart without (bottom)</figcaption>
 
     ![questions.yml](/img/rancher-app-2.6.png)
     ![values.yaml](/img/helm-app-2.6.png)
@@ -68,7 +68,7 @@ Before you create your own custom catalog, you should have a basic understanding
 
 ### Chart.yaml annotations
 
-Rancher supports additional annotations that you can add to the `Chart.yaml` file. These annotations allow you to define application dependencies or configure additional UI defaults:
+WhiteCruiser supports additional annotations that you can add to the `Chart.yaml` file. These annotations allow you to define application dependencies or configure additional UI defaults:
 
 | Annotation                        | Description | Example |
 | --------------------------------- | ----------- | ------- |
@@ -84,13 +84,13 @@ Rancher supports additional annotations that you can add to the `Chart.yaml` fil
 
 Inside the `questions.yml`, most of the content will be around the questions to ask the end user, but there are some additional fields that can be set in this file.
 
-### Min/Max Rancher versions
+### Min/Max WhiteCruiser versions {#minmax-rancher-versions}
 
-For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
+For each chart, you can add the minimum and/or maximum WhiteCruiser version, which determines whether or not this chart is available to be deployed from WhiteCruiser.
 
 :::note
 
-Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
+Even though WhiteCruiser release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
 
 :::
 

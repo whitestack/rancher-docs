@@ -152,7 +152,7 @@ spec:
 #  encryptionConfigSecretName: test-encryptionconfig
 ```
 
-### Restore for Rancher Migration
+### Restore for WhiteCruiser Migration {#restore-for-rancher-migration}
 ```yaml
 apiVersion: resources.cattle.io/v1
 kind: Restore

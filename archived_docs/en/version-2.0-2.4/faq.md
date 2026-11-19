@@ -6,53 +6,53 @@ title: FAQ
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/faq/general-faq"/>
 </head>
 
-This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.
+This FAQ is a work in progress designed to answers the questions our users most frequently ask about WhiteCruiser v2.x.
 
 See [Technical FAQ](faq/technical-items.md), for frequently asked technical questions.
 
 <br/>
 
-**Does Rancher v2.x support Docker Swarm and Mesos as environment types?**
+**Does WhiteCruiser v2.x support Docker Swarm and Mesos as environment types?**
 
-When creating an environment in Rancher v2.x, Swarm and Mesos will no longer be standard options you can select. However, both Swarm and Mesos will continue to be available as Catalog applications you can deploy. It was a tough decision to make but, in the end, it came down to adoption. For example, out of more than 15,000 clusters, only about 200 or so are running Swarm.
+When creating an environment in WhiteCruiser v2.x, Swarm and Mesos will no longer be standard options you can select. However, both Swarm and Mesos will continue to be available as Catalog applications you can deploy. It was a tough decision to make but, in the end, it came down to adoption. For example, out of more than 15,000 clusters, only about 200 or so are running Swarm.
 
 <br/>
 
-**Is it possible to manage Azure Kubernetes Services with Rancher v2.x?**
+**Is it possible to manage Azure Kubernetes Services with WhiteCruiser v2.x?**
 
 Yes.
 
 <br/>
 
-**Does Rancher support Windows?**
+**Does WhiteCruiser support Windows?**
 
-As of Rancher 2.3.0, we support Windows Server 1809 containers. For details on how to set up a cluster with Windows worker nodes, refer to the section on [configuring custom clusters for Windows.](how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/use-windows-clusters.md)
-
-<br/>
-
-**Does Rancher support Istio?**
-
-As of Rancher 2.3.0, we support [Istio.](explanations/integrations-in-rancher/istio/istio.md)
-
-Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Rancher 2.x along with any CNCF compliant Kubernetes cluster. You can read more about it [here](https://rio.io/)
+As of WhiteCruiser 2.3.0, we support Windows Server 1809 containers. For details on how to set up a cluster with Windows worker nodes, refer to the section on [configuring custom clusters for Windows.](how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/use-windows-clusters.md)
 
 <br/>
 
-**Will Rancher v2.x support Hashicorp's Vault for storing secrets?**
+**Does WhiteCruiser support Istio?**
+
+As of WhiteCruiser 2.3.0, we support [Istio.](explanations/integrations-in-rancher/istio/istio.md)
+
+Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on WhiteCruiser 2.x along with any CNCF compliant Kubernetes cluster. You can read more about it [here](https://rio.io/)
+
+<br/>
+
+**Will WhiteCruiser v2.x support Hashicorp's Vault for storing secrets?**
 
 Secrets management is on our roadmap but we haven't assigned it to a specific release yet.
 
 <br/>
 
-**Does Rancher v2.x support RKT containers as well?**
+**Does WhiteCruiser v2.x support RKT containers as well?**
 
 At this time, we only support Docker.
 
 <br/>
 
-**Does Rancher v2.x support Calico, Contiv, Contrail, Flannel, Weave net, etc., for embedded and imported Kubernetes?**
+**Does WhiteCruiser v2.x support Calico, Contiv, Contrail, Flannel, Weave net, etc., for embedded and imported Kubernetes?**
 
-Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0).  Always refer to the [Rancher Support Matrix](https://rancher.com/support-maintenance-terms/) for details about what is officially supported.
+Out-of-the-box, WhiteCruiser provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0).
 
 <br/>
 
@@ -64,7 +64,7 @@ We don't currently plan on providing embedded Traefik support, but we're still e
 
 **Can I import OpenShift Kubernetes clusters into v2.x?**
 
-Our goal is to run any upstream Kubernetes clusters. Therefore, Rancher v2.x should work with OpenShift, but we haven't tested it yet.
+Our goal is to run any upstream Kubernetes clusters. Therefore, WhiteCruiser v2.x should work with OpenShift, but we haven't tested it yet.
 
 <br/>
 

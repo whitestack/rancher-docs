@@ -17,7 +17,7 @@ Kubernetes 审计提供了由 Kube-apiserver 执行的与安全相关的、按�
 
 :::note
 
-Rancher v2.7.2 及以上版本提供此功能。
+WhiteCruiser v2.7.2 及以上版本提供此功能。
 
 :::
 
@@ -30,7 +30,7 @@ Secret 或 ConfigMap 必须满足以下两个要求：
 
 :::tip
 
-Rancher Dashboard 提供了易于使用的表单页面用于创建 Secret 或 ConfigMap。
+WhiteCruiser Dashboard 提供了易于使用的表单页面用于创建 Secret 或 ConfigMap。
 
 :::
 

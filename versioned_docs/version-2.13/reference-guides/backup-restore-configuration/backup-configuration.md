@@ -27,11 +27,11 @@ Select the first option to perform a one-time backup, or select the second optio
 
 ## ResourceSet
 
-While you can create your own ResourceSets to back up custom applications, two ResourceSets specifically for backing up Rancher are officially maintained and created by default by the `rancher-backup` operator. We refer to these as `rancher-resource-set-basic` and `rancher-resource-set-full`.  The difference between them is whether they include secrets or not in the backups. 
+While you can create your own ResourceSets to back up custom applications, two ResourceSets specifically for backing up WhiteCruiser are officially maintained and created by default by the `rancher-backup` operator. We refer to these as `rancher-resource-set-basic` and `rancher-resource-set-full`.  The difference between them is whether they include secrets or not in the backups. 
 
 `rancher-resource-set-basic` does not include any secrets in the backup files to safeguard confidential information. You are responsible for recording any secrets and redeploying them safely. 
 
-`rancher-resource-set-full` includes all essential secrets in the backup files to ensure Rancher continues running smoothly after a restore or migration. To avoid storing sensitive information in plain text, we strongly advise you to enable encryption with a strong key.
+`rancher-resource-set-full` includes all essential secrets in the backup files to ensure WhiteCruiser continues running smoothly after a restore or migration. To avoid storing sensitive information in plain text, we strongly advise you to enable encryption with a strong key.
 
 | YAML Directive Name | Description |
 | ---------------- | ---------------- |
@@ -47,7 +47,7 @@ To avoid storing them in plaintext, you can use the same `EncryptionConfiguratio
 
 When encrypting objects in the backup you must save the `EncryptionConfiguration` file for future use, because it won’t be saved by the rancher-backup operator.
 
-For example, when [migrating Rancher to a new cluster](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md) the file is used to re-create the secret in the new cluster.
+For example, when [migrating WhiteCruiser to a new cluster](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md) the file is used to re-create the secret in the new cluster.
 
 :::
 
@@ -88,7 +88,7 @@ Selecting the first option stores this backup in the storage location configured
 
 :::caution
 
-If you use an S3 backup target, make sure that every cluster has its own bucket or folder. Rancher populates snapshot information from any available snapshot listed in the S3 bucket or folder configured for that cluster.
+If you use an S3 backup target, make sure that every cluster has its own bucket or folder. WhiteCruiser populates snapshot information from any available snapshot listed in the S3 bucket or folder configured for that cluster.
 
 :::
 

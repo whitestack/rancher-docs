@@ -1,17 +1,17 @@
 ---
-title: Rancher Azure Quick Start Guide
-description: Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
+title: WhiteCruiser Azure Quick Start Guide
+description: Read this step by step WhiteCruiser Azure guide to quickly deploy a WhiteCruiser server with a single-node downstream Kubernetes cluster attached.
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/azure"/>
 </head>
 
-The following steps will quickly deploy a Rancher server on Azure in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
+The following steps will quickly deploy a WhiteCruiser server on Azure in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
 :::caution
 
-The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate WhiteCruiser. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
 
 :::
 
@@ -23,7 +23,7 @@ Deploying to Microsoft Azure will incur charges.
 
 :::
 
-- [Microsoft Azure Account](https://azure.microsoft.com/en-us/free/): A Microsoft Azure Account is required to create resources for deploying Rancher and Kubernetes.
+- [Microsoft Azure Account](https://azure.microsoft.com/en-us/free/): A Microsoft Azure Account is required to create resources for deploying WhiteCruiser and Kubernetes.
 - [Microsoft Azure Subscription](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal): Use this link to follow a tutorial to create a Microsoft Azure subscription if you don't have one yet.
 - [Micsoroft Azure Tenant](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant): Use this link and follow instructions to create a Microsoft Azure tenant.
 - [Microsoft Azure Client ID/Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal): Use this link and follow instructions to create a Microsoft Azure client and secret.
@@ -32,7 +32,7 @@ Deploying to Microsoft Azure will incur charges.
 
 ## Getting Started
 
-1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
+1. Clone [WhiteCruiser Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
 2. Go into the Azure folder containing the Terraform files by executing `cd quickstart/rancher/azure`.
 
@@ -43,7 +43,7 @@ Deploying to Microsoft Azure will incur charges.
     - `azure_client_id` - Microsoft Azure Client ID
     - `azure_client_secret` - Microsoft Azure Client Secret
     - `azure_tenant_id` - Microsoft Azure Tenant ID
-    - `rancher_server_admin_password` - Admin password for created Rancher server. See [Setting up the Bootstrap Password](../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements) for password requirements.
+    - `rancher_server_admin_password` - Admin password for created WhiteCruiser server. See [Setting up the Bootstrap Password](../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements) for password requirements.
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azure Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/azure) for more information. Suggestions include:
    - `azure_location` - Microsoft Azure region, choose the closest instead of the default (`East US`)
@@ -67,15 +67,15 @@ See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azur
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/azure`.
+9. ssh to the WhiteCruiser Server using the `id_rsa` key generated in `quickstart/rancher/azure`.
 
 #### Result
 
-Two Kubernetes clusters are deployed into your Azure account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
+Two Kubernetes clusters are deployed into your Azure account, one running WhiteCruiser Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore WhiteCruiser functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
+Use WhiteCruiser to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
 
 ## Destroying the Environment
 

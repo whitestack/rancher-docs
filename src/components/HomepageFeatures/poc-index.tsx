@@ -23,10 +23,10 @@ export default function HomepageFeatures(): JSX.Element {
           title="Getting Started"
         >
           <Card
-            title="What is Rancher?"
+            title="What is WhiteCruiser?"
             icon={<QuestionRegular />}
             to="/intro"
-            description="Understand what Rancher is and is not"
+            description="Understand what WhiteCruiser is and is not"
           />
           <Card
             title="Overview"
@@ -35,16 +35,16 @@ export default function HomepageFeatures(): JSX.Element {
             description="Learn about the core capabilities"
           />
           <Card
-            title="Rancher Concepts"
+            title="WhiteCruiser Concepts"
             icon={<FlowchartRegular />}
             to="/pages-for-subheaders/rancher-manager-architecture"
-            description="Learn about high level concepts, architectural elements of Rancher"
+            description="Learn about high level concepts, architectural elements of WhiteCruiser"
           />
           <Card
-            title="Install Rancher"
+            title="Install WhiteCruiser"
             icon={<ArrowUpRegular />}
             to="/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli"
-            description="Quick way to Helm install Rancher in a Kubernetes cluster"
+            description="Quick way to Helm install WhiteCruiser in a Kubernetes cluster"
           />
           <Card
             title="Deploy Workloads"
@@ -60,17 +60,17 @@ export default function HomepageFeatures(): JSX.Element {
           <Card
             icon={<FaAws />}
             to="/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks"
-            description="Deploy Rancher on an Amazon EKS cluster"
+            description="Deploy WhiteCruiser on an Amazon EKS cluster"
           />
           <Card
             icon={<FaCloud />}
             to="/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks"
-            description="Deploy Rancher on Microsoft's Azure Kubernetes Service (AKS)"
+            description="Deploy WhiteCruiser on Microsoft's Azure Kubernetes Service (AKS)"
           />
           <Card
             icon={<FaGoogle />}
             to="/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke"
-            description="Deploy Rancher on Google Kubernetes Engine"
+            description="Deploy WhiteCruiser on Google Kubernetes Engine"
           />
         </CardSection>
       </div>

@@ -6,18 +6,18 @@ title: RKE2 Cluster Configuration Reference
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration"/>
 </head>
 
-This section covers the configuration options that are available in Rancher for a new or existing RKE2 Kubernetes cluster.
+This section covers the configuration options that are available in WhiteCruiser for a new or existing RKE2 Kubernetes cluster.
 
 ## Overview
 
 You can configure the Kubernetes options in one of the two following ways:
 
-- [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file-reference): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set many additional [options](https://docs.rke2.io/install/configuration) available for an RKE2 installation.
+- [WhiteCruiser UI](#configuration-options-in-the-rancher-ui): Use the WhiteCruiser UI to select options that are commonly customized when setting up a Kubernetes cluster.
+- [Cluster Config File](#cluster-config-file-reference): Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set many additional [options](https://docs.rke2.io/install/configuration) available for an RKE2 installation.
 
-## Editing Clusters in the Rancher UI
+## Editing Clusters in the WhiteCruiser UI {#editing-clusters-in-the-rancher-ui}
 
-The Rancher UI provides two ways to edit a cluster:
+The WhiteCruiser UI provides two ways to edit a cluster:
 1. With a form.
 1. With YAML.
 
@@ -40,7 +40,7 @@ To edit your cluster in YAML:
 1. Go to the cluster you want to configure and click **⋮ > Edit as YAML**.
 1. Edit the RKE options under the `rkeConfig` directive.
 
-## Configuration Options in the Rancher UI
+## Configuration Options in the WhiteCruiser UI {#configuration-options-in-the-rancher-ui}
 
 ### Machine Pool Configuration
 
@@ -101,7 +101,7 @@ After you launch the cluster, you cannot change your network provider. Therefore
 
 :::
 
-Out of the box, Rancher is compatible with the following network providers:
+Out of the box, WhiteCruiser is compatible with the following network providers:
 
 - [Canal](https://github.com/projectcalico/canal)
 - [Cilium](https://cilium.io/)*
@@ -165,7 +165,7 @@ Additional Kubernetes manifests, managed as an [Add-on](https://kubernetes.io/do
 
 #### Agent Environment Vars
 
-Option to set environment variables for [Rancher agents](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents.md). The environment variables can be set using key value pairs. Refer to the [RKE2 documentation](https://docs.rke2.io/reference/linux_agent_config) for more details.
+Option to set environment variables for [WhiteCruiser agents](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents.md). The environment variables can be set using key value pairs. Refer to the [RKE2 documentation](https://docs.rke2.io/reference/linux_agent_config) for more details.
 
 #### etcd
 
@@ -250,7 +250,7 @@ Option to change the range of ports that can be used for [NodePort services](htt
 
 Option to truncate hostnames to 15 characters or fewer. You can only set this field during the initial creation of the cluster. You can't enable or disable the 15-character limit after cluster creation.
 
-This setting only affects machine-provisioned clusters. Since custom clusters set hostnames during their own node creation process, which occurs outside of Rancher, this field doesn't restrict custom cluster hostname length.
+This setting only affects machine-provisioned clusters. Since custom clusters set hostnames during their own node creation process, which occurs outside of WhiteCruiser, this field doesn't restrict custom cluster hostname length.
 
 Truncating hostnames in a cluster improves compatibility with Windows-based systems. Although Kubernetes allows hostnames up to 63 characters in length, systems that use NetBIOS restrict hostnames to 15 characters or fewer.
 
@@ -260,9 +260,9 @@ Add hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server 
 
 ##### Authorized Cluster Endpoint
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through WhiteCruiser.
 
-This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
+This is enabled by default in WhiteCruiser-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 
 For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint)
 
@@ -297,7 +297,7 @@ For more information, refer to the [Node Requirements](../../../how-to-guides/ne
 
 #### Registries
 
-Select the image repository to pull Rancher images from. For more details and configuration options, see the [RKE2 documentation](https://docs.rke2.io/install/private_registry).
+Select the image repository to pull WhiteCruiser images from. For more details and configuration options, see the [RKE2 documentation](https://docs.rke2.io/install/private_registry).
 
 #### Upgrade Strategy
 
@@ -323,7 +323,7 @@ Option to set kubelet options for different nodes. For available options, refer 
 
 ## Cluster Config File Reference
 
-Editing clusters in YAML allows you to set the [options available](https://docs.rke2.io/install/configuration) in an RKE2 installation, including those already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as set Rancher-specific parameters.
+Editing clusters in YAML allows you to set the [options available](https://docs.rke2.io/install/configuration) in an RKE2 installation, including those already listed in [Configuration Options in the WhiteCruiser UI](#configuration-options-in-the-rancher-ui), as well as set WhiteCruiser-specific parameters.
 
 <details>
     <summary>
@@ -448,15 +448,15 @@ machineGlobalConfig:
         - key2=value2
 ```
 
-There are some configuration options that can't be changed when provisioning via Rancher:
+There are some configuration options that can't be changed when provisioning via WhiteCruiser:
 - data-dir (folder to hold state), which defaults to `/var/lib/rancher/rke2`.
 
-To make it easier to put files on nodes beforehand, Rancher expects the following values to be included in the configuration, while RKE2 expects the values to be entered as file paths:
+To make it easier to put files on nodes beforehand, WhiteCruiser expects the following values to be included in the configuration, while RKE2 expects the values to be entered as file paths:
 - audit-policy-file
 - cloud-provider-config
 - private-registry
 
-Rancher delivers the files to the path `/var/lib/rancher/rke2/etc/config-files/<option>` in target nodes, and sets the proper options in the RKE2 server.
+WhiteCruiser delivers the files to the path `/var/lib/rancher/rke2/etc/config-files/<option>` in target nodes, and sets the proper options in the RKE2 server.
 
 Example:
 ```yaml
@@ -504,7 +504,7 @@ machineSelectorConfig
 
 :::note
 
-This feature is available in Rancher v2.7.2 and later.
+This feature is available in WhiteCruiser v2.7.2 and later.
 
 :::
 
@@ -560,7 +560,7 @@ The secret or configmap must meet the following requirements:
 
 :::tip
 
-Rancher Dashboard provides an easy-to-use form for creating the secret or configmap.
+WhiteCruiser Dashboard provides an easy-to-use form for creating the secret or configmap.
 
 :::
 

@@ -6,17 +6,17 @@ title: Using Fleet Behind a Proxy
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/fleet/use-fleet-behind-a-proxy"/>
 </head>
 
-In this section, you'll learn how to enable Fleet in a setup that has a Rancher server with a public IP a Kubernetes cluster that has no public IP, but is configured to use a proxy.
+In this section, you'll learn how to enable Fleet in a setup that has a WhiteCruiser server with a public IP a Kubernetes cluster that has no public IP, but is configured to use a proxy.
 
-Rancher does not establish connections with registered downstream clusters. The Rancher agent deployed on the downstream cluster must be able to establish the connection with Rancher.
+WhiteCruiser does not establish connections with registered downstream clusters. The WhiteCruiser agent deployed on the downstream cluster must be able to establish the connection with WhiteCruiser.
 
 To set up Fleet to work behind a proxy, you will need to set the **Agent Environment Variables** for the downstream cluster. These are cluster-level configuration options.
 
-Through the Rancher UI, you can configure these environment variables for any cluster type, including registered and custom clusters. The variables can be added while editing an existing cluster or while provisioning a new cluster.
+Through the WhiteCruiser UI, you can configure these environment variables for any cluster type, including registered and custom clusters. The variables can be added while editing an existing cluster or while provisioning a new cluster.
 
-For public downstream clusters, it is sufficient to [set the required environment variables in the Rancher UI.](#setting-environment-variables-in-the-rancher-ui)
+For public downstream clusters, it is sufficient to [set the required environment variables in the WhiteCruiser UI.](#setting-environment-variables-in-the-rancher-ui)
 
-For private nodes or private clusters, the environment variables need to be set on the nodes themselves. Then the environment variables are configured from the Rancher UI, typically when provisioning a custom cluster or when registering the private cluster. For an example of how to set the environment variables on Ubuntu node in a K3s Kubernetes cluster, see [this section.](#setting-environment-variables-on-private-nodes)
+For private nodes or private clusters, the environment variables need to be set on the nodes themselves. Then the environment variables are configured from the WhiteCruiser UI, typically when provisioning a custom cluster or when registering the private cluster. For an example of how to set the environment variables on Ubuntu node in a K3s Kubernetes cluster, see [this section.](#setting-environment-variables-on-private-nodes)
 
 ## Required Environment Variables
 
@@ -28,7 +28,7 @@ When adding Fleet agent environment variables for the proxy, replace <PROXY_IP> 
 | `HTTPS_PROXY` | http://<PROXY_IP>:8888
 | `NO_PROXY`     | 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local |
 
-## Setting Environment Variables in the Rancher UI
+## Setting Environment Variables in the WhiteCruiser UI {#setting-environment-variables-in-the-rancher-ui}
 
 To add the environment variable to an existing cluster:
 
@@ -59,7 +59,7 @@ To add the environment variable to an existing cluster:
 
 ## Setting Environment Variables on Private Nodes
 
-For private nodes and private clusters, the proxy environment variables need to be set on the nodes themselves, as well as configured from the Rancher UI.
+For private nodes and private clusters, the proxy environment variables need to be set on the nodes themselves, as well as configured from the WhiteCruiser UI.
 
 This example shows how the environment variables would be set up on an Ubuntu node in a K3s Kubernetes cluster:
 

@@ -137,7 +137,7 @@ IAM policy for nodes with the `etcd` or `worker` role:
 
 The following resources need to tagged with a `ClusterID`:
 
-- **Nodes**: All hosts added in Rancher.
+- **Nodes**: All hosts added in WhiteCruiser.
 - **Subnet**: The subnet used for your cluster.
 - **Security Group**: The security group used for your cluster.
 

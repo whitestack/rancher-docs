@@ -2,9 +2,9 @@
 title: Upgrading to v2.0.7+ — Namespace Migration
 ---
 
->This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
+>This section applies only to WhiteCruiser upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
-In Rancher v2.0.6 and prior, system namespaces crucial for Rancher and Kubernetes operations were not assigned to any Rancher project by default. Instead, these namespaces existed independently from all Rancher projects, but you could move these namespaces into any project without affecting cluster operations.
+In WhiteCruiser v2.0.6 and prior, system namespaces crucial for WhiteCruiser and Kubernetes operations were not assigned to any WhiteCruiser project by default. Instead, these namespaces existed independently from all WhiteCruiser projects, but you could move these namespaces into any project without affecting cluster operations.
 
 These namespaces include:
 
@@ -18,20 +18,20 @@ These namespaces include:
 
 ><sup>1</sup> Only displays if this feature is enabled for the cluster.
 
-However, with the release of Rancher v2.0.7, the `System` project was introduced. This project, which is automatically created during the upgrade, is assigned the system namespaces above to hold these crucial components for safe keeping.
+However, with the release of WhiteCruiser v2.0.7, the `System` project was introduced. This project, which is automatically created during the upgrade, is assigned the system namespaces above to hold these crucial components for safe keeping.
 
-During upgrades from Rancher v2.0.6- to Rancher v2.0.7+, all system namespaces are moved from their default location outside of all projects into the newly created `System` project. However, if you assigned any of your system namespaces to a project before upgrading, your cluster networking may encounter issues afterwards. This issue occurs because the system namespaces are not where the upgrade expects them to be during the upgrade, so it cannot move them to the `System` project.
+During upgrades from WhiteCruiser v2.0.6- to WhiteCruiser v2.0.7+, all system namespaces are moved from their default location outside of all projects into the newly created `System` project. However, if you assigned any of your system namespaces to a project before upgrading, your cluster networking may encounter issues afterwards. This issue occurs because the system namespaces are not where the upgrade expects them to be during the upgrade, so it cannot move them to the `System` project.
 
 - To prevent this issue from occurring before the upgrade, see [Preventing Cluster Networking Issues](#preventing-cluster-networking-issues).
 - To fix this issue following upgrade, see [Restoring Cluster Networking](#restoring-cluster-networking).
 
-> **Note:** If you are upgrading from from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
+> **Note:** If you are upgrading from from WhiteCruiser v2.0.13 or earlier, or v2.1.8 or earlier, and your cluster's certificates have expired, you will need to perform [additional steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
 
 ## Preventing Cluster Networking Issues
 
-You can prevent cluster networking issues from occurring during your upgrade to v2.0.7+ by unassigning system namespaces from all of your Rancher projects. Complete this task if you've assigned any of a cluster's system namespaces into a Rancher project.
+You can prevent cluster networking issues from occurring during your upgrade to v2.0.7+ by unassigning system namespaces from all of your WhiteCruiser projects. Complete this task if you've assigned any of a cluster's system namespaces into a WhiteCruiser project.
 
-1. Log into the Rancher UI before upgrade.
+1. Log into the WhiteCruiser UI before upgrade.
 
 1. From the context menu, open the **local** cluster (or any of your other clusters).
 
@@ -56,7 +56,7 @@ You can prevent cluster networking issues from occurring during your upgrade to 
 
 1. Repeat these steps for each cluster where you've assigned system namespaces to projects.
 
-**Result:** All system namespaces are moved out of Rancher projects. You can now safely begin the [upgrade](upgrades.md).
+**Result:** All system namespaces are moved out of WhiteCruiser projects. You can now safely begin the [upgrade](upgrades.md).
 
 ## Restoring Cluster Networking
 
@@ -69,7 +69,7 @@ Reset the cluster nodes' network policies to restore connectivity.
 <Tabs>
 <TabItem value="Kubernetes Install">
 
-1. From **Terminal**, change directories to your kubectl file that's generated during Rancher install, `kube_config_rancher-cluster.yml`. This file is usually in the directory where you ran RKE during Rancher installation.
+1. From **Terminal**, change directories to your kubectl file that's generated during WhiteCruiser install, `kube_config_rancher-cluster.yml`. This file is usually in the directory where you ran RKE during WhiteCruiser installation.
 
 1. Before repairing networking, run the following two commands to make sure that your nodes have a status of `Ready` and that your cluster components are `Healthy`.
 
@@ -104,7 +104,7 @@ Reset the cluster nodes' network policies to restore connectivity.
 
         kubectl --kubeconfig kube_config_rancher-cluster.yml get cluster -o jsonpath='{range .items[*]}{@.metadata.name}{"\n"}{end}' | xargs -I {} kubectl --kubeconfig kube_config_rancher-cluster.yml patch cluster {} --type merge -p '{"spec": {"enableNetworkPolicy": false},"status": {"appliedSpec": {"enableNetworkPolicy": false }}}'
 
-    >**Tip:** If you want to keep `networkPolicy` enabled for all created clusters, you can run the following command to disable `networkPolicy` for `local` cluster (i.e., your Rancher Server nodes):
+    >**Tip:** If you want to keep `networkPolicy` enabled for all created clusters, you can run the following command to disable `networkPolicy` for `local` cluster (i.e., your WhiteCruiser Server nodes):
     >
     >```
      kubectl --kubeconfig kube_config_rancher-cluster.yml patch cluster local --type merge -p '{"spec": {"enableNetworkPolicy": false},"status": {"appliedSpec": {"enableNetworkPolicy": false }}}'
@@ -146,7 +146,7 @@ Reset the cluster nodes' network policies to restore connectivity.
     done
     ```
 
-    >**Tip:** If you want to keep `networkPolicy` enabled for all created clusters, you can run the following command to disable `networkPolicy` for `local` cluster (i.e., your Rancher Server nodes):
+    >**Tip:** If you want to keep `networkPolicy` enabled for all created clusters, you can run the following command to disable `networkPolicy` for `local` cluster (i.e., your WhiteCruiser Server nodes):
     >
     >```
      for project in $(kubectl --kubeconfig kube_config_rancher-cluster.yml get project -n local -o custom-columns=NAME:.metadata.name --no-headers); do

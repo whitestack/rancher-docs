@@ -2,15 +2,15 @@
 title: 使用备份恢复集群
 ---
 
-你可以轻松备份和恢复 [Rancher 启动的 Kubernetes 集群](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md)的 etcd。etcd 数据库的快照会保存在 etcd 节点或 S3 兼容目标上。配置 S3 的好处是，如果所有 etcd 节点都丢失了，你的快照会保存到远端并能用于恢复集群。
+你可以轻松备份和恢复 [WhiteCruiser 启动的 Kubernetes 集群](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md)的 etcd。etcd 数据库的快照会保存在 etcd 节点或 S3 兼容目标上。配置 S3 的好处是，如果所有 etcd 节点都丢失了，你的快照会保存到远端并能用于恢复集群。
 
-Rancher 建议启用 [etcd 定期快照的功能](back-up-rancher-launched-kubernetes-clusters.md#配置定期快照)，但你也可以轻松创建[一次性快照](back-up-rancher-launched-kubernetes-clusters.md#单次快照)。Rancher 允许使用[保存的快照](#使用快照恢复集群)进行恢复。如果你没有任何快照，你仍然可以[恢复 etcd](#在没有快照的情况下恢复-etcd)。
+WhiteCruiser 建议启用 [etcd 定期快照的功能](back-up-rancher-launched-kubernetes-clusters.md#配置定期快照)，但你也可以轻松创建[一次性快照](back-up-rancher-launched-kubernetes-clusters.md#单次快照)。WhiteCruiser 允许使用[保存的快照](#使用快照恢复集群)进行恢复。如果你没有任何快照，你仍然可以[恢复 etcd](#在没有快照的情况下恢复-etcd)。
 
 集群也可以恢复到之前的 Kubernetes 版本和集群配置。
 
 ## 查看可用快照
 
-Rancher UI 中提供了集群所有可用快照的列表：
+WhiteCruiser UI 中提供了集群所有可用快照的列表：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面中，转到要查看快照的集群并点击集群名称。
@@ -22,7 +22,7 @@ Rancher UI 中提供了集群所有可用快照的列表：
 
 快照由 etcd 中的集群数据、Kubernetes 版本和 `cluster.yml` 中的集群配置组成。有了这些组件，你可以在使用快照恢复集群时选择：
 
-- **仅恢复 etcd 内容**：类似于在 Rancher v2.4.0 之前版本中的使用快照恢复。
+- **仅恢复 etcd 内容**：类似于在 WhiteCruiser v2.4.0 之前版本中的使用快照恢复。
 - **恢复 etcd 和 Kubernetes 版本**：如果 Kubernetes 升级导致集群失败，并且你没有更改任何集群配置，则应使用此选项。
 - **恢复 etcd、Kubernetes 版本和集群配置**：如果你在升级时同时更改了 Kubernetes 版本和集群配置，则应使用此选项。
 
@@ -70,8 +70,8 @@ Rancher UI 中提供了集群所有可用快照的列表：
 
 5. 运行修改后的命令。
 
-6. 在单个节点启动并运行后，Rancher 建议向你的集群添加额外的 etcd 节点。如果你有一个[自定义集群](../../../pages-for-subheaders/use-existing-nodes.md)，并且想要复用旧节点，则需要先[清理节点](../manage-clusters/clean-cluster-nodes.md)，然后再尝试将它们重新添加到集群中。
+6. 在单个节点启动并运行后，WhiteCruiser 建议向你的集群添加额外的 etcd 节点。如果你有一个[自定义集群](../../../pages-for-subheaders/use-existing-nodes.md)，并且想要复用旧节点，则需要先[清理节点](../manage-clusters/clean-cluster-nodes.md)，然后再尝试将它们重新添加到集群中。
 
-## 为使用 Rancher v2.2.0 之前的版本创建的集群启用快照功能
+## 为使用 WhiteCruiser v2.2.0 之前的版本创建的集群启用快照功能
 
-如果你有使用 v2.2.0 之前版本创建的 Rancher 启动的 Kubernetes 集群，升级 Rancher 后，你必须[编辑集群](../../../pages-for-subheaders/cluster-configuration.md)并 _保存_ 它，以启用更新的快照功能。即使你已经在 v2.2.0 之前创建了快照，你也必须执行此步骤，因为旧的快照将无法用于[通过 UI 备份和恢复 etcd](restore-rancher-launched-kubernetes-clusters-from-backup.md)。
+如果你有使用 v2.2.0 之前版本创建的 WhiteCruiser 启动的 Kubernetes 集群，升级 WhiteCruiser 后，你必须[编辑集群](../../../pages-for-subheaders/cluster-configuration.md)并 _保存_ 它，以启用更新的快照功能。即使你已经在 v2.2.0 之前创建了快照，你也必须执行此步骤，因为旧的快照将无法用于[通过 UI 备份和恢复 etcd](restore-rancher-launched-kubernetes-clusters-from-backup.md)。

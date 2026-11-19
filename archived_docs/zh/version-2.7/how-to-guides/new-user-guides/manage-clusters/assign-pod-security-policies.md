@@ -10,7 +10,7 @@ _Pod 安全策略_（PSP）是控制 Pod 安全的规范（如是否可以使用
 
 :::note 先决条件：
 
-在 Rancher 中创建 Pod 安全策略。在将默认 PSP 分配给新集群之前，你必须有一个可分配的 PSP。有关说明，请参阅[创建 Pod 安全策略](../authentication-permissions-and-global-configuration/create-pod-security-policies.md)。
+在 WhiteCruiser 中创建 Pod 安全策略。在将默认 PSP 分配给新集群之前，你必须有一个可分配的 PSP。有关说明，请参阅[创建 Pod 安全策略](../authentication-permissions-and-global-configuration/create-pod-security-policies.md)。
 
 :::
 

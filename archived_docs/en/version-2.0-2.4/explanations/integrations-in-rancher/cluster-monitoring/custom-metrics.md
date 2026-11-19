@@ -2,7 +2,7 @@
 title: Prometheus Custom Metrics Adapter
 ---
 
-After you've enabled [cluster level monitoring](cluster-monitoring.md), You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.
+After you've enabled [cluster level monitoring](cluster-monitoring.md), You can view the metrics data from WhiteCruiser. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.
 
 ## Deploy Prometheus Custom Metrics Adapter
 
@@ -157,7 +157,7 @@ openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out serving.cr
 kubectl create secret generic -n cattle-prometheus cm-adapter-serving-certs --from-file=serving.key=./serving.key --from-file=serving.crt=./serving.crt
 ```
 
-- Then you can create the prometheus custom metrics adapter. And you will need a service for this deployment too. Creating it via Import YAML or Rancher would do. Please create those resources in `cattle-prometheus` namespaces.
+- Then you can create the prometheus custom metrics adapter. And you will need a service for this deployment too. Creating it via Import YAML or WhiteCruiser would do. Please create those resources in `cattle-prometheus` namespaces.
 
 Here is the prometheus custom metrics adapter deployment.
 ```yaml

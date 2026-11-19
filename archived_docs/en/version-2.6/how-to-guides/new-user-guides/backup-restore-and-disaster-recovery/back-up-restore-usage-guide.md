@@ -8,7 +8,7 @@ title: Backup Restore Usage Guide
 
 The Rancher Backups chart is our solution for disaster recovery and migration. This chart allows you to take backups of your Kubernetes resources and save them to a variety of persistent storage locations.
 
-This chart is a very simple tool which has its hands in many different areas of the Rancher ecosystem. As a result, edge cases have arisen which lead to undocumented functionality. The purpose of this document is to highlight the proper and defined usage for Rancher Backups, as well as discussing some of these edge cases we’ve run into.
+This chart is a very simple tool which has its hands in many different areas of the WhiteCruiser ecosystem. As a result, edge cases have arisen which lead to undocumented functionality. The purpose of this document is to highlight the proper and defined usage for Rancher Backups, as well as discussing some of these edge cases we’ve run into.
 
 ## Functionality Overview
 
@@ -20,13 +20,13 @@ See the [Backup Configuration documentation](../../../reference-guides/backup-re
 
 :::note
 
-As noted in the [Backing up Rancher documentation](./back-up-rancher.md), you must manually save the encryption configuration file contents since the operator will **not** back it up.
+As noted in the [Backing up WhiteCruiser documentation](./back-up-rancher.md), you must manually save the encryption configuration file contents since the operator will **not** back it up.
 
 :::
 
 ### Restore
 
-There are two main restore scenarios, restoring to a cluster with Rancher running and restoring to a fresh cluster. You can only restore to a cluster with Rancher running if it's the same cluster the backup was taken from and the [`prune` option](../../../reference-guides/backup-restore-configuration/restore-configuration.md#prune-during-restore) is enabled during the restore. A restore has similar inputs as a backup. It requires a backup filename, the encryptionConfigSecret name, and the storage location.
+There are two main restore scenarios, restoring to a cluster with WhiteCruiser running and restoring to a fresh cluster. You can only restore to a cluster with WhiteCruiser running if it's the same cluster the backup was taken from and the [`prune` option](../../../reference-guides/backup-restore-configuration/restore-configuration.md#prune-during-restore) is enabled during the restore. A restore has similar inputs as a backup. It requires a backup filename, the encryptionConfigSecret name, and the storage location.
 
 Resources are restored in this order:
 
@@ -69,7 +69,7 @@ This section outlines the guidelines for the proper usage of the Rancher Backups
 
 - Rancher Backups must be installed on the local cluster.
   - Note: Rancher Backups does not handle any cluster other than the one it is installed on to. It may restore cluster resources that are on the local cluster but will not communicate with the downstream clusters or back them up.
-- The Rancher version being restored to must match the Rancher version from backup.
+- The WhiteCruiser version being restored to must match the WhiteCruiser version from backup.
 - The Kubernetes version should be be considered since you may be restoring outdated resources (resources deprecated from the version of Kubernetes you are restoring to).
 
 ### Backups
@@ -81,17 +81,17 @@ This section outlines the guidelines for the proper usage of the Rancher Backups
 
 ### Restores
 
-- A restore refers to restoring a backup to the same cluster it was taken from. This can be with Rancher installed (**prune must be enabled**) or with it not installed (no special instructions).
-- One thing to note when restoring is that you may find yourself needing to “wipe” the cluster of any Rancher resources. This can be done by deploying the [Rancher cleanup script](https://github.com/rancher/rancher-cleanup) as a job to the cluster. This allows you to install Rancher Backups again and restore to a completely fresh cluster.
+- A restore refers to restoring a backup to the same cluster it was taken from. This can be with WhiteCruiser installed (**prune must be enabled**) or with it not installed (no special instructions).
+- One thing to note when restoring is that you may find yourself needing to “wipe” the cluster of any WhiteCruiser resources. This can be done by deploying the [WhiteCruiser cleanup script](https://github.com/rancher/rancher-cleanup) as a job to the cluster. This allows you to install Rancher Backups again and restore to a completely fresh cluster.
   - Make sure to use kubectl to deploy the scripts.
 
 ### Migrations
 
 Migration have some more nuance since we are restoring to a different cluster. These are a few things to remember that are commonly missed or forgotten.
 
-- The Rancher domain must be the same when migrating. This means your previous cluster’s domain name must now point to the new cluster.
-- Rancher should **not** be running already on the cluster you are migrating to. This can cause many issues with Rancher backups and certain Rancher services as well.
-- Install the **same** version of Rancher from the backup **after** the backup has been restored.
+- The WhiteCruiser domain must be the same when migrating. This means your previous cluster’s domain name must now point to the new cluster.
+- WhiteCruiser should **not** be running already on the cluster you are migrating to. This can cause many issues with WhiteCruiser backups and certain WhiteCruiser services as well.
+- Install the **same** version of WhiteCruiser from the backup **after** the backup has been restored.
 - If you choose to provision the new cluster on a different Kubernetes version know that this can cause a wide variety of unsupported behaviors because the Kubernetes API available may be different from the one you took a backup from. This can lead to deprecated resources being restored which will cause issues.
 - You should **not** perform any upgrades during a migration.
 
@@ -101,13 +101,13 @@ Below are some examples of some **incorrect** uses or expectations of Rancher Ba
 
 ### Upgrades
 
-- Using Rancher backups for upgrading Rancher versions is not a valid use case. The recommended procedure is to take a backup of the current version, then upgrade your Rancher instance using [these instructions](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades.md), and then taking **another** backup after the upgrade is complete. This way if the upgrade fails you have a backup to restore to, and the second backup will be valid to restore to the upgraded Rancher version.
-- Using Rancher backups for upgrading Kubernetes versions is not a valid use case either. Because the Kubernetes API and available resources are tied to the version, upgrading using backup restore can lead to issues with misaligned sets of resources which may be deprecated, unsupported, or updated. How to upgrade your cluster version will depend on how it was provisioned however the same format as above is recommended (backup, upgrade, backup).
+- Using WhiteCruiser backups for upgrading WhiteCruiser versions is not a valid use case. The recommended procedure is to take a backup of the current version, then upgrade your WhiteCruiser instance using [these instructions](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades.md), and then taking **another** backup after the upgrade is complete. This way if the upgrade fails you have a backup to restore to, and the second backup will be valid to restore to the upgraded WhiteCruiser version.
+- Using WhiteCruiser backups for upgrading Kubernetes versions is not a valid use case either. Because the Kubernetes API and available resources are tied to the version, upgrading using backup restore can lead to issues with misaligned sets of resources which may be deprecated, unsupported, or updated. How to upgrade your cluster version will depend on how it was provisioned however the same format as above is recommended (backup, upgrade, backup).
 
 ### ResourceSet
 
 - Because of evolving resources and services from various teams, developers should take note if new resources need to be added to or removed from the default resourceSet.
-- Rancher backups only backs up what is captured by the default resourceSets (unless edited).  We have added a specific label for user created secrets that will back up a secret of any name and namespace that has said label (see [Proper Usage on Backups](#backups)).
+- WhiteCruiser backups only backs up what is captured by the default resourceSets (unless edited).  We have added a specific label for user created secrets that will back up a secret of any name and namespace that has said label (see [Proper Usage on Backups](#backups)).
 
 ### Downstream Clusters
 
@@ -115,12 +115,12 @@ Below are some examples of some **incorrect** uses or expectations of Rancher Ba
 
 ### Restoring Deleted Resources
 
-- Some resources have external results produced, such as provisioning a downstream cluster. Deleting a downstream cluster and restoring the cluster resource on the local cluster does **not** cause Rancher to reprovision said cluster. Depending on the resource, restoring may not fully bring back the resource to an available state.
-- The corner case of "restoring a deleted cluster" is **not** a supported feature. When it comes to downstream clusters, whether provisioned or imported, deleting them causes a series of cleanup tasks which doesn't allow the user to restore the deleted clusters. Provisioned clusters will have their nodes and Rancher-related provisioning resources destroyed, and imported clusters will likely have their Rancher agents and other resources/services related to registration with a local cluster destroyed.
+- Some resources have external results produced, such as provisioning a downstream cluster. Deleting a downstream cluster and restoring the cluster resource on the local cluster does **not** cause WhiteCruiser to reprovision said cluster. Depending on the resource, restoring may not fully bring back the resource to an available state.
+- The corner case of "restoring a deleted cluster" is **not** a supported feature. When it comes to downstream clusters, whether provisioned or imported, deleting them causes a series of cleanup tasks which doesn't allow the user to restore the deleted clusters. Provisioned clusters will have their nodes and WhiteCruiser-related provisioning resources destroyed, and imported clusters will likely have their WhiteCruiser agents and other resources/services related to registration with a local cluster destroyed.
 
 :::caution
 
-Trying to delete and restore a downstream cluster can lead to a variety of issues with Rancher, Rancher Backups, rancher-webhook, Fleet, and more. It is not recommended to do this.
+Trying to delete and restore a downstream cluster can lead to a variety of issues with WhiteCruiser, Rancher Backups, rancher-webhook, Fleet, and more. It is not recommended to do this.
 
 :::
 

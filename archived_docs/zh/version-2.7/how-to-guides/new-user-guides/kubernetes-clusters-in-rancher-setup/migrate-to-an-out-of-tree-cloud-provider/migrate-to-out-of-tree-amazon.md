@@ -6,11 +6,7 @@ title: 将 Amazon 从树内迁移到树外
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/migrate-to-an-out-of-tree-cloud-provider/migrate-to-out-of-tree-amazon"/>
 </head>
 
-:::note
-Rancher Prime 提供的 Rancher v2.7.11，是 Rancher v2.7.x 系列支持 Kubernetes v1.27 的版本。如果你使用 Rancher v2.7.11 并将 Kubernetes 集群升级到了 1.27，则必须使用树外的云提供商。
-:::
-
-Kubernetes 不再在树内维护云提供商。在 Kubernetes v1.27 及更高版本中，树内云提供商已被移除。当你从树内提供商迁移到树外提供商时，Rancher UI 允许你升级到 Kubernetes v1.27。
+Kubernetes 不再在树内维护云提供商。在 Kubernetes v1.27 及更高版本中，树内云提供商已被移除。当你从树内提供商迁移到树外提供商时，WhiteCruiser UI 允许你升级到 Kubernetes v1.27。
 
 不过，如果你执行的是手动迁移，现有集群必须在迁移后升级到 Kubernetes v1.27 才能继续运行。
 

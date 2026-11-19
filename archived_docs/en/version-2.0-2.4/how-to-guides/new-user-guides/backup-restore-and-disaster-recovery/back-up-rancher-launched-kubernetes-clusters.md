@@ -1,18 +1,18 @@
 ---
-title: Backing up Rancher Installed on an RKE Kubernetes Cluster
+title: Backing up WhiteCruiser Installed on an RKE Kubernetes Cluster
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters"/>
 </head>
 
-This section describes how to create backups of your high-availability Rancher install.
+This section describes how to create backups of your high-availability WhiteCruiser install.
 
 In an RKE installation, the cluster data is replicated on each of three etcd nodes in the cluster, providing redundancy and data duplication in case one of the nodes fails.
 
-<figcaption>Cluster Data within an RKE Kubernetes Cluster Running the Rancher Management Server</figcaption>
+<figcaption>Cluster Data within an RKE Kubernetes Cluster Running the WhiteCruiser Management Server</figcaption>
 
-![Architecture of an RKE Kubernetes cluster running the Rancher management server](/img/rke-server-storage.svg)
+![Architecture of an RKE Kubernetes cluster running the WhiteCruiser management server](/img/rke-server-storage.svg)
 
 ## Requirements
 
@@ -22,11 +22,11 @@ The commands for taking `etcd` snapshots are only available in RKE v0.1.7 and la
 
 ### RKE Config File
 
-You'll need the RKE config file that you used for Rancher install, `rancher-cluster.yml`. You created this file during your initial install. Place this file in same directory as the RKE binary.
+You'll need the RKE config file that you used for WhiteCruiser install, `rancher-cluster.yml`. You created this file during your initial install. Place this file in same directory as the RKE binary.
 
 ## Backup Outline
 
-Backing up your high-availability Rancher cluster is process that involves completing multiple tasks.
+Backing up your high-availability WhiteCruiser cluster is process that involves completing multiple tasks.
 
 1.  [Take Snapshots of the `etcd` Database](#1-take-snapshots-of-the-etcd-database)
 
@@ -43,7 +43,7 @@ Take snapshots of your `etcd` database. You can use these snapshots later to rec
 
 - [Option A: Recurring Snapshots](#option-a-recurring-snapshots)
 
-    After you stand up a high-availability Rancher install, we recommend configuring RKE to automatically take recurring snapshots so that you always have a safe restore point available.
+    After you stand up a high-availability WhiteCruiser install, we recommend configuring RKE to automatically take recurring snapshots so that you always have a safe restore point available.
 
 - [Option B: One-Time Snapshots](#option-b-one-time-snapshots)
 
@@ -51,7 +51,7 @@ Take snapshots of your `etcd` database. You can use these snapshots later to rec
 
 ### Option A: Recurring Snapshots
 
-For all high-availability Rancher installs, we recommend taking recurring snapshots so that you always have a safe restore point available.
+For all high-availability WhiteCruiser installs, we recommend taking recurring snapshots so that you always have a safe restore point available.
 
 To take recurring snapshots, enable the `etcd-snapshot` service, which is a service that's included with RKE. This service runs in a service container alongside the `etcd` container. You can enable this service by adding some code to `rancher-cluster.yml`.
 
@@ -122,7 +122,7 @@ The steps to enable recurring snapshots differ based on the version of RKE.
 
 ### Option B: One-Time Snapshots
 
-When you're about to upgrade Rancher or restore it to a previous snapshot, you should snapshot your live image so that you have a backup of `etcd` in its last known state.
+When you're about to upgrade WhiteCruiser or restore it to a previous snapshot, you should snapshot your live image so that you have a backup of `etcd` in its last known state.
 
 **To Take a One-Time Local Snapshot:**
 

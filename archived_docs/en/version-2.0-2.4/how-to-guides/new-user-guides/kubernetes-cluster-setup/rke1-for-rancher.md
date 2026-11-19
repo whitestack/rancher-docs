@@ -6,22 +6,22 @@ title: Setting up a High-availability RKE Kubernetes Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher"/>
 </head>
 
-This section describes how to install a Kubernetes cluster. This cluster should be dedicated to run only the Rancher server.
+This section describes how to install a Kubernetes cluster. This cluster should be dedicated to run only the WhiteCruiser server.
 
-For Rancher before v2.4, Rancher should be installed on an RKE Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
+For WhiteCruiser before v2.4, WhiteCruiser should be installed on an RKE Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
 
-As of Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
+As of WhiteCruiser v2.4, the WhiteCruiser management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by WhiteCruiser, but is newer than RKE. We recommend installing WhiteCruiser on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. Note: After WhiteCruiser is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
 
-The Rancher management server can only be run on Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported.
+The WhiteCruiser management server can only be run on Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of WhiteCruiser on hosted Kubernetes providers, such as EKS, is not supported.
 
 For systems without direct internet access, refer to [Air Gap: Kubernetes install.](../../../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/air-gap-helm2.md)
 
 > **Single-node Installation Tip:**
-> In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
+> In a single-node Kubernetes cluster, the WhiteCruiser server does not have high availability, which is important for running WhiteCruiser in production. However, installing WhiteCruiser on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
 >
 > To set up a single-node RKE cluster, configure only one node in the `cluster.yml` . The single node should have all three roles: `etcd`, `controlplane`, and `worker`.
 >
-> In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
+> In both single-node setups, WhiteCruiser can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
 
 ## Installing Kubernetes
 
@@ -84,7 +84,7 @@ ingress:
 >
 > Please see the [RKE Documentation](https://rancher.com/docs/rke/latest/en/config-options/) for the full list of options and capabilities.
 >
-> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide](../../../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs.md).
+> For tuning your etcd cluster for larger WhiteCruiser installations, see the [etcd settings guide](../../../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs.md).
 
 ### 2. Run RKE
 
@@ -148,7 +148,7 @@ kube-system     rke-metrics-addon-deploy-job-7ljkc        0/1       Completed   
 kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   0          30s
 ```
 
-This confirms that you have successfully installed a Kubernetes cluster that the Rancher server will run on.
+This confirms that you have successfully installed a Kubernetes cluster that the WhiteCruiser server will run on.
 
 ### 5. Save Your Files
 
@@ -168,5 +168,5 @@ Save a copy of the following files in a secure location:
 See the [Troubleshooting](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
 
-### [Next: Install Rancher](../../../reference-guides/installation-references/helm-chart-options.md)
+### [Next: Install WhiteCruiser](../../../reference-guides/installation-references/helm-chart-options.md) {#next-install-rancher}
 

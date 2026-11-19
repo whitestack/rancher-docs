@@ -2,7 +2,7 @@
 title: Syslog
 ---
 
-If your organization uses [Syslog](https://tools.ietf.org/html/rfc5424), you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Syslog server to view logs.
+If your organization uses [Syslog](https://tools.ietf.org/html/rfc5424), you can configure WhiteCruiser to send it Kubernetes logs. Afterwards, you can log into your Syslog server to view logs.
 
 >**Prerequisite:** You must have a Syslog server configured.
 

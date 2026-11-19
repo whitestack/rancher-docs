@@ -1,20 +1,20 @@
 ---
-title: Installing Rancher on a Google Kubernetes Engine Cluster
+title: Installing WhiteCruiser on a Google Kubernetes Engine Cluster
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke"/>
 </head>
 
-In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
+In this section, you'll learn how to install WhiteCruiser using Google Kubernetes Engine.
 
-If you already have a GKE Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart)
+If you already have a GKE Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the WhiteCruiser Helm chart following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart)
 
 ## Prerequisites
 
 - You will need a Google account.
 - You will need a Google Cloud billing account. You can manage your Cloud Billing accounts using the Google Cloud Console. For more information about the Cloud Console, visit [General guide to the console.](https://support.google.com/cloud/answer/3465889?hl=en&ref_topic=3340599)
-- You will need a cloud quota for at least one in-use IP address and at least 2 CPUs. For more details about hardware requirements for the Rancher server, refer to [this section.](../installation-requirements/installation-requirements.md#rke-and-hosted-kubernetes)
+- You will need a cloud quota for at least one in-use IP address and at least 2 CPUs. For more details about hardware requirements for the WhiteCruiser server, refer to [this section.](../installation-requirements/installation-requirements.md#rke-and-hosted-kubernetes)
 
 ## 1. Enable the Kubernetes Engine API
 
@@ -120,8 +120,6 @@ The following command creates a three-node cluster.
 
 Replace `cluster-name` with the name of your new cluster.
 
-When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
-
 ```
 gcloud container clusters create cluster-name --num-nodes=3 --cluster-version=1.20.10-gke.301
 ```
@@ -138,7 +136,7 @@ This command configures `kubectl` to use the cluster you created.
 
 ## 7. Install an Ingress
 
-The cluster needs an Ingress so that Rancher can be accessed from outside the cluster.
+The cluster needs an Ingress so that WhiteCruiser can be accessed from outside the cluster.
 
 The following command installs an `nginx-ingress-controller` with a LoadBalancer service:
 
@@ -172,14 +170,14 @@ Save the `EXTERNAL-IP`.
 
 ## 9. Set up DNS
 
-External traffic to the Rancher server will need to be directed at the load balancer you created.
+External traffic to the WhiteCruiser server will need to be directed at the load balancer you created.
 
-Set up a DNS to point at the external IP that you saved. This DNS will be used as the Rancher server URL.
+Set up a DNS to point at the external IP that you saved. This DNS will be used as the WhiteCruiser server URL.
 
 There are many valid ways to set up the DNS. For help, refer to the Google Cloud documentation about [managing DNS records.](https://cloud.google.com/dns/docs/records)
 
-## 10. Install the Rancher Helm chart
+## 10. Install the WhiteCruiser Helm chart {#10-install-the-rancher-helm-chart}
 
-Next, install the Rancher Helm chart by following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
+Next, install the WhiteCruiser Helm chart by following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart) The Helm instructions are the same for installing WhiteCruiser on any Kubernetes distribution.
 
-Use the DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
+Use the DNS name from the previous step as the WhiteCruiser server URL when you install WhiteCruiser. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.

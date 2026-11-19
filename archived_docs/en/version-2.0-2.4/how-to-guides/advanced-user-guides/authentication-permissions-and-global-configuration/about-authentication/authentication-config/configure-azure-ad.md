@@ -8,7 +8,7 @@ title: Configure Azure AD
 
 _Available as of v2.0.3_
 
-If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
+If you have an instance of Active Directory (AD) hosted in Azure, you can configure WhiteCruiser to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and WhiteCruiser.
 
 >**Note:** Azure AD integration only supports Service Provider initiated logins.
 
@@ -18,16 +18,16 @@ If you have an instance of Active Directory (AD) hosted in Azure, you can config
 
 ## Azure Active Directory Configuration Outline
 
-Configuring Rancher to allow your users to authenticate with their Azure AD accounts involves multiple procedures. Review the outline below before getting started.
+Configuring WhiteCruiser to allow your users to authenticate with their Azure AD accounts involves multiple procedures. Review the outline below before getting started.
 
 <a id="tip"></a>
 
->**Tip:** Before you start, we recommend creating an empty text file. You can use this file to copy values from Azure that you'll paste into Rancher later.
+>**Tip:** Before you start, we recommend creating an empty text file. You can use this file to copy values from Azure that you'll paste into WhiteCruiser later.
 
 
-### 1. Register Rancher with Azure
+### 1. Register WhiteCruiser with Azure {#1-register-rancher-with-azure}
 
-Before enabling Azure AD within Rancher, you must register Rancher with Azure.
+Before enabling Azure AD within WhiteCruiser, you must register WhiteCruiser with Azure.
 
 1. Log in to [Microsoft Azure](https://portal.azure.com/) as an administrative user. Configuration in future steps requires administrative access rights.
 
@@ -43,9 +43,9 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
     1. From **Supported account types**, select "Accounts in this organizational directory only (AzureADTest only - Single tenant)" This corresponds to the legacy app registration options.
 
-    1. In the **Redirect URI** section, make sure **Web** is selected from the dropdown and enter the URL of your Rancher Server in the text box next to the dropdown. This Rancher server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
+    1. In the **Redirect URI** section, make sure **Web** is selected from the dropdown and enter the URL of your WhiteCruiser Server in the text box next to the dropdown. This WhiteCruiser server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 
-       >**Tip:** You can find your personalized Azure reply URL in Rancher on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
+       >**Tip:** You can find your personalized Azure reply URL in WhiteCruiser on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
 
     1. Click **Register**.
 
@@ -53,11 +53,11 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
 ### 2. Create a new client secret
 
-From the Azure portal, create a client secret. Rancher will use this key to authenticate with Azure AD.
+From the Azure portal, create a client secret. WhiteCruiser will use this key to authenticate with Azure AD.
 
-1. Use search to open **App registrations** services. Then open the entry for Rancher that you created in the last procedure.
+1. Use search to open **App registrations** services. Then open the entry for WhiteCruiser that you created in the last procedure.
 
-     ![Open Rancher Registration](/img/open-rancher-app.png)
+     ![Open WhiteCruiser Registration](/img/open-rancher-app.png)
 
 1. From the navigation pane on left, click **Certificates and Secrets**.
 
@@ -74,13 +74,13 @@ From the Azure portal, create a client secret. Rancher will use this key to auth
 
 1.  Copy the key value and save it to an [empty text file](#tip).
 
-    You'll enter this key into the Rancher UI later as your **Application Secret**.
+    You'll enter this key into the WhiteCruiser UI later as your **Application Secret**.
 
     You won't be able to access the key value again within the Azure UI.
 
-### 3. Set Required Permissions for Rancher
+### 3. Set Required Permissions for WhiteCruiser {#3-set-required-permissions-for-rancher}
 
-Next, set API permissions for Rancher within Azure.
+Next, set API permissions for WhiteCruiser within Azure.
 
 1. From the navigation pane on left, select **API permissions**.
 
@@ -110,16 +110,16 @@ Next, set API permissions for Rancher within Azure.
 
 ### 4. Add a Reply URL
 
-To use Azure AD with Rancher you must whitelist Rancher with Azure. You can complete this whitelisting by providing Azure with a reply URL for Rancher, which is your Rancher Server URL followed with a verification path.
+To use Azure AD with WhiteCruiser you must whitelist WhiteCruiser with Azure. You can complete this whitelisting by providing Azure with a reply URL for WhiteCruiser, which is your Rancher Server URL followed with a verification path.
 
 
 1. From the **Setting** blade, select **Reply URLs**.
 
     ![Azure: Enter Reply URL](/img/enter-azure-reply-url.png)
 
-1. From the **Reply URLs** blade, enter the URL of your Rancher Server, appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
+1. From the **Reply URLs** blade, enter the URL of your WhiteCruiser Server, appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 
-       >**Tip:** You can find your personalized Azure reply URL in Rancher on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
+       >**Tip:** You can find your personalized Azure reply URL in WhiteCruiser on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
 
 1. Click **Save**.
 
@@ -129,9 +129,9 @@ To use Azure AD with Rancher you must whitelist Rancher with Azure. You can comp
 
 ### 5. Copy Azure Application Data
 
-As your final step in Azure, copy the data that you'll use to configure Rancher for Azure AD authentication and paste it into an empty text file.
+As your final step in Azure, copy the data that you'll use to configure WhiteCruiser for Azure AD authentication and paste it into an empty text file.
 
-1. Obtain your Rancher **Tenant ID**.
+1. Obtain your WhiteCruiser **Tenant ID**.
 
     1. Use search to open the **Azure Active Directory** service.
 
@@ -141,25 +141,25 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     2. Copy the **Directory ID** and paste it into your [text file](#tip).
 
-        You'll paste this value into Rancher as your **Tenant ID**.
+        You'll paste this value into WhiteCruiser as your **Tenant ID**.
 
-1. Obtain your Rancher **Application ID**.
+1. Obtain your WhiteCruiser **Application ID**.
 
     1. Use search to open **App registrations**.
 
          ![Open App Registrations](/img/search-app-registrations.png)
 
-    1. Find the entry you created for Rancher.
+    1. Find the entry you created for WhiteCruiser.
 
     1. Copy the **Application ID** and paste it to your [text file](#tip).
 
-1. Obtain your Rancher **Graph Endpoint**, **Token Endpoint**, and **Auth Endpoint**.
+1. Obtain your WhiteCruiser **Graph Endpoint**, **Token Endpoint**, and **Auth Endpoint**.
 
     1. From **App registrations**, click **Endpoints**.
 
         ![Click Endpoints](/img/click-endpoints.png)
 
-    2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
+    2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your WhiteCruiser endpoint values).
 
         - **Microsoft Graph API endpoint** (Graph Endpoint)
         - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
@@ -167,13 +167,13 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
 >**Note:** Copy the v1 version of the endpoints
 
-### 6. Configure Azure AD in Rancher
+### 6. Configure Azure AD in WhiteCruiser {#6-configure-azure-ad-in-rancher}
 
-From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
+From the WhiteCruiser UI, enter information about your AD instance hosted in Azure to complete configuration.
 
 Enter the values that you copied to your [text file](#tip).
 
-1. Log into Rancher. From the **Global** view, select **Security > Authentication**.
+1. Log into WhiteCruiser. From the **Global** view, select **Security > Authentication**.
 
 1. Select **Azure AD**.
 
@@ -183,9 +183,9 @@ Enter the values that you copied to your [text file](#tip).
     >
     ><code>http<span>s://g</span>raph.windows.net/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
 
-    The following table maps the values you copied in the Azure portal to the fields in Rancher.
+    The following table maps the values you copied in the Azure portal to the fields in WhiteCruiser.
 
-    | Rancher Field      | Azure Value                           |
+    | WhiteCruiser Field      | Azure Value                           |
     | ------------------ | ------------------------------------- |
     | Tenant ID          | Directory ID                          |
     | Application ID     | Application ID                        |
@@ -199,6 +199,6 @@ Enter the values that you copied to your [text file](#tip).
 
 **Result:** Azure Active Directory authentication is configured.
 
-#### (Optional) Configure Authentication with Multiple Rancher Domains
+#### (Optional) Configure Authentication with Multiple WhiteCruiser Domains {#optional-configure-authentication-with-multiple-rancher-domains}
 
-If you have multiple Rancher domains, it's not possible to configure multiple redirect URIs through the Rancher UI. The Azure AD configuration file, `azuread`, only allows one redirect URI by default. You must manually edit `azuread` to set the redirect URI as needed for any other domains. If you don't manually edit `azuread`, then upon a successful login attempt to any domain, Rancher automatically redirects the user to the **Redirect URI** value you set when you registered the app in [Step 1. Register Rancher with Azure](#1-register-rancher-with-azure).
+If you have multiple WhiteCruiser domains, it's not possible to configure multiple redirect URIs through the WhiteCruiser UI. The Azure AD configuration file, `azuread`, only allows one redirect URI by default. You must manually edit `azuread` to set the redirect URI as needed for any other domains. If you don't manually edit `azuread`, then upon a successful login attempt to any domain, WhiteCruiser automatically redirects the user to the **Redirect URI** value you set when you registered the app in [Step 1. Register WhiteCruiser with Azure](#1-register-rancher-with-azure).

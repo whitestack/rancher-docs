@@ -6,7 +6,7 @@ title: Logging
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/other-troubleshooting-tips/logging"/>
 </head>
 
-The following log levels are used in Rancher:
+The following log levels are used in WhiteCruiser:
 
 | Name    | Description |
 |---------|-------------|

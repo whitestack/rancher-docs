@@ -125,11 +125,11 @@ When alertingDrivers are installed, this creates a `Service` that can be used as
 
 Alertmanager coordinates where alerts are sent. It allows you to group alerts based on labels and fire them based on whether certain labels are matched. One top-level route accepts all alerts. From there, Alertmanager continues routing alerts to receivers based on whether they match the conditions of the next route.
 
-While the Rancher UI forms only allow editing a routing tree that is two levels deep, you can configure more deeply nested routing structures by editing the Alertmanager Secret.
+While the WhiteCruiser UI forms only allow editing a routing tree that is two levels deep, you can configure more deeply nested routing structures by editing the Alertmanager Secret.
 
 ### Configuring Multiple Receivers
 
-By editing the forms in the Rancher UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
+By editing the forms in the WhiteCruiser UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
 
 By editing custom YAML in the Alertmanager or Receiver configuration, you can also send alerts to multiple notification systems. For more information, see the section on configuring [Receivers.](../../reference-guides/monitoring-v2-configuration/receivers.md#configuring-multiple-receivers)
 
@@ -137,11 +137,11 @@ By editing custom YAML in the Alertmanager or Receiver configuration, you can al
 
 Prometheus Operator introduces a set of [Custom Resource Definitions](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions) that allow users to deploy and manage Prometheus and Alertmanager instances by creating and modifying those custom resources on a cluster.
 
-Prometheus Operator will automatically update your Prometheus configuration based on the live state of the resources and configuration options that are edited in the Rancher UI.
+Prometheus Operator will automatically update your Prometheus configuration based on the live state of the resources and configuration options that are edited in the WhiteCruiser UI.
 
 ### Resources Deployed by Default
 
-By default, a set of resources curated by the [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) project are deployed onto your cluster as part of installing the Rancher Monitoring Application to set up a basic Monitoring/Alerting stack.
+By default, a set of resources curated by the [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) project are deployed onto your cluster as part of installing the WhiteCruiser Monitoring Application to set up a basic Monitoring/Alerting stack.
 
 The resources that get deployed onto your cluster to support this solution can be found in the [`rancher-monitoring`](https://github.com/rancher/charts/tree/main/charts/rancher-monitoring) Helm chart, which closely tracks the upstream [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) Helm chart maintained by the Prometheus community with certain changes tracked in the [CHANGELOG.md](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/CHANGELOG.md).
 
@@ -159,9 +159,9 @@ ServiceMonitors and PodMonitors will scrape these exporters, as defined [here](#
 
 See the [architecture](#1-architecture-overview) section for more information on recording rules, alerting rules, and Alertmanager.
 
-### Components Exposed in the Rancher UI
+### Components Exposed in the WhiteCruiser UI {#components-exposed-in-the-rancher-ui}
 
-When the monitoring application is installed, you will be able to edit the following components in the Rancher UI:
+When the monitoring application is installed, you will be able to edit the following components in the WhiteCruiser UI:
 
 | Component | Type of Component | Purpose and Common Use Cases for Editing |
 |--------------|------------------------|---------------------------|
@@ -189,7 +189,7 @@ The Prometheus Operator observes the ServiceMonitors and PodMonitors. When it ob
 
 Prometheus scrapes all of the metrics defined in its scrape configuration at every `scrape_interval`, which is one minute by default.
 
-The scrape configuration can be viewed as part of the Prometheus custom resource that is exposed in the Rancher UI.
+The scrape configuration can be viewed as part of the Prometheus custom resource that is exposed in the WhiteCruiser UI.
 
 ### How the Prometheus Operator Sets up Metrics Scraping
 

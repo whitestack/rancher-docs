@@ -8,9 +8,7 @@ title: Generate and View Traffic from Istio
 
 :::warning
 
-[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in Rancher v2.12.0; turn to the [SUSE Rancher Application Collection](https://apps.rancher.io) build of Istio for enhanced security (included in SUSE Rancher Prime subscriptions).
-
-Detailed information can be found in this announcement.
+[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in WhiteCruiser v2.12.0.
 
 :::
 
@@ -22,7 +20,7 @@ The Istio overview page provides a link to the Kiali dashboard. From the Kiali d
 
 To enable traffic to show up in the graph, ensure that you have Prometheus installed in the cluster. `Rancher-istio` installs Kiali, and configures it by default to work with the `rancher-monitoring` chart. You can use `rancher-monitoring` or install your own monitoring solution.
 
-Additionally, for Istio installations version `103.1.0+up1.19.6` and later, Kiali uses a token value for its authentication strategy. If you are trying to generate or retrieve the token (e.g. for login), note that the name of the Kiali service account in Rancher is `kiali`. For more information, refer to the [Kiali token authentication FAQ](https://kiali.io/docs/faq/authentication/).
+Additionally, for Istio installations version `103.1.0+up1.19.6` and later, Kiali uses a token value for its authentication strategy. If you are trying to generate or retrieve the token (e.g. for login), note that the name of the Kiali service account in WhiteCruiser is `kiali`. For more information, refer to the [Kiali token authentication FAQ](https://kiali.io/docs/faq/authentication/).
 
 Optional: You can configure which namespaces data scraping occurs in by setting the Helm chart options described in [Selectors & Scrape Configs](../../../integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations.md).
 

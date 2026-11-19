@@ -1,5 +1,5 @@
 ---
-title: Setting up a High-availability RKE2 Kubernetes Cluster for Rancher
+title: Setting up a High-availability RKE2 Kubernetes Cluster for WhiteCruiser
 ---
 
 <head>
@@ -8,7 +8,7 @@ title: Setting up a High-availability RKE2 Kubernetes Cluster for Rancher
 
 _Tested on v2.5.6_
 
-This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations)
+This section describes how to install a Kubernetes cluster according to the [best practices for the WhiteCruiser server environment.](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations)
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ These instructions assume you have set up three nodes, a load balancer, and a DN
 
 Note that in order for RKE2 to work correctly with the load balancer, you need to set up two listeners: one for the supervisor on port 9345, and one for the Kubernetes API on port 6443.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the RKE2 version, use the INSTALL_RKE2_VERSION environment variable when running the RKE2 installation script.
+WhiteCruiser needs to be installed on a supported Kubernetes version. To specify the RKE2 version, use the INSTALL_RKE2_VERSION environment variable when running the RKE2 installation script.
 
 ## Installing Kubernetes
 
@@ -87,13 +87,13 @@ Then test the health of the cluster pods:
 
 ### 3. Save and Start Using the kubeconfig File
 
-When you installed RKE2 on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
+When you installed RKE2 on each WhiteCruiser server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
 To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/rke2/rke2.yaml` and save it to the directory `~/.kube/config` on your local machine.
-3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) Here is an example `rke2.yaml`:
+3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the WhiteCruiser server will be reached at ports 80 and 443.) Here is an example `rke2.yaml`:
 
 ```yml
 apiVersion: v1
@@ -163,11 +163,11 @@ kube-system   rke2-ingress-nginx-default-backend-5795954f8-p92xx   1/1     Runni
 kube-system   rke2-metrics-server-5f9b5757dc-k5sgh                 1/1     Running     0          20m
 ```
 
-**Result:** You have confirmed that you can access the cluster with `kubectl` and the RKE2 cluster is running successfully. Now the Rancher management server can be installed on the cluster.
+**Result:** You have confirmed that you can access the cluster with `kubectl` and the RKE2 cluster is running successfully. Now the WhiteCruiser management server can be installed on the cluster.
 
 ### 5. Configure nginx to be a daemonset
 
-Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the Rancher deployment so that you cannot use all servers to proxy requests to the Rancher pods.
+Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the WhiteCruiser deployment so that you cannot use all servers to proxy requests to the WhiteCruiser pods.
 
 To rectify that, place the following file in /var/lib/rancher/rke2/server/manifests on any of the server nodes:
 

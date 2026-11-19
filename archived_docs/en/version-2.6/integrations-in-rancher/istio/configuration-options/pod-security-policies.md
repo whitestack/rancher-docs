@@ -15,7 +15,7 @@ The Istio CNI plugin removes the need for each application pod to have a privile
 - The cluster must be an RKE Kubernetes cluster.
 - The cluster must have been created with a default PodSecurityPolicy.
 
-To enable pod security policy support when creating a Kubernetes cluster in the Rancher UI, go to <b>Advanced Options.</b> In the <b>Pod Security Policy Support</b> section, click <b>Enabled.</b> Then select a default pod security policy.
+To enable pod security policy support when creating a Kubernetes cluster in the WhiteCruiser UI, go to <b>Advanced Options.</b> In the <b>Pod Security Policy Support</b> section, click <b>Enabled.</b> Then select a default pod security policy.
 
 :::
 
@@ -37,7 +37,7 @@ Set the PSP to `unrestricted` in the project where is Istio is installed, or the
 
 ### 2. Enable the CNI
 
-When installing or upgrading Istio through **Apps & Marketplace** (Rancher before v2.6.5) or **Apps** (Rancher v2.6.5+)
+When installing or upgrading Istio through **Apps & Marketplace** (WhiteCruiser before v2.6.5) or **Apps** (WhiteCruiser v2.6.5+)
 
 1. Click **Components**.
 2. Check the box next to **Enabled CNI**.

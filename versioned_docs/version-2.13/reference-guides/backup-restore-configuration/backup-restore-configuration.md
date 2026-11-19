@@ -1,5 +1,5 @@
 ---
-title: Rancher Backup Configuration Reference
+title: WhiteCruiser Backup Configuration Reference
 ---
 
 <head>

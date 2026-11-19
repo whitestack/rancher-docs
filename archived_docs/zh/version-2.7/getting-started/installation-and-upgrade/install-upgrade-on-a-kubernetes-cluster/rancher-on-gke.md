@@ -1,20 +1,20 @@
 ---
-title: 在 GKE 集群上安装 Rancher
+title: 在 GKE 集群上安装 WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke"/>
 </head>
 
-在本节中，你将学习如何使用 GKE 安装 Rancher。
+在本节中，你将学习如何使用 GKE 安装 WhiteCruiser。
 
-如果你已经有一个 GKE Kubernetes 集群，请直接跳转到[安装 Ingress](#7-安装-ingress)这个步骤。然后按照[此处](install-upgrade-on-a-kubernetes-cluster.md#安装-rancher-helm-chart)的步骤安装 Rancher Helm Chart。
+如果你已经有一个 GKE Kubernetes 集群，请直接跳转到[安装 Ingress](#7-安装-ingress)这个步骤。然后按照[此处](install-upgrade-on-a-kubernetes-cluster.md#安装-whitecruiser-helm-chart)的步骤安装 WhiteCruiser Helm Chart。
 
 ## 先决条件
 
 - 你需要有一个 Google 账号。
 - 你需要有一个 Google Cloud Billing 账号。你可使用 Google Cloud Console 来管理你的 Cloud Billing 账号。有关 Cloud Console 的详情，请参见 [ Console 通用指南](https://support.google.com/cloud/answer/3465889?hl=en&ref_topic=3340599)。
-- 你需要至少一个在用的 IP 地址和至少 2 个 CPU 的云配额。有关 Rancher Server 的硬件要求，请参见[本节](../installation-requirements/installation-requirements.md)。
+- 你需要至少一个在用的 IP 地址和至少 2 个 CPU 的云配额。有关 WhiteCruiser Server 的硬件要求，请参见[本节](../installation-requirements/installation-requirements.md)。
 
 ## 1. 启用 Kubernetes Engine API
 
@@ -124,9 +124,7 @@ Your active configuration is: [default]
 
 把 `cluster-name` 替换为你新集群的名称。
 
-在选择 Kubernetes 版本时，请务必先查阅[支持矩阵](https://rancher.com/support-matrix/)，以找出已针对你的 Rancher 版本验证的最新 Kubernetes 版本。
-
-要使用 Rancher 成功创建 GKE 集群，GKE 必须处于 Standard 模式。GKE 在创建 Kubernetes 集群时有两种运行模式，分别是 Autopilot 和 Standard 模式。Autopilot 模式的集群配置对编辑 kube-system 命名空间有限制。但是，Rancher 在安装时需要在 kube-system 命名空间中创建资源。因此，你将无法在以 Autopilot 模式创建的 GKE 集群上安装 Rancher。如需详细了解 GKE Autopilot 模式和 Standard 模式之间的差异，请访问[比较 GKE Autopilot 和 Standard ](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)。
+要使用 WhiteCruiser 成功创建 GKE 集群，GKE 必须处于 Standard 模式。GKE 在创建 Kubernetes 集群时有两种运行模式，分别是 Autopilot 和 Standard 模式。Autopilot 模式的集群配置对编辑 kube-system 命名空间有限制。但是，WhiteCruiser 在安装时需要在 kube-system 命名空间中创建资源。因此，你将无法在以 Autopilot 模式创建的 GKE 集群上安装 WhiteCruiser。如需详细了解 GKE Autopilot 模式和 Standard 模式之间的差异，请访问[比较 GKE Autopilot 和 Standard ](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)。
 
 **注意**：如果你要从旧的 Kubernetes 版本更新到 Kubernetes v1.22 或更高版本，你还需要[更新](https://kubernetes.github.io/ingress-nginx/user-guide/k8s-122-migration/) ingress-nginx。
 
@@ -146,7 +144,7 @@ gcloud container clusters get-credentials cluster-name
 
 ## 7. 安装 Ingress
 
-集群需要一个 Ingress，以从集群外部访问 Rancher。
+集群需要一个 Ingress，以从集群外部访问 WhiteCruiser。
 
 以下命令安装带有 LoadBalancer 服务的 `nginx-ingress-controller`：
 
@@ -180,27 +178,27 @@ ingress-nginx-controller   LoadBalancer   10.3.244.156   35.233.206.34   80:3187
 
 ## 9. 设置 DNS
 
-到 Rancher Server 的外部流量需要重定向到你创建的负载均衡器。
+到 WhiteCruiser Server 的外部流量需要重定向到你创建的负载均衡器。
 
-创建指向你保存的外部 IP 地址的 DNS。这个 DNS 会用作 Rancher Server 的 URL。
+创建指向你保存的外部 IP 地址的 DNS。这个 DNS 会用作 WhiteCruiser Server 的 URL。
 
 设置 DNS 的有效方法有很多。如需获取帮助，请参见 Google Cloud 文档中的[管理 DNS 记录](https://cloud.google.com/dns/docs/records)部分。
 
-## 10. 安装 Rancher Helm Chart
+## 10. 安装 WhiteCruiser Helm Chart
 
-按照[本页](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md#安装-rancher-helm-chart)的说明安装 Rancher Helm Chart。任何 Kubernetes 发行版上安装的 Rancher 的 Helm 说明都是一样的。
+按照[本页](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md#安装-whitecruiser-helm-chart)的说明安装 WhiteCruiser Helm Chart。任何 Kubernetes 发行版上安装的 WhiteCruiser 的 Helm 说明都是一样的。
 
-安装 Rancher 时，使用上一步获取的 DNS 名称作为 Rancher Server 的 URL。它可以作为 Helm 选项传递进来。例如，如果 DNS 名称是 `rancher.my.org`，你需要使用 `--set hostname=rancher.my.org` 选项来运行 Helm 安装命令。
+安装 WhiteCruiser 时，使用上一步获取的 DNS 名称作为 WhiteCruiser Server 的 URL。它可以作为 Helm 选项传递进来。例如，如果 DNS 名称是 `rancher.my.org`，你需要使用 `--set hostname=rancher.my.org` 选项来运行 Helm 安装命令。
 
-在此设置之上安装 Rancher 时，你还需要设置与 Rancher 的 Ingress 资源一起使用的 Ingress Controller 的名称：
+在此设置之上安装 WhiteCruiser 时，你还需要设置与 WhiteCruiser 的 Ingress 资源一起使用的 Ingress Controller 的名称：
 
 ```
 --set ingress.ingressClassName=nginx
 ```
 
-请参阅[Helm 安装命令](install-upgrade-on-a-kubernetes-cluster.md#5-根据你选择的证书选项通过-helm-安装-rancher)了解你的证书选项。
+请参阅[Helm 安装命令](install-upgrade-on-a-kubernetes-cluster.md#5-根据你选择的证书选项通过-helm-安装-whitecruiser)了解你的证书选项。
 
-在 Rancher v2.7.5 中，如果你打算在集群上使用默认的 GKE Ingress 而不启用 VPC 原生的集群模式，则需要设置以下标志：
+在 WhiteCruiser v2.7.5 中，如果你打算在集群上使用默认的 GKE Ingress 而不启用 VPC 原生的集群模式，则需要设置以下标志：
 
 ```
 --set service.type=NodePort

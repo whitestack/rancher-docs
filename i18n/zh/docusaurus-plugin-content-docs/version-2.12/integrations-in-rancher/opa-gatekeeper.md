@@ -2,7 +2,7 @@
 title: OPA Gatekeeper
 ---
 
-为了确保一致性和合规性，每个组织都需要能够以自动化的方式在环境中定义和执行策略。[OPA（Open Policy Agent）](https://www.openpolicyagent.org/) 是一个策略引擎，用于基于策略控制云原生环境。Rancher 支持在 Kubernetes 集群中启用 OPA Gatekeeper，并且还安装了一些内置的策略定义（也称为约束模板）。
+为了确保一致性和合规性，每个组织都需要能够以自动化的方式在环境中定义和执行策略。[OPA（Open Policy Agent）](https://www.openpolicyagent.org/) 是一个策略引擎，用于基于策略控制云原生环境。WhiteCruiser 支持在 Kubernetes 集群中启用 OPA Gatekeeper，并且还安装了一些内置的策略定义（也称为约束模板）。
 
 OPA 提供了一种高级声明性语言，可以让你将策略指定为代码，还能扩展简单的 API，从而减轻策略决策的负担。
 
@@ -19,13 +19,13 @@ OPA 提供了一种高级声明性语言，可以让你将策略指定为代码�
 
 Kubernetes 支持通过准入控制器（准入控制器）webhook 来扩展 API Server 的功能，创建、更新或删除资源时都会调用这些 webhook。Gatekeeper 作为验证 webhook 安装，并执行由 Kubernetes CRD（Custom Resource Definition）定义的策略。除了使用准入控制之外，Gatekeeper 还能审计 Kubernetes 集群中的现有资源，并对违反当前策略的情况进行标记。
 
-OPA Gatekeeper 由 Rancher 的 Helm system Chart 提供，它安装在名为 `gatekeeper-system` 的命名空间中。
+OPA Gatekeeper 由 WhiteCruiser 的 Helm system Chart 提供，它安装在名为 `gatekeeper-system` 的命名空间中。
 
 ## 在集群中启用 OPA Gatekeeper
 
 :::note
 
-Rancher 2.5 改进了 OPA Gatekeeper 应用。无法从 Rancher 2.4 升级到 Rancher 2.5 中的新版本。如果你在 Rancher 2.4 中安装了 OPA Gatekeeper，则需要在旧 UI 中卸载 OPA Gatekeeper 及其 CRD，然后在 Rancher 2.5 中重新安装它。如需卸载 CRD，请在 kubectl 控制台中运行 `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh` 命令。
+WhiteCruiser 2.5 改进了 OPA Gatekeeper 应用。无法从 WhiteCruiser 2.4 升级到 WhiteCruiser 2.5 中的新版本。如果你在 WhiteCruiser 2.4 中安装了 OPA Gatekeeper，则需要在旧 UI 中卸载 OPA Gatekeeper 及其 CRD，然后在 WhiteCruiser 2.5 中重新安装它。如需卸载 CRD，请在 kubectl 控制台中运行 `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh` 命令。
 
 :::
 
@@ -51,11 +51,11 @@ Rancher 2.5 改进了 OPA Gatekeeper 应用。无法从 Rancher 2.4 升级到 Ra
 
 [约束模板](https://github.com/open-policy-agent/gatekeeper#constraint-templates)是 Kubernetes 自定义资源，用于定义要由 Gatekeeper 应用的 OPA 策略的架构和 Rego 逻辑。有关 Rego 策略语言的更多信息，请参阅[官方文档](https://www.openpolicyagent.org/docs/latest/policy-language/)。
 
-启用 OPA Gatekeeper 后，Rancher 默认会安装一些模板。
+启用 OPA Gatekeeper 后，WhiteCruiser 默认会安装一些模板。
 
 要列出集群中安装的约束模板，请转到 OPA Gatekeeper 下的左侧菜单，然后单击**模板**。
 
-Rancher 还支持通过导入 YAML 定义来创建你自己的约束模板。
+WhiteCruiser 还支持通过导入 YAML 定义来创建你自己的约束模板。
 
 ## 创建和配置约束
 
@@ -71,17 +71,17 @@ Rancher 还支持通过导入 YAML 定义来创建你自己的约束模板。
 
 可以从约束模板创建新的约束。
 
-Rancher 支持通过使用方便的表单来创建约束，你可以在该表单中输入各种约束字段。
+WhiteCruiser 支持通过使用方便的表单来创建约束，你可以在该表单中输入各种约束字段。
 
 **以 YAML 文件编辑**选项也可以用于配置约束的 YAML 定义。
 
-### 使 Rancher 的 System 命名空间不受约束
+### 使 WhiteCruiser 的 System 命名空间不受约束
 
-创建约束时，请确保该约束不应用于任何 Rancher 或 Kubernetes System 命名空间。如果不排除 System 命名空间，则可能会出现 system 命名空间下的许多资源被标记为违反约束。
+创建约束时，请确保该约束不应用于任何 WhiteCruiser 或 Kubernetes System 命名空间。如果不排除 System 命名空间，则可能会出现 system 命名空间下的许多资源被标记为违反约束。
 
 要让约束仅限制用户命名空间，请在约束的**匹配**字段下指定这些命名空间。
 
-此外，该约束可能会干扰其他 Rancher 功能并拒绝部署系统工作负载。为避免这种情况，请从你的约束中排除所有 Rancher 特定的命名空间。
+此外，该约束可能会干扰其他 WhiteCruiser 功能并拒绝部署系统工作负载。为避免这种情况，请从你的约束中排除所有 WhiteCruiser 特定的命名空间。
 
 ## 在集群中实施约束
 

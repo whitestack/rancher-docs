@@ -1,16 +1,16 @@
 ---
-title: Installing Rancher on Azure Kubernetes Service
+title: Installing WhiteCruiser on Azure Kubernetes Service
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks"/>
 </head>
 
-This page covers how to install Rancher on Microsoft's Azure Kubernetes Service (AKS).
+This page covers how to install WhiteCruiser on Microsoft's Azure Kubernetes Service (AKS).
 
 The guide uses command line tools to provision an AKS cluster with an ingress. If you prefer to provision your cluster using the Azure portal, refer to the [official documentation](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal).
 
-If you already have an AKS Kubernetes cluster, skip to the step about [installing an ingress.](#5-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart)
+If you already have an AKS Kubernetes cluster, skip to the step about [installing an ingress.](#5-install-an-ingress) Then install the WhiteCruiser Helm chart following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart)
 
 ## Prerequisites
 
@@ -20,11 +20,11 @@ Deploying to Microsoft Azure will incur charges.
 
 :::
 
-- [Microsoft Azure Account](https://azure.microsoft.com/en-us/free/): A Microsoft Azure Account is required to create resources for deploying Rancher and Kubernetes.
+- [Microsoft Azure Account](https://azure.microsoft.com/en-us/free/): A Microsoft Azure Account is required to create resources for deploying WhiteCruiser and Kubernetes.
 - [Microsoft Azure Subscription](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal): Use this link to follow a tutorial to create a Microsoft Azure subscription if you don't have one yet.
 - [Micsoroft Azure Tenant](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant): Use this link and follow instructions to create a Microsoft Azure tenant.
-- Your subscription has sufficient quota for at least 2 vCPUs. For details on Rancher server resource requirements, refer to [this section](../installation-requirements/installation-requirements.md)
-- When installing Rancher with Helm in Azure, use the L7 load balancer to avoid networking issues. For more information, refer to the documentation on [Azure load balancer limitations](https://docs.microsoft.com/en-us/azure/load-balancer/components#limitations).
+- Your subscription has sufficient quota for at least 2 vCPUs. For details on WhiteCruiser server resource requirements, refer to [this section](../installation-requirements/installation-requirements.md)
+- When installing WhiteCruiser with Helm in Azure, use the L7 load balancer to avoid networking issues. For more information, refer to the documentation on [Azure load balancer limitations](https://docs.microsoft.com/en-us/azure/load-balancer/components#limitations).
 
 ## 1. Prepare your Workstation
 
@@ -50,7 +50,7 @@ az group create --name rancher-rg --location eastus
 
 ## 3. Create the AKS Cluster
 
-To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options.
 
 :::note
 
@@ -81,7 +81,7 @@ This command merges your cluster's credentials into the existing kubeconfig and 
 
 ## 5. Install an Ingress
 
-The cluster needs an Ingress so that Rancher can be accessed from outside the cluster. Installing an Ingress requires allocating a public IP address. Ensure you have sufficient quota, otherwise it will fail to assign the IP address. Limits for public IP addresses are applicable at a regional level per subscription.
+The cluster needs an Ingress so that WhiteCruiser can be accessed from outside the cluster. Installing an Ingress requires allocating a public IP address. Ensure you have sufficient quota, otherwise it will fail to assign the IP address. Limits for public IP addresses are applicable at a regional level per subscription.
 
 To make sure that you choose the correct Ingress-NGINX Helm chart, first find an `Ingress-NGINX version` that's compatible with your Kubernetes version in the [Kubernetes/ingress-nginx support table](https://github.com/kubernetes/ingress-nginx#supported-versions-table). 
 
@@ -129,21 +129,21 @@ Save the `EXTERNAL-IP`.
 
 ## 7. Set up DNS
 
-External traffic to the Rancher server will need to be directed at the load balancer you created.
+External traffic to the WhiteCruiser server will need to be directed at the load balancer you created.
 
-Set up a DNS to point at the `EXTERNAL-IP` that you saved. This DNS will be used as the Rancher server URL.
+Set up a DNS to point at the `EXTERNAL-IP` that you saved. This DNS will be used as the WhiteCruiser server URL.
 
 There are many valid ways to set up the DNS. For help, refer to the [Azure DNS documentation](https://docs.microsoft.com/en-us/azure/dns/)
 
-## 8. Install the Rancher Helm Chart
+## 8. Install the WhiteCruiser Helm Chart {#8-install-the-rancher-helm-chart}
 
-Next, install the Rancher Helm chart by following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
+Next, install the WhiteCruiser Helm chart by following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart) The Helm instructions are the same for installing WhiteCruiser on any Kubernetes distribution.
 
-Use that DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
+Use that DNS name from the previous step as the WhiteCruiser server URL when you install WhiteCruiser. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
 
 **_New in v2.6.7_**
 
-When installing Rancher on top of this setup, you will also need to pass the value below into the Rancher Helm install command in order to set the name of the ingress controller to be used with Rancher's ingress resource:
+When installing WhiteCruiser on top of this setup, you will also need to pass the value below into the WhiteCruiser Helm install command in order to set the name of the ingress controller to be used with WhiteCruiser's ingress resource:
 
 ```
 --set ingress.ingressClassName=nginx

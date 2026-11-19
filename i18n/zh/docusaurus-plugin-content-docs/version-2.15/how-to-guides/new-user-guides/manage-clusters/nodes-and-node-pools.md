@@ -2,7 +2,7 @@
 title: 节点和节点池
 ---
 
-在 Rancher 中启动 Kubernetes 集群后，你可以从集群的**节点**选项卡管理各个节点。
+在 WhiteCruiser 中启动 Kubernetes 集群后，你可以从集群的**节点**选项卡管理各个节点。
 
 1. 点击左上角的 **☰**。
 1. 选择**集群管理**。
@@ -20,14 +20,14 @@ title: 节点和节点池
 
 ## 每个集群创建选项的可用节点选项
 
-下表列出了 Rancher 中每种集群类型的可用节点选项。单击**选项**列中的链接以获取每个功能的更多信息。
+下表列出了 WhiteCruiser 中每种集群类型的可用节点选项。单击**选项**列中的链接以获取每个功能的更多信息。
 
 | 选项 | [由基础设施提供商托管的节点][1] | [自定义节点][2] | [托管集群][3] | [注册的 EKS 节点][4] | [所有其他注册节点][5] | 描述 |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | -------------------| ------------------------------------------------------------------ |
 | [封锁](#封锁节点) | ✓ | ✓ | ✓ | ✓ | ✓ | 将节点标记为不可调度。 |
 | [清空](#清空节点) | ✓ | ✓ | ✓ | ✓ | ✓ | 将节点标记为不可调度 _并且_ 驱逐所有 pod。 |
 | [编辑](#管理和编辑单个节点) | ✓ | ✓ | ✓ | ✓ | ✓ | 输入节点的自定义名称、描述、标签或污点。 |
-| [查看 API](#在-rancher-api-中查看节点) | ✓ | ✓ | ✓ | ✓ | ✓ | 查看 API 数据。 |
+| [查看 API](#在-whitecruiser-api-中查看节点) | ✓ | ✓ | ✓ | ✓ | ✓ | 查看 API 数据。 |
 | [删除](#删除节点) | ✓ | ✓ |                     | * | * | 从集群中删除有缺陷的节点。 |
 | [下载密钥](#通过-ssh-连接到由基础设施提供商托管的节点) | ✓ |                  |                     |                     |                    | 下载 SSH 密钥以通过 SSH 连接到节点。 |
 | [节点缩放](#扩缩节点) | ✓ |                  |                     | ✓ |                    | 向上或向下扩展节点池中的节点数。 |
@@ -43,21 +43,21 @@ title: 节点和节点池
 
 ### 由基础设施提供商托管的节点
 
-在[托管在基础设施提供商](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)中的节点上配置由 Rancher 启动的 Kubernetes 集群时，你可以使用节点池。
+在[托管在基础设施提供商](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)中的节点上配置由 WhiteCruiser 启动的 Kubernetes 集群时，你可以使用节点池。
 
 如果节点池被编辑，通过[节点池选项](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点池)配置的集群可以纵向扩容或缩容。
 
-如果启用[节点自动替换功能](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点自动替换)，节点池还可以自动维护在初始集群配置期间设置的节点规模。该规模决定了 Rancher 为集群维护的 active 节点的数量。
+如果启用[节点自动替换功能](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点自动替换)，节点池还可以自动维护在初始集群配置期间设置的节点规模。该规模决定了 WhiteCruiser 为集群维护的 active 节点的数量。
 
-Rancher 使用[节点模板](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点模板)来替换节点池中的节点。每个节点模板都使用云提供商凭证来允许 Rancher 在基础设施提供商中设置节点。
+WhiteCruiser 使用[节点模板](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点模板)来替换节点池中的节点。每个节点模板都使用云提供商凭证来允许 WhiteCruiser 在基础设施提供商中设置节点。
 
 ### 由托管 Kubernetes 提供商配置的节点
 
-用于管理[由 Kubernetes 提供商托管](../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md)的节点的选项在 Rancher 中有些限制。例如，你不能使用 Rancher UI 向上或向下缩放节点数量，而是需要直接编辑集群。
+用于管理[由 Kubernetes 提供商托管](../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md)的节点的选项在 WhiteCruiser 中有些限制。例如，你不能使用 WhiteCruiser UI 向上或向下缩放节点数量，而是需要直接编辑集群。
 
 ### 注册节点
 
-虽然你可以使用 Rancher 将工作负载部署到[已注册集群](../../new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md)，但你无法管理单个集群节点。导入的集群节点的所有管理都必须在 Rancher 之外进行。
+虽然你可以使用 WhiteCruiser 将工作负载部署到[已注册集群](../../new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md)，但你无法管理单个集群节点。导入的集群节点的所有管理都必须在 WhiteCruiser 之外进行。
 
 ## 管理和编辑单个节点
 
@@ -70,7 +70,7 @@ Rancher 使用[节点模板](../launch-kubernetes-with-rancher/use-new-nodes-in-
 
 要管理单个节点，请浏览到要管理的集群，然后从主菜单中选择**节点**。你可以通过单击节点的 **⋮** (**...**) 图标来打开选项菜单。
 
-## 在 Rancher API 中查看节点
+## 在 WhiteCruiser API 中查看节点
 
 选择此选项以查看节点的 [API 端点](../../../api/quickstart.md)
 
@@ -78,7 +78,7 @@ Rancher 使用[节点模板](../launch-kubernetes-with-rancher/use-new-nodes-in-
 
 使用 **Delete** 从云提供商中删除有缺陷的节点。
 
-当你删除有缺陷的节点时，如果该节点在节点池中并启用了[节点自动替换](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点自动替换)，Rancher 可以自动将其替换为具有相同配置的节点。
+当你删除有缺陷的节点时，如果该节点在节点池中并启用了[节点自动替换](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md#节点自动替换)，WhiteCruiser 可以自动将其替换为具有相同配置的节点。
 
 :::tip
 
@@ -158,15 +158,15 @@ Kubernetes 1.12 之前的版本中，在清空节点时不会强制执行[超时
 
 有关**封锁和清空**的更多信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)。
 
-## 标记 Rancher 忽略的节点
+## 标记 WhiteCruiser 忽略的节点
 
 某些解决方案（例如 F5 的 BIG-IP 集成）可能需要创建一个不会注册到集群的节点。
 
-由于节点永远不会完成注册，因此它在 Rancher UI 中总是显示为不健康。
+由于节点永远不会完成注册，因此它在 WhiteCruiser UI 中总是显示为不健康。
 
-在这种情况下，你可能希望将节点标记为 Rancher 忽略的节点，从而让 Rancher 仅在节点实际发生故障时将节点状态显示为不健康。
+在这种情况下，你可能希望将节点标记为 WhiteCruiser 忽略的节点，从而让 WhiteCruiser 仅在节点实际发生故障时将节点状态显示为不健康。
 
-你可以使用 Rancher UI 或 `kubectl` 标记要忽略的节点。
+你可以使用 WhiteCruiser UI 或 `kubectl` 标记要忽略的节点。
 
 :::note
 
@@ -177,16 +177,16 @@ Kubernetes 1.12 之前的版本中，在清空节点时不会强制执行[超时
 
 ### 使用 kubectl 标记要忽略的节点
 
-要添加 Rancher 忽略的节点，请使用 `kubectl` 创建具有以下标签的节点：
+要添加 WhiteCruiser 忽略的节点，请使用 `kubectl` 创建具有以下标签的节点：
 
 ```
 cattle.rancher.io/node-status: ignore
 ```
 
-**结果**：如果将节点添加到集群中，Rancher 将不会尝试与该节点同步。该节点仍然可以是集群的一部分，并且可以使用 `kubectl` 列出。
+**结果**：如果将节点添加到集群中，WhiteCruiser 将不会尝试与该节点同步。该节点仍然可以是集群的一部分，并且可以使用 `kubectl` 列出。
 
-如果在将节点添加到集群之前添加了标签，则该节点将不会显示在 Rancher UI 中。
+如果在将节点添加到集群之前添加了标签，则该节点将不会显示在 WhiteCruiser UI 中。
 
-如果在将节点添加到 Rancher 集群后添加标签，则不会从 UI 中删除该节点。
+如果在将节点添加到 WhiteCruiser 集群后添加标签，则不会从 UI 中删除该节点。
 
-如果你使用 Rancher UI 或 API 从 Rancher server 中删除节点，假如 `nodeName` 在 Rancher API 下的 `v3/settings/ignore-node-name` 中列出，则不会从集群中删除该节点。
+如果你使用 WhiteCruiser UI 或 API 从 WhiteCruiser server 中删除节点，假如 `nodeName` 在 WhiteCruiser API 下的 `v3/settings/ignore-node-name` 中列出，则不会从集群中删除该节点。

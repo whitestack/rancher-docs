@@ -2,9 +2,9 @@
 title: 配置 Active Directory (AD)
 ---
 
-如果你的组织使用 Microsoft Active Directory 作为中心用户仓库，你可以将 Rancher 配置为与 Active Directory 服务器通信，从而对用户进行身份验证。这使 Rancher 管理员可以对外部用户系统中的用户和组进行集群和项目的访问控制，同时允许最终用户在登录 Rancher UI 时使用 Active Directory 凭证进行身份验证。
+如果你的组织使用 Microsoft Active Directory 作为中心用户仓库，你可以将 WhiteCruiser 配置为与 Active Directory 服务器通信，从而对用户进行身份验证。这使 WhiteCruiser 管理员可以对外部用户系统中的用户和组进行集群和项目的访问控制，同时允许最终用户在登录 WhiteCruiser UI 时使用 Active Directory 凭证进行身份验证。
 
-Rancher 使用 LDAP 与 Active Directory 服务器通信。因此，Active Directory 与 [OpenLDAP 身份验证](../configure-openldap/configure-openldap.md)的流程相同。
+WhiteCruiser 使用 LDAP 与 Active Directory 服务器通信。因此，Active Directory 与 [OpenLDAP 身份验证](../configure-openldap/configure-openldap.md)的流程相同。
 
 :::note
 
@@ -14,7 +14,7 @@ Rancher 使用 LDAP 与 Active Directory 服务器通信。因此，Active Direc
 
 ## 先决条件
 
-你需要创建或从你的 AD 管理员处获取一个新的 AD 用户，用作 Rancher 的 ServiceAccount。此用户必须具有足够的权限，才能执行 LDAP 搜索并读取你的 AD 域下的用户和组的属性。
+你需要创建或从你的 AD 管理员处获取一个新的 AD 用户，用作 WhiteCruiser 的 ServiceAccount。此用户必须具有足够的权限，才能执行 LDAP 搜索并读取你的 AD 域下的用户和组的属性。
 
 通常可以使用（非管理员）**域用户**账号，因为默认情况下，该用户对域分区中的大多数对象具有只读特权。
 
@@ -22,20 +22,20 @@ Rancher 使用 LDAP 与 Active Directory 服务器通信。因此，Active Direc
 
 :::note 使用 TLS？
 
-- 如果 AD 服务器使用的证书是自签名的或不是来自认可的证书颁发机构，请确保手头有 PEM 格式的 CA 证书（包含所有中间证书）。你必须在配置期间粘贴此证书，以便 Rancher 能够验证证书链。
+- 如果 AD 服务器使用的证书是自签名的或不是来自认可的证书颁发机构，请确保手头有 PEM 格式的 CA 证书（包含所有中间证书）。你必须在配置期间粘贴此证书，以便 WhiteCruiser 能够验证证书链。
 
-- 升级到 v2.6.0 后，如果 AD 服务器上的证书不支持 SAN 属性，则使用 TLS 通过 Rancher 对 Active Directory 进行身份验证可能会失败。这是 Go v1.15 中默认启用的检查。
+- 升级到 v2.6.0 后，如果 AD 服务器上的证书不支持 SAN 属性，则使用 TLS 通过 WhiteCruiser 对 Active Directory 进行身份验证可能会失败。这是 Go v1.15 中默认启用的检查。
 
    - 收到"Error creating SSL connection: LDAP Result Code 200 "Network Error": x509 错误：证书依赖于旧的通用名称（Common Name）字段，使用 SAN 或临时启用与 GODEBUG=x509ignoreCN=0 匹配的通用名称。
 
-   - 要解决此错误，请使用支持 SAN 属性的新证书更新或替换 AD 服务器上的证书。或者，将 `GODEBUG=x509ignoreCN=0` 设置为 Rancher Server 容器的环境变量来忽略此错误。
+   - 要解决此错误，请使用支持 SAN 属性的新证书更新或替换 AD 服务器上的证书。或者，将 `GODEBUG=x509ignoreCN=0` 设置为 WhiteCruiser Server 容器的环境变量来忽略此错误。
 
 :::
 
 ## 配置步骤
 ### 打开 Active Directory 配置
 
-1. 使用初始的本地 `admin` 账号登录到 Rancher UI。
+1. 使用初始的本地 `admin` 账号登录到 WhiteCruiser UI。
 1. 在左上角，单击 **☰ > 用户 & 认证**。
 1. 在左侧导航栏，单击**认证**。
 1. 单击 **ActiveDirectory**。然后会显示**验证提供程序：ActiveDirectory** 的表单。
@@ -59,7 +59,7 @@ Rancher 使用 LDAP 与 Active Directory 服务器通信。因此，Active Direc
 | 主机名 | 指定 AD 服务器的主机名或 IP 地址。 |
 | 端口 | 指定 AD 服务器监听连接的端口。未加密的 LDAP 通常使用 389 的标准端口，而 LDAPS 使用 636 端口。 |
 | TLS | 选中此框可启用 SSL/TLS 上的 LDAP（通常称为 LDAPS）。 |
-| 服务器连接超时 | Rancher 在认为无法访问 AD 服务器之前等待的时间（秒）。 |
+| 服务器连接超时 | WhiteCruiser 在认为无法访问 AD 服务器之前等待的时间（秒）。 |
 | ServiceAccount 用户名 | 输入对域分区具有只读访问权限的 AD 账号的用户名（参见[先决条件](#先决条件)）。用户名可以用 NetBIOS（例如 "DOMAIN\serviceaccount"）或 UPN 格式（例如 "serviceaccount@domain.com"）。 |
 | ServiceAccount 密码 | ServiceAccount 的密码。 |
 | 默认登录域 | 如果你使用 AD 域的 NetBIOS 名称配置此字段，在绑定到 AD 服务器时，没有包含域的用户名（例如“jdoe”）将自动转换为带斜杠的 NetBIOS 登录（例如，“LOGIN_DOMAIN\jdoe”）。如果你的用户以 UPN（例如，"jdoe@acme.com"）作为用户名进行身份验证，则此字段必须**必须**留空。 |
@@ -70,9 +70,9 @@ Rancher 使用 LDAP 与 Active Directory 服务器通信。因此，Active Direc
 
 ### 配置用户/组 Schema
 
-在 `2. 自定义 Schema` 中，你必须为 Rancher 提供与目录中使用的 Schema 对应的用户和组属性的正确映射。
+在 `2. 自定义 Schema` 中，你必须为 WhiteCruiser 提供与目录中使用的 Schema 对应的用户和组属性的正确映射。
 
-Rancher 使用 LDAP 查询来搜索和检索关于 Active Directory 中的用户和组的信息。本节中配置的属性映射用于构造搜索筛选器和解析组成员身份。因此，所提供的设置需要反映你 AD 域的真实情况。
+WhiteCruiser 使用 LDAP 查询来搜索和检索关于 Active Directory 中的用户和组的信息。本节中配置的属性映射用于构造搜索筛选器和解析组成员身份。因此，所提供的设置需要反映你 AD 域的真实情况。
 
 :::note
 
@@ -90,11 +90,11 @@ Rancher 使用 LDAP 查询来搜索和检索关于 Active Directory 中的用户
 |:--|:--|
 | Object Class | 域中用于用户对象的对象类别名称。如果定义了此参数，则仅指定对象类别的名称 - *请勿*将其放在 LDAP 包装器中，例如 `&(objectClass=xxxx)`。 |
 | Username Attribute | 用户属性的值适合作为显示名称。 |
-| Login Attribute | 登录属性的值与用户登录 Rancher 时输入的凭证的用户名部分匹配。如果你的用户以他的 UPN（例如 "jdoe@acme.com"）作为用户名进行身份验证，则此字段通常必须设置为 `userPrincipalName`。否则，对于旧的 NetBIOS 风格的登录名（例如 "jdoe"），则通常设为 `sAMAccountName`。 |
+| Login Attribute | 登录属性的值与用户登录 WhiteCruiser 时输入的凭证的用户名部分匹配。如果你的用户以他的 UPN（例如 "jdoe@acme.com"）作为用户名进行身份验证，则此字段通常必须设置为 `userPrincipalName`。否则，对于旧的 NetBIOS 风格的登录名（例如 "jdoe"），则通常设为 `sAMAccountName`。 |
 | User Member Attribute | 包含用户所属组的属性。 |
-| Search Attribute | 当用户输入文本以在用户界面中添加用户或组时，Rancher 会查询 AD 服务器，并尝试根据此设置中提供的属性匹配用户。可以通过使用管道（“\|”）符号分隔属性来指定多个属性。要匹配 UPN 用户名（例如 jdoe@acme.com），通常应将此字段的值设置为 `userPrincipalName`。 |
-| Search Filter | 当 Rancher 尝试将用户添加到网站访问列表，或尝试将成员添加到集群或项目时，此筛选器将应用于搜索的用户列表。例如，用户搜索筛选器可能是 <code>(&#124;(memberOf=CN=group1,CN=Users,DC=testad,DC=rancher,DC=io)(memberOf=CN=group2,CN=Users,DC=testad,DC=rancher,DC=io))</code>。注意：如果搜索筛选器未使用[有效的 AD 搜索语法](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax)，则用户列表将为空。 |
-| User Enabled Attribute | 该属性是一个整数值，代表用户账号标志的枚举。Rancher 使用此选项来确定用户账号是否已禁用。通常应该将此参数设置为 AD 标准的 `userAccountControl`。 |
+| Search Attribute | 当用户输入文本以在用户界面中添加用户或组时，WhiteCruiser 会查询 AD 服务器，并尝试根据此设置中提供的属性匹配用户。可以通过使用管道（“\|”）符号分隔属性来指定多个属性。要匹配 UPN 用户名（例如 jdoe@acme.com），通常应将此字段的值设置为 `userPrincipalName`。 |
+| Search Filter | 当 WhiteCruiser 尝试将用户添加到网站访问列表，或尝试将成员添加到集群或项目时，此筛选器将应用于搜索的用户列表。例如，用户搜索筛选器可能是 <code>(&#124;(memberOf=CN=group1,CN=Users,DC=testad,DC=rancher,DC=io)(memberOf=CN=group2,CN=Users,DC=testad,DC=rancher,DC=io))</code>。注意：如果搜索筛选器未使用[有效的 AD 搜索语法](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax)，则用户列表将为空。 |
+| User Enabled Attribute | 该属性是一个整数值，代表用户账号标志的枚举。WhiteCruiser 使用此选项来确定用户账号是否已禁用。通常应该将此参数设置为 AD 标准的 `userAccountControl`。 |
 | Disabled Status Bitmask | 指定的禁用用户账号的 `User Enabled Attribute` 的值。通常，你应该将此参数设置为 Microsoft Active Directory Schema 中指定的默认值 2（请参见[此处](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-useraccountcontrol#remarks)）。 |
 
 ---
@@ -112,9 +112,9 @@ Rancher 使用 LDAP 查询来搜索和检索关于 Active Directory 中的用户
 | Group Member User Attribute | **用户属性**的名称。它的格式与 `Group Member Mapping Attribute` 中的组成员匹配。 |
 | Group Member Mapping Attribute | 包含组成员的组属性的名称。 |
 | Search Attribute | 在将组添加到集群或项目时，用于构造搜索筛选器的属性。请参见用户 Schema 的 `Search Attribute`。 |
-| Search Filter | 当 Rancher 尝试将组添加到网站访问列表，或将组添加到集群或项目时，此筛选器将应用于搜索的组列表。例如，组搜索筛选器可以是 <code>(&#124;(cn=group1)(cn=group2))</code>。注意：如果搜索筛选器未使用[有效的 AD 搜索语法](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax)，则组列表将为空。 |
+| Search Filter | 当 WhiteCruiser 尝试将组添加到网站访问列表，或将组添加到集群或项目时，此筛选器将应用于搜索的组列表。例如，组搜索筛选器可以是 <code>(&#124;(cn=group1)(cn=group2))</code>。注意：如果搜索筛选器未使用[有效的 AD 搜索语法](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax)，则组列表将为空。 |
 | Group DN Attribute | 组属性的名称，其格式与描述用户成员身份的用户属性中的值匹配。参见 `User Member Attribute`。 |
-| Nested Group Membership | 此设置定义 Rancher 是否应解析嵌套组成员身份。仅当你的组织使用这些嵌套成员身份时才使用（即你有包含其他组作为成员的组。我们建议尽量避免使用嵌套组，从而避免在存在大量嵌套成员时出现潜在的性能问题）。 |
+| Nested Group Membership | 此设置定义 WhiteCruiser 是否应解析嵌套组成员身份。仅当你的组织使用这些嵌套成员身份时才使用（即你有包含其他组作为成员的组。我们建议尽量避免使用嵌套组，从而避免在存在大量嵌套成员时出现潜在的性能问题）。 |
 
 ---
 
@@ -124,7 +124,7 @@ Rancher 使用 LDAP 查询来搜索和检索关于 Active Directory 中的用户
 
 :::note
 
-与此步骤中输入的凭证相关的 AD 用户将映射到本地主体账号，并在 Rancher 中分配系统管理员权限。因此，你应该决定使用哪个 AD 账号来执行此步骤。
+与此步骤中输入的凭证相关的 AD 用户将映射到本地主体账号，并在 WhiteCruiser 中分配系统管理员权限。因此，你应该决定使用哪个 AD 账号来执行此步骤。
 
 :::
 
@@ -134,7 +134,7 @@ Rancher 使用 LDAP 查询来搜索和检索关于 Active Directory 中的用户
 **结果**：
 
 - 已启用 Active Directory 身份验证。
-- 你已使用 AD 凭证以系统管理员身份登录到 Rancher。
+- 你已使用 AD 凭证以系统管理员身份登录到 WhiteCruiser。
 
 :::note
 
@@ -187,7 +187,7 @@ $ ldapsearch -x -D "acme\jdoe" -w "secret" -p 389 \
 
 :::
 
-我们还将 `Search Attribute` 数设置为 **sAMAccountName|name**。这样，用户可以通过输入用户名或全名添加到 Rancher UI 中的集群/项目中。
+我们还将 `Search Attribute` 数设置为 **sAMAccountName|name**。这样，用户可以通过输入用户名或全名添加到 WhiteCruiser UI 中的集群/项目中。
 
 ### 确定组 Schema
 
@@ -216,4 +216,4 @@ $ ldapsearch -x -D "acme\jdoe" -w "secret" -p 389 \
 
 ## 附录：故障排除
 
-如果在测试与 Active Directory 服务器的连接时遇到问题，请首先仔细检查为 ServiceAccount 输入的凭证以及搜索库配置。你还可以检查 Rancher 日志来查明问题的原因。调试日志可能包含有关错误的更详细信息。详情请参见[如何启用调试日志](../../../../faq/technical-items.md#如何启用调试日志记录)。
+如果在测试与 Active Directory 服务器的连接时遇到问题，请首先仔细检查为 ServiceAccount 输入的凭证以及搜索库配置。你还可以检查 WhiteCruiser 日志来查明问题的原因。调试日志可能包含有关错误的更详细信息。详情请参见[如何启用调试日志](../../../../faq/technical-items.md#如何启用调试日志记录)。

@@ -2,7 +2,7 @@
 title: 架构
 ---
 
-本节介绍了 Rancher Logging 应用程序的架构。
+本节介绍了 WhiteCruiser Logging 应用程序的架构。
 
 有关 Logging Operator 工作原理的更多详细信息，请参阅[官方文档](https://kube-logging.github.io/docs/#architecture)。
 

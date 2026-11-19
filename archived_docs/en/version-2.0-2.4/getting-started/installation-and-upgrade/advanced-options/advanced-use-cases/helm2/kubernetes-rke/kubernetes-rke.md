@@ -51,7 +51,7 @@ RKE has many configuration options for customizing the install to suit your spec
 
 Please see the [RKE Documentation](https://rancher.com/docs/rke/latest/en/config-options/) for the full list of options and capabilities.
 
-For tuning your etcd cluster for larger Rancher installations see the [etcd settings guide](../../tune-etcd-for-large-installs.md).
+For tuning your etcd cluster for larger WhiteCruiser installations see the [etcd settings guide](../../tune-etcd-for-large-installs.md).
 
 ### Run RKE
 

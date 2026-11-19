@@ -6,7 +6,7 @@ title: Istio
 
 随着微服务网络的变化和增长，微服务网络之间的交互变得越来越难以管理和理解。在这种情况下，将服务网格作为单独的基础设施层是非常有用的。Istio 的服务网格可以让你在不直接更改微服务的情况下控制微服务之间的流量。
 
-Rancher 与 Istio 集成，使得管理员或集群所有者可以将 Istio 交给开发者团队，然后开发者使用 Istio 执行安全策略，排查问题，或为蓝绿部署，金丝雀部署，和 A/B 测试进行流量管理。
+WhiteCruiser 与 Istio 集成，使得管理员或集群所有者可以将 Istio 交给开发者团队，然后开发者使用 Istio 执行安全策略，排查问题，或为蓝绿部署，金丝雀部署，和 A/B 测试进行流量管理。
 
 此核心服务网格支持但不限于以下功能：
 
@@ -14,22 +14,22 @@ Rancher 与 Istio 集成，使得管理员或集群所有者可以将 Istio 交�
 - **安全**：具有用于验证和授权流量和用户的资源，包括 mTLS。
 - **可观察性**：观察日志、指标和分布式流量。
 
-[设置 Istio](istio-setup-guide.md) 后，你可以通过 Rancher UI、`kubectl` 或 ` Istioctl` 来使用 Istio 的 controlplane 功能。
+[设置 Istio](istio-setup-guide.md) 后，你可以通过 WhiteCruiser UI、`kubectl` 或 ` Istioctl` 来使用 Istio 的 controlplane 功能。
 
 Istio 需要由 `cluster-admin` 设置后才能在项目中使用。
 
 
-## Rancher 2.5 的新功能
+## WhiteCruiser 2.5 的新功能
 
 Istio 已简化了整体架构。结合 Pilot、Citadel、Galley 和 sidecar injector 创建了一个单独的组件 Istiod。Node Agent 功能也已合并到 istio-agent 中。
 
 以前由 Istio 安装的插件（cert-manager、Grafana、Jaeger、Kiali、Prometheus、Zipkin）现在需要单独安装。Istio 支持安装来自 Istio 项目的集成，并保持与非 Istio 项目的兼容性。
 
-你仍然可以通过安装 [Rancher Monitoring](monitoring-and-alerting.md) 或安装你自己的 Prometheus operator 来使用 Prometheus 集成。Rancher 的 Istio chart 还默认安装 Kiali，确保你可以开箱即用地全面了解微服务。
+你仍然可以通过安装 [WhiteCruiser Monitoring](monitoring-and-alerting.md) 或安装你自己的 Prometheus operator 来使用 Prometheus 集成。WhiteCruiser 的 Istio chart 还默认安装 Kiali，确保你可以开箱即用地全面了解微服务。
 
-Istio 已经脱离了使用 Helm 安装的方式，现在通过 Istioctl 二进制文件或 Istio Operator 进行安装。为了使用最简单的方式与 Istio 交互，Rancher 的 Istio 会维护一个 Helm Chart，该 Chart 使用 Istioctl 二进制文件来管理你的 Istio 安装。
+Istio 已经脱离了使用 Helm 安装的方式，现在通过 Istioctl 二进制文件或 Istio Operator 进行安装。为了使用最简单的方式与 Istio 交互，WhiteCruiser 的 Istio 会维护一个 Helm Chart，该 Chart 使用 Istioctl 二进制文件来管理你的 Istio 安装。
 
-此 Helm Chart 将在 UI 的**应用 & 市场市场**中提供。有权访问 Rancher Chart 应用商店的用户需要先设置 Istio，然后才能在项目中使用它。
+此 Helm Chart 将在 UI 的**应用 & 市场市场**中提供。有权访问 WhiteCruiser Chart 应用商店的用户需要先设置 Istio，然后才能在项目中使用它。
 
 ## Istio 附带的工具
 
@@ -51,7 +51,7 @@ Jaeger 是用于跟踪分布式系统的工具。我们的 Istio 安装程序包
 
 ## 先决条件
 
-在启用 Istio 之前，建议你先确认你的 Rancher worker 节点是否有足够的 [CPU 和内存](../integrations-in-rancher/istio/cpu-and-memory-allocations.md)来运行 Istio 的所有组件。
+在启用 Istio 之前，建议你先确认你的 WhiteCruiser worker 节点是否有足够的 [CPU 和内存](../integrations-in-rancher/istio/cpu-and-memory-allocations.md)来运行 Istio 的所有组件。
 
 如果要在 RKE2 集群上安装 Istio，则需要执行一些额外的步骤。有关详细信息，请参阅[本节](#在-rke2-集群上安装-istio-的其他步骤)。
 
@@ -67,7 +67,7 @@ Jaeger 是用于跟踪分布式系统的工具。我们的 Istio 安装程序包
 
 ## 迁移旧 Istio 版本
 
-如果你的 Istio 版本低于 1.7.x，则没有升级路径。要在 **Apps & Marketplace**（Rancher v2.6.5 之前的版本）或 **App** (Rancher v2.6.5+）页面安装 Istio，你需要在旧版 Rancher UI 的全局视图中禁用现有的 Istio。
+如果你的 Istio 版本低于 1.7.x，则没有升级路径。要在 **Apps & Marketplace**（WhiteCruiser v2.6.5 之前的版本）或 **App** (WhiteCruiser v2.6.5+）页面安装 Istio，你需要在旧版 WhiteCruiser UI 的全局视图中禁用现有的 Istio。
 
 如果你有大量其他的 Istio CRD，你可能需要手动迁移两个 Istio 版本都支持的 CRD。为此，你可以运行 `kubectl get <resource> -n istio-system -o yaml`，保存输出的 yaml，并在新版本中重新应用。
 
@@ -77,7 +77,7 @@ Jaeger 是用于跟踪分布式系统的工具。我们的 Istio 安装程序包
 
 > 默认情况下，只有 cluster-admin 可以访问 Kiali。有关如何允许具有管理员、编辑或查看权限的角色访问它们的说明，请参阅[本节](../integrations-in-rancher/istio/rbac-for-istio.md)。
 
-在集群中设置 Istio 后，你可以在 Rancher UI 中使用 Grafana、Prometheus 和 Kiali。
+在集群中设置 Istio 后，你可以在 WhiteCruiser UI 中使用 Grafana、Prometheus 和 Kiali。
 
 要访问 Grafana 和 Prometheus 可视化：
 
@@ -109,7 +109,7 @@ Istio 安装了一个服务网格，它使用 [Envoy](https://www.envoyproxy.io)
 
 ### 多个 Ingress
 
-默认情况下，每个 Rancher 配置的集群都有一个 NGINX Ingress Controller 来允许流量进入集群。Istio 还在 `istio-system` 命名空间中默认安装一个 Ingress Gateway。因此，你的集群将有两个 ingress。
+默认情况下，每个 WhiteCruiser 配置的集群都有一个 NGINX Ingress Controller 来允许流量进入集群。Istio 还在 `istio-system` 命名空间中默认安装一个 Ingress Gateway。因此，你的集群将有两个 ingress。
 
 ![启用 Istio 的集群可以有两个 ingress，分别是默认的 Nginx ingress 和默认的 Istio controller](/img/istio-ingress.svg)
 
@@ -125,11 +125,11 @@ Istio 安装了一个服务网格，它使用 [Envoy](https://www.envoyproxy.io)
 
 ## 在离线环境中升级 Istio
 
-在 Rancher v2.6.x 及更高版本中，Istio 可能会在离线环境中升级。
+在 WhiteCruiser v2.6.x 及更高版本中，Istio 可能会在离线环境中升级。
 
 现在，Istio Pod 安全策略默认启用。新值 `installer.releaseMirror.enabled` 已添加到 rancher-istio Chart 中，以启用和禁用支持离线升级的 Server。请注意，`installer.releaseMirror.enabled` 默认设置为 `false`。你可以在安装或升级时根据需要设置该值。按照以下步骤执行：
 
-1. 在 Rancher UI 中配置离线 Rancher 2.6.x 实例和离线自定义集群。
+1. 在 WhiteCruiser UI 中配置离线 WhiteCruiser 2.6.x 实例和离线自定义集群。
 2. 在集群中安装 Monitoring：**Cluster Explorer > Apps & Marketplace > Charts > Monitoring**。
 3. 将 Istio 所需的所有镜像拉入在离线环境中使用的私有镜像仓库。
 4. 在集群中安装 Istio：**Cluster Explorer > Apps & Marketplace > Charts > Istio**。

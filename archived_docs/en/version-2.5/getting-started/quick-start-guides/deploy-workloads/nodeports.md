@@ -14,7 +14,7 @@ You have a running cluster with at least 1 node.
 
 You're ready to create your first Kubernetes [workload](https://kubernetes.io/docs/concepts/workloads/). A workload is an object that includes pods along with other files and info needed to deploy your application.
 
-For this workload, you'll be deploying the application Rancher Hello-World.
+For this workload, you'll be deploying the application WhiteCruiser Hello-World.
 
 1. From the **Clusters** page, open the cluster that you just created.
 
@@ -152,7 +152,7 @@ Congratulations! You have successfully deployed a workload exposed via a NodePor
 
 #### What's Next?
 
-When you're done using your sandbox, destroy the Rancher Server and your cluster. See one of the following:
+When you're done using your sandbox, destroy the WhiteCruiser Server and your cluster. See one of the following:
 
 - [Amazon AWS: Destroying the Environment](../deploy-rancher-manager/aws.md#destroying-the-environment)
 - [DigitalOcean: Destroying the Environment](../deploy-rancher-manager/digitalocean.md#destroying-the-environment)

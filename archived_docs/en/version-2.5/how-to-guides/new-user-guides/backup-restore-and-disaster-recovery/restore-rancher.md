@@ -1,5 +1,5 @@
 ---
-title: Restoring Rancher
+title: Restoring WhiteCruiser
 ---
 
 <head>
@@ -11,8 +11,8 @@ A restore is performed by creating a Restore custom resource.
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.](migrate-rancher-to-new-cluster.md)
-> * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
-> * When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made.
+> * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So WhiteCruiser will be unavailable during the restore.
+> * When restoring a backup into a new WhiteCruiser setup, the version of the new setup should be the same as the one where the backup is made.
 
 ### Create the Restore Custom Resource
 
@@ -62,7 +62,7 @@ kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup
 If you created the restore resource with kubectl, remove the resource to prevent a naming conflict with future restores.
 
 ### Known Issues
-In some cases, after restoring the backup, Rancher logs will show errors similar to the following:
+In some cases, after restoring the backup, WhiteCruiser logs will show errors similar to the following:
 ```
 2021/10/05 21:30:45 [ERROR] error syncing 'c-89d82/m-4067aa68dd78': handler rke-worker-upgrader: clusters.management.cattle.io "c-89d82" not found, requeuing
 ```

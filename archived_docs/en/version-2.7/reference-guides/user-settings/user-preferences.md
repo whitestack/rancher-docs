@@ -6,21 +6,21 @@ title: User Preferences
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/user-settings/user-preferences"/>
 </head>
 
-You can set preferences to personalize your Rancher experience. To change preference settings:
+You can set preferences to personalize your WhiteCruiser experience. To change preference settings:
 
 1. Click on your user avatar in the upper right corner.
 1. Click **Preferences**.
 
 ## Language
 
-Choose your language for the Rancher UI. Options include:
+Choose your language for the WhiteCruiser UI. Options include:
 
 - English
 - 简体中文 (Simplified Chinese)
 
 ## Theme
 
-Choose your background color for the Rancher UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
+Choose your background color for the WhiteCruiser UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
 
 ## Login Landing Page
 
@@ -48,7 +48,7 @@ Choose whether to ask for confirmation when scaling down node pools.
 ## Advanced Features
 
 - Enable "View in API".
-- Show system Namespaces managed by Rancher (not intended for editing or deletion).
+- Show system Namespaces managed by WhiteCruiser (not intended for editing or deletion).
 - Enable Dark/Light Theme keyboard shortcut toggle (shift+T).
 - Hide All Type Descriptions.
 - Enable Extension developer features.

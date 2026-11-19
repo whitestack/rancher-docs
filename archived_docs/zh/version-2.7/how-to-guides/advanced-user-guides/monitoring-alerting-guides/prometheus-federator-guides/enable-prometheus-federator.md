@@ -22,7 +22,7 @@ Prometheus Operator 的安全模型有一定的要求，即希望部署它的命
 
 1. 打开 `System` 项目以检查你的命名空间：
 
-   在 Rancher UI 中单击 **Cluster > Projects/Namespaces**。这将显示 `System` 项目中的所有命名空间：
+   在 WhiteCruiser UI 中单击 **Cluster > Projects/Namespaces**。这将显示 `System` 项目中的所有命名空间：
 
    ![选择项目/命名空间](/img/cattle-monitoring-system.png)
 
@@ -59,7 +59,7 @@ matchLabels:
 
 ### 提高 Cluster Prometheus 的 CPU/内存限制
 
-根据集群的设置，我们一般建议为 Cluster Prometheus 配置大量的专用内存，以避免因内存不足的错误（OOMKilled）而重启。通常情况下，集群中创建的改动项（churn）会导致大量高基数指标在一个时间块内生成并被 Prometheus 引入，然后导致这些错误。这也是为什么默认的 Rancher Monitoring 堆栈希望能分配到大约 4GB 的 RAM 以在正常大小的集群中运行的原因之一。但是，如果你引入向同一个 Cluster Prometheus 发送 `/federate` 请求的项目监控堆栈，并且项目监控堆栈依赖于 Cluster Prometheus 的启动状态来在其命名空间上联合系统数据，那么你更加需要为 Cluster Prometheus 分配足够的 CPU/内存，以防止集群中的所有 Prometheus 项目出现数据间隙的中断。
+根据集群的设置，我们一般建议为 Cluster Prometheus 配置大量的专用内存，以避免因内存不足的错误（OOMKilled）而重启。通常情况下，集群中创建的改动项（churn）会导致大量高基数指标在一个时间块内生成并被 Prometheus 引入，然后导致这些错误。这也是为什么默认的 WhiteCruiser Monitoring 堆栈希望能分配到大约 4GB 的 RAM 以在正常大小的集群中运行的原因之一。但是，如果你引入向同一个 Cluster Prometheus 发送 `/federate` 请求的项目监控堆栈，并且项目监控堆栈依赖于 Cluster Prometheus 的启动状态来在其命名空间上联合系统数据，那么你更加需要为 Cluster Prometheus 分配足够的 CPU/内存，以防止集群中的所有 Prometheus 项目出现数据间隙的中断。
 
 :::note
 

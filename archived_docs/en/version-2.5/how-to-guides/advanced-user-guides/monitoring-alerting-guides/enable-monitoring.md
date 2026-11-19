@@ -6,7 +6,7 @@ title: Enable Monitoring
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring"/>
 </head>
 
-As an [administrator](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
+As an [administrator](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure WhiteCruiser to deploy Prometheus to monitor your Kubernetes cluster.
 
 This page describes how to enable monitoring and alerting within a cluster using the new monitoring application.
 
@@ -29,7 +29,7 @@ rkeEtcd:
 
 ## Setting Resource Limits and Requests
 
-The resource requests and limits can be configured when installing `rancher-monitoring`.  To configure Prometheus resources from the Rancher UI, click **Apps & Marketplace > Monitoring** in the upper left corner.
+The resource requests and limits can be configured when installing `rancher-monitoring`.  To configure Prometheus resources from the WhiteCruiser UI, click **Apps & Marketplace > Monitoring** in the upper left corner.
 
 For more information about the default limits, see [this page.](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#configuring-resource-limits-and-requests)
 
@@ -40,7 +40,7 @@ For more information about the default limits, see [this page.](../../../referen
 
 ### Enable Monitoring for use without SSL
 
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
+1. In the WhiteCruiser UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
 1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md)
@@ -53,7 +53,7 @@ For more information about the default limits, see [this page.](../../../referen
 1. Follow the steps on [this page](../../new-user-guides/kubernetes-resources-setup/secrets.md) to create a secret in order for SSL to be used for alerts.
  - The secret should be created in the `cattle-monitoring-system` namespace. If it doesn't exist, create it first.
  - Add the `ca`, `cert`, and `key` files to the secret.
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
+1. In the WhiteCruiser UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
 1. Click **Alerting**.
@@ -76,7 +76,7 @@ Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
 </TabItem>
 <TabItem value="Rancher v2.5.0-2.5.7">
 
-1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
+1. In the WhiteCruiser UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
 1. Click the `rancher-monitoring` app.
 1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md)

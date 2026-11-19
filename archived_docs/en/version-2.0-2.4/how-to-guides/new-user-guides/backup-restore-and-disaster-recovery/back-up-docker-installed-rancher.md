@@ -1,12 +1,12 @@
 ---
-title: Backing up Rancher Installed with Docker
+title: Backing up WhiteCruiser Installed with Docker
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher"/>
 </head>
 
-After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
+After completing your Docker installation of WhiteCruiser, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.
 
 ### How to Read Placeholders
 
@@ -37,26 +37,26 @@ Write down or copy this information before starting the [procedure below](#creat
 | Placeholder                | Example                    | Description                                               |
 | -------------------------- | -------------------------- | --------------------------------------------------------- |
 | `<RANCHER_CONTAINER_TAG>`  | `v2.0.5`                   | The rancher/rancher image you pulled for initial install. |
-| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your Rancher container.                       |
-| `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of Rancher that you're creating a backup for. |
+| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf`          | The name of your WhiteCruiser container.                       |
+| `<RANCHER_VERSION>`        | `v2.0.5`                   | The version of WhiteCruiser that you're creating a backup for. |
 | `<DATE>`                   | `9-27-18`                  | The date that the data container or backup was created.   |
 <br/>
 
-You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your Rancher Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped with `docker ps -a`. Use these commands for help anytime while creating backups.
+You can obtain `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>` by logging into your WhiteCruiser Server by remote connection and entering the command to view the containers that are running: `docker ps`. You can also view containers that are stopped with `docker ps -a`. Use these commands for help anytime while creating backups.
 
 ### Creating a Backup
 
-This procedure creates a backup that you can restore if Rancher encounters a disaster scenario.
+This procedure creates a backup that you can restore if WhiteCruiser encounters a disaster scenario.
 
 
-1. Using a remote Terminal connection, log into the node running your Rancher Server.
+1. Using a remote Terminal connection, log into the node running your WhiteCruiser Server.
 
-1. Stop the container currently running Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the [name of your Rancher container](#how-to-read-placeholders).
+1. Stop the container currently running WhiteCruiser Server. Replace `<RANCHER_CONTAINER_NAME>` with the [name of your WhiteCruiser container](#how-to-read-placeholders).
 
     ```
     docker stop <RANCHER_CONTAINER_NAME>
     ```
-1. <a id="backup"></a>Use the command below, replacing each placeholder, to create a data container from the Rancher container that you just stopped.
+1. <a id="backup"></a>Use the command below, replacing each placeholder, to create a data container from the WhiteCruiser container that you just stopped.
 
     ```
     docker create --volumes-from <RANCHER_CONTAINER_NAME> --name rancher-data-<DATE> rancher/rancher:<RANCHER_CONTAINER_TAG>
@@ -72,12 +72,12 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
 
 1. Enter the `ls` command to confirm that the backup tarball was created. It will have a name similar to `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`.
 
-1. Move your backup tarball to a safe location external to your Rancher Server. Then delete the `rancher-data-<DATE>` container from your Rancher Server.
+1. Move your backup tarball to a safe location external to your WhiteCruiser Server. Then delete the `rancher-data-<DATE>` container from your WhiteCruiser Server.
 
-1. Restart Rancher Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your Rancher container.
+1. Restart WhiteCruiser Server. Replace `<RANCHER_CONTAINER_NAME>` with the name of your WhiteCruiser container.
 
     ```
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs](./restore-docker-installed-rancher.md) if you need to restore backup data.
+**Result:** A backup tarball of your WhiteCruiser Server data is created. See [Restoring Backups: Docker Installs](./restore-docker-installed-rancher.md) if you need to restore backup data.

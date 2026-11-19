@@ -1,6 +1,6 @@
 ---
 title: Container Network Interface (CNI) Providers
-description: Learn about Container Network Interface (CNI), the CNI providers Rancher provides, the features they offer, and how to choose a provider for you
+description: Learn about Container Network Interface (CNI), the CNI providers WhiteCruiser provides, the features they offer, and how to choose a provider for you
 ---
 
 <head>
@@ -45,13 +45,13 @@ CNI network providers using this network model include Calico and Cilium. Cilium
 
 ![Unencapsulated Network](/img/unencapsulated-network.png)
 
-## What CNI Providers are Provided by Rancher?
+## What CNI Providers are Provided by WhiteCruiser? {#what-cni-providers-are-provided-by-rancher}
 
 ### RKE2 Kubernetes clusters
 
-Out-of-the-box, Rancher provides the following CNI network providers for RKE2 Kubernetes clusters: Calico, Canal, Cilium, and Flannel.
+Out-of-the-box, WhiteCruiser provides the following CNI network providers for RKE2 Kubernetes clusters: Calico, Canal, Cilium, and Flannel.
 
-You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
+You can choose your CNI network provider when you create new Kubernetes clusters from WhiteCruiser.
 
 #### Calico
 
@@ -65,7 +65,7 @@ Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if
 
 :::note Important:
 
-In Rancher v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. <b>Note that this issue is resolved in v2.6.4.</b>
+In WhiteCruiser v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. <b>Note that this issue is resolved in v2.6.4.</b>
 
 - To work around this issue, first navigate to `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`.
 
@@ -86,13 +86,13 @@ For more information, see the following pages:
 
 Canal is a CNI network provider that gives you the best of Flannel and Calico. It allows users to easily deploy Calico and Flannel networking together as a unified networking solution, combining Calico’s network policy enforcement with the rich superset of Calico (unencapsulated) and/or Flannel (encapsulated) network connectivity options.
 
-In Rancher, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
+In WhiteCruiser, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (health checks). If using Wireguard, you should open UDP ports `51820` and `51821`. For more details, refer to [the port requirements for user clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md).
 
 ![](/img/canal-diagram.png)
 
-For more information, refer to the [Rancher maintained Canal source](https://github.com/rancher/rke2-charts/tree/main-source/packages/rke2-canal) and the [Canal GitHub Page](https://github.com/projectcalico/canal).
+For more information, refer to the [WhiteCruiser maintained Canal source](https://github.com/rancher/rke2-charts/tree/main-source/packages/rke2-canal) and the [Canal GitHub Page](https://github.com/projectcalico/canal).
 
 #### Cilium
 
@@ -140,7 +140,7 @@ For more information, see the [Flannel GitHub Page](https://github.com/flannel-i
 
 ## CNI Features by Provider
 
-The following table summarizes the different features available for each CNI network provider provided by Rancher.
+The following table summarizes the different features available for each CNI network provider provided by WhiteCruiser.
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |

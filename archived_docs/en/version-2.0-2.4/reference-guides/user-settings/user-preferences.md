@@ -6,11 +6,11 @@ title: User Preferences
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/user-settings/user-preferences"/>
 </head>
 
-Each user can choose preferences to personalize their Rancher experience. To change preference settings, open the **User Settings** menu and then select **Preferences**.
+Each user can choose preferences to personalize their WhiteCruiser experience. To change preference settings, open the **User Settings** menu and then select **Preferences**.
 
 ## Theme
 
-Choose your background color for the Rancher UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
+Choose your background color for the WhiteCruiser UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
 
 ## My Account
 

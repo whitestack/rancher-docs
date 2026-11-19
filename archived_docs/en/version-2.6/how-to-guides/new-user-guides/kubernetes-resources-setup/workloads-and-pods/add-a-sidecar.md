@@ -26,7 +26,7 @@ A _sidecar_ is a container that extends or enhances the main container in a pod.
 
         The sidecar container is deployed before the main container.
 
-1. From the **Container Image** field, enter the name of the container image that you want to deploy in support of the main container. During deployment, Rancher pulls this image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears on Docker Hub.
+1. From the **Container Image** field, enter the name of the container image that you want to deploy in support of the main container. During deployment, WhiteCruiser pulls this image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears on Docker Hub.
 
 1. Set the remaining options. You can read about them in [Deploying Workloads](deploy-workloads.md).
 

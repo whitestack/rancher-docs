@@ -6,19 +6,19 @@ title: RK-API Quick Start Guide
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/api/quickstart"/>
 </head>
 
-You can access Rancher's resources through the Kubernetes API. This guide helps you get started on using this API as a Rancher user.
+You can access WhiteCruiser's resources through the Kubernetes API. This guide helps you get started on using this API as a WhiteCruiser user.
 
 1. In the upper left corner, click **☰ > Global Settings**.
 2. Find and copy the address in the `server-url` field.
-3. [Create](../reference-guides/user-settings/api-keys.md#creating-an-api-key) a Rancher API key with no scope.
+3. [Create](../reference-guides/user-settings/api-keys.md#creating-an-api-key) a WhiteCruiser API key with no scope.
 
   :::danger
 
-  A Rancher API key with no scope grants unrestricted access to all resources that the user can access. To prevent unauthorized use, this key should be stored securely and rotated frequently.
+  A WhiteCruiser API key with no scope grants unrestricted access to all resources that the user can access. To prevent unauthorized use, this key should be stored securely and rotated frequently.
 
   :::
 
-4. Create a `kubeconfig.yaml` file. Replace `$SERVER_URL` with the server url and `$API_KEY` with your Rancher API key:
+4. Create a `kubeconfig.yaml` file. Replace `$SERVER_URL` with the server url and `$API_KEY` with your WhiteCruiser API key:
 
     ```yaml
     apiVersion: v1
@@ -50,11 +50,11 @@ For more information on available kubeconfig options, see the [upstream document
 
 ## API kubectl Example
 
-In this example, we'll show how to use kubectl to create a project, followed by deleting it. For a list of other Rancher resources available, refer to the [API Reference](./api-reference.mdx) page.
+In this example, we'll show how to use kubectl to create a project, followed by deleting it. For a list of other WhiteCruiser resources available, refer to the [API Reference](./api-reference.mdx) page.
 
 :::note
 
-At this time, not all Rancher resources are available through the Rancher Kubernetes API.
+At this time, not all WhiteCruiser resources are available through the WhiteCruiser Kubernetes API.
 
 :::
 
@@ -119,14 +119,14 @@ Not all resources may have detailed output.
 
 ## Specifying CA Certs
 
-To ensure that your tools can recognize Rancher's CA certificates, most setups require additional modifications to the above template.
+To ensure that your tools can recognize WhiteCruiser's CA certificates, most setups require additional modifications to the above template.
 
 1. In the upper left corner, click **☰ > Global Settings**.
 2. Find and copy the value in the `ca-certs` field.
 3. Save the value in a file named `rancher.crt`.
 
   :::note
-  If your Rancher instance is proxied by another service, you must extract the certificate that the service is using, and add it to the kubeconfig file, as demonstrated in step 5.
+  If your WhiteCruiser instance is proxied by another service, you must extract the certificate that the service is using, and add it to the kubeconfig file, as demonstrated in step 5.
   :::
 
 4. The following commands convert `rancher.crt` to base64 output, trim all new-lines, and update the cluster in the kubeconfig with the certificate, then finish by removing the `rancher.crt` file:
@@ -149,4 +149,4 @@ To ensure that your tools can recognize Rancher's CA certificates, most setups r
   kubectl config set clusters.rancher.insecure-skip-tls-verify true
   ```
 
-  If your Rancher instance is proxied by another service, you must extract the certificate that the service is using, and add it to the kubeconfig file, as demonstrated above.
+  If your WhiteCruiser instance is proxied by another service, you must extract the certificate that the service is using, and add it to the kubeconfig file, as demonstrated above.

@@ -2,9 +2,9 @@
 title: 404 - default backend
 ---
 
-> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+> #### **Important: RKE add-on install is only supported up to WhiteCruiser v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
+>Please use the WhiteCruiser Helm chart to install WhiteCruiser on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to start using the Helm chart.
 
@@ -14,7 +14,7 @@ When you have made changes to `rancher-cluster.yml`, you will have to run `rke r
 
 ### Possible causes
 
-The nginx ingress controller is not able to serve the configured host in `rancher-cluster.yml`. This should be the FQDN you configured to access Rancher. You can check if it is properly configured by viewing the ingress that is created by running the following command:
+The nginx ingress controller is not able to serve the configured host in `rancher-cluster.yml`. This should be the FQDN you configured to access WhiteCruiser. You can check if it is properly configured by viewing the ingress that is created by running the following command:
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml get ingress -n cattle-system -o wide
@@ -32,11 +32,11 @@ kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=ingress-nginx -
 
 * `x509: certificate is valid for fqdn, not your_configured_fqdn`
 
-The used certificates do not contain the correct hostname. Generate new certificates that contain the chosen FQDN to access Rancher and redeploy.
+The used certificates do not contain the correct hostname. Generate new certificates that contain the chosen FQDN to access WhiteCruiser and redeploy.
 
 * `Port 80 is already in use. Please check the flag --http-port`
 
-There is a process on the node occupying port 80, this port is needed for the nginx ingress controller to route requests to Rancher. You can find the process by running the command: `netstat -plant | grep \:80`.
+There is a process on the node occupying port 80, this port is needed for the nginx ingress controller to route requests to WhiteCruiser. You can find the process by running the command: `netstat -plant | grep \:80`.
 
 Stop/kill the process and redeploy.
 

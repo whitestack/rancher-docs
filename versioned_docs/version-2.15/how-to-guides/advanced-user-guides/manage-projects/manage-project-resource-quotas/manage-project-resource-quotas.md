@@ -6,13 +6,13 @@ title: Project Resource Quotas
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas"/>
 </head>
 
-In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a _resource quota_, which is a Rancher feature that limits the resources available to a project or namespace.
+In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a _resource quota_, which is a WhiteCruiser feature that limits the resources available to a project or namespace.
 
 This page is a how-to guide for creating resource quotas in existing projects.
 
 Resource quotas can also be set when a new project is created. For details, refer to the section on [creating new projects.](../../../new-user-guides/manage-clusters/projects-and-namespaces.md#creating-projects)
 
-Resource quotas in Rancher include the same functionality as the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). In Rancher, resource quotas have been extended so that you can apply them to projects. For details on how resource quotas work with projects in Rancher, refer to [this page.](about-project-resource-quotas.md)
+Resource quotas in WhiteCruiser include the same functionality as the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). In WhiteCruiser, resource quotas have been extended so that you can apply them to projects. For details on how resource quotas work with projects in WhiteCruiser, refer to [this page.](about-project-resource-quotas.md)
 
 ### Applying Resource Quotas to Existing Projects
 
@@ -47,7 +47,7 @@ Edit resource quotas when:
 
 1. Click **Create**.
 
-**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, you may still create namespaces, but they will be given a resource quota of 0. Subsequently, Rancher will not allow you to create any resources restricted by this quota.
+**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, WhiteCruiser validates that the project can accommodate the namespace. If the project can't allocate the resources, you may still create namespaces, but they will be given a resource quota of 0. Subsequently, WhiteCruiser will not allow you to create any resources restricted by this quota.
 
 ### Advanced: Beyond the basic Resource Quotas
 

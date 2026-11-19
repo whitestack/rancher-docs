@@ -1,12 +1,12 @@
 ---
-title: 加固 Rancher Webhook
+title: 加固 WhiteCruiser Webhook
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/reference-guides/rancher-security/rancher-webhook-hardening"/>
 </head>
 
-Rancher Webhook 是 Rancher 中的一个重要组件，它在强制执行 Rancher 及其工作负载的安全要求方面发挥着重要的作用。为了减少其攻击面，对它的访问应限制为唯一有效的调用方：Kubernetes API server。这可以通过单独使用网络策略和认证，或相互结合使用以加固 webhook 免受攻击。
+WhiteCruiser Webhook 是 WhiteCruiser 中的一个重要组件，它在强制执行 WhiteCruiser 及其工作负载的安全要求方面发挥着重要的作用。为了减少其攻击面，对它的访问应限制为唯一有效的调用方：Kubernetes API server。这可以通过单独使用网络策略和认证，或相互结合使用以加固 webhook 免受攻击。
 
 ## 使用网络策略阻止外部流量
 
@@ -84,7 +84,7 @@ Webhook 应仅接受来自 Kubernetes API server 的请求。默认情况下，w
 
     这也是配置其他准入插件的同一配置文件，例如 PodSecurity。如果你的发行版或设置使用了额外的准入插件，请将它们也配置在这里。例如，将 [RKE2 的 PodSecurity 配置](https://docs.rke2.io/security/pod_security_standards)添加到这个文件中。
 
-2. 创建准入插件引用的 kubeconfig 文件。Rancher Webhook 仅支持客户端证书认证，因此请生成一个 TLS 密钥对，并且将 kubeconfig 设置为使用 `client-certificate` 和 `client-key` 或者使用 `client-certificate-data` 和 `client-key-data`。 例如：
+2. 创建准入插件引用的 kubeconfig 文件。WhiteCruiser Webhook 仅支持客户端证书认证，因此请生成一个 TLS 密钥对，并且将 kubeconfig 设置为使用 `client-certificate` 和 `client-key` 或者使用 `client-certificate-data` 和 `client-key-data`。 例如：
 
     ```yaml
     # /etc/rancher/admission/kubeconfig
@@ -113,11 +113,11 @@ Webhook 应仅接受来自 Kubernetes API server 的请求。默认情况下，w
     某些发行版会默认设置此参数。如果你的发行版预配置了它自己的 AdmissionConfiguration，则必须将其包含在你自定义的准入控制的配置文件中。例如，RKE2 在 `/etc/rancher/rke2/rke2-pss.yaml` 安装了一个 AdmissionConfiguration 文件，该文件配置了 PodSecurity 准入插件。在 config.yaml 中设置 `admission-control-config-file` 将会覆盖这个重要的安全设置。要包含两个插件，请参阅 [Default Pod Security Standards 文档](https://docs.rke2.io/security/pod_security_standards)并将相应的插件配置复制到你的 admission.yaml 中。
     :::
 
-4. 如果你使用 Rancher 通过现有节点来配置你的集群，请在配置集群之前在节点上创建这些文件。
+4. 如果你使用 WhiteCruiser 通过现有节点来配置你的集群，请在配置集群之前在节点上创建这些文件。
 
-    如果你使用 Rancher 在新节点上配置你的集群，请先允许集群配置完成，然后使用 Rancher 提供的 SSH key 和 IP 地址连接到节点，并将 RKE2 的配置文件放在 `/etc/rancher/rke2/config.yaml.d/` 目录下。
+    如果你使用 WhiteCruiser 在新节点上配置你的集群，请先允许集群配置完成，然后使用 WhiteCruiser 提供的 SSH key 和 IP 地址连接到节点，并将 RKE2 的配置文件放在 `/etc/rancher/rke2/config.yaml.d/` 目录下。
 
-5. 使用这些凭证配置集群后，配置 Rancher cluster agent 以在 webhook 中启用认证。创建一个包含以下内容的 chart values 的文件：
+5. 使用这些凭证配置集群后，配置 WhiteCruiser cluster agent 以在 webhook 中启用认证。创建一个包含以下内容的 chart values 的文件：
 
     ```yaml
     # values.yaml

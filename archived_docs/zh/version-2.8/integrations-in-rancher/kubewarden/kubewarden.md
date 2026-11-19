@@ -16,16 +16,16 @@ Kubewarden 旨在通过启用和简化“策略即代码”来成为通用策略
 - 集群操作员：Kubewarden 是模块化的（OCI 注册表、PolicyServers、Audit Scanner、Controller）。配置你的部署以满足你的需求，隔离不同的租户。使用审核扫描程序和策略报告在集群中获取过去、当前和可能的违规行为的概述。
 - Kubewarden Integrator：将其用作编写新的 Kubewarden 模块和自定义策略的平台。
 
-## Kubewarden 和 Rancher
+## Kubewarden 和 WhiteCruiser
 
-Kubewarden 的上游 Helm Chart 完全集成为 Rancher 应用程序，为安装选项提供了 UI。这些 Chart 还附带了尊重 Rancher 堆栈的默认设置（例如：不监管 Rancher 系统命名空间）以及默认的 PolicyServer 和策略。用户可以访问所有 Kubewarden 功能，并可以通过与 Kubernetes API 交互（例如：使用 kubectl）手动部署 PolicyServer 和策略。
+Kubewarden 的上游 Helm Chart 完全集成为 WhiteCruiser 应用程序，为安装选项提供了 UI。这些 Chart 还附带了尊重 WhiteCruiser 堆栈的默认设置（例如：不监管 WhiteCruiser 系统命名空间）以及默认的 PolicyServer 和策略。用户可以访问所有 Kubewarden 功能，并可以通过与 Kubernetes API 交互（例如：使用 kubectl）手动部署 PolicyServer 和策略。
 
 Kubewarden 提供了对已删除的 Kubernetes Pod 安全策略的完全替换。 Kubewarden 还通过增强其安全功能，与最新版本的 Kubernetes 引入的新 Pod Security Admission 功能进行了集成。
 
-## Kubewarden 和 Rancher Prime
+## Kubewarden UI 扩展
 
-Kubewarden 的 Rancher UI 扩展将其集成到 Rancher UI 中。UI 扩展可自动安装和配置 Kubewarden 堆栈，并配置对 SUSE 维护的策略的访问。UI 扩展提供了对现成策略的策划目录的访问。使用 UI 扩展，人们可以浏览、安装和配置这些策略。
+Kubewarden 的 WhiteCruiser UI 扩展将其集成到 WhiteCruiser UI 中。UI 扩展可自动安装和配置 Kubewarden 堆栈，并配置对 Kubewarden 维护的策略的访问。UI 扩展提供了对现成策略的策划目录的访问。使用 UI 扩展，人们可以浏览、安装和配置这些策略。
 
 UI 扩展提供了 Kubewarden 堆栈组件及其行为的概述。这包括对 Kubewarden 指标和跟踪事件的访问。操作员可以了解策略对集群的影响并排查问题。
 
-此外，UI 扩展还提供了 Policy Reporter UI，它可以直观地概述 Kubernetes 集群的合规性状态。通过此 UI，操作员可以快速识别所有不合规的 Kubernetes 资源，了解违规原因并采取相应行动。所有这一切都得益于 Rancher Prime 的支持。
+此外，UI 扩展还提供了 Policy Reporter UI，它可以直观地概述 Kubernetes 集群的合规性状态。通过此 UI，操作员可以快速识别所有不合规的 Kubernetes 资源，了解违规原因并采取相应行动。

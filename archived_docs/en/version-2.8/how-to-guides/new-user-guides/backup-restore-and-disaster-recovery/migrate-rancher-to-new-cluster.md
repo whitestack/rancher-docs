@@ -1,16 +1,16 @@
 ---
-title: Migrating Rancher to a New Cluster
+title: Migrating WhiteCruiser to a New Cluster
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster"/>
 </head>
 
-If you are migrating Rancher to a new Kubernetes cluster, you don't need to install Rancher on the new cluster first. If Rancher is restored to a new cluster with Rancher already installed, it can cause problems.
+If you are migrating WhiteCruiser to a new Kubernetes cluster, you don't need to install WhiteCruiser on the new cluster first. If WhiteCruiser is restored to a new cluster with WhiteCruiser already installed, it can cause problems.
 
 ### Prerequisites
 
-These instructions assume that you have [created a backup](back-up-rancher.md) and  already installed a new Kubernetes cluster where Rancher will be deployed. The backup is specific to the Rancher application and can only migrate the Rancher application.
+These instructions assume that you have [created a backup](back-up-rancher.md) and  already installed a new Kubernetes cluster where WhiteCruiser will be deployed. The backup is specific to the WhiteCruiser application and can only migrate the WhiteCruiser application.
 
 :::caution
 
@@ -18,11 +18,11 @@ It is required to use the same hostname that was set as the server URL in the fi
 
 :::
 
-Rancher version must be v2.5.0 and up
+WhiteCruiser version must be v2.5.0 and up
 
-Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes clusters such as Amazon EKS clusters. For help installing Kubernetes, refer to the documentation of the Kubernetes distribution. A Rancher-created Kubernetes distributions such as, but not limited to, [RKE](https://rke.docs.rancher.com/installation) or [K3s](https://docs.k3s.io/installation) may also be used.
+WhiteCruiser can be installed on any Kubernetes cluster, including hosted Kubernetes clusters such as Amazon EKS clusters. For help installing Kubernetes, refer to the documentation of the Kubernetes distribution. A WhiteCruiser-created Kubernetes distributions such as, but not limited to, [RKE](https://rke.docs.rancher.com/installation) or [K3s](https://docs.k3s.io/installation) may also be used.
 
-Since Rancher can be installed on any Kubernetes cluster, you can use this backup and restore method to migrate Rancher from one Kubernetes cluster to any other Kubernetes cluster. This method *only* migrates Rancher-related resources and won't affect other applications on the cluster. Refer to the support matrix to identify which Kubernetes cluster types and versions are supported for your Rancher version.
+Since WhiteCruiser can be installed on any Kubernetes cluster, you can use this backup and restore method to migrate WhiteCruiser from one Kubernetes cluster to any other Kubernetes cluster. This method *only* migrates WhiteCruiser-related resources and won't affect other applications on the cluster.
 
 ### 1. Install the rancher-backup Helm chart
 
@@ -35,7 +35,7 @@ Install the [`rancher-backup chart`](https://github.com/rancher/backup-restore-o
      helm repo update
      ```
 
-  1. Set a `CHART_VERSION` variable, selecting a `rancher-backup` chart version compatible with your version of Rancher. See the support matrix, within the **Rancher Apps / Cluster Tools** section, to see which `rancher-backup` versions are supported:
+  1. Set a `CHART_VERSION` variable, selecting a `rancher-backup` chart version compatible with your version of WhiteCruiser:
 
      ```bash
      CHART_VERSION=<chart-version>
@@ -138,17 +138,17 @@ Install the [`rancher-backup chart`](https://github.com/rancher/backup-restore-o
       kubectl logs -n cattle-resources-system --tail 100 -f -l app.kubernetes.io/instance=rancher-backup
       ```
 
-   1. Once the Restore resource has the status `Completed`, you can continue the cert-manager and Rancher installation.
+   1. Once the Restore resource has the status `Completed`, you can continue the cert-manager and WhiteCruiser installation.
 
 ### 3. Install cert-manager
 
 Follow the steps to [install cert-manager](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-install-cert-manager) in the documentation about installing cert-manager on Kubernetes.
 
-### 4. Bring up Rancher with Helm
+### 4. Bring up WhiteCruiser with Helm {#4-bring-up-rancher-with-helm}
 
-Use the same version of Helm to install Rancher, that was used on the first cluster.
+Use the same version of Helm to install WhiteCruiser, that was used on the first cluster.
 
-For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose.
+For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using WhiteCruiser v2.7.2-v2.7.4. This is not necessary for WhiteCruiser v2.7.5 and above, but you can still manually set the option if you choose.
 
 ```bash
 helm install rancher rancher-latest/rancher \
@@ -159,13 +159,13 @@ helm install rancher rancher-latest/rancher \
 
 :::note
 
-If the original Rancher environment is running, you can collect the current values with a kubeconfig for the original environment:
+If the original WhiteCruiser environment is running, you can collect the current values with a kubeconfig for the original environment:
 
 ```bash
 helm get values rancher -n cattle-system -o yaml > rancher-values.yaml
 ```
 
-These values can be reused using the `rancher-values.yaml` file. Be sure to switch the kubeconfig to the new Rancher environment.
+These values can be reused using the `rancher-values.yaml` file. Be sure to switch the kubeconfig to the new WhiteCruiser environment.
 
 ```bash
 helm install rancher rancher-latest/rancher -n cattle-system -f rancher-values.yaml --version x.y.z

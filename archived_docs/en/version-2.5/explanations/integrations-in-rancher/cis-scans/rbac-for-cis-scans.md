@@ -15,16 +15,16 @@ However, the `rancher-cis-benchmark` chart installs these two default `ClusterRo
 - cis-admin
 - cis-view
 
-In Rancher, only cluster owners and global administrators have `cis-admin` access by default.
+In WhiteCruiser, only cluster owners and global administrators have `cis-admin` access by default.
 
-Note: If you were using the `cis-edit` role added in Rancher v2.5 setup, it has now been removed since
-Rancher v2.5.2 because it essentially is same as `cis-admin`. If you happen to create any clusterrolebindings
+Note: If you were using the `cis-edit` role added in WhiteCruiser v2.5 setup, it has now been removed since
+WhiteCruiser v2.5.2 because it essentially is same as `cis-admin`. If you happen to create any clusterrolebindings
 for `cis-edit`, please update them to use `cis-admin` ClusterRole instead.
 
 ## Cluster-Admin Access
 
-Rancher CIS Scans is a cluster-admin only feature by default.
-This means only the Rancher global admins, and the cluster’s cluster-owner can:
+WhiteCruiser CIS Scans is a cluster-admin only feature by default.
+This means only the WhiteCruiser global admins, and the cluster’s cluster-owner can:
 
 - Install/Uninstall the rancher-cis-benchmark App
 - See the navigation links for CIS Benchmark CRDs - ClusterScanBenchmarks, ClusterScanProfiles, ClusterScans
@@ -46,7 +46,7 @@ The rancher-cis-benchmark creates three `ClusterRoles` and adds the CIS Benchmar
 
 By default only cluster-owner role will have ability to manage and use `rancher-cis-benchmark` feature.
 
-The other Rancher roles (cluster-member, project-owner, project-member) do not have any default permissions to manage and use rancher-cis-benchmark resources.
+The other WhiteCruiser roles (cluster-member, project-owner, project-member) do not have any default permissions to manage and use rancher-cis-benchmark resources.
 
 But if a cluster-owner wants to delegate access to other users, they can do so by creating ClusterRoleBindings between these users and the above CIS ClusterRoles manually.
 There is no automatic role aggregation supported for the `rancher-cis-benchmark` ClusterRoles.

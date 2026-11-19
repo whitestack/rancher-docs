@@ -34,7 +34,7 @@ By default,  the Kiali and Jaeger visualizations are restricted to the cluster o
 
 **Kiali** provides a diagram that shows the services within a service mesh and how they are connected.
 
-Rancher supports giving groups permission to access Kiali and Jaeger, but not individuals.
+WhiteCruiser supports giving groups permission to access Kiali and Jaeger, but not individuals.
 
 To configure who has permission to access the Kiali and Jaeger UI,
 

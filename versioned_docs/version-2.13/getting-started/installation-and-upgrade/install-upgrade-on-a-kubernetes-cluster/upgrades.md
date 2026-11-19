@@ -6,9 +6,9 @@ title: Upgrades
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades"/>
 </head>
 
-The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air-gapped installs with Helm.
+The following instructions will guide you through upgrading a WhiteCruiser server that was installed on a Kubernetes cluster with Helm. These steps also apply to air-gapped installs with Helm.
 
-For the instructions to upgrade Rancher installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md)
+For the instructions to upgrade WhiteCruiser installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md)
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ The Kubeconfig can also be manually targeted for the intended cluster with the `
 
 ### Review Known Issues
 
-Review the list of known issues for each Rancher version, which can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+Review the list of known issues for each WhiteCruiser version, which can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases).
 
 Note that upgrades _to_ or _from_ any chart in the [rancher-alpha repository](../resources/choose-a-rancher-version.md#helm-chart-repositories) aren't supported.
 
@@ -30,7 +30,7 @@ Note that upgrades _to_ or _from_ any chart in the [rancher-alpha repository](..
 
 :::important
 
-**Important:** The only tested and supported Rancher upgrade path between minor versions (e.g. v2.12.x to v2.13.x) is to upgrade from the latest available patch version of your current running minor release to the latest available patch version of the next minor release.
+**Important:** The only tested and supported WhiteCruiser upgrade path between minor versions (e.g. v2.12.x to v2.13.x) is to upgrade from the latest available patch version of your current running minor release to the latest available patch version of the next minor release.
 
 Before initiating a minor version upgrade, verify that you are running the most recent patch release of your current version.
 
@@ -55,12 +55,12 @@ If your installation is not on the latest patch version of the current minor rel
 
 :::important
 
-**Important:** In Rancher Community v2.13.1 if your registry configuration is one of the following you may see Rancher generate the `cattle-cluster-agent` image with an incorrect `docker.io` path segment:
+**Important:** In WhiteCruiser Community v2.13.1 if your registry configuration is one of the following you may see WhiteCruiser generate the `cattle-cluster-agent` image with an incorrect `docker.io` path segment:
 
 - Environments where a **cluster-scoped container registry** is configured for system images.
 - Environments where a **global `system-default-registry`** is configured (e.g. airgap setups), even if no cluster-scoped registry is set.
 
-**Workaround for Affected Setups:** As a workaround, override the `cattle-cluster-agent` image via the `CATTLE_AGENT_IMAGE` environment variable. This value must **not** contain any registry prefix (Rancher will handle that automatically). It should be set only to the repository and tag, for example:`rancher/rancher-agent:v2.13.1`
+**Workaround for Affected Setups:** As a workaround, override the `cattle-cluster-agent` image via the `CATTLE_AGENT_IMAGE` environment variable. This value must **not** contain any registry prefix (WhiteCruiser will handle that automatically). It should be set only to the repository and tag, for example:`rancher/rancher-agent:v2.13.1`
 
 **Helm `install` example:**
 
@@ -82,14 +82,14 @@ helm upgrade rancher rancher-latest/rancher \
 
 **Important Upgrade Note:**
 
-The `CATTLE_AGENT_IMAGE` override is intended only as a temporary workaround for the affected configurations. Once a Rancher version is available that corrects this behavior, the `CATTLE_AGENT_IMAGE` override should be **removed** from Helm values, so that Rancher can resume managing the agent image normally and automatically track future image and tag changes. See [#53187](https://github.com/rancher/rancher/issues/53187#issuecomment-3676484603) for further information.
+The `CATTLE_AGENT_IMAGE` override is intended only as a temporary workaround for the affected configurations. Once a WhiteCruiser version is available that corrects this behavior, the `CATTLE_AGENT_IMAGE` override should be **removed** from Helm values, so that WhiteCruiser can resume managing the agent image normally and automatically track future image and tag changes. See [#53187](https://github.com/rancher/rancher/issues/53187#issuecomment-3676484603) for further information.
 :::
 
 The upgrade instructions assume you are using Helm 3.
 
 ### For air-gapped installs: Populate private registry
 
-For [air-gapped installs only,](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry](../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images for the Rancher version that you want to upgrade to.
+For [air-gapped installs only,](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) collect and populate images for the new WhiteCruiser server version. Follow the guide to [populate your private registry](../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images for the WhiteCruiser version that you want to upgrade to.
 
 ### For upgrades with cert-manager older than 0.8.0
 
@@ -97,11 +97,11 @@ For [air-gapped installs only,](../other-installation-methods/air-gapped-helm-cl
 
 ## Upgrade Outline
 
-Follow the steps to upgrade Rancher server:
+Follow the steps to upgrade WhiteCruiser server:
 
-### 1. Back up Your Kubernetes Cluster that is Running Rancher Server
+### 1. Back up Your Kubernetes Cluster that is Running WhiteCruiser Server {#1-back-up-your-kubernetes-cluster-that-is-running-rancher-server}
 
-Use the [backup application](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md) to back up Rancher.
+Use the [backup application](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md) to back up WhiteCruiser.
 
 You'll use the backup as a restore point if something goes wrong during upgrade.
 
@@ -113,7 +113,7 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
     helm repo update
     ```
 
-1. Get the repository name that you used to install Rancher.
+1. Get the repository name that you used to install WhiteCruiser.
 
     For information about the repos and their differences, see [Helm Chart Repositories](../resources/choose-a-rancher-version.md#helm-chart-repositories).
 
@@ -145,7 +145,7 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
 
     :::
 
-1. Fetch the latest chart to install Rancher from the Helm chart repository.
+1. Fetch the latest chart to install WhiteCruiser from the Helm chart repository.
 
     This command will pull down the latest charts and save it in the current directory as a `.tgz` file.
 
@@ -157,31 +157,31 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher --version=2.6.8
     ```
-### 3. Review Rancher Feature Chart Versions Before Upgrade
+### 3. Review WhiteCruiser Feature Chart Versions Before Upgrade {#3-review-rancher-feature-chart-versions-before-upgrade}
 
-Rancher feature charts follow specific release lines that align with Rancher versions. Major versions of feature charts correspond to Rancher minor versions and follow a defined versioning scheme.
+WhiteCruiser feature charts follow specific release lines that align with WhiteCruiser versions. Major versions of feature charts correspond to WhiteCruiser minor versions and follow a defined versioning scheme.
 
-Before upgrading Rancher, review any installed Rancher feature charts and upgrade them to the latest available version within their current chart release line. This helps ensure compatibility and avoids potential issues during or after the Rancher upgrade.
+Before upgrading WhiteCruiser, review any installed WhiteCruiser feature charts and upgrade them to the latest available version within their current chart release line. This helps ensure compatibility and avoids potential issues during or after the WhiteCruiser upgrade.
 
 To review installed feature charts:
 
-1. In the Rancher UI, go to **Apps & Marketplace**.
+1. In the WhiteCruiser UI, go to **Apps & Marketplace**.
 2. Select **Installed Apps**.
 3. Review the chart versions and upgrade to the latest patch release within the same chart major version if needed.
 
-For more information, see the [Helm Charts in Rancher – Versioning Scheme](../../../how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md#versioning-scheme).
+For more information, see the [Helm Charts in WhiteCruiser – Versioning Scheme](../../../how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md#versioning-scheme).
 
-### 4. Upgrade Rancher
+### 4. Upgrade WhiteCruiser {#4-upgrade-rancher}
 
-This section describes how to upgrade normal (Internet-connected) or air-gapped installations of Rancher with Helm.
+This section describes how to upgrade normal (Internet-connected) or air-gapped installations of WhiteCruiser with Helm.
 
 :::note Air Gap Instructions:
 
-If you are installing Rancher in an air-gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](air-gapped-upgrades.md)
+If you are installing WhiteCruiser in an air-gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](air-gapped-upgrades.md)
 
 :::
 
-Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
+Get the values, which were passed with `--set`, from the current WhiteCruiser Helm chart that is installed.
 
 ```
 helm get values rancher -n cattle-system
@@ -195,23 +195,11 @@ There will be more values that are listed with this command. This is just an exa
 
 :::
 
-:::tip
+If you are upgrading cert-manager to the latest version from v1.5 or below, follow the [cert-manager upgrade docs](../resources/upgrade-cert-manager.md#option-c-upgrade-cert-manager-from-versions-15-and-below) to learn how to upgrade cert-manager without needing to perform an uninstall or reinstall of WhiteCruiser. Otherwise, follow the [steps to upgrade WhiteCruiser](#steps-to-upgrade-rancher) below.
 
-Your deployment name may vary; for example, if you're deploying Rancher through the AWS Marketplace, the deployment name is 'rancher-stable'.
-Thus:
-```
-helm get values rancher-stable -n cattle-system
+#### Steps to Upgrade WhiteCruiser {#steps-to-upgrade-rancher}
 
-hostname: rancher.my.org
-```
-
-:::
-
-If you are upgrading cert-manager to the latest version from v1.5 or below, follow the [cert-manager upgrade docs](../resources/upgrade-cert-manager.md#option-c-upgrade-cert-manager-from-versions-15-and-below) to learn how to upgrade cert-manager without needing to perform an uninstall or reinstall of Rancher. Otherwise, follow the [steps to upgrade Rancher](#steps-to-upgrade-rancher) below.
-
-#### Steps to Upgrade Rancher
-
-Upgrade Rancher to the latest version with all your settings.
+Upgrade WhiteCruiser to the latest version with all your settings.
 
 Take all the values from the previous step and append them to the command using `--set key=value`.
 
@@ -228,25 +216,13 @@ The above is an example, there may be more values from the previous step that ne
 
 :::
 
-:::tip
-
-If you deploy Rancher through the AWS Marketplace, the deployment name is 'rancher-stable'.
-Thus:
-```
-helm upgrade rancher-stable rancher-<CHART_REPO>/rancher \
-  --namespace cattle-system \
-  --set hostname=rancher.my.org
-```
-
-:::
-
-Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the Rancher version:
+Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the WhiteCruiser version:
 
 1. Export the current values to a file:
     ```
     helm get values rancher -n cattle-system -o yaml > values.yaml
     ```
-1. Update only the Rancher version:
+1. Update only the WhiteCruiser version:
 
 
     ```
@@ -258,8 +234,8 @@ Alternatively, it's possible to export the current values to a file and referenc
 
 ### 5. Verify the Upgrade
 
-Log into Rancher to confirm that the upgrade succeeded.
+Log into WhiteCruiser to confirm that the upgrade succeeded.
 
 ## Known Upgrade Issues
 
-A list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+A list of known issues for each WhiteCruiser version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases).

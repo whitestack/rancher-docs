@@ -6,9 +6,9 @@ title: Setting up Infrastructure for a High Availability RKE2 Kubernetes Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/infrastructure-setup/ha-rke2-kubernetes-cluster"/>
 </head>
 
-This tutorial is intended to help you provision the underlying infrastructure for a Rancher management server.
+This tutorial is intended to help you provision the underlying infrastructure for a WhiteCruiser management server.
 
-The recommended infrastructure for the Rancher-only Kubernetes cluster differs depending on whether Rancher will be installed on a RKE2 Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container.
+The recommended infrastructure for the WhiteCruiser-only Kubernetes cluster differs depending on whether WhiteCruiser will be installed on a RKE2 Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container.
 
 :::note Important:
 
@@ -16,11 +16,11 @@ These nodes must be in the same region. You may place these servers in separate 
 
 :::
 
-To install the Rancher management server on a high-availability RKE2 cluster, we recommend setting up the following infrastructure:
+To install the WhiteCruiser management server on a high-availability RKE2 cluster, we recommend setting up the following infrastructure:
 
 - **Three Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
 - **A load balancer** to direct traffic to the nodes.
-- **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
+- **A DNS record** to map a URL to the load balancer. This will become the WhiteCruiser server URL, and downstream Kubernetes clusters will need to reach it.
 
 ### 1. Set up Linux Nodes
 
@@ -30,16 +30,16 @@ For an example of one way to set up Linux nodes, refer to this [tutorial](nodes-
 
 ### 2. Set up the Load Balancer
 
-You will also need to set up a load balancer to direct traffic to the Rancher replica on all nodes. That will prevent an outage of any single node from taking down communications to the Rancher management server.
+You will also need to set up a load balancer to direct traffic to the WhiteCruiser replica on all nodes. That will prevent an outage of any single node from taking down communications to the WhiteCruiser management server.
 
 When Kubernetes gets set up in a later step, the RKE2 tool will deploy an Nginx Ingress controller. This controller will listen on ports 80 and 443 of the worker nodes, answering traffic destined for specific hostnames.
 
-When Rancher is installed (also in a later step), the Rancher system creates an Ingress resource. That Ingress tells the Nginx Ingress controller to listen for traffic destined for the Rancher hostname. The Nginx Ingress controller, when receiving traffic destined for the Rancher hostname, will forward that traffic to the running Rancher pods in the cluster.
+When WhiteCruiser is installed (also in a later step), the WhiteCruiser system creates an Ingress resource. That Ingress tells the Nginx Ingress controller to listen for traffic destined for the WhiteCruiser hostname. The Nginx Ingress controller, when receiving traffic destined for the WhiteCruiser hostname, will forward that traffic to the running WhiteCruiser pods in the cluster.
 
 For your implementation, consider if you want or need to use a Layer-4 or Layer-7 load balancer:
 
-- **A layer-4 load balancer** is the simpler of the two choices, in which you are forwarding TCP traffic to your nodes. We recommend configuring your load balancer as a Layer 4 balancer, forwarding traffic to ports TCP/80 and TCP/443 to the Rancher management cluster nodes. The Ingress controller on the cluster will redirect HTTP traffic to HTTPS and terminate SSL/TLS on port TCP/443. The Ingress controller will forward traffic to port TCP/80 to the Ingress pod in the Rancher deployment.
-- **A layer-7 load balancer** is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the [Rancher Helm chart options.](../../../getting-started/installation-and-upgrade/installation-references/helm-chart-options.md#external-tls-termination)
+- **A layer-4 load balancer** is the simpler of the two choices, in which you are forwarding TCP traffic to your nodes. We recommend configuring your load balancer as a Layer 4 balancer, forwarding traffic to ports TCP/80 and TCP/443 to the WhiteCruiser management cluster nodes. The Ingress controller on the cluster will redirect HTTP traffic to HTTPS and terminate SSL/TLS on port TCP/443. The Ingress controller will forward traffic to port TCP/80 to the Ingress pod in the WhiteCruiser deployment.
+- **A layer-7 load balancer** is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to WhiteCruiser doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing WhiteCruiser in a later step. For more information, refer to the [WhiteCruiser Helm chart options.](../../../getting-started/installation-and-upgrade/installation-references/helm-chart-options.md#external-tls-termination)
 
 For an example showing how to set up an NGINX load balancer, refer to [this page.](nginx-load-balancer.md)
 
@@ -47,7 +47,7 @@ For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to 
 
 :::caution
 
-Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
+Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than WhiteCruiser following installation. Sharing this Ingress with other applications may result in websocket errors to WhiteCruiser following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to WhiteCruiser and no other applications.
 
 :::
 
@@ -55,8 +55,8 @@ Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance
 
 Once you have set up your load balancer, you will need to create a DNS record to send traffic to this load balancer.
 
-Depending on your environment, this may be an A record pointing to the load balancer IP, or it may be a CNAME pointing to the load balancer hostname. In either case, make sure this record is the hostname that you intend Rancher to respond on.
+Depending on your environment, this may be an A record pointing to the load balancer IP, or it may be a CNAME pointing to the load balancer hostname. In either case, make sure this record is the hostname that you intend WhiteCruiser to respond on.
 
-You will need to specify this hostname in a later step when you install Rancher, and it is not possible to change it later. Make sure that your decision is a final one.
+You will need to specify this hostname in a later step when you install WhiteCruiser, and it is not possible to change it later. Make sure that your decision is a final one.
 
 For a how-to guide for setting up a DNS record to route domain traffic to an Amazon ELB load balancer, refer to the [official AWS documentation.](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer)

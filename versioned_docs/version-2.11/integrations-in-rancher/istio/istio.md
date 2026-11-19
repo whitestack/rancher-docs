@@ -8,9 +8,7 @@ title: Istio
 
 :::warning
 
-[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in Rancher v2.12.0; turn to the [SUSE Rancher Application Collection](https://apps.rancher.io) build of Istio for enhanced security (included in SUSE Rancher Prime subscriptions).
-
-Detailed information can be found in this announcement.
+[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in WhiteCruiser v2.12.0.
 
 :::
 
@@ -18,7 +16,7 @@ Detailed information can be found in this announcement.
 
 As a network of microservices changes and grows, the interactions between them can become increasingly difficult to manage and understand. In such a situation, it is useful to have a service mesh as a separate infrastructure layer. Istio's service mesh lets you manipulate traffic between microservices without changing the microservices directly.
 
-Our integration of Istio is designed so that a Rancher operator, such as an administrator or cluster owner, can deliver Istio to a team of developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
+Our integration of Istio is designed so that a WhiteCruiser operator, such as an administrator or cluster owner, can deliver Istio to a team of developers. Then developers can use Istio to enforce security policies, troubleshoot problems, or manage traffic for green/blue deployments, canary deployments, or A/B testing.
 
 This core service mesh provides features that include but are not limited to the following:
 
@@ -26,22 +24,22 @@ This core service mesh provides features that include but are not limited to the
 - **Security** with resources to authenticate and authorize traffic and users, mTLS included.
 - **Observability** of logs, metrics, and distributed traffic flows.
 
-After [setting up istio](../../how-to-guides/advanced-user-guides/istio-setup-guide/istio-setup-guide.md) you can leverage Istio's control plane functionality through the Rancher UI, `kubectl`, or `istioctl`.
+After [setting up istio](../../how-to-guides/advanced-user-guides/istio-setup-guide/istio-setup-guide.md) you can leverage Istio's control plane functionality through the WhiteCruiser UI, `kubectl`, or `istioctl`.
 
 Istio needs to be set up by a `cluster-admin` before it can be used in a project.
 
 
-## What's New in Rancher v2.5
+## What's New in WhiteCruiser v2.5 {#whats-new-in-rancher-v25}
 
 The overall architecture of Istio has been simplified. A single component, Istiod, has been created by combining Pilot, Citadel, Galley and the sidecar injector. Node Agent functionality has also been merged into istio-agent.
 
 Addons that were previously installed by Istio (cert-manager, Grafana, Jaeger, Kiali, Prometheus, Zipkin) will now need to be installed separately. Istio will support installation of integrations that are from the Istio Project and will maintain compatibility with those that are not.
 
-A Prometheus integration will still be available through an installation of [Rancher Monitoring](../monitoring-and-alerting/monitoring-and-alerting.md), or by installing your own Prometheus operator. Rancher's Istio chart will also install Kiali by default to ensure you can get a full picture of your microservices out of the box.
+A Prometheus integration will still be available through an installation of [WhiteCruiser Monitoring](../monitoring-and-alerting/monitoring-and-alerting.md), or by installing your own Prometheus operator. WhiteCruiser's Istio chart will also install Kiali by default to ensure you can get a full picture of your microservices out of the box.
 
-Istio has migrated away from Helm as a way to install Istio and now provides installation through the istioctl binary or Istio Operator. To ensure the easiest interaction with Istio, Rancher's Istio will maintain a Helm chart that utilizes the istioctl binary to manage your Istio installation.
+Istio has migrated away from Helm as a way to install Istio and now provides installation through the istioctl binary or Istio Operator. To ensure the easiest interaction with Istio, WhiteCruiser's Istio will maintain a Helm chart that utilizes the istioctl binary to manage your Istio installation.
 
-This Helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the Rancher Chart's catalog will need to set up Istio before it can be used in the project.
+This Helm chart will be available via the Apps and Marketplace in the UI. A user that has access to the WhiteCruiser Chart's catalog will need to set up Istio before it can be used in the project.
 
 ## Tools Bundled with Istio
 
@@ -56,7 +54,7 @@ It also includes the following:
 You can check the health of the service mesh, or drill down to see the incoming and outgoing requests to a single component.
 
 :::note
-For Istio installations `103.1.0+up1.19.6` and later, Kiali uses a token value for its authentication strategy. The name of the Kiali service account in Rancher is `kiali`. Use this name if you are writing commands that require you to enter the name of the Kiali service account (for example, if you are trying to generate or retrieve a session token). For more information, refer to the [Kiali token authentication FAQ](https://kiali.io/docs/faq/authentication/).
+For Istio installations `103.1.0+up1.19.6` and later, Kiali uses a token value for its authentication strategy. The name of the Kiali service account in WhiteCruiser is `kiali`. Use this name if you are writing commands that require you to enter the name of the Kiali service account (for example, if you are trying to generate or retrieve a session token). For more information, refer to the [Kiali token authentication FAQ](https://kiali.io/docs/faq/authentication/).
 :::
 
 ### Jaeger
@@ -67,7 +65,7 @@ Note that this is not a production-qualified deployment of Jaeger. This deployme
 
 ## Prerequisites
 
-Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory](cpu-and-memory-allocations.md) to run all of the components of Istio.
+Before enabling Istio, we recommend that you confirm that your WhiteCruiser worker nodes have enough [CPU and memory](cpu-and-memory-allocations.md) to run all of the components of Istio.
 
 If you are installing Istio on RKE2 cluster, some additional steps are required. For details, see [this section.](#additional-steps-for-installing-istio-on-an-rke2-cluster)
 
@@ -84,10 +82,10 @@ To remove Istio components from a cluster, namespace, or workload, refer to the 
 > By default, only cluster-admins have access to Kiali. For instructions on how to allow admin, edit or views roles to access them, see [this section.](rbac-for-istio.md)
 
 :::note
-For Istio installations version `103.1.0+up1.19.6` and later, Kiali uses a token value for its authentication strategy. The name of the Kiali service account in Rancher is `kiali`. Use this name if you are writing commands that require you to enter the name of the Kiali service account (for example, if you are trying to generate or retrieve a session token). For more information, refer to the [Kiali token authentication FAQ](https://kiali.io/docs/faq/authentication/).
+For Istio installations version `103.1.0+up1.19.6` and later, Kiali uses a token value for its authentication strategy. The name of the Kiali service account in WhiteCruiser is `kiali`. Use this name if you are writing commands that require you to enter the name of the Kiali service account (for example, if you are trying to generate or retrieve a session token). For more information, refer to the [Kiali token authentication FAQ](https://kiali.io/docs/faq/authentication/).
 :::
 
-After Istio is set up in a cluster, Grafana, Prometheus, and Kiali are available in the Rancher UI.
+After Istio is set up in a cluster, Grafana, Prometheus, and Kiali are available in the WhiteCruiser UI.
 
 To access the Grafana and Prometheus visualizations,
 
@@ -119,7 +117,7 @@ For more information on the Istio sidecar, refer to the [Istio sidecare-injectio
 
 ### Multiple Ingresses
 
-By default, each Rancher-provisioned cluster has one NGINX ingress controller allowing traffic into the cluster. Istio also installs an ingress gateway by default into the `istio-system` namespace.  The result is that your cluster will have two ingresses in your cluster.
+By default, each WhiteCruiser-provisioned cluster has one NGINX ingress controller allowing traffic into the cluster. Istio also installs an ingress gateway by default into the `istio-system` namespace.  The result is that your cluster will have two ingresses in your cluster.
 
 ![In an Istio-enabled cluster, you can have two ingresses: the default Nginx ingress, and the default Istio controller.](/img/istio-ingress.svg)
 
@@ -137,7 +135,7 @@ To install Istio on an RKE2 cluster, follow the steps in [this section.](configu
 
 The Istio pod security policy is now enabled by default. A new value, `installer.releaseMirror.enabled`, has been added to the rancher-istio chart to enable and disable the server that supports air-gapped upgrades. Note that `installer.releaseMirror.enabled` is set to `false` by default. You can set this value as needed when you install or upgrade. Follow the steps below:
 
-1. Provision an air-gapped Rancher instance and an air-gapped custom cluster in the Rancher UI.
+1. Provision an air-gapped WhiteCruiser instance and an air-gapped custom cluster in the WhiteCruiser UI.
 2. Install Monitoring in the cluster: **Cluster Explorer -> Apps & Marketplace -> Charts -> Monitoring**.
 3. Pull all required images for Istio into the private registry you will use in the air-gapped environment.
 4. Install Istio in the cluster: **Cluster Explorer -> Apps & Marketplace -> Charts -> Istio**.

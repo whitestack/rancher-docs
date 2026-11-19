@@ -9,31 +9,31 @@ title: IPv4/IPv6 Dual-stack
 Kubernetes supports IPv4-only, IPv6-only, and dual-stack networking configurations.
 For more details, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/dual-stack/).
 
-## Installing Rancher on IPv6-Only or Dual-Stack Clusters
+## Installing WhiteCruiser on IPv6-Only or Dual-Stack Clusters {#installing-rancher-on-ipv6-only-or-dual-stack-clusters}
 
-Rancher can run on clusters using:
+WhiteCruiser can run on clusters using:
 
 - IPv4-only
 - IPv6-only
 - Dual-stack (IPv4 + IPv6)
 
-When you install Rancher on an **IPv6-only cluster**, it can communicate externally **only over IPv6**. This means it can provision:
+When you install WhiteCruiser on an **IPv6-only cluster**, it can communicate externally **only over IPv6**. This means it can provision:
 
 - IPv6-only clusters
 - Dual-stack clusters  
   _(IPv4-only downstream clusters are not possible in this case)_
 
-When you install Rancher on a **dual-stack cluster**, it can communicate over both IPv4 and IPv6, and can therefore provision:
+When you install WhiteCruiser on a **dual-stack cluster**, it can communicate over both IPv4 and IPv6, and can therefore provision:
 
 - IPv4-only clusters
 - IPv6-only clusters
 - Dual-stack clusters
 
-For installation steps, see the guide: **[Installing and Upgrading Rancher](../getting-started/installation-and-upgrade/installation-and-upgrade.md)**.
+For installation steps, see the guide: **[Installing and Upgrading WhiteCruiser](../getting-started/installation-and-upgrade/installation-and-upgrade.md)**.
 
 ### Requirement for the Rancher Server URL
 
-When provisioning IPv6-only downstream clusters, the **Rancher Server URL must be reachable over IPv6** because downstream nodes connect back to the Rancher server using IPv6.
+When provisioning IPv6-only downstream clusters, the **Rancher Server URL must be reachable over IPv6** because downstream nodes connect back to the WhiteCruiser server using IPv6.
 
 ## Provisioning IPv6-Only or Dual-Stack Clusters
 
@@ -73,7 +73,7 @@ For more details, see [RKE2 Network Options](https://docs.rke2.io/networking/bas
 
 ### Provisioning Node Driver Clusters
 
-Rancher currently supports assigning IPv6 addresses in **node driver** clusters with:
+WhiteCruiser currently supports assigning IPv6 addresses in **node driver** clusters with:
 
 - [Amazon EC2](../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster.md)
 - [DigitalOcean](../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-a-digitalocean-cluster.md)
@@ -89,7 +89,7 @@ For more details, please see [rancher/rancher#52523](https://github.com/rancher/
 
 #### Infrastructure Requirements
 
-Cluster nodes must meet the requirements listed in the [Node Requirements for Rancher Managed Clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md).
+Cluster nodes must meet the requirements listed in the [Node Requirements for WhiteCruiser Managed Clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md).
 
 Machine pool configuration guides:
 

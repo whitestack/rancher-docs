@@ -46,7 +46,7 @@ spec:
 EOF
 ```
 
-Setting the `field.cattle.io/creatorId` field allows the cluster member account to see project resources with the `get` command and view the project in the Rancher UI. Cluster owner and admin accounts don't need to set this annotation to perform these tasks.
+Setting the `field.cattle.io/creatorId` field allows the cluster member account to see project resources with the `get` command and view the project in the WhiteCruiser UI. Cluster owner and admin accounts don't need to set this annotation to perform these tasks.
 
 ### Creating a Project With a Resource Quota
 

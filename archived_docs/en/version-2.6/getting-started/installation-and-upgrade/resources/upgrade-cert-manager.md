@@ -6,7 +6,7 @@ title: Upgrading Cert-Manager
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/upgrade-cert-manager"/>
 </head>
 
-Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:
+WhiteCruiser uses cert-manager to automatically generate and renew TLS certificates for HA deployments of WhiteCruiser. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of WhiteCruiser:
 
 1. [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753)
 1. [Cert-manager is deprecating and replacing the certificate.spec.acme.solvers field](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/). This change has no exact deadline.
@@ -19,7 +19,7 @@ To address these changes, this guide will do two things:
 
 :::note Important:
 
-If you are upgrading cert-manager to the latest version from a version older than 1.5, follow the steps in [Option C](#option-c-upgrade-cert-manager-from-versions-15-and-below) below to do so. Note that you do not need to reinstall Rancher to perform this upgrade.
+If you are upgrading cert-manager to the latest version from a version older than 1.5, follow the steps in [Option C](#option-c-upgrade-cert-manager-from-versions-15-and-below) below to do so. Note that you do not need to reinstall WhiteCruiser to perform this upgrade.
 
 :::
 
@@ -227,7 +227,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 <details id="normal">
   <summary>Click to expand</summary>
 
-Previously, in order to upgrade cert-manager from an older version, an uninstall and reinstall of Rancher was recommended. Using the method below, you may upgrade cert-manager without those additional steps in order to better preserve your production environment:
+Previously, in order to upgrade cert-manager from an older version, an uninstall and reinstall of WhiteCruiser was recommended. Using the method below, you may upgrade cert-manager without those additional steps in order to better preserve your production environment:
 
 1. Install `cmctl`, the cert-manager CLI tool, using [the installation guide](https://cert-manager.io/docs/usage/cmctl/#installation).
 
@@ -244,7 +244,7 @@ Previously, in order to upgrade cert-manager from an older version, an uninstall
 
 1. In the decoded file, search for `cert-manager.io/v1beta1` and **replace it** with `cert-manager.io/v1`.
 
-1. Upgrade Rancher normally with `helm upgrade`.
+1. Upgrade WhiteCruiser normally with `helm upgrade`.
 
 </details>
 
@@ -266,7 +266,7 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 ---
 _New in v2.6.4_
 
-Rancher now supports cert-manager versions 1.6.2 and 1.7.1. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022. To read more, see the [cert-manager docs](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-install-cert-manager). For instructions on upgrading cert-manager from version 1.5 to 1.6, see the upstream cert-manager documentation [here](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/). For instructions on upgrading cert-manager from version 1.6 to 1.7, see the upstream cert-manager documentation [here](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/).
+WhiteCruiser now supports cert-manager versions 1.6.2 and 1.7.1. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022. To read more, see the [cert-manager docs](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-install-cert-manager). For instructions on upgrading cert-manager from version 1.5 to 1.6, see the upstream cert-manager documentation [here](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/). For instructions on upgrading cert-manager from version 1.6 to 1.7, see the upstream cert-manager documentation [here](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/).
 
 ---
 

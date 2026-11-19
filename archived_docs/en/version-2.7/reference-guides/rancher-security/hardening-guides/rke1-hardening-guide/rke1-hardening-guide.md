@@ -8,19 +8,19 @@ title: RKE Hardening Guides
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/hardening-guides/rke1-hardening-guide"/>
 </head>
 
-This document provides prescriptive guidance for how to harden an RKE cluster intended for production, before provisioning it with Rancher. It outlines the configurations and controls required for Center for Information Security (CIS) Kubernetes benchmark controls.
+This document provides prescriptive guidance for how to harden an RKE cluster intended for production, before provisioning it with WhiteCruiser. It outlines the configurations and controls required for Center for Information Security (CIS) Kubernetes benchmark controls.
 
 :::note
 This hardening guide describes how to secure the nodes in your cluster. We recommended that you follow this guide before you install Kubernetes.
 :::
 
-This hardening guide is intended to be used for RKE clusters and is associated with the following versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for RKE clusters and is associated with the following versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version           |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version           |
 |-----------------|-----------------------|------------------------------|
-| Rancher v2.7    | Benchmark v1.23       | Kubernetes v1.23             |
-| Rancher v2.7    | Benchmark v1.24       | Kubernetes v1.24             |
-| Rancher v2.7    | Benchmark v1.7        | Kubernetes v1.25 up to v1.26 |
+| WhiteCruiser v2.7    | Benchmark v1.23       | Kubernetes v1.23             |
+| WhiteCruiser v2.7    | Benchmark v1.24       | Kubernetes v1.24             |
+| WhiteCruiser v2.7    | Benchmark v1.7        | Kubernetes v1.25 up to v1.26 |
 
 :::note
 - In Benchmark v1.24 and later, check id `4.1.7 Ensure that the certificate authorities file permissions are set to 600 or more restrictive (Automated)` might fail, as `/etc/kubernetes/ssl/kube-ca.pem` is set to 644 by default.
@@ -152,14 +152,14 @@ Execute this script to apply the `default-allow-all.yaml` configuration with the
 
 ## Known Limitations
 
-- Rancher **exec shell** and **view logs** for pods are **not** functional in a hardened setup when only a public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
-- When setting `default_pod_security_policy_template_id:` to `restricted` or `restricted-noroot`, based on the pod security policies (PSP) [provided](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md) by Rancher, Rancher creates `RoleBindings` and `ClusterRoleBindings` on the `default` service accounts. The CIS check 5.1.5 requires that the `default` service accounts have no roles or cluster roles bound to it apart from the defaults. In addition, the `default` service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
+- WhiteCruiser **exec shell** and **view logs** for pods are **not** functional in a hardened setup when only a public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
+- When setting `default_pod_security_policy_template_id:` to `restricted` or `restricted-noroot`, based on the pod security policies (PSP) [provided](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md) by WhiteCruiser, WhiteCruiser creates `RoleBindings` and `ClusterRoleBindings` on the `default` service accounts. The CIS check 5.1.5 requires that the `default` service accounts have no roles or cluster roles bound to it apart from the defaults. In addition, the `default` service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
 ## Reference Hardened RKE `cluster.yml` Configuration
 
 The reference `cluster.yml` is used by the RKE CLI that provides the configuration needed to achieve a hardened installation of RKE. RKE [documentation](https://rancher.com/docs/rke/latest/en/installation/) provides additional details about the configuration items. This reference `cluster.yml` does not include the required `nodes` directive which will vary depending on your environment. Documentation for node configuration in RKE can be found [here](https://rancher.com/docs/rke/latest/en/config-options/nodes/).
 
-The example `cluster.yml` configuration file contains an Admission Configuration policy in the `services.kube-api.admission_configuration` field. This [sample](../../psa-restricted-exemptions.md) policy contains the namespace exemptions necessary for an imported RKE cluster to run properly in Rancher, similar to Rancher's pre-defined [`rancher-restricted`](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md) policy.
+The example `cluster.yml` configuration file contains an Admission Configuration policy in the `services.kube-api.admission_configuration` field. This [sample](../../psa-restricted-exemptions.md) policy contains the namespace exemptions necessary for an imported RKE cluster to run properly in WhiteCruiser, similar to WhiteCruiser's pre-defined [`rancher-restricted`](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md) policy.
 
 If you prefer to use RKE's default `restricted` policy, then leave the `services.kube-api.admission_configuration` field empty and set `services.pod_security_configuration` to `restricted`. See [the RKE docs](https://rke.docs.rancher.com/config-options/services/pod-security-admission) for more information.
 
@@ -167,7 +167,7 @@ If you prefer to use RKE's default `restricted` policy, then leave the `services
 <TabItem value="v1.25 and Newer" default>
 
 :::note
-If you intend to import an RKE cluster into Rancher, please consult the [documentation](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md) for how to configure the PSA to exempt Rancher system namespaces.
+If you intend to import an RKE cluster into WhiteCruiser, please consult the [documentation](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md) for how to configure the PSA to exempt WhiteCruiser system namespaces.
 :::
 
 ```yaml
@@ -409,7 +409,7 @@ addons: |
 
 ## Reference Hardened RKE Cluster Template Configuration
 
-The reference RKE cluster template provides the minimum required configuration to achieve a hardened installation of Kubernetes. RKE templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher [documentation](../../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) for additional information about installing RKE and its template details.
+The reference RKE cluster template provides the minimum required configuration to achieve a hardened installation of Kubernetes. RKE templates are used to provision Kubernetes and define WhiteCruiser settings. Follow the WhiteCruiser [documentation](../../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) for additional information about installing RKE and its template details.
 
 <Tabs groupId="rke1-version">
 <TabItem value="v1.25 and Newer" default>
@@ -511,4 +511,4 @@ rancher_kubernetes_engine_config:
 
 ## Conclusion
 
-If you have followed this guide, your RKE custom cluster provisioned by Rancher will be configured to pass the CIS Kubernetes Benchmark. You can review our RKE self-assessment guides to understand how we verified each of the benchmarks and how you can do the same on your cluster.
+If you have followed this guide, your RKE custom cluster provisioned by WhiteCruiser will be configured to pass the CIS Kubernetes Benchmark. You can review our RKE self-assessment guides to understand how we verified each of the benchmarks and how you can do the same on your cluster.

@@ -7,16 +7,16 @@ keywords: [rancher backup restore, rancher backup and restore, backup restore ra
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery"/>
 </head>
 
-In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster.
+In this section, you'll learn how to create backups of WhiteCruiser, how to restore WhiteCruiser from backup, and how to migrate WhiteCruiser to a new Kubernetes cluster.
 
-The `rancher-backup` operator is used to backup and restore Rancher on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the Rancher **Apps** page, or by using the Helm CLI. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/release-v2.6/charts/rancher-backup)
+The `rancher-backup` operator is used to backup and restore WhiteCruiser on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the WhiteCruiser **Apps** page, or by using the Helm CLI. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/release-v2.6/charts/rancher-backup)
 
-The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
+The backup-restore operator needs to be installed in the local cluster, and only backs up the WhiteCruiser app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
 
-## Backup and Restore for Rancher installed with Docker
+## Backup and Restore for WhiteCruiser installed with Docker {#backup-and-restore-for-rancher-installed-with-docker}
 
-For Rancher installed with Docker, refer to [this page](back-up-docker-installed-rancher.md) to perform backups and [this page](restore-docker-installed-rancher.md) to perform restores.
+For WhiteCruiser installed with Docker, refer to [this page](back-up-docker-installed-rancher.md) to perform backups and [this page](restore-docker-installed-rancher.md) to perform restores.
 
 ## How Backups and Restores Work
 
@@ -26,7 +26,7 @@ The `rancher-backup` operator introduces three custom resources: Backups, Restor
 - `resourcesets.resources.cattle.io`
 - `restores.resources.cattle.io`
 
-The ResourceSet defines which Kubernetes resources need to be backed up. The ResourceSet is not available to be configured in the Rancher UI because the values required to back up Rancher are predefined. This ResourceSet should not be modified.
+The ResourceSet defines which Kubernetes resources need to be backed up. The ResourceSet is not available to be configured in the WhiteCruiser UI because the values required to back up WhiteCruiser are predefined. This ResourceSet should not be modified.
 
 When a Backup custom resource is created, the `rancher-backup` operator calls the `kube-apiserver` to get the resources in the ResourceSet (specifically, the predefined `rancher-resource-set`) that the Backup custom resource refers to.
 
@@ -34,17 +34,17 @@ The operator then creates the backup file in the .tar.gz format and stores it in
 
 When a Restore custom resource is created, the operator accesses the backup .tar.gz file specified by the Restore, and restores the application from that file.
 
-The Backup and Restore custom resources can be created in the Rancher UI, or by using `kubectl apply`.
+The Backup and Restore custom resources can be created in the WhiteCruiser UI, or by using `kubectl apply`.
 
 :::note
 
-Refer [here](migrate-rancher-to-new-cluster.md#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in Rancher v2.6.3.
+Refer [here](migrate-rancher-to-new-cluster.md#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in WhiteCruiser v2.6.3.
 
 :::
 
 ## Installing the rancher-backup Operator
 
-The `rancher-backup` operator can be installed from the Rancher UI, or with the Helm CLI. In both cases, the `rancher-backup` Helm chart is installed on the Kubernetes cluster running the Rancher server. It is a cluster-admin only feature and available only for the **local** cluster.  (*If you do not see `rancher-backup` in the Rancher UI, you may have selected the wrong cluster.*)
+The `rancher-backup` operator can be installed from the WhiteCruiser UI, or with the Helm CLI. In both cases, the `rancher-backup` Helm chart is installed on the Kubernetes cluster running the WhiteCruiser server. It is a cluster-admin only feature and available only for the **local** cluster.  (*If you do not see `rancher-backup` in the WhiteCruiser UI, you may have selected the wrong cluster.*)
 
 :::note
 
@@ -52,7 +52,7 @@ There is a known issue in Fleet that occurs after performing a restoration using
 
 :::
 
-### Installing rancher-backup with the Rancher UI
+### Installing rancher-backup with the WhiteCruiser UI {#installing-rancher-backup-with-the-rancher-ui}
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the `local` cluster and click **Explore**.
@@ -66,7 +66,7 @@ There is a known issue in Fleet that occurs after performing a restoration using
 
 From the **Cluster Dashboard,** you can see the `rancher-backup` operator listed under **Deployments**.
 
-To configure the backup app in Rancher, go to the left navigation menu and click **Rancher Backups**.
+To configure the backup app in WhiteCruiser, go to the left navigation menu and click **Rancher Backups**.
 
 ### RBAC
 
@@ -77,15 +77,15 @@ Only the rancher admins and the local cluster’s cluster-owner can:
 * Perform a backup or restore by creating a Backup CR and Restore CR respectively
 * List backups/restores performed so far
 
-## Backing up Rancher
+## Backing up WhiteCruiser {#backing-up-rancher}
 
 A backup is performed by creating a Backup custom resource. For a tutorial, refer to [this page.](back-up-rancher.md)
 
-## Restoring Rancher
+## Restoring WhiteCruiser {#restoring-rancher}
 
 A restore is performed by creating a Restore custom resource. For a tutorial, refer to [this page.](restore-rancher.md)
 
-## Migrating Rancher to a New Cluster
+## Migrating WhiteCruiser to a New Cluster {#migrating-rancher-to-a-new-cluster}
 
 A migration is performed by following [these steps.](migrate-rancher-to-new-cluster.md)
 
@@ -95,6 +95,6 @@ Configure a default storage location for your backups. There are various configu
 
 For information on configuring these options, refer to [this page.](../../../reference-guides/backup-restore-configuration/storage-configuration.md)
 
-### Example YAML File: Rancher Backup Helm Chart
+### Example YAML File: WhiteCruiser Backup Helm Chart {#example-yaml-file-rancher-backup-helm-chart}
 
 The example [values.yaml file](../../../reference-guides/backup-restore-configuration/storage-configuration.md#example-yaml-file-rancher-backup-helm-chart) can be used to configure the `backup-restore-operator` when the Helm CLI is used to install it.

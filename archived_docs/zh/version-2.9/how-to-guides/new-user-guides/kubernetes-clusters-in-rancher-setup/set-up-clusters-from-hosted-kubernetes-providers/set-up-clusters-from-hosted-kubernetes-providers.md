@@ -6,13 +6,13 @@ title: 通过托管 Kubernetes 提供商设置集群
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers"/>
 </head>
 
-在这种情况下，Rancher 不会配置 Kubernetes，因为它是由 Google Kubernetes Engine (GKE)、Amazon Elastic Container Service for Kubernetes 或 Azure Kubernetes Service 等提供商安装的。
+在这种情况下，WhiteCruiser 不会配置 Kubernetes，因为它是由 Google Kubernetes Engine (GKE)、Amazon Elastic Container Service for Kubernetes 或 Azure Kubernetes Service 等提供商安装的。
 
-如果你使用 Kubernetes 提供商，例如 Google GKE，Rancher 将与对应的云 API 集成，允许你从 Rancher UI 为托管集群创建和管理 RBAC。
+如果你使用 Kubernetes 提供商，例如 Google GKE，WhiteCruiser 将与对应的云 API 集成，允许你从 WhiteCruiser UI 为托管集群创建和管理 RBAC。
 
-在这个用例中，Rancher 使用提供商的 API 向托管提供商发送请求。然后，提供商会为你配置和托管集群。集群创建成功后，你可以像管理本地集群或云上集群一样，通过 Rancher UI 对集群进行管理。
+在这个用例中，WhiteCruiser 使用提供商的 API 向托管提供商发送请求。然后，提供商会为你配置和托管集群。集群创建成功后，你可以像管理本地集群或云上集群一样，通过 WhiteCruiser UI 对集群进行管理。
 
-Rancher 支持以下 Kubernetes 提供商：
+WhiteCruiser 支持以下 Kubernetes 提供商：
 
 - [Google GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/)
 - [Amazon EKS (Amazon Elastic Container Service for Kubernetes)](https://aws.amazon.com/eks/)
@@ -20,7 +20,7 @@ Rancher 支持以下 Kubernetes 提供商：
 
 ## 托管 Kubernetes 提供商的认证
 
-使用 Rancher 创建由提供商托管的集群时，你需要输入认证信息。Rancher 会使用认证信息来访问云厂商的 API。有关如何获取此信息的详情，请参阅：
+使用 WhiteCruiser 创建由提供商托管的集群时，你需要输入认证信息。WhiteCruiser 会使用认证信息来访问云厂商的 API。有关如何获取此信息的详情，请参阅：
 
 - [创建 GKE 集群](gke.md)
 - [创建 EKS 集群](eks.md)

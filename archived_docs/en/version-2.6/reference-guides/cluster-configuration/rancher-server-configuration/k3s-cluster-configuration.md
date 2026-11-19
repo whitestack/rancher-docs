@@ -6,27 +6,27 @@ title: K3s Cluster Configuration Reference
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration"/>
 </head>
 
-This section covers the configuration options that are available in Rancher for a new or existing K3s Kubernetes cluster.
+This section covers the configuration options that are available in WhiteCruiser for a new or existing K3s Kubernetes cluster.
 
 ## Overview
 
 You can configure the Kubernetes options one of two ways:
 
-- [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file-reference): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a K3s config file. Using a config file allows you to set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
+- [WhiteCruiser UI](#configuration-options-in-the-rancher-ui): Use the WhiteCruiser UI to select options that are commonly customized when setting up a Kubernetes cluster.
+- [Cluster Config File](#cluster-config-file-reference): Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create a K3s config file. Using a config file allows you to set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
 
-## Configuration Options in the Rancher UI
+## Configuration Options in the WhiteCruiser UI {#configuration-options-in-the-rancher-ui}
 
 :::tip
 
-Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the K3s cluster configuration file in YAML. For the complete reference of configurable options for K3s clusters in YAML, see the [K3s documentation.](https://rancher.com/docs/k3s/latest/en/installation/install-options/)
+Some advanced configuration options are not exposed in the WhiteCruiser UI forms, but they can be enabled by editing the K3s cluster configuration file in YAML. For the complete reference of configurable options for K3s clusters in YAML, see the [K3s documentation.](https://rancher.com/docs/k3s/latest/en/installation/install-options/)
 
 :::
 
 ### Basics
 #### Kubernetes Version
 
-The version of Kubernetes installed on your cluster nodes. Rancher packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
+The version of Kubernetes installed on your cluster nodes. WhiteCruiser packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
 
 For more detail, see [Upgrading Kubernetes](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md).
 
@@ -108,7 +108,7 @@ Add hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server 
 
 #### Authorized Cluster Endpoint
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through WhiteCruiser.
 
 For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint)
 
@@ -116,7 +116,7 @@ We recommend using a load balancer with the authorized cluster endpoint. For det
 
 ### Registries
 
-Select the image repository to pull Rancher images from. For more details and configuration options, see the [K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/).
+Select the image repository to pull WhiteCruiser images from. For more details and configuration options, see the [K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/).
 
 ### Upgrade Strategy
 
@@ -142,8 +142,8 @@ Option to set kubelet options for different nodes. For available options, refer 
 
 ## Cluster Config File
 
-Instead of using the Rancher UI forms to choose Kubernetes options for the cluster, advanced users can create an K3s config file. Using a config file allows you to set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
+Instead of using the WhiteCruiser UI forms to choose Kubernetes options for the cluster, advanced users can create an K3s config file. Using a config file allows you to set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
 
-To edit an K3s config file directly from the Rancher UI, click **Edit as YAML**.
+To edit an K3s config file directly from the WhiteCruiser UI, click **Edit as YAML**.
 
 

@@ -6,9 +6,9 @@ title: Cluster Drivers
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers"/>
 </head>
 
-Cluster drivers are used to create clusters in a [hosted Kubernetes provider](../../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md), such as Google GKE. The availability of which cluster driver to display when creating clusters is defined by the cluster driver's status. Only `active` cluster drivers will be displayed as an option for creating clusters. By default, Rancher is packaged with several existing cloud provider cluster drivers, but you can also add custom cluster drivers to Rancher.
+Cluster drivers are used to create clusters in a [hosted Kubernetes provider](../../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md), such as Google GKE. The availability of which cluster driver to display when creating clusters is defined by the cluster driver's status. Only `active` cluster drivers will be displayed as an option for creating clusters. By default, WhiteCruiser is packaged with several existing cloud provider cluster drivers, but you can also add custom cluster drivers to WhiteCruiser.
 
-If there are specific cluster drivers that you do not want to show your users, you may deactivate those cluster drivers within Rancher and they will not appear as an option for cluster creation.
+If there are specific cluster drivers that you do not want to show your users, you may deactivate those cluster drivers within WhiteCruiser and they will not appear as an option for cluster creation.
 
 ### Managing Cluster Drivers
 
@@ -23,7 +23,7 @@ To create, edit, or delete cluster drivers, you need _one_ of the following perm
 
 ## Activating/Deactivating Cluster Drivers
 
-By default, Rancher only activates drivers for the most popular cloud providers, Google GKE, Amazon EKS and Azure AKS. If you want to show or hide any node driver, you can change its status.
+By default, WhiteCruiser only activates drivers for the most popular cloud providers, Google GKE, Amazon EKS and Azure AKS. If you want to show or hide any node driver, you can change its status.
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 
@@ -33,7 +33,7 @@ By default, Rancher only activates drivers for the most popular cloud providers,
 
 ## Adding Custom Cluster Drivers
 
-If you want to use a cluster driver that Rancher doesn't support out-of-the-box, you can add the provider's driver in order to start using them to create _hosted_ kubernetes clusters.
+If you want to use a cluster driver that WhiteCruiser doesn't support out-of-the-box, you can add the provider's driver in order to start using them to create _hosted_ kubernetes clusters.
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. In the left navigation menu, click **Drivers**.
@@ -43,4 +43,4 @@ If you want to use a cluster driver that Rancher doesn't support out-of-the-box,
 
 ### Developing your own Cluster Driver
 
-In order to develop cluster driver to add to Rancher, please refer to our [example](https://github.com/rancher-plugins/kontainer-engine-driver-example).
+In order to develop cluster driver to add to WhiteCruiser, please refer to our [example](https://github.com/rancher-plugins/kontainer-engine-driver-example).

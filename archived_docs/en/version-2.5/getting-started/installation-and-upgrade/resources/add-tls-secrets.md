@@ -6,7 +6,7 @@ title: Adding TLS Secrets
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/add-tls-secrets"/>
 </head>
 
-Kubernetes will create all the objects and services for Rancher, but it will not become available until we populate the `tls-rancher-ingress` secret in the `cattle-system` namespace with the certificate and key.
+Kubernetes will create all the objects and services for WhiteCruiser, but it will not become available until we populate the `tls-rancher-ingress` secret in the `cattle-system` namespace with the certificate and key.
 
 Combine the server certificate followed by any intermediate certificate(s) needed into a file named `tls.crt`. Copy your certificate key into a file named `tls.key`.
 
@@ -25,7 +25,7 @@ kubectl -n cattle-system create secret tls tls-rancher-ingress \
 
 ## Using a Private CA Signed Certificate
 
-If you are using a private CA, Rancher requires a copy of the private CA's root certificate or certificate chain, which the Rancher Agent uses to validate the connection to the server.
+If you are using a private CA, WhiteCruiser requires a copy of the private CA's root certificate or certificate chain, which the WhiteCruiser Agent uses to validate the connection to the server.
 
 Create a file named `cacerts.pem` that only contains the root CA certificate or certificate chain from your private CA, and use `kubectl` to create the `tls-ca` secret in the `cattle-system` namespace.
 
@@ -34,8 +34,8 @@ kubectl -n cattle-system create secret generic tls-ca \
   --from-file=cacerts.pem
 ```
 
-> **Note:** The configured `tls-ca` secret is retrieved when Rancher starts. On a running Rancher installation the updated CA will take effect after new Rancher pods are started.
+> **Note:** The configured `tls-ca` secret is retrieved when WhiteCruiser starts. On a running WhiteCruiser installation the updated CA will take effect after new WhiteCruiser pods are started.
 
 ## Updating a Private CA Certificate
 
-Follow the steps on [this page](update-rancher-certificate.md) to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) or to switch from the default self-signed certificate to a custom certificate.
+Follow the steps on [this page](update-rancher-certificate.md) to update the SSL certificate of the ingress in a WhiteCruiser [high availability Kubernetes installation](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) or to switch from the default self-signed certificate to a custom certificate.

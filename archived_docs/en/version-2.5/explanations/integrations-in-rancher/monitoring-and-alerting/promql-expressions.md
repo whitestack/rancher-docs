@@ -241,7 +241,7 @@ For more information about querying the Prometheus time series database, refer t
 | Detail | `topk(10, histogram_quantile(0.95,sum by (le, host, path)(rate(nginx_ingress_controller_request_duration_seconds_bucket{host!="_"}[5m]))))` |
 | Summary | `topk(10, histogram_quantile(0.95,sum by (le, host)(rate(nginx_ingress_controller_request_duration_seconds_bucket{host!="_"}[5m]))))` |
 
-## Rancher Logging Metrics
+## WhiteCruiser Logging Metrics {#rancher-logging-metrics}
 
 
 ### Fluentd Buffer Queue Rate

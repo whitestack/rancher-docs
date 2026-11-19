@@ -2,20 +2,20 @@
 title: K3s Hardening Guide
 ---
 
-This document provides prescriptive guidance for how to harden a K3s cluster intended for production, before provisioning it with Rancher. It outlines the configurations and controls required for Center for Information Security (CIS) Kubernetes benchmark controls.
+This document provides prescriptive guidance for how to harden a K3s cluster intended for production, before provisioning it with WhiteCruiser. It outlines the configurations and controls required for Center for Information Security (CIS) Kubernetes benchmark controls.
 
 :::note
 This hardening guide describes how to secure the nodes in your cluster. We recommended that you follow this guide before you install Kubernetes.
 :::
 
-This hardening guide is intended to be used for K3s clusters and is associated with the following versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for K3s clusters and is associated with the following versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version           |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version           |
 |-----------------|-----------------------|------------------------------|
-| Rancher v2.7    | Benchmark v1.23       | Kubernetes v1.23 up to v1.25 |
+| WhiteCruiser v2.7    | Benchmark v1.23       | Kubernetes v1.23 up to v1.25 |
 
 :::note
-At the time of writing, the upstream CIS Kubernetes v1.25 benchmark is not yet available in Rancher. At this time Rancher is using the CIS v1.23 benchmark when scanning Kubernetes v1.25 clusters.
+At the time of writing, the upstream CIS Kubernetes v1.25 benchmark is not yet available in WhiteCruiser. At this time WhiteCruiser is using the CIS v1.23 benchmark when scanning Kubernetes v1.25 clusters.
 :::
 
 For more details on how to evaluate a hardened K3s cluster against the official CIS benchmark, refer to the K3s self-assessment guides for specific Kubernetes and CIS benchmark versions.
@@ -35,7 +35,7 @@ The first section (1.1) of the CIS Benchmark primarily focuses on  pod manifest 
 
 This is a kubelet flag that will cause the kubelet to exit if the required kernel parameters are unset or are set to values that are different from the kubelet's defaults.
 
-The `protect-kernel-defaults` flag can be set in the cluster configuration in Rancher.
+The `protect-kernel-defaults` flag can be set in the cluster configuration in WhiteCruiser.
 
 ```yaml
 spec:
@@ -73,21 +73,21 @@ By default, K3s does not include any pod security or network policies. However, 
 
 K3s v1.25 and newer support [Pod Security admission (PSA)](https://kubernetes.io/docs/concepts/security/pod-security-admission/) for controlling pod security.
 
-You can specify the PSA configuration by setting the `defaultPodSecurityAdmissionConfigurationTemplateName` field in the cluster configuration in Rancher:
+You can specify the PSA configuration by setting the `defaultPodSecurityAdmissionConfigurationTemplateName` field in the cluster configuration in WhiteCruiser:
 
 ```yaml
 spec:
   defaultPodSecurityAdmissionConfigurationTemplateName: rancher-restricted
 ```
 
-The `rancher-restricted` template is provided by Rancher to enforce the highly-restrictive Kubernetes upstream [`Restricted`](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) profile with best practices for pod hardening.
+The `rancher-restricted` template is provided by WhiteCruiser to enforce the highly-restrictive Kubernetes upstream [`Restricted`](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) profile with best practices for pod hardening.
 
 </TabItem>
 <TabItem value="v1.24 and Older">
 
 K3s v1.24 and older support [Pod Security Policy (PSP)](https://v1-24.docs.kubernetes.io/docs/concepts/security/pod-security-policy/) for controlling pod security.
 
-You can enable PSPs by passing the following flags in the cluster configuration in Rancher:
+You can enable PSPs by passing the following flags in the cluster configuration in WhiteCruiser:
 
 ```yaml
 spec:
@@ -590,7 +590,7 @@ Further configurations are also needed to pass CIS checks. These are not configu
 - Ensure that the `--audit-log-maxbackup` argument is set to 10 or as appropriate.
 - Ensure that the `--audit-log-maxsize` argument is set to 100 or as appropriate.
 
-Combined, to enable and configure audit logs, add the following lines to the K3s cluster configuration file in Rancher:
+Combined, to enable and configure audit logs, add the following lines to the K3s cluster configuration file in WhiteCruiser:
 
 ```yaml
 spec:
@@ -608,7 +608,7 @@ spec:
 
 CIS requirement 1.3.1 checks for garbage collection settings in the Controller Manager. Garbage collection is important to ensure sufficient resource availability and avoid degraded performance and availability. Based on your system resources and tests, choose an appropriate threshold value to activate garbage collection.
 
-This can be remediated by setting the following configuration in the K3s cluster file in Rancher. The value below is only an example. The appropriate threshold value is specific to each user's environment.
+This can be remediated by setting the following configuration in the K3s cluster file in WhiteCruiser. The value below is only an example. The appropriate threshold value is specific to each user's environment.
 
 ```yaml
 spec:
@@ -653,7 +653,7 @@ Run the script every time a new service account is added to your cluster.
 
 ## Reference Hardened K3s Template Configuration
 
-The following reference template configuration is used in Rancher to create a hardened K3s custom cluster based on each CIS control in this guide. This reference does not include other required **cluster configuration** directives, which vary based on your environment.
+The following reference template configuration is used in WhiteCruiser to create a hardened K3s custom cluster based on each CIS control in this guide. This reference does not include other required **cluster configuration** directives, which vary based on your environment.
 
 <Tabs groupId="k3s-version">
 <TabItem value="v1.25 and Newer" default>
@@ -725,4 +725,4 @@ spec:
 
 ## Conclusion
 
-If you have followed this guide, your K3s custom cluster provisioned by Rancher will be configured to pass the CIS Kubernetes Benchmark. You can review our K3s self-assessment guides to understand how we verified each of the benchmarks and how you can do the same on your cluster.
+If you have followed this guide, your K3s custom cluster provisioned by WhiteCruiser will be configured to pass the CIS Kubernetes Benchmark. You can review our K3s self-assessment guides to understand how we verified each of the benchmarks and how you can do the same on your cluster.

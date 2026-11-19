@@ -26,7 +26,7 @@ Alertmanager proxies alerts for Prometheus based on its receivers and a routing 
 
 Alerting drivers proxy alerts for Alertmanager to non-native receivers, such as Microsoft Teams and SMS.
 
-In the Rancher UI for configuring routes and receivers, you can configure routing trees with one root and then a depth of one more level, for a tree with a depth of two. But if you use a `continue` route when configuring Alertmanager directly, you can make the tree deeper.
+In the WhiteCruiser UI for configuring routes and receivers, you can configure routing trees with one root and then a depth of one more level, for a tree with a depth of two. But if you use a `continue` route when configuring Alertmanager directly, you can make the tree deeper.
 
 Each receiver is for one or more notification providers. So if you know that every alert for Slack should also go to PagerDuty, you can configure both in the same receiver.
 
@@ -53,14 +53,14 @@ The route needs to refer to a [receiver](./receivers.md) that has already been c
 
 ### Matching
 
-The **Match** field refers to a set of equality matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs to the Rancher UI, they correspond to the YAML in this format:
+The **Match** field refers to a set of equality matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs to the WhiteCruiser UI, they correspond to the YAML in this format:
 
 ```yaml
 match:
   [ <labelname>: <labelvalue>, ... ]
 ```
 
-The **Match Regex** field refers to a set of regex-matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs in the Rancher UI, they correspond to the YAML in this format:
+The **Match Regex** field refers to a set of regex-matchers used to identify which alerts to send to a given Route based on labels defined on that alert. When you add key-value pairs in the WhiteCruiser UI, they correspond to the YAML in this format:
 
 ```yaml
 match_re:

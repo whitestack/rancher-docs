@@ -6,15 +6,15 @@ title: Creating an Azure Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-azure-cluster"/>
 </head>
 
-In this section, you'll learn how to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Azure through Rancher.
+In this section, you'll learn how to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Azure through WhiteCruiser.
 
-First, you will set up your Azure cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in Azure.
+First, you will set up your Azure cloud credentials in WhiteCruiser. Then you will use your cloud credentials to create a node template, which WhiteCruiser will use to provision new nodes in Azure.
 
-Then you will create an Azure cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+Then you will create an Azure cluster in WhiteCruiser, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. WhiteCruiser will install Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
 :::caution
 
-When the Rancher RKE cluster is running in Azure and has an Azure load balancer in front, the outbound flow will fail. The workaround for this problem is as follows:
+When the WhiteCruiser RKE cluster is running in Azure and has an Azure load balancer in front, the outbound flow will fail. The workaround for this problem is as follows:
 
 - Terminate the SSL/TLS on the internal load balancer
 - Use the L7 load balancer
@@ -23,7 +23,7 @@ For more information, refer to the documentation on [Azure load balancer limitat
 
 :::
 
-For more information on configuring the Kubernetes cluster that Rancher will install on the Azure nodes, refer to the [RKE cluster configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)
+For more information on configuring the Kubernetes cluster that WhiteCruiser will install on the Azure nodes, refer to the [RKE cluster configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)
 
 For more information on configuring Azure node templates, refer to the [Azure node template configuration reference.](../../../../reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure.md)
 
@@ -32,7 +32,7 @@ For more information on configuring Azure node templates, refer to the [Azure no
 
 ## Preparation in Azure
 
-Before creating a node template in Rancher using a cloud infrastructure such as Azure, we must configure Rancher to allow the manipulation of resources in an Azure subscription.
+Before creating a node template in WhiteCruiser using a cloud infrastructure such as Azure, we must configure WhiteCruiser to allow the manipulation of resources in an Azure subscription.
 
 To do this, we will first create a new Azure **service principal (SP)** in Azure **Active Directory (AD)**, which, in Azure, is an application user who has permission to manage Azure resources.
 
@@ -69,7 +69,7 @@ The creation of this service principal returns three pieces of identification in
 
 ### 2. Create a node template with your cloud credentials
 
-Creating a [node template](use-new-nodes-in-an-infra-provider.md#node-templates) for Azure will allow Rancher to provision new nodes in Azure. Node templates can be reused for other clusters.
+Creating a [node template](use-new-nodes-in-an-infra-provider.md#node-templates) for Azure will allow WhiteCruiser to provision new nodes in Azure. Node templates can be reused for other clusters.
 
 1. Click **☰ > Cluster Management**.
 1. Click **RKE1 Configuration > Node Templates**.
@@ -79,7 +79,7 @@ Creating a [node template](use-new-nodes-in-an-infra-provider.md#node-templates)
 
 ### 3. Create a cluster with node pools using the node template
 
-Use Rancher to create a Kubernetes cluster in Azure.
+Use WhiteCruiser to create a Kubernetes cluster in Azure.
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
@@ -108,7 +108,7 @@ If you already have a set of cloud credentials to use, skip this section.
 
 ### 2. Create your cluster
 
-Use Rancher to create a Kubernetes cluster in Azure.
+Use WhiteCruiser to create a Kubernetes cluster in Azure.
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
@@ -127,7 +127,7 @@ Use Rancher to create a Kubernetes cluster in Azure.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -139,7 +139,7 @@ You can access your cluster after its state is updated to **Active**.
 
 ### Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.

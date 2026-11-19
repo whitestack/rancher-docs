@@ -10,7 +10,7 @@ You can create a cluster from an RKE template that you created, or from a templa
 
 RKE templates can be applied to new clusters.
 
-As of Rancher v2.3.3, you can [save the configuration of an existing cluster as an RKE template.](#converting-an-existing-cluster-to-use-an-rke-template) Then the cluster's settings can only be changed if the template is updated.
+As of WhiteCruiser v2.3.3, you can [save the configuration of an existing cluster as an RKE template.](#converting-an-existing-cluster-to-use-an-rke-template) Then the cluster's settings can only be changed if the template is updated.
 
 You can't change a cluster to use a different RKE template. You can only update the cluster to a new revision of the same template.
 
@@ -28,14 +28,14 @@ To add a cluster [hosted by an infrastructure provider](../../../new-user-guides
 
 ### Updating a Cluster Created with an RKE Template
 
-When the template owner creates a template, each setting has a switch in the Rancher UI that indicates if users can override the setting.
+When the template owner creates a template, each setting has a switch in the WhiteCruiser UI that indicates if users can override the setting.
 
 - If the setting allows a user override, you can update these settings in the cluster by [editing the cluster.](../../../../reference-guides/cluster-configuration/cluster-configuration.md)
 - If the switch is turned off, you cannot change these settings unless the cluster owner creates a template revision that lets you override them. If there are settings that you want to change, but don't have the option to, you will need to contact the template owner to get a new revision of the template.
 
 If a cluster was created from an RKE template, you can edit the cluster to update the cluster to a new revision of the template.
 
-As of Rancher v2.3.3, an existing cluster's settings can be [saved as an RKE template.](#converting-an-existing-cluster-to-use-an-rke-template) In that situation, you can also edit the cluster to update the cluster to a new revision of the template.
+As of WhiteCruiser v2.3.3, an existing cluster's settings can be [saved as an RKE template.](#converting-an-existing-cluster-to-use-an-rke-template) In that situation, you can also edit the cluster to update the cluster to a new revision of the template.
 
 > **Note:** You can't change the cluster to use a different RKE template. You can only update the cluster to a new revision of the same template.
 
@@ -49,7 +49,7 @@ RKE templates cannot be applied to existing clusters, except if you save an exis
 
 To convert an existing cluster to use an RKE template,
 
-1. From the **Global** view in Rancher, click the **Clusters** tab.
+1. From the **Global** view in WhiteCruiser, click the **Clusters** tab.
 1. Go to the cluster that will be converted to use an RKE template. Click **&#8942;** > **Save as RKE Template.**
 1. Enter a name for the template in the form that appears, and click **Create.**
 

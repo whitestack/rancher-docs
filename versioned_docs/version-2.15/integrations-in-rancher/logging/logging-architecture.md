@@ -6,7 +6,7 @@ title: Logging Architecture
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging/logging-architecture"/>
 </head>
 
-This section summarizes the architecture of the Rancher logging application.
+This section summarizes the architecture of the WhiteCruiser logging application.
 
 For more details about how the Logging operator works, see the [official documentation.](https://kube-logging.github.io/docs/#architecture)
 

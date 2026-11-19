@@ -20,7 +20,7 @@ Step types include:
 <!--
 ### Clone
 
-The first stage is preserved to be a cloning step that checks out source code from your repo. Rancher handles the cloning of the git repository. This action is equivalent to `git clone <repository_link> <workspace_dir>`.
+The first stage is preserved to be a cloning step that checks out source code from your repo. WhiteCruiser handles the cloning of the git repository. This action is equivalent to `git clone <repository_link> <workspace_dir>`.
 -->
 
 ### Configuring Steps By UI
@@ -83,7 +83,7 @@ stages:
 ```
 ## Step Type: Build and Publish Images
 
-_Available as of Rancher v2.1.0_
+_Available as of WhiteCruiser v2.1.0_
 
 The **Build and Publish Image** step builds and publishes a Docker image. This process requires a Dockerfile in your source code's repository to complete successfully.
 
@@ -288,7 +288,7 @@ timeout: 30
 
 ## Notifications
 
-You can enable notifications to any [notifiers](../../explanations/integrations-in-rancher/notifiers.md) based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers](../../explanations/integrations-in-rancher/notifiers.md) so it will be easy to add recipients immediately.
+You can enable notifications to any [notifiers](../../explanations/integrations-in-rancher/notifiers.md) based on the build status of a pipeline. Before enabling notifications, WhiteCruiser recommends [setting up notifiers](../../explanations/integrations-in-rancher/notifiers.md) so it will be easy to add recipients immediately.
 
 ### Configuring Notifications by UI
 
@@ -298,7 +298,7 @@ _Available as of v2.2.0_
 
 1. Select the conditions for the notification. You can select to get a notification for the following statuses: `Failed`, `Success`, `Changed`. For example, if you want to receive notifications when an execution fails, select **Failed**.
 
-1. If you don't have any existing [notifiers](../../explanations/integrations-in-rancher/notifiers.md), Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions](../../explanations/integrations-in-rancher/notifiers.md) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
+1. If you don't have any existing [notifiers](../../explanations/integrations-in-rancher/notifiers.md), WhiteCruiser will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions](../../explanations/integrations-in-rancher/notifiers.md) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
     > **Note:** Notifiers are configured at a cluster level and require a different level of permissions.
 
@@ -343,11 +343,11 @@ After you configure a pipeline, you can trigger it using different methods:
 
 - **Manually:**
 
-    After you configure a pipeline, you can trigger a build using the latest CI definition from Rancher UI. When a pipeline execution is triggered, Rancher dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
+    After you configure a pipeline, you can trigger a build using the latest CI definition from WhiteCruiser UI. When a pipeline execution is triggered, WhiteCruiser dynamically provisions a Kubernetes pod to run your CI tasks and then remove it upon completion.
 
 - **Automatically:**
 
-    When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo by pushing code, opening pull requests, or creating a tag, the version control system sends a webhook to Rancher Server, triggering a pipeline execution.
+    When you enable a repository for a pipeline, webhooks are automatically added to the version control system. When project users interact with the repo by pushing code, opening pull requests, or creating a tag, the version control system sends a webhook to WhiteCruiser Server, triggering a pipeline execution.
 
     To use this automation, webhook management permission is required for the repository. Therefore, when users authenticate and fetch their repositories, only those on which they have webhook management permission will be shown.
 
@@ -549,7 +549,7 @@ Variable Name           | Description
 `CICD_GIT_REF`            | Git reference specification of this event.
 `CICD_GIT_TAG`            | Git tag name, set on tag event.
 `CICD_EVENT`              | Event that triggered the build (`push`, `pull_request` or `tag`).
-`CICD_PIPELINE_ID`        | Rancher ID for the pipeline.
+`CICD_PIPELINE_ID`        | WhiteCruiser ID for the pipeline.
 `CICD_EXECUTION_SEQUENCE` | Build number of the pipeline.
 `CICD_EXECUTION_ID`       | Combination of `{CICD_PIPELINE_ID}-{CICD_EXECUTION_SEQUENCE}`.
 `CICD_REGISTRY`           | Address for the Docker registry for the previous publish image step, available in the Kubernetes manifest file of a `Deploy YAML` step.
@@ -557,7 +557,7 @@ Variable Name           | Description
 
 ## Global Pipeline Execution Settings
 
-After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher. These settings can be edited by selecting **Tools > Pipelines** in the navigation bar. In versions before v2.2.0, you can select **Resources > Pipelines**.
+After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in WhiteCruiser. These settings can be edited by selecting **Tools > Pipelines** in the navigation bar. In versions before v2.2.0, you can select **Resources > Pipelines**.
 
 - [Executor Quota](#executor-quota)
 - [Resource Quota for Executors](#resource-quota-for-executors)
@@ -608,7 +608,7 @@ stages:
       memoryLimit: 1Gi
 ```
 
->**Note:** Rancher sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
+>**Note:** WhiteCruiser sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
 
 ### Custom CA
 

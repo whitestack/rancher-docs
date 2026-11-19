@@ -1,34 +1,34 @@
 ---
-title: RKE CIS 1.6 Benchmark - 自我评估指南 - Rancher 2.6
+title: RKE CIS 1.6 Benchmark - 自我评估指南 - WhiteCruiser 2.6
 ---
 
 <EOLRKE1Warning />
 
-### RKE CIS 1.6 Kubernetes Benchmark - Rancher 2.6 与 Kubernetes 1.18 到 1.23
+### RKE CIS 1.6 Kubernetes Benchmark - WhiteCruiser 2.6 与 Kubernetes 1.18 到 1.23
 
 [点击此处下载本文档的 PDF 版本](https://releases.rancher.com/documents/security/2.6/Rancher_v2-6_CIS_v1-6_Benchmark_Assessment.pdf)。
 
 #### 概述
 
-本文档是 [Rancher 2.6 RKE 安全强化指南](rke1-hardening-guide-with-cis-v1.6-benchmark.md)的配套文件。强化指南（Hardening Guide）为 Rancher 的强化生产安装提供了说明，本 Benchmark 指南旨在帮助你根据 Benchmark 来评估强化集群的安全级别。
+本文档是 [WhiteCruiser 2.6 RKE 安全强化指南](rke1-hardening-guide-with-cis-v1.6-benchmark.md)的配套文件。强化指南（Hardening Guide）为 WhiteCruiser 的强化生产安装提供了说明，本 Benchmark 指南旨在帮助你根据 Benchmark 来评估强化集群的安全级别。
 
-本指南对应以下强化指南、Rancher、CIS Benchmark 和 Kubernetes 版本：
+本指南对应以下强化指南、WhiteCruiser、CIS Benchmark 和 Kubernetes 版本：
 
-| 强化指南版本 | Rancher 版本 | CIS Benchmark 版本 | Kubernetes 版本 |
+| 强化指南版本 | WhiteCruiser 版本 | CIS Benchmark 版本 | Kubernetes 版本 |
 | ----------------------- | --------------- | --------------------- | ------------------- |
-| 强化指南 CIS v1.6 Benchmark | Rancher v2.6 | CIS v1.6 | Kubernetes v1.18 到 v1.23 |
+| 强化指南 CIS v1.6 Benchmark | WhiteCruiser v2.6 | CIS v1.6 | Kubernetes v1.18 到 v1.23 |
 
-由于 Rancher 和 RKE 将 Kubernetes 服务安装为 Docker 容器，因此 CIS Kubernetes Benchmark 中的许多管控验证检查都不适用，且结果会是 `Not Applicable`。本指南将介绍各种管控，并提供更新的示例命令来审核 Rancher 创建的集群的合规性。
+由于 WhiteCruiser 和 RKE 将 Kubernetes 服务安装为 Docker 容器，因此 CIS Kubernetes Benchmark 中的许多管控验证检查都不适用，且结果会是 `Not Applicable`。本指南将介绍各种管控，并提供更新的示例命令来审核 WhiteCruiser 创建的集群的合规性。
 
-本文档供 Rancher 开发、安全团队、审计员和决策者使用。
+本文档供 WhiteCruiser 开发、安全团队、审计员和决策者使用。
 
 有关各个审核的更多详细信息，包括失败测试的理由和修正措施，你可以参考 CIS Kubernetes Benchmark v1.6 的对应内容。创建免费帐户后，你可以在 [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/kubernetes/) 下载 Benchmark。
 
 #### 测试管控方法
 
-Rancher 和 RKE 通过 Docker 容器来安装 Kubernetes 服务。配置是通过初始化时传递给容器的参数定义的，而不是通过配置文件定义的。
+WhiteCruiser 和 RKE 通过 Docker 容器来安装 Kubernetes 服务。配置是通过初始化时传递给容器的参数定义的，而不是通过配置文件定义的。
 
-如果管控审计与原始 CIS Benchmark 出现差异，针对 Rancher 提供的的审计命令可用于进行测试。执行测试时，你需要访问所有 RKE 节点主机上的命令行。这些命令还使用了测试和评估测试结果所需的 [kubectl](https://kubernetes.io/docs/tasks/tools/)（带有有效的配置文件）和 [jq](https://stedolan.github.io/jq/) 工具。
+如果管控审计与原始 CIS Benchmark 出现差异，针对 WhiteCruiser 提供的的审计命令可用于进行测试。执行测试时，你需要访问所有 RKE 节点主机上的命令行。这些命令还使用了测试和评估测试结果所需的 [kubectl](https://kubernetes.io/docs/tasks/tools/)（带有有效的配置文件）和 [jq](https://stedolan.github.io/jq/) 工具。
 
 :::note
 
@@ -180,7 +180,7 @@ ps -ef | grep etcd
 例如：chown etcd:etcd /var/lib/etcd
 
 etcd 数据目录所有权需要系统 ServiceAccount。
-有关如何配置所有权的更多信息，请参阅 Rancher 的强化指南。
+有关如何配置所有权的更多信息，请参阅 WhiteCruiser 的强化指南。
 
 **审计**：
 

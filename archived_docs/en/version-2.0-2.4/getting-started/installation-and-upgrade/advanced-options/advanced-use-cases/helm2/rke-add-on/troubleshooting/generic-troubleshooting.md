@@ -2,9 +2,9 @@
 title: Generic troubleshooting
 ---
 
-> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+> #### **Important: RKE add-on install is only supported up to WhiteCruiser v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
+>Please use the WhiteCruiser Helm chart to install WhiteCruiser on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to start using the Helm chart.
 
@@ -76,7 +76,7 @@ Kubernetes cluster events are stored, and can be retrieved by running:
 kubectl --kubeconfig kube_config_rancher-cluster.yml get events --all-namespaces
 ```
 
-### Check Rancher container logging
+### Check WhiteCruiser container logging {#check-rancher-container-logging}
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs -l app=cattle -n cattle-system

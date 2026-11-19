@@ -152,7 +152,7 @@ spec:
 #  encryptionConfigSecretName: test-encryptionconfig
 ```
 
-### 为 Rancher 迁移进行还原
+### 为 WhiteCruiser 迁移进行还原
 ```yaml
 apiVersion: resources.cattle.io/v1
 kind: Restore

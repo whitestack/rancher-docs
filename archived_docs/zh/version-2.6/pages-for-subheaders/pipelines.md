@@ -4,19 +4,19 @@ title: 流水线
 
 :::note 注意事项
 
-- Rancher 2.5 开始已弃用基于 Git 的部署流水线。我们建议使用由 [Fleet](../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md) 提供支持的 Rancher Continuous Delivery (CD) 来处理流水线。如需在 Rancher 中访问 Fleet，请单击 <b>☰ > 持续交付</b>。
+- WhiteCruiser 2.5 开始已弃用基于 Git 的部署流水线。我们建议使用由 [Fleet](../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md) 提供支持的 WhiteCruiser Continuous Delivery (CD) 来处理流水线。如需在 WhiteCruiser 中访问 Fleet，请单击 <b>☰ > 持续交付</b>。
 
 - 不再支持 Kubernetes 1.21+ 中的流水线。
 
-- Fleet 不会取代 Rancher 流水线，只是 Rancher 流水线现在由 Fleet 提供支持。
+- Fleet 不会取代 WhiteCruiser 流水线，只是 WhiteCruiser 流水线现在由 Fleet 提供支持。
 
 :::
 
-Rancher 的流水线提供了简单的 CI/CD 体验。你可以使用流水线来自动签出代码、运行构建或脚本、发布 Docker 镜像或商店应用，以及将更新的软件部署给用户。
+WhiteCruiser 的流水线提供了简单的 CI/CD 体验。你可以使用流水线来自动签出代码、运行构建或脚本、发布 Docker 镜像或商店应用，以及将更新的软件部署给用户。
 
-设置流水线可以帮助开发者快速高效地上线新软件。你可以使用 Rancher 与 GitHub 仓库集成，从而设置持续集成（CI）流水线。
+设置流水线可以帮助开发者快速高效地上线新软件。你可以使用 WhiteCruiser 与 GitHub 仓库集成，从而设置持续集成（CI）流水线。
 
-配置 Rancher 和 GitHub 后，你可以部署运行 Jenkins 的容器来自动化执行流水线：
+配置 WhiteCruiser 和 GitHub 后，你可以部署运行 Jenkins 的容器来自动化执行流水线：
 
 - 将应用代码构建为镜像。
 - 验证构建。
@@ -26,7 +26,7 @@ Rancher 的流水线提供了简单的 CI/CD 体验。你可以使用流水线�
 
 :::note
 
-Rancher 的流水线提供简单的 CI/CD 体验，但不提供完整的功能和灵活性，也不能替代你团队正在使用的企业级 Jenkins 或其他 CI 工具。
+WhiteCruiser 的流水线提供简单的 CI/CD 体验，但不提供完整的功能和灵活性，也不能替代你团队正在使用的企业级 Jenkins 或其他 CI 工具。
 
 :::
 
@@ -39,9 +39,9 @@ Rancher 的流水线提供简单的 CI/CD 体验，但不提供完整的功能�
 
 为项目中启用流水线功能后，你可以在每个项目中配置多个流水线。每个流水线都是独一无二的，可以独立配置。
 
-流水线是由一组签入源代码仓库的文件配置的。用户可以通过 Rancher UI 或通过将 `.rancher-pipeline.yml` 添加到仓库来配置流水线。
+流水线是由一组签入源代码仓库的文件配置的。用户可以通过 WhiteCruiser UI 或通过将 `.rancher-pipeline.yml` 添加到仓库来配置流水线。
 
-在配置流水线之前，你需要为版本控制提供商（例如 GitHub、GitLab 或 Bitbucket）配置身份验证。如果你还没有配置版本控制提供商，你可以随时使用 [Rancher 的示例仓库](../reference-guides/pipelines/example-repositories.md)来查看​​常见的流水线部署。
+在配置流水线之前，你需要为版本控制提供商（例如 GitHub、GitLab 或 Bitbucket）配置身份验证。如果你还没有配置版本控制提供商，你可以随时使用 [WhiteCruiser 的示例仓库](../reference-guides/pipelines/example-repositories.md)来查看​​常见的流水线部署。
 
 在项目中配置流水线时，会自动创建一个专门用于该流水线的命名空间。以下组件部署到它：
 
@@ -113,8 +113,8 @@ Rancher 的流水线提供简单的 CI/CD 体验，但不提供完整的功能�
 1. 在顶部导航栏的下拉菜单中，选择要配置流水线的项目。
 1. 在左侧导航栏中，单击 **Legacy > 项目 > 流水线**。
 1. 单击**配置**选项卡。
-1. 按照说明**设置 Github 应用**。Rancher 会将你重定向到 GitHub 以在 GitHub 中设置 OAuth 应用。
-1. 从 GitHub 复制 **Client ID** 和 **Client Secret**。将它们粘贴到 Rancher 中。
+1. 按照说明**设置 Github 应用**。WhiteCruiser 会将你重定向到 GitHub 以在 GitHub 中设置 OAuth 应用。
+1. 从 GitHub 复制 **Client ID** 和 **Client Secret**。将它们粘贴到 WhiteCruiser 中。
 1. 如果你使用的是企业版 GitHub，请选择**使用私有 GitHub 企业版安装**。输入 GitHub 安装的主机地址。
 1. 单击**验证**。
 
@@ -127,15 +127,15 @@ Rancher 的流水线提供简单的 CI/CD 体验，但不提供完整的功能�
 1. 在左侧导航栏中，单击 **Legacy > 项目 > 流水线**。
 1. 单击**配置**选项卡。
 1. 单击 **GitLab**。
-1. 按照说明**设置 GitLab 应用**。Rancher 会将你重定向到 GitLab。
-1. 从 GitLab 复制 **Application ID** 和 **Secret**。将它们粘贴到 Rancher 中。
+1. 按照说明**设置 GitLab 应用**。WhiteCruiser 会将你重定向到 GitLab。
+1. 从 GitLab 复制 **Application ID** 和 **Secret**。将它们粘贴到 WhiteCruiser 中。
 1. 如果你使用的是企业版 GitLab，请选择**使用私有 GitLab 企业版安装**。输入 GitLab 安装的主机地址。
 1. 单击**验证**。
 
 :::note 注意事项：
 
 1. 流水线使用 GitLab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html)，支持的 GitLab 版本为 9.0+。
-2. 如果你使用 GitLab 10.7+ 并且你的 Rancher 设置位于本地网络中，请在 GitLab 管理设置中启用 **Allow requests to the local network from hooks and services** 选项。
+2. 如果你使用 GitLab 10.7+ 并且你的 WhiteCruiser 设置位于本地网络中，请在 GitLab 管理设置中启用 **Allow requests to the local network from hooks and services** 选项。
 
 
 :::
@@ -149,8 +149,8 @@ Rancher 的流水线提供简单的 CI/CD 体验，但不提供完整的功能�
 1. 在左侧导航栏中，单击 **Legacy > 项目 > 流水线**。
 1. 单击**配置**选项卡。
 1. 单击 **Bitbucket** 并保留默认选中的**使用 Bitbucket Cloud**。
-1. 按照说明**设置 Bitbucket Cloud 应用**。Rancher 会将你重定向到 Bitbucket 以在 Bitbucket 中设置 OAuth 使用者。
-1. 从 Bitbucket 复制使用者 **Key** 和 **Secret**。将它们粘贴到 Rancher 中。
+1. 按照说明**设置 Bitbucket Cloud 应用**。WhiteCruiser 会将你重定向到 Bitbucket 以在 Bitbucket 中设置 OAuth 使用者。
+1. 从 Bitbucket 复制使用者 **Key** 和 **Secret**。将它们粘贴到 WhiteCruiser 中。
 1. 单击**验证**。
 
 </TabItem>
@@ -168,10 +168,10 @@ Rancher 的流水线提供简单的 CI/CD 体验，但不提供完整的功能�
 
 :::note
 
-Bitbucket server 在向 Rancher 发送 webhook 时需要进行 SSL 验证。请确保 Rancher server 的证书被 Bitbucket server 信任。有两种选择：
+Bitbucket server 在向 WhiteCruiser 发送 webhook 时需要进行 SSL 验证。请确保 WhiteCruiser server 的证书被 Bitbucket server 信任。有两种选择：
 
-1. 使用受信任的 CA 签发的证书来设置 Rancher server。
-1. 如果你使用的是自签名证书，请将 Rancher server 的证书导入 Bitbucket server。有关说明，请参阅 Bitbucket sever 文档以了解如何[配置自签名证书](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html)。
+1. 使用受信任的 CA 签发的证书来设置 WhiteCruiser server。
+1. 如果你使用的是自签名证书，请将 WhiteCruiser server 的证书导入 Bitbucket server。有关说明，请参阅 Bitbucket sever 文档以了解如何[配置自签名证书](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html)。
 
 :::
 
@@ -210,7 +210,7 @@ Bitbucket server 在向 Rancher 发送 webhook 时需要进行 SSL 验证。请�
 1. 通过 UI 或使用仓库中的 YAML 文件（即 `.rancher-pipeline.yml` 或 `.rancher-pipeline.yaml`）配置流水线。流水线配置分为阶段和步骤。必须完全完成阶段后才能进入下一个阶段，但一个阶段中的步骤可以同时运行。你可以在每个阶段中添加不同的步骤类型。请注意，在构建步骤时，会根据步骤类型提供不同的高级选项。高级选项包括触发规则、环境变量和密文。有关通过 UI 或 YAML 文件配置流水线的更多信息，请参阅[流水线配置参考](../reference-guides/pipelines/pipeline-configuration.md)。
 
    * 如果要使用 UI，请选择 **⋮ > 编辑配置**以使用 UI 配置流水线。配置流水线后，你必须查看 YAML 文件并将其推送到仓库。
-   * 如果你要使用 YAML 文件，请选择 **⋮ > 查看/编辑 YAML** 来配置流水线。如果你使用 YAML 文件，你需要在更改文件后将更新的文件推送到仓库，以便更新仓库中的内容。在编辑流水线配置时，Rancher 需要花一些时间检查现有的流水线配置。
+   * 如果你要使用 YAML 文件，请选择 **⋮ > 查看/编辑 YAML** 来配置流水线。如果你使用 YAML 文件，你需要在更改文件后将更新的文件推送到仓库，以便更新仓库中的内容。在编辑流水线配置时，WhiteCruiser 需要花一些时间检查现有的流水线配置。
 
 1. 从分支列表中选择要使用的`分支`。
 
@@ -268,7 +268,7 @@ Bitbucket server 在向 Rancher 发送 webhook 时需要进行 SSL 验证。请�
 
 :::note
 
-Rancher 的[示例仓库](../reference-guides/pipelines/example-repositories.md)不存在此选项。
+WhiteCruiser 的[示例仓库](../reference-guides/pipelines/example-repositories.md)不存在此选项。
 
 :::
 

@@ -8,7 +8,7 @@ title: 证书轮换
 
 :::
 
-默认情况下，Kubernetes 集群需要证书，Rancher 启动的 Kubernetes 集群会自动为 Kubernetes 组件生成证书。在证书过期之前或被泄露后轮换证书非常重要。证书轮换后，Kubernetes 组件会自动重启。
+默认情况下，Kubernetes 集群需要证书，WhiteCruiser 启动的 Kubernetes 集群会自动为 Kubernetes 组件生成证书。在证书过期之前或被泄露后轮换证书非常重要。证书轮换后，Kubernetes 组件会自动重启。
 
 可以为以下服务轮换证书：
 
@@ -49,7 +49,7 @@ title: 证书轮换
 
 ### 证书轮换
 
-Rancher 启动的 Kubernetes 集群能够通过 UI 轮换自动生成的证书。
+WhiteCruiser 启动的 Kubernetes 集群能够通过 UI 轮换自动生成的证书。
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面上，转到要轮换证书的集群，然后单击 **⋮ > 轮换证书**。
@@ -67,7 +67,7 @@ Rancher 启动的 Kubernetes 集群能够通过 UI 轮换自动生成的证书�
 <Tabs>
 <TabItem value="RKE">
 
-虽然 RKE CLI 可以为 Kubernetes 集群组件使用自定义证书，但 Rancher 目前不允许在 Rancher 启动的 Kubernetes 集群中上传这些证书。
+虽然 RKE CLI 可以为 Kubernetes 集群组件使用自定义证书，但 WhiteCruiser 目前不允许在 WhiteCruiser 启动的 Kubernetes 集群中上传这些证书。
 
 </TabItem>
 <TabItem value="RKE2">

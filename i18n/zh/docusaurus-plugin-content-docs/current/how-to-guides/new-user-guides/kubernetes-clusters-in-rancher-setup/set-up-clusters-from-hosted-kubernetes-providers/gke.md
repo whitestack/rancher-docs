@@ -46,10 +46,10 @@ title: 创建 GKE 集群
 1. 在 **ServiceAccount** 文本框中，粘贴你的 ServiceAccount 私钥 JSON，或上传 JSON 文件。
 1. 单击**创建**。
 
-**结果**：你已创建 Rancher 用于配置新 GKE 集群的凭证。
+**结果**：你已创建 WhiteCruiser 用于配置新 GKE 集群的凭证。
 
 ### 2. 创建 GKE 集群
-使用 Rancher 配置你的 Kubernetes 集群。要使用 Rancher 成功创建 GKE 集群，GKE 必须处于 Standard 模式。GKE 在创建 Kubernetes 集群时有两种运行模式，分别是 Autopilot 和 Standard 模式。Autopilot 模式的集群配置对编辑 kube-system 命名空间有限制。但是，Rancher 在安装时需要在 kube-system 命名空间中创建资源。因此，你将无法创建 Autopilot 模式的 GKE 集群。如需详细了解 GKE Autopilot 模式和 Standard 模式之间的差异，请访问[比较 GKE Autopilot 和 Standard ](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)。
+使用 WhiteCruiser 配置你的 Kubernetes 集群。要使用 WhiteCruiser 成功创建 GKE 集群，GKE 必须处于 Standard 模式。GKE 在创建 Kubernetes 集群时有两种运行模式，分别是 Autopilot 和 Standard 模式。Autopilot 模式的集群配置对编辑 kube-system 命名空间有限制。但是，WhiteCruiser 在安装时需要在 kube-system 命名空间中创建资源。因此，你将无法创建 Autopilot 模式的 GKE 集群。如需详细了解 GKE Autopilot 模式和 Standard 模式之间的差异，请访问[比较 GKE Autopilot 和 Standard ](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)。
 
 
 1. 点击 **☰ > 集群管理**。
@@ -64,7 +64,7 @@ title: 创建 GKE 集群
 
 **结果**：你已成功部署 GKE 集群。
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
@@ -79,23 +79,23 @@ title: 创建 GKE 集群
 
 ## 配置参考
 
-有关在 Rancher 中配置 GKE 集群的详细信息，请参阅[此页面](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md)。
+有关在 WhiteCruiser 中配置 GKE 集群的详细信息，请参阅[此页面](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md)。
 ## 更新 Kubernetes 版本
 
 集群的 Kubernetes 版本可以升级到 GKE 集群所在区域或地区中可用的任何版本。升级 Kubernetes 主版本不会自动升级 Worker 节点。节点可以独立升级。
 
 :::note
 
-GKE 在 1.19+ 中取消了基本身份验证。要将集群升级到 1.19+，必须在谷歌云中禁用基本身份认证。否则，在升级到 1.19+ 时，Rancher 会出现错误。你可以按照 [Google 文档](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password)进行操作。然后，你就可以使用 Rancher 将 Kubernetes 版本更新到 1.19+。
+GKE 在 1.19+ 中取消了基本身份验证。要将集群升级到 1.19+，必须在谷歌云中禁用基本身份认证。否则，在升级到 1.19+ 时，WhiteCruiser 会出现错误。你可以按照 [Google 文档](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password)进行操作。然后，你就可以使用 WhiteCruiser 将 Kubernetes 版本更新到 1.19+。
 
 :::
 
 ## 同步
 
-GKE 配置者可以在 Rancher 和提供商之间同步 GKE 集群的状态。有关其工作原理的技术说明，请参阅[同步](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)。
+GKE 配置者可以在 WhiteCruiser 和提供商之间同步 GKE 集群的状态。有关其工作原理的技术说明，请参阅[同步](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)。
 
 有关配置刷新间隔的信息，请参阅[本节](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md#配置刷新间隔)。
 
 ## 以编程方式创建 GKE 集群
 
-通过 Rancher 以编程方式部署 GKE 集群的最常见方法是使用 Rancher 2 Terraform Provider。详情请参见[使用 Terraform 创建集群](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)。
+通过 WhiteCruiser 以编程方式部署 GKE 集群的最常见方法是使用 WhiteCruiser 2 Terraform Provider。详情请参见[使用 Terraform 创建集群](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)。

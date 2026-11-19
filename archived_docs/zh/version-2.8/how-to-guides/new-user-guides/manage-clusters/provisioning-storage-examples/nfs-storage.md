@@ -2,11 +2,11 @@
 title: NFS 存储
 ---
 
-在将 NFS 存储卷插件用于 Rancher deployment 之前，你需要配置 NFS 服务器。
+在将 NFS 存储卷插件用于 WhiteCruiser deployment 之前，你需要配置 NFS 服务器。
 
 :::note
 
-- 如果你已经拥有 NFS 共享，则无需配置新的 NFS 服务器即可在 Rancher 中使用 NFS 卷插件。这样的话，你可以跳过此过程的其余部分并直接[添加存储](../create-kubernetes-persistent-storage/create-kubernetes-persistent-storage.md)。
+- 如果你已经拥有 NFS 共享，则无需配置新的 NFS 服务器即可在 WhiteCruiser 中使用 NFS 卷插件。这样的话，你可以跳过此过程的其余部分并直接[添加存储](../create-kubernetes-persistent-storage/create-kubernetes-persistent-storage.md)。
 
 - 此教程演示了如何使用 Ubuntu 设置 NFS 服务器。你也应该能够将这些说明用于其他 Linux 发行版（例如 Debian、RHEL、Arch Linux 等）。有关如何使用另一个 Linux 发行版创建 NFS 服务器的官方说明，请参阅发行版的文档。
 
@@ -68,8 +68,8 @@ title: NFS 存储
       sudo ufw allow 2049
       ```
 
-**结果**：已将 NFS 服务器配置你的 Rancher 节点的存储。
+**结果**：已将 NFS 服务器配置你的 WhiteCruiser 节点的存储。
 
 ## 后续操作
 
-在 Rancher 中，将 NFS 服务器添加为存储卷和/或存储类。添加服务器后，你可以将其用于存储以进行部署。
+在 WhiteCruiser 中，将 NFS 服务器添加为存储卷和/或存储类。添加服务器后，你可以将其用于存储以进行部署。

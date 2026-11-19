@@ -2,7 +2,7 @@
 title: 主机驱动
 ---
 
-主机驱动用于配置主机，Rancher 使用这些主机启动和管理 Kubernetes 集群。主机驱动与 [Docker Machine 驱动](https://docs.docker.com/machine/drivers/)相同。创建主机模板时可以显示的主机驱动，是由主机驱动的状态定义的。只有 `active` 主机驱动将显示为创建节点模板的选项。默认情况下，Rancher 与许多现有的 Docker Machine 驱动打包在一起，但你也可以创建自定义主机驱动并添加到 Rancher。
+主机驱动用于配置主机，WhiteCruiser 使用这些主机启动和管理 Kubernetes 集群。主机驱动与 [Docker Machine 驱动](https://docs.docker.com/machine/drivers/)相同。创建主机模板时可以显示的主机驱动，是由主机驱动的状态定义的。只有 `active` 主机驱动将显示为创建节点模板的选项。默认情况下，WhiteCruiser 与许多现有的 Docker Machine 驱动打包在一起，但你也可以创建自定义主机驱动并添加到 WhiteCruiser。
 
 如果你不想向用户显示特定的主机驱动，则需要停用这些主机驱动。
 
@@ -19,7 +19,7 @@ title: 主机驱动
 
 ## 激活/停用主机驱动
 
-默认情况下，Rancher 仅激活主流云提供商 Amazon EC2、Azure、DigitalOcean 和 vSphere 的驱动。如果要显示或隐藏驱动，你可以更改驱动的状态：
+默认情况下，WhiteCruiser 仅激活主流云提供商 Amazon EC2、Azure、DigitalOcean 和 vSphere 的驱动。如果要显示或隐藏驱动，你可以更改驱动的状态：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 
@@ -29,7 +29,7 @@ title: 主机驱动
 
 ## 添加自定义主机驱动
 
-如果你想使用 Rancher 不支持开箱即用的主机驱动，你可以添加提供商的驱动，从而使用该驱动为你的 Kubernetes 集群创建节点模板并最终创建节点池：
+如果你想使用 WhiteCruiser 不支持开箱即用的主机驱动，你可以添加提供商的驱动，从而使用该驱动为你的 Kubernetes 集群创建节点模板并最终创建节点池：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在左侧导航菜单中，单击**驱动**。

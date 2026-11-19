@@ -1,5 +1,5 @@
 ---
-title: "Rancher 2.10 (Archived)"
+title: "WhiteCruiser 2.10 (Archived)"
 slug: /
 ---
 

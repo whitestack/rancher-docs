@@ -6,30 +6,30 @@ title: Launching Kubernetes on New Nodes in an Infrastructure Provider
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider"/>
 </head>
 
-When you create an RKE or RKE2 cluster using a node template in Rancher, each resulting node pool is shown in a new **Machine Pools** tab. You can see the machine pools by doing the following:
+When you create an RKE or RKE2 cluster using a node template in WhiteCruiser, each resulting node pool is shown in a new **Machine Pools** tab. You can see the machine pools by doing the following:
 
 1. Click  **☰ > Cluster Management**.
 1. Click the name of the RKE or RKE2 cluster.
 
 ## RKE Clusters
 
-Using Rancher, you can create pools of nodes based on a [node template](#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.
+Using WhiteCruiser, you can create pools of nodes based on a [node template](#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.
 
-One benefit of installing Kubernetes on node pools hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
+One benefit of installing Kubernetes on node pools hosted by an infrastructure provider is that if a node loses connectivity with the cluster, WhiteCruiser can automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
 
 The available cloud providers to create a node template are decided based on active [node drivers](#node-drivers).
 
 ### Node Templates
 
-A node template is the saved configuration for the parameters to use when provisioning nodes in a specific cloud provider. These nodes can be launched from the UI. Rancher uses [Docker Machine](https://github.com/docker/docs/blob/vnext-engine/machine/overview.md) to provision these nodes. The available cloud providers to create node templates are based on the active node drivers in Rancher.
+A node template is the saved configuration for the parameters to use when provisioning nodes in a specific cloud provider. These nodes can be launched from the UI. WhiteCruiser uses [Docker Machine](https://github.com/docker/docs/blob/vnext-engine/machine/overview.md) to provision these nodes. The available cloud providers to create node templates are based on the active node drivers in WhiteCruiser.
 
-After you create a node template in Rancher, it's saved so that you can use this template again to create node pools. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
+After you create a node template in WhiteCruiser, it's saved so that you can use this template again to create node pools. Node templates are bound to your login. After you add a template, you can remove them from your user profile.
 
 #### Node Labels
 
 You can add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on each node template, so that any nodes created from the node template will automatically have these labels on them.
 
-Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+Invalid labels can prevent upgrades or can prevent WhiteCruiser from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 #### Node Taints
 
@@ -39,7 +39,7 @@ Since taints can be added at a node template and node pool, if there is no confl
 
 #### Administrator Control of Node Templates
 
-Administrators can control all node templates. Admins can now maintain all the node templates within Rancher. When a node template owner is no longer using Rancher, the node templates created by them can be managed by administrators so the cluster can continue to be updated and maintained.
+Administrators can control all node templates. Admins can now maintain all the node templates within WhiteCruiser. When a node template owner is no longer using WhiteCruiser, the node templates created by them can be managed by administrators so the cluster can continue to be updated and maintained.
 
 To access all node templates, an administrator will need to do the following:
 
@@ -50,7 +50,7 @@ To access all node templates, an administrator will need to do the following:
 
 ### Node Pools
 
-Using Rancher, you can create pools of nodes based on a [node template](#node-templates).
+Using WhiteCruiser, you can create pools of nodes based on a [node template](#node-templates).
 
 A node template defines the configuration of a node, like what operating system to use, number of CPUs, and amount of memory.
 
@@ -68,7 +68,7 @@ The recommended setup is to have:
 
 **RKE1 downstream cluster nodes in an air-gapped environment:**
 
-By default, Rancher tries to run the Docker Install script when provisioning RKE1 downstream cluster nodes, such as in vSphere. However, the Rancher Docker installation script would fail in air-gapped environments. To work around this issue, you may choose to skip installing Docker when creating a Node Template where Docker is pre-installed onto a VM image. You can accomplish this by selecting **None** in the dropdown list for `Docker Install URL` under **Engine Options** in the Rancher UI.
+By default, WhiteCruiser tries to run the Docker Install script when provisioning RKE1 downstream cluster nodes, such as in vSphere. However, the WhiteCruiser Docker installation script would fail in air-gapped environments. To work around this issue, you may choose to skip installing Docker when creating a Node Template where Docker is pre-installed onto a VM image. You can accomplish this by selecting **None** in the dropdown list for `Docker Install URL` under **Engine Options** in the WhiteCruiser UI.
 
 <figcaption>**Engine Options Dropdown:**</figcaption>
 
@@ -84,7 +84,7 @@ When there are taints on the node pool and node template, if there is no conflic
 
 #### About Node Auto-replace
 
-If a node is in a node pool, Rancher can automatically replace unreachable nodes. Rancher will use the existing node template for the given node pool to recreate the node if it becomes inactive for a specified number of minutes.
+If a node is in a node pool, WhiteCruiser can automatically replace unreachable nodes. WhiteCruiser will use the existing node template for the given node pool to recreate the node if it becomes inactive for a specified number of minutes.
 
 :::caution
 
@@ -92,21 +92,21 @@ Self-healing node pools are designed to help you replace worker nodes for <b>sta
 
 :::
 
-Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, Rancher will begin its deletion countdown. You can configure the amount of time Rancher waits to delete the node. If the taint is not removed before the deletion countdown ends, Rancher will proceed to delete the node object. Rancher will then provision a node in accordance with the set quantity of the node pool.
+Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, WhiteCruiser will begin its deletion countdown. You can configure the amount of time WhiteCruiser waits to delete the node. If the taint is not removed before the deletion countdown ends, WhiteCruiser will proceed to delete the node object. WhiteCruiser will then provision a node in accordance with the set quantity of the node pool.
 
 #### Enabling Node Auto-replace
 
-When you create the node pool, you can specify the amount of time in minutes that Rancher will wait to replace an unresponsive node.
+When you create the node pool, you can specify the amount of time in minutes that WhiteCruiser will wait to replace an unresponsive node.
 
 1. In the form for creating or editing a cluster, go to the **Node Pools** section.
-1. Go to the node pool where you want to enable node auto-replace. In the **Recreate Unreachable After** field, enter the number of minutes that Rancher should wait for a node to respond before replacing the node.
+1. Go to the node pool where you want to enable node auto-replace. In the **Recreate Unreachable After** field, enter the number of minutes that WhiteCruiser should wait for a node to respond before replacing the node.
 1. Fill out the rest of the form for creating or editing the cluster.
 
 **Result:** Node auto-replace is enabled for the node pool.
 
 #### Disabling Node Auto-replace
 
-You can disable node auto-replace from the Rancher UI with the following steps:
+You can disable node auto-replace from the WhiteCruiser UI with the following steps:
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster where you want to disable node auto-replace and click **⋮ > Edit Config**.
@@ -129,11 +129,11 @@ After cloud credentials are created, the user can start [managing the cloud cred
 
 ### Node Drivers
 
-If you don't find the node driver that you want to use, you can see if it is available in Rancher's built-in [node drivers and activate it](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#activatingdeactivating-node-drivers), or you can [add your own custom node driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#adding-custom-node-drivers).
+If you don't find the node driver that you want to use, you can see if it is available in WhiteCruiser's built-in [node drivers and activate it](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#activatingdeactivating-node-drivers), or you can [add your own custom node driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#adding-custom-node-drivers).
 
 ## RKE2 Clusters
 
-Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+WhiteCruiser v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the WhiteCruiser UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
 
 :::note
 
@@ -143,11 +143,11 @@ For RKE2 cluster templates, please refer to [this page](../../manage-clusters/ma
 
 ### Node Roles
 
-The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `controlplane` and `worker` respectively. With RKE2 integration in Rancher v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `controlplane` roles can be represented.
+The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `controlplane` and `worker` respectively. With RKE2 integration in WhiteCruiser v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `controlplane` roles can be represented.
 
-The same functionality of using `etcd`, `controlplane` and `worker` nodes is possible in the RKE2 CLI by using flags and node tainting to control where workloads and the Kubernetes master were scheduled. The reason those roles were not implemented as first-class roles in the RKE2 CLI is that RKE2 is conceptualized as a set of raw building blocks that are best leveraged through an orchestration system such as Rancher.
+The same functionality of using `etcd`, `controlplane` and `worker` nodes is possible in the RKE2 CLI by using flags and node tainting to control where workloads and the Kubernetes master were scheduled. The reason those roles were not implemented as first-class roles in the RKE2 CLI is that RKE2 is conceptualized as a set of raw building blocks that are best leveraged through an orchestration system such as WhiteCruiser.
 
-The implementation of the three node roles in Rancher means that Rancher managed RKE2 clusters are able to easily leverage all of the same architectural best practices that are recommended for RKE clusters.
+The implementation of the three node roles in WhiteCruiser means that WhiteCruiser managed RKE2 clusters are able to easily leverage all of the same architectural best practices that are recommended for RKE clusters.
 
 In our [recommended cluster architecture](../../kubernetes-clusters-in-rancher-setup/checklist-for-production-ready-clusters/recommended-cluster-architecture.md), we outline how many nodes of each role clusters should have:
 

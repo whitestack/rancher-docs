@@ -2,9 +2,9 @@
 title: 备份集群
 ---
 
-在 Rancher UI 中，你可以轻松备份和恢复 [Rancher 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)的 etcd。
+在 WhiteCruiser UI 中，你可以轻松备份和恢复 [WhiteCruiser 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)的 etcd。
 
-Rancher 建议为所有生产集群配置定期 `etcd` 快照。此外，你还可以创建单次快照。
+WhiteCruiser 建议为所有生产集群配置定期 `etcd` 快照。此外，你还可以创建单次快照。
 
 etcd 数据库的快照会保存在 [etcd 节点](#本地备份目标)或 [S3 兼容目标](#s3-备份目标)上。配置 S3 的好处是，如果所有 etcd 节点都丢失了，你的快照会保存到远端并能用于恢复集群。
 
@@ -15,7 +15,7 @@ etcd 数据库的快照会保存在 [etcd 节点](#本地备份目标)或 [S3 �
 <Tabs groupId="k8s-distro">
 <TabItem value="RKE">
 
-Rancher 创建快照时，快照里包括三个组件：
+WhiteCruiser 创建快照时，快照里包括三个组件：
 
 - etcd 中的集群数据
 - Kubernetes 版本
@@ -26,7 +26,7 @@ Rancher 创建快照时，快照里包括三个组件：
 </TabItem>
 <TabItem value="RKE2/K3s">
 
-Rancher 将快照创建任务委托给下游 Kubernetes 引擎。Kubernetes 引擎创建快照时包括了三个组件：
+WhiteCruiser 将快照创建任务委托给下游 Kubernetes 引擎。Kubernetes 引擎创建快照时包括了三个组件：
 
 - etcd 中的集群数据
 - Kubernetes 版本
@@ -39,7 +39,7 @@ Rancher 将快照创建任务委托给下游 Kubernetes 引擎。Kubernetes 引�
 
 如果你需要使用快照恢复集群，快照的多个组件允许你选择：
 
-- **仅恢复 etcd 内容**：类似于在 Rancher v2.4.0 之前版本中的使用快照恢复。
+- **仅恢复 etcd 内容**：类似于在 WhiteCruiser v2.4.0 之前版本中的使用快照恢复。
 - **恢复 etcd 和 Kubernetes 版本**：如果 Kubernetes 升级导致集群失败，并且你没有更改任何集群配置，则应使用此选项。
 - **恢复 etcd、Kubernetes 版本和集群配置**：如果你在升级时同时更改了 Kubernetes 版本和集群配置，则应使用此选项。
 
@@ -76,7 +76,7 @@ Rancher 将快照创建任务委托给下游 Kubernetes 引擎。Kubernetes 引�
 
 快照的名称是自动生成的。在使用 RKE CLI 创建一次性快照时，你可以使用 `--name` 选项来指定快照的名称。
 
-Rancher 在创建 RKE 集群的快照时，快照名称是基于快照创建类型（手动快照或定期快照）和目标（快照是保存在本地还是上传到 S3）决定的。命名规则如下：
+WhiteCruiser 在创建 RKE 集群的快照时，快照名称是基于快照创建类型（手动快照或定期快照）和目标（快照是保存在本地还是上传到 S3）决定的。命名规则如下：
 
 - `m` 代表手动
 - `r` 代表定期
@@ -95,7 +95,7 @@ Rancher 在创建 RKE 集群的快照时，快照名称是基于快照创建类�
 
 快照的名称是自动生成的。使用 RKE2 或 K3s CLI 创建一次性快照时，`--name` 选项可用于覆盖快照的基本名称。
 
-Rancher 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照创建类型（手动快照或定期快照）和目标（快照是保存在本地还是上传到 S3）决定的。命名规则如下：
+WhiteCruiser 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照创建类型（手动快照或定期快照）和目标（快照是保存在本地还是上传到 S3）决定的。命名规则如下：
 
 `<name>-<node>-<timestamp>`
 
@@ -134,7 +134,7 @@ Rancher 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照�
 </TabItem>
 <TabItem value="RKE2/K3s">
 
-在还原时，Rancher 会提供几组执行还原的计划。期间将包括以下阶段：
+在还原时，WhiteCruiser 会提供几组执行还原的计划。期间将包括以下阶段：
 
 - Started
 - Shutdown
@@ -161,7 +161,7 @@ Rancher 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照�
 
 选择创建定期快照的频率以及要保留的快照数量。时间的单位是小时。用户可以使用时间戳快照进行时间点恢复。
 
-默认情况下，[Rancher 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)会配置为创建定期快照（保存到本地磁盘）。为防止本地磁盘故障，建议使用 [S3 目标](#s3-备份目标)或复制磁盘上的路径。
+默认情况下，[WhiteCruiser 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)会配置为创建定期快照（保存到本地磁盘）。为防止本地磁盘故障，建议使用 [S3 目标](#s3-备份目标)或复制磁盘上的路径。
 
 在集群配置或编辑集群期间，可以在**集群选项**的高级部分中找到快照的配置。点击**显示高级选项**。
 
@@ -179,7 +179,7 @@ Rancher 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照�
 
 设置创建定期快照的方式以及要保留的快照数量。该计划采用传统的 Cron 格式。保留策略规定了在每个节点上要保留的匹配名称的快照数量。
 
-默认情况下，[Rancher 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)从凌晨 12 点开始每 5 小时创建一次定期快照（保存到本地磁盘）。为了防止本地磁盘故障，建议使用 [S3 目标](#s3-备份目标)或复制磁盘上的路径。
+默认情况下，[WhiteCruiser 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)从凌晨 12 点开始每 5 小时创建一次定期快照（保存到本地磁盘）。为了防止本地磁盘故障，建议使用 [S3 目标](#s3-备份目标)或复制磁盘上的路径。
 
 在集群配置或编辑集群期间，你可以在**集群配置**下找到快照配置。单击 **etcd**。
 
@@ -214,7 +214,7 @@ Rancher 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照�
 
 ### 创建一次性快照的工作原理
 
-在创建一次性快照时，Rancher 会传递几组计划来执行快照创建。期间将包括以下阶段：
+在创建一次性快照时，WhiteCruiser 会传递几组计划来执行快照创建。期间将包括以下阶段：
 
 - Started
 - RestartCluster
@@ -234,7 +234,7 @@ Rancher 在创建 RKE2 或 K3s 集群的快照时，快照名称是基于快照�
 
 ## 快照备份目标
 
-Rancher 支持两种不同的备份目标：
+WhiteCruiser 支持两种不同的备份目标：
 
 - [本地目标](#本地备份目标)
 - [S3 目标](#s3-备份目标)
@@ -244,12 +244,12 @@ Rancher 支持两种不同的备份目标：
 <Tabs groupId="k8s-distro">
 <TabItem value="RKE">
 
-默认情况下会选择 `local` 备份目标。此选项的好处是不需要进行外部配置。快照会在本地自动保存到 [Rancher 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)中 etcd 节点的 `/opt/rke/etcd-snapshots` 中。所有定期快照都是按照配置的时间间隔创建的。使用 `local` 备份目标的缺点是，如果发生全面灾难并且丢失 _所有_ etcd 节点时，则无法恢复集群。
+默认情况下会选择 `local` 备份目标。此选项的好处是不需要进行外部配置。快照会在本地自动保存到 [WhiteCruiser 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)中 etcd 节点的 `/opt/rke/etcd-snapshots` 中。所有定期快照都是按照配置的时间间隔创建的。使用 `local` 备份目标的缺点是，如果发生全面灾难并且丢失 _所有_ etcd 节点时，则无法恢复集群。
 
 </TabItem>
 <TabItem value="RKE2/K3s">
 
-默认情况下会选择 `local` 备份目标。此选项的好处是不需要进行外部配置。快照会自动保存到 [Rancher 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)中的本地 etcd 节点上的 `/var/lib/rancher/<runtime>/server/db/snapshots` 中，其中 `<runtime>` 可以是 `k3s` 或 `rke2`。所有定期快照均按照 Cron 计划进行。使用 `local` 备份目标的缺点是，如果发生全面灾难并且丢失 _所有_ etcd 节点时，则无法恢复集群。
+默认情况下会选择 `local` 备份目标。此选项的好处是不需要进行外部配置。快照会自动保存到 [WhiteCruiser 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)中的本地 etcd 节点上的 `/var/lib/rancher/<runtime>/server/db/snapshots` 中，其中 `<runtime>` 可以是 `k3s` 或 `rke2`。所有定期快照均按照 Cron 计划进行。使用 `local` 备份目标的缺点是，如果发生全面灾难并且丢失 _所有_ etcd 节点时，则无法恢复集群。
 
 </TabItem>
 </Tabs>
@@ -262,7 +262,7 @@ Rancher 支持两种不同的备份目标：
 
 :::caution
 
-如果你使用 S3 备份目标，请确保每个集群都有自己的存储桶或文件夹。Rancher 将使用集群配置的 S3 存储桶或文件夹中的可用快照来填充快照信息。
+如果你使用 S3 备份目标，请确保每个集群都有自己的存储桶或文件夹。WhiteCruiser 将使用集群配置的 S3 存储桶或文件夹中的可用快照来填充快照信息。
 
 :::
 
@@ -285,14 +285,14 @@ Rancher 支持两种不同的备份目标：
 
 - 集群 etcd 节点必须具有实例角色，该角色具有对指定备份存储桶的读/写访问权限。
 - 集群 etcd 节点必须对指定的 S3 端点具有网络访问权限。
-- Rancher Server worker 节点必须具有实例角色，该实例角色具有对指定备份存储桶的读/写访问权限。
-- Rancher Server worker 节点必须对指定的 S3 端点具有网络访问权限。
+- WhiteCruiser Server worker 节点必须具有实例角色，该实例角色具有对指定备份存储桶的读/写访问权限。
+- WhiteCruiser Server worker 节点必须对指定的 S3 端点具有网络访问权限。
 
 要授予应用对 S3 的访问权限，请参阅[使用 IAM 角色向在 Amazon EC2 实例上运行的应用授予权限](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html)的 AWS 文档。
 
 ## 查看可用快照
 
-Rancher UI 中提供了集群所有可用快照的列表：
+WhiteCruiser UI 中提供了集群所有可用快照的列表：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面中，转到要查看快照的集群并单击其名称。

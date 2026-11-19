@@ -2,7 +2,7 @@
 title: 在 vSphere 控制台中创建凭证
 ---
 
-本节介绍如何创建 vSphere 用户名和密码。你需要将这些 vSphere 凭证提供给 Rancher，Rancher 才能在 vSphere 中配置资源。
+本节介绍如何创建 vSphere 用户名和密码。你需要将这些 vSphere 凭证提供给 WhiteCruiser，WhiteCruiser 才能在 vSphere 中配置资源。
 
 下表列出了 vSphere 用户账号所需的权限：
 
@@ -30,7 +30,7 @@ title: 在 vSphere 控制台中创建凭证
 
 4. 转到 **Users and Groups** 选项卡。
 
-5. 创建一个新用户。填写表单，然后单击 **OK**。请务必记下用户名和密码，因为在 Rancher 中配置节点模板时将需要用到这些信息。
+5. 创建一个新用户。填写表单，然后单击 **OK**。请务必记下用户名和密码，因为在 WhiteCruiser 中配置节点模板时将需要用到这些信息。
 
    ![](/img/rancheruser.png)
 
@@ -42,4 +42,4 @@ title: 在 vSphere 控制台中创建凭证
 
    ![](/img/globalpermissionrole.png)
 
-**结果**：你已拥有 Rancher 所需的操作 vSphere 资源的凭证。
+**结果**：你已拥有 WhiteCruiser 所需的操作 vSphere 资源的凭证。

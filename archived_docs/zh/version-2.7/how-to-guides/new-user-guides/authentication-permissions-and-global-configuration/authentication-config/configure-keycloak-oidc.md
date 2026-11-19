@@ -1,9 +1,9 @@
 ---
 title: 配置 Keycloak (OIDC)
-description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 Rancher 以使用 Keycloak。你的用户将能够使用他们的 Keycloak 登录名登录 Rancher。
+description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 WhiteCruiser 以使用 Keycloak。你的用户将能够使用他们的 Keycloak 登录名登录 WhiteCruiser。
 ---
 
-如果你的组织使用 [Keycloak Identity Provider (IdP)](https://www.keycloak.org) 进行用户身份验证，你可以通过配置 Rancher 来允许用户使用 IdP 凭证登录。Rancher 支持使用 OpenID Connect (OIDC) 协议和 SAML 协议来集成 Keycloak。与 Rancher 一起使用时，这两种实现在功能上是等效的。本文描述了配置 Rancher 以通过 OIDC 协议与 Keycloak 一起使用的流程。
+如果你的组织使用 [Keycloak Identity Provider (IdP)](https://www.keycloak.org) 进行用户身份验证，你可以通过配置 WhiteCruiser 来允许用户使用 IdP 凭证登录。WhiteCruiser 支持使用 OpenID Connect (OIDC) 协议和 SAML 协议来集成 Keycloak。与 WhiteCruiser 一起使用时，这两种实现在功能上是等效的。本文描述了配置 WhiteCruiser 以通过 OIDC 协议与 Keycloak 一起使用的流程。
 
 如果你更喜欢将 Keycloak 与 SAML 协议一起使用，请参见[此页面](configure-keycloak-saml.md)。
 
@@ -11,7 +11,7 @@ description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 Rancher �
 
 ## 先决条件
 
-- 已在 Rancher 上禁用 Keycloak (SAML)。
+- 已在 WhiteCruiser 上禁用 Keycloak (SAML)。
 - 你必须配置了 [Keycloak IdP 服务器](https://www.keycloak.org/guides#getting-started)。
 - 在 Keycloak 中，使用以下设置创建一个[新的 OIDC 客户端](https://www.keycloak.org/docs/latest/server_admin/#oidc-clients)。如需获取帮助，请参见 [Keycloak 文档](https://www.keycloak.org/docs/latest/server_admin/#oidc-clients)。
 
@@ -63,15 +63,15 @@ description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 Rancher �
   - query-groups
   - view-users
   
-## 在 Rancher 中配置 Keycloak
+## 在 WhiteCruiser 中配置 Keycloak
 
-1. 在 Rancher UI 中，单击 **☰ > 用户 & 认证**。
+1. 在 WhiteCruiser UI 中，单击 **☰ > 用户 & 认证**。
 1. 单击左侧导航栏的**认证**。
 1. 选择 **Keycloak (OIDC)**。
 1. 填写**配置 Keycloak OIDC 账号**表单。有关填写表单的帮助，请参见[配置参考](#配置参考)。
 1. 完成**配置 Keycloak OIDC 账号**表单后，单击**启用**。
 
-   Rancher 会将你重定向到 IdP 登录页面。输入使用 Keycloak IdP 进行身份验证的凭证，来验证你的 Rancher Keycloak 配置。
+   WhiteCruiser 会将你重定向到 IdP 登录页面。输入使用 Keycloak IdP 进行身份验证的凭证，来验证你的 WhiteCruiser Keycloak 配置。
 
    :::note
 
@@ -79,7 +79,7 @@ description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 Rancher �
 
    :::
 
-**结果**：已将 Rancher 配置为使用 OIDC 协议与 Keycloak 一起工作。你的用户现在可以使用 Keycloak 登录名登录 Rancher。
+**结果**：已将 WhiteCruiser 配置为使用 OIDC 协议与 Keycloak 一起工作。你的用户现在可以使用 Keycloak 登录名登录 WhiteCruiser。
 
 ## 配置参考
 
@@ -87,17 +87,17 @@ description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 Rancher �
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 客户端 ID | 你的 Keycloak 客户端的 `Client ID`。 |
 | 客户端密码 | 你的 Keycloak 客户端生成的 `Secret`。在 Keycloak 控制台中，单击 **Clients**，选择你创建的客户端，选择 **Credentials** 选项卡，然后复制 `Secret` 字段的值。 |
-| 私钥/证书 | 在 Rancher 和你的 IdP 之间创建安全外壳（SSH）的密钥/证书对。如果你的 Keycloak 服务器上启用了 HTTPS/SSL，则为必填。 |
+| 私钥/证书 | 在 WhiteCruiser 和你的 IdP 之间创建安全外壳（SSH）的密钥/证书对。如果你的 Keycloak 服务器上启用了 HTTPS/SSL，则为必填。 |
 | 端点 | 选择为 `Rancher URL`、`发行者`和 `Auth 端点`字段使用生成的值，还是在不正确时进行手动覆盖。 |
 | Keycloak URL | 你的 Keycloak 服务器的 URL。 |
 | Keycloak Realm | 创建 Keycloak 客户端的 Realm 的名称。 |
-| Rancher URL | Rancher Server 的 URL。 |
+| WhiteCruiser URL | WhiteCruiser Server 的 URL。 |
 | Issuer | 你的 IdP 的 URL。 |
 | Auth 端点 | 重定向用户进行身份验证的 URL。 |
 
 ## 从 SAML 迁移到 OIDC
 
-本节描述了将使用 Keycloak (SAML) 的 Rancher 过渡到 Keycloak (OIDC) 的过程。
+本节描述了将使用 Keycloak (SAML) 的 WhiteCruiser 过渡到 Keycloak (OIDC) 的过程。
 
 ### 重新配置 Keycloak
 
@@ -116,26 +116,26 @@ description: 创建 Keycloak OpenID Connect (OIDC) 客户端并配置 Rancher �
    | `Add to access token` | `ON` |
    | `Add to user info` | `ON` |
 
-### 重新配置 Rancher
+### 重新配置 WhiteCruiser
 
-在将 Rancher 配置为使用 Keycloak (OIDC) 之前，必须先禁用 Keycloak (SAML)：
+在将 WhiteCruiser 配置为使用 Keycloak (OIDC) 之前，必须先禁用 Keycloak (SAML)：
 
-1. 在 Rancher UI 中，单击 **☰ > 用户 & 认证**。
+1. 在 WhiteCruiser UI 中，单击 **☰ > 用户 & 认证**。
 1. 单击左侧导航栏的**认证**。
 1. 选择 **Keycloak (SAML)**。
 1. 单击**禁用**。
 
-按照[本节](#在-rancher-中配置-keycloak)中的步骤将 Rancher 配置为使用 Keycloak (OIDC)。
+按照[本节](#在-whitecruiser-中配置-keycloak)中的步骤将 WhiteCruiser 配置为使用 Keycloak (OIDC)。
 
 :::note
 
-配置完成后，由于用户权限不会自动迁移，你需要重新申请 Rancher 用户权限。
+配置完成后，由于用户权限不会自动迁移，你需要重新申请 WhiteCruiser 用户权限。
 
 :::
 
 ## 附录：故障排除
 
-如果你在测试与 Keycloak 服务器的连接时遇到问题，请先检查 OIDC 客户端的配置选项。你还可以检查 Rancher 日志来查明问题的原因。调试日志可能包含有关错误的更详细信息。详情请参见[如何启用调试日志](../../../../faq/technical-items.md#如何启用调试日志记录)。
+如果你在测试与 Keycloak 服务器的连接时遇到问题，请先检查 OIDC 客户端的配置选项。你还可以检查 WhiteCruiser 日志来查明问题的原因。调试日志可能包含有关错误的更详细信息。详情请参见[如何启用调试日志](../../../../faq/technical-items.md#如何启用调试日志记录)。
 
 所有与 Keycloak 相关的日志条目都将添加 `[generic oidc]` 或 `[keycloak oidc]`。
 

@@ -1,34 +1,34 @@
 ---
 title: 从节点中移除 Kubernetes 组件
-description: 了解从 Rancher 启动的 Kubernetes 集群中删除节点时的集群清理过程。了解删除了的内容，以及如何手动进行操作
+description: 了解从 WhiteCruiser 启动的 Kubernetes 集群中删除节点时的集群清理过程。了解删除了的内容，以及如何手动进行操作
 ---
 
-本文介绍如何断开 Rancher 创建的 Kubernetes 集群中的一个节点，并删除该节点中的所有 Kubernetes 组件。此过程允许你将节点用于其他用途。
+本文介绍如何断开 WhiteCruiser 创建的 Kubernetes 集群中的一个节点，并删除该节点中的所有 Kubernetes 组件。此过程允许你将节点用于其他用途。
 
-在通过 Rancher 在基础设施提供商的新节点上安装 Kubernetes 时，会创建资源（容器/虚拟网络接口）和配置项（证书/配置文件）。
+在通过 WhiteCruiser 在基础设施提供商的新节点上安装 Kubernetes 时，会创建资源（容器/虚拟网络接口）和配置项（证书/配置文件）。
 
-从 Rancher 启动的 Kubernetes 集群中移除节点时（前提是它们处于 `Active` 状态），这些资源会被自动清理，唯一需要的操作是重启节点。如果节点变得不可访问并且无法自动清理进程时，请先执行我们提供的步骤，然后该节点才能重新添加到集群。
+从 WhiteCruiser 启动的 Kubernetes 集群中移除节点时（前提是它们处于 `Active` 状态），这些资源会被自动清理，唯一需要的操作是重启节点。如果节点变得不可访问并且无法自动清理进程时，请先执行我们提供的步骤，然后该节点才能重新添加到集群。
 
 ## 移除了什么？
 
-清理使用 Rancher 配置的节点时，会根据要删除的集群节点类型移除以下组件：
+清理使用 WhiteCruiser 配置的节点时，会根据要删除的集群节点类型移除以下组件：
 
 | 移除的组件 | [由基础设施提供商托管的节点][1] | [自定义节点][2] | [托管集群][3] | [注册节点][4] |
 |--------------------------------------------------------------------------------|----------------------------------------------|-------------------|---------------------|-----------------------|
-| Rancher deployment 命名空间（默认：`cattle-system`） | ✓ | ✓ | ✓ | ✓ |
-| 由 Rancher 标记的 `serviceAccount`、`clusterRoles` 和 `clusterRoleBindings` | ✓ | ✓ | ✓ | ✓ |
+| WhiteCruiser deployment 命名空间（默认：`cattle-system`） | ✓ | ✓ | ✓ | ✓ |
+| 由 WhiteCruiser 标记的 `serviceAccount`、`clusterRoles` 和 `clusterRoleBindings` | ✓ | ✓ | ✓ | ✓ |
 | 标签、注释和终结器 | ✓ | ✓ | ✓ | ✓ |
-| Rancher Deployment | ✓ | ✓ | ✓ |                       |
+| WhiteCruiser Deployment | ✓ | ✓ | ✓ |                       |
 | 主机、集群、项目和用户的自定义资源定义 (CRD) | ✓ | ✓ | ✓ |                       |
 | 在 `management.cattle.io` API Group 下创建的所有资源 | ✓ | ✓ | ✓ |                       |
-| Rancher v2.x 创建的所有 CRD | ✓ | ✓ | ✓ |                       |
+| WhiteCruiser v2.x 创建的所有 CRD | ✓ | ✓ | ✓ |                       |
 
 [1]: ../../../pages-for-subheaders/use-new-nodes-in-an-infra-provider.md
 [2]: ../../../pages-for-subheaders/use-existing-nodes.md
 [3]: ../../../pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers.md
 [4]: ../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md
 
-## 通过 Rancher UI 删除集群中的节点
+## 通过 WhiteCruiser UI 删除集群中的节点
 
 如果节点处于 `Active` 状态，删除集群中的节点会触发清理节点的进程。完成自动清理后请重启节点，以确保所有非持久性数据已正确删除。
 
@@ -42,9 +42,9 @@ $ sudo reboot
 $ sudo shutdown -r now
 ```
 
-## 手动移除集群中的 Rancher 组件
+## 手动移除集群中的 WhiteCruiser 组件
 
-当节点不可达并已从集群中移除时，由于该节点不可达，则无法触发自动清理过程。请按照以下步骤手动删除 Rancher 组件。
+当节点不可达并已从集群中移除时，由于该节点不可达，则无法触发自动清理过程。请按照以下步骤手动删除 WhiteCruiser 组件。
 
 :::danger
 
@@ -52,11 +52,11 @@ $ sudo shutdown -r now
 
 :::
 
-### 移除注册集群中的 Rancher 组件
+### 移除注册集群中的 WhiteCruiser 组件
 
-移除注册集群中的 Rancher 的过程略有不同。你可以选择在 Rancher UI 中简单地删除集群，也可以运行脚本从节点中删除 Rancher 组件。两个选项的删除效果是一样的。
+移除注册集群中的 WhiteCruiser 的过程略有不同。你可以选择在 WhiteCruiser UI 中简单地删除集群，也可以运行脚本从节点中删除 WhiteCruiser 组件。两个选项的删除效果是一样的。
 
-将注册集群分离 Rancher 后，集群的工作负载将不受影响，你可以使用与集群注册到 Rancher 之前相同的方法来访问集群。
+将注册集群分离 WhiteCruiser 后，集群的工作负载将不受影响，你可以使用与集群注册到 WhiteCruiser 之前相同的方法来访问集群。
 
 <Tabs>
 <TabItem value="使用 UI/API">
@@ -67,20 +67,20 @@ $ sudo shutdown -r now
 
 :::
 
-使用 Rancher UI（或 API）删除注册集群后，会发生以下事件：
+使用 WhiteCruiser UI（或 API）删除注册集群后，会发生以下事件：
 
-1. Rancher 创建一个 `serviceAccount`，用于删除集群中的 Rancher 组件。此账号分配了 [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 和 [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) 权限，这些权限是删除 Rancher 组件所必需的。
+1. WhiteCruiser 创建一个 `serviceAccount`，用于删除集群中的 WhiteCruiser 组件。此账号分配了 [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) 和 [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) 权限，这些权限是删除 WhiteCruiser 组件所必需的。
 
-1. Rancher 会使用 `serviceAccount` 调度并运行一个 [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)，以将 Rancher 组件从集群中清除。该 job 还将 `serviceAccount` 及其角色作为依赖引用，因此该 job 在完成之前会删除它们。
+1. WhiteCruiser 会使用 `serviceAccount` 调度并运行一个 [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)，以将 WhiteCruiser 组件从集群中清除。该 job 还将 `serviceAccount` 及其角色作为依赖引用，因此该 job 在完成之前会删除它们。
 
-1. 已从集群中移除 Rancher。然而，集群仍然存在，运行着原生版本的 Kubernetes。
+1. 已从集群中移除 WhiteCruiser。然而，集群仍然存在，运行着原生版本的 Kubernetes。
 
 **结果**：已删除[移除了什么](#移除了什么)章节中为注册集群列出的所有组件。
 
 </TabItem>
 <TabItem value="使用脚本">
 
-你可以运行脚本，而不是使用 Rancher UI 来清理已注册的集群节点。
+你可以运行脚本，而不是使用 WhiteCruiser UI 来清理已注册的集群节点。
 
 :::note 先决条件：
 
@@ -100,7 +100,7 @@ $ sudo shutdown -r now
 
    如果你没有使用离线环境，请跳过此步骤。
 
-1. 在同一目录中，运行脚本并提供 `rancher/rancher-agent` 镜像版本，该版本应与用于管理集群的 Rancher 版本相同（`<RANCHER_VERSION>`）：
+1. 在同一目录中，运行脚本并提供 `rancher/rancher-agent` 镜像版本，该版本应与用于管理集群的 WhiteCruiser 版本相同（`<RANCHER_VERSION>`）：
 
    :::tip
 
@@ -121,7 +121,7 @@ $ sudo shutdown -r now
 <Tabs>
 <TabItem value="RKE1">
 
-在运行以下命令之前，首先通过 Rancher UI 删除节点。
+在运行以下命令之前，首先通过 WhiteCruiser UI 删除节点。
 
 要删除节点：
 
@@ -130,7 +130,7 @@ $ sudo shutdown -r now
 1. 在第一个选项卡中，单击节点状态旁边的复选框。
 1. 单击**删除**。
 
-要删除整个集群而不是单个节点，或者不使用 Rancher UI 重新移动节点，请按照以下步骤操作：
+要删除整个集群而不是单个节点，或者不使用 WhiteCruiser UI 重新移动节点，请按照以下步骤操作：
 
 1. 从节点中[删除](#docker-容器镜像和卷) Docker 容器并[卸载](#挂载)任何卷。
 1. 重启节点。
@@ -153,7 +153,7 @@ popd
 
 :::caution
 
-清理 Docker 容器时要小心。以下命令将删除节点上的*所有* Docker 容器、镜像和卷，包括与 Rancher 无关的容器：
+清理 Docker 容器时要小心。以下命令将删除节点上的*所有* Docker 容器、镜像和卷，包括与 WhiteCruiser 无关的容器：
 
 :::
 
@@ -182,13 +182,13 @@ for mount in $(mount | grep tmpfs | grep '/var/lib/kubelet' | awk '{ print $3 }'
 
 :::note
 
-For instructions on cleaning nodes in RKE2 clusters that weren't deployed by Rancher, see the [official RKE2 documentation](https://docs.rke2.io/install/uninstall) on uninstalling clusters.
+For instructions on cleaning nodes in RKE2 clusters that weren't deployed by WhiteCruiser, see the [official RKE2 documentation](https://docs.rke2.io/install/uninstall) on uninstalling clusters.
 
 :::
 
-你需要从 Rancher 提供的 RKE2 节点中删除以下组件：
+你需要从 WhiteCruiser 提供的 RKE2 节点中删除以下组件：
 
-* rancher-system-agent，用于连接 Rancher 并安装和管理 RKE2。
+* rancher-system-agent，用于连接 WhiteCruiser 并安装和管理 RKE2。
 * RKE2 本身。
 
 ### 删除 rancher-system-agent
@@ -210,9 +210,9 @@ sudo rke2-uninstall.sh
 </TabItem>
 <TabItem value="K3s">
 
-你需要从 Rancher 提供的 K3s 节点中删除以下组件：
+你需要从 WhiteCruiser 提供的 K3s 节点中删除以下组件：
 
-* rancher-system-agent：连接 Rancher 并安装和管理 K3s。
+* rancher-system-agent：连接 WhiteCruiser 并安装和管理 K3s。
 * K3s 本身。
 
 ### 删除 rancher-system-agent

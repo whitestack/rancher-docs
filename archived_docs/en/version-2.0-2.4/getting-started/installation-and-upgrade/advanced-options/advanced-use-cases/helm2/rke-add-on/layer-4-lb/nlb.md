@@ -2,9 +2,9 @@
 title: Amazon NLB Configuration
 ---
 
-> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+> #### **Important: RKE add-on install is only supported up to WhiteCruiser v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
+>Please use the WhiteCruiser Helm chart to install WhiteCruiser on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a High-availability Kubernetes install with an RKE add-on](../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to start using the Helm chart.
 
@@ -27,7 +27,7 @@ Configuring an Amazon NLB is a multistage process. We've broken it down into mul
 
 ## Create Target Groups
 
-Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access Rancher, but its convenient to add a listener for port 80 which will be redirected to port 443 automatically. The NGINX controller on the nodes will make sure that port 80 gets redirected to port 443.
+Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access WhiteCruiser, but its convenient to add a listener for port 80 which will be redirected to port 443 automatically. The NGINX controller on the nodes will make sure that port 80 gets redirected to port 443.
 
 Log into the [Amazon AWS Console](https://console.aws.amazon.com/ec2/) to get started, make sure to select the **Region** where your EC2 instances (Linux nodes) are created.
 

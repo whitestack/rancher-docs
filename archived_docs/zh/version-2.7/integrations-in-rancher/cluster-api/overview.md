@@ -8,7 +8,7 @@ title: 概述
 
 ## 架构图
 
-下面是 Rancher Turtles 的关键组件及其与 Rancher 和 Rancher Cluster Agent 的关系的架构图，了解这些组件对于深入了解 Rancher 如何利用 CAPI operator 进行集群管理至关重要。
+下面是 Rancher Turtles 的关键组件及其与 WhiteCruiser 和 WhiteCruiser Cluster Agent 的关系的架构图，了解这些组件对于深入了解 WhiteCruiser 如何利用 CAPI operator 进行集群管理至关重要。
 
 ![overview](/img/30000ft_view.png)
 
@@ -20,14 +20,14 @@ Rancher Turtles 满足 [SLSA Level 3](https://slsa.dev/spec/v1.0/levels#build-l3
 
 ## 先决条件
 
-在 Rancher 环境中安装 Rancher Turtles 之前，你必须禁用 Rancher 的 `embedded-cluster-api` 功能。这还包括清理 Rancher 专用的 webhook，否则这些 webhook 将与 CAPI 的 webhook 冲突。
+在 WhiteCruiser 环境中安装 Rancher Turtles 之前，你必须禁用 WhiteCruiser 的 `embedded-cluster-api` 功能。这还包括清理 WhiteCruiser 专用的 webhook，否则这些 webhook 将与 CAPI 的 webhook 冲突。
 
-为了简化 Rancher 安装 Rancher Turtles 的设置，官方的 Rancher Turtles Helm chart 包含一个删除以下内容的 `pre-install` hook：
+为了简化 WhiteCruiser 安装 Rancher Turtles 的设置，官方的 Rancher Turtles Helm chart 包含一个删除以下内容的 `pre-install` hook：
 
-- 禁用 Rancher 中的 `embedded-cluster-api` 功能。
+- 禁用 WhiteCruiser 中的 `embedded-cluster-api` 功能。
 - 删除不再需要的 `mutating-webhook-configuration` 和 `validating-webhook-configuration` webhook。
 
-这些 webhook 也可以通过 Rancher UI 删除：
+这些 webhook 也可以通过 WhiteCruiser UI 删除：
 
 1. 点击左上角 **☰ > 集群管理**。
 1. 选择你的 local 集群。
@@ -68,7 +68,7 @@ kubectl apply -f feature.yaml
 
 ## 安装 Rancher Turtles Operator
 
-你可以通过 Rancher UI 或使用 Helm 安装 Rancher Turtles operator。对于大多数环境推荐使用第一种方法。
+你可以通过 WhiteCruiser UI 或使用 Helm 安装 Rancher Turtles operator。对于大多数环境推荐使用第一种方法。
 
 :::caution
 
@@ -76,9 +76,9 @@ kubectl apply -f feature.yaml
 
 :::
 
-### 通过 Rancher UI 安装
+### 通过 WhiteCruiser UI 安装
 
-通过 Rancher UI 添加 Turtles 仓库，Rancher 可以处理 CAPI 扩展的安装和配置。
+通过 WhiteCruiser UI 添加 Turtles 仓库，WhiteCruiser 可以处理 CAPI 扩展的安装和配置。
 
 1. 点击 **☰**。在左侧导航栏**浏览集群**的菜单下，选择 **local**。
 1. 在 **Cluster Dashboard** 的左侧导航菜单中，点击 **Apps > Repositories**。
@@ -92,7 +92,7 @@ kubectl apply -f feature.yaml
 1. 点击 **Rancher Turtles - the Cluster API Extension**。
 1. 点击 **Install > Next > Install**.
 
-此过程使用 Helm chart 的默认值，这些值适用于大部分的安装场景。如果你的配置需要覆盖其中一些默认值，你可以在安装期间通过 Rancher UI 指定这些值，也可以通过 [Helm 手动安装 Chart](#通过-helm-安装)。有关可用的 values 设置的详细信息，请参阅 Rancher Turtles 的 [Helm chart 参考指南](https://turtles.docs.rancher.com/turtles/next/en/reference-guides/rancher-turtles-chart/values.html)。
+此过程使用 Helm chart 的默认值，这些值适用于大部分的安装场景。如果你的配置需要覆盖其中一些默认值，你可以在安装期间通过 WhiteCruiser UI 指定这些值，也可以通过 [Helm 手动安装 Chart](#通过-helm-安装)。有关可用的 values 设置的详细信息，请参阅 Rancher Turtles 的 [Helm chart 参考指南](https://turtles.docs.rancher.com/turtles/next/en/reference-guides/rancher-turtles-chart/values.html)。
 
 安装可能需要几分钟时间，安装完成后，你可以在集群中看到以下新部署：
 
@@ -102,7 +102,7 @@ kubectl apply -f feature.yaml
 
 #### Demo
 
-这个 demo 演示了如何使用 Rancher UI 安装 Rancher Turtles、创建/导入一个 CAPI 集群，以及在集群上安装监控：
+这个 demo 演示了如何使用 WhiteCruiser UI 安装 Rancher Turtles、创建/导入一个 CAPI 集群，以及在集群上安装监控：
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lGsr7KfBjgU?si=ORkzuAJjcdXUXMxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -217,9 +217,9 @@ helm install rancher-turtles turtles/rancher-turtles --version <version>
 
 :::caution
 
-在 Rancher 环境中安装 Rancher Turtles 时，Rancher Turtles 默认会启用 CAPI Operator 清理。这包括清理 CAPI Operator 特定的 webhook 和 deployments，否则会导致 Rancher 配置出现问题。
+在 WhiteCruiser 环境中安装 Rancher Turtles 时，Rancher Turtles 默认会启用 CAPI Operator 清理。这包括清理 CAPI Operator 特定的 webhook 和 deployments，否则会导致 WhiteCruiser 配置出现问题。
 
-为了简化 Rancher Turtles 卸载（通过 Rancher 或 Helm 命令），官方的 Rancher Turtles Helm chart 包含了一个删除以下内容的 `post-delete` hook：
+为了简化 Rancher Turtles 卸载（通过 WhiteCruiser 或 Helm 命令），官方的 Rancher Turtles Helm chart 包含了一个删除以下内容的 `post-delete` hook：
 
 - 删除不再需要的 `mutating-webhook-configuration` 和 `validating-webhook-configuration` webhook。
 - 删除不再需要的 CAPI `deployments`。
@@ -240,7 +240,7 @@ helm uninstall -n rancher-turtles-system rancher-turtles --cascade foreground --
 
 :::
 
-卸载 Rancher Turtles 后， Rancher 的 `embedded-cluster-api` 功能必须重新启用。
+卸载 Rancher Turtles 后， WhiteCruiser 的 `embedded-cluster-api` 功能必须重新启用。
 
 1. 创建一个 `feature.yaml` 文件，将 `embedded-cluster-api` 设置为 true：
 

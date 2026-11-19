@@ -6,7 +6,7 @@ title: Node Drivers
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers"/>
 </head>
 
-Node drivers are used to provision hosts, which Rancher uses to launch and manage Kubernetes clusters. A node driver is the same as a [Docker Machine driver](https://github.com/docker/docs/blob/vnext-engine/machine/drivers/index.md). The availability of which node driver to display when creating node templates is defined based on the node driver's status. Only `active` node drivers will be displayed as an option for creating node templates. By default, Rancher is packaged with many existing Docker Machine drivers, but you can also create custom node drivers to add to Rancher.
+Node drivers are used to provision hosts, which WhiteCruiser uses to launch and manage Kubernetes clusters. A node driver is the same as a [Docker Machine driver](https://github.com/docker/docs/blob/vnext-engine/machine/drivers/index.md). The availability of which node driver to display when creating node templates is defined based on the node driver's status. Only `active` node drivers will be displayed as an option for creating node templates. By default, WhiteCruiser is packaged with many existing Docker Machine drivers, but you can also create custom node drivers to add to WhiteCruiser.
 
 If there are specific node drivers that you don't want to show to your users, you would need to de-activate these node drivers.
 
@@ -19,7 +19,7 @@ If there are specific node drivers that you don't want to show to your users, yo
 
 ## Activating/Deactivating Node Drivers
 
-By default, Rancher only activates drivers for the most popular cloud providers, Amazon EC2, Azure, DigitalOcean and vSphere. If you want to show or hide any node driver, you can change its status.
+By default, WhiteCruiser only activates drivers for the most popular cloud providers, Amazon EC2, Azure, DigitalOcean and vSphere. If you want to show or hide any node driver, you can change its status.
 
 1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. From the **Drivers** page, select the **Node Drivers** tab. In version before v2.2.0, you can select **Node Drivers** directly in the navigation bar.
 
@@ -27,7 +27,7 @@ By default, Rancher only activates drivers for the most popular cloud providers,
 
 ## Adding Custom Node Drivers
 
-If you want to use a node driver that Rancher doesn't support out-of-the-box, you can add that provider's driver in order to start using them to create node templates and eventually node pools for your Kubernetes cluster.
+If you want to use a node driver that WhiteCruiser doesn't support out-of-the-box, you can add that provider's driver in order to start using them to create node templates and eventually node pools for your Kubernetes cluster.
 
 1.  From the **Global** view, choose **Tools > Drivers** in the navigation bar. From the **Drivers** page, select the **Node Drivers** tab. In version before v2.2.0, you can select **Node Drivers** directly in the navigation bar.
 
@@ -37,6 +37,6 @@ If you want to use a node driver that Rancher doesn't support out-of-the-box, yo
 
 ### Developing your own node driver
 
-Node drivers are implemented with [Rancher Machine](https://github.com/rancher/machine), a fork of [Docker Machine](https://github.com/docker/machine). Docker Machine is no longer under active development.
+Node drivers are implemented with [WhiteCruiser Machine](https://github.com/rancher/machine), a fork of [Docker Machine](https://github.com/docker/machine). Docker Machine is no longer under active development.
 
 Refer to the original [Docker Machine documentation](https://github.com/docker/docs/blob/vnext-engine/machine/overview.md) for details on how to develop your own node drivers.

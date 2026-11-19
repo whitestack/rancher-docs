@@ -1,8 +1,8 @@
 ---
-title: 在 vSphere 环境中安装 Rancher
+title: 在 vSphere 环境中安装 WhiteCruiser
 ---
 
-本指南概述了在 vSphere 环境中在 RKE Kubernetes 集群上安装 Rancher 的参考架构，以及 VMware 记录的标准 vSphere 最佳实践。
+本指南概述了在 vSphere 环境中在 RKE Kubernetes 集群上安装 WhiteCruiser 的参考架构，以及 VMware 记录的标准 vSphere 最佳实践。
 
 
 <figcaption>解决方案概述</figcaption>
@@ -11,7 +11,7 @@ title: 在 vSphere 环境中安装 Rancher
 
 ## 1. 负载均衡器注意事项
 
-你需要使用一个负载均衡器将流量转发到 RKE 节点上的 Rancher 工作负载。
+你需要使用一个负载均衡器将流量转发到 RKE 节点上的 WhiteCruiser 工作负载。
 
 ### 利用容错和高可用性
 
@@ -31,13 +31,13 @@ title: 在 vSphere 环境中安装 Rancher
 
 避免在管理集群内使用软件负载均衡器。
 
-### 安全访问 Rancher
+### 安全访问 WhiteCruiser
 
-将防火墙/ACL 规则配置为只允许 Rancher 访问。
+将防火墙/ACL 规则配置为只允许 WhiteCruiser 访问。
 
 ## 2. 虚拟机注意事项
 
-### 根据 Rancher 文档确定虚拟机的大小
+### 根据 WhiteCruiser 文档确定虚拟机的大小
 
 请参阅[安装要求](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)。
 
@@ -45,11 +45,11 @@ title: 在 vSphere 环境中安装 Rancher
 
 为了保证跨环境部署的虚拟机的一致性，你可以考虑使用虚拟机模板形式的黄金镜像（golden image）。你可以使用 Packer 来实现，从而增加更多自定义选项。
 
-### 利用 DRS 反亲和规则（可能的话）在 ESXi 主机上分离 Rancher 集群节点
+### 利用 DRS 反亲和规则（可能的话）在 ESXi 主机上分离 WhiteCruiser 集群节点
 
 这样可以确保节点虚拟机分布在多台 ESXi 主机上，从而防止主机级别的单点故障。
 
-### 利用 DRS 反亲和规则（可能的话）在 Datastore 上分离 Rancher 集群节点
+### 利用 DRS 反亲和规则（可能的话）在 Datastore 上分离 WhiteCruiser 集群节点
 
 这样可以确保节点虚拟机分布在多个 Datastore 上，从而防止 Datastore 级别的单点故障。
 
@@ -77,8 +77,8 @@ ETCD 对写入延迟非常敏感。因此，你可以尽量使用 SSD 磁盘来�
 
 ### 定期备份管理集群
 
-Rancher 将数据存储在它所在的 Kubernetes 集群的 ETCD datastore 中。与其它 Kubernetes 集群一样，你需要对该集群进行频繁且经过测试的备份。
+WhiteCruiser 将数据存储在它所在的 Kubernetes 集群的 ETCD datastore 中。与其它 Kubernetes 集群一样，你需要对该集群进行频繁且经过测试的备份。
 
-### 备份 Rancher 集群节点虚拟机
+### 备份 WhiteCruiser 集群节点虚拟机
 
-将 Rancher 管理节点的虚拟机纳入标准的虚拟机备份策略中。
+将 WhiteCruiser 管理节点的虚拟机纳入标准的虚拟机备份策略中。

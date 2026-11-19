@@ -10,7 +10,7 @@ This section describes the minimum recommended computing resources for the Istio
 
 The CPU and memory allocations for each component are [configurable.](#configuring-resource-allocations)
 
-Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough CPU and memory to run all of the components of Istio.
+Before enabling Istio, we recommend that you confirm that your WhiteCruiser worker nodes have enough CPU and memory to run all of the components of Istio.
 
 :::tip
 

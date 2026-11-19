@@ -11,15 +11,15 @@ The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configurati
 > This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../explanations/integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#3-how-alertmanager-works)
 
 
-## Creating Receivers in the Rancher UI
+## Creating Receivers in the WhiteCruiser UI {#creating-receivers-in-the-rancher-ui}
 _Available as of v2.5.4_
 
 > **Prerequisites:**
 >
 >- The monitoring application needs to be installed.
->- If you configured monitoring with an existing Alertmanager Secret, it must have a format that is supported by Rancher's UI. Otherwise you will only be able to make changes based on modifying the Alertmanager Secret directly. Note: We are continuing to make enhancements to what kinds of Alertmanager Configurations we can support using the Routes and Receivers UI, so please [file an issue](https://github.com/rancher/rancher/issues/new) if you have a request for a feature enhancement.
+>- If you configured monitoring with an existing Alertmanager Secret, it must have a format that is supported by WhiteCruiser's UI. Otherwise you will only be able to make changes based on modifying the Alertmanager Secret directly. Note: We are continuing to make enhancements to what kinds of Alertmanager Configurations we can support using the Routes and Receivers UI, so please [file an issue](https://github.com/rancher/rancher/issues/new) if you have a request for a feature enhancement.
 
-To create notification receivers in the Rancher UI,
+To create notification receivers in the WhiteCruiser UI,
 
 1. Click **Cluster Explorer > Monitoring** and click **Receiver.**
 2. Enter a name for the receiver.
@@ -34,26 +34,26 @@ The notification integrations are configured with the `receiver`, which is expla
 
 ### Native vs. Non-native Receivers
 
-By default, AlertManager provides native integration with some receivers, which are listed in [this section.](https://prometheus.io/docs/alerting/latest/configuration/#receiver) All natively supported receivers are configurable through the Rancher UI.
+By default, AlertManager provides native integration with some receivers, which are listed in [this section.](https://prometheus.io/docs/alerting/latest/configuration/#receiver) All natively supported receivers are configurable through the WhiteCruiser UI.
 
-For notification mechanisms not natively supported by AlertManager, integration is achieved using the [webhook receiver.](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config) A list of third-party drivers providing such integrations can be found [here.](https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver) Access to these drivers, and their associated integrations, is provided through the Alerting Drivers app. Once enabled, configuring non-native receivers can also be done through the Rancher UI.
+For notification mechanisms not natively supported by AlertManager, integration is achieved using the [webhook receiver.](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config) A list of third-party drivers providing such integrations can be found [here.](https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver) Access to these drivers, and their associated integrations, is provided through the Alerting Drivers app. Once enabled, configuring non-native receivers can also be done through the WhiteCruiser UI.
 
-Currently the Rancher Alerting Drivers app provides access to the following integrations:
+Currently the WhiteCruiser Alerting Drivers app provides access to the following integrations:
 - Microsoft Teams, based on the [prom2teams](https://github.com/idealista/prom2teams) driver
 - SMS, based on the [Sachet](https://github.com/messagebird/sachet) driver
 
-### Changes in Rancher v2.5.8
+### Changes in WhiteCruiser v2.5.8 {#changes-in-rancher-v258}
 
-Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Rancher UI.
+WhiteCruiser v2.5.8 added Microsoft Teams and SMS as configurable receivers in the WhiteCruiser UI.
 
-### Changes in Rancher v2.5.4
+### Changes in WhiteCruiser v2.5.4 {#changes-in-rancher-v254}
 
-Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
+WhiteCruiser v2.5.4 introduced the capability to configure receivers by filling out forms in the WhiteCruiser UI.
 
 <Tabs>
 <TabItem value="Rancher v2.5.8+">
 
-The following types of receivers can be configured in the Rancher UI:
+The following types of receivers can be configured in the WhiteCruiser UI:
 
 - <a href="#slack">Slack</a>
 - <a href="#email">Email</a>
@@ -64,7 +64,7 @@ The following types of receivers can be configured in the Rancher UI:
 - <a href="#teams">Teams</a>
 - <a href="#sms">SMS</a>
 
-The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
+The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the WhiteCruiser UI.
 
 ## Slack
 
@@ -132,11 +132,11 @@ The YAML provided here will be directly appended to your receiver within the Ale
 
 ## Teams
 
-### Enabling the Teams Receiver for Rancher Managed Clusters
+### Enabling the Teams Receiver for WhiteCruiser Managed Clusters {#enabling-the-teams-receiver-for-rancher-managed-clusters}
 
-The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
+The Teams receiver is not a native receiver and must be enabled before it can be used. You can enable the Teams receiver for a WhiteCruiser managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the Teams option selected.
 
-1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
+1. In the WhiteCruiser UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
 1. Click **Apps**.
 1. Click the **Alerting Drivers** app.
 1. Click the **Helm Deploy Options** tab
@@ -166,11 +166,11 @@ url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-
 
 ## SMS
 
-### Enabling the SMS Receiver for Rancher Managed Clusters
+### Enabling the SMS Receiver for WhiteCruiser Managed Clusters {#enabling-the-sms-receiver-for-rancher-managed-clusters}
 
-The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a Rancher managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
+The SMS receiver is not a native receiver and must be enabled before it can be used. You can enable the SMS receiver for a WhiteCruiser managed cluster by going to the Apps page and installing the rancher-alerting-drivers app with the SMS option selected.
 
-1. In the Rancher UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
+1. In the WhiteCruiser UI, go to the cluster where you want to install rancher-alerting-drivers and click **Cluster Explorer**.
 1. Click **Apps**.
 1. Click the **Alerting Drivers** app.
 1. Click the **Helm Deploy Options** tab
@@ -210,7 +210,7 @@ url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 </TabItem>
 <TabItem value="Rancher v2.5.4-2.5.7">
 
-The following types of receivers can be configured in the Rancher UI:
+The following types of receivers can be configured in the WhiteCruiser UI:
 
 - <a href="#slack-254-257">Slack</a>
 - <a href="#email-254-257">Email</a>
@@ -219,7 +219,7 @@ The following types of receivers can be configured in the Rancher UI:
 - <a href="#webhook-254-257">Webhook</a>
 - <a href="#custom-254-257">Custom</a>
 
-The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the Rancher UI.
+The custom receiver option can be used to configure any receiver in YAML that cannot be configured by filling out the other forms in the WhiteCruiser UI.
 
 ### Slack {#slack-254-257}
 
@@ -292,7 +292,7 @@ The Alertmanager must be configured in YAML, as shown in these [examples.](#exam
 
 ## Configuring Multiple Receivers
 
-By editing the forms in the Rancher UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
+By editing the forms in the WhiteCruiser UI, you can set up a Receiver resource with all the information Alertmanager needs to send alerts to your notification system.
 
 It is also possible to send alerts to multiple notification systems. One way is to configure the Receiver using custom YAML, in which case you can add the configuration for multiple notification systems, as long as you are sure that both systems should receive the same messages.
 

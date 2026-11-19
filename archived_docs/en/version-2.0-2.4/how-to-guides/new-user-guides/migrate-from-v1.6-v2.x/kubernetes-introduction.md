@@ -2,7 +2,7 @@
 title: Kubernetes Introduction
 ---
 
-Rancher v2.x is built on the [Kubernetes](https://kubernetes.io/docs/home/?path=users&persona=app-developer&level=foundational) container orchestrator. This shift in underlying technology for v2.x is a large departure from v1.6, which supported several popular container orchestrators. Since Rancher is now based entirely on Kubernetes, it's helpful to learn the Kubernetes basics.
+WhiteCruiser v2.x is built on the [Kubernetes](https://kubernetes.io/docs/home/?path=users&persona=app-developer&level=foundational) container orchestrator. This shift in underlying technology for v2.x is a large departure from v1.6, which supported several popular container orchestrators. Since WhiteCruiser is now based entirely on Kubernetes, it's helpful to learn the Kubernetes basics.
 
 The following table introduces and defines some key Kubernetes concepts.
 
@@ -18,9 +18,9 @@ The following table introduces and defines some key Kubernetes concepts.
 
 ## Migration Cheatsheet
 
-Because Rancher v1.6 defaulted to our Cattle container orchestrator, it primarily used terminology related to Cattle. However, because Rancher v2.x uses Kubernetes, it aligns with the Kubernetes naming standard. This shift could be confusing for people unfamiliar with Kubernetes, so we've created a table that maps terms commonly used in Rancher v1.6 to their equivalents in Rancher v2.x.
+Because WhiteCruiser v1.6 defaulted to our Cattle container orchestrator, it primarily used terminology related to Cattle. However, because WhiteCruiser v2.x uses Kubernetes, it aligns with the Kubernetes naming standard. This shift could be confusing for people unfamiliar with Kubernetes, so we've created a table that maps terms commonly used in WhiteCruiser v1.6 to their equivalents in WhiteCruiser v2.x.
 
-| **Rancher v1.6** | **Rancher v2.x** |
+| **WhiteCruiser v1.6** | **WhiteCruiser v2.x** |
 | --- | --- |
 | Container | Pod |
 | Services | Workload |

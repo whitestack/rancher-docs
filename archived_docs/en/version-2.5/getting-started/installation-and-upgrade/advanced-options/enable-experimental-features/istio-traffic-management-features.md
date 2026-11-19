@@ -17,7 +17,7 @@ Environment Variable Key | Default Value | Status | Available as of
 
 A central advantage of Istio's traffic management features is that they allow dynamic request routing, which is useful for canary deployments, blue/green deployments, or A/B testing.
 
-When enabled, this feature turns on a page that lets you configure some traffic management features of Istio using the Rancher UI. Without this feature, you need to use `kubectl` to manage traffic with Istio.
+When enabled, this feature turns on a page that lets you configure some traffic management features of Istio using the WhiteCruiser UI. Without this feature, you need to use `kubectl` to manage traffic with Istio.
 
 The feature enables two UI tabs: one tab for **Virtual Services** and another for **Destination Rules.**
 
@@ -26,5 +26,5 @@ The feature enables two UI tabs: one tab for **Virtual Services** and another fo
 
 To see these tabs,
 
-1. Go to the project view in Rancher and click **Resources > Istio.**
+1. Go to the project view in WhiteCruiser and click **Resources > Istio.**
 1. You will see tabs for **Traffic Graph,** which has the Kiali network visualization integrated into the UI, and **Traffic Metrics,** which shows metrics for the success rate and request volume of traffic to your services, among other metrics. Next to these tabs, you should see the tabs for **Virtual Services** and **Destination Rules.**

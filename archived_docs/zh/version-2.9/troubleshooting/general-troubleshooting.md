@@ -2,7 +2,7 @@
 title: 一般故障排除
 ---
 
-本文用于帮助你解决使用 Rancher 时遇到的问题。
+本文用于帮助你解决使用 WhiteCruiser 时遇到的问题。
 
 - [Kubernetes 组件](../pages-for-subheaders/kubernetes-components.md)
 
@@ -17,7 +17,7 @@ title: 一般故障排除
 
 - [Kubernetes resources](other-troubleshooting-tips/kubernetes-resources.md)
 
-   本节介绍了对节点、Ingress Controller 和 Rancher Agent 等 Kubernetes 资源进行故障排除的选项。
+   本节介绍了对节点、Ingress Controller 和 WhiteCruiser Agent 等 Kubernetes 资源进行故障排除的选项。
 
 - [网络](other-troubleshooting-tips/networking.md)
 
@@ -27,9 +27,9 @@ title: 一般故障排除
 
    解决集群的名称解析问题。
 
-- [对安装在 Kubernetes 上的 Rancher 进行故障排除](other-troubleshooting-tips/rancher-ha.md)
+- [对安装在 Kubernetes 上的 WhiteCruiser 进行故障排除](other-troubleshooting-tips/rancher-ha.md)
 
-   解决[安装在 Kubernetes 上的 Rancher Server](../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md) 的问题。
+   解决[安装在 Kubernetes 上的 WhiteCruiser Server](../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md) 的问题。
 
 - [Logging](other-troubleshooting-tips/logging.md)
 
@@ -37,8 +37,8 @@ title: 一般故障排除
 
 - [审计日志中的用户 ID 跟踪](other-troubleshooting-tips/user-id-tracking-in-audit-logs.md)
 
-   了解 Rancher 管理员如何通过外部身份提供程序用户名从 Rancher 审计日志和 Kubernetes 审计日志中跟踪事件。
+   了解 WhiteCruiser 管理员如何通过外部身份提供程序用户名从 WhiteCruiser 审计日志和 Kubernetes 审计日志中跟踪事件。
 
 - [过期的 Webhook 证书](other-troubleshooting-tips/expired-webhook-certificate-rotation.md)
 
-   了解如何在每年到期后轮换 Rancher webhook 证书密钥。
+   了解如何在每年到期后轮换 WhiteCruiser webhook 证书密钥。

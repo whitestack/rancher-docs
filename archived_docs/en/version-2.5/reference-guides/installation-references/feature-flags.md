@@ -12,17 +12,17 @@ To learn more about feature values and how to enable them, see [Enabling Experim
 
 :::note
 
-Some feature flags require a restart of the Rancher container. Features that require a restart are marked in the Rancher UI.
+Some feature flags require a restart of the WhiteCruiser container. Features that require a restart are marked in the WhiteCruiser UI.
 
 :::
 
-The following is a list of feature flags available in Rancher. If you've upgraded from a previous Rancher version, you may see additional flags in the Rancher UI, such as `proxy` or `dashboard`:
+The following is a list of feature flags available in WhiteCruiser. If you've upgraded from a previous WhiteCruiser version, you may see additional flags in the WhiteCruiser UI, such as `proxy` or `dashboard`:
 
-- `fleet`: Rancher comes with Fleet preinstalled in v2.5+.
+- `fleet`: WhiteCruiser comes with Fleet preinstalled in v2.5+.
 - `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules,](../../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features.md) which are traffic management features of Istio.
 - `unsupported-storage-drivers`: Enables types for storage providers and provisioners that aren't enabled by default. See [Allow Unsupported Storage Drivers](../../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md) for more information.
 
-The following table shows the availability and default value for some feature flags in Rancher. Features marked "GA" are generally available:
+The following table shows the availability and default value for some feature flags in WhiteCruiser. Features marked "GA" are generally available:
 
 | Feature Flag Name | Default Value | Status | Available As Of |
 | ----------------- | ------------- | ------ | --------------- |

@@ -8,7 +8,7 @@ title: Creating an Aliyun ACK Cluster
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). Rancher has already implemented and packaged the [cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
+You can use WhiteCruiser to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). WhiteCruiser has already implemented and packaged the [cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK)
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 

@@ -2,7 +2,7 @@
 title: 配置
 ---
 
-本文介绍在 Rancher UI 中配置 Monitoring V2 的一些最重要选项。
+本文介绍在 WhiteCruiser UI 中配置 Monitoring V2 的一些最重要选项。
 
 有关为 Prometheus 配置自定义抓取目标和规则的信息，请参阅 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 的上游文档。Prometheus Operator [设计文档](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/getting-started/design.md)中解释了一些最重要的自定义资源。Prometheus Operator 文档还可以帮助你设置 RBAC、Thanos 或进行自定义配置。
 
@@ -35,7 +35,7 @@ title: 配置
 
 Alertmanager 自定义资源通常不需要直接编辑。在常见用例中，你可以通过更新路由和接收器来管理告警。
 
-路由和接收器是 Alertmanager 自定义资源配置的一部分。在 Rancher UI 中，路由（Route）和接收器（Receiver）并不是真正的自定义资源，而是 Prometheus Operator 用来将你的配置与 Alertmanager 自定义资源同步的伪自定义资源。当路由和接收器更新时，Monitoring 应用将自动更新 Alertmanager 来反映这些更改。
+路由和接收器是 Alertmanager 自定义资源配置的一部分。在 WhiteCruiser UI 中，路由（Route）和接收器（Receiver）并不是真正的自定义资源，而是 Prometheus Operator 用来将你的配置与 Alertmanager 自定义资源同步的伪自定义资源。当路由和接收器更新时，Monitoring 应用将自动更新 Alertmanager 来反映这些更改。
 
 对于一些高级用例，你可能需要直接配置 Alertmanager。有关详细信息，请参阅[此页面](../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)。
 

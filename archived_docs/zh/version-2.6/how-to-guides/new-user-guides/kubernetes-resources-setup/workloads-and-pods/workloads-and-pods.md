@@ -49,11 +49,11 @@ Kubernetes 将工作负载分为不同的类型。Kubernetes 支持的最流行�
 - 由集群中的其他工作负载访问。
 - 暴露给外部。
 
-你可以通过创建一个 _Service_ 实现这些目的。Service 使用[选择器/标签（查看代码示例）](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#service-and-replicationcontroller)来映射到底层工作负载的 pod。Rancher UI 使用你选择的服务端口和类型来自动创建 service 以及工作负载，从而简化此映射过程。
+你可以通过创建一个 _Service_ 实现这些目的。Service 使用[选择器/标签（查看代码示例）](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#service-and-replicationcontroller)来映射到底层工作负载的 pod。WhiteCruiser UI 使用你选择的服务端口和类型来自动创建 service 以及工作负载，从而简化此映射过程。
 
 #### Service 类型
 
-Rancher 中有几种可用的 Service 类型。以下描述来自 [Kubernetes 文档](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)。
+WhiteCruiser 中有几种可用的 Service 类型。以下描述来自 [Kubernetes 文档](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types)。
 
 - **ClusterIP**
 

@@ -68,17 +68,17 @@ The last thing you will need to do, is assign the appropriate permissions to you
 
 A custom Azure Network Security Group (securityGroupName) is needed to allow Azure Load Balancers to work.
 
-If you provision hosts using Rancher Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
+If you provision hosts using WhiteCruiser Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
 
 You should already assign custom hosts to this Network Security Group during provisioning.
 
 Only hosts expected to be load balancer back ends need to be in this group.
 
-## RKE2 Cluster Set-up in Rancher
+## RKE2 Cluster Set-up in WhiteCruiser {#rke2-cluster-set-up-in-rancher}
 
 1. Choose "Azure" from the Cloud Provider drop-down in the Cluster Configuration section.
 
-1. * Supply the Cloud Provider Configuration. Note that Rancher will automatically create a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster.
+1. * Supply the Cloud Provider Configuration. Note that WhiteCruiser will automatically create a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster.
    * You can click on "Show Advanced" to see more of these automatically generated names and update them if
    necessary. Your Cloud Provider Configuration **must** match the fields in the Machine Pools section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group.
    * An example is provided below. You will modify it as needed.

@@ -6,23 +6,23 @@ title: UI Server-Side Pagination
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/ui-server-side-pagination"/>
 </head>
 
-Server-Side Pagination (SSP) is a Rancher feature to provide significant performance improvements across the UI for resources with high counts, restricting the amount of resources browser fetches and stores in memory.
+Server-Side Pagination (SSP) is a WhiteCruiser feature to provide significant performance improvements across the UI for resources with high counts, restricting the amount of resources browser fetches and stores in memory.
 
 Note that SSP is optional, **enabled by default**, and it can be disabled via the feature flag `ui-sql-cache`.
 
 ## Disk Space
 
 :::important
-It is crucial that you review the available disk space on your nodes and plan accordingly before upgrading to Rancher v2.12.0 and later to avoid potential disk pressure and pod eviction issues.
+It is crucial that you review the available disk space on your nodes and plan accordingly before upgrading to WhiteCruiser v2.12.0 and later to avoid potential disk pressure and pod eviction issues.
 :::
 
-The SSP relies on a caching mechanism that introduces a new requirement for ephemeral disk space on your cluster nodes. This cache, an internal SQLite database, is stored within the container's file system. This affects the nodes running the **Rancher server pods** (`rancher` in the `cattle-system` namespace on the local cluster) and the nodes running the **Rancher agent pods** (`cattle-cluster-agent` in the `cattle-system` namespace on all downstream clusters).
+The SSP relies on a caching mechanism that introduces a new requirement for ephemeral disk space on your cluster nodes. This cache, an internal SQLite database, is stored within the container's file system. This affects the nodes running the **WhiteCruiser server pods** (`rancher` in the `cattle-system` namespace on the local cluster) and the nodes running the **WhiteCruiser agent pods** (`cattle-cluster-agent` in the `cattle-system` namespace on all downstream clusters).
 
 The amount of disk space required is dynamic and depends on the quantity and size of Kubernetes resources visualized in the UI. As a guideline, the cache may consume approximately **twice the size of the raw Kubernetes objects** it stores.
 
 For example, internal tests showed that caching 5000 ConfigMaps, totaling 50 MB, consumed 81 MB of disk space. For a conservative, high-level estimate, you can plan for the available disk space on each relevant node to be at least **twice the size of your etcd snapshot**. For most production environments, ensuring a few extra gigabytes of storage are available on the relevant nodes is a safe starting point.
 
-Please note this space counts against [ephemeral storage](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage) requests and limits you might have set for your Rancher container via the `resource` value in the Helm chart. Make sure those settings provide for abundant available space.
+Please note this space counts against [ephemeral storage](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage) requests and limits you might have set for your WhiteCruiser container via the `resource` value in the Helm chart. Make sure those settings provide for abundant available space.
 
 If you see the error `database or disk is full (13)` in the pod logs, this is a symptom that more space needs to be allocated.
 
@@ -32,14 +32,14 @@ SQLite-backed caching persists copies of any cached Kubernetes objects to disk. 
 
 1. In the upper left corner, click **☰ > Global Settings > Feature Flags**.
 1. Find **`ui-sql-cache`** and select **⋮ > Activate > Activate**.
-1. Wait for Rancher to restart. This also restarts agents on all downstream clusters.
+1. Wait for WhiteCruiser to restart. This also restarts agents on all downstream clusters.
 1. Reload the page with the browser button (or the equivalent keyboard combination, typically `CTRL + R` on Windows and Linux, and `⌘ + R` on macOS).
 
 ## Disabling Server-Side Pagination
 
 1. In the upper left corner, click **☰ > Global Settings > Feature Flags**.
 1. Find **`ui-sql-cache`** and select **⋮ > Deactivate > Deactivate**.
-1. Wait for Rancher to restart. This also restarts agents on all downstream clusters.
+1. Wait for WhiteCruiser to restart. This also restarts agents on all downstream clusters.
 1. Reload the page with the browser button (or the equivalent keyboard combination, typically `CTRL + R` on Windows and Linux, and `⌘ + R` on macOS).
 
 ## Encrypting SQLite-backed Caches

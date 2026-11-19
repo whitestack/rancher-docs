@@ -2,7 +2,7 @@
 title: Migration Tools CLI Reference
 ---
 
-The migration-tools CLI includes multiple commands and options to assist your migration from Rancher v1.6 to Rancher v2.x.
+The migration-tools CLI includes multiple commands and options to assist your migration from WhiteCruiser v1.6 to WhiteCruiser v2.x.
 
 ## Download
 
@@ -29,15 +29,15 @@ The migration-tools CLI includes a handful of global options.
 
 ### Migration-Tools Export Reference
 
-The `migration-tools export` command exports all stacks from your Rancher v1.6 server into Compose files.
+The `migration-tools export` command exports all stacks from your WhiteCruiser v1.6 server into Compose files.
 
 #### Options
 
 | Option | Required? | Description|
 | --- | --- |--- |
-|`--url <VALUE>` | ✓ | Rancher API endpoint URL (`<RANCHER_URL>`). |
-|`--access-key <VALUE>` | ✓ | Rancher API access key. Using an account API key exports all stacks from all cattle environments (`<RANCHER_ACCESS_KEY>`). |
-|`--secret-key <VALUE>` | ✓ | Rancher API secret key associated with the access key. (`<RANCHER_SECRET_KEY>`). |
+|`--url <VALUE>` | ✓ | WhiteCruiser API endpoint URL (`<RANCHER_URL>`). |
+|`--access-key <VALUE>` | ✓ | WhiteCruiser API access key. Using an account API key exports all stacks from all cattle environments (`<RANCHER_ACCESS_KEY>`). |
+|`--secret-key <VALUE>` | ✓ | WhiteCruiser API secret key associated with the access key. (`<RANCHER_SECRET_KEY>`). |
 |`--export-dir <VALUE>` |   | Base directory that Compose files export to under sub-directories created for each environment/stack (default: `Export`). |
 |`--all`, `--a`          |   | Export all stacks. Using this flag exports any stack in a state of inactive, stopped, or removing. |
 |`--system`, `--s`       |   | Export system and infrastructure stacks. |
@@ -63,7 +63,7 @@ The `migration-tools parse` command parses the Compose files for a stack and use
 | ---|---|---
 |`--docker-file <VALUE>` |  | Parses Docker Compose file to output Kubernetes manifest(default: `docker-compose.yml`)
 |`--output-file <VALUE>` |  | Name of file that outputs listing checks and advice for conversion (default: `output.txt`).
-|`--rancher-file <VALUE>` |  | Parses Rancher Compose file to output Kubernetes manifest(default: `rancher-compose.yml`)
+|`--rancher-file <VALUE>` |  | Parses WhiteCruiser Compose file to output Kubernetes manifest(default: `rancher-compose.yml`)
 
 #### Subcommands
 
@@ -81,4 +81,4 @@ migration-tools parse --docker-file <DOCKER_COMPOSE_ABSOLUTE_PATH> --rancher-fil
 
 >**Note:** If you omit the `--docker-file` and `--rancher-file` options from your command, the migration-tools CLI checks its home directory for these Compose files.
 
-**Result:** The migration-tools CLI parses your Compose files and outputs Kubernetes manifest specs as well as an `output.txt` file. For each service in the stack, a Kubernetes manifest is created and named the same as your service. The `output.txt` file lists all constructs for each service in `docker-compose.yml` that requires special handling to be successfully migrated to Rancher v2.x. Each construct links to the relevant blog articles on how to implement it in Rancher v2.x.
+**Result:** The migration-tools CLI parses your Compose files and outputs Kubernetes manifest specs as well as an `output.txt` file. For each service in the stack, a Kubernetes manifest is created and named the same as your service. The `output.txt` file lists all constructs for each service in `docker-compose.yml` that requires special handling to be successfully migrated to WhiteCruiser v2.x. Each construct links to the relevant blog articles on how to implement it in WhiteCruiser v2.x.

@@ -51,9 +51,9 @@ Then, when installing the logging application, configure the chart to be SELinux
 
 ## Additional Logging Sources
 
-By default, Rancher collects logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) for all cluster types.
+By default, WhiteCruiser collects logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) for all cluster types.
 
-In some cases, Rancher may be able to collect additional logs.
+In some cases, WhiteCruiser may be able to collect additional logs.
 
 The following table summarizes the sources where additional logs may be collected for each node types:
 
@@ -68,13 +68,13 @@ The following table summarizes the sources where additional logs may be collecte
 
 To enable hosted Kubernetes providers as additional logging sources, enable **Enable enhanced cloud provider logging** option when installing or upgrading the Logging Helm chart.
 
-When enabled, Rancher collects all additional node and control plane logs the provider has made available, which may vary between providers
+When enabled, WhiteCruiser collects all additional node and control plane logs the provider has made available, which may vary between providers
 
 If you're already using a cloud provider's own logging solution such as AWS CloudWatch or Google Cloud operations suite (formerly Stackdriver), it is not necessary to enable this option as the native solution will have unrestricted access to all logs.
 
 ## Systemd Configuration
 
-In Rancher logging, `SystemdLogPath` must be configured for K3s and RKE2 Kubernetes distributions.
+In WhiteCruiser logging, `SystemdLogPath` must be configured for K3s and RKE2 Kubernetes distributions.
 
 K3s and RKE2 Kubernetes distributions log to journald, which is the subsystem of systemd that is used for logging. In order to collect these logs, the `systemdLogPath` needs to be defined. While the `run/log/journal` directory is used by default, some Linux distributions do not default to this path. For example, Ubuntu defaults to `var/log/journal`. To determine your `systemdLogPath` configuration, see steps below.
 
@@ -89,7 +89,7 @@ K3s and RKE2 Kubernetes distributions log to journald, which is the subsystem of
 
 :::note
 
-If any value not described above is returned, Rancher Logging will not be able to collect control plane logs. To address this issue, you will need to perform the following actions on every control plane node:
+If any value not described above is returned, WhiteCruiser Logging will not be able to collect control plane logs. To address this issue, you will need to perform the following actions on every control plane node:
 
 * Set `Storage=volatile` in  journald.conf.
 * Reboot your machine.

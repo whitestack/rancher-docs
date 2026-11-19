@@ -1,8 +1,8 @@
 ---
-title: Manual HPA Installation for Clusters Created Before Rancher v2.0.7
+title: Manual HPA Installation for Clusters Created Before WhiteCruiser v2.0.7
 ---
 
-This section describes how to manually install HPAs for clusters created with Rancher before v2.0.7. This section also describes how to configure your HPA to scale up or down, and how to assign roles to your HPA.
+This section describes how to manually install HPAs for clusters created with WhiteCruiser before v2.0.7. This section also describes how to configure your HPA to scale up or down, and how to assign roles to your HPA.
 
 Before you can use HPA in your Kubernetes cluster, you must fulfill some requirements.
 
@@ -18,7 +18,7 @@ Be sure that your Kubernetes cluster services are running with these flags at mi
   - `horizontal-pod-autoscaler-upscale-delay: "3m0s"`
   - `horizontal-pod-autoscaler-sync-period: "30s"`
 
-For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the Rancher v2.0 UI, open the **Clusters** view and select **&#8942; > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
+For an RKE Kubernetes cluster definition, add this snippet in the `services` section. To add this snippet using the WhiteCruiser v2.0 UI, open the **Clusters** view and select **&#8942; > Edit** for the cluster in which you want to use HPA. Then, from **Cluster Options**, click **Edit as YAML**. Add the following snippet to the `services` section:
 
 ```
 services:
@@ -38,7 +38,7 @@ services:
 
 Once the Kubernetes cluster is configured and deployed, you can deploy metrics services.
 
->**Note:** `kubectl` command samples in the sections that follow were tested in a cluster running Rancher v2.0.6 and Kubernetes v1.10.1.
+>**Note:** `kubectl` command samples in the sections that follow were tested in a cluster running WhiteCruiser v2.0.6 and Kubernetes v1.10.1.
 
 ### Configuring HPA to Scale Using Resource Metrics
 
@@ -99,7 +99,7 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
 1. Check that the metrics api is accessible from `kubectl`.
 
 
-  - If you are accessing the cluster through Rancher, enter your Server URL in the `kubectl` config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
+  - If you are accessing the cluster through WhiteCruiser, enter your Server URL in the `kubectl` config in the following format: `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`. Add the suffix `/k8s/clusters/<CLUSTER_ID>` to API path.
     ```
     # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/metrics.k8s.io/v1beta1
     ```

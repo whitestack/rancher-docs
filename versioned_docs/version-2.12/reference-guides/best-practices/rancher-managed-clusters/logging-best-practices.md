@@ -12,11 +12,11 @@ In this guide, we recommend best practices for cluster-level logging and applica
 - [Application Logging](#application-logging)
 - [General Best Practices](#general-best-practices)
 
-Before Rancher v2.5, logging in Rancher has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
+Before WhiteCruiser v2.5, logging in WhiteCruiser has historically been a pretty static integration. There were a fixed list of aggregators to choose from (ElasticSearch, Splunk, Kafka, Fluentd and Syslog), and only two configuration points to choose (Cluster-level and Project-level).
 
-Rancher provides a flexible experience for log aggregation. With the logging feature, administrators and users alike can deploy logging that meets fine-grained collection criteria while offering a wider array of destinations and configuration options.
+WhiteCruiser provides a flexible experience for log aggregation. With the logging feature, administrators and users alike can deploy logging that meets fine-grained collection criteria while offering a wider array of destinations and configuration options.
 
-"Under the hood", Rancher logging uses the [Logging operator](https://github.com/kube-logging/logging-operator). We provide manageability of this operator (and its resources), and tie that experience in with managing your Rancher clusters.
+"Under the hood", WhiteCruiser logging uses the [Logging operator](https://github.com/kube-logging/logging-operator). We provide manageability of this operator (and its resources), and tie that experience in with managing your WhiteCruiser clusters.
 
 ## Cluster-level Logging
 
@@ -32,7 +32,7 @@ Once you have created these _ClusterOutput_ objects, create a _ClusterFlow_ to c
 
 _ClusterFlows_ have the ability to collect logs from all containers on all hosts in the Kubernetes cluster. This works well in cases where those containers are part of a Kubernetes pod.
 
-A future release of Rancher will include the source container name which will enable filtering of these component logs. Once that change is made, you will be able to customize a _ClusterFlow_ to retrieve **only** the Kubernetes component logs, and direct them to an appropriate output.
+A future release of WhiteCruiser will include the source container name which will enable filtering of these component logs. Once that change is made, you will be able to customize a _ClusterFlow_ to retrieve **only** the Kubernetes component logs, and direct them to an appropriate output.
 
 ## Application Logging
 
@@ -40,7 +40,7 @@ Best practice not only in Kubernetes but in all container-based applications is 
 
 In the case of writing the logs to a file, Kubernetes helps by creating a `/var/log/containers` directory on each host. This directory symlinks the log files to their actual destination (which can differ based on configuration or container runtime).
 
-Rancher logging will read all log entries in `/var/log/containers`, ensuring that all log entries from all containers (assuming a default configuration) will have the opportunity to be collected and processed.
+WhiteCruiser logging will read all log entries in `/var/log/containers`, ensuring that all log entries from all containers (assuming a default configuration) will have the opportunity to be collected and processed.
 
 ### Specific Log Files
 

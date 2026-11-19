@@ -1,28 +1,28 @@
 ---
-title: Backing up Rancher
+title: Backing up WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher"/>
 </head>
 
-In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups](back-up-docker-installed-rancher.md)
+In this section, you'll learn how to back up WhiteCruiser running on any Kubernetes cluster. To backup WhiteCruiser installed with Docker, refer the instructions for [single node backups](back-up-docker-installed-rancher.md)
 
-The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
+The backup-restore operator needs to be installed in the local cluster, and only backs up the WhiteCruiser app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
-Note that the rancher-backup operator version 2.x.x is for Rancher v2.6.x.
+Note that the rancher-backup operator version 2.x.x is for WhiteCruiser v2.6.x.
 
 :::caution
 
-When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
+When restoring a backup into a new WhiteCruiser setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
 
 :::
 
 ### Prerequisites
 
-The Rancher version must be v2.5.0 and up.
+The WhiteCruiser version must be v2.5.0 and up.
 
-Refer [here](migrate-rancher-to-new-cluster.md#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in Rancher v2.6.3.
+Refer [here](migrate-rancher-to-new-cluster.md#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in WhiteCruiser v2.6.3.
 
 ### 1. Install the Rancher Backups operator
 
@@ -34,7 +34,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 <TabItem value="Rancher v2.6.5+">
 
 1. In the upper left corner, click **☰ > Cluster Management**.
-1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the Rancher server.
+1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the WhiteCruiser server.
 1. Click **Apps > Charts**.
 1. Click **Rancher Backups**.
 1. Click **Install**.
@@ -45,7 +45,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 <TabItem value="Rancher before v2.6.5">
 
 1. In the upper left corner, click **☰ > Cluster Management**.
-1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the Rancher server.
+1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the WhiteCruiser server.
 1. Click **Apps & Marketplace > Charts**.
 1. Click **Rancher Backups**.
 1. Click **Install**.

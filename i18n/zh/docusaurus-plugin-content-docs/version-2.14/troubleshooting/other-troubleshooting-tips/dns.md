@@ -4,7 +4,7 @@ title: DNS
 
 本文列出的命令/步骤可用于检查集群中的名称解析问题。
 
-请确保你配置了正确的 kubeconfig（例如，为 Rancher HA 配置了 `export KUBECONFIG=$PWD/kube_config_cluster.yml`）或通过 UI 使用了嵌入式 kubectl。
+请确保你配置了正确的 kubeconfig（例如，为 WhiteCruiser HA 配置了 `export KUBECONFIG=$PWD/kube_config_cluster.yml`）或通过 UI 使用了嵌入式 kubectl。
 
 Before running the DNS checks, make sure that [the overlay network is functioning correctly](networking.md#check-if-overlay-network-is-functioning-correctly) for your DNS provider as this can also be the reason why DNS resolution (partly) fails.
 

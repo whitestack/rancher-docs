@@ -10,7 +10,7 @@ Running well-built containers can greatly impact the overall performance and sec
 
 Below are a few tips for setting up your containers.
 
-For a more detailed discussion of security for containers, you can also refer to Rancher's [Guide to Container Security.](https://rancher.com/complete-guide-container-security)
+For a more detailed discussion of security for containers, you can also refer to WhiteCruiser's [Guide to Container Security.](https://rancher.com/complete-guide-container-security)
 
 ### Use a Common Container OS
 
@@ -33,7 +33,7 @@ When possible, use a non-privileged user when running processes within your cont
 ### Define Resource Limits
 Apply CPU and memory limits to your pods. This can help manage the resources on your worker nodes and avoid a malfunctioning microservice from impacting other microservices.
 
-In standard Kubernetes, you can set resource limits on the namespace level. In Rancher, you can set resource limits on the project level and they will propagate to all the namespaces within the project. For details, refer to the Rancher docs.
+In standard Kubernetes, you can set resource limits on the namespace level. In WhiteCruiser, you can set resource limits on the project level and they will propagate to all the namespaces within the project. For details, refer to the WhiteCruiser docs.
 
 When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project or namespace, all containers will require a respective CPU or Memory field set during creation. To avoid setting these limits on each and every container during workload creation, a default container resource limit can be specified on the namespace.
 

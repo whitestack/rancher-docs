@@ -8,11 +8,11 @@ title: Outputs and ClusterOutputs
 
 See the [Logging operator documentation](https://kube-logging.github.io/docs/configuration/flow/) for the full details on how to configure  `Flows` and `ClusterFlows`.
 
-See [Rancher Integration with Logging Services: Troubleshooting](../logging.md#The-Logging-Buffer-Overloads-Pods) for how to resolve memory problems with the logging buffer.
+See [WhiteCruiser Integration with Logging Services: Troubleshooting](../logging.md#The-Logging-Buffer-Overloads-Pods) for how to resolve memory problems with the logging buffer.
 
 ## Outputs
 
-As of Rancher v2.5.8, the `Outputs` and `ClusterOutputs` can now be configured by filling out forms in the Rancher UI.
+As of WhiteCruiser v2.5.8, the `Outputs` and `ClusterOutputs` can now be configured by filling out forms in the WhiteCruiser UI.
 
 <Tabs groupId="rancher-version">
 <TabItem value="Rancher v2.5.8+">
@@ -25,7 +25,7 @@ You can use secrets in these definitions, but they must also be in the same name
 
 For the details of `Output` custom resource, see [OutputSpec.](https://kube-logging.github.io/docs/configuration/crds/v1beta1/output_types/).
 
-The Rancher UI provides forms for configuring the following `Output` types:
+The WhiteCruiser UI provides forms for configuring the following `Output` types:
 
 - Amazon ElasticSearch
 - Azure Storage
@@ -45,7 +45,7 @@ The Rancher UI provides forms for configuring the following `Output` types:
 - SumoLogic
 - Syslog
 
-The Rancher UI provides forms for configuring the `Output` type, target, and access credentials if applicable.
+The WhiteCruiser UI provides forms for configuring the `Output` type, target, and access credentials if applicable.
 
 For example configuration for each logging plugin supported by the logging operator, see the [Logging operator documentation](https://kube-logging.github.io/docs/configuration/plugins/outputs/).
 
@@ -79,7 +79,7 @@ For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](htt
 
 `ClusterOutput` defines an `Output` without namespace restrictions. It is only effective when deployed in the same namespace as the logging operator.
 
-The Rancher UI provides forms for configuring the `ClusterOutput` type, target, and access credentials if applicable.
+The WhiteCruiser UI provides forms for configuring the `ClusterOutput` type, target, and access credentials if applicable.
 
 `ClusterOutputs` are configured in YAML. For the details of `ClusterOutput` custom resource, see [ClusterOutput.](https://kube-logging.github.io/docs/configuration/crds/v1beta1/clusteroutput_types/)
 
@@ -232,7 +232,7 @@ spec:
 
 For the final example, we create an `Output` to write logs to a destination that is not supported out of the box:
 
-> **Note on syslog** As of Rancher v2.5.4, `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
+> **Note on syslog** As of WhiteCruiser v2.5.4, `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
 
 ```yaml
 apiVersion: v1

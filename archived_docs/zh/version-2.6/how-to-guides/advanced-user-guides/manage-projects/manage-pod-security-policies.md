@@ -4,7 +4,7 @@ title: Pod 安全策略
 
 :::note
 
-本文介绍的集群选项仅适用于 [Rancher 已在其中启动 Kubernetes 的集群](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md)。
+本文介绍的集群选项仅适用于 [WhiteCruiser 已在其中启动 Kubernetes 的集群](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md)。
 
 :::
 
@@ -12,7 +12,7 @@ title: Pod 安全策略
 
 ### 先决条件
 
-- 在 Rancher 中创建 Pod 安全策略。在将默认 PSP 分配给现有项目之前，你必须有一个可分配的 PSP。有关说明，请参阅[创建 Pod 安全策略](../../new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md)。
+- 在 WhiteCruiser 中创建 Pod 安全策略。在将默认 PSP 分配给现有项目之前，你必须有一个可分配的 PSP。有关说明，请参阅[创建 Pod 安全策略](../../new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md)。
 - 将默认 Pod 安全策略分配给项目所属的集群。如果 PSP 还没有应用到集群，你无法将 PSP 分配给项目。有关详细信息，请参阅[将 pod 安全策略添加到集群](../../new-user-guides/manage-clusters/add-a-pod-security-policy.md)。
 
 ### 应用 Pod 安全策略
@@ -34,6 +34,6 @@ title: Pod 安全策略
 
 :::note
 
-对于在分配 PSP 之前已经在集群或项目中运行工作负载，Rancher 不会检查它们是否符合 PSP。你需要克隆或升级工作负载以查看它们是否通过 PSP。
+对于在分配 PSP 之前已经在集群或项目中运行工作负载，WhiteCruiser 不会检查它们是否符合 PSP。你需要克隆或升级工作负载以查看它们是否通过 PSP。
 
 :::

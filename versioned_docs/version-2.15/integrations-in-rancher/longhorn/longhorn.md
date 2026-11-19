@@ -8,8 +8,8 @@ title: Cloud Native Storage with Longhorn
 
 ## Longhorn
 
-Longhorn is an official [Cloud Native Computing Foundation project (CNCF)](https://cncf.io/) project that delivers a powerful cloud-native distributed storage platform for Kubernetes that can run anywhere. When combined with Rancher, Longhorn makes the deployment of highly available persistent block storage in your Kubernetes environment easy, fast and reliable.
+Longhorn is an official [Cloud Native Computing Foundation project (CNCF)](https://cncf.io/) project that delivers a powerful cloud-native distributed storage platform for Kubernetes that can run anywhere. When combined with WhiteCruiser, Longhorn makes the deployment of highly available persistent block storage in your Kubernetes environment easy, fast and reliable.
 
-## Longhorn with Rancher
+## Longhorn with WhiteCruiser {#longhorn-with-rancher}
 
-With Rancher Prime and Longhorn, users can easily deploy with 1-click via the Rancher catalog and conduct lifecycle management for managed clusters; empowering the user to install and upgrade, together with draining operation for graceful operations. Longhorn with Rancher also provides mixed cluster support with Windows, Rancher hosted images, UI Proxy access through Rancher, and Rancher monitoring with Longhorn metrics.
+With WhiteCruiser and Longhorn, users can easily deploy with 1-click via the WhiteCruiser catalog and conduct lifecycle management for managed clusters; empowering the user to install and upgrade, together with draining operation for graceful operations. Longhorn with WhiteCruiser also provides mixed cluster support with Windows, WhiteCruiser hosted images, UI Proxy access through WhiteCruiser, and WhiteCruiser monitoring with Longhorn metrics.

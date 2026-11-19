@@ -6,9 +6,9 @@ title: Launching Kubernetes on Windows Clusters
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/use-windows-clusters"/>
 </head>
 
-When provisioning a [custom cluster](../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md) Rancher uses RKE2 to install Kubernetes on your existing nodes.
+When provisioning a [custom cluster](../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md) WhiteCruiser uses RKE2 to install Kubernetes on your existing nodes.
 
-In a Windows cluster provisioned with Rancher, the cluster must contain both Linux and Windows nodes. The Kubernetes controlplane can only run on Linux nodes, and the Windows nodes can only have the worker role. Windows nodes can only be used for deploying workloads.
+In a Windows cluster provisioned with WhiteCruiser, the cluster must contain both Linux and Windows nodes. The Kubernetes controlplane can only run on Linux nodes, and the Windows nodes can only have the worker role. Windows nodes can only be used for deploying workloads.
 
 For a summary of Kubernetes features supported in Windows, see the Kubernetes documentation on [supported functionality and limitations for using Kubernetes with Windows](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations) or the [guide for scheduling Windows containers in Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/user-guide-windows-containers/).
 
@@ -17,13 +17,13 @@ For a summary of Kubernetes features supported in Windows, see the Kubernetes do
 Listed below are the primary RKE2 features for Windows cluster provisioning:
 
 - Windows Containers with RKE2 powered by containerd
-- Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
+- Added provisioning of Windows RKE2 custom clusters directly from the WhiteCruiser UI
 - Calico and Flannel CNI for Windows RKE2 custom clusters
 - SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
 
 :::note
 
-Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for more information on how to use `nodeSelector` to assign pods to nodes.
+WhiteCruiser will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for more information on how to use `nodeSelector` to assign pods to nodes.
 
 :::
 
@@ -31,17 +31,13 @@ Rancher will allow Windows workload pods to deploy on both Windows and Linux wor
 
 ## General Requirements
 
-The general networking and operating system requirements for Windows nodes are the same as for other [Rancher installations](../../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md).
+The general networking and operating system requirements for Windows nodes are the same as for other [WhiteCruiser installations](../../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md).
 
 ### OS Requirements
 
 Our support for Windows Server and Windows containers match the Microsoft official lifecycle for LTSC (Long-Term Servicing Channel) and SAC (Semi-Annual Channel).
 
 For the support lifecycle dates for Windows Server, see the [Microsoft Documentation.](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)
-
-### Kubernetes Version
-
-For more information regarding Kubernetes component versions, see the support matrices for RKE2 versions.
 
 ### Node Requirements
 
@@ -51,13 +47,13 @@ The hosts in the cluster need to have at least:
 - 5 GB memory
 - 50 GB disk space
 
-Rancher will not provision the node if the node does not meet these requirements.
+WhiteCruiser will not provision the node if the node does not meet these requirements.
 
 ### Networking Requirements
 
-Before provisioning a new cluster, be sure that you have already installed Rancher on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with Rancher. If you have not already installed Rancher, please refer to the [installation documentation](../../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) before proceeding with this guide.
+Before provisioning a new cluster, be sure that you have already installed WhiteCruiser on a device that accepts inbound network traffic. This is required in order for the cluster nodes to communicate with WhiteCruiser. If you have not already installed WhiteCruiser, please refer to the [installation documentation](../../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) before proceeding with this guide.
 
-Rancher supports Windows using Calico and Flannel as network providers.
+WhiteCruiser supports Windows using Calico and Flannel as network providers.
 
 If you are configuring DHCP options sets for an AWS virtual private cloud, note that in the `domain-name` option field, only one domain name can be specified. According to the DHCP options [documentation:](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 
@@ -67,9 +63,9 @@ Some Linux operating systems accept multiple domain names separated by spaces. H
 
 :::
 
-### Rancher on VMware vSphere with ESXi 6.7u2 and above
+### WhiteCruiser on VMware vSphere with ESXi 6.7u2 and above {#rancher-on-vmware-vsphere-with-esxi-67u2-and-above}
 
-If you are using Rancher on VMware vSphere with ESXi 6.7u2 or later with Red Hat Enterprise Linux 8.3, CentOS 8.3, or SUSE Enterprise Linux 15 SP2 or later, it is necessary to disable the `vmxnet3` virtual network adapter hardware offloading feature. Failure to do so will result in all network connections between pods on different cluster nodes to fail with timeout errors. All connections from Windows pods to critical services running on Linux nodes, such as CoreDNS, will fail as well. It is also possible that external connections may fail. This issue is the result of Linux distributions enabling the hardware offloading feature in `vmxnet3` and a bug in the `vmxnet3` hardware offloading feature that results in the discarding of packets for guest overlay traffic. To address this issue, it is necessary disable the `vmxnet3` hardware offloading feature. This setting does not survive reboot, so it is necessary to disable on every boot. The recommended course of action is to create a systemd unit file at `/etc/systemd/system/disable_hw_offloading.service`, which disables the `vmxnet3` hardware offloading feature on boot. A sample systemd unit file which disables the `vmxnet3` hardware offloading feature is as follows. Note that `<VM network interface>` must be customized to the host `vmxnet3` network interface, e.g., `ens192`:
+If you are using WhiteCruiser on VMware vSphere with ESXi 6.7u2 or later with Red Hat Enterprise Linux 8.3, CentOS 8.3, or SUSE Enterprise Linux 15 SP2 or later, it is necessary to disable the `vmxnet3` virtual network adapter hardware offloading feature. Failure to do so will result in all network connections between pods on different cluster nodes to fail with timeout errors. All connections from Windows pods to critical services running on Linux nodes, such as CoreDNS, will fail as well. It is also possible that external connections may fail. This issue is the result of Linux distributions enabling the hardware offloading feature in `vmxnet3` and a bug in the `vmxnet3` hardware offloading feature that results in the discarding of packets for guest overlay traffic. To address this issue, it is necessary disable the `vmxnet3` hardware offloading feature. This setting does not survive reboot, so it is necessary to disable on every boot. The recommended course of action is to create a systemd unit file at `/etc/systemd/system/disable_hw_offloading.service`, which disables the `vmxnet3` hardware offloading feature on boot. A sample systemd unit file which disables the `vmxnet3` hardware offloading feature is as follows. Note that `<VM network interface>` must be customized to the host `vmxnet3` network interface, e.g., `ens192`:
 
 ```
 [Unit]
@@ -97,7 +93,7 @@ systemctl enable disable_hw_offloading.service
 
 The Kubernetes cluster management nodes (`etcd` and `controlplane`) must be run on Linux nodes.
 
-The `worker` nodes, which is where your workloads will be deployed on, will typically be Windows nodes, but there must be at least one `worker` node that is run on Linux in order to run the Rancher cluster agent, DNS, metrics server, and Ingress related containers.
+The `worker` nodes, which is where your workloads will be deployed on, will typically be Windows nodes, but there must be at least one `worker` node that is run on Linux in order to run the WhiteCruiser cluster agent, DNS, metrics server, and Ingress related containers.
 
 #### Recommended Architecture
 
@@ -106,7 +102,7 @@ We recommend the minimum three-node architecture listed in the table below, but 
 | Node   | Operating System                                                                       | Kubernetes Cluster Role(s)  | Purpose                                                                             |
 |--------|----------------------------------------------------------------------------------------|-----------------------------|-------------------------------------------------------------------------------------|
 | Node 1 | Linux (Ubuntu Server 18.04 recommended)                                                | Control plane, etcd, worker | Manage the Kubernetes cluster                                                       |
-| Node 2 | Linux (Ubuntu Server 18.04 recommended)                                                | Worker                      | Support the Rancher Cluster agent, Metrics server, DNS, and Ingress for the cluster |
+| Node 2 | Linux (Ubuntu Server 18.04 recommended)                                                | Worker                      | Support the WhiteCruiser Cluster agent, Metrics server, DNS, and Ingress for the cluster |
 | Node 3 | Windows (Windows Server core version 1809 or above required, version 2022 recommended) | Worker                      | Run your Windows containers                                                         |
 
 ### Container Requirements
@@ -120,11 +116,11 @@ If you set a Kubernetes cloud provider in your cluster, some additional steps ar
 If you are using the GCE (Google Compute Engine) cloud provider, you must do the following:
 
 - Enable the GCE cloud provider in the `cluster.yml` by following [these steps.](../set-up-cloud-providers/google-compute-engine.md)
-- When provisioning the cluster in Rancher, choose **Custom cloud provider** as the cloud provider in the Rancher UI.
+- When provisioning the cluster in WhiteCruiser, choose **Custom cloud provider** as the cloud provider in the WhiteCruiser UI.
 
 ## Tutorial: How to Create a Cluster with Windows Support
 
-This tutorial describes how to create a Rancher-provisioned cluster with the three nodes in the [recommended architecture.](#recommended-architecture)
+This tutorial describes how to create a WhiteCruiser-provisioned cluster with the three nodes in the [recommended architecture.](#recommended-architecture)
 
 To set up a cluster with support for Windows nodes and containers, you will need to complete the tasks below.
 
@@ -166,11 +162,11 @@ The instructions for creating a Windows cluster on existing nodes are very simil
 
 ### 3. Add Nodes to the Cluster
 
-This section describes how to register your Linux and Worker nodes to your cluster. You will run a command on each node, which will install the rancher system agent and allow Rancher to manage each node.
+This section describes how to register your Linux and Worker nodes to your cluster. You will run a command on each node, which will install the rancher system agent and allow WhiteCruiser to manage each node.
 
 #### Add Linux Master Node
 
-In this section, we fill out a form on the Rancher UI to get a custom command to install the Rancher agent on the Linux master node. Then we will copy the command and run it on our Linux master node to register the node in the cluster.
+In this section, we fill out a form on the WhiteCruiser UI to get a custom command to install the WhiteCruiser agent on the Linux master node. Then we will copy the command and run it on our Linux master node to register the node in the cluster.
 
 The first node in your cluster should be a Linux host that has both the **Control Plane** and **etcd** roles. At a minimum, both of these roles must be enabled for this node, and this node must be added to your cluster before you can add Windows hosts.
 
@@ -182,7 +178,7 @@ The first node in your cluster should be a Linux host that has both the **Contro
 
 **Results:**
 
-Your cluster is created and assigned a state of **Updating**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Updating**. WhiteCruiser is standing up your cluster.
 
 It may take a few minutes for the node to register and appear under the **Machines** tab.
 
@@ -202,7 +198,7 @@ After the initial provisioning of your cluster, your cluster only has a single L
 
 **Results:** 
 
-The **Worker** role is installed on your Linux host, and the node registers with Rancher. It may take a few minutes for the node to be registered in your cluster.
+The **Worker** role is installed on your Linux host, and the node registers with WhiteCruiser. It may take a few minutes for the node to be registered in your cluster.
 
 :::note
 
@@ -233,16 +229,16 @@ The registration command to add the Windows workers only appears after the clust
 
 **Results:** 
 
-The **Worker** role is installed on your Windows host, and the node registers with Rancher. It may take a few minutes for the node to be registered in your cluster. 
+The **Worker** role is installed on your Windows host, and the node registers with WhiteCruiser. It may take a few minutes for the node to be registered in your cluster. 
 
 You now have a Windows Kubernetes cluster.
 
 ### Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through the Rancher server. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through the WhiteCruiser server. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.
 
 ## Configuration for Storage Classes in Azure
 

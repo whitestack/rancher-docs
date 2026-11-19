@@ -10,7 +10,7 @@ title: 部署带有 Ingress 的工作负载
 
 你可以开始创建你的第一个 Kubernetes [工作负载](https://kubernetes.io/docs/concepts/workloads/)。工作负载是一个对象，其中包含 pod 以及部署应用所需的其他文件和信息。
 
-在本文的工作负载中，你将部署一个 Rancher Hello-World 应用。
+在本文的工作负载中，你将部署一个 WhiteCruiser Hello-World 应用。
 
 1. 点击 **☰ > 集群管理**。
 1. 选择你创建的集群，并点击 **Explore**。
@@ -65,7 +65,7 @@ title: 部署带有 Ingress 的工作负载
 
 ### 后续操作
 
-使用完沙盒后，你需要清理 Rancher Server 和集群。详情请参见：
+使用完沙盒后，你需要清理 WhiteCruiser Server 和集群。详情请参见：
 
 - [Amazon AWS：销毁环境](../deploy-rancher-manager/aws.md#销毁环境)
 - [DigitalOcean：销毁环境](../deploy-rancher-manager/digitalocean.md#销毁环境)

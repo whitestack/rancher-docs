@@ -6,7 +6,7 @@ title: Monitoring V2 Configuration Guides
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides"/>
 </head>
 
-This page captures some of the most important options for configuring Monitoring V2 in the Rancher UI.
+This page captures some of the most important options for configuring Monitoring V2 in the WhiteCruiser UI.
 
 For information on configuring custom scrape targets and rules for Prometheus, please refer to the upstream documentation for the [Prometheus Operator.](https://github.com/prometheus-operator/prometheus-operator) Some of the most important custom resources are explained in the Prometheus Operator [design documentation.](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/getting-started/design.md) The Prometheus Operator documentation can help also you set up RBAC, Thanos, or custom configuration.
 
@@ -34,7 +34,7 @@ For more information about directly editing the Prometheus custom resource, whic
 
 The Alertmanager custom resource usually doesn't need to be edited directly. For most common use cases, you can manage alerts by updating Routes and Receivers.
 
-Routes and receivers are part of the configuration of the alertmanager custom resource. In the Rancher UI, Routes and Receivers are not true custom resources, but pseudo-custom resources that the Prometheus Operator uses to synchronize your configuration with the Alertmanager custom resource. When routes and receivers are updated, the monitoring application will automatically update Alertmanager to reflect those changes.
+Routes and receivers are part of the configuration of the alertmanager custom resource. In the WhiteCruiser UI, Routes and Receivers are not true custom resources, but pseudo-custom resources that the Prometheus Operator uses to synchronize your configuration with the Alertmanager custom resource. When routes and receivers are updated, the monitoring application will automatically update Alertmanager to reflect those changes.
 
 For some advanced use cases, you may want to configure alertmanager directly. For more information, refer to [this page.](advanced-configuration/alertmanager.md)
 

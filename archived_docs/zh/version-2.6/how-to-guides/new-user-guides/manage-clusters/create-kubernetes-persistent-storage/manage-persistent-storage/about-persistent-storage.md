@@ -24,7 +24,7 @@ title: 持久存储的工作原理
 
 要访问持久存储，Pod 必须有挂载为卷的 PVC。此 PVC 让你的 deployment 应用将其数据存储在外部位置，这样，如果 pod 发生故障，就可以用新的 pod 替换它并继续访问其外部存储的数据。
 
-每个 Rancher 项目都包含你创建的 PVC 列表，可从**资源 > 工作负载 > 卷**中查看。你可以在将来创建 deployment 时复用这些 PVC。
+每个 WhiteCruiser 项目都包含你创建的 PVC 列表，可从**资源 > 工作负载 > 卷**中查看。你可以在将来创建 deployment 时复用这些 PVC。
 
 ### 新的和现有的持久存储都需要 PVC
 
@@ -34,7 +34,7 @@ title: 持久存储的工作原理
 
 如果工作负载需要请求新的存储，则工作负载会挂载引用一个存储类的 PVC，该存储类能创建新 PV 及其底层存储基础设施。
 
-Rancher 允许你在项目中创建任意数量的 PVC。
+WhiteCruiser 允许你在项目中创建任意数量的 PVC。
 
 你可以在创建 deployment 时将 PVC 挂载到 deployment 中，也可以在创建 deployment 后在 deployment 运行的时候将 PVC 挂载到 deployment 中。
 
@@ -44,7 +44,7 @@ Rancher 允许你在项目中创建任意数量的 PVC。
 
 PV 可以是你本地或托管的云上（Amazon EBS 或 Azure Disk）物理磁盘或文件系统。
 
-在 Rancher 中创建持久卷不会创建存储卷。它只创建映射到现有卷的 Kubernetes 资源。因此，在你可以将持久卷创建为 Kubernetes 资源之前，你必须先配置存储。
+在 WhiteCruiser 中创建持久卷不会创建存储卷。它只创建映射到现有卷的 Kubernetes 资源。因此，在你可以将持久卷创建为 Kubernetes 资源之前，你必须先配置存储。
 
 :::note 重要提示：
 

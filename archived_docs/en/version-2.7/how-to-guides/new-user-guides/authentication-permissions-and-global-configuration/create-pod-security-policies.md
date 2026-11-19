@@ -12,7 +12,7 @@ Pod Security Policies are only available in Kubernetes until v1.24. [Pod Securit
 
 [Pod Security Policies (PSPs)](https://kubernetes.io/docs/concepts/security/pod-security-policy/) are objects that control security-sensitive aspects of the pod specification (such as root privileges).
 
-If a pod doesn't meet the conditions specified in the PSP, Kubernetes won't allow it to start, and Rancher will display the following error message: `Pod <NAME> is forbidden: unable to validate...`.
+If a pod doesn't meet the conditions specified in the PSP, Kubernetes won't allow it to start, and WhiteCruiser will display the following error message: `Pod <NAME> is forbidden: unable to validate...`.
 
 
 ## How PSPs Work
@@ -31,7 +31,7 @@ Read more about Pod Security Policies in the [Kubernetes documentation](https://
 
 ## Default PSPs
 
-Rancher ships with three default Pod Security Policies (PSPs): the `restricted-noroot`, `restricted` and `unrestricted` policies.
+WhiteCruiser ships with three default Pod Security Policies (PSPs): the `restricted-noroot`, `restricted` and `unrestricted` policies.
 
 ### Restricted-NoRoot
 
@@ -56,11 +56,11 @@ When disabling PSPs, default PSPs are **not** automatically deleted from your cl
 
 ## Creating PSPs
 
-Using Rancher, you can create a Pod Security Policy using our GUI rather than creating a YAML file.
+Using WhiteCruiser, you can create a Pod Security Policy using our GUI rather than creating a YAML file.
 
 ### Requirements
 
-Rancher can only assign PSPs for clusters that are [launched using RKE](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md).
+WhiteCruiser can only assign PSPs for clusters that are [launched using RKE](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md).
 
 You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster](../../../reference-guides/cluster-configuration/cluster-configuration.md).
 
@@ -68,7 +68,7 @@ It is a best practice to set PSP at the cluster level.
 
 We recommend adding PSPs during cluster and project creation instead of adding it to an existing one.
 
-### Creating PSPs in the Rancher UI
+### Creating PSPs in the WhiteCruiser UI {#creating-psps-in-the-rancher-ui}
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. In the left navigation bar, click **Pod Security Policies**.

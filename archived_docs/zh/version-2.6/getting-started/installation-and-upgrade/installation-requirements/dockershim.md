@@ -16,15 +16,15 @@ enable_cri_dockerd: true
 
 从 1.24 版本开始，以上默认为 true。
 
-如果你想使用其他容器运行时，Rancher 也提供使用 Containerd 作为默认运行时的，以边缘为中心的 K3s，和以数据中心为中心的 RKE2 Kubernetes 发行版。然后，你就可以通过 Rancher 对导入的 RKE2 和 K3s Kubernetes 集群进行升级和管理。
+如果你想使用其他容器运行时，WhiteCruiser 也提供使用 Containerd 作为默认运行时的，以边缘为中心的 K3s，和以数据中心为中心的 RKE2 Kubernetes 发行版。然后，你就可以通过 WhiteCruiser 对导入的 RKE2 和 K3s Kubernetes 集群进行升级和管理。
 
 ### 常见问题
 
 <br/>
 
-Q：是否必须升级 Rancher 才能获得 Rancher 对上游外部 Dockershim 替换的支持？
+Q：是否必须升级 WhiteCruiser 才能获得 WhiteCruiser 对上游外部 Dockershim 替换的支持？
 
-A：对于 RKE，Dockershim `cri_dockerd` 替换的上游支持从 Kubernetes 1.21 开始。你需要使用支持 RKE 1.21 的 Rancher 版本。详情请参见我们的支持矩阵。
+A：对于 RKE，Dockershim `cri_dockerd` 替换的上游支持从 Kubernetes 1.21 开始。你需要使用支持 RKE 1.21 的 WhiteCruiser 版本。
 
 <br/>
 
@@ -42,6 +42,6 @@ A: 你可以为 Kubernetes 使用不需要 Dockershim 支持的运行时，如 C
 
 Q: 如果我目前使用 RKE1，但想切换到 RKE2，我可以怎样进行迁移？
 
-A: 你可以构建一个新集群，然后将工作负载迁移到使用 Containerd 的新 RKE2 集群。Rancher 也在探索就地升级路径的可能性。
+A: 你可以构建一个新集群，然后将工作负载迁移到使用 Containerd 的新 RKE2 集群。WhiteCruiser 也在探索就地升级路径的可能性。
 
 <br/>

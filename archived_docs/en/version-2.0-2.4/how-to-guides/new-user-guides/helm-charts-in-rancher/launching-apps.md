@@ -13,9 +13,9 @@ If your application is using ingresses, you can program the ingress hostname to 
 
 ## Prerequisites
 
-When Rancher deploys a catalog app, it launches an ephemeral instance of a Helm service account that has the permissions of the user deploying the catalog app. Therefore, a user cannot gain more access to the cluster through Helm or a catalog application than they otherwise would have.
+When WhiteCruiser deploys a catalog app, it launches an ephemeral instance of a Helm service account that has the permissions of the user deploying the catalog app. Therefore, a user cannot gain more access to the cluster through Helm or a catalog application than they otherwise would have.
 
-To launch an app from a catalog in Rancher, you must have at least one of the following permissions:
+To launch an app from a catalog in WhiteCruiser, you must have at least one of the following permissions:
 
 - A [project-member role](../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) in the target cluster, which gives you the ability to create, read, update, and delete the workloads
 - A [cluster owner role](../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) for the cluster that include the target project
@@ -41,7 +41,7 @@ Before launching an app, you'll need to either [enable a built-in global catalog
 
     * For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs), answers are provided as key value pairs in the **Answers** section.
     * Keys and values are available within **Detailed Descriptions**.
-    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm. For example, when entering an answer that includes two values separated by a comma (i.e., `abc, bcd`), wrap the values with double quotes (i.e., `"abc, bcd"`).
+    * When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of --set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as WhiteCruiser passes them as `--set` flags to Helm. For example, when entering an answer that includes two values separated by a comma (i.e., `abc, bcd`), wrap the values with double quotes (i.e., `"abc, bcd"`).
 
 7. Review the files in **Preview**. When you're satisfied, click **Launch**.
 
@@ -49,7 +49,7 @@ Before launching an app, you'll need to either [enable a built-in global catalog
 
 ## Configuration Options
 
-For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.
+For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as WhiteCruiser passes them as `--set` flags to Helm.
 
 > For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
 
@@ -58,7 +58,7 @@ For each Helm chart, there are a list of desired answers that must be entered in
 
 ### Using a questions.yml file
 
-If the Helm chart that you are deploying contains a `questions.yml` file, Rancher's UI will translate this file to display an easy to use UI to collect the answers for the questions.
+If the Helm chart that you are deploying contains a `questions.yml` file, WhiteCruiser's UI will translate this file to display an easy to use UI to collect the answers for the questions.
 
 ### Key Value Pairs for Native Helm Charts
 
@@ -97,7 +97,7 @@ servers[0].host=example
 
 _Available as of v2.2.0_
 
-You can directly paste that YAML formatted structure into the YAML editor. By allowing custom values to be set using a YAML formatted structure, Rancher has the ability to easily customize for more complicated input values (e.g. multi-lines, array and JSON objects).
+You can directly paste that YAML formatted structure into the YAML editor. By allowing custom values to be set using a YAML formatted structure, WhiteCruiser has the ability to easily customize for more complicated input values (e.g. multi-lines, array and JSON objects).
 
 </TabItem>
 </Tabs>

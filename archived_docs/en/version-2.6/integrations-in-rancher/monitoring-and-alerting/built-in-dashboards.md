@@ -54,7 +54,7 @@ To see the Alertmanager UI,
 
 **Result:** The Alertmanager UI opens in a new tab. For help with configuration, refer to the [official Alertmanager documentation.](https://prometheus.io/docs/alerting/latest/alertmanager/)
 
-For more information on configuring Alertmanager in Rancher, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)
+For more information on configuring Alertmanager in WhiteCruiser, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)
 
 <figcaption>The Alertmanager UI</figcaption>
 
@@ -114,4 +114,4 @@ You can also see the rules in the Prometheus UI:
 
 ![PrometheusRules UI](/img/prometheus-rules-ui.png)
 
-For more information on configuring PrometheusRules in Rancher, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)
+For more information on configuring PrometheusRules in WhiteCruiser, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)

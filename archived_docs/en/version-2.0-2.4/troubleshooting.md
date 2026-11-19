@@ -6,7 +6,7 @@ title: Troubleshooting
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/general-troubleshooting"/>
 </head>
 
-This section contains information to help you troubleshoot issues when using Rancher.
+This section contains information to help you troubleshoot issues when using WhiteCruiser.
 
 - [Kubernetes components](troubleshooting/kubernetes-components/kubernetes-components.md)
 
@@ -21,7 +21,7 @@ This section contains information to help you troubleshoot issues when using Ran
 
 - [Kubernetes resources](troubleshooting/other-troubleshooting-tips/kubernetes-resources.md)
 
-    Options for troubleshooting Kubernetes resources like Nodes, Ingress Controller and Rancher Agents are described in this section.
+    Options for troubleshooting Kubernetes resources like Nodes, Ingress Controller and WhiteCruiser Agents are described in this section.
 
 - [Networking](troubleshooting/other-troubleshooting-tips/networking.md)
 
@@ -31,9 +31,9 @@ This section contains information to help you troubleshoot issues when using Ran
 
     When you experience name resolution issues in your cluster.
 
-- [Troubleshooting Rancher installed on Kubernetes](troubleshooting/other-troubleshooting-tips/rancher-ha.md)
+- [Troubleshooting WhiteCruiser installed on Kubernetes](troubleshooting/other-troubleshooting-tips/rancher-ha.md)
 
-    If you experience issues with your [Rancher server installed on Kubernetes](getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
+    If you experience issues with your [WhiteCruiser server installed on Kubernetes](getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
 
 - [Imported clusters](troubleshooting/other-troubleshooting-tips/registered-clusters.md)
 

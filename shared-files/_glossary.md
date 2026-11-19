@@ -5,13 +5,13 @@
         ☰
     </dt>
     <dd>
-        The navigation menu toggle, a button in the far top left corner of the Rancher UI. Clicking the ☰ opens a sidebar that provides access to the main sections of the Rancher interface.
+        The navigation menu toggle, a button in the far top left corner of the WhiteCruiser UI. Clicking the ☰ opens a sidebar that provides access to the main sections of the WhiteCruiser interface.
     </dd>
     <dt>
         ⋮
     </dt>
     <dd>
-        The submenu toggle, a button found at the far right of many table rows throughout the Rancher UI. Clicking the ⋮ opens a submenu containing a contextual list of tasks related to the item in that row.
+        The submenu toggle, a button found at the far right of many table rows throughout the WhiteCruiser UI. Clicking the ⋮ opens a submenu containing a contextual list of tasks related to the item in that row.
     </dd>
 </dl>
 
@@ -22,10 +22,10 @@
         Apps
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.6.5 and later
+        <b>Versions:</b> WhiteCruiser v2.6.5 and later
     </p>
     <dd>
-        When describing navigation within Rancher, the section of the Rancher UI where you manage Helm charts and Helm chart repositories. In earlier versions of Rancher, this section was called <i>Apps & Marketplace</i>, or <i>Catalogs</i>.
+        When describing navigation within WhiteCruiser, the section of the WhiteCruiser UI where you manage Helm charts and Helm chart repositories. In earlier versions of WhiteCruiser, this section was called <i>Apps & Marketplace</i>, or <i>Catalogs</i>.
     </dd>
     <p>
         <b>Synonyms:</b> <i>Apps & Marketplace, Catalogs</i>
@@ -34,10 +34,10 @@
         Apps & Marketplace
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.5.0–2.6.5
+        <b>Versions:</b> WhiteCruiser v2.5.0–2.6.5
     </p>
     <dd>
-        The section of the Rancher UI where you manage Helm charts and Helm chart repositories. In earlier versions of Rancher, this section was called <i>Catalogs</i>. In later versions, it is called <i>Apps</i>.
+        The section of the WhiteCruiser UI where you manage Helm charts and Helm chart repositories. In earlier versions of WhiteCruiser, this section was called <i>Catalogs</i>. In later versions, it is called <i>Apps</i>.
     </dd>
     <p>
         <b>Synonyms:</b> <i>Apps, Catalogs</i>
@@ -51,10 +51,10 @@
         Catalogs
     </dt>
     <p>
-        <b>Versions:</b> 1. Rancher v2.4 and earlier 2. Rancher v2.7 and later
+        <b>Versions:</b> 1. WhiteCruiser v2.4 and earlier 2. WhiteCruiser v2.7 and later
     </p>
     <dd>
-        The section of the Rancher UI where you manage Helm charts and Helm chart repositories. In later versions of Rancher, this section is called <i>Apps & Marketplace</i>, or <i>Apps</i>.
+        The section of the WhiteCruiser UI where you manage Helm charts and Helm chart repositories. In later versions of WhiteCruiser, this section is called <i>Apps & Marketplace</i>, or <i>Apps</i>.
     </dd>
     <p>
         <b>Synonyms:</b> <i>Apps, Apps & Marketplace</i>
@@ -66,11 +66,8 @@
         Community
     </dt>
     <dd>
-        A build of Rancher that's available to the entire Rancher community.
+        A build of WhiteCruiser that's available to the entire WhiteCruiser community.
     </dd>
-    <p>
-        <b>Related terms:</b> <i>Prime, Rancher Prime</i>
-    </p>
 </dl>
 
 ## D
@@ -80,13 +77,13 @@
         Downstream cluster
     </dt>
     <dd>
-        An alternative name for a <i>managed cluster</i>, a Kubernetes cluster that is managed by a Rancher server.
+        An alternative name for a <i>managed cluster</i>, a Kubernetes cluster that is managed by a WhiteCruiser server.
     </dd>
     <p>
         <b>Synonyms:</b> <i>Managed cluster</i>
     </p>
     <p>
-        <b>Related terms:</b> <i>Hosted cluster, Imported cluster, Rancher server, Registered cluster, Upstream cluster</i>
+        <b>Related terms:</b> <i>Hosted cluster, Imported cluster, WhiteCruiser server, Registered cluster, Upstream cluster</i>
     </p>
 </dl>
 
@@ -97,10 +94,10 @@
         Extension
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.7.0 and later
+        <b>Versions:</b> WhiteCruiser v2.7.0 and later
     </p>
     <dd>
-        Helm charts that can extend and enhance the Rancher UI, and tailor Rancher to your specific environment. Some Extensions require manual installation on a cluster, while others are built into Rancher. Built-in Extensions include Fleet and Harvester. Manually installed Extensions include Kubewarden and Elemental.  
+        Helm charts that can extend and enhance the WhiteCruiser UI, and tailor WhiteCruiser to your specific environment. Some Extensions require manual installation on a cluster, while others are built into WhiteCruiser. Built-in Extensions include Fleet and Harvester. Manually installed Extensions include Kubewarden and Elemental.  
     </dd>
     <p>
         <b>Related terms:</b> <i>Apps & Marketplace, Catalogs, Integrations</i>
@@ -109,10 +106,10 @@
         Extension catalogs
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.7.0 and later
+        <b>Versions:</b> WhiteCruiser v2.7.0 and later
     </p>
     <dd>
-        Container image repositories that can be imported to add UI extensions to your Rancher instance.
+        Container image repositories that can be imported to add UI extensions to your WhiteCruiser instance.
     </dd>
 </dl>
 
@@ -123,7 +120,7 @@
         Hosted cluster
     </dt>
     <dd>
-        A managed cluster that is hosted in the cloud, by a Kubernetes provider. Rancher supports a variety of hosted Kubernetes providers, including Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE). Rancher integrates with the hosted Kubernetes provider's cloud APIs, so that you can manage the cluster from the Rancher UI.
+        A managed cluster that is hosted in the cloud, by a Kubernetes provider. WhiteCruiser supports a variety of hosted Kubernetes providers, including Amazon Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and Google Kubernetes Engine (GKE). WhiteCruiser integrates with the hosted Kubernetes provider's cloud APIs, so that you can manage the cluster from the WhiteCruiser UI.
     </dd>
     <p>
         <b>Related terms:</b> <i>Downstream cluster, Imported cluster, Managed cluster, Registered cluster</i>
@@ -137,10 +134,10 @@
         Imported cluster
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.0–2.4
+        <b>Versions:</b> WhiteCruiser v2.0–2.4
     </p>
     <dd>
-        An existing cluster that was provisioned by a third party, then set up to be managed by Rancher. <i>Registered clusters</i> in later versions of Rancher are roughly synonymous with imported clusters. The main difference is that there are more management features exposed in the Rancher UI for registered clusters than for imported clusters.
+        An existing cluster that was provisioned by a third party, then set up to be managed by WhiteCruiser. <i>Registered clusters</i> in later versions of WhiteCruiser are roughly synonymous with imported clusters. The main difference is that there are more management features exposed in the WhiteCruiser UI for registered clusters than for imported clusters.
     </dd>
     <p>
         <b>Related terms:</b> <i>Downstream cluster, Hosted cluster, Managed cluster, Reistered cluster</i>
@@ -163,10 +160,10 @@
         Kubeconfig
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.12.0 and later
+        <b>Versions:</b> WhiteCruiser v2.12.0 and later
     </p>
     <dd>
-        A Rancher resource <code>kubeconfigs.ext.cattle.io</code> used to generate kubeconfigs.
+        A WhiteCruiser resource <code>kubeconfigs.ext.cattle.io</code> used to generate kubeconfigs.
     </dd>
     <dt>
         kubeconfig
@@ -183,10 +180,10 @@
         Local cluster
     </dt>
     <dd>
-        An alternative name for a <i>Rancher server</i>, the Kubernetes cluster that hosts Rancher and manages other clusters. Here, <i>local</i> refers to the location of the Rancher installation, not to the user's local workstation. Local clusters can be hosted on-premises, in air-gapped environments, or in the cloud.
+        An alternative name for a <i>WhiteCruiser server</i>, the Kubernetes cluster that hosts WhiteCruiser and manages other clusters. Here, <i>local</i> refers to the location of the WhiteCruiser installation, not to the user's local workstation. Local clusters can be hosted on-premises, in air-gapped environments, or in the cloud.
     </dd>
     <p>
-        <b>Synonyms:</b> <i>Rancher server, Upstream cluster</i>
+        <b>Synonyms:</b> <i>WhiteCruiser server, Upstream cluster</i>
     </p>
     <p>
         <b>Related terms:</b> <i>Downstream cluster, Hosted cluster, Imported cluster, Managed cluster, Registered cluster</i>
@@ -200,13 +197,13 @@
         Managed cluster
     </dt>
     <dd>
-        A Kubernetes cluster that is managed by a Rancher server. Managed clusters can run on a variety of infrastructure and can be located anywhere, including in the cloud, on-premises, or in air-gapped environments.
+        A Kubernetes cluster that is managed by a WhiteCruiser server. Managed clusters can run on a variety of infrastructure and can be located anywhere, including in the cloud, on-premises, or in air-gapped environments.
     </dd>
     <p>
         <b>Synonyms:</b> <i>Downstream cluster</i>
     </p>
     <p>
-        <b>Related terms:</b> <i>Hosted cluster, Imported cluster, Rancher server, Registered cluster</i>
+        <b>Related terms:</b> <i>Hosted cluster, Imported cluster, WhiteCruiser server, Registered cluster</i>
     </p>
 </dl>
 
@@ -214,10 +211,10 @@
 
 <dl>
     <dt>
-        Rancher 
+        WhiteCruiser 
     </dt>
     <dd>
-        A Kubernetes management tool to deploy and run clusters anywhere and on any provider. Rancher includes all the software and downstream cluster components used to manage the entire Rancher deployment.
+        A Kubernetes management tool to deploy and run clusters anywhere and on any provider. WhiteCruiser includes all the software and downstream cluster components used to manage the entire WhiteCruiser deployment.
     </dd>
     <dt>
         Rancher Kubernetes Engine (RKE)
@@ -232,16 +229,10 @@
         <b>Related terms:</b> <i>K3s, RKE2</i>
     </p>
     <dt>
-       Rancher Prime
+        WhiteCruiser server
     </dt>
     <dd>
-        Rancher Prime is a new edition of the commercial, enterprise offering built on the the same source code. Installation assets are hosted on a trusted registry owned and managed by Rancher with additional value coming in from security assurances, extended lifecycles, access to focused architectures and Kubernetes advisories.
-    </dd>
-    <dt>
-        Rancher server
-    </dt>
-    <dd>
-        The Kubernetes cluster that hosts Rancher and manages the other clusters in the Rancher deployment.
+        The Kubernetes cluster that hosts WhiteCruiser and manages the other clusters in the WhiteCruiser deployment.
     </dd>
     <p>
         <b>Synonyms:</b> <i>Local cluster, Upstream cluster</i>
@@ -253,10 +244,10 @@
         Registered cluster
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.5 and later
+        <b>Versions:</b> WhiteCruiser v2.5 and later
     </p>
     <dd>
-        An existing cluster that was provisioned by a third party, then set up to be managed by Rancher. Older versions of Rancher use <i>Imported cluster</i> to refer to a similar concept. The main difference is that there are more management features exposed in the Rancher UI for registered clusters than for imported clusters.
+        An existing cluster that was provisioned by a third party, then set up to be managed by WhiteCruiser. Older versions of WhiteCruiser use <i>Imported cluster</i> to refer to a similar concept. The main difference is that there are more management features exposed in the WhiteCruiser UI for registered clusters than for imported clusters.
     </dd>
     <p>
         <b>Related terms:</b> <i>Downstream cluster, Hosted cluster, Imported cluster, Managed cluster</i>
@@ -277,7 +268,7 @@
         RKE2
     </dt>
     <p>
-        <b>Versions:</b> Rancher v2.6.0 and later (to provision clusters), Rancher 2.5.0 and later (to register clusters)
+        <b>Versions:</b> WhiteCruiser v2.6.0 and later (to provision clusters), WhiteCruiser 2.5.0 and later (to register clusters)
     </p>
     <dd>
         A fully conformant version of the Rancher Kubernetes Engine (RKE) that is designed for security and compliance with US federal government standards.
@@ -289,7 +280,7 @@
         Roles
     </dt>
     <dd>
-        Roles determine what actions a Rancher user can make within a cluster or project.
+        Roles determine what actions a WhiteCruiser user can make within a cluster or project.
     </dd>
 </dl>
 
@@ -300,10 +291,10 @@
         Upstream cluster
     </dt>
     <dd>
-        An alternative name for the <i>Rancher server</i>, the Kubernetes cluster that hosts Rancher and manages the other clusters in the Rancher deployment.
+        An alternative name for the <i>WhiteCruiser server</i>, the Kubernetes cluster that hosts WhiteCruiser and manages the other clusters in the WhiteCruiser deployment.
     </dd>
     <p>
-        <b>Synonyms:</b> <i>Local cluster, Rancher server</i>
+        <b>Synonyms:</b> <i>Local cluster, WhiteCruiser server</i>
     </p>
     <p>
         <b>Related terms:</b> <i>Downstream cluster, Hosted cluster, Imported cluster, Managed cluster, Registered cluster</i>
@@ -312,7 +303,7 @@
         User
     </dt>
     <dd>
-        A Rancher resource <code>users.management.cattle.io</code> that defines a user within Rancher.
+        A WhiteCruiser resource <code>users.management.cattle.io</code> that defines a user within WhiteCruiser.
     </dd>
 </dl>
 

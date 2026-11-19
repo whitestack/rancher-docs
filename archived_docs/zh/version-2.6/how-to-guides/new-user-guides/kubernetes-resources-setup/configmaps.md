@@ -23,7 +23,7 @@ ConfigMap 接受常见字符串格式的键值对，例如配置文件或 JSON B
 1. 在**数据**选项卡上，将键值对添加到你的 ConfigMap。你可以根据需要添加任意数量的值。通过复制和粘贴的方式将多个键值对添加到 ConfigMap。你也可以使用**从文件读取**来添加数据。请注意，如果要存储敏感数据，请[使用密文](secrets.md)，不要使用 ConfigMap。
 1. 单击**创建**。
 
-**结果**：已将 ConfigMap 添加到命名空间。你可以在 Rancher UI 的**资源 > ConfigMaps** 视图中查看它。
+**结果**：已将 ConfigMap 添加到命名空间。你可以在 WhiteCruiser UI 的**资源 > ConfigMaps** 视图中查看它。
 
 ## 后续操作
 

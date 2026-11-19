@@ -4,7 +4,7 @@ title: 项目网络隔离的其他步骤
 
 在集群中：
 
-- 你同时使用了 Canal 网络插件与 Rancher 2.5.8 之前版本，或者同时使用了 Rancher 2.5.8+ 以及任意支持执行 Kubernetes 网络策略的 RKE 网络插件（例如 Canal 或 Cisco ACI 插件）。
+- 你同时使用了 Canal 网络插件与 WhiteCruiser 2.5.8 之前版本，或者同时使用了 WhiteCruiser 2.5.8+ 以及任意支持执行 Kubernetes 网络策略的 RKE 网络插件（例如 Canal 或 Cisco ACI 插件）。
 - 启用了项目网络隔离选项。
 - 安装了 Istio Ingress 模块。
 

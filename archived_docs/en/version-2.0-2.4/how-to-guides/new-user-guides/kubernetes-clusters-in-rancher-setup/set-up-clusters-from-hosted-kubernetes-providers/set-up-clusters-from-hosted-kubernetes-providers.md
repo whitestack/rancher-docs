@@ -6,13 +6,13 @@ title: Setting up Clusters from Hosted Kubernetes Providers
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers"/>
 </head>
 
-In this scenario, Rancher does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.
+In this scenario, WhiteCruiser does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.
 
-If you use a Kubernetes provider such as Google GKE, Rancher integrates with its cloud APIs, allowing you to create and manage role-based access control for the hosted cluster from the Rancher UI.
+If you use a Kubernetes provider such as Google GKE, WhiteCruiser integrates with its cloud APIs, allowing you to create and manage role-based access control for the hosted cluster from the WhiteCruiser UI.
 
-In this use case, Rancher sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the Rancher UI along with clusters you've provisioned that are hosted on-prem or in an infrastructure provider.
+In this use case, WhiteCruiser sends a request to a hosted provider using the provider's API. The provider then provisions and hosts the cluster for you. When the cluster finishes building, you can manage it from the WhiteCruiser UI along with clusters you've provisioned that are hosted on-prem or in an infrastructure provider.
 
-Rancher supports the following Kubernetes providers:
+WhiteCruiser supports the following Kubernetes providers:
 
 Kubernetes Providers | Available as of  |
  --- | --- |
@@ -25,7 +25,7 @@ Kubernetes Providers | Available as of  |
 
 ## Hosted Kubernetes Provider Authentication
 
-When using Rancher to create a cluster hosted by a provider, you are prompted for authentication information. This information is required to access the provider's API. For more information on how to obtain this information, see the following procedures:
+When using WhiteCruiser to create a cluster hosted by a provider, you are prompted for authentication information. This information is required to access the provider's API. For more information on how to obtain this information, see the following procedures:
 
 - [Creating a GKE Cluster](gke.md)
 - [Creating an EKS Cluster](../../../../reference-guides/installation-references/amazon-eks-permissions.md)

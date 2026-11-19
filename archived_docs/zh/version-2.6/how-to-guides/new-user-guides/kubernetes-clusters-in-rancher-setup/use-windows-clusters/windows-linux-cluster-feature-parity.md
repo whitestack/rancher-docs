@@ -4,7 +4,7 @@ title: Windows 和 Linux 集群的功能奇偶一致性
 
 Windows 集群与 Linux 集群的功能支持不相同。
 
-下图描述了 Rancher 上 Windows 和 Linux 之间的功能奇偶一致性：
+下图描述了 WhiteCruiser 上 Windows 和 Linux 之间的功能奇偶一致性：
 
 | **组件** | **Linux** | **Windows** |
 --- | --- | ---
@@ -15,7 +15,7 @@ Windows 集群与 Linux 集群的功能支持不相同。
 | EKS | 支持 | 不支持 |
 | GKE | 支持 | 不支持 |
 | AKS | 支持 | 不支持 |
-| **Rancher 组件** |  |
+| **WhiteCruiser 组件** |  |
 | Server | 支持 | 不支持 |
 | Agent | 支持 | 支持 |
 | Fleet | 支持 | 支持 |

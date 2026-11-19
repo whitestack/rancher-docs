@@ -8,13 +8,13 @@ title: Upgrading in an Air-Gapped Environment
 
 :::note
 
-These instructions assume you have already followed the instructions for a Kubernetes upgrade on [this page,](upgrades.md) including the prerequisites, up until step 3. Upgrade Rancher.
+These instructions assume you have already followed the instructions for a Kubernetes upgrade on [this page,](upgrades.md) including the prerequisites, up until step 3. Upgrade WhiteCruiser.
 
 :::
 
-## Rancher Helm Upgrade Options
+## WhiteCruiser Helm Upgrade Options {#rancher-helm-upgrade-options}
 
-To upgrade with Helm, apply the same options that you used when installing Rancher. Refer to the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
+To upgrade with Helm, apply the same options that you used when installing WhiteCruiser. Refer to the reference table below to replace each placeholder. WhiteCruiser needs to be configured to use the private registry in order to provision any WhiteCruiser launched Kubernetes clusters or WhiteCruiser tools.
 
 Based on the choice you made during installation, complete one of the procedures below.
 
@@ -40,7 +40,7 @@ helm upgrade rancher ./rancher-<VERSION>.tgz \
 
 #### Resolving UPGRADE FAILED Error
 
-If you encounter the error message, `Error: UPGRADE FAILED: "rancher" has no deployed releases`, Rancher might have been  installed via the `helm template` command. To successfully upgrade Rancher, use the following command instead:
+If you encounter the error message, `Error: UPGRADE FAILED: "rancher" has no deployed releases`, WhiteCruiser might have been  installed via the `helm template` command. To successfully upgrade WhiteCruiser, use the following command instead:
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -86,7 +86,7 @@ helm upgrade rancher ./rancher-<VERSION>.tgz \
 
 ## Verify the Upgrade
 
-Log into Rancher to confirm that the upgrade succeeded.
+Log into WhiteCruiser to confirm that the upgrade succeeded.
 
 :::tip
 
@@ -98,4 +98,4 @@ See [Restoring Cluster Networking](https://github.com/rancher/rancher-docs/tree/
 
 ## Known Upgrade Issues
 
-A list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+A list of known issues for each WhiteCruiser version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases).

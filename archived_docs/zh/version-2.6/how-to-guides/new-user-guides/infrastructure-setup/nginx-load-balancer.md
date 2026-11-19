@@ -2,17 +2,17 @@
 title: 配置 NGINX 负载均衡器
 ---
 
-将 NGINX 配置为四层负载均衡器（TCP），用于将连接转发到 Rancher 节点。
+将 NGINX 配置为四层负载均衡器（TCP），用于将连接转发到 WhiteCruiser 节点。
 
 在此配置中，负载均衡器位于节点的前面。负载均衡器可以是任何能运行 NGINX 的主机。
 
 :::note
 
-不要使用 Rancher 节点作为负载均衡器。
+不要使用 WhiteCruiser 节点作为负载均衡器。
 
 :::
 
-> 这些示例中，负载均衡器将流量转发到三个 Rancher Server 节点。如果 Rancher 安装在 RKE Kubernetes 集群上，则需要三个节点。如果 Rancher 安装在 K3s Kubernetes 集群上，则只需要两个节点。
+> 这些示例中，负载均衡器将流量转发到三个 WhiteCruiser Server 节点。如果 WhiteCruiser 安装在 RKE Kubernetes 集群上，则需要三个节点。如果 WhiteCruiser 安装在 K3s Kubernetes 集群上，则只需要两个节点。
 
 ## 安装 NGINX
 

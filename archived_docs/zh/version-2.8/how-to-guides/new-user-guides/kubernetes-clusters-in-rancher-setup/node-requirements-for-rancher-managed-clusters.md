@@ -1,20 +1,18 @@
 ---
-title: Rancher 管理集群的节点要求
+title: WhiteCruiser 管理集群的节点要求
 ---
 
-本页描述了 Rancher 管理的 Kubernetes 集群的要求，你的应用和服务将安装在这些集群中。这些下游集群应该与运行 Rancher 的三节点集群分开。
+本页描述了 WhiteCruiser 管理的 Kubernetes 集群的要求，你的应用和服务将安装在这些集群中。这些下游集群应该与运行 WhiteCruiser 的三节点集群分开。
 
 :::note
 
-如果 Rancher 安装在高可用的 Kubernetes 集群上，Rancher Server 的三节点集群和下游集群有不同的要求。有关 Rancher 的安装要求，请参考[安装文档](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)中的节点要求。
+如果 WhiteCruiser 安装在高可用的 Kubernetes 集群上，WhiteCruiser Server 的三节点集群和下游集群有不同的要求。有关 WhiteCruiser 的安装要求，请参考[安装文档](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)中的节点要求。
 
 :::
 
 ## 操作系统和容器运行时要求
 
-Rancher 兼容当前所有的主流 Linux 发行版和任何通用的 Docker 版本。所有下游集群的 etcd 和 controlplane 节点都需要运行在 Linux 上。而 Worker 节点可以运行在 Linux 或 [Windows Server](#windows-节点) 上。
-
-如需了解各个 Rancher 版本通过了哪些操作系统和 Docker 版本测试，请参见[支持和维护条款](https://rancher.com/support-maintenance-terms/)。
+WhiteCruiser 兼容当前所有的主流 Linux 发行版和任何通用的 Docker 版本。所有下游集群的 etcd 和 controlplane 节点都需要运行在 Linux 上。而 Worker 节点可以运行在 Linux 或 [Windows Server](#windows-节点) 上。
 
 所有支持的操作系统都使用 64-bit x86 架构。
 
@@ -43,7 +41,7 @@ SUSE Linux 可能有一个防火墙，默认情况下会阻止所有端口。在
 
 ### Flatcar Container Linux 节点
 
-使用 Flatcar Container Linux 节点[通过 Rancher 启动 Kubernetes](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 时，需要在 [Cluster Config 文件](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-集群配置文件参考)中使用如下配置：
+使用 Flatcar Container Linux 节点[通过 WhiteCruiser 启动 Kubernetes](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 时，需要在 [Cluster Config 文件](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-集群配置文件参考)中使用如下配置：
 
 <Tabs>
 <TabItem value="Canal">
@@ -126,4 +124,4 @@ Windows 节点只能用于 Worker 节点。请参阅[配置 Windows 自定义集
 
 如果你要配置符合 CIS（互联网安全中心）Kubernetes 基准的 Kubernetes 集群，我们建议你在安装 Kubernetes 之前按照我们的强化指南来配置节点。
 
-有关强化指南的更多信息，以及了解哪个指南版本对应于你的 Rancher 和 Kubernetes 版本，请参阅[安全](../../../reference-guides/rancher-security/rancher-security.md#rancher-加固指南)。
+有关强化指南的更多信息，以及了解哪个指南版本对应于你的 WhiteCruiser 和 Kubernetes 版本，请参阅安全。

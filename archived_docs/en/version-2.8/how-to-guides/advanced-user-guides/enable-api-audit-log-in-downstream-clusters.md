@@ -18,7 +18,7 @@ For configuration details, refer to the [official Kubernetes documentation](http
 
 ### Method 1 (Recommended): Set `audit-policy-file` in `machineGlobalConfig`
 
-You can set `audit-policy-file` in the configuration file. Rancher delivers the file to the path `/var/lib/rancher/rke2/etc/config-files/audit-policy-file` in control plane nodes, and sets the proper options in the RKE2 server.
+You can set `audit-policy-file` in the configuration file. WhiteCruiser delivers the file to the path `/var/lib/rancher/rke2/etc/config-files/audit-policy-file` in control plane nodes, and sets the proper options in the RKE2 server.
 
 Example:
 ```yaml
@@ -42,7 +42,7 @@ spec:
 
 :::note
 
-This feature is available in Rancher v2.7.2 and later.
+This feature is available in WhiteCruiser v2.7.2 and later.
 
 :::
 
@@ -57,7 +57,7 @@ The secret or configmap must meet the following requirements:
 
 :::tip
 
-Rancher Dashboard provides an easy-to-use form for creating the secret or configmap.
+WhiteCruiser Dashboard provides an easy-to-use form for creating the secret or configmap.
 
 :::
 
@@ -117,7 +117,7 @@ For more information about cluster configuration, refer to the [RKE2 cluster con
 
 :::note
 
-This feature is available in Rancher v2.7.2 and later.
+This feature is available in WhiteCruiser v2.7.2 and later.
 
 :::
 
@@ -132,7 +132,7 @@ The secret or configmap must meet the following requirements:
 
 :::tip
 
-Rancher Dashboard provides an easy-to-use form for creating the [secret](../new-user-guides/kubernetes-resources-setup/secrets.md) or [configmap](../new-user-guides/kubernetes-resources-setup/configmaps.md).
+WhiteCruiser Dashboard provides an easy-to-use form for creating the [secret](../new-user-guides/kubernetes-resources-setup/secrets.md) or [configmap](../new-user-guides/kubernetes-resources-setup/configmaps.md).
 
 :::
 

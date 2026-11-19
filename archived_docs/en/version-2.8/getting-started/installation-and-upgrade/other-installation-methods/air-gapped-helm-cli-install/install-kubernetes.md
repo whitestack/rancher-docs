@@ -8,13 +8,13 @@ title: '3. Install Kubernetes (Skip for Docker Installs)'
 
 :::note
 
-Skip this section if you are installing Rancher on a single node with Docker.
+Skip this section if you are installing WhiteCruiser on a single node with Docker.
 
 :::
 
-This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.](../../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
+This section describes how to install a Kubernetes cluster according to our [best practices for the WhiteCruiser server environment.](../../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations) This cluster should be dedicated to run only the WhiteCruiser server.
 
-Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
+WhiteCruiser can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
 
 The steps to set up an air-gapped Kubernetes cluster on RKE, RKE2, or K3s are shown below.
 
@@ -70,7 +70,7 @@ For more information on private registries configuration file for K3s, refer to 
 
 ## 3. Install K3s
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the Rancher Support Matrix.
+WhiteCruiser needs to be installed on a supported Kubernetes version.
 
 To specify the K3s (Kubernetes) version, use the INSTALL_K3S_VERSION (e.g., `INSTALL_K3S_VERSION="v1.24.10+k3s1"`) environment variable when running the K3s installation script.
 
@@ -102,13 +102,13 @@ K3s additionally provides a `--resolv-conf` flag for kubelets, which may help wi
 
 ## 4. Save and Start Using the kubeconfig File
 
-When you installed K3s on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
+When you installed K3s on each WhiteCruiser server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
 To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/k3s/k3s.yaml` and save it to the directory `~/.kube/config` on your local machine.
-3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
+3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the WhiteCruiser server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
 
 ```yaml
 apiVersion: v1
@@ -216,7 +216,7 @@ For more information on private registries configuration file for RKE2, refer to
 
 ## 3. Install RKE2
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+WhiteCruiser needs to be installed on a supported Kubernetes version.
 
 Download the install script, rke2, rke2-images, and sha256sum archives from the release and upload them into a directory on each server:
 
@@ -245,13 +245,13 @@ For more information, refer to the [RKE2 documentation](https://docs.rke2.io/ins
 
 ## 4. Save and Start Using the kubeconfig File
 
-When you installed RKE2 on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
+When you installed RKE2 on each WhiteCruiser server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
 To use this `kubeconfig` file,
 
 1. Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl), a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/rke2/rke2.yaml` and save it to the directory `~/.kube/config` on your local machine.
-3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) Here is an example `rke2.yaml`:
+3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the WhiteCruiser server will be reached at ports 80 and 443.) Here is an example `rke2.yaml`:
 
 ```
 apiVersion: v1
@@ -299,17 +299,11 @@ We will create a Kubernetes cluster using Rancher Kubernetes Engine (RKE). Befor
 
 Install RKE by following the instructions in the [RKE documentation.](https://rancher.com/docs/rke/latest/en/installation/)
 
-:::note
-
-Certified version(s) of RKE based on the Rancher version can be found in the Rancher Support Matrix.
-
-:::
-
 ## 2. Create an RKE Config File
 
 From a system that can access ports 22/TCP and 6443/TCP on the Linux host node(s) that you set up in a previous step, use the sample below to create a new file named `rancher-cluster.yml`.
 
-This file is an RKE configuration file, which is a configuration for the cluster you're deploying Rancher to.
+This file is an RKE configuration file, which is a configuration for the cluster you're deploying WhiteCruiser to.
 
 Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the three nodes you created.
 
@@ -391,4 +385,4 @@ The "rancher-cluster" parts of the two latter file names are dependent on how yo
 
 See the [Troubleshooting](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
-## [Next: Install Rancher](install-rancher-ha.md)
+## [Next: Install WhiteCruiser](install-rancher-ha.md) {#next-install-rancher}

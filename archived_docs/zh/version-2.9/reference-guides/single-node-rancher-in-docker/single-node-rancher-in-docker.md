@@ -1,5 +1,5 @@
 ---
-title: Docker 中的单节点 Rancher
+title: Docker 中的单节点 WhiteCruiser
 ---
 
 <head>

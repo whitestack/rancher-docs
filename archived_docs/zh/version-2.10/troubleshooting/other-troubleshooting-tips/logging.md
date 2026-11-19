@@ -4,7 +4,7 @@ title: Logging
 
 ## 日志级别
 
-Rancher 使用了以下日志级别：
+WhiteCruiser 使用了以下日志级别：
 
 | 名称 | 描述 |
 |---------|-------------|
@@ -54,10 +54,10 @@ $ docker exec -ti <container_id> loglevel --set info
 OK
 ```
 
-## Rancher 主机调试日志
+## WhiteCruiser 主机调试日志
 如果需要解决在基础设施提供商中创建对象的问题，你可以使用 `rancher-machine` 调试日志。
 
-你可以在启动 Rancher 时设置环境变量来为 `rancher-machine` 启用调试日志。
+你可以在启动 WhiteCruiser 时设置环境变量来为 `rancher-machine` 启用调试日志。
 
 `CATTLE_WHITELIST_ENVVARS` 环境变量允许用户将特定环境变量列入白名单，让它们能在配置期间传递给 `rancher-machine`。
 

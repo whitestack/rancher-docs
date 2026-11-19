@@ -4,11 +4,11 @@ title: 设置 Amazon NLB 网络负载均衡器
 
 本文介绍了如何在 Amazon EC2 服务中设置 Amazon NLB 网络负载均衡器，用于将流量转发到 EC2 上的多个实例中。
 
-这些示例中，负载均衡器将流量转发到三个 Rancher Server 节点。如果 Rancher 安装在 K3s Kubernetes 集群上，则只需要两个节点。
+这些示例中，负载均衡器将流量转发到三个 WhiteCruiser Server 节点。如果 WhiteCruiser 安装在 K3s Kubernetes 集群上，则只需要两个节点。
 
-本文介绍的只是配置负载均衡器的其中一种方式。其他负载均衡器如传统负载路由器（Classic Load Balancer）和应用负载路由器（Application Load Balancer），也可以将流量转发到 Rancher Server 节点。
+本文介绍的只是配置负载均衡器的其中一种方式。其他负载均衡器如传统负载路由器（Classic Load Balancer）和应用负载路由器（Application Load Balancer），也可以将流量转发到 WhiteCruiser Server 节点。
 
-Rancher 仅支持使用 Amazon NLB 以 `TCP` 模式终止 443 端口的流量，而不支持 `TLS` 模式。这试因为在 NLB 终止时，NLB 不会将正确的标头注入请求中。如果你想使用由 Amazon Certificate Manager (ACM) 托管的证书，请使用 ALB。
+WhiteCruiser 仅支持使用 Amazon NLB 以 `TCP` 模式终止 443 端口的流量，而不支持 `TLS` 模式。这试因为在 NLB 终止时，NLB 不会将正确的标头注入请求中。如果你想使用由 Amazon Certificate Manager (ACM) 托管的证书，请使用 ALB。
 
 ## 要求
 
@@ -18,7 +18,7 @@ Rancher 仅支持使用 Amazon NLB 以 `TCP` 模式终止 443 端口的流量，
 
 首先，为 **TCP** 协议创建两个目标组，其中一个使用 TCP 端口 443，另一个使用 TCP 端口 80（用于重定向到 TCP 端口 443）。然后，将 Linux 节点添加到这些组中。
 
-配置 NLB 的第一个步骤是创建两个目标组。一般来说，只需要端口 443 就可以访问 Rancher。但是，由于端口 80 的流量会被自动重定向到端口 443，因此，你也可以为端口 80 也添加一个监听器。
+配置 NLB 的第一个步骤是创建两个目标组。一般来说，只需要端口 443 就可以访问 WhiteCruiser。但是，由于端口 80 的流量会被自动重定向到端口 443，因此，你也可以为端口 80 也添加一个监听器。
 
 The Traefik Ingress should redirect traffic from port 80 to port 443.
 
@@ -127,7 +127,7 @@ For details on Traefik Ingress health checks, refer to [this section.](#health-c
 在表单中设置以下字段：
 
 - **名称**：`rancher`
-- **Scheme**：`internal` 或 `internet-facing`。实例和 VPC 的配置决定了 NLB 的 Scheme。如果你的实例没有绑定公共 IP，或者你只需要通过内网访问 Rancher，请将 NLB 的 Scheme 设置为 `internal` 而不是 `internet-facing`。
+- **Scheme**：`internal` 或 `internet-facing`。实例和 VPC 的配置决定了 NLB 的 Scheme。如果你的实例没有绑定公共 IP，或者你只需要通过内网访问 WhiteCruiser，请将 NLB 的 Scheme 设置为 `internal` 而不是 `internet-facing`。
 - **监听器**：负载均衡器协议需要是 `TCP`，而且负载均衡器端口需要设为 `443`。
 - **可用区：**选择你的**VPC**和**可用区**。
 
@@ -167,4 +167,4 @@ K3s Kubernetes clusters use Traefik as the default Ingress.
 
 The health check path is `/ping`. By default `/ping` is always matched (regardless of Host), and a response from [Traefik itself](https://docs.traefik.io/operations/ping/) is always served.
 
-To simulate an accurate health check, it is a best practice to use the Host header (Rancher hostname) combined with `/ping` or `/healthz` wherever possible, to get a response from the Rancher Pods, not the Ingress.
+To simulate an accurate health check, it is a best practice to use the Host header (WhiteCruiser hostname) combined with `/ping` or `/healthz` wherever possible, to get a response from the WhiteCruiser Pods, not the Ingress.

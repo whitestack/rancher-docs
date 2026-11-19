@@ -2,14 +2,14 @@
 title: 升级和回滚 Kubernetes
 ---
 
-升级到最新版本的 Rancher 之后，下游 Kubernetes 集群可以升级为 Rancher 支持的最新的 Kubernetes 版本。
+升级到最新版本的 WhiteCruiser 之后，下游 Kubernetes 集群可以升级为 WhiteCruiser 支持的最新的 Kubernetes 版本。
 
-Rancher 使用 RKE（Rancher Kubernetes Engine）来预置和编辑 RKE 集群。有关为 RKE 集群配置升级策略的更多信息，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/)。
+WhiteCruiser 使用 RKE（Rancher Kubernetes Engine）来预置和编辑 RKE 集群。有关为 RKE 集群配置升级策略的更多信息，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/)。
 
 
 ## 经过测试的 Kubernetes 版本
 
-Rancher 在发布新版本之前，会对其与 Kubernetes 的最新次要版本进行测试，以确保兼容性。有关各个 Rancher 版本测试了哪些 Kubernetes 版本的详细信息，请参阅[支持维护条款](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.6.0/)。
+WhiteCruiser 在发布新版本之前，会对其与 Kubernetes 的最新次要版本进行测试，以确保兼容性。
 
 ## 升级的工作原理
 
@@ -32,8 +32,8 @@ RKE v1.1.0 改变了集群升级的方式。
 
 :::note 先决条件：
 
-- 以下选项适用于 [Rancher 启动的 Kubernetes 集群](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)和[注册的 K3s Kubernetes 集群](../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md#已注册-k3s-集群的附加功能)。
-- 以下选项也适用于导入且已注册的 RKE2 集群。如果你从外部云平台导入集群但不注册，你将无法在 Rancher 中升级 Kubernetes 版本。
+- 以下选项适用于 [WhiteCruiser 启动的 Kubernetes 集群](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)和[注册的 K3s Kubernetes 集群](../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md#已注册-k3s-集群的附加功能)。
+- 以下选项也适用于导入且已注册的 RKE2 集群。如果你从外部云平台导入集群但不注册，你将无法在 WhiteCruiser 中升级 Kubernetes 版本。
 - 在升级 Kubernetes 之前，先[备份你的集群](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/backup-restore-and-disaster-recovery.md)。
 
 :::
@@ -56,11 +56,11 @@ RKE v1.1.0 改变了集群升级的方式。
 
 从 RKE v1.1.0 开始，我们提供了额外的升级选项，让你更精细地控制升级过程。如果满足[条件和要求](https://rancher.com/docs/rke/latest/en/upgrades/maintaining-availability)，你可以使用这些选项，从而在集群升级期间维持应用的可用性。
 
-你可以在 Rancher UI 中配置升级策略，也可以通过编辑 `cluster.yml` 来配置策略。编辑 `cluster.yml` 可以配置更多高级选项。
+你可以在 WhiteCruiser UI 中配置升级策略，也可以通过编辑 `cluster.yml` 来配置策略。编辑 `cluster.yml` 可以配置更多高级选项。
 
-### 在 Rancher UI 中配置最大不可用的 Worker 节点
+### 在 WhiteCruiser UI 中配置最大不可用的 Worker 节点
 
-你可以在 Rancher UI 中配置不可用 worker 节点的最大数量。在集群升级期间，worker 节点将按此大小批量升级。
+你可以在 WhiteCruiser UI 中配置不可用 worker 节点的最大数量。在集群升级期间，worker 节点将按此大小批量升级。
 
 默认情况下，不可用 worker 节点的最大数量为所有 worker 节点的 10%。此数字可以配置为百分比或整数。当定义为百分比时，批大小会被四舍五入到最近的节点，最小为一个节点。
 
@@ -73,7 +73,7 @@ RKE v1.1.0 改变了集群升级的方式。
 
 **结果**：集群更新为使用新的升级策略。
 
-### 使用 Rancher UI 在升级期间启用节点清空
+### 使用 WhiteCruiser UI 在升级期间启用节点清空
 
 默认情况下，RKE 会在升级之前[封锁](https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration)每个节点。默认情况下，[清空](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)会在升级期间被禁用。如果在集群配置中启用了清空​​，RKE 将在升级之前对节点进行封锁和清空。
 
@@ -92,7 +92,7 @@ RKE v1.1.0 改变了集群升级的方式。
 
 :::note
 
-从 Rancher v2.4.0 开始出现了一个[已知问题](https://github.com/rancher/rancher/issues/25478)，即使 etcd 和 controlplane 正在被清空， Rancher UI 不会将它们的状态显示为已清空。
+从 WhiteCruiser v2.4.0 开始出现了一个[已知问题](https://github.com/rancher/rancher/issues/25478)，即使 etcd 和 controlplane 正在被清空， WhiteCruiser UI 不会将它们的状态显示为已清空。
 
 :::
 
@@ -123,4 +123,4 @@ _从 RKE v1.1.0 起可用_
 - 用户在升级过程中清空了节点，因此节点上没有 kubelet
 - 升级本身失败
 
-如果在升级过程中达到最大不可用节点数，Rancher 的下游集群将停留在更新中的状态，并且不会继续升级其他 controlplane 节点。它将继续评估不可用的节点集，以防其中一个节点变得可用。如果无法修复节点，则必须移除节点才能继续升级。
+如果在升级过程中达到最大不可用节点数，WhiteCruiser 的下游集群将停留在更新中的状态，并且不会继续升级其他 controlplane 节点。它将继续评估不可用的节点集，以防其中一个节点变得可用。如果无法修复节点，则必须移除节点才能继续升级。

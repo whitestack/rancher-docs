@@ -1,14 +1,14 @@
 ---
-title: Rancher 中的 Helm Chart
+title: WhiteCruiser 中的 Helm Chart
 ---
 
-在本节中，你将学习如何在 Rancher 中管理 Helm Chart 仓库和应用。你可以在 **Apps** 中管理 Helm Chart 仓库。它使用类似目录的系统从仓库中导入 Chart 包，然后使用这些 Chart 来部署自定义 Helm 应用或 Rancher 工具（例如监控和 Istio）。Rancher 工具以预加载仓库的方式提供，并能部署为独立的 Helm Chart 。其他仓库只会添加到当前集群。
+在本节中，你将学习如何在 WhiteCruiser 中管理 Helm Chart 仓库和应用。你可以在 **Apps** 中管理 Helm Chart 仓库。它使用类似目录的系统从仓库中导入 Chart 包，然后使用这些 Chart 来部署自定义 Helm 应用或 WhiteCruiser 工具（例如监控和 Istio）。WhiteCruiser 工具以预加载仓库的方式提供，并能部署为独立的 Helm Chart 。其他仓库只会添加到当前集群。
 
 ### 版本控制方案
 
-Rancher 功能 Chart 版本控制方案以 Chart 的主要版本和上游 Chart 的 `+up` 注释（如果适用）为中心。
+WhiteCruiser 功能 Chart 版本控制方案以 Chart 的主要版本和上游 Chart 的 `+up` 注释（如果适用）为中心。
 
-**主要版本**：Chart 的主要版本与 Rancher 次要版本相关联。当你升级到新的 Rancher 次要版本时，你应该确保你的所有 **Apps** Chart 也升级到 Chart 的正确发行版本。
+**主要版本**：Chart 的主要版本与 WhiteCruiser 次要版本相关联。当你升级到新的 WhiteCruiser 次要版本时，你应该确保你的所有 **Apps** Chart 也升级到 Chart 的正确发行版本。
 
 **功能 Chart**：
 
@@ -33,11 +33,11 @@ Rancher 功能 Chart 版本控制方案以 Chart 的主要版本和上游 Chart 
 
 <br/>
 
-**基于上游的 Chart**：对于基于上游的 Chart ，+up 注释用于表示 Rancher Chart 正在跟踪的上游版本。在升级时，请检查上游版本与 Rancher 的兼容性。
+**基于上游的 Chart**：对于基于上游的 Chart ，+up 注释用于表示 WhiteCruiser Chart 正在跟踪的上游版本。在升级时，请检查上游版本与 WhiteCruiser 的兼容性。
 
-- 例如，用于 Monitoring 的 `100.x.x+up16.6.0` 跟踪上游 kube-prometheus-stack `16.6.0` 并添加了一些 Rancher 补丁。
+- 例如，用于 Monitoring 的 `100.x.x+up16.6.0` 跟踪上游 kube-prometheus-stack `16.6.0` 并添加了一些 WhiteCruiser 补丁。
 
-- 在升级时，请确保你没有降级你正在使用的 Chart 版本。例如，如果你在 Rancher 2.5 中使用 Monitoring > `16.6.0` 版本，则不应升级到 `100.x.x+up16.6.0`。相反，你应该在下一个发行版中升级到适当的版本。
+- 在升级时，请确保你没有降级你正在使用的 Chart 版本。例如，如果你在 WhiteCruiser 2.5 中使用 Monitoring > `16.6.0` 版本，则不应升级到 `100.x.x+up16.6.0`。相反，你应该在下一个发行版中升级到适当的版本。
 
 ### 预发布版本
 
@@ -53,9 +53,9 @@ Rancher 功能 Chart 版本控制方案以 Chart 的主要版本和上游 Chart 
 
 从左上角的菜单中选择 _Apps_，然后你会转到 Chart 页面。
 
-Chart 页面包含所有 Rancher、Partner 和自定义 Chart 。
+Chart 页面包含所有 WhiteCruiser、Partner 和自定义 Chart 。
 
-* Rancher 工具（例如 Logging 或 Monitoring）包含在 Rancher 标签下
+* WhiteCruiser 工具（例如 Logging 或 Monitoring）包含在 WhiteCruiser 标签下
 * Partner Chart 位于 Partner 标签下
 * 自定义 Chart 将显示在仓库的名称下
 
@@ -63,7 +63,7 @@ Chart 页面包含所有 Rancher、Partner 和自定义 Chart 。
 
 :::note
 
-由 Cluster Manager （旧版 Rancher UI 中的全局视图）管理的应用应继续仅由 Cluster Manager 管理，而在新 UI 中使用 <b>Apps</b> 管理的应用则仅能由 <b>Apps</b> 管理。
+由 Cluster Manager （旧版 WhiteCruiser UI 中的全局视图）管理的应用应继续仅由 Cluster Manager 管理，而在新 UI 中使用 <b>Apps</b> 管理的应用则仅能由 <b>Apps</b> 管理。
 
 :::
 
@@ -122,13 +122,13 @@ spec:
 
 ### 部署和升级
 
-从 _Chart_ 选项卡中选择要安装的 Chart 。Rancher 和 Partner Chart 可能通过自定义页面或 questions.yaml 文件进行额外的配置，但所有 Chart 安装都可以修改 values.yaml 和其他基本设置。单击安装后，将部署一个 Helm 操作作业，并显示该作业的控制台。
+从 _Chart_ 选项卡中选择要安装的 Chart 。WhiteCruiser 和 Partner Chart 可能通过自定义页面或 questions.yaml 文件进行额外的配置，但所有 Chart 安装都可以修改 values.yaml 和其他基本设置。单击安装后，将部署一个 Helm 操作作业，并显示该作业的控制台。
 
 要查看所有最近的更改，请转到 _最近的操作_ 选项卡。你可以查看已进行的调用、条件、事件和日志。
 
 安装 Chart 后，你可以在 _已安装的应用_ 选项卡中找到该 Chart。在本节中，你可以升级或删除安装，并查看更多详细信息。选择升级时，呈现的形式和数值与安装相同。
 
-大多数 Rancher 工具在 _Apps_ 下方的工具栏中都有额外的页面，以帮助你管理和使用这些功能。这些页面包括指向仪表板的链接、可轻松添加自定义资源的表单以及其他信息。
+大多数 WhiteCruiser 工具在 _Apps_ 下方的工具栏中都有额外的页面，以帮助你管理和使用这些功能。这些页面包括指向仪表板的链接、可轻松添加自定义资源的表单以及其他信息。
 
 :::caution
 
@@ -152,4 +152,4 @@ spec:
 
 ### 限制
 
-Rancher CLI **不能**用于安装[仪表板应用程序或 Rancher 功能 Chart](helm-charts-in-rancher.md)。
+WhiteCruiser CLI **不能**用于安装[仪表板应用程序或 WhiteCruiser 功能 Chart](helm-charts-in-rancher.md)。

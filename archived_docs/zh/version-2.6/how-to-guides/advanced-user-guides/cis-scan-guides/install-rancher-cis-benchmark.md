@@ -1,5 +1,5 @@
 ---
-title: 安装 Rancher CIS Benchmark
+title: 安装 WhiteCruiser CIS Benchmark
 ---
 
 <Tabs>

@@ -2,28 +2,28 @@
 title: '2. 收集镜像并发布到私有仓库'
 ---
 
-本文介绍如何配置私有镜像仓库，以便在安装 Rancher 时，Rancher 可以从此私有镜像仓库中拉取所需的镜像。
+本文介绍如何配置私有镜像仓库，以便在安装 WhiteCruiser 时，WhiteCruiser 可以从此私有镜像仓库中拉取所需的镜像。
 
-默认情况下，所有用于[配置 Kubernetes 集群](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md)或启动 Rancher 中的工具（如监控，流水线，告警等）的镜像都是从 Docker Hub 中拉取的。在 Rancher 的离线安装中，你需要一个私有仓库，该仓库位于你的 Rancher Server 中某个可访问的位置。然后，你可加载该存有所有镜像的镜像仓库。
+默认情况下，所有用于[配置 Kubernetes 集群](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md)或启动 WhiteCruiser 中的工具（如监控，流水线，告警等）的镜像都是从 Docker Hub 中拉取的。在 WhiteCruiser 的离线安装中，你需要一个私有仓库，该仓库位于你的 WhiteCruiser Server 中某个可访问的位置。然后，你可加载该存有所有镜像的镜像仓库。
 
-使用 Docker 安装 Rancher，和把 Rancher 安装到 Kubernetes 集群，其对应的推送镜像到私有镜像仓库步骤是一样的。
+使用 Docker 安装 WhiteCruiser，和把 WhiteCruiser 安装到 Kubernetes 集群，其对应的推送镜像到私有镜像仓库步骤是一样的。
 
-你使用 Rancher 配置的下游集群是否有运行 Windows 的节点，决定了本文涉及的步骤。我们提供的推送镜像到私有镜像仓库步骤，是基于假设 Rancher 仅配置运行 Linux 节点的下游 Kubernetes 集群的。但是，如果你计划[在下游 Kubernetes 集群中使用 Windows 节点](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/use-windows-clusters/use-windows-clusters.md)，我们有单独的文档来介绍如何为需要的镜像提供支持。
+你使用 WhiteCruiser 配置的下游集群是否有运行 Windows 的节点，决定了本文涉及的步骤。我们提供的推送镜像到私有镜像仓库步骤，是基于假设 WhiteCruiser 仅配置运行 Linux 节点的下游 Kubernetes 集群的。但是，如果你计划[在下游 Kubernetes 集群中使用 Windows 节点](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/use-windows-clusters/use-windows-clusters.md)，我们有单独的文档来介绍如何为需要的镜像提供支持。
 
 :::note 先决条件：
 
 你必须有一个可用的[私有镜像仓库](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)。
 
-如果镜像仓库有证书，请参见 [K3s 文档中心](https://rancher.com/docs/k3s/latest/en/installation/private-registry/)了解添加私有镜像仓库的详情。证书和镜像仓库配置文件均需要挂载到 Rancher 容器中。
+如果镜像仓库有证书，请参见 [K3s 文档中心](https://rancher.com/docs/k3s/latest/en/installation/private-registry/)了解添加私有镜像仓库的详情。证书和镜像仓库配置文件均需要挂载到 WhiteCruiser 容器中。
 
 :::
 
 <Tabs>
 <TabItem value="仅包含 Linux 的集群">
 
-如果 Rancher Server 用于配置仅有 Linux 节点的集群，请按以下步骤将你的镜像推送到私有镜像仓库。
+如果 WhiteCruiser Server 用于配置仅有 Linux 节点的集群，请按以下步骤将你的镜像推送到私有镜像仓库。
 
-1. [找到你的 Rancher 版本所需的资源](#1-找到你的-rancher-版本所需的资源)
+1. [找到你的 WhiteCruiser 版本所需的资源](#1-找到你的-whitecruiser-版本所需的资源)
 2. [收集 cert-manager 镜像](#2-收集-cert-manager-镜像)（除非你使用自己的证书，或在负载均衡器上终止 TLS）
 3. [把镜像保存到你的工作站](#3-将镜像保存到你的工作站中)
 4. [推送镜像到私有镜像仓库](#4-推送镜像到私有镜像仓库)
@@ -34,15 +34,15 @@ title: '2. 收集镜像并发布到私有仓库'
 
 如果你的主机架构是 ARM64，镜像仓库必须支持 Manifest。这是因为从 2020 年 4 月开始, Amazon Elastic Container Registry 已经不再支持 Manifest。
 
-### 1. 找到你的 Rancher 版本所需的资源
+### 1. 找到你的 WhiteCruiser 版本所需的资源
 
-1. 访问 Rancher 的[发布说明](https://github.com/rancher/rancher/releases)页面，找到你需要安装的 Rancher v2.x.x 版本，然后点击 **Assets**。注意不要使用带有 `rc` 或 `Pre-release` 标记的版本，因为这些版本在生产环境中不够稳定。
+1. 访问 WhiteCruiser 的[发布说明](https://github.com/rancher/rancher/releases)页面，找到你需要安装的 WhiteCruiser v2.x.x 版本，然后点击 **Assets**。注意不要使用带有 `rc` 或 `Pre-release` 标记的版本，因为这些版本在生产环境中不够稳定。
 
-2. 从你所需版本的 **Assets** 处下载以下文件，这些文件是在离线环境中安装 Rancher 所必须的：
+2. 从你所需版本的 **Assets** 处下载以下文件，这些文件是在离线环境中安装 WhiteCruiser 所必须的：
 
 | Release 文件 | 描述 |
 | ---------------- | -------------- |
-| `rancher-images.txt` | 此文件包含安装 Rancher、配置集群和用户 Rancher 工具所需的镜像。 |
+| `rancher-images.txt` | 此文件包含安装 WhiteCruiser、配置集群和用户 WhiteCruiser 工具所需的镜像。 |
 | `rancher-save-images.sh` | 该脚本从 Docker Hub 中拉取在文件 `rancher-images.txt` 中记录的所有镜像，并把这些镜像保存为 `rancher-images.tar.gz`。 |
 | `rancher-load-images.sh` | 该脚本从 `rancher-images.tar.gz` 文件中加载镜像，并把镜像推送到你的私有镜像仓库。 |
 
@@ -54,13 +54,13 @@ title: '2. 收集镜像并发布到私有仓库'
 
 :::
 
-在 Kubernetes 安装中，如果你使用的是 Rancher 默认的自签名 TLS 证书，则必须将 [`cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager) 镜像添加到 `rancher-images.txt` 文件中。
+在 Kubernetes 安装中，如果你使用的是 WhiteCruiser 默认的自签名 TLS 证书，则必须将 [`cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager) 镜像添加到 `rancher-images.txt` 文件中。
 
 1. 获取最新的 `cert-manager` Helm Chart，并解析模板以获取镜像的详情信息：
 
    :::note
 
-   由于 cert-manager 的最新改动，你需要升级 cert-manager 版本。如果你需要升级 Rancher 并使用低于 0.12.0 的 cert-manager 版本，请参见[升级文档](../../resources/upgrade-cert-manager.md)。
+   由于 cert-manager 的最新改动，你需要升级 cert-manager 版本。如果你需要升级 WhiteCruiser 并使用低于 0.12.0 的 cert-manager 版本，请参见[升级文档](../../resources/upgrade-cert-manager.md)。
 
    :::
 
@@ -115,13 +115,13 @@ chmod +x rancher-load-images.sh
 </TabItem>
 <TabItem value="Linux 和 Windows 集群">
 
-如果你的 Rancher Server 将用于配置 Linux 和 Windows 集群，你需要执行不同的步骤，来将 Windows 镜像和 Linux 镜像推送到你的私有镜像仓库。由于 Windows 集群同时包含 Linux 和 Windows 节点，因此推送到私有镜像仓库的 Linux 镜像是 Manifest。
+如果你的 WhiteCruiser Server 将用于配置 Linux 和 Windows 集群，你需要执行不同的步骤，来将 Windows 镜像和 Linux 镜像推送到你的私有镜像仓库。由于 Windows 集群同时包含 Linux 和 Windows 节点，因此推送到私有镜像仓库的 Linux 镜像是 Manifest。
 
 ## Windows 步骤
 
 从 Windows Server 工作站中收集和推送 Windows 镜像。
 
-1. <a href="#windows-1">找到你的 Rancher 版本所需的资源</a>
+1. <a href="#windows-1">找到你的 WhiteCruiser 版本所需的资源</a>
 2. <a href="#windows-2">将镜像保存到你的 Windows Server 工作站</a>
 3. <a href="#windows-3">准备 Docker daemon</a>
 4. <a href="#windows-4">推送镜像到私有镜像仓库</a>
@@ -136,9 +136,9 @@ chmod +x rancher-load-images.sh
 
 <a name="windows-1"></a>
 
-### 1. 找到你的 Rancher 版本所需的资源
+### 1. 找到你的 WhiteCruiser 版本所需的资源
 
-1. 访问 Rancher 的[发布说明](https://github.com/rancher/rancher/releases)页面，找到你需要安装的 Rancher v2.x.x 版本。不要下载带有 `rc` 或 `Pre-release` 标记的版本，因为这些版本在生产环境中不够稳定。
+1. 访问 WhiteCruiser 的[发布说明](https://github.com/rancher/rancher/releases)页面，找到你需要安装的 WhiteCruiser v2.x.x 版本。不要下载带有 `rc` 或 `Pre-release` 标记的版本，因为这些版本在生产环境中不够稳定。
 
 2. 从你所需版本的 **Assets** 处下载以下文件：
 
@@ -200,7 +200,7 @@ chmod +x rancher-load-images.sh
 
 Linux 镜像需要在 Linux 主机上收集和推送，但是你必须先将 Windows 镜像推送到私有镜像仓库，然后再推送 Linux 镜像。由于被推送的 Linux 镜像实际上是支持 Windows 和 Linux 镜像的 manifest，因此涉及的步骤不同于只包含 Linux 节点的集群。
 
-1. <a href="#linux-1">找到你的 Rancher 版本所需的资源</a>
+1. <a href="#linux-1">找到你的 WhiteCruiser 版本所需的资源</a>
 2. <a href="#linux-2">收集所有需要的镜像</a>
 3. <a href="#linux-3">将镜像保存到你的 Linux 工作站中</a>
 4. <a href="#linux-4">推送镜像到私有镜像仓库</a>
@@ -215,15 +215,15 @@ Linux 镜像需要在 Linux 主机上收集和推送，但是你必须先将 Win
 
 <a name="linux-1"></a>
 
-### 1. 找到你的 Rancher 版本所需的资源
+### 1. 找到你的 WhiteCruiser 版本所需的资源
 
-1. 访问 Rancher 的[发布说明](https://github.com/rancher/rancher/releases)页面，找到你需要安装的 Rancher v2.x.x 版本。不要下载带有 `rc` 或 `Pre-release` 标记的版本，因为这些版本在生产环境中不够稳定。点击 **Assets**。
+1. 访问 WhiteCruiser 的[发布说明](https://github.com/rancher/rancher/releases)页面，找到你需要安装的 WhiteCruiser v2.x.x 版本。不要下载带有 `rc` 或 `Pre-release` 标记的版本，因为这些版本在生产环境中不够稳定。点击 **Assets**。
 
 2. 从你所需版本的 **Assets** 处下载以下文件：
 
 | Release 文件 | 描述 |
 |----------------------------| -------------------------- |
-| `rancher-images.txt` | 此文件包含安装 Rancher、配置集群和用户 Rancher 工具所需的镜像。 |
+| `rancher-images.txt` | 此文件包含安装 WhiteCruiser、配置集群和用户 WhiteCruiser 工具所需的镜像。 |
 | `rancher-windows-images.txt` | 此文件包含配置 Windows 集群所需的镜像。 |
 | `rancher-save-images.sh` | 该脚本从 Docker Hub 中拉取在文件 `rancher-images.txt` 中记录的所有镜像，并把这些镜像保存为 `rancher-images.tar.gz`。 |
 | `rancher-load-images.sh` | 该脚本从 `rancher-images.tar.gz` 文件中加载镜像，并把镜像推送到你的私有镜像仓库。 |
@@ -232,14 +232,14 @@ Linux 镜像需要在 Linux 主机上收集和推送，但是你必须先将 Win
 
 ### 2. 收集所有需要的镜像
 
-**在 Kubernetes 安装中，如果你使用的是 Rancher 默认的自签名 TLS 证书**，则必须将 [`cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager) 镜像添加到 `rancher-images.txt` 文件中。如果你使用自己的证书，则可跳过此步骤。
+**在 Kubernetes 安装中，如果你使用的是 WhiteCruiser 默认的自签名 TLS 证书**，则必须将 [`cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager) 镜像添加到 `rancher-images.txt` 文件中。如果你使用自己的证书，则可跳过此步骤。
 
 
 1. 获取最新的 `cert-manager` Helm Chart，并解析模板以获取镜像的详情信息：
 
    :::note
 
-   由于 cert-manager 的最新改动，你需要升级 cert-manager 版本。如果你需要升级 Rancher 并使用低于 0.12.0 的 cert-manager 版本，请参见[升级文档](../../resources/upgrade-cert-manager.md)。
+   由于 cert-manager 的最新改动，你需要升级 cert-manager 版本。如果你需要升级 WhiteCruiser 并使用低于 0.12.0 的 cert-manager 版本，请参见[升级文档](../../resources/upgrade-cert-manager.md)。
 
    :::
 
@@ -302,4 +302,4 @@ Linux 镜像需要在 Linux 主机上收集和推送，但是你必须先将 Win
 
 ### [Kubernetes 安装的后续步骤 - 启动 Kubernetes 集群](install-kubernetes.md)
 
-### [Docker 安装的后续步骤 - 安装 Rancher](install-rancher-ha.md)
+### [Docker 安装的后续步骤 - 安装 WhiteCruiser](install-rancher-ha.md)

@@ -1,15 +1,15 @@
 ---
 title: 在现有自定义节点上启动 Kubernetes
-description: 要创建具有自定义节点的集群，你需要访问集群中的服务器，并根据 Rancher 的要求配置服务器。
+description: 要创建具有自定义节点的集群，你需要访问集群中的服务器，并根据 WhiteCruiser 的要求配置服务器。
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes"/>
 </head>
 
-创建自定义集群时，Rancher 使用 RKE（Rancher Kubernetes Engine）在本地裸机服务器、本地虚拟机或云服务器节点中创建 Kubernetes 集群。
+创建自定义集群时，WhiteCruiser 使用 RKE（Rancher Kubernetes Engine）在本地裸机服务器、本地虚拟机或云服务器节点中创建 Kubernetes 集群。
 
-要使用此选项，你需要访问要在 Kubernetes 集群中使用的服务器。请根据[要求](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md)配置每台服务器，其中包括硬件要求和 Docker 要求。在每台服务器上安装 Docker 后，你还需要在每台服务器上运行 Rancher UI 中提供的命令，从而将每台服务器转换为 Kubernetes 节点。
+要使用此选项，你需要访问要在 Kubernetes 集群中使用的服务器。请根据[要求](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md)配置每台服务器，其中包括硬件要求和 Docker 要求。在每台服务器上安装 Docker 后，你还需要在每台服务器上运行 WhiteCruiser UI 中提供的命令，从而将每台服务器转换为 Kubernetes 节点。
 
 本节介绍如何设置自定义集群。
 
@@ -85,7 +85,7 @@ description: 要创建具有自定义节点的集群，你需要访问集群中�
 
 **结果**：
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
@@ -109,7 +109,7 @@ description: 要创建具有自定义节点的集群，你需要访问集群中�
 
 以下资源需要使用 `ClusterID` 进行标记：
 
-- **Nodes**：Rancher 中添加的所有主机。
+- **Nodes**：WhiteCruiser 中添加的所有主机。
 - **Subnet**：集群使用的子网。
 - **Security Group**：用于你的集群的安全组。
 
@@ -135,7 +135,7 @@ Key=kubernetes.io/cluster/CLUSTERID, Value=shared
 
 ## 可选的后续步骤
 
-创建集群后，你可以通过 Rancher UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
+创建集群后，你可以通过 WhiteCruiser UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
 
-- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../../how-to-guides/new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 Rancher Server 的身份验证代理进行身份验证，然后 Rancher 会让你连接到下游集群。此方法允许你在没有 Rancher UI 的情况下管理集群。
-- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../../how-to-guides/new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 Rancher 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 Rancher 时访问集群。
+- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../../how-to-guides/new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 WhiteCruiser Server 的身份验证代理进行身份验证，然后 WhiteCruiser 会让你连接到下游集群。此方法允许你在没有 WhiteCruiser UI 的情况下管理集群。
+- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../../how-to-guides/new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 WhiteCruiser 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 WhiteCruiser 时访问集群。

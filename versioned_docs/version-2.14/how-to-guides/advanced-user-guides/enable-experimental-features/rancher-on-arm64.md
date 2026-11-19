@@ -8,7 +8,7 @@ title: "Running on ARM64 Mixed Architecture (Experimental)"
 
 :::caution
 
-Running on an ARM64 mixed architecture platform is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using ARM64 mixed architecture based nodes in a production environment.
+Running on an ARM64 mixed architecture platform is currently an experimental feature and is not yet officially supported in WhiteCruiser. Therefore, we do not recommend using ARM64 mixed architecture based nodes in a production environment.
 
 :::
 

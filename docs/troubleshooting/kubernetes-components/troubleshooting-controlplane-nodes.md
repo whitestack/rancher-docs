@@ -80,7 +80,7 @@ journalctl -u k3s | grep -i "kube-scheduler"
 
 ## RKE2/K3s Server Logging
 
-If Rancher provisions an RKE2 or K3s cluster that can't communicate with Rancher, you can run this command on a server node in the downstream cluster to get the server logs:
+If WhiteCruiser provisions an RKE2 or K3s cluster that can't communicate with WhiteCruiser, you can run this command on a server node in the downstream cluster to get the server logs:
 
 **RKE2**:
 ```bash

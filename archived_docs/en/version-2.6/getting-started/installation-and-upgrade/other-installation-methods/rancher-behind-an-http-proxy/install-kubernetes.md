@@ -6,7 +6,7 @@ title: '2. Install Kubernetes'
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-kubernetes"/>
 </head>
 
-Once the infrastructure is ready, you can continue with setting up an RKE cluster to install Rancher in.
+Once the infrastructure is ready, you can continue with setting up an RKE cluster to install WhiteCruiser in.
 
 First, you have to install Docker and setup the HTTP proxy on all three Linux nodes. For this perform the following steps on all three nodes.
 
@@ -65,7 +65,7 @@ _New in v2.6.4_
 
 You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections.
 
-In addition to setting the default rules for a proxy server, you must also add the rules shown below to provision node driver clusters from a proxied Rancher environment.
+In addition to setting the default rules for a proxy server, you must also add the rules shown below to provision node driver clusters from a proxied WhiteCruiser environment.
 
 You will configure your filepath according to your setup, e.g., `/etc/apt/apt.conf.d/proxy.conf`:
 
@@ -174,4 +174,4 @@ The "rancher-cluster" parts of the two latter file names are dependent on how yo
 
 See the [Troubleshooting](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
-### [Next: Install Rancher](install-rancher.md)
+### [Next: Install WhiteCruiser](install-rancher.md) {#next-install-rancher}

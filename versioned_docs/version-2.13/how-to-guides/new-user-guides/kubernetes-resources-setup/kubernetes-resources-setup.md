@@ -6,7 +6,7 @@ title: Kubernetes Resources Setup
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup"/>
 </head>
 
-You can view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.
+You can view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the WhiteCruiser UI.
 
 ## Workloads
 
@@ -28,7 +28,7 @@ After you launch an application, it's only available within the cluster. It can'
 
 If you want your applications to be externally accessible, you must add a load balancer to your cluster. Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
 
-Rancher supports two types of load balancers:
+WhiteCruiser supports two types of load balancers:
 
 - [Layer-4 Load Balancers](load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing.md#layer-4-load-balancer)
 - [Layer-7 Load Balancers](load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing.md#layer-7-load-balancer)
@@ -53,11 +53,11 @@ For more information, see [Service Discovery](create-services.md).
 
 ## Applications
 
-Besides launching individual components of an application, you can use the Rancher catalog to start launching applications, which are Helm charts.
+Besides launching individual components of an application, you can use the WhiteCruiser catalog to start launching applications, which are Helm charts.
 
 ## Kubernetes Resources
 
-Within the context of a Rancher project or namespace, _resources_ are files and data that support operation of your pods. Within Rancher, certificates, registries, and secrets are all considered resources. However, Kubernetes classifies resources as different types of [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, individual resources must have unique names to avoid conflicts. Although resources are primarily used to carry sensitive information, they have other uses as well.
+Within the context of a WhiteCruiser project or namespace, _resources_ are files and data that support operation of your pods. Within WhiteCruiser, certificates, registries, and secrets are all considered resources. However, Kubernetes classifies resources as different types of [secrets](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, within a single project or namespace, individual resources must have unique names to avoid conflicts. Although resources are primarily used to carry sensitive information, they have other uses as well.
 
 Resources include:
 

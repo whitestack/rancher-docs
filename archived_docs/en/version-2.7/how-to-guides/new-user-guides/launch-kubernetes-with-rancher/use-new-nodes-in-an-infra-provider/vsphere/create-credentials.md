@@ -6,7 +6,7 @@ title: Creating Credentials in the VMware vSphere Console
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/vsphere/create-credentials"/>
 </head>
 
-This section describes how to create a VMware vSphere username and password. You must provide these vSphere credentials to Rancher, which allows Rancher to provision resources in vSphere.
+This section describes how to create a VMware vSphere username and password. You must provide these vSphere credentials to WhiteCruiser, which allows WhiteCruiser to provision resources in vSphere.
 
 The following table lists the permissions required for the vSphere user account:
 
@@ -34,7 +34,7 @@ The following steps create a role with the required privileges and then assign i
 
 4. Go to the **Users and Groups** tab.
 
-5. Create a new user. Fill out the form and then click **OK**. Make sure to note the username and password, because you will need it when configuring node templates in Rancher.
+5. Create a new user. Fill out the form and then click **OK**. Make sure to note the username and password, because you will need it when configuring node templates in WhiteCruiser.
 
     ![](/img/rancheruser.png)
 
@@ -46,4 +46,4 @@ The following steps create a role with the required privileges and then assign i
 
     ![](/img/globalpermissionrole.png)
 
-**Result:** You now have credentials that Rancher can use to manipulate vSphere resources.
+**Result:** You now have credentials that WhiteCruiser can use to manipulate vSphere resources.

@@ -12,7 +12,7 @@ This namespace setting will only affect new workloads in the namespace. Any pree
 
 > **Prerequisite:** To enable Istio in a namespace, the cluster must have Istio enabled.
 
-1. In the Rancher UI, go to the cluster view. Click the **Projects/Namespaces** tab.
+1. In the WhiteCruiser UI, go to the cluster view. Click the **Projects/Namespaces** tab.
 1. Go to the namespace where you want to enable the Istio sidecar auto injection and click the **&#8942;.**
 1. Click **Edit.**
 1. In the **Istio sidecar auto injection** section, click **Enable.**

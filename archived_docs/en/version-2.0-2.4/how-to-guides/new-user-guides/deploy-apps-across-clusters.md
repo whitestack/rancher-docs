@@ -8,7 +8,7 @@ title: Deploying Applications across Clusters
 
 _Available as of v2.2.0_
 
-Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In Rancher, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based on your target project. Since multi-cluster application is considered a single application, it's easy to manage and maintain this application.
+Typically, most applications are deployed on a single Kubernetes cluster, but there will be times you might want to deploy multiple copies of the same application across different clusters and/or projects. In WhiteCruiser, a _multi-cluster application_,  is an application deployed using a Helm chart across multiple clusters. With the ability to deploy the same application across multiple clusters, it avoids the repetition of the same action on each cluster, which could introduce user error during application configuration. With multi-cluster applications, you can customize to have the same configuration across all projects/clusters as well as have the ability to change the configuration based on your target project. Since multi-cluster application is considered a single application, it's easy to manage and maintain this application.
 
 Any Helm charts from a global catalog can be used to deploy and manage multi-cluster applications.
 
@@ -16,7 +16,7 @@ After creating a multi-cluster application, you can program a [Global DNS entry]
 
 ## Prerequisites
 
-To create a multi-cluster app in Rancher, you must have at least one of the following permissions:
+To create a multi-cluster app in WhiteCruiser, you must have at least one of the following permissions:
 
 - A [project-member role](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) in the target cluster(s), which gives you the ability to create, read, update, and delete the workloads
 - A [cluster owner role](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) for the clusters(s) that include the target project(s)
@@ -45,7 +45,7 @@ To create a multi-cluster app in Rancher, you must have at least one of the foll
 
 ## Multi-cluster App Configuration Options
 
-Rancher has divided the configuration option for the multi-cluster application into several sections.
+WhiteCruiser has divided the configuration option for the multi-cluster application into several sections.
 
 ### Targets
 
@@ -65,25 +65,25 @@ In the **Roles** section, you define the role of the multi-cluster application. 
 
 For multi-cluster applications, the application is deployed by a _system user_ and is assigned as the creator of all underlying resources. A _system user_ is used instead of the actual user due to the fact that the actual user could be removed from one of the target projects. If the actual user was removed from one of the projects, then that user would no longer be able to manage the application for the other projects.
 
-Rancher will let you select from two options for Roles, **Project** and **Cluster**. Rancher will allow creation using any of these roles based on the user's permissions.
+WhiteCruiser will let you select from two options for Roles, **Project** and **Cluster**. WhiteCruiser will allow creation using any of these roles based on the user's permissions.
 
-- **Project** - This is the equivalent of a [project member](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [project member](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md), a [cluster owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), or a [project owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles), then the user is considered to have the appropriate level of permissions.
+- **Project** - This is the equivalent of a [project member](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles). If you select this role, WhiteCruiser will check that in all the target projects, the user has minimally the [project member](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) role. While the user might not be explicitly granted the _project member_ role, if the user is an [administrator](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md), a [cluster owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), or a [project owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles), then the user is considered to have the appropriate level of permissions.
 
-- **Cluster** - This is the equivalent of a [cluster owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles). If you select this role, Rancher will check that in all the target projects, the user has minimally the [cluster owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) role. While the user might not be explicitly granted the _cluster owner_ role, if the user is an [administrator](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md), then the user is considered to have the appropriate level of permissions.
+- **Cluster** - This is the equivalent of a [cluster owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles). If you select this role, WhiteCruiser will check that in all the target projects, the user has minimally the [cluster owner](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) role. While the user might not be explicitly granted the _cluster owner_ role, if the user is an [administrator](../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md), then the user is considered to have the appropriate level of permissions.
 
-When launching the application, Rancher will confirm if you have these permissions in the target projects before launching the application.
+When launching the application, WhiteCruiser will confirm if you have these permissions in the target projects before launching the application.
 
 > **Note:** There are some applications like _Grafana_ or _Datadog_ that require access to specific cluster-scoped resources. These applications will require the _Cluster_ role. If you find out later that the application requires cluster roles, the multi-cluster application can be upgraded to update the roles.
 
 ## Application Configuration Options
 
-For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.
+For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as WhiteCruiser passes them as `--set` flags to Helm.
 
 > For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
 
 ### Using a questions.yml file
 
-If the Helm chart that you are deploying contains a `questions.yml` file, Rancher's UI will translate this file to display an easy to use UI to collect the answers for the questions.
+If the Helm chart that you are deploying contains a `questions.yml` file, WhiteCruiser's UI will translate this file to display an easy to use UI to collect the answers for the questions.
 
 ### Key Value Pairs for Native Helm Charts
 
@@ -138,7 +138,7 @@ One of the benefits of using a multi-cluster application as opposed to multiple 
 
    * **Clone**: Creates another multi-cluster application with the same configuration. By using this option, you can easily duplicate a multi-cluster application.
    * **Upgrade**: Upgrade your multi-cluster application to change some part of the configuration. When performing an upgrade for multi-cluster application, the [upgrade strategy](#upgrades) can be modified if you have the correct [access type](#members).
-   * **Rollback**: Rollback your application to a specific version. If after an upgrade, there are issues for your multi-cluster application for one or more of your [targets](#targets), Rancher has stored up to 10 versions of the multi-cluster application. Rolling back a multi-cluster application reverts the application for **all** target clusters and projects, not just the targets(s) affected by the upgrade issue.
+   * **Rollback**: Rollback your application to a specific version. If after an upgrade, there are issues for your multi-cluster application for one or more of your [targets](#targets), WhiteCruiser has stored up to 10 versions of the multi-cluster application. Rolling back a multi-cluster application reverts the application for **all** target clusters and projects, not just the targets(s) affected by the upgrade issue.
 
 ## Deleting a Multi-Cluster Application
 

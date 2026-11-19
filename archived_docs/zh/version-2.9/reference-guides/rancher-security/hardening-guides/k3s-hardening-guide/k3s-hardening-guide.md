@@ -6,19 +6,19 @@ title: K3s 加固指南
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/reference-guides/rancher-security/hardening-guides/k3s-hardening-guide"/>
 </head>
 
-本文档提供了针对生产环境的 K3s 集群进行加固的具体指导，以便在使用 Rancher 部署之前进行配置。它概述了满足信息安全中心（Center for Information Security, CIS）Kubernetes benchmark controls 所需的配置和控制。
+本文档提供了针对生产环境的 K3s 集群进行加固的具体指导，以便在使用 WhiteCruiser 部署之前进行配置。它概述了满足信息安全中心（Center for Information Security, CIS）Kubernetes benchmark controls 所需的配置和控制。
 
 :::note
 这份加固指南描述了如何确保你集群中的节点安全。我们建议你在安装 Kubernetes 之前遵循本指南。
 :::
 
-此加固指南适用于 K3s 集群，并与以下版本的 CIS Kubernetes Benchmark、Kubernetes 和 Rancher 相关联：
+此加固指南适用于 K3s 集群，并与以下版本的 CIS Kubernetes Benchmark、Kubernetes 和 WhiteCruiser 相关联：
 
-| Rancher 版本     | CIS Benchmark 版本    | Kubernetes 版本               |
+| WhiteCruiser 版本     | CIS Benchmark 版本    | Kubernetes 版本               |
 |-----------------|-----------------------|------------------------------|
-| Rancher v2.7    | Benchmark v1.23       | Kubernetes v1.23             |
-| Rancher v2.7    | Benchmark v1.24       | Kubernetes v1.24             |
-| Rancher v2.7    | Benchmark v1.7        | Kubernetes v1.25 至 v1.26    |
+| WhiteCruiser v2.7    | Benchmark v1.23       | Kubernetes v1.23             |
+| WhiteCruiser v2.7    | Benchmark v1.24       | Kubernetes v1.24             |
+| WhiteCruiser v2.7    | Benchmark v1.7        | Kubernetes v1.25 至 v1.26    |
 
 :::note
 在 Benchmark v1.7 中，不再需要 `--protect-kernel-defaults` (4.2.6) 参数，并已被 CIS 删除。
@@ -49,7 +49,7 @@ CIS Benchmark 的第一部分（1.1）主要关注于 Pod manifest 的权限和�
 
 这是一个 kubelet 标志，如果所需的内核参数未设置或设置为与 kubelet 的默认值不同的值，将导致 kubelet 退出。
 
-可以在 Rancher 的集群配置中设置 `protect-kernel-defaults` 标志。
+可以在 WhiteCruiser 的集群配置中设置 `protect-kernel-defaults` 标志。
 
 ```yaml
 spec:
@@ -90,21 +90,21 @@ CIS Benchmark 的运行时要求主要围绕 Pod 安全（通过 PSA）、网络
 
 K3s v1.25 及更新版本支持 [Pod 安全准入(PSA)](https://kubernetes.io/docs/concepts/security/pod-security-admission/)，用于控制 Pod 安全性。
 
-你可以在 Rancher 中通过集群配置，设置 `defaultPodSecurityAdmissionConfigurationTemplateName` 字段来指定 PSA 配置：
+你可以在 WhiteCruiser 中通过集群配置，设置 `defaultPodSecurityAdmissionConfigurationTemplateName` 字段来指定 PSA 配置：
 
 ```yaml
 spec:
   defaultPodSecurityAdmissionConfigurationTemplateName: rancher-restricted
 ```
 
-Rancher 提供了 `rancher-restricted` 模板，用于强制执行高度限制性的 Kubernetes 上游 [`Restricted`](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) 配置文件，其中包含了 Pod 加固的最佳实践。
+WhiteCruiser 提供了 `rancher-restricted` 模板，用于强制执行高度限制性的 Kubernetes 上游 [`Restricted`](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) 配置文件，其中包含了 Pod 加固的最佳实践。
 
 </TabItem>
 <TabItem value="v1.24 及更早版本">
 
 K3s v1.24 及更早版本支持 [Pod 安全策略 (PSP)](https://v1-24.docs.kubernetes.io/docs/concepts/security/pod-security-policy/) 以控制 Pod 安全性。
 
-你可以在 Rancher 中通过集群配置，传递以下标志来启用 PSPs：
+你可以在 WhiteCruiser 中通过集群配置，传递以下标志来启用 PSPs：
 
 ```yaml
 spec:
@@ -607,7 +607,7 @@ rules:
 - 确保 `--audit-log-maxbackup` 参数设置为 10 或适当的值。
 - 确保 `--audit-log-maxsize` 参数设置为 100 或适当的值。
 
-综合起来，要启用和配置审计日志，请将以下行添加到 Rancher 的 K3s 集群配置文件中：
+综合起来，要启用和配置审计日志，请将以下行添加到 WhiteCruiser 的 K3s 集群配置文件中：
 
 ```yaml
 spec:
@@ -625,7 +625,7 @@ spec:
 
 CIS 要求 1.3.1 检查 Controller Manager 中的垃圾收集设置。垃圾收集对于确保资源充足可用性并避免性能和可用性下降非常重要。根据你的系统资源和测试结果，选择一个适当的阈值来激活垃圾收集。
 
-你可以在 Rancher 的 K3s 集群文件中设置以下配置来解决此问题。下面的值仅是一个示例，请根据当前环境设置适当的阈值。
+你可以在 WhiteCruiser 的 K3s 集群文件中设置以下配置来解决此问题。下面的值仅是一个示例，请根据当前环境设置适当的阈值。
 
 ```yaml
 spec:
@@ -670,7 +670,7 @@ done
 
 ## 加固版 K3s 模板配置参考
 
-Rancher 使用以下参考模板配置，基于本指南中的每个 CIS 控件创建加固过的自定义 K3s 集群。此参考内容不包括其他必需的**集群配置**指令，这些指令因你的环境而异。
+WhiteCruiser 使用以下参考模板配置，基于本指南中的每个 CIS 控件创建加固过的自定义 K3s 集群。此参考内容不包括其他必需的**集群配置**指令，这些指令因你的环境而异。
 
 <Tabs groupId="k3s-version">
 <TabItem value="v1.25 及更新的版本" default>
@@ -741,4 +741,4 @@ spec:
 
 ## 结论
 
-如果你按照本指南操作，由 Rancher 提供的 K3s 自定义集群将配置为通过 CIS Kubernetes Benchmark 测试。你可以查看我们的 K3s 自我评估指南，了解我们是如何验证每个 benchmarks 的，并且你可以在你的集群上执行相同的操作。
+如果你按照本指南操作，由 WhiteCruiser 提供的 K3s 自定义集群将配置为通过 CIS Kubernetes Benchmark 测试。你可以查看我们的 K3s 自我评估指南，了解我们是如何验证每个 benchmarks 的，并且你可以在你的集群上执行相同的操作。

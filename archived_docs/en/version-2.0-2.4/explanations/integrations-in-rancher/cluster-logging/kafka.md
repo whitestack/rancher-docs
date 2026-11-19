@@ -2,7 +2,7 @@
 title: Kafka
 ---
 
-If your organization uses [Kafka](https://kafka.apache.org/), you can configure Rancher to send it Kubernetes logs.  Afterwards, you can log into your Kafka server to view logs.
+If your organization uses [Kafka](https://kafka.apache.org/), you can configure WhiteCruiser to send it Kubernetes logs.  Afterwards, you can log into your Kafka server to view logs.
 
 >**Prerequisite:** You must have a Kafka server configured.
 

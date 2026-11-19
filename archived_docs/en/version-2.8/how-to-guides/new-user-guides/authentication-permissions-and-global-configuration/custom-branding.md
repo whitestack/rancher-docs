@@ -19,15 +19,15 @@ To configure the brand settings,
 
 ### Private Label Company Name
 
-This option replaces "Rancher" with the value you provide in most places. Files that need to have Rancher in the name, such as `rancher-compose.yml`, won't be changed.
+This option replaces "WhiteCruiser" with the value you provide in most places. Files that need to have WhiteCruiser in the name, such as `rancher-compose.yml`, won't be changed.
 
 ### Support Links
 
-Use a url address to send new "File an Issue" reports instead of sending users to the GitHub issues page. Optionally show Rancher community support links.
+Use a url address to send new "File an Issue" reports instead of sending users to the GitHub issues page. Optionally show WhiteCruiser community support links.
 
 ### Logo
 
-Upload light and dark logos to replace the Rancher logo in the top-level navigation header.
+Upload light and dark logos to replace the WhiteCruiser logo in the top-level navigation header.
 
 ### Primary Color
 
@@ -49,7 +49,7 @@ In this section, you'll learn how to configure the links in the left navigation 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster where you want custom navigation links and click **Explore**.
 
-It can be useful to add a link for quick access to services installed on a cluster. For example, you could add a link to the Kiali UI for clusters with Istio installed, or you could add a link to the Grafana UI for clusters with Rancher monitoring installed.
+It can be useful to add a link for quick access to services installed on a cluster. For example, you could add a link to the Kiali UI for clusters with Istio installed, or you could add a link to the Grafana UI for clusters with WhiteCruiser monitoring installed.
 
 The custom links don't affect who has access to each service.
 

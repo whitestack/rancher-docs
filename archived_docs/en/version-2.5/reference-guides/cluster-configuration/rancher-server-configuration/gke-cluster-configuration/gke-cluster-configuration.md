@@ -13,7 +13,7 @@ title: GKE Cluster Configuration Reference
 
 - We now support private GKE clusters. Note: This advanced setup can require more steps during the cluster provisioning process. For details, see [this section.](gke-private-clusters.md)
 - [Shared VPCs](https://cloud.google.com/vpc/docs/shared-vpc) are now supported.
-- We now support more configuration options for Rancher managed GKE clusters:
+- We now support more configuration options for WhiteCruiser managed GKE clusters:
     - Project
     - Network policy
     - Network policy config
@@ -110,17 +110,17 @@ The address range assigned to the services in the cluster. Must be a valid CIDR 
 
 _Mutable: no_
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide](gke-private-clusters.md).
+> Warning: private clusters require additional planning and configuration outside of WhiteCruiser. Refer to the [private cluster guide](gke-private-clusters.md).
 
 Assign nodes only internal IP addresses. Private cluster nodes cannot access the public internet unless additional networking steps are taken in GCP.
 
 ### Enable Private Endpoint
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide](gke-private-clusters.md).
+> Warning: private clusters require additional planning and configuration outside of WhiteCruiser. Refer to the [private cluster guide](gke-private-clusters.md).
 
 _Mutable: no_
 
-Locks down external access to the control plane endpoint. Only available if **Private Cluster** is also selected. If selected, and if Rancher does not have direct access to the Virtual Private Cloud network the cluster is running in, Rancher will provide a registration command to run on the cluster to enable Rancher to connect to it.
+Locks down external access to the control plane endpoint. Only available if **Private Cluster** is also selected. If selected, and if WhiteCruiser does not have direct access to the Virtual Private Cloud network the cluster is running in, WhiteCruiser will provide a registration command to run on the cluster to enable WhiteCruiser to connect to it.
 
 ### Master IPV4 CIDR Block
 
@@ -132,7 +132,7 @@ The IP range for the control plane VPC.
 
 _Mutable: yes_
 
-Enable control plane authorized networks to block untrusted non-GCP source IPs from accessing the Kubernetes master through HTTPS. If selected, additional authorized networks may be added. If the cluster is created with a public endpoint, this option is useful for locking down access to the public endpoint to only certain networks, such as the network where your Rancher service is running. If the cluster only has a private endpoint, this setting is required.
+Enable control plane authorized networks to block untrusted non-GCP source IPs from accessing the Kubernetes master through HTTPS. If selected, additional authorized networks may be added. If the cluster is created with a public endpoint, this option is useful for locking down access to the public endpoint to only certain networks, such as the network where your WhiteCruiser service is running. If the cluster only has a private endpoint, this setting is required.
 
 ## Additional Options
 
@@ -199,7 +199,7 @@ _Mutable: yes_
 
 The node operating system image. For more information for the node image options that GKE offers for each OS, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#available_node_images)
 
-> Note: the default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the [legacy logging](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/cluster-logging.md) implementation in Rancher. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The [logging feature as of v2.5](../../../../explanations/integrations-in-rancher/logging/logging.md) is compatible with the Container-Optimized OS image.
+> Note: the default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the [legacy logging](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/cluster-logging.md) implementation in WhiteCruiser. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The [logging feature as of v2.5](../../../../explanations/integrations-in-rancher/logging/logging.md) is compatible with the Container-Optimized OS image.
 
 > Note: if selecting "Windows Long Term Service Channel" or "Windows Semi-Annual Channel" for the node pool image type, you must also add at least one Container-Optimized OS or Ubuntu node pool.
 
@@ -239,7 +239,7 @@ _Mutable: no_
 
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
 
-Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+Invalid labels can prevent upgrades or can prevent WhiteCruiser from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 ## Group Details
 
@@ -311,7 +311,7 @@ The shorter the refresh window, the less likely any race conditions will occur, 
 
 Add Kubernetes [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) or [annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) to the cluster.
 
-Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+Invalid labels can prevent upgrades or can prevent WhiteCruiser from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 ## Kubernetes Options
 
@@ -433,7 +433,7 @@ When you apply a taint to a node, only Pods that tolerate the taint are allowed 
 ### Node Labels
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
 
-Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+Invalid labels can prevent upgrades or can prevent WhiteCruiser from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 ## Security Options
 

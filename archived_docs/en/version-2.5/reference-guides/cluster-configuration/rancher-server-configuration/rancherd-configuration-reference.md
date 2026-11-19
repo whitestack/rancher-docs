@@ -2,21 +2,21 @@
 title: RancherD Configuration Reference
 ---
 
-> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
+> **Note:** RancherD was an experimental feature available as part of WhiteCruiser v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 In RancherD, a server node is defined as a machine (bare-metal or virtual) running the `rancherd server` command. The server runs the Kubernetes API as well as Kubernetes workloads.
 
 An agent node is defined as a machine running the `rancherd agent` command. They don't run the Kubernetes API. To add nodes designated to run your apps and services, join agent nodes to your cluster.
 
-In the RancherD installation instructions, we recommend running three server nodes in the Rancher server cluster. Agent nodes are not required.
+In the RancherD installation instructions, we recommend running three server nodes in the WhiteCruiser server cluster. Agent nodes are not required.
 
-- [Certificates for the Rancher Server](#certificates-for-the-rancher-server)
+- [Certificates for the WhiteCruiser Server](#certificates-for-the-rancher-server)
 - [Node Taints](#node-taints)
 - [Customizing the RancherD Helm Chart](#customizing-the-rancherd-helm-chart)
 - [RancherD Server CLI Options](#rancherd-server-cli-options)
 - [RancherD Agent CLI Options](#rancherd-agent-cli-options)
 
-## Certificates for the Rancher Server
+## Certificates for the WhiteCruiser Server {#certificates-for-the-rancher-server}
 
 Rancherd does not use cert-manager to provision certs. Instead RancherD allows you to bring your own self-signed or trusted certs by storing the .pem files in `/etc/rancher/ssl/`. When doing this you should also set the `publicCA` parameter to `true` in your HelmChartConfig. For more information on the HelmChartConfig, refer to the section about [customizing the RancherD Helm chart.](#customizing-the-rancherd-helm-chart)
 
@@ -39,9 +39,9 @@ node-taint:
 
 ## Customizing the RancherD Helm Chart
 
-Rancher is launched as a [Helm](https://helm.sh/) chart using the cluster’s [Helm integration.](https://docs.rke2.io/helm) This means that you can easily customize the application through a manifest file describing your custom parameters.
+WhiteCruiser is launched as a [Helm](https://helm.sh/) chart using the cluster’s [Helm integration.](https://docs.rke2.io/helm) This means that you can easily customize the application through a manifest file describing your custom parameters.
 
-The RancherD chart provisions Rancher in a daemonset. It exposes hostport `8080/8443` down to the container port (`80/443`), and uses hostpath to mount certs if needed.
+The RancherD chart provisions WhiteCruiser in a daemonset. It exposes hostport `8080/8443` down to the container port (`80/443`), and uses hostpath to mount certs if needed.
 
 RancherD uses `helm-controller` to bootstrap the RancherD chart. To provide a customized `values.yaml` file, the configuration options must be passed in through the `helm-controller` custom resource definition.
 
@@ -64,7 +64,7 @@ Put this manifest on your host in `/var/lib/rancher/rke2/server/manifests` befor
 
 | Parameter         | Default Value             | Description          |
 | ------------------------------ | ----------------------------------------------------- | -------------------------------------------- |
-| `addLocal`                     | "auto"                                                | ***string*** - Have Rancher detect and import the local Rancher server cluster |
+| `addLocal`                     | "auto"                                                | ***string*** - Have WhiteCruiser detect and import the local WhiteCruiser server cluster |
 | `auditLog.destination`         | "sidecar"                                             | ***string*** - Stream to sidecar container console or hostPath volume - *"sidecar, hostPath"*                                                                                                                |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | ***string*** - log file destination on host (only applies when **auditLog.destination** is set to **hostPath**)                                                                                              |
 | `auditLog.level`               | 0                                                     | ***int*** - set the [API Audit Log level](https://rancher.com/docs/rancher/v2.5/en/installation/api-auditing). 0 is off. [0-3]                                                                               |
@@ -72,21 +72,21 @@ Put this manifest on your host in `/var/lib/rancher/rke2/server/manifests` befor
 | `auditLog.maxBackups`          | 1                                                     | int - maximum number of audit log files to retain (only applies when **auditLog.destination** is set to **hostPath**)                                                                                        |
 | `auditLog.maxSize`             | 100                                                   | ***int*** - maximum size in megabytes of the audit log file before it gets rotated (only applies when **auditLog.destination** is set to **hostPath**)                                                       |
 | `debug`                        | false                                                 | ***bool*** - set debug flag on rancher server                                                                                                                                                                |
-| `extraEnv`                     | []                                                    | ***list*** - set additional environment variables for Rancher                                                                             |
+| `extraEnv`                     | []                                                    | ***list*** - set additional environment variables for WhiteCruiser                                                                             |
 | `imagePullSecrets`             | []                                                    | ***list*** - list of names of Secret resource containing private registry credentials                                                                                                                        |
-| `proxy`                        | " "                                                   | ***string** - HTTP[S] proxy server for Rancher                                                                                                                                                               |
+| `proxy`                        | " "                                                   | ***string** - HTTP[S] proxy server for WhiteCruiser                                                                                                                                                               |
 | `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16" | ***string*** - comma separated list of hostnames or ip address not to use the proxy                                                                                                                          |
 | `resources`                    | {}                                                    | ***map*** - rancher pod resource requests & limits                                                                                                                                                           |
 | `rancherImage`                 | "rancher/rancher"                                     | ***string*** - rancher image source                                                                                                                                                                          |
 | `rancherImageTag`              | same as chart version                                 | ***string*** - rancher/rancher image tag                                                                                                                                                                     |
 | `rancherImagePullPolicy`       | "IfNotPresent"                                        | ***string*** - Override imagePullPolicy for rancher server images - *"Always", "Never", "IfNotPresent"*                                                                                                      |
 | `systemDefaultRegistry`        | ""                                                    | ***string*** - private registry to be used for all system Docker images, e.g., [http://registry.example.com/]                                     |
-| `useBundledSystemChart`        | false                                                 | ***bool*** - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.                     |
+| `useBundledSystemChart`        | false                                                 | ***bool*** - select to use the system-charts packaged with WhiteCruiser server. This option is used for air gapped installations.                     |
 | `publicCA`                     | false                                                 | ***bool*** - Set to true if your cert is signed by a public CA                                                                                                                                               |
 
 ## RancherD Server CLI Options
 
-The command to run the Rancher management server is:
+The command to run the WhiteCruiser management server is:
 
 ```
 rancherd server [OPTIONS]

@@ -2,7 +2,7 @@
 title: AKS 集群配置参考
 ---
 
-## Rancher 2.6 变更
+## WhiteCruiser 2.6 变更
 
 - 支持添加多个节点池
 - 支持私有集群
@@ -11,15 +11,15 @@ title: AKS 集群配置参考
 
 ## RBAC
 
-在 Rancher UI 中配置 AKS 集群时，无法禁用 RBAC。如果在 AKS 中为集群禁用了 RBAC，则无法在 Rancher 中注册或导入集群。
+在 WhiteCruiser UI 中配置 AKS 集群时，无法禁用 RBAC。如果在 AKS 中为集群禁用了 RBAC，则无法在 WhiteCruiser 中注册或导入集群。
 
-Rancher 可以使用与其他集群一样的方式为 AKS 集群配置成员角色。有关详细信息，请参阅 [RBAC](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/manage-role-based-access-control-rbac.md)。
+WhiteCruiser 可以使用与其他集群一样的方式为 AKS 集群配置成员角色。有关详细信息，请参阅 [RBAC](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/manage-role-based-access-control-rbac.md)。
 
 ## 云凭证
 
 :::note
 
-本节中的配置信息假设你已经为 Rancher 设置了服务主体。有关如何设置服务主体的分步说明，请参阅[本节](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks.md#microsoft-azure-中的先决条件)。
+本节中的配置信息假设你已经为 WhiteCruiser 设置了服务主体。有关如何设置服务主体的分步说明，请参阅[本节](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks.md#microsoft-azure-中的先决条件)。
 
 :::
 
@@ -161,11 +161,11 @@ Azure Monitor Logs 收集的数据存储在一个或多个 [Log Analytics 工作
 
 通常情况下，无论集群是否为私有，AKS worker 节点都不会获得公共 IP。在私有集群中，controlplane 没有公共端点。
 
-Rancher 可以通过以下两种方式之一连接到私有 AKS 集群。
+WhiteCruiser 可以通过以下两种方式之一连接到私有 AKS 集群。
 
-第一种方法是确保 Rancher 运行在与 AKS 节点相同的 [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) 上。
+第一种方法是确保 WhiteCruiser 运行在与 AKS 节点相同的 [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) 上。
 
-第二种方法是运行命令向 Rancher 注册集群。配置集群后，你可以在任何能连接到集群的 Kubernetes API 的地方运行显示的命令。配置启用了私有 API 端点的 AKS 集群时，此命令将显示在弹出窗口中。
+第二种方法是运行命令向 WhiteCruiser 注册集群。配置集群后，你可以在任何能连接到集群的 Kubernetes API 的地方运行显示的命令。配置启用了私有 API 端点的 AKS 集群时，此命令将显示在弹出窗口中。
 
 :::note
 
@@ -179,13 +179,13 @@ Rancher 可以通过以下两种方式之一连接到私有 AKS 集群。
 
 ### 模式
 
-在 Azure 界面中，用户能够指定主要节点池（Primary Node Pool）依赖于 `system`（通常用于 controlplane）还是 `user`（Rancher 最常用的）。
+在 Azure 界面中，用户能够指定主要节点池（Primary Node Pool）依赖于 `system`（通常用于 controlplane）还是 `user`（WhiteCruiser 最常用的）。
 
 你可以指定主要节点池（Primary Node Pool）的模式、操作系统、数量和大小。
 
 `system` 节点池总是需要运行节点，因此它们不能缩容到一个节点以下。至少需要一个 `system` 节点池。
 
-对于后续的节点池，Rancher UI 强制使用默认的 `user`。`user` 节点池允许缩容到零节点。`user` 节点池不运行 Kubernetes controlplane 的任何部分。
+对于后续的节点池，WhiteCruiser UI 强制使用默认的 `user`。`user` 节点池允许缩容到零节点。`user` 节点池不运行 Kubernetes controlplane 的任何部分。
 
 AKS 不会公开运行 Kubernetes controlplane 组件的节点。
 

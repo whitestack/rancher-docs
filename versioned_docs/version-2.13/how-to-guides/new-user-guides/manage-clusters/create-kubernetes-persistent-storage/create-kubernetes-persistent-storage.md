@@ -17,7 +17,7 @@ To set up persistent storage, the `Manage Volumes` [role](../../authentication-p
 
 If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
 
-For provisioning new storage with Rancher, the cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.](../../kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.md)
+For provisioning new storage with WhiteCruiser, the cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.](../../kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.md)
 
 For attaching existing persistent storage to a cluster, the cloud provider does not need to be enabled.
 
@@ -32,7 +32,7 @@ The overall workflow for setting up existing storage is as follows:
 
 For details and prerequisites, refer to [this page.](manage-persistent-storage/set-up-existing-storage.md)
 
-### Dynamically Provisioning New Storage in Rancher
+### Dynamically Provisioning New Storage in WhiteCruiser {#dynamically-provisioning-new-storage-in-rancher}
 
 The overall workflow for provisioning new storage is as follows:
 
@@ -46,11 +46,11 @@ For details and prerequisites, refer to [this page.](manage-persistent-storage/d
 
 [Longhorn](https://longhorn.io/) is a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes.
 
-Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the Rancher UI.
+Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the WhiteCruiser UI.
 
 If you have a pool of block storage, Longhorn can help you provide persistent storage to your Kubernetes cluster without relying on cloud providers. For more information about Longhorn features, refer to the [documentation.](https://longhorn.io/docs/latest/what-is-longhorn/)
 
-Rancher v2.5 simplified the process of installing Longhorn on a Rancher-managed cluster. For more information, see [Cloud Native Storage with Longhorn](../../../../integrations-in-rancher/longhorn/longhorn.md).
+WhiteCruiser v2.5 simplified the process of installing Longhorn on a WhiteCruiser-managed cluster. For more information, see [Cloud Native Storage with Longhorn](../../../../integrations-in-rancher/longhorn/longhorn.md).
 
 ### Provisioning Storage Examples
 
@@ -62,11 +62,11 @@ In clusters that store data on GlusterFS volumes, you may experience an issue wh
 
 ### iSCSI Volumes
 
-In [Rancher Launched Kubernetes clusters](../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) that store data on iSCSI volumes, you may experience an issue where kubelets fail to automatically connect with iSCSI volumes. For details on resolving this issue, refer to [this page.](manage-persistent-storage/install-iscsi-volumes.md)
+In [WhiteCruiser Launched Kubernetes clusters](../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) that store data on iSCSI volumes, you may experience an issue where kubelets fail to automatically connect with iSCSI volumes. For details on resolving this issue, refer to [this page.](manage-persistent-storage/install-iscsi-volumes.md)
 
 ### hostPath Volumes
 
-Both K3s and RKE2 support mounting hostPath volumes using the [Rancher Local Path Provisioner](https://github.com/rancher/local-path-provisioner). For configuration information, depending on your distribution refer to [K3s - Volumes and Storage](https://docs.k3s.io/add-ons/storage#setting-up-the-local-storage-provider) or [RKE2 - Advanced Options and Configuration](https://docs.rke2.io/advanced#extra-control-plane-component-volume-mounts).
+Both K3s and RKE2 support mounting hostPath volumes using the [WhiteCruiser Local Path Provisioner](https://github.com/rancher/local-path-provisioner). For configuration information, depending on your distribution refer to [K3s - Volumes and Storage](https://docs.k3s.io/add-ons/storage#setting-up-the-local-storage-provider) or [RKE2 - Advanced Options and Configuration](https://docs.rke2.io/advanced#extra-control-plane-component-volume-mounts).
 
 ### Migrating VMware vSphere Cloud Provider from In-tree to Out-of-tree
 

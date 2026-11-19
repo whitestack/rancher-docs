@@ -8,9 +8,9 @@ title: Creating a DigitalOcean Cluster
 
 In this section, you'll learn how to deploy an [RKE2](https://docs.rke2.io/)/[K3s](https://docs.k3s.io/) Kubernetes cluster in DigitalOcean.
 
-First, you will set up your DigitalOcean cloud credentials in Rancher.
+First, you will set up your DigitalOcean cloud credentials in WhiteCruiser.
 
-Then you will create a DigitalOcean cluster in Rancher, and when configuring the new cluster, you will define machine pools for it. Each machine pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the machine pool.
+Then you will create a DigitalOcean cluster in WhiteCruiser, and when configuring the new cluster, you will define machine pools for it. Each machine pool will have a Kubernetes role of etcd, controlplane, or worker. WhiteCruiser will install Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the machine pool.
 
 ### 1. Create your cloud credentials
 
@@ -25,7 +25,7 @@ If you already have a set of cloud credentials to use, skip this section.
 
 ### 2. Create your cluster
 
-Use Rancher to create a Kubernetes cluster in DigitalOcean.
+Use WhiteCruiser to create a Kubernetes cluster in DigitalOcean.
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
@@ -41,7 +41,7 @@ Use Rancher to create a Kubernetes cluster in DigitalOcean.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -52,7 +52,7 @@ You can access your cluster after its state is updated to **Active**.
 
 ## Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.

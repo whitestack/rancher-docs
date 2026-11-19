@@ -8,7 +8,7 @@ title: RKE1 Example YAML
 
 Below is an example RKE template configuration file for reference.
 
-The YAML in the RKE template uses the same customization that is used when you create an RKE cluster. However, since the YAML is within the context of a Rancher provisioned RKE cluster, the customization from the RKE docs needs to be nested under the `rancher_kubernetes_engine` directive.
+The YAML in the RKE template uses the same customization that is used when you create an RKE cluster. However, since the YAML is within the context of a WhiteCruiser provisioned RKE cluster, the customization from the RKE docs needs to be nested under the `rancher_kubernetes_engine` directive.
 
 ```yaml
 #

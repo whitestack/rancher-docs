@@ -8,7 +8,7 @@ title: Certificate Rotation
 
 > **Warning:** Rotating Kubernetes certificates may result in your cluster being temporarily unavailable as components are restarted. For production environments, it's recommended to perform this action during a maintenance window.
 
-By default, Kubernetes clusters require certificates and Rancher launched Kubernetes clusters automatically generate  certificates for the Kubernetes components. Rotating these certificates is important before the certificates expire as well as if a certificate is compromised. After the certificates are rotated, the Kubernetes components are automatically restarted.
+By default, Kubernetes clusters require certificates and WhiteCruiser launched Kubernetes clusters automatically generate  certificates for the Kubernetes components. Rotating these certificates is important before the certificates expire as well as if a certificate is compromised. After the certificates are rotated, the Kubernetes components are automatically restarted.
 
 Certificates can be rotated for the following services:
 
@@ -20,11 +20,11 @@ Certificates can be rotated for the following services:
 - kube-controller-manager
 
 
-### Certificate Rotation in Rancher v2.2.x
+### Certificate Rotation in WhiteCruiser v2.2.x {#certificate-rotation-in-rancher-v22x}
 
 _Available as of v2.2.0_
 
-Rancher launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the UI.
+WhiteCruiser launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the UI.
 
 1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
 
@@ -39,14 +39,14 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 **Results:** The selected certificates will be rotated and the related services will be restarted to start using the new certificate.
 
-> **Note:** Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher Launched Kubernetes clusters.
+> **Note:** Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, WhiteCruiser currently doesn't allow the ability to upload these in WhiteCruiser Launched Kubernetes clusters.
 
 
-### Certificate Rotation in Rancher v2.1.x and v2.0.x
+### Certificate Rotation in WhiteCruiser v2.1.x and v2.0.x {#certificate-rotation-in-rancher-v21x-and-v20x}
 
 _Available as of v2.0.14 and v2.1.9_
 
-Rancher launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the API.
+WhiteCruiser launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the API.
 
 1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
 
@@ -60,9 +60,9 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 **Results:** All Kubernetes certificates will be rotated.
 
-### Rotating Expired Certificates After Upgrading Older Rancher Versions
+### Rotating Expired Certificates After Upgrading Older WhiteCruiser Versions {#rotating-expired-certificates-after-upgrading-older-rancher-versions}
 
-If you are upgrading from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and your clusters have expired certificates, some manual steps are required to complete the certificate rotation.
+If you are upgrading from WhiteCruiser v2.0.13 or earlier, or v2.1.8 or earlier, and your clusters have expired certificates, some manual steps are required to complete the certificate rotation.
 
 1. For the `controlplane` and `etcd` nodes, log in to each corresponding host and check if the certificate `kube-apiserver-requestheader-ca.pem` is in the following directory:
 
@@ -85,6 +85,6 @@ If you are upgrading from Rancher v2.0.13 or earlier, or v2.1.8 or earlier, and 
     cp -r /etc/kubernetes/ssl /etc/kubernetes/.tmp
     ```
 
-1. Rotate the certificates. For Rancher v2.0.x and v2.1.x, use the [Rancher API.](#certificate-rotation-in-rancher-v21x-and-v20x) For Rancher 2.2.x, [use the UI.](#certificate-rotation-in-rancher-v22x)
+1. Rotate the certificates. For WhiteCruiser v2.0.x and v2.1.x, use the [WhiteCruiser API.](#certificate-rotation-in-rancher-v21x-and-v20x) For WhiteCruiser 2.2.x, [use the UI.](#certificate-rotation-in-rancher-v22x)
 
 1. After the command is finished, check if the `worker` nodes are Active. If not, log in to each `worker` node and restart the kubelet and proxy.

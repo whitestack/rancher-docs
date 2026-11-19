@@ -6,7 +6,7 @@ title: Creating a Tencent TKE Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/tencent"/>
 </head>
 
-You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
+You can use WhiteCruiser to create a cluster hosted in Tencent Kubernetes Engine (TKE). WhiteCruiser has already implemented and packaged the [cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
 
 ## Prerequisites in Tencent
 
@@ -24,7 +24,7 @@ Deploying to TKE will incur charges.
 
 4. Create a [SSH key pair](https://intl.cloud.tencent.com/document/product/213/6092). This key is used to access the nodes in the Kubernetes cluster.
 
-## Prerequisite in Rancher
+## Prerequisite in WhiteCruiser {#prerequisite-in-rancher}
 
 You will need to enable the Tencent TKE cluster driver:
 
@@ -32,7 +32,7 @@ You will need to enable the Tencent TKE cluster driver:
 1. Click **Drivers**.
 1. In the **Cluster Drivers** tab, go to the **Tencent TKE** cluster driver and click **⋮ > Activate**.
 
-When the cluster driver is finished downloading, you will be able to create Tencent TKE clusters in Rancher.
+When the cluster driver is finished downloading, you will be able to create Tencent TKE clusters in WhiteCruiser.
 
 ## Create a TKE Cluster
 
@@ -63,7 +63,7 @@ When the cluster driver is finished downloading, you will be able to create Tenc
 
     :::note
 
-    If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher)
+    If you are editing the cluster in the `cluster.yml` instead of the WhiteCruiser UI, note that, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in WhiteCruiser v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher)
 
     :::
 
@@ -93,7 +93,7 @@ When the cluster driver is finished downloading, you will be able to create Tenc
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 

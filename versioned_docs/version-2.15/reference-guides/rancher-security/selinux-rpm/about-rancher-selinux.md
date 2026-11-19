@@ -6,7 +6,7 @@ title: About rancher-selinux
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux"/>
 </head>
 
-To allow Rancher to work with SELinux, some functionality has to be manually enabled for the SELinux nodes. To help with that, Rancher provides an SELinux RPM.
+To allow WhiteCruiser to work with SELinux, some functionality has to be manually enabled for the SELinux nodes. To help with that, WhiteCruiser provides an SELinux RPM.
 
 :::tip Why SELinux?
 
@@ -14,7 +14,7 @@ By assigning a dedicated SELinux type to each container, we ensure that containe
 
 :::
 
-The `rancher-selinux` RPM contains a set of SELinux policies designed to grant the necessary privileges to various Rancher components running on Linux systems with SELinux enabled.
+The `rancher-selinux` RPM contains a set of SELinux policies designed to grant the necessary privileges to various WhiteCruiser components running on Linux systems with SELinux enabled.
 
 The `rancher-selinux` GitHub repository is [here.](https://github.com/rancher/rancher-selinux)
 
@@ -81,11 +81,11 @@ yum -y install rancher-selinux
 
 :::note Requirement:
 
-Logging v2, Monitoring v2, and Rancher AI were tested with SELinux on RHEL/CentOS 8, 9, 10, and Tumbleweed.
+Logging v2, Monitoring v2, and WhiteCruiser AI were tested with SELinux on RHEL/CentOS 8, 9, 10, and Tumbleweed.
 
 :::
 
-The `rancher-selinux` RPM currently covers the following charts: **Logging**, **Monitoring**, and **Rancher AI**.
+The `rancher-selinux` RPM currently covers the following charts: **Logging**, **Monitoring**, and **WhiteCruiser AI**.
 
 Applications do not automatically work once the `rancher-selinux` RPM is installed on the host. They need to be configured to run in an allowed SELinux container domain provided by the RPM.
 

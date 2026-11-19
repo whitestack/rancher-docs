@@ -4,7 +4,7 @@ title: Users
 
 ## User Resource
 
-The `User` resource (users.management.cattle.io) represents a user account in Rancher.
+The `User` resource (users.management.cattle.io) represents a user account in WhiteCruiser.
 
 To get a description of the fields and structure of the `User` resource, run:
 ```sh
@@ -27,7 +27,7 @@ displayName: "Test User"
 username: "testuser"
 EOF
 ```
-The user's password must be provided in a `Secret` object within the `cattle-local-user-passwords` namespace. The Rancher webhook will automatically hash the password and update the `Secret`.
+The user's password must be provided in a `Secret` object within the `cattle-local-user-passwords` namespace. The WhiteCruiser webhook will automatically hash the password and update the `Secret`.
 
 :::important
 
@@ -48,7 +48,7 @@ stringData:
 EOF
 ```
 
-After the plaintext password is submitted, the Rancher-Webhook automatically hashes it, replacing the content of the `Secret`, ensuring that the plaintext password is never stored:
+After the plaintext password is submitted, the WhiteCruiser-Webhook automatically hashes it, replacing the content of the `Secret`, ensuring that the plaintext password is never stored:
 
 ```yaml
 apiVersion: v1

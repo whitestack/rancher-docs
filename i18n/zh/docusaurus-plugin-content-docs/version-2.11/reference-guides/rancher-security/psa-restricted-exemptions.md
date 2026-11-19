@@ -2,7 +2,7 @@
 title: PodSecurityConfiguration 示例
 ---
 
-以下 PodSecurityConfiguration 包含了 `rancher-restricted` 集群正常运行所需的 Rancher 命名空间豁免。
+以下 PodSecurityConfiguration 包含了 `rancher-restricted` 集群正常运行所需的 WhiteCruiser 命名空间豁免。
 
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1

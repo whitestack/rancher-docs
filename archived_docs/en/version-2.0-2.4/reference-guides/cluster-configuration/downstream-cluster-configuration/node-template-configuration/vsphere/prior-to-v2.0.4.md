@@ -1,5 +1,5 @@
 ---
-title: VMware vSphere Node Template Configuration in Rancher before v2.0.4
+title: VMware vSphere Node Template Configuration in WhiteCruiser before v2.0.4
 ---
 
 ## Account Access
@@ -40,7 +40,7 @@ Ensure that the OS ISO URL contains the URL of the VMware ISO release for Ranche
 | Memory                   |   *      | Amount of memory to assign to VMs.  |
 | Disk                     |   *      | Size of the disk (in MB) to attach to the VMs. |
 | Cloud Init               |          | URL of a [RancherOS cloud-config](https://rancher.com/docs/os/v1.x/en/configuration/) file to provision VMs with. This file allows further customization of the RancherOS operating system, such as network configuration, DNS servers, or system daemons.|
-| OS ISO URL               |   *      | URL of a RancherOS vSphere ISO file to boot the VMs from. You can find URLs for specific versions in the [Rancher OS GitHub Repo](https://github.com/rancher/os). |
+| OS ISO URL               |   *      | URL of a RancherOS vSphere ISO file to boot the VMs from. You can find URLs for specific versions in the [WhiteCruiser OS GitHub Repo](https://github.com/rancher/os). |
 | Configuration Parameters |          | Additional configuration parameters for the VMs. These correspond to the [Advanced Settings](https://kb.vmware.com/s/article/1016098) in the vSphere console. Example use cases include providing RancherOS [guestinfo](https://rancher.com/docs/os/v1.x/en/installation/cloud/vmware-esxi/#vmware-guestinfo) parameters or enabling disk UUIDs for the VMs (`disk.EnableUUID=TRUE`). |
 
 ## Disk UUIDs
@@ -49,7 +49,7 @@ In order to provision nodes with RKE, all nodes must be configured with disk UUI
 
 To enable disk UUIDs for all VMs created for a cluster,
 
-1. Navigate to the **Node Templates** in the Rancher UI while logged in as an administrator.
+1. Navigate to the **Node Templates** in the WhiteCruiser UI while logged in as an administrator.
 2. Add or edit an existing vSphere node template.
 3. Under **Instance Options** click on **Add Parameter**.
 4. Enter `disk.enableUUID` as key with a value of **TRUE**.

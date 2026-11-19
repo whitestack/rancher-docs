@@ -6,12 +6,12 @@ title: Cluster Administration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/pages-for-subheaders/manage-clusters"/>
 </head>
 
-After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
+After you provision a cluster in WhiteCruiser, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
 
 This page covers the following topics:
 
 - [Switching between clusters](#switching-between-clusters)
-- [Managing clusters in Rancher](#managing-clusters-in-rancher)
+- [Managing clusters in WhiteCruiser](#managing-clusters-in-rancher)
 - [Configuring tools](#configuring-tools)
 
 > This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts](../../../reference-guides/kubernetes-concepts.md) page.
@@ -22,9 +22,9 @@ To switch between clusters, use the drop-down available in the navigation bar.
 
 Alternatively, you can switch between projects and clusters directly in the navigation bar. Open the **Global** view and select **Clusters** from the main menu. Then select the name of the cluster you want to open.
 
-## Managing Clusters in Rancher
+## Managing Clusters in WhiteCruiser {#managing-clusters-in-rancher}
 
-After clusters have been [provisioned into Rancher](../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md), [cluster owners](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster.
+After clusters have been [provisioned into WhiteCruiser](../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md), [cluster owners](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster.
 
 import ClusterCapabilitiesTable from '../../../shared-files/_cluster-capabilities-table.md';
 
@@ -32,7 +32,7 @@ import ClusterCapabilitiesTable from '../../../shared-files/_cluster-capabilitie
 
 ## Configuring Tools
 
-Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:
+WhiteCruiser contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. WhiteCruiser can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:
 
 - Alerts
 - Notifiers

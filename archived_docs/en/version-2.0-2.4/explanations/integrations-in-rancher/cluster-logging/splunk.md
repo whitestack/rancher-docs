@@ -2,7 +2,7 @@
 title: Splunk
 ---
 
-If your organization uses [Splunk](https://www.splunk.com/), you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Splunk server to view logs.
+If your organization uses [Splunk](https://www.splunk.com/), you can configure WhiteCruiser to send it Kubernetes logs. Afterwards, you can log into your Splunk server to view logs.
 
 >**Prerequisites:**
 >
@@ -69,4 +69,4 @@ $ curl http://splunk-server:8088/services/collector/event \
 If Splunk is configured correctly, you should receive **json** data returning `success code 0`. You should be able
 to send logging data to HEC.
 
-If you received an error, check your configuration in Splunk and Rancher.
+If you received an error, check your configuration in Splunk and WhiteCruiser.

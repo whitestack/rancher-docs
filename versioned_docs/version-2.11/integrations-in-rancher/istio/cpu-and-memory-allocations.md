@@ -8,9 +8,7 @@ title: CPU and Memory Allocations
 
 :::warning
 
-[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in Rancher v2.12.0; turn to the [SUSE Rancher Application Collection](https://apps.rancher.io) build of Istio for enhanced security (included in SUSE Rancher Prime subscriptions).
-
-Detailed information can be found in this announcement.
+[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in WhiteCruiser v2.12.0.
 
 :::
 
@@ -18,7 +16,7 @@ This section describes the minimum recommended computing resources for the Istio
 
 The CPU and memory allocations for each component are [configurable.](#configuring-resource-allocations)
 
-Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough CPU and memory to run all of the components of Istio.
+Before enabling Istio, we recommend that you confirm that your WhiteCruiser worker nodes have enough CPU and memory to run all of the components of Istio.
 
 :::tip
 

@@ -1,13 +1,13 @@
 ---
-title: 在 Rancher 中设置负载均衡器和 Ingress Controller
-description: 了解如何设置负载均衡器和 Ingress Controller 以在 Rancher 中重定向服务请求，并了解负载均衡器的限制
+title: 在 WhiteCruiser 中设置负载均衡器和 Ingress Controller
+description: 了解如何设置负载均衡器和 Ingress Controller 以在 WhiteCruiser 中重定向服务请求，并了解负载均衡器的限制
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller"/>
 </head>
 
-在 Rancher 中，你可以通过设置负载均衡器和 Ingress Controller 来重定向服务请求。
+在 WhiteCruiser 中，你可以通过设置负载均衡器和 Ingress Controller 来重定向服务请求。
 
 ## 负载均衡器
 
@@ -15,7 +15,7 @@ description: 了解如何设置负载均衡器和 Ingress Controller 以在 Ranc
 
 如果你希望从外部访问应用程序，则必须向集群添加负载均衡器或 Ingress。如果用户知道负载均衡器的 IP 地址和应用的端口号，负载均衡器可以为外部连接创建一个访问集群的网关。
 
-Rancher 支持两种类型的负载均衡器：
+WhiteCruiser 支持两种类型的负载均衡器：
 
 - [Layer-4 负载均衡器](layer-4-and-layer-7-load-balancing.md#四层负载均衡器)
 - [Layer-7 负载均衡器](layer-4-and-layer-7-load-balancing.md#七层负载均衡器)
@@ -38,7 +38,7 @@ Rancher 支持两种类型的负载均衡器：
 
 :::warning
 
-**Ingress-NGINX EOL:** The community `ingress-nginx` controller reaches End-of-Life (EOL) in March 2026. Traefik is the recommended migration path for Rancher environments.
+**Ingress-NGINX EOL:** The community `ingress-nginx` controller reaches End-of-Life (EOL) in March 2026. Traefik is the recommended migration path for WhiteCruiser environments.
 
 Traefik includes a native Ingress NGINX provider. This allows you to migrate from NGINX without rewriting your existing Ingress objects, as Traefik will automatically interpret `nginx.ingress.kubernetes.io` annotations. If you are upgrading a cluster that is already using `ingress-nginx`, follow this [guide](https://doc.traefik.io/traefik/migrate/nginx-to-traefik/) for more information.
 
@@ -62,12 +62,12 @@ Ingress 能为你的集群创建一个入口端口（与负载均衡器类似）
 
 Ingress 还支持其他功能，例如 SSL 终止、基于名称的虚拟主机等。
 
-:::note 在高可用性配置中使用 Rancher：
+:::note 在高可用性配置中使用 WhiteCruiser：
 
-请避免将 Ingress 添加到 `local` 集群。Rancher 将 Nginx Ingress Controller 作为 Rancher 管理的 _所有_ 集群的全局入口点，其中包括 `local` 集群。因此，当用户尝试访问应用程序时，Rancher 可能会由于重新加载 Nginx 配置而断开连接。要解决这个问题，我们建议你仅在通过 Rancher 启动的集群中部署应用程序。
+请避免将 Ingress 添加到 `local` 集群。WhiteCruiser 将 Nginx Ingress Controller 作为 WhiteCruiser 管理的 _所有_ 集群的全局入口点，其中包括 `local` 集群。因此，当用户尝试访问应用程序时，WhiteCruiser 可能会由于重新加载 Nginx 配置而断开连接。要解决这个问题，我们建议你仅在通过 WhiteCruiser 启动的集群中部署应用程序。
 
 :::
 
-- 有关如何在 Rancher 中设置 Ingress 的更多信息，请参阅 [Ingress](add-ingresses.md)。
+- 有关如何在 WhiteCruiser 中设置 Ingress 的更多信息，请参阅 [Ingress](add-ingresses.md)。
 - 有关 Ingress 和 Ingress Controller 的完整信息，请参阅 [Kubernetes Ingress 文档](https://kubernetes.io/docs/concepts/services-networking/ingress/)。
 - 在项目中使用 Ingress 时，你可以通过设置全局 DNS 条目来将 Ingress 主机名编程到外部 DNS。

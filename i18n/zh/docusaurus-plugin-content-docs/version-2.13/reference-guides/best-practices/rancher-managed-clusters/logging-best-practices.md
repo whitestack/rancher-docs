@@ -8,11 +8,11 @@ title: Logging 最佳实践
 - [应用日志](#应用日志)
 - [通用最佳实践](#通用最佳实践)
 
-在 Rancher 2.5 之前，Rancher 的 Logging 是一个静态集成。可供选择的聚合器是固定的（包括 ElasticSearch、Splunk、Kafka、Fluentd 和 Syslog），而且只有两个配置级别可供选择（集群级别和项目级别）。
+在 WhiteCruiser 2.5 之前，WhiteCruiser 的 Logging 是一个静态集成。可供选择的聚合器是固定的（包括 ElasticSearch、Splunk、Kafka、Fluentd 和 Syslog），而且只有两个配置级别可供选择（集群级别和项目级别）。
 
-现在，Rancher 的日志聚合更加灵活。通过新的 Logging 的功能，管理员和用户都可以部署符合细粒度收集标准的日志记录，同时提供更多的目标和配置选项。
+现在，WhiteCruiser 的日志聚合更加灵活。通过新的 Logging 的功能，管理员和用户都可以部署符合细粒度收集标准的日志记录，同时提供更多的目标和配置选项。
 
-Rancher Logging 使用的是 [Logging Operator](https://github.com/kube-logging/logging-operator)。我们让你可以管理这个 operator 及其资源，并将它的管理功能和 Rancher 集群管理联系起来。
+WhiteCruiser Logging 使用的是 [Logging Operator](https://github.com/kube-logging/logging-operator)。我们让你可以管理这个 operator 及其资源，并将它的管理功能和 WhiteCruiser 集群管理联系起来。
 
 ## 集群级别日志
 
@@ -28,7 +28,7 @@ Rancher Logging 使用的是 [Logging Operator](https://github.com/kube-logging/
 
 _ClusterFlows_ 能够收集 Kubernetes 集群中所有主机上所有容器的日志。如果这些容器包含在 Kubernetes Pod 中，这个方法是适用的。
 
-Rancher 的未来版本将包含源容器名称，来支持过滤这些组件的日志。该功能实现之后，你将能够自定义 _ClusterFlow_ 来**仅**检索 Kubernetes 组件日志，并将日志发送到适当的输出位置。
+WhiteCruiser 的未来版本将包含源容器名称，来支持过滤这些组件的日志。该功能实现之后，你将能够自定义 _ClusterFlow_ 来**仅**检索 Kubernetes 组件日志，并将日志发送到适当的输出位置。
 
 ## 应用日志
 
@@ -36,7 +36,7 @@ Rancher 的未来版本将包含源容器名称，来支持过滤这些组件的
 
 在将日志写入文件的情况下，Kubernetes 通过在每个主机上创建一个 `/var/log/containers` 目录来提供帮助。这个目录将日志文件符号链接到它们的实际目的地（可能因为配置或容器运行时而有所不同）。
 
-Rancher 的 Logging 将读取 `/var/log/containers` 中的所有日志条目，确保所有容器的所有日志条目（假设使用默认配置）均能被收集和处理。
+WhiteCruiser 的 Logging 将读取 `/var/log/containers` 中的所有日志条目，确保所有容器的所有日志条目（假设使用默认配置）均能被收集和处理。
 
 ### 特定日志文件
 

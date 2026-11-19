@@ -6,9 +6,9 @@ title: Restoring a Cluster from Backup
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup"/>
 </head>
 
-Etcd backup and recovery for [Rancher launched Kubernetes clusters](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
+Etcd backup and recovery for [WhiteCruiser launched Kubernetes clusters](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
-Rancher recommends enabling the [ability to set up recurring snapshots of etcd](back-up-rancher-launched-kubernetes-clusters.md#configuring-recurring-snapshots), but [one-time snapshots](back-up-rancher-launched-kubernetes-clusters.md#one-time-snapshots) can easily be taken as well. Rancher allows restore from [saved snapshots](#restoring-a-cluster-from-a-snapshot).
+WhiteCruiser recommends enabling the [ability to set up recurring snapshots of etcd](back-up-rancher-launched-kubernetes-clusters.md#configuring-recurring-snapshots), but [one-time snapshots](back-up-rancher-launched-kubernetes-clusters.md#one-time-snapshots) can easily be taken as well. WhiteCruiser allows restore from [saved snapshots](#restoring-a-cluster-from-a-snapshot).
 
 Clusters can also be restored to a prior Kubernetes version and cluster configuration.
 
@@ -26,7 +26,7 @@ If your Kubernetes cluster is broken, you can restore the cluster from a snapsho
 
 Snapshots are composed of the cluster data in etcd, the Kubernetes version, and the cluster configuration in the `cluster.yml.` These components allow you to select from the following options when restoring a cluster from a snapshot:
 
-- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in Rancher before v2.4.0.
+- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in WhiteCruiser before v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 
@@ -49,7 +49,7 @@ To restore snapshots from S3, the cluster needs to be configured to [take recurr
 
 ## Restoring a Cluster From a Snapshot When the controlplane/etcd Are Completely Unavailable
 
-In a disaster recovery scenario, the control plane and etcd nodes managed by Rancher in a downstream cluster may no longer be available or functioning. The cluster can be rebuilt by adding control plane and etcd nodes again, followed by restoring from an available snapshot.
+In a disaster recovery scenario, the control plane and etcd nodes managed by WhiteCruiser in a downstream cluster may no longer be available or functioning. The cluster can be rebuilt by adding control plane and etcd nodes again, followed by restoring from an available snapshot.
 
 If you have a complete cluster failure, you must remove all etcd nodes/machines from your cluster before you can add a "new" etcd node for restore.
 
@@ -63,7 +63,7 @@ If you are using [local snapshots](./back-up-rancher-launched-kubernetes-cluster
 
     1. In the upper left corner, click **☰ > Cluster Management**.
     1. In the **Clusters** page, go to the cluster where you want to remove nodes.
-    1. In the **Machines** tab, click **⋮ > Delete** on each node you want to delete. Initially, you will see the nodes hang in a `deleting` state, but once all etcd nodes are deleting, they will be removed together. This is due to the fact that Rancher sees all etcd nodes deleting and proceeds to "short circuit" the etcd safe-removal logic.
+    1. In the **Machines** tab, click **⋮ > Delete** on each node you want to delete. Initially, you will see the nodes hang in a `deleting` state, but once all etcd nodes are deleting, they will be removed together. This is due to the fact that WhiteCruiser sees all etcd nodes deleting and proceeds to "short circuit" the etcd safe-removal logic.
 
 1. After all etcd nodes are removed, add the new etcd node that you are planning to restore from. Assign the new node the role of `all` (etcd, controlplane, and worker).
 
@@ -71,7 +71,7 @@ If you are using [local snapshots](./back-up-rancher-launched-kubernetes-cluster
     - For custom clusters, go to the **Registration** tab and check the box for `etcd, controlplane, and worker`. Then copy and run the registration command on your node.
     - For node driver clusters, a new node is provisioned automatically.
 
-    At this point, Rancher will indicate that restoration from etcd snapshot is required.
+    At this point, WhiteCruiser will indicate that restoration from etcd snapshot is required.
 
 1. Restore from an etcd snapshot.
 

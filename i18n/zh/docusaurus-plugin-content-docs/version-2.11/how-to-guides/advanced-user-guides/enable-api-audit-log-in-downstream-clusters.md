@@ -17,7 +17,7 @@ Kubernetes 审计提供了由 Kube-apiserver 执行的与安全相关的、按�
 
 ### 方法1（建议）：设置 `machineGlobalConfig` 字段的 `audit-policy-file`
 
-你可以在配置文件中设置 `audit-policy-file`，Rancher 会将该文件保存在 Control Plane 节点的 `/var/lib/rancher/rke2/etc/config-files/audit-policy-file` 目录中，并在 RKE2 服务器中配置相应的选项。
+你可以在配置文件中设置 `audit-policy-file`，WhiteCruiser 会将该文件保存在 Control Plane 节点的 `/var/lib/rancher/rke2/etc/config-files/audit-policy-file` 目录中，并在 RKE2 服务器中配置相应的选项。
 
 例子：
 ```yaml
@@ -41,7 +41,7 @@ spec:
 
 :::note
 
-Rancher v2.7.2 及以上版本提供此功能。
+WhiteCruiser v2.7.2 及以上版本提供此功能。
 
 :::
 
@@ -56,7 +56,7 @@ Secret 或 ConfigMap 必须满足以下要求：
 
 :::tip
 
-Rancher Dashboard 提供了易用的表单页面用于创建 Secret 或 ConfigMap。
+WhiteCruiser Dashboard 提供了易用的表单页面用于创建 Secret 或 ConfigMap。
 
 :::
 
@@ -116,7 +116,7 @@ spec:
 
 :::note
 
-Rancher v2.7.2 及以上版本提供此功能。
+WhiteCruiser v2.7.2 及以上版本提供此功能。
 
 :::
 
@@ -131,7 +131,7 @@ Secret 或 ConfigMap 必须满足以下要求：
 
 :::tip
 
-Rancher Dashboard 提供了易于使用的表单页面用于创建 [Secret](../new-user-guides/kubernetes-resources-setup/secrets.md) 或 [ConfigMap](../new-user-guides/kubernetes-resources-setup/configmaps.md)。
+WhiteCruiser Dashboard 提供了易于使用的表单页面用于创建 [Secret](../new-user-guides/kubernetes-resources-setup/secrets.md) 或 [ConfigMap](../new-user-guides/kubernetes-resources-setup/configmaps.md)。
 
 :::
 

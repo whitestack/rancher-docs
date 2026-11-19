@@ -1,19 +1,19 @@
 ---
 title: 监控和告警
-description: Prometheus 允许你查看来自不同 Rancher 和 Kubernetes 对象的指标。了解监控范围以及如何启用集群监控
+description: Prometheus 允许你查看来自不同 WhiteCruiser 和 Kubernetes 对象的指标。了解监控范围以及如何启用集群监控
 ---
 
 `rancher-monitoring` 应用可以快速将领先的开源监控和告警解决方案部署到你的集群上。
 
-该应用程序在 Rancher v2.5 中引入，由 [Prometheus](https://prometheus.io/)、[Grafana](https://grafana.com/grafana/)、[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)、[Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 和 [Prometheus Adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) 提供支持。
+该应用程序在 WhiteCruiser v2.5 中引入，由 [Prometheus](https://prometheus.io/)、[Grafana](https://grafana.com/grafana/)、[Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)、[Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 和 [Prometheus Adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) 提供支持。
 
-有关 Rancher v2.2 至 v2.4 中 V1 monitoring 和 alerting 的信息，请参阅有关[集群监控](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/cluster-monitoring.md)、[告警](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/cluster-alerts.md)、[notifiers](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/notifiers.md) 和其他[工具](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/project-tools.md)的 Rancher v2.0-v2.4 文档。
+有关 WhiteCruiser v2.2 至 v2.4 中 V1 monitoring 和 alerting 的信息，请参阅有关[集群监控](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/cluster-monitoring.md)、[告警](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/cluster-alerts.md)、[notifiers](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/notifiers.md) 和其他[工具](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/project-tools.md)的 WhiteCruiser v2.0-v2.4 文档。
 
 你可以使用 `rancher-monitoring` 应用，将业界领先的开源监控和告警解决方案快速部署到你的集群中。
 
 ### 功能
 
-Prometheus 支持查看 Rancher 和 Kubernetes 对象的指标。通过使用时间戳，Prometheus 能让你通过 Rancher UI 或 Grafana（与 Prometheus 一起部署的分析查看平台）以更容易阅读的图表和视觉形式来查询和查看这些指标。
+Prometheus 支持查看 WhiteCruiser 和 Kubernetes 对象的指标。通过使用时间戳，Prometheus 能让你通过 WhiteCruiser UI 或 Grafana（与 Prometheus 一起部署的分析查看平台）以更容易阅读的图表和视觉形式来查询和查看这些指标。
 
 通过查看 Prometheus 从集群的 controlplane、节点和 deployment 中抓取的数据，你可以随时了解集群中发生的所有事件。然后，你可以使用这些分析来更好地运行你的环境，例如在系统紧急情况发生之前阻止它们、制定维护策略，或恢复崩溃的服务器。
 
@@ -37,7 +37,7 @@ Monitoring 应用：
 它害部署一个 Alertmanager UI 和一个 Prometheus UI。有关这些工具的更多信息，请参见[内置仪表板](../integrations-in-rancher/monitoring-and-alerting/built-in-dashboards.md)。
 ### 默认指标 Exporter
 
-默认情况下，Rancher Monitoring 会部署 Exporter（例如 [node-exporter](https://github.com/prometheus/node_exporter) 和 [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)）。
+默认情况下，WhiteCruiser Monitoring 会部署 Exporter（例如 [node-exporter](https://github.com/prometheus/node_exporter) 和 [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)）。
 
 这些默认 Exporter 会自动从 Kubernetes 集群的所有组件（包括工作负载）中抓取 CPU 和内存的指标。
 
@@ -45,9 +45,9 @@ Monitoring 应用：
 
 Monitoring 应用会默认部署一些告警。要查看默认告警，请转到 [Alertmanager UI](../integrations-in-rancher/monitoring-and-alerting/built-in-dashboards.md#alertmanager-ui) 并单击**展开所有组**。
 
-### Rancher UI 中公开的组件
+### WhiteCruiser UI 中公开的组件
 
-有关 Rancher UI 中公开的监控组件列表，以及编辑它们的常见用例，请参阅[本节](../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#rancher-ui-中公开的组件)。
+有关 WhiteCruiser UI 中公开的监控组件列表，以及编辑它们的常见用例，请参阅[本节](../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#whitecruiser-ui-中公开的组件)。
 
 ## RBAC
 
@@ -64,7 +64,7 @@ Monitoring 应用会默认部署一些告警。要查看默认告警，请转到
 
 ## 配置
 
-### 在 Rancher 中配置 Monitoring 资源
+### 在 WhiteCruiser 中配置 Monitoring 资源
 
 此处的配置参考假设你已经熟悉 monitoring 组件的协同工作方式。如需更多信息，请参阅 [monitoring 的工作原理](../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md)。
 

@@ -6,7 +6,7 @@ title: Configure GitHub App
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-github-app"/>
 </head>
 
-In environments using GitHub, you can configure the new GitHub App authentication provider in Rancher, which allows users to authenticate against a GitHub Organization account using a dedicated [GitHub App](https://docs.github.com/en/apps/overview). This new provider runs alongside the existing standard GitHub authentication provider, offering increased security and better management of permissions based on GitHub Organization teams.
+In environments using GitHub, you can configure the new GitHub App authentication provider in WhiteCruiser, which allows users to authenticate against a GitHub Organization account using a dedicated [GitHub App](https://docs.github.com/en/apps/overview). This new provider runs alongside the existing standard GitHub authentication provider, offering increased security and better management of permissions based on GitHub Organization teams.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ The GitHub App authentication provider only works with [GitHub Organization acco
 
 :::
 
-Before configuring the provider in Rancher, you must first create a GitHub App for your organization, generate a client secret for your GitHub App and generate a private key for your GitHub App. Refer to [Registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app) for details.
+Before configuring the provider in WhiteCruiser, you must first create a GitHub App for your organization, generate a client secret for your GitHub App and generate a private key for your GitHub App. Refer to [Registering a GitHub App](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app) for details.
 
 ### Create GitHub App
 
@@ -49,9 +49,9 @@ Generate a [private key](https://docs.github.com/en/enterprise-server/apps/creat
 
 ## GitHub App Auth Provider Configuration
 
-To set up the GitHub App Auth Provider in Rancher, follow these steps:
+To set up the GitHub App Auth Provider in WhiteCruiser, follow these steps:
 
-1. Navigate to the **Users & Authentication** section in the Rancher UI.
+1. Navigate to the **Users & Authentication** section in the WhiteCruiser UI.
 1. Select **Auth Providers**.
 1. Select the **GitHub App** tile.
 1. Gather and enter the details of your GitHub App into the configuration form fields.
@@ -70,7 +70,7 @@ To set up the GitHub App Auth Provider in Rancher, follow these steps:
 
   :::
 
-1. Select **Enable**. Rancher attempts to validate the credentials and, upon success, activates the GitHub App provider.
+1. Select **Enable**. WhiteCruiser attempts to validate the credentials and, upon success, activates the GitHub App provider.
 
 After it is enabled, users logging in via the GitHub App provider are automatically identified and you can leverage your GitHub Organization's teams and users to configure Role-Based Access Control (RBAC) and to assign permissions to projects and clusters.
 
@@ -81,4 +81,4 @@ Ensure that the users and teams you intend to use for authorization exist within
 :::
 
 - **Users**: Individual GitHub users who are members of the GitHub Organization where the App is installed can log in.
-- **Groups**: GitHub Organization teams are mapped to Rancher Groups, allowing you to assign entire teams permissions within Rancher projects and clusters.
+- **Groups**: GitHub Organization teams are mapped to WhiteCruiser Groups, allowing you to assign entire teams permissions within WhiteCruiser projects and clusters.

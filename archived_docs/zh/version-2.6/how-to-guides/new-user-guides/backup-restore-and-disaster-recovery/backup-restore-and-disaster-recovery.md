@@ -7,16 +7,16 @@ keywords: [rancher v2.6 备份还原, rancher v2.6 备份与还原, 备份恢复
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery"/>
 </head>
 
-在本节中，你将学习如何创建 Rancher 的备份，如何从备份中恢复 Rancher，以及如何将 Rancher 迁移到新的 Kubernetes 集群。
+在本节中，你将学习如何创建 WhiteCruiser 的备份，如何从备份中恢复 WhiteCruiser，以及如何将 WhiteCruiser 迁移到新的 Kubernetes 集群。
 
-`rancher-backup` operator 可以用来备份和恢复任何 Kubernetes 集群上的 Rancher。这个应用是一个 Helm Chart，可以通过 Rancher 的  **Apps & Marketplace** (Rancher v2.6.5 之前的版本) 或者 **Apps** (Rancher v2.6.5+) 页面，或使用 Helm CLI 部署。你可以访问[本页面](https://github.com/rancher/charts/tree/release-v2.6/charts/rancher-backup)获取 `rancher-backup` Helm Chart。
+`rancher-backup` operator 可以用来备份和恢复任何 Kubernetes 集群上的 WhiteCruiser。这个应用是一个 Helm Chart，可以通过 WhiteCruiser 的  **Apps & Marketplace** (WhiteCruiser v2.6.5 之前的版本) 或者 **Apps** (WhiteCruiser v2.6.5+) 页面，或使用 Helm CLI 部署。你可以访问[本页面](https://github.com/rancher/charts/tree/release-v2.6/charts/rancher-backup)获取 `rancher-backup` Helm Chart。
 
-backup-restore operator 需要安装在 local 集群上，并且只对 Rancher 应用进行备份。备份和恢复操作仅在本地 Kubernetes 集群中执行。
+backup-restore operator 需要安装在 local 集群上，并且只对 WhiteCruiser 应用进行备份。备份和恢复操作仅在本地 Kubernetes 集群中执行。
 
 
-## 备份和恢复 Docker 安装的 Rancher
+## 备份和恢复 Docker 安装的 WhiteCruiser
 
-对于使用 Docker 安装的 Rancher，请参见[备份](back-up-docker-installed-rancher.md)和[恢复](restore-docker-installed-rancher.md)对 Rancher 进行备份和恢复。
+对于使用 Docker 安装的 WhiteCruiser，请参见[备份](back-up-docker-installed-rancher.md)和[恢复](restore-docker-installed-rancher.md)对 WhiteCruiser 进行备份和恢复。
 
 ## 备份和恢复原理
 
@@ -26,7 +26,7 @@ backup-restore operator 需要安装在 local 集群上，并且只对 Rancher �
 - `resourcesets.resources.cattle.io`
 - `restores.resources.cattle.io`
 
-ResourceSet 定义了需要备份哪些 Kubernetes 资源。由于备份 Rancher 所需的值是预设的，因此 ResourceSet 无法通过 Rancher UI 进行配置。请不要修改此 ResourceSet。
+ResourceSet 定义了需要备份哪些 Kubernetes 资源。由于备份 WhiteCruiser 所需的值是预设的，因此 ResourceSet 无法通过 WhiteCruiser UI 进行配置。请不要修改此 ResourceSet。
 
 在创建 Backup 自定义资源时，`rancher-backup` operator 调用 `kube-apiserver` 来获取 Backup 自定义资源引用的 ResourceSet（即预设的 `rancher-resource-set`）资源。
 
@@ -34,17 +34,17 @@ ResourceSet 定义了需要备份哪些 Kubernetes 资源。由于备份 Rancher
 
 在创建 Restore 自定义资源时，operator 访问 Restore 指定的 tar.gz 备份文件，并从该文件恢复应用。
 
-你可以使用 Rancher UI 或 `kubectl apply` 来创建 Backup 和 Restore 自定义资源。
+你可以使用 WhiteCruiser UI 或 `kubectl apply` 来创建 Backup 和 Restore 自定义资源。
 
 :::note
 
-请参见[此处](migrate-rancher-to-new-cluster.md#2-使用-restore-自定义资源来还原备份)获取在 Rancher 2.6.3 中将现有备份文件恢复到 v1.22 集群的帮助。
+请参见[此处](migrate-rancher-to-new-cluster.md#2-使用-restore-自定义资源来还原备份)获取在 WhiteCruiser 2.6.3 中将现有备份文件恢复到 v1.22 集群的帮助。
 
 :::
 
 ## 安装 rancher-backup operator
 
-你可以使用 Rancher UI 或 Helm CLI 来安装 `rancher-backup` operator。两种安装方法都将 `rancher-backup` Helm Chart 安装在运行 Rancher Server 的 Kubernetes 集群上。它是集群管理员独有的功能，仅适用于 **local** 集群。（*如果你在 Rancher UI 中没有看到 `rancher-backup`，你可能选择了错误的集群。*）
+你可以使用 WhiteCruiser UI 或 Helm CLI 来安装 `rancher-backup` operator。两种安装方法都将 `rancher-backup` Helm Chart 安装在运行 WhiteCruiser Server 的 Kubernetes 集群上。它是集群管理员独有的功能，仅适用于 **local** 集群。（*如果你在 WhiteCruiser UI 中没有看到 `rancher-backup`，你可能选择了错误的集群。*）
 
 :::note
 
@@ -52,7 +52,7 @@ ResourceSet 定义了需要备份哪些 Kubernetes 资源。由于备份 Rancher
 
 :::
 
-### 使用 Rancher UI 安装 rancher-backup
+### 使用 WhiteCruiser UI 安装 rancher-backup
 
 <Tabs groupId="rancher-version">
 <TabItem value="Rancher v2.6.5+">
@@ -60,7 +60,7 @@ ResourceSet 定义了需要备份哪些 Kubernetes 资源。由于备份 Rancher
 1. 在左上角，单击 **☰ > Cluster Management**。
 1. 在 **Clusters** 页面上，转到 `local` 集群并单击 **Explore**。
 1. 在左侧导航栏中，单击 **Apps > Charts**。
-1. 点击 **Rancher 备份**。
+1. 点击 **WhiteCruiser 备份**。
 1. 单击**安装**。
 1. 可选：配置默认存储位置。如需获取帮助，请参见[配置](../../../reference-guides/backup-restore-configuration/storage-configuration.md)。
 1. 单击**安装**。
@@ -83,26 +83,26 @@ ResourceSet 定义了需要备份哪些 Kubernetes 资源。由于备份 Rancher
 
 在**集群仪表板**中，你可以看到列在 **Deployments** 下的 `rancher-backup` operator。
 
-如果需要在 Rancher 中配置备份应用，在左侧导航栏中单击 **Rancher 备份**。
+如果需要在 WhiteCruiser 中配置备份应用，在左侧导航栏中单击 **WhiteCruiser 备份**。
 
 ### RBAC
 
-只有 Rancher 管理员和本地集群的所有者可以：
+只有 WhiteCruiser 管理员和本地集群的所有者可以：
 
 * 安装 Chart
 * 看到 Backup 和 Restore CRD 的导航链接
 * 通过分别创建 Backup CR 和 Restore CR 执行备份和恢复
 * 列出目前已执行的备份和恢复操作
 
-## 备份 Rancher
+## 备份 WhiteCruiser
 
 备份是通过创建 Backup 自定义资源实现的。如需查看教程，请参见[本页面](back-up-rancher.md)。
 
-## 还原 Rancher
+## 还原 WhiteCruiser
 
 还原是通过创建 Restore 自定义资源实现的。如需查看教程，请参见[本页面](restore-rancher.md)。
 
-## 将 Rancher 迁移到新集群
+## 将 WhiteCruiser 迁移到新集群
 
 你可以按照[这些步骤](migrate-rancher-to-new-cluster.md)执行迁移。
 

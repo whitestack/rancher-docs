@@ -20,7 +20,7 @@ For configuration details, refer to the [official Kubernetes documentation](http
 
 You can set `audit-policy-file` in the configuration file using either `machineGlobalConfig` or `machineSelectorConfig`.
 
-When using `machineGlobalConfig`, Rancher delivers the file to the path `/var/lib/rancher/rke2/etc/config-files/audit-policy-file` on **all nodes** (both control plane and worker nodes), and sets the proper options in the RKE2 server. This may cause unwanted worker node reconciliation when the audit policy is modified.
+When using `machineGlobalConfig`, WhiteCruiser delivers the file to the path `/var/lib/rancher/rke2/etc/config-files/audit-policy-file` on **all nodes** (both control plane and worker nodes), and sets the proper options in the RKE2 server. This may cause unwanted worker node reconciliation when the audit policy is modified.
 
 To avoid worker node reconciliation, use `machineSelectorConfig` with a label selector to target only control plane nodes. This ensures that the audit policy file is only delivered to control plane nodes.
 
@@ -68,7 +68,7 @@ spec:
 
 :::note
 
-This feature is available in Rancher v2.7.2 and later.
+This feature is available in WhiteCruiser v2.7.2 and later.
 
 :::
 
@@ -83,7 +83,7 @@ The secret or configmap must meet the following requirements:
 
 :::tip
 
-Rancher Dashboard provides an easy-to-use form for creating the secret or configmap.
+WhiteCruiser Dashboard provides an easy-to-use form for creating the secret or configmap.
 
 :::
 
@@ -137,7 +137,7 @@ For more information about cluster configuration, refer to the [RKE2 cluster con
 
 :::note
 
-This feature is available in Rancher v2.7.2 and later.
+This feature is available in WhiteCruiser v2.7.2 and later.
 
 :::
 
@@ -152,7 +152,7 @@ The secret or configmap must meet the following requirements:
 
 :::tip
 
-Rancher Dashboard provides an easy-to-use form for creating the [secret](../new-user-guides/kubernetes-resources-setup/secrets.md) or [configmap](../new-user-guides/kubernetes-resources-setup/configmaps.md).
+WhiteCruiser Dashboard provides an easy-to-use form for creating the [secret](../new-user-guides/kubernetes-resources-setup/secrets.md) or [configmap](../new-user-guides/kubernetes-resources-setup/configmaps.md).
 
 :::
 

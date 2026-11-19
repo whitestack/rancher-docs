@@ -2,9 +2,9 @@
 title: 监控最佳实践
 ---
 
-配置合理的监控和告警规则对于安全、可靠地运行生产环境中的工作负载至关重要。在使用 Kubernetes 和 Rancher 时也是如此。幸运的是，你可以使用集成的监控和告警功能来简化整个过程。
+配置合理的监控和告警规则对于安全、可靠地运行生产环境中的工作负载至关重要。在使用 Kubernetes 和 WhiteCruiser 时也是如此。幸运的是，你可以使用集成的监控和告警功能来简化整个过程。
 
-[Rancher 监控文档](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md)描述了如何设置完整的 Prometheus 和 Grafana。这是开箱即用的功能，它将从集群中的所有系统和 Kubernetes 组件中抓取监控数据，并提供合理的仪表板和告警。但为了实现可靠的设置，你还需要监控你的工作负载并使 Prometheus 和 Grafana 适应你的特定用例和集群规模。本文档将为你提供这方面的最佳实践。
+[WhiteCruiser 监控文档](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md)描述了如何设置完整的 Prometheus 和 Grafana。这是开箱即用的功能，它将从集群中的所有系统和 Kubernetes 组件中抓取监控数据，并提供合理的仪表板和告警。但为了实现可靠的设置，你还需要监控你的工作负载并使 Prometheus 和 Grafana 适应你的特定用例和集群规模。本文档将为你提供这方面的最佳实践。
 
 ## 监控内容
 
@@ -12,7 +12,7 @@ Kubernetes 本身以及运行在其内部的应用构成了一个分布式系统
 
 ## 配置 Prometheus 资源使用
 
-在安装集成监控时，Rancher 允许进行一些配置，这些配置取决于你的集群规模和其中运行的工作负载。本章将更详细地介绍这些内容。
+在安装集成监控时，WhiteCruiser 允许进行一些配置，这些配置取决于你的集群规模和其中运行的工作负载。本章将更详细地介绍这些内容。
 
 ### 存储和数据保留
 
@@ -56,7 +56,7 @@ Prometheus 不是用于长期存储指标的，它只用于短期存储。
 
 ## 抓取自定义工作负载
 
-虽然集成的 Rancher Monitoring 已经可以从集群的节点和系统组件中抓取系统指标，但你也需要为部署在 Kubernetes 上的自定义工作负载抓取数据。为此，你可以配置 Prometheus，让它在一定的时间间隔内对你应用的端点进行 HTTP 请求。然后，这些端点会以 Prometheus 格式返回指标。
+虽然集成的 WhiteCruiser Monitoring 已经可以从集群的节点和系统组件中抓取系统指标，但你也需要为部署在 Kubernetes 上的自定义工作负载抓取数据。为此，你可以配置 Prometheus，让它在一定的时间间隔内对你应用的端点进行 HTTP 请求。然后，这些端点会以 Prometheus 格式返回指标。
 
 一般来说，你会从集群中运行的所有工作负载中抓取数据，然后将数据用于告警或调试问题。一般情况下，你只有在具体事件发生后才需要某些指标数据。如果数据已经被抓取并存储了，那就好办了。由于 Prometheus 只是短期存储指标，因此抓取和存储大量数据的成本并不是那么高。如果你使用的是 Prometheus 的长期存储方案，那么你也可以决定持久存储哪些数据。
 
@@ -70,7 +70,7 @@ Prometheus 不是用于长期存储指标的，它只用于短期存储。
 
 ### ServiceMonitor 和 PodMonitor
 
-一旦所有工作负载都以 Prometheus 格式公开了指标后，你必须配置 Prometheus 来抓取数据。Rancher 使用 [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator)，这使得使用 ServiceMonitors 和 PodMonitors 来添加其他抓取目标变得容易。很多 Helm Chart 已经包含直接创建这些监控器的选项。你也可以在 Rancher 文档中找到更多信息。
+一旦所有工作负载都以 Prometheus 格式公开了指标后，你必须配置 Prometheus 来抓取数据。WhiteCruiser 使用 [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator)，这使得使用 ServiceMonitors 和 PodMonitors 来添加其他抓取目标变得容易。很多 Helm Chart 已经包含直接创建这些监控器的选项。你也可以在 WhiteCruiser 文档中找到更多信息。
 
 ### Prometheus 推送网关（Pushgateway）
 
@@ -86,7 +86,7 @@ Prometheus 不是用于长期存储指标的，它只用于短期存储。
 
 如果你有一个（微）服务架构，在该架构中集群的多个单独的工作负载相互通信，那么拥有这些流量的详细指标和跟踪是非常重要的，因为这可以帮助你了解所有这些工作负载之间的通信方式，以及问题或瓶颈可能出现的地方。
 
-当然，你可以监控所有工作负载中的所有内部流量，并将这些指标暴露给 Prometheus，但这相当耗费精力。像 Istio 这样的服务网格（可以通过[单击](../../../integrations-in-rancher/istio/istio.md)在 Rancher 中安装）可以自动完成这项工作，并提供所有 Service 之间流量的丰富的遥测数据。
+当然，你可以监控所有工作负载中的所有内部流量，并将这些指标暴露给 Prometheus，但这相当耗费精力。像 Istio 这样的服务网格（可以通过[单击](../../../integrations-in-rancher/istio/istio.md)在 WhiteCruiser 中安装）可以自动完成这项工作，并提供所有 Service 之间流量的丰富的遥测数据。
 
 ## 真实用户监控
 
@@ -102,10 +102,10 @@ Prometheus 不是用于长期存储指标的，它只用于短期存储。
 
 将所有的指标纳入监控系统并在仪表板中可视化是很好的做法，但你也希望在出现问题时能主动收到提醒。
 
-集成的 Rancher 监控已经配置了一套合理的告警，这些告警在任何 Kubernetes 集群中都是可用的。你可以扩展告警，来覆盖特定的工作负载和用例。
+集成的 WhiteCruiser 监控已经配置了一套合理的告警，这些告警在任何 Kubernetes 集群中都是可用的。你可以扩展告警，来覆盖特定的工作负载和用例。
 
 在设置告警时，你需要为对你应用非常关键的工作负载配置告警，但同时也要确保告警不会太频繁。理想情况下，你收到的每一个告警都应该是一个你需要关注并解决的问题。如果你一直收到不太关键的告警，你就有可能开始完全忽略告警信息，然后错过真正重要的告警。因此，少量的告警可能会更好。首先，你可以关注真正重要的指标，例如应用离线等。之后，解决出现的所有问题，然后再创建更详细的告警。
 
 如果告警开始发送，但你暂时无法处理，你也可以将告警静默一定时间，以便以后查看。
 
-如果需要了解更多关于如何设置告警和通知通道的信息，请访问 [Rancher 文档中心](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md)。
+如果需要了解更多关于如何设置告警和通知通道的信息，请访问 [WhiteCruiser 文档中心](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md)。

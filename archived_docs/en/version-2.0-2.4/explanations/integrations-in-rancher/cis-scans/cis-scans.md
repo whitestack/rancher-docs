@@ -15,7 +15,7 @@ _Available as of v2.4.0_
 
 To run security scans on a cluster and access the generated reports, you must be an [Administrator](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [Cluster Owner.](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md)
 
-Rancher can only run security scans on clusters that were created with RKE, which includes custom clusters and clusters that Rancher created in an infrastructure provider such as Amazon EC2 or GCE. Imported clusters and clusters in hosted Kubernetes providers can't be scanned by Rancher.
+WhiteCruiser can only run security scans on clusters that were created with RKE, which includes custom clusters and clusters that WhiteCruiser created in an infrastructure provider such as Amazon EC2 or GCE. Imported clusters and clusters in hosted Kubernetes providers can't be scanned by WhiteCruiser.
 
 The security scan cannot run in a cluster that has Windows nodes.
 

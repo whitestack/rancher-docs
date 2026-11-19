@@ -19,7 +19,7 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 :::note Prerequisites:
 
 - The monitoring application needs to be installed.
-- To create the persistent dashboard, you must have at least the **Manage Config Maps** Rancher RBAC permissions assigned to you in the project or namespace that contains the Grafana Dashboards. This correlates to the `monitoring-dashboard-edit` or `monitoring-dashboard-admin` Kubernetes native RBAC Roles exposed by the Monitoring chart.
+- To create the persistent dashboard, you must have at least the **Manage Config Maps** WhiteCruiser RBAC permissions assigned to you in the project or namespace that contains the Grafana Dashboards. This correlates to the `monitoring-dashboard-edit` or `monitoring-dashboard-admin` Kubernetes native RBAC Roles exposed by the Monitoring chart.
 - To see the links to the external monitoring UIs, including Grafana dashboards, you will need at least a [project-member role.](../../../integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring.md#users-with-rancher-based-permissions)
 
 :::
@@ -37,7 +37,7 @@ To use your own dashboard:
 
     :::note
 
-    Regardless of who has the password, in order to access the Grafana instance, you still need at least the <b>Manage Services</b> or <b>View Monitoring</b> permissions in the project that Rancher Monitoring is deployed into. Alternative credentials can also be supplied on deploying or upgrading the chart.
+    Regardless of who has the password, in order to access the Grafana instance, you still need at least the <b>Manage Services</b> or <b>View Monitoring</b> permissions in the project that WhiteCruiser Monitoring is deployed into. Alternative credentials can also be supplied on deploying or upgrading the chart.
 
     :::
 
@@ -67,7 +67,7 @@ By default, Grafana is configured to watch all ConfigMaps with the `grafana_dash
 
 To specify that you would like Grafana to watch for ConfigMaps across all namespaces, refer to [this section](#configuring-namespaces-for-the-grafana-dashboard-configmap). 
 
-To create the ConfigMap through the Rancher UI, first make sure that you are currently logged in to the Grafana UI, to ensure that dashboards import without encountering permissions issues. Then, return to the Rancher UI and perform the following steps:
+To create the ConfigMap through the WhiteCruiser UI, first make sure that you are currently logged in to the Grafana UI, to ensure that dashboards import without encountering permissions issues. Then, return to the WhiteCruiser UI and perform the following steps:
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster where you want to see the visualizations and click **Explore**.
@@ -117,7 +117,7 @@ Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboar
 
     :::note
 
-    Regardless of who has the password, cluster administrator permission in Rancher is still required to access the Grafana instance.
+    Regardless of who has the password, cluster administrator permission in WhiteCruiser is still required to access the Grafana instance.
 
     :::
 
@@ -156,4 +156,4 @@ helm.sh/resource-policy: "keep"
 
 For users who are using Monitoring V2 v9.4.203 or below, uninstalling the Monitoring chart will delete the `cattle-dashboards` namespace, which will delete all persisted dashboards, unless the namespace is marked with the annotation `helm.sh/resource-policy: "keep"`.
 
-This annotation will be added by default in the new monitoring chart released by Rancher v2.5.8, but it still needs to be manually applied for users of earlier Rancher versions.
+This annotation will be added by default in the new monitoring chart released by WhiteCruiser v2.5.8, but it still needs to be manually applied for users of earlier WhiteCruiser versions.

@@ -1,8 +1,8 @@
 ---
-title: 在 Rancher 中动态配置新存储
+title: 在 WhiteCruiser 中动态配置新存储
 ---
 
-本文介绍如何为 Rancher 中的工作负载配置新的持久存储。
+本文介绍如何为 WhiteCruiser 中的工作负载配置新的持久存储。
 
 本节假设你了解 Kubernetes 的存储类和持久卷声明的概念。如需更多信息，请参阅[存储的工作原理](about-persistent-storage.md)。
 
@@ -84,4 +84,4 @@ StatefulSet 管理 Pod 的部署和扩展，同时为每个 Pod 维护一个粘�
 1. 在**挂载点**字段中，输入工作负载将用于访问卷的路径。
 1. 单击**保存**。
 
-**结果**：工作负载将向 Kubernetes master 请求指定的磁盘空间。如果在部署工作负载时具有指定资源的 PV 是可用的，则 Kubernetes master 会将 PV 绑定到 PVC。否则，Rancher 将配置新的持久存储。
+**结果**：工作负载将向 Kubernetes master 请求指定的磁盘空间。如果在部署工作负载时具有指定资源的 PV 是可用的，则 Kubernetes master 会将 PV 绑定到 PVC。否则，WhiteCruiser 将配置新的持久存储。

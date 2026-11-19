@@ -1,44 +1,44 @@
 ---
-title: Rancher Webhook
+title: WhiteCruiser Webhook
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-webhook"/>
 </head>
 
-Rancher-Webhook is an essential component of Rancher that works in conjunction with Kubernetes to enhance security and enable critical features for Rancher-managed clusters. 
+WhiteCruiser-Webhook is an essential component of WhiteCruiser that works in conjunction with Kubernetes to enhance security and enable critical features for WhiteCruiser-managed clusters. 
 
-It integrates with Kubernetes' extensible admission controllers, as described in the [Kubernetes documentation](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/), which allows Rancher-Webhook to inspect specific requests sent to the Kubernetes API server, and add custom validations and mutations to the requests that are specific to Rancher. Rancher-Webhook manages the resources to be validated using the `rancher.cattle.io` `ValidatingWebhookConfiguration` and the `rancher.cattle.io` `MutatingWebhookConfiguration` objects, and will override any manual edits.
+It integrates with Kubernetes' extensible admission controllers, as described in the [Kubernetes documentation](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/), which allows WhiteCruiser-Webhook to inspect specific requests sent to the Kubernetes API server, and add custom validations and mutations to the requests that are specific to WhiteCruiser. WhiteCruiser-Webhook manages the resources to be validated using the `rancher.cattle.io` `ValidatingWebhookConfiguration` and the `rancher.cattle.io` `MutatingWebhookConfiguration` objects, and will override any manual edits.
 
-Rancher deploys Rancher-Webhook as a separate deployment and service in both local and downstream clusters. Rancher manages Rancher-Webhook using Helm. It's important to note that Rancher may override modifications made by users to the Helm release. To safely modify these values see [Customizing Rancher-Webhook Configuration](#customizing-rancher-webhook-configuration).
+WhiteCruiser deploys WhiteCruiser-Webhook as a separate deployment and service in both local and downstream clusters. WhiteCruiser manages WhiteCruiser-Webhook using Helm. It's important to note that WhiteCruiser may override modifications made by users to the Helm release. To safely modify these values see [Customizing WhiteCruiser-Webhook Configuration](#customizing-rancher-webhook-configuration).
 
-Each Rancher version is designed to be compatible with a single version of the webhook. The compatible versions are provided below for convenience.
+Each WhiteCruiser version is designed to be compatible with a single version of the webhook. The compatible versions are provided below for convenience.
 
-**Note:** Rancher manages deployment and upgrade of the webhook. Under most circumstances, no user intervention should be needed to ensure that the webhook version is compatible with the version of Rancher that you are running.
+**Note:** WhiteCruiser manages deployment and upgrade of the webhook. Under most circumstances, no user intervention should be needed to ensure that the webhook version is compatible with the version of WhiteCruiser that you are running.
 
 <!-- releaseTask -->
 
-| Rancher Version | Webhook Version | Availability in Prime | Availability in Community |
-|-----------------|-----------------|-----------------------|---------------------------|
-| v2.9.12         |     v0.5.12     | &check;               | &cross;                   |
-| v2.9.11         |     v0.5.11     | &check;               | &cross;                   |
-| v2.9.10         |     v0.5.9      | &check;               | &cross;                   |
-| v2.9.9          |     v0.5.9      | &check;               | &cross;                   |
-| v2.9.8          |     v0.5.8      | &check;               | &cross;                   |
-| v2.9.7          |     v0.5.7      | &check;               | &cross;                   |
-| v2.9.6          |     v0.5.6      | &check;               | &cross;                   |
-| v2.9.5          |     v0.5.5      | &check;               | &cross;                   |
-| v2.9.4          |     v0.5.4      | &check;               | &cross;                   |
-| v2.9.3          |     v0.5.3      | &check;               | &check;                   |
-| v2.9.2          |     v0.5.2      | &check;               | &check;                   |
-| v2.9.1          |     v0.5.1      | &check;               | &check;                   |
-| v2.9.0          |     v0.5.0      | &cross;               | &check;                   |
+| WhiteCruiser Version | Webhook Version | Availability in Community |
+|-----------------|-----------------|---------------------------|
+| v2.9.12         |     v0.5.12     | &cross;                   |
+| v2.9.11         |     v0.5.11     | &cross;                   |
+| v2.9.10         |     v0.5.9      | &cross;                   |
+| v2.9.9          |     v0.5.9      | &cross;                   |
+| v2.9.8          |     v0.5.8      | &cross;                   |
+| v2.9.7          |     v0.5.7      | &cross;                   |
+| v2.9.6          |     v0.5.6      | &cross;                   |
+| v2.9.5          |     v0.5.5      | &cross;                   |
+| v2.9.4          |     v0.5.4      | &cross;                   |
+| v2.9.3          |     v0.5.3      | &check;                   |
+| v2.9.2          |     v0.5.2      | &check;                   |
+| v2.9.1          |     v0.5.1      | &check;                   |
+| v2.9.0          |     v0.5.0      | &check;                   |
 
 ## Why Do We Need It?
 
-Rancher-Webhook is crucial for Rancher to protect clusters against malicious attacks and enable various features.
-Rancher relies on the Rancher-Webhook as an integral part of its functionality. Without the webhook, Rancher would not be a complete product. 
-It provides essential protection for Rancher-managed clusters, preventing security vulnerabilities and ensuring the consistency and stability of the cluster.
+WhiteCruiser-Webhook is crucial for WhiteCruiser to protect clusters against malicious attacks and enable various features.
+WhiteCruiser relies on the WhiteCruiser-Webhook as an integral part of its functionality. Without the webhook, WhiteCruiser would not be a complete product. 
+It provides essential protection for WhiteCruiser-managed clusters, preventing security vulnerabilities and ensuring the consistency and stability of the cluster.
 
 ## What Resources Does the Webhook Validate?
 
@@ -46,11 +46,11 @@ You can find an in-progress list of the resources that the webhook validates in 
 
 ## Bypassing the Webhook
 
-Sometimes, you must bypass Rancher's webhook validation to perform emergency restore operations or fix other critical issues. The bypass operation is exhaustive, meaning no webhook validations or mutations apply when you use it. It is not possible to bypass some validations or mutations and have others still apply - they are either all bypassed or all active.
+Sometimes, you must bypass WhiteCruiser's webhook validation to perform emergency restore operations or fix other critical issues. The bypass operation is exhaustive, meaning no webhook validations or mutations apply when you use it. It is not possible to bypass some validations or mutations and have others still apply - they are either all bypassed or all active.
 
 :::danger
 
-Rancher's webhook provides critical security protections. Bypassing the webhook should only be done by administrators in specific scenarios, after all other options have been exhausted. In addition, permission to bypass the webhook should be carefully controlled, and never given to users who are not admins.
+WhiteCruiser's webhook provides critical security protections. Bypassing the webhook should only be done by administrators in specific scenarios, after all other options have been exhausted. In addition, permission to bypass the webhook should be carefully controlled, and never given to users who are not admins.
 
 :::
 
@@ -60,9 +60,9 @@ To bypass the webhook, impersonate both the `rancher-webhook-sudo` service accou
 kubectl create -f example.yaml --as=system:serviceaccount:cattle-system:rancher-webhook-sudo --as-group=system:masters
 ```
 
-## Customizing Rancher-Webhook Configuration
+## Customizing WhiteCruiser-Webhook Configuration {#customizing-rancher-webhook-configuration}
 
-You can add custom Helm values when you install Rancher-Webhook via Helm. During a Helm install of the Rancher-Webhook chart, Rancher checks for custom Helm values. These custom values must be defined in a ConfigMap named `rancher-config`, in the `cattle-system` namespace, under the data key, `rancher-webhook`. The value of this key must be valid YAML.
+You can add custom Helm values when you install WhiteCruiser-Webhook via Helm. During a Helm install of the WhiteCruiser-Webhook chart, WhiteCruiser checks for custom Helm values. These custom values must be defined in a ConfigMap named `rancher-config`, in the `cattle-system` namespace, under the data key, `rancher-webhook`. The value of this key must be valid YAML.
 
 ``` yaml
 apiVersion: v1
@@ -77,11 +77,11 @@ data:
 
 ```
 
-Rancher redeploys the Rancher-Webhook chart when changes to the ConfigMap values are detected.
+WhiteCruiser redeploys the WhiteCruiser-Webhook chart when changes to the ConfigMap values are detected.
 
-### Customizing Rancher-Webhook During Rancher Installation
+### Customizing WhiteCruiser-Webhook During WhiteCruiser Installation {#customizing-rancher-webhook-during-rancher-installation}
 
-When you use Helm to install the Rancher chart, you can add custom Helm values to the Rancher-Webhook of the local cluster. All values in the Rancher-Webhook chart are accessible as nested variables under the `webhook` name.
+When you use Helm to install the WhiteCruiser chart, you can add custom Helm values to the WhiteCruiser-Webhook of the local cluster. All values in the WhiteCruiser-Webhook chart are accessible as nested variables under the `webhook` name.
 
 These values are synced to the `rancher-config` ConfigMap during installation.
 
@@ -97,8 +97,8 @@ helm install rancher rancher-<CHART_REPO>/rancher \
 
 ### EKS Cluster with Calico CNI
 
-Users running an EKS cluster with Calico CNI may run into errors when the Kubernetes API server attempts to contact the Rancher-Webhook. 
-One workaround for this issue, as [documented by Calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks#install-eks-with-calico-networking) involves setting `hostNetwork=true` for the webhook deployment. You can change this value by adding the Helm value `global.hostNetwork=true` to the `rancher-config` ConfigMap. See [Customizing Rancher-Webhook Configuration](#customizing-rancher-webhook-configuration) for more info.
+Users running an EKS cluster with Calico CNI may run into errors when the Kubernetes API server attempts to contact the WhiteCruiser-Webhook. 
+One workaround for this issue, as [documented by Calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks#install-eks-with-calico-networking) involves setting `hostNetwork=true` for the webhook deployment. You can change this value by adding the Helm value `global.hostNetwork=true` to the `rancher-config` ConfigMap. See [Customizing WhiteCruiser-Webhook Configuration](#customizing-rancher-webhook-configuration) for more info.
 
 ``` bash
 apiVersion: v1
@@ -123,7 +123,7 @@ When using a private GKE cluster, errors may occur that prevent the Kubernetes A
 ```
 Internal error occurred: failed calling webhook "rancher.cattle.io.namespaces.create-non-kubesystem": failed to call webhook: Post "https://rancher-webhook.cattle-system.svc:443/v1/webhook/validation/namespaces?timeout=10s": context deadline exceeded
 ```
-This issue occurs because firewall rules restrict communication between the API server and the private cluster. To resolve this communication problem, users must add firewall rules to allow the GKE control plane to communicate with the Rancher-Webhook on port 9443. Please refer to the [GKE documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#add_firewall_rules) for detailed information and steps on updating the firewall rules.
+This issue occurs because firewall rules restrict communication between the API server and the private cluster. To resolve this communication problem, users must add firewall rules to allow the GKE control plane to communicate with the WhiteCruiser-Webhook on port 9443. Please refer to the [GKE documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters#add_firewall_rules) for detailed information and steps on updating the firewall rules.
 
 ### Application Fails to Deploy Due to rancher-webhook Blocking Access
 
@@ -140,12 +140,12 @@ Another one of these validations ensures that the user has the proper permission
 
 ## Issues on Specific Versions
 
-**Note:** The following is an incomplete list of high-severity issues affecting specific Rancher/webhook versions. In most cases, these issues can be resolved by upgrading to a more recent Rancher version.
+**Note:** The following is an incomplete list of high-severity issues affecting specific WhiteCruiser/webhook versions. In most cases, these issues can be resolved by upgrading to a more recent WhiteCruiser version.
 
 ### Incompatible Webhook Version on Rollback
 
-**Note:** This affects rolling back to Rancher v2.7.5 or earlier.
+**Note:** This affects rolling back to WhiteCruiser v2.7.5 or earlier.
 
-If you roll back to Rancher v2.7.5 or earlier, you may see webhook versions that are too recent to be compatible with downstream clusters running pre-v2.7.5 version of Rancher. This may cause various incompatibility issues. For example, project members may be unable to create namespaces. In addition, when you roll back to versions before the webhook was installed in downstream clusters, the webhook may remain installed, which can result in similar incompatibility issues.
+If you roll back to WhiteCruiser v2.7.5 or earlier, you may see webhook versions that are too recent to be compatible with downstream clusters running pre-v2.7.5 version of WhiteCruiser. This may cause various incompatibility issues. For example, project members may be unable to create namespaces. In addition, when you roll back to versions before the webhook was installed in downstream clusters, the webhook may remain installed, which can result in similar incompatibility issues.
 
-To help alleviate these issues, you can run the [adjust-downstream-webhook](https://github.com/rancherlabs/support-tools/tree/master/adjust-downstream-webhook) shell script after roll back. This script selects and installs the proper webhook version (or removes the webhook entirely) for the corresponding Rancher version. 
+To help alleviate these issues, you can run the [adjust-downstream-webhook](https://github.com/rancherlabs/support-tools/tree/master/adjust-downstream-webhook) shell script after roll back. This script selects and installs the proper webhook version (or removes the webhook entirely) for the corresponding WhiteCruiser version. 

@@ -6,7 +6,7 @@ title: Creating an EKS Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/eks"/>
 </head>
 
-Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
+Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. WhiteCruiser provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use WhiteCruiser to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
 
 
 ## Prerequisites in Amazon Web Services
@@ -18,11 +18,11 @@ To set up a cluster on EKS, you will need to set up an Amazon VPC (Virtual Priva
 
 ### Amazon VPC
 
-An Amazon VPC is required to launch the EKS cluster. The VPC enables you to launch AWS resources into a virtual network that you've defined. You can set one up yourself and provide it during cluster creation in Rancher. If you do not provide one during creation, Rancher will create one. For more information, refer to the [Tutorial: Creating a VPC with Public and Private Subnets for Your Amazon EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-public-private-vpc.html).
+An Amazon VPC is required to launch the EKS cluster. The VPC enables you to launch AWS resources into a virtual network that you've defined. You can set one up yourself and provide it during cluster creation in WhiteCruiser. If you do not provide one during creation, WhiteCruiser will create one. For more information, refer to the [Tutorial: Creating a VPC with Public and Private Subnets for Your Amazon EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-public-private-vpc.html).
 
 ### IAM Policies
 
-Rancher needs access to your AWS account in order to provision and administer your Kubernetes clusters in Amazon EKS. You'll need to create a user for Rancher in your AWS account and define what that user can access.
+WhiteCruiser needs access to your AWS account in order to provision and administer your Kubernetes clusters in Amazon EKS. You'll need to create a user for WhiteCruiser in your AWS account and define what that user can access.
 
 1. Create a user with programmatic access by following the steps [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 
@@ -37,7 +37,7 @@ For more detailed information on IAM policies for EKS, refer to the official [do
 
 ## Create the EKS Cluster
 
-Use Rancher to set up and configure your Kubernetes cluster.
+Use WhiteCruiser to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -53,7 +53,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
@@ -68,9 +68,9 @@ For the full list of EKS cluster configuration options, see [this page.](../clus
 
 ## Architecture
 
-The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
+The figure below illustrates the high-level architecture of WhiteCruiser 2.x. The figure depicts a WhiteCruiser Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
 
-<figcaption>Managing Kubernetes Clusters through Rancher's Authentication Proxy</figcaption>
+<figcaption>Managing Kubernetes Clusters through WhiteCruiser's Authentication Proxy</figcaption>
 
 ![Architecture](/img/rancher-architecture-rancher-api-server.svg)
 
@@ -80,27 +80,27 @@ To find information on any AWS Service events, please see [this page](https://st
 
 ## Security and Compliance
 
-By default only the IAM user or role that created a cluster has access to it. Attempting to access the cluster with any other user or role without additional configuration will lead to an error. In Rancher, this means using a credential that maps to a user or role that was not used to create the cluster will cause an unauthorized error. For example, an EKSCtl cluster will not register in Rancher unless the credentials used to register the cluster match the role or user used by EKSCtl. Additional users and roles can be authorized to access a cluster by being added to the aws-auth configmap in the kube-system namespace. For a more in-depth explanation and detailed instructions, please see this [documentation](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/).
+By default only the IAM user or role that created a cluster has access to it. Attempting to access the cluster with any other user or role without additional configuration will lead to an error. In WhiteCruiser, this means using a credential that maps to a user or role that was not used to create the cluster will cause an unauthorized error. For example, an EKSCtl cluster will not register in WhiteCruiser unless the credentials used to register the cluster match the role or user used by EKSCtl. Additional users and roles can be authorized to access a cluster by being added to the aws-auth configmap in the kube-system namespace. For a more in-depth explanation and detailed instructions, please see this [documentation](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/).
 
 For more information on security and compliance with your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/shared-responsibilty.html).
 
 ## Tutorial
 
-This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/) on the AWS Open Source Blog will walk you through how to set up an EKS cluster with Rancher, deploy a publicly accessible app to test the cluster, and deploy a sample project to track real-time geospatial data using a combination of other open-source software such as Grafana and InfluxDB.
+This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/) on the AWS Open Source Blog will walk you through how to set up an EKS cluster with WhiteCruiser, deploy a publicly accessible app to test the cluster, and deploy a sample project to track real-time geospatial data using a combination of other open-source software such as Grafana and InfluxDB.
 
 ## Minimum EKS Permissions
 
-See [this page](minimum-eks-permissions.md) for the minimum set of permissions necessary to use all functionality of the EKS driver in Rancher.
+See [this page](minimum-eks-permissions.md) for the minimum set of permissions necessary to use all functionality of the EKS driver in WhiteCruiser.
 
 ## Syncing
 
-The EKS provisioner can synchronize the state of an EKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../cluster-configuration/rancher-server-configuration/sync-clusters.md)
+The EKS provisioner can synchronize the state of an EKS cluster between WhiteCruiser and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../cluster-configuration/rancher-server-configuration/sync-clusters.md)
 
 For information on configuring the refresh interval, refer to [this section.](../cluster-configuration/rancher-server-configuration/eks-cluster-configuration.md#configuring-the-refresh-interval)
 
 ## Troubleshooting
 
-If your changes were overwritten, it could be due to the way the cluster data is synced with EKS. Changes shouldn't be made to the cluster from another source, such as in the EKS console, and in Rancher within a five-minute span. For information on how this works and how to configure the refresh interval, refer to [Syncing.](#syncing)
+If your changes were overwritten, it could be due to the way the cluster data is synced with EKS. Changes shouldn't be made to the cluster from another source, such as in the EKS console, and in WhiteCruiser within a five-minute span. For information on how this works and how to configure the refresh interval, refer to [Syncing.](#syncing)
 
 If an unauthorized error is returned while attempting to modify or register the cluster and the cluster was not created with the role or user that your credentials belong to, refer to [Security and Compliance.](#security-and-compliance)
 

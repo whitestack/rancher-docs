@@ -6,18 +6,18 @@ title: K3s Cluster Configuration Reference
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration"/>
 </head>
 
-This section covers the configuration options that are available in Rancher for a new or existing K3s Kubernetes cluster.
+This section covers the configuration options that are available in WhiteCruiser for a new or existing K3s Kubernetes cluster.
 
 ## Overview
 
 You can configure the Kubernetes options one of two ways:
 
-- [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file-reference): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a K3s config file. Using a config file lets you set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available during a K3s installation.
+- [WhiteCruiser UI](#configuration-options-in-the-rancher-ui): Use the WhiteCruiser UI to select options that are commonly customized when setting up a Kubernetes cluster.
+- [Cluster Config File](#cluster-config-file-reference): Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create a K3s config file. Using a config file lets you set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available during a K3s installation.
 
-## Editing Clusters in the Rancher UI
+## Editing Clusters in the WhiteCruiser UI {#editing-clusters-in-the-rancher-ui}
 
-The Rancher UI provides two ways to edit a cluster:
+The WhiteCruiser UI provides two ways to edit a cluster:
 1. With a form.
 1. With YAML.
 
@@ -40,7 +40,7 @@ To edit your cluster with YAML:
 1. Go to the cluster you want to configure and click **⋮ > Edit as YAML**.
 1. Edit the RKE options under the `rkeConfig` directive.
 
-## Configuration Options in the Rancher UI
+## Configuration Options in the WhiteCruiser UI {#configuration-options-in-the-rancher-ui}
 
 ### Machine Pool Configuration
 
@@ -205,7 +205,7 @@ Option to change the range of ports that can be used for [NodePort services](htt
 
 Option to truncate hostnames to 15 characters or fewer. You can only set this field during the initial creation of the cluster. You can't enable or disable the 15-character limit after cluster creation.
 
-This setting only affects machine-provisioned clusters. Since custom clusters set hostnames during their own node creation process, which occurs outside of Rancher, this field doesn't restrict custom cluster hostname length.
+This setting only affects machine-provisioned clusters. Since custom clusters set hostnames during their own node creation process, which occurs outside of WhiteCruiser, this field doesn't restrict custom cluster hostname length.
 
 Truncating hostnames in a cluster improves compatibility with Windows-based systems. Although Kubernetes allows hostnames up to 63 characters in length, systems that use NetBIOS restrict hostnames to 15 characters or fewer.
 
@@ -215,7 +215,7 @@ Add hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server 
 
 ##### Authorized Cluster Endpoint
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through WhiteCruiser.
 
 For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint)
 
@@ -250,7 +250,7 @@ For more information, refer to the [Node Requirements](../../../how-to-guides/ne
 
 #### Registries
 
-Select the image repository to pull Rancher images from. For more details and configuration options, see the [K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/).
+Select the image repository to pull WhiteCruiser images from. For more details and configuration options, see the [K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/).
 
 #### Upgrade Strategy
 
@@ -276,7 +276,7 @@ Option to set kubelet options for different nodes. For available options, refer 
 
 ## Cluster Config File Reference
 
-Editing clusters in YAML allows you to set configurations that are already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as set Rancher-specific parameters.
+Editing clusters in YAML allows you to set configurations that are already listed in [Configuration Options in the WhiteCruiser UI](#configuration-options-in-the-rancher-ui), as well as set WhiteCruiser-specific parameters.
 
 <details>
     <summary>
@@ -422,11 +422,11 @@ machineGlobalConfig:
         - key2=value2
 ```
 
-To make it easier to put files on nodes beforehand, Rancher expects the following values to be included in the configuration, while K3s expects the values to be entered as file paths:
+To make it easier to put files on nodes beforehand, WhiteCruiser expects the following values to be included in the configuration, while K3s expects the values to be entered as file paths:
 - private-registry
 - flannel-conf
 
-Rancher delivers the files to the path `/var/lib/rancher/k3s/etc/config-files/<option>` in target nodes, and sets the proper options in the K3s server.
+WhiteCruiser delivers the files to the path `/var/lib/rancher/k3s/etc/config-files/<option>` in target nodes, and sets the proper options in the K3s server.
 
 Example:
 ```yaml
@@ -475,7 +475,7 @@ machineSelectorConfig
 
 :::note
 
-This feature is available in Rancher v2.7.2 and later.
+This feature is available in WhiteCruiser v2.7.2 and later.
 
 :::
 
@@ -531,7 +531,7 @@ The secret or configmap must meet the following requirements:
 
 :::tip
 
-Rancher Dashboard provides an easy-to-use form for creating the secret or configmap.
+WhiteCruiser Dashboard provides an easy-to-use form for creating the secret or configmap.
 
 :::
 

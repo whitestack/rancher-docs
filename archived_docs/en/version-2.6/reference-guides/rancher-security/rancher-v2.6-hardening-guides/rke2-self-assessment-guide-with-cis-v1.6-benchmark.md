@@ -1,24 +1,24 @@
 ---
-title: RKE2 CIS v1.6 Benchmark - Self-Assessment Guide - Rancher v2.6
+title: RKE2 CIS v1.6 Benchmark - Self-Assessment Guide - WhiteCruiser v2.6
 ---
 
-### CIS v1.6 Kubernetes Benchmark - Rancher v2.6 RKE2 with Kubernetes v1.21 up to v1.23
+### CIS v1.6 Kubernetes Benchmark - WhiteCruiser v2.6 RKE2 with Kubernetes v1.21 up to v1.23 {#cis-v16-kubernetes-benchmark---rancher-v26-rke2-with-kubernetes-v121-up-to-v123}
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.6/Rancher_RKE2_v2-6_CIS_v1-6_Benchmark_Assessment.pdf).
 
 #### Overview
 
-This document is a companion to the [Rancher v2.6 RKE2 security hardening guide](rke2-hardening-guide-with-cis-v1.6-benchmark.md). The hardening guide provides prescriptive guidance for hardening a production installation of Rancher with RKE2 provisioned clusters, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+This document is a companion to the [WhiteCruiser v2.6 RKE2 security hardening guide](rke2-hardening-guide-with-cis-v1.6-benchmark.md). The hardening guide provides prescriptive guidance for hardening a production installation of WhiteCruiser with RKE2 provisioned clusters, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
-This guide corresponds to specific versions of the hardening guide, Rancher, CIS Benchmark and Kubernetes:
+This guide corresponds to specific versions of the hardening guide, WhiteCruiser, CIS Benchmark and Kubernetes:
 
-| Hardening Guide Version | Rancher Version | CIS Benchmark Version |  Kubernetes Version |
+| Hardening Guide Version | WhiteCruiser Version | CIS Benchmark Version |  Kubernetes Version |
 | ----------------------- | --------------- | --------------------- | ------------------- |
-| Hardening Guide CIS v1.6 Benchmark | Rancher v2.6.5+ | CIS v1.6 | Kubernetes v1.21 up to v1.23 |
+| Hardening Guide CIS v1.6 Benchmark | WhiteCruiser v2.6.5+ | CIS v1.6 | Kubernetes v1.21 up to v1.23 |
 
-Because Rancher and RKE2 install Kubernetes services as containers, many of the control verification checks in the CIS Kubernetes Benchmark do not apply and will have a result of `Not Applicable`. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher created clusters.
+Because WhiteCruiser and RKE2 install Kubernetes services as containers, many of the control verification checks in the CIS Kubernetes Benchmark do not apply and will have a result of `Not Applicable`. This guide will walk through the various controls and provide updated example commands to audit compliance in WhiteCruiser created clusters.
 
-This document is to be used by Rancher operators, security teams, auditors and decision makers.
+This document is to be used by WhiteCruiser operators, security teams, auditors and decision makers.
 
 For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.6. You can download the benchmark, after creating a free account, in [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/kubernetes/).
 
@@ -26,7 +26,7 @@ For more detail about each audit, including rationales and remediations for fail
 
 RKE2 launches control plane components as static pods, managed by the kubelet, and uses containerd as the container runtime. Configuration is defined by arguments passed to the container at the time of initialization or via configuration file.
 
-Where control audits differ from the original CIS benchmark, the audit commands specific to Rancher are provided for testing. When performing the tests, you will need access to the command line on the hosts of all RKE2 nodes. The commands also make use of the [kubectl](https://kubernetes.io/docs/tasks/tools/) (with a valid configuration file) and [jq](https://stedolan.github.io/jq/) tools, which are required in the testing and evaluation of test results.
+Where control audits differ from the original CIS benchmark, the audit commands specific to WhiteCruiser are provided for testing. When performing the tests, you will need access to the command line on the hosts of all RKE2 nodes. The commands also make use of the [kubectl](https://kubernetes.io/docs/tasks/tools/) (with a valid configuration file) and [jq](https://stedolan.github.io/jq/) tools, which are required in the testing and evaluation of test results.
 
 :::note
 

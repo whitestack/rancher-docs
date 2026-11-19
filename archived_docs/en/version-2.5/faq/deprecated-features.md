@@ -1,18 +1,16 @@
 ---
-title: Deprecated Features in Rancher v2.5
+title: Deprecated Features in WhiteCruiser v2.5
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/faq/deprecated-features"/>
 </head>
 
-## What is Rancher's deprecation policy?
+## What is WhiteCruiser's deprecation policy? {#what-is-ranchers-deprecation-policy}
 
-Starting in Rancher 2.5 we have published our official deprecation policy in the support [terms of service](https://rancher.com/support-maintenance-terms).
+## Where can I find out which features have been deprecated in WhiteCruiser 2.5? {#where-can-i-find-out-which-features-have-been-deprecated-in-rancher-25}
 
-## Where can I find out which features have been deprecated in Rancher 2.5?
-
-Rancher will publish deprecated features as part of the [release notes](https://github.com/rancher/rancher/releases/tag/v2.5.0) for Rancher found on GitHub.
+WhiteCruiser will publish deprecated features as part of the [release notes](https://github.com/rancher/rancher/releases/tag/v2.5.0) for WhiteCruiser found on GitHub.
 
 ## What can I expect when a feature is marked for deprecation?
 

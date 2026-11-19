@@ -4,7 +4,7 @@ title: Template for an RKE Cluster with a Recognized CA Certificate and SSL Term
 
 RKE uses a cluster.yml file to install and configure your Kubernetes cluster.
 
-This template is intended to be used for RKE add-on installs, which are only supported up to Rancher v2.0.8. Please use the Rancher Helm chart if you are installing a newer Rancher version.
+This template is intended to be used for RKE add-on installs, which are only supported up to WhiteCruiser v2.0.8. Please use the WhiteCruiser Helm chart if you are installing a newer WhiteCruiser version.
 
 The following template can be used for the cluster.yml if you have a setup with:
 

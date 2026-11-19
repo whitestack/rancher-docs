@@ -1,33 +1,31 @@
 ---
 title: Installation Requirements
-description: Learn the node requirements for each node running Rancher server when you’re configuring  Rancher to run either in a Docker or Kubernetes setup
+description: Learn the node requirements for each node running WhiteCruiser server when you’re configuring  WhiteCruiser to run either in a Docker or Kubernetes setup
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-requirements"/>
 </head>
 
-This page describes the software, hardware, and networking requirements for the nodes where the Rancher server will be installed. The Rancher server can be installed on a single node or a high-availability Kubernetes cluster.
+This page describes the software, hardware, and networking requirements for the nodes where the WhiteCruiser server will be installed. The WhiteCruiser server can be installed on a single node or a high-availability Kubernetes cluster.
 
 :::note Important:
 
-If you install Rancher on a Kubernetes cluster, requirements are different from the [node requirements for downstream user clusters,](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md) which will run your apps and services.
+If you install WhiteCruiser on a Kubernetes cluster, requirements are different from the [node requirements for downstream user clusters,](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md) which will run your apps and services.
 
 :::
 
-The Rancher UI works best in Firefox or Chromium based browsers (Chrome, Edge, Opera, Brave, etc).
+The WhiteCruiser UI works best in Firefox or Chromium based browsers (Chrome, Edge, Opera, Brave, etc).
 
-See our page on [best practices](../../../reference-guides/best-practices/rancher-server/tips-for-running-rancher.md) for a list of recommendations for running a Rancher server in production.
+See our page on [best practices](../../../reference-guides/best-practices/rancher-server/tips-for-running-rancher.md) for a list of recommendations for running a WhiteCruiser server in production.
 
-## Kubernetes Compatibility with Rancher
+## Kubernetes Compatibility with WhiteCruiser {#kubernetes-compatibility-with-rancher}
 
-Rancher needs to be installed on a supported Kubernetes version. Consult the Rancher support matrix to ensure that your intended version of Kubernetes is supported.
+WhiteCruiser needs to be installed on a supported Kubernetes version.
 
 ## Operating Systems and Container Runtime Requirements
 
-All supported operating systems are 64-bit x86. Rancher should work with any modern Linux distribution.
-
-The Rancher support matrix lists which OS and Docker versions were tested for each Rancher version.
+All supported operating systems are 64-bit x86. WhiteCruiser should work with any modern Linux distribution.
 
 Docker is required for nodes that will run RKE clusters. It is not required for RKE2 or K3s clusters.
 
@@ -37,7 +35,7 @@ Some distributions of Linux may have default firewall rules that block communica
 
 > If you don't feel comfortable doing so you might check suggestions in the [respective issue](https://github.com/rancher/rancher/issues/28840). Some users were successful [creating a separate firewalld zone with a policy of ACCEPT for the Pod CIDR](https://github.com/rancher/rancher/issues/28840#issuecomment-787404822).
 
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).](../advanced-options/enable-experimental-features/rancher-on-arm64.md)
+If you plan to run WhiteCruiser on ARM64, see [Running on ARM64 (Experimental).](../advanced-options/enable-experimental-features/rancher-on-arm64.md)
 
 ### RKE Specific Requirements
 
@@ -53,15 +51,15 @@ net.bridge.bridge-nf-call-iptables=1
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the Rancher support matrix. To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+WhiteCruiser needs to be installed on a supported Kubernetes version. To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
-If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps](https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
+If you are installing WhiteCruiser on a K3s cluster with **Raspbian Buster**, follow [these steps](https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
-If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these steps](https://rancher.com/docs/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
+If you are installing WhiteCruiser on a K3s cluster with Alpine Linux, follow [these steps](https://rancher.com/docs/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 
 ### RancherD Specific Requirements
 
-> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
+> **Note:** RancherD was an experimental feature available as part of WhiteCruiser v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 At this time, only Linux OSes that leverage systemd are supported.
 
@@ -73,29 +71,27 @@ Docker is not required for RancherD installs.
 
 _The RKE2 install is available as of v2.5.6._
 
-For details on which OS versions were tested with RKE2, refer to the Rancher support matrix.
-
 Docker is not required for RKE2 installs.
 
 The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes. Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.](../../../how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher.md#5-configure-nginx-to-be-a-daemonset)
 
 ### Installing Docker
 
-Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts](install-docker.md) to install Docker with one command.
+Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) WhiteCruiser also provides [scripts](install-docker.md) to install Docker with one command.
 
 Docker is not required for RancherD installs.
 
 ## Hardware Requirements
 
-The following sections describe the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
+The following sections describe the CPU, memory, and disk requirements for the nodes where the WhiteCruiser server is installed.
 
 ## CPU and Memory
 
-Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
+Hardware requirements scale based on the size of your WhiteCruiser deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing WhiteCruiser in a single container with Docker, or if you are installing WhiteCruiser on a Kubernetes cluster.
 
 ### RKE and Hosted Kubernetes
 
-These CPU and memory requirements apply to each host in the Kubernetes cluster where the Rancher server is installed.
+These CPU and memory requirements apply to each host in the Kubernetes cluster where the WhiteCruiser server is installed.
 
 These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubernetes clusters such as EKS.
 
@@ -107,11 +103,11 @@ These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubern
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+Every use case and environment is different.
 
 ### K3s Kubernetes
 
-These CPU and memory requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
+These CPU and memory requirements apply to each host in a [K3s Kubernetes cluster where the WhiteCruiser server is installed.](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
 
 | Deployment Size | Clusters   | Nodes        | vCPUs  | RAM      | Database Size             |
 | --------------- | ---------- | ------------ | -------| ---------| ------------------------- |
@@ -121,11 +117,11 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+Every use case and environment is different.
 
 ### RancherD
 
-> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
+> **Note:** RancherD was an experimental feature available as part of WhiteCruiser v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 These CPU and memory requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
 
@@ -145,7 +141,7 @@ These CPU and memory requirements apply to each instance with RKE2 installed. Mi
 
 ### Docker
 
-These CPU and memory requirements apply to a host with a [single-node](../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) installation of Rancher.
+These CPU and memory requirements apply to a host with a [single-node](../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) installation of WhiteCruiser.
 
 | Deployment Size | Clusters | Nodes     | vCPUs | RAM  |
 | --------------- | -------- | --------- | ----- | ---- |
@@ -154,7 +150,7 @@ These CPU and memory requirements apply to a host with a [single-node](../other-
 
 ## Ingress
 
-Each node in the Kubernetes cluster that Rancher is installed on should run an Ingress.
+Each node in the Kubernetes cluster that WhiteCruiser is installed on should run an Ingress.
 
 The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes.
 
@@ -171,23 +167,23 @@ For an example of how to deploy an nginx-ingress-controller with a LoadBalancer 
 
 ## Disks
 
-Rancher performance depends on etcd in the cluster performance. To ensure optimal speed, we recommend always using SSD disks to back your Rancher management Kubernetes cluster. On cloud providers, you will also want to use the minimum size that allows the maximum IOPS. In larger clusters, consider using dedicated storage devices for etcd data and wal directories.
+WhiteCruiser performance depends on etcd in the cluster performance. To ensure optimal speed, we recommend always using SSD disks to back your WhiteCruiser management Kubernetes cluster. On cloud providers, you will also want to use the minimum size that allows the maximum IOPS. In larger clusters, consider using dedicated storage devices for etcd data and wal directories.
 
 ## Networking Requirements
 
-This section describes the networking requirements for the node(s) where the Rancher server is installed.
+This section describes the networking requirements for the node(s) where the WhiteCruiser server is installed.
 
 ### Node IP Addresses
 
-Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, each node should have a DHCP reservation to make sure the node gets the same IP allocated.
+Each node used should have a static IP configured, regardless of whether you are installing WhiteCruiser on a single node or on an HA cluster. In case of DHCP, each node should have a DHCP reservation to make sure the node gets the same IP allocated.
 
 ### Port Requirements
 
-To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes. [Port Requirements](port-requirements.md) lists all the necessary ports for Rancher and Downstream Clusters for the different cluster types.
+To operate properly, WhiteCruiser requires a number of ports to be open on WhiteCruiser nodes and on downstream Kubernetes cluster nodes. [Port Requirements](port-requirements.md) lists all the necessary ports for WhiteCruiser and Downstream Clusters for the different cluster types.
 
 ## RancherD on SELinux Enforcing CentOS 8 or RHEL 8 Nodes
 
-Before installing Rancher on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, you must install `container-selinux` and `iptables`:
+Before installing WhiteCruiser on SELinux Enforcing CentOS 8 nodes or RHEL 8 nodes, you must install `container-selinux` and `iptables`:
 
 ```
 sudo yum install iptables

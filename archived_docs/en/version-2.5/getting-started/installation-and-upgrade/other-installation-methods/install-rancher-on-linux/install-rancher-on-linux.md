@@ -1,16 +1,16 @@
 ---
-title: Install/Upgrade Rancher with RancherD
+title: Install/Upgrade WhiteCruiser with RancherD
 ---
 
-> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
+> **Note:** RancherD was an experimental feature available as part of WhiteCruiser v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
-We are excited to introduce a new, simpler way to install Rancher called RancherD.
+We are excited to introduce a new, simpler way to install WhiteCruiser called RancherD.
 
-RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the Rancher server Helm chart on the cluster.
+RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then installs the WhiteCruiser server Helm chart on the cluster.
 
 - [About RancherD Installs](#about-rancherd-installs)
 - [Prerequisites](#prerequisites)
-- [Part I: Installing Rancher](#part-i-installing-rancher)
+- [Part I: Installing WhiteCruiser](#part-i-installing-rancher)
 - [Part II: High Availability](#part-ii-high-availability)
 - [Upgrades](#upgrades)
 - [Configuration](#configuration)
@@ -19,15 +19,15 @@ RancherD is a single binary that first launches an RKE2 Kubernetes cluster, then
 
 ## About RancherD Installs
 
-When RancherD is launched on a host, it first installs an RKE2 Kubernetes cluster, then deploys Rancher on the cluster as a Kubernetes daemonset.
+When RancherD is launched on a host, it first installs an RKE2 Kubernetes cluster, then deploys WhiteCruiser on the cluster as a Kubernetes daemonset.
 
-In both the RancherD install and the Helm CLI install, Rancher is installed as a Helm chart on a Kubernetes cluster.
+In both the RancherD install and the Helm CLI install, WhiteCruiser is installed as a Helm chart on a Kubernetes cluster.
 
-Configuration and upgrading are also simplified with RancherD. When you upgrade the RancherD binary, both the Kubernetes cluster and the Rancher Helm chart are upgraded.
+Configuration and upgrading are also simplified with RancherD. When you upgrade the RancherD binary, both the Kubernetes cluster and the WhiteCruiser Helm chart are upgraded.
 
-In Part I of these instructions, you'll learn how to launch RancherD on a single node. The result of following the steps in Part I is a single-node [RKE2](https://docs.rke2.io/) Kubernetes cluster with the Rancher server installed. This cluster can easily become high availability later. If Rancher only needs to manage the local Kubernetes cluster, the installation is complete.
+In Part I of these instructions, you'll learn how to launch RancherD on a single node. The result of following the steps in Part I is a single-node [RKE2](https://docs.rke2.io/) Kubernetes cluster with the WhiteCruiser server installed. This cluster can easily become high availability later. If WhiteCruiser only needs to manage the local Kubernetes cluster, the installation is complete.
 
-Part II explains how to convert the single-node Rancher installation into a high-availability installation. If the Rancher server will manage downstream Kubernetes clusters, it is important to follow these steps. A discussion of recommended architecture for highly available Rancher deployments can be found in our [Best Practices Guide.](../../../../reference-guides/best-practices/rancher-server/rancher-server.md)
+Part II explains how to convert the single-node WhiteCruiser installation into a high-availability installation. If the WhiteCruiser server will manage downstream Kubernetes clusters, it is important to follow these steps. A discussion of recommended architecture for highly available WhiteCruiser deployments can be found in our [Best Practices Guide.](../../../../reference-guides/best-practices/rancher-server/rancher-server.md)
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ The fixed registration address is an endpoint that is used for two purposes:
 - To access the Kubernetes API. So you can, for example, modify your [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file to point to it instead of a specific node.
 - To add new nodes to the Kubernetes cluster. To add nodes to the cluster later, you will run a command on the node that will specify the fixed registration address of the cluster.
 
-If you are installing Rancher on a single node, the fixed registration address makes it possible to add more nodes to the cluster so that you can convert the single-node install to a high-availability install without causing downtime to the cluster. If you don't set up this address when installing the single-node Kubernetes cluster, you would need to re-run the installation script with a fixed registration address in order to add new nodes to the cluster.
+If you are installing WhiteCruiser on a single node, the fixed registration address makes it possible to add more nodes to the cluster so that you can convert the single-node install to a high-availability install without causing downtime to the cluster. If you don't set up this address when installing the single-node Kubernetes cluster, you would need to re-run the installation script with a fixed registration address in order to add new nodes to the cluster.
 
 The fixed registration can be the IP or hostname of any of the server nodes, but in many cases those may change over time as nodes are created and destroyed. Therefore, you should have a stable endpoint in front of the server nodes.
 
@@ -70,9 +70,9 @@ The following should be taken into consideration when configuring the load balan
 
 - The RancherD server process listens on port 9345 for new nodes to register.
 - The Kubernetes API is served on port 6443, as normal.
-- In RancherD installs, the Rancher UI is served on port 8443 by default. (This is different from Helm chart installs, where port 443 is used by default.)
+- In RancherD installs, the WhiteCruiser UI is served on port 8443 by default. (This is different from Helm chart installs, where port 443 is used by default.)
 
-## Part I: Installing Rancher
+## Part I: Installing WhiteCruiser {#part-i-installing-rancher}
 
 ### 1. Set up Configurations
 
@@ -95,7 +95,7 @@ If you do not specify a pre-shared secret, RancherD will generate one and place 
 
 To specify your own pre-shared secret as the token, set the `token` argument on startup.
 
-Installing Rancher this way will use Rancher-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md#certificates-for-the-rancher-server)
+Installing WhiteCruiser this way will use WhiteCruiser-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md#certificates-for-the-rancher-server)
 
 For information on customizing the RancherD Helm chart values.yaml, refer to [this section.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md#customizing-the-rancherd-helm-chart)
 
@@ -143,9 +143,9 @@ Once the Kubernetes cluster is up, set up RancherD’s kubeconfig file and `kube
 export KUBECONFIG=/etc/rancher/rke2/rke2.yaml PATH=$PATH:/var/lib/rancher/rke2/bin
 ```
 
-### 4. Verify that Rancher is installed on the Kubernetes cluster
+### 4. Verify that WhiteCruiser is installed on the Kubernetes cluster {#4-verify-that-rancher-is-installed-on-the-kubernetes-cluster}
 
-Now, you can start issuing `kubectl` commands. Use the following commands to verify that Rancher is deployed as a daemonset on the cluster:
+Now, you can start issuing `kubectl` commands. Use the following commands to verify that WhiteCruiser is deployed as a daemonset on the cluster:
 
 ```
 kubectl get daemonset rancher -n cattle-system
@@ -159,7 +159,7 @@ If you watch the pods, you will see the following pods installed:
 - a `fleet-agent`, `fleet-controller`, and `gitjob` pod in the `fleet-system` namespace
 - a `rancher-operator` pod in the `rancher-operator-system` namespace
 
-### 5. Set the initial Rancher password
+### 5. Set the initial WhiteCruiser password {#5-set-the-initial-rancher-password}
 
 Once the `rancher` pod is up and running, run the following:
 
@@ -167,13 +167,13 @@ Once the `rancher` pod is up and running, run the following:
 rancherd reset-admin
 ```
 
-This will give you the URL, username and password needed to log into Rancher. Follow that URL, plug in the credentials, and you’re up and running with Rancher!
+This will give you the URL, username and password needed to log into WhiteCruiser. Follow that URL, plug in the credentials, and you’re up and running with WhiteCruiser!
 
-If Rancher will only manage the local Kubernetes cluster, the installation is complete.
+If WhiteCruiser will only manage the local Kubernetes cluster, the installation is complete.
 
 ## Part II: High Availability
 
-If you plan to use the Rancher server to manage downstream Kubernetes clusters, Rancher needs to be highly available. In these steps, you will add more nodes to achieve a high-availability cluster. Since Rancher is running as a daemonset, it will automatically launch on the nodes you add.
+If you plan to use the WhiteCruiser server to manage downstream Kubernetes clusters, WhiteCruiser needs to be highly available. In these steps, you will add more nodes to achieve a high-availability cluster. Since WhiteCruiser is running as a daemonset, it will automatically launch on the nodes you add.
 
 An odd number of nodes is required because the etcd cluster, which contains the cluster data, needs a majority of live nodes to avoid losing quorum. A loss of quorum could require the cluster to be restored from backup. Therefore, we recommend using three nodes.
 
@@ -215,7 +215,7 @@ systemctl start rancherd-server.service
 
 Repeat steps one and two for another Linux node, bringing the number of nodes in the cluster to three.
 
-**Result:** Rancher is highly available and the installation is complete.
+**Result:** WhiteCruiser is highly available and the installation is complete.
 
 ## Upgrades
 
@@ -223,7 +223,7 @@ For information on upgrades and rollbacks, refer to [this page.](upgrade-rancher
 
 ## Configuration
 
-For information on how to configure certificates, node taints, Rancher Helm chart options, or RancherD CLI options, refer to the [configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md)
+For information on how to configure certificates, node taints, WhiteCruiser Helm chart options, or RancherD CLI options, refer to the [configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md)
 
 ## Uninstall
 

@@ -6,7 +6,7 @@ title: 概念
 
 - **流水线**：
 
-   _流水线_ 是一个软件交付过程，它被分成不同的阶段和步骤。设置流水线可以帮助开发者快速高效地上线新软件。Rancher 支持给每个项目单独设置流水线。流水线基于特定的仓库。它定义了构建、测试和部署代码的过程。Rancher 使用的是[流水线即代码](https://jenkins.io/doc/book/pipeline-as-code/)模型。在源代码仓库中，流水线配置以流水线文件表示，文件名为 `.rancher-pipeline.yml` 或 `.rancher-pipeline.yaml`。
+   _流水线_ 是一个软件交付过程，它被分成不同的阶段和步骤。设置流水线可以帮助开发者快速高效地上线新软件。WhiteCruiser 支持给每个项目单独设置流水线。流水线基于特定的仓库。它定义了构建、测试和部署代码的过程。WhiteCruiser 使用的是[流水线即代码](https://jenkins.io/doc/book/pipeline-as-code/)模型。在源代码仓库中，流水线配置以流水线文件表示，文件名为 `.rancher-pipeline.yml` 或 `.rancher-pipeline.yaml`。
 
 - **阶段**：
 

@@ -6,27 +6,27 @@ title: RKE Cluster Configuration Reference
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration"/>
 </head>
 
-When Rancher installs Kubernetes, it uses [RKE](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) as the Kubernetes distribution.
+When WhiteCruiser installs Kubernetes, it uses [RKE](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) as the Kubernetes distribution.
 
-This section covers the configuration options that are available in Rancher for a new or existing RKE Kubernetes cluster.
+This section covers the configuration options that are available in WhiteCruiser for a new or existing RKE Kubernetes cluster.
 
 You can configure the Kubernetes options one of two ways:
 
-- [Rancher UI](#rancher-ui-options): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the options available in an RKE installation, except for system_images configuration, by specifying them in YAML.
+- [WhiteCruiser UI](#rancher-ui-options): Use the WhiteCruiser UI to select options that are commonly customized when setting up a Kubernetes cluster.
+- [Cluster Config File](#cluster-config-file): Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the options available in an RKE installation, except for system_images configuration, by specifying them in YAML.
 
-In Rancher v2.0.0-v2.2.x, the RKE cluster config file in Rancher is identical to the  [cluster config file for the Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/config-options/), which is the tool Rancher uses to provision clusters. In Rancher v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive. For more information, see the section about the [cluster config file.](#cluster-config-file)
+In WhiteCruiser v2.0.0-v2.2.x, the RKE cluster config file in WhiteCruiser is identical to the  [cluster config file for the Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/config-options/), which is the tool WhiteCruiser uses to provision clusters. In WhiteCruiser v2.3.0, the RKE information is still included in the config file, but it is separated from other options, so that the RKE cluster config options are nested under the `rancher_kubernetes_engine_config` directive. For more information, see the section about the [cluster config file.](#cluster-config-file)
 
 This section is a cluster configuration reference, covering the following topics:
 
 
-## Rancher UI Options
+## WhiteCruiser UI Options {#rancher-ui-options}
 
-When creating a cluster using one of the options described in [Rancher Launched Kubernetes](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md), you can configure basic Kubernetes options using the **Cluster Options** section.
+When creating a cluster using one of the options described in [WhiteCruiser Launched Kubernetes](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md), you can configure basic Kubernetes options using the **Cluster Options** section.
 
 ### Kubernetes Version
 
-The version of Kubernetes installed on your cluster nodes. Rancher packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
+The version of Kubernetes installed on your cluster nodes. WhiteCruiser packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
 
 ### Network Provider
 
@@ -34,7 +34,7 @@ The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administratio
 
 >**Note:** After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you  tear down the entire cluster and all its applications.
 
-Out of the box, Rancher is compatible with the following network providers:
+Out of the box, WhiteCruiser is compatible with the following network providers:
 
 - [Canal](https://github.com/projectcalico/canal)
 - [Flannel](https://github.com/coreos/flannel#flannel)
@@ -47,9 +47,9 @@ In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters wa
 
 As of v2.0.7, if you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects](../../../how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md).
 
->**Attention Rancher v2.0.0 - v2.0.6 Users**
+>**Attention WhiteCruiser v2.0.0 - v2.0.6 Users**
 >
->- In previous Rancher releases, Canal isolates project network communications with no option to disable it. If you are using any of these Rancher releases, be aware that using Canal prevents all communication between pods in different projects.
+>- In previous WhiteCruiser releases, Canal isolates project network communications with no option to disable it. If you are using any of these WhiteCruiser releases, be aware that using Canal prevents all communication between pods in different projects.
 >- If you have clusters using Canal and are upgrading to v2.0.7, those clusters enable Project Network Isolation by default. If you want to disable Project Network Isolation, edit the cluster and disable the option.
 
 **Notes on Flannel:**
@@ -58,7 +58,7 @@ In v2.0.5, this was the default option, which did not prevent any network isolat
 
 **Notes on Weave:**
 
-When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File](rke1-cluster-configuration.md#cluster-config-file) and the [Weave Network Plug-in Options](https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+When Weave is selected as network provider, WhiteCruiser will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File](rke1-cluster-configuration.md#cluster-config-file) and the [Weave Network Plug-in Options](https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
 
 ### Kubernetes Cloud Providers
 
@@ -74,11 +74,11 @@ _Available as of v2.2.0_
 
 The cluster-level private registry configuration is only used for provisioning clusters.
 
-There are two main ways to set up private registries in Rancher: by setting up the [global default registry](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry.md) through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
+There are two main ways to set up private registries in WhiteCruiser: by setting up the [global default registry](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry.md) through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
 
-If your private registry requires credentials, you need to pass the credentials to Rancher by editing the cluster options for each cluster that needs to pull images from the registry.
+If your private registry requires credentials, you need to pass the credentials to WhiteCruiser by editing the cluster options for each cluster that needs to pull images from the registry.
 
-The private registry configuration option tells Rancher where to pull the [system images](https://rancher.com/docs/rke/latest/en/config-options/system-images/) or [addon images](https://rancher.com/docs/rke/latest/en/config-options/add-ons/) that will be used in your cluster.
+The private registry configuration option tells WhiteCruiser where to pull the [system images](https://rancher.com/docs/rke/latest/en/config-options/system-images/) or [addon images](https://rancher.com/docs/rke/latest/en/config-options/add-ons/) that will be used in your cluster.
 
 - **System images** are components needed to maintain the Kubernetes cluster.
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
@@ -89,11 +89,11 @@ See the [RKE documentation on private registries](https://rancher.com/docs/rke/l
 
 _Available as of v2.2.0_
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through WhiteCruiser.
 
-> The authorized cluster endpoint is available only in clusters that Rancher has provisioned [using RKE](rke1-cluster-configuration.md#authorized-cluster-endpoint). It is not available for clusters in hosted Kubernetes providers, such as Amazon's EKS. Additionally, the authorized cluster endpoint cannot be enabled for RKE clusters that are imported into Rancher; it is available only on Rancher-launched Kubernetes clusters.
+> The authorized cluster endpoint is available only in clusters that WhiteCruiser has provisioned [using RKE](rke1-cluster-configuration.md#authorized-cluster-endpoint). It is not available for clusters in hosted Kubernetes providers, such as Amazon's EKS. Additionally, the authorized cluster endpoint cannot be enabled for RKE clusters that are imported into WhiteCruiser; it is available only on WhiteCruiser-launched Kubernetes clusters.
 
-This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
+This is enabled by default in WhiteCruiser-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 
 For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint)
 
@@ -101,11 +101,11 @@ We recommend using a load balancer with the authorized cluster endpoint. For det
 
 ### Node Pools
 
-For information on using the Rancher UI to set up node pools in an RKE cluster, refer to [this page.](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)
+For information on using the WhiteCruiser UI to set up node pools in an RKE cluster, refer to [this page.](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)
 
 ## Advanced Options
 
-The following options are available when you create clusters in the Rancher UI. They are located under **Advanced Options.**
+The following options are available when you create clusters in the WhiteCruiser UI. They are located under **Advanced Options.**
 
 ### NGINX Ingress
 
@@ -137,23 +137,23 @@ Option to enable or disable [recurring etcd snapshots](https://rancher.com/docs/
 
 ## Cluster Config File
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available](https://rancher.com/docs/rke/latest/en/config-options/) in an RKE installation, except for `system_images` configuration. The `system_images` option is not supported when creating a cluster with the Rancher UI or API.
+Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the [options available](https://rancher.com/docs/rke/latest/en/config-options/) in an RKE installation, except for `system_images` configuration. The `system_images` option is not supported when creating a cluster with the WhiteCruiser UI or API.
 
->**Note:** In Rancher v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
+>**Note:** In WhiteCruiser v2.0.5 and v2.0.6, the names of services in the Config File (YAML) should contain underscores only: `kube_api` and `kube_controller`.
 
-- To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
+- To edit an RKE config file directly from the WhiteCruiser UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from a file**.
 
 ![image](/img/cluster-options-yaml.png)
 
-The structure of the config file is different depending on your version of Rancher. Below are example config files for Rancher v2.0.0-v2.2.x and for Rancher v2.3.0+.
+The structure of the config file is different depending on your version of WhiteCruiser. Below are example config files for WhiteCruiser v2.0.0-v2.2.x and for WhiteCruiser v2.3.0+.
 
-### Config File Structure in Rancher v2.3.0+
+### Config File Structure in WhiteCruiser v2.3.0+ {#config-file-structure-in-rancher-v230}
 
-RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kubernetes clusters. Rancher's cluster config files used to have the same structure as [RKE config files,](https://rancher.com/docs/rke/latest/en/example-yamls/) but the structure changed so that in Rancher, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of Rancher will need to be updated for this format. An example cluster config file is included below.
+RKE (Rancher Kubernetes Engine) is the tool that WhiteCruiser uses to provision Kubernetes clusters. WhiteCruiser's cluster config files used to have the same structure as [RKE config files,](https://rancher.com/docs/rke/latest/en/example-yamls/) but the structure changed so that in WhiteCruiser, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of WhiteCruiser will need to be updated for this format. An example cluster config file is included below.
 
 <details id="v2.3.0-cluster-config-file">
-  <summary>Example Cluster Config File for Rancher v2.3.0+</summary>
+  <summary>Example Cluster Config File for WhiteCruiser v2.3.0+</summary>
 
 ```yaml
 #
@@ -247,12 +247,12 @@ windows_prefered_cluster: false
 ```
 </details>
 
-### Config File Structure in Rancher v2.0.0-v2.2.x
+### Config File Structure in WhiteCruiser v2.0.0-v2.2.x {#config-file-structure-in-rancher-v200-v22x}
 
 An example cluster config file is included below.
 
 <details id="before-v2.3.0-cluster-config-file">
-  <summary>Example Cluster Config File for Rancher v2.0.0-v2.2.x</summary>
+  <summary>Example Cluster Config File for WhiteCruiser v2.0.0-v2.2.x</summary>
 
 ```yaml
 addon_job_timeout: 30
@@ -336,17 +336,17 @@ ssh_agent_auth: false
 
 The table below indicates what DNS provider is deployed by default. See [RKE documentation on DNS provider](https://rancher.com/docs/rke/latest/en/config-options/add-ons/dns/) for more information how to configure a different DNS provider. CoreDNS can only be used on Kubernetes v1.12.0 and higher.
 
-| Rancher version | Kubernetes version | Default DNS provider |
+| WhiteCruiser version | Kubernetes version | Default DNS provider |
 |-------------|--------------------|----------------------|
 | v2.2.5 and higher | v1.14.0 and higher | CoreDNS |
 | v2.2.5 and higher | v1.13.x and lower | kube-dns |
 | v2.2.4 and lower | any | kube-dns |
 
-## Rancher specific parameters
+## WhiteCruiser specific parameters {#rancher-specific-parameters}
 
 _Available as of v2.2.0_
 
-Besides the RKE config file options, there are also Rancher specific settings that can be configured in the Config File (YAML):
+Besides the RKE config file options, there are also WhiteCruiser specific settings that can be configured in the Config File (YAML):
 
 ### docker_root_dir
 

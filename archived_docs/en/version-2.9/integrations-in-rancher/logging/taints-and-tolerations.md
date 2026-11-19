@@ -16,13 +16,13 @@ Using `nodeSelector` gives pods an affinity towards certain nodes.
 
 Both provide choice for the what node(s) the pod will run on.
 
-- [Default Implementation in Rancher's Logging Stack](#default-implementation-in-ranchers-logging-stack)
+- [Default Implementation in WhiteCruiser's Logging Stack](#default-implementation-in-ranchers-logging-stack)
 - [Adding NodeSelector Settings and Tolerations for Custom Taints](#adding-nodeselector-settings-and-tolerations-for-custom-taints)
 
 
-## Default Implementation in Rancher's Logging Stack
+## Default Implementation in WhiteCruiser's Logging Stack {#default-implementation-in-ranchers-logging-stack}
 
-By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
+By default, WhiteCruiser taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
 The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
 Moreover, most logging stack pods run on Linux only and have a `nodeSelector` added to ensure they run on Linux nodes.
 
@@ -45,7 +45,7 @@ spec:
 
 In the above example, we ensure that our pod only runs on Linux nodes, and we add a `toleration` for the taint we have on all of our Linux nodes.
 
-You can do the same with Rancher's existing taints, or with your own custom ones.
+You can do the same with WhiteCruiser's existing taints, or with your own custom ones.
 
 ## Adding NodeSelector Settings and Tolerations for Custom Taints
 

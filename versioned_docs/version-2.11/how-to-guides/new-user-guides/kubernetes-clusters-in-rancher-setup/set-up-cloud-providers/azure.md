@@ -79,13 +79,13 @@ The last thing you will need to do, is assign the appropriate permissions to you
 
 A custom Azure Network Security Group (securityGroupName) is needed to allow Azure Load Balancers to work.
 
-If you provision hosts using Rancher Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
+If you provision hosts using WhiteCruiser Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
 
 You should already assign custom hosts to this Network Security Group during provisioning.
 
 Only hosts expected to be load balancer back ends need to be in this group.
 
-## RKE2 Cluster Set-up in Rancher
+## RKE2 Cluster Set-up in WhiteCruiser {#rke2-cluster-set-up-in-rancher}
 
 :::note Important: 
 This section is valid only for creating clusters with the in-tree cloud provider. 
@@ -93,7 +93,7 @@ This section is valid only for creating clusters with the in-tree cloud provider
 
 1. Choose "Azure" from the Cloud Provider drop-down in the Cluster Configuration section.
 
-2. Supply the Cloud Provider Configuration. Note that Rancher automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you must specify them before creating the cluster.
+2. Supply the Cloud Provider Configuration. Note that WhiteCruiser automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you must specify them before creating the cluster.
    * Click **Show Advanced** to view or edit these automatically generated names. Your Cloud Provider Configuration **must** match the fields in the **Machine Pools** section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group.
    * An example is provided below. Modify it as needed.
 
@@ -130,7 +130,7 @@ This section is valid only for creating clusters with the in-tree cloud provider
 
 ## Cloud Provider Configuration
 
-Rancher automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. You can check **RKE1 Node Templates** or **RKE2 Machine Pools** to view or edit these automatically generated names.
+WhiteCruiser automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. You can check **RKE1 Node Templates** or **RKE2 Machine Pools** to view or edit these automatically generated names.
 
 **Refer to the full list of configuration options in the [upstream docs](https://cloud-provider-azure.sigs.k8s.io/install/configs/).**
 
@@ -187,7 +187,7 @@ stringData:
 
 2. Under **Cluster Configuration > Advanced**, click **Add** under **Additional Controller Manager Args** and add this flag: `--configure-cloud-routes=false`.
 
-3. Prepare the Cloud Provider Configuration to set it in the next step. Note that Rancher automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you must specify them before creating the cluster.
+3. Prepare the Cloud Provider Configuration to set it in the next step. Note that WhiteCruiser automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you must specify them before creating the cluster.
 
     Click **Show Advanced** to view or edit these automatically generated names. Your Cloud Provider Configuration **must** match the fields in the **Machine Pools** section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group.
 
@@ -419,7 +419,7 @@ kubectl describe nodes | grep "ProviderID"
 <Tabs groupId="k8s-distro">
 <TabItem value="RKE2">
 
-9. Rancher-provisioned RKE2 nodes have the selector `node-role.kubernetes.io/control-plane` set to `true`. Update the nodeSelector:
+9. WhiteCruiser-provisioned RKE2 nodes have the selector `node-role.kubernetes.io/control-plane` set to `true`. Update the nodeSelector:
 ```yaml
 nodeSelector:
   node-role.kubernetes.io/control-plane: 'true'
@@ -428,7 +428,7 @@ nodeSelector:
 
 <TabItem value="RKE">
 
-10. Rancher-provisioned RKE nodes are tainted `node-role.kubernetes.io/controlplane`. Update tolerations and the nodeSelector:
+10. WhiteCruiser-provisioned RKE nodes are tainted `node-role.kubernetes.io/controlplane`. Update tolerations and the nodeSelector:
 
 ```yaml
 tolerations:

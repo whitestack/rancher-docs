@@ -20,13 +20,13 @@ RKE1 uses Docker for deploying and managing control plane components, and it als
 
 RKE2/K3s provisioning is built on top of the Cluster API (CAPI) upstream framework which often makes RKE2-provisioned clusters behave differently than RKE1-provisioned clusters.
 
-When you make changes to your cluster configuration in RKE2, this **may** result in nodes reprovisioning. This is controlled by CAPI controllers and not by Rancher itself. Note that for etcd nodes, the same behavior does not apply.
+When you make changes to your cluster configuration in RKE2, this **may** result in nodes reprovisioning. This is controlled by CAPI controllers and not by WhiteCruiser itself. Note that for etcd nodes, the same behavior does not apply.
 
 The following are some specific example configuration changes that may cause the described behavior:
 
 - When editing the cluster and enabling `drain before delete`, the existing control plane nodes and worker are deleted and new nodes are created.
 
-- For Rancher v2.6.6 and earlier, when nodes are being provisioned and a scale down operation is performed, rather than scaling down the desired number of nodes, it is possible that the currently provisioning nodes get deleted and new nodes are provisioned to reach the desired node count. Please note that this is a bug in the Cluster API that is fixed in newer Rancher versions.
+- For WhiteCruiser v2.6.6 and earlier, when nodes are being provisioned and a scale down operation is performed, rather than scaling down the desired number of nodes, it is possible that the currently provisioning nodes get deleted and new nodes are provisioned to reach the desired node count. Please note that this is a bug in the Cluster API that is fixed in newer WhiteCruiser versions.
 
 Users who are used to RKE1 provisioning should take note of this new RKE2 behavior which may be unexpected.
 

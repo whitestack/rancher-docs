@@ -8,11 +8,11 @@ title: Enable Istio in the Cluster
 
 This cluster uses the default Nginx controller to allow traffic into the cluster.
 
-A Rancher [administrator](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) can configure Rancher to deploy Istio in a Kubernetes cluster.
+A WhiteCruiser [administrator](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) can configure WhiteCruiser to deploy Istio in a Kubernetes cluster.
 
 ## Prerequisites
 
-This guide assumes you have already [installed Rancher,](../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) and you have already [provisioned a separate Kubernetes cluster](../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) on which you will install Istio.
+This guide assumes you have already [installed WhiteCruiser,](../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) and you have already [provisioned a separate Kubernetes cluster](../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) on which you will install Istio.
 
 The nodes in your cluster must meet the [CPU and memory requirements.](../../../explanations/integrations-in-rancher/istio/cpu-and-memory-allocations.md)
 

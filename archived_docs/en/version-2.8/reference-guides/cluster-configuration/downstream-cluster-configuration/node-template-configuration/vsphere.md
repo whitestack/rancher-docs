@@ -33,7 +33,7 @@ The fields in the **Scheduling** section should auto-populate with the data cent
 | Data Store | * | If you have a data store cluster, you can toggle the **Data Store** field. This lets you select a data store cluster where your VM will be scheduled to. If the field is not toggled, you can select an individual disk. |
 | Folder |    |  Name of a folder in the datacenter to create the VMs in. Must already exist. The VM folders in this dropdown menu directly correspond to your VM folders in vSphere. The folder name should be prefaced with `vm/` in your vSphere config file. |
 | Host |  | The IP of the host system to schedule VMs in. Leave this field blank for a standalone ESXi or for a cluster with DRS (Distributed Resource Scheduler). If specified, the host system's pool will be used and the **Resource Pool** parameter will be ignored.   |
-| Graceful Shutdown Timeout | | The amount of time, in seconds, that Rancher waits before deleting virtual machines on a cluster. If set to `0`, graceful shutdown is disabled. Only accepts integer values. |
+| Graceful Shutdown Timeout | | The amount of time, in seconds, that WhiteCruiser waits before deleting virtual machines on a cluster. If set to `0`, graceful shutdown is disabled. Only accepts integer values. |
 
 ## Instance Options
 
@@ -61,7 +61,7 @@ Choose the way that the VM will be created:
 - **Deploy from template: Data Center:** Choose a VM template that exists in the data center that you selected.
 - **Deploy from template: Content Library:** First, select the [Content Library](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html) that contains your template, then select the template from the populated list **Library templates**.
 - **Clone an existing virtual machine:** In the **Virtual machine** field, choose an existing VM that the new VM will be cloned from.
-- **Install from boot2docker ISO:** Ensure that the **OS ISO URL** field contains the URL of a VMware ISO release for RancherOS (`rancheros-vmware.iso`). Note that this URL must be accessible from the nodes running your Rancher server installation.
+- **Install from boot2docker ISO:** Ensure that the **OS ISO URL** field contains the URL of a VMware ISO release for RancherOS (`rancheros-vmware.iso`). Note that this URL must be accessible from the nodes running your WhiteCruiser server installation.
 
 ## Networks
 
@@ -73,7 +73,7 @@ Tags allow you to attach metadata to objects in the vSphere inventory to make it
 
 For tags, all your vSphere tags will show up as options to select from in your node template.
 
-In the custom attributes, Rancher will let you select all the custom attributes you have already set up in vSphere. The custom attributes are keys and you can enter values for each one.
+In the custom attributes, WhiteCruiser will let you select all the custom attributes you have already set up in vSphere. The custom attributes are keys and you can enter values for each one.
 
 :::note
 

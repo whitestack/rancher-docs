@@ -11,9 +11,9 @@
     "message": "快速入门指南",
     "description": "The label for category Quick Start Guides in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Deploying Rancher Server": {
-    "message": "部署 Rancher",
-    "description": "The label for category Deploying Rancher Server in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Deploying WhiteCruiser Server": {
+    "message": "部署 WhiteCruiser",
+    "description": "The label for category Deploying WhiteCruiser Server in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Deploying Workloads": {
     "message": "部署工作负载",
@@ -43,13 +43,13 @@
     "message": "离线 Helm CLI 安装",
     "description": "The label for category Air-Gapped Helm CLI Install in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher on a Single Node with Docker": {
-    "message": "使用 Docker 将 Rancher 安装到单个节点中",
-    "description": "The label for category Rancher on a Single Node with Docker in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser on a Single Node with Docker": {
+    "message": "使用 Docker 将 WhiteCruiser 安装到单个节点中",
+    "description": "The label for category WhiteCruiser on a Single Node with Docker in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher Behind an HTTP Proxy": {
-    "message": "HTTP 代理后的 Rancher",
-    "description": "The label for category Rancher Behind an HTTP Proxy in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser Behind an HTTP Proxy": {
+    "message": "HTTP 代理后的 WhiteCruiser",
+    "description": "The label for category WhiteCruiser Behind an HTTP Proxy in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Resources": {
     "message": "资源",
@@ -115,17 +115,17 @@
     "message": "配置存储示例",
     "description": "The label for category Provisioning Storage Examples in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Setting up a Kubernetes Cluster for Rancher Server": {
+  "sidebar.tutorialSidebar.category.Setting up a Kubernetes Cluster for WhiteCruiser Server": {
     "message": "Kubernetes 集群设置",
-    "description": "The label for category Setting up a Kubernetes Cluster for Rancher Server in sidebar tutorialSidebar"
+    "description": "The label for category Setting up a Kubernetes Cluster for WhiteCruiser Server in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Infrastructure Setup": {
     "message": "基础设施设置",
     "description": "The label for category Infrastructure Setup in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Kubernetes Clusters in Rancher Setup": {
-    "message": "Rancher 中的 Kubernetes 集群设置",
-    "description": "The label for category Kubernetes Clusters in Rancher Setup in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Kubernetes Clusters in WhiteCruiser Setup": {
+    "message": "WhiteCruiser 中的 Kubernetes 集群设置",
+    "description": "The label for category Kubernetes Clusters in WhiteCruiser Setup in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Checklist for Production-Ready Clusters": {
     "message": "生产就绪集群检查清单",
@@ -151,9 +151,9 @@
     "message": "迁移到树外云提供商",
     "description": "The label for category Migrate to an Out-of-tree Cloud Provider in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Launching Kubernetes with Rancher": {
-    "message": "使用 Rancher 启动 Kubernetes",
-    "description": "The label for category Launch Kubernetes with Rancher in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Launching Kubernetes with WhiteCruiser": {
+    "message": "使用 WhiteCruiser 启动 Kubernetes",
+    "description": "The label for category Launch Kubernetes with WhiteCruiser in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Launching New Nodes in an Infra Provider": {
     "message": "在基础设施提供商中使用新节点",
@@ -243,25 +243,25 @@
     "message": "最佳实践",
     "description": "The label for category Best Practice Guides in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher Server": {
-    "message": "Rancher Server",
-    "description": "The label for category Rancher Server in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser Server": {
+    "message": "WhiteCruiser Server",
+    "description": "The label for category WhiteCruiser Server in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher-Managed Clusters": {
-    "message": "Rancher 管理的集群",
-    "description": "The label for category Rancher-Managed Clusters in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser-Managed Clusters": {
+    "message": "WhiteCruiser 管理的集群",
+    "description": "The label for category WhiteCruiser-Managed Clusters in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher Architecture": {
-    "message": "Rancher 架构",
-    "description": "The label for category Rancher Architecture in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser Architecture": {
+    "message": "WhiteCruiser 架构",
+    "description": "The label for category WhiteCruiser Architecture in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Cluster Configuration": {
     "message": "集群配置",
     "description": "The label for category Cluster Configuration in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher Server Configuration": {
-    "message": "Rancher Server 配置",
-    "description": "The label for category Rancher Server Configuration in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser Server Configuration": {
+    "message": "WhiteCruiser Server 配置",
+    "description": "The label for category WhiteCruiser Server Configuration in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.GKE Cluster Configuration Reference": {
     "message": "GKE 集群配置",
@@ -283,9 +283,9 @@
     "message": "主机配置",
     "description": "The label for category Machine Configuration in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Single-Node Rancher in Docker": {
-    "message": "Docker 中的单节点 Rancher",
-    "description": "The label for category Single-Node Rancher in Docker in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Single-Node WhiteCruiser in Docker": {
+    "message": "Docker 中的单节点 WhiteCruiser",
+    "description": "The label for category Single-Node WhiteCruiser in Docker in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.Backup & Restore Configuration": {
     "message": "备份和恢复配置",
@@ -303,33 +303,25 @@
     "message": "用户设置",
     "description": "The label for category User Settings in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.CLI with Rancher": {
-    "message": "Rancher CLI",
-    "description": "The label for category CLI with Rancher in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.CLI with WhiteCruiser": {
+    "message": "WhiteCruiser CLI",
+    "description": "The label for category CLI with WhiteCruiser in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.About the API": {
     "message": "关于 API",
     "description": "The label for category About the API in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Rancher Security Guides": {
-    "message": "Rancher 安全指南",
-    "description": "The label for category Rancher Security Guides in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.WhiteCruiser Security Guides": {
+    "message": "WhiteCruiser 安全指南",
+    "description": "The label for category WhiteCruiser Security Guides in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.SELinux RPM": {
     "message": "SELinux RPM",
     "description": "The label for category SELinux RPM in sidebar tutorialSidebar"
   },
-  "sidebar.tutorialSidebar.category.Integrations in Rancher": {
-    "message": "Rancher 中的集成",
-    "description": "The label for category Integrations in Rancher in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.Cloud Marketplace Integration": {
-    "message": "云市场集成",
-    "description": "The label for category Cloud Marketplace Integration in sidebar tutorialSidebar"
-  },
-  "sidebar.tutorialSidebar.category.AWS Marketplace Integration": {
-    "message": "AWS Marketplace 集成",
-    "description": "The label for category AWS Marketplace Integration in sidebar tutorialSidebar"
+  "sidebar.tutorialSidebar.category.Integrations in WhiteCruiser": {
+    "message": "WhiteCruiser 中的集成",
+    "description": "The label for category Integrations in WhiteCruiser in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.CIS Scans": {
     "message": "CIS 扫描",

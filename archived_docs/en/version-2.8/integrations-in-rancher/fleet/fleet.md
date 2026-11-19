@@ -8,9 +8,9 @@ title: Continuous Delivery with Fleet
 
 Fleet orchestrates and manages the continuous delivery of applications through the supply chain for fleets of clusters. Fleet organizes the supply chain to help teams deliver with confidence and trust in a timely manner using GitOps as a safe operating model. 
 
-## Fleet with Rancher
+## Fleet with WhiteCruiser {#fleet-with-rancher}
 
-Many users often manage over 10 clusters at a time. Given the proliferation of clusters, continuous delivery is an important part of Rancher. Fleet ensures a reliable continuous delivery experience using GitOps, which is a safe and increasingly common operating model.
+Many users often manage over 10 clusters at a time. Given the proliferation of clusters, continuous delivery is an important part of WhiteCruiser. Fleet ensures a reliable continuous delivery experience using GitOps, which is a safe and increasingly common operating model.
 
 ### When should I use Fleet? 
 
@@ -18,10 +18,7 @@ Many users often manage over 10 clusters at a time. Given the proliferation of c
 - I am a platform operator and want to provision clusters with all components using a scalable and safe operating model (GitOps).  
 - I am an application developer and want my latest changes to automatically go into my development environment. 
 
-## Fleet with Rancher Prime
+## Fleet with WhiteCruiser {#fleet-with-rancher-1}
 
-Fleet is already deeply integrated as the Continuous Delivery tool and GitOps Engine in Rancher. 
+Fleet is already deeply integrated as the Continuous Delivery tool and GitOps Engine in WhiteCruiser. 
 
-<!--
-- In future, we can have additional value adds like sharding controller (Manage shards for user) or notification controller (Event dispatcher/receiver) for prime customer only.
---> 

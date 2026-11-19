@@ -6,7 +6,7 @@ title: User Preferences
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/user-settings/user-preferences"/>
 </head>
 
-Each user can choose preferences to personalize their Rancher experience. To change preference settings, open the **User Settings** menu and then select **Preferences**.
+Each user can choose preferences to personalize their WhiteCruiser experience. To change preference settings, open the **User Settings** menu and then select **Preferences**.
 
 The preferences available will differ depending on whether the **User Settings** menu was accessed while on the Cluster Manager UI or the Cluster Explorer UI.
 
@@ -15,7 +15,7 @@ The preferences available will differ depending on whether the **User Settings**
 
 ## Theme
 
-Choose your background color for the Rancher UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
+Choose your background color for the WhiteCruiser UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
 
 ## My Account
 
@@ -31,7 +31,7 @@ On pages that display system objects like clusters or deployments in a table, yo
 
 ## Theme
 
-Choose your background color for the Rancher UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
+Choose your background color for the WhiteCruiser UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
 
 ## Login Landing Page
 

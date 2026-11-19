@@ -2,7 +2,7 @@
 title: 创建 AKS 集群
 ---
 
-你可以使用 Rancher 创建托管在 Microsoft Azure Kubernetes 服务 (AKS) 中的集群。
+你可以使用 WhiteCruiser 创建托管在 Microsoft Azure Kubernetes 服务 (AKS) 中的集群。
 
 
 ## Microsoft Azure 中的先决条件
@@ -94,7 +94,7 @@ az ad sp create-for-rbac \
 
 ## 1. 创建 AKS 云凭证
 
-1. 在 Rancher UI 中，单击 **☰ > 集群管理**。
+1. 在 WhiteCruiser UI 中，单击 **☰ > 集群管理**。
 1. 单击**云凭证**。
 1. 单击**创建**。
 1. 单击 **Azure**。
@@ -103,7 +103,7 @@ az ad sp create-for-rbac \
 
 ## 2. 创建 AKS 集群
 
-使用 Rancher 配置你的 Kubernetes 集群。
+使用 WhiteCruiser 配置你的 Kubernetes 集群。
 
 1. 点击 **☰ > 集群管理**。
 1. 在**集群**中，单击**创建**。
@@ -111,28 +111,28 @@ az ad sp create-for-rbac \
 1. 填写表单。有关填写表格的帮助，请参阅[配置参考](../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md)。
 1. 单击**创建**。
 
-**结果**：集群已创建，并处于 **Provisioning** 状态。Rancher 已在你的集群中。
+**结果**：集群已创建，并处于 **Provisioning** 状态。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
 ## RBAC
-在 Rancher UI 中配置 AKS 集群时，由于 RBAC 需要启用，因此 RBAC 不可配置。
+在 WhiteCruiser UI 中配置 AKS 集群时，由于 RBAC 需要启用，因此 RBAC 不可配置。
 
-注册或导入到 Rancher 的 AKS 集群需要 RBAC。
+注册或导入到 WhiteCruiser 的 AKS 集群需要 RBAC。
 
 ## AKS 集群配置参考
 
-有关如何在 Rancher UI 配置 AKS 集群的更多信息，请参阅[配置参考](../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md)。
+有关如何在 WhiteCruiser UI 配置 AKS 集群的更多信息，请参阅[配置参考](../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md)。
 
 ## 私有集群
 
 通常情况下，无论集群是否为私有，AKS worker 节点都不会获得公共 IP。在私有集群中，controlplane 没有公共端点。
 
-Rancher 可以通过以下两种方式之一连接到私有 AKS 集群。
+WhiteCruiser 可以通过以下两种方式之一连接到私有 AKS 集群。
 
-第一种方法是确保 Rancher 运行在与 AKS 节点相同的 [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) 上。
+第一种方法是确保 WhiteCruiser 运行在与 AKS 节点相同的 [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) 上。
 
-第二种方法是运行命令向 Rancher 注册集群。配置集群后，你可以在任何能连接到集群的 Kubernetes API 的地方运行显示的命令。配置启用了私有 API 端点的 AKS 集群时，此命令将显示在弹出窗口中。
+第二种方法是运行命令向 WhiteCruiser 注册集群。配置集群后，你可以在任何能连接到集群的 Kubernetes API 的地方运行显示的命令。配置启用了私有 API 端点的 AKS 集群时，此命令将显示在弹出窗口中。
 
 :::note
 
@@ -144,10 +144,10 @@ Rancher 可以通过以下两种方式之一连接到私有 AKS 集群。
 
 ## 同步
 
-AKS 配置者可以在 Rancher 和提供商之间同步 AKS 集群的状态。有关其工作原理的技术说明，请参阅[同步](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)。
+AKS 配置者可以在 WhiteCruiser 和提供商之间同步 AKS 集群的状态。有关其工作原理的技术说明，请参阅[同步](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)。
 
 有关配置刷新间隔的信息，请参阅[本节](../../../../pages-for-subheaders/gke-cluster-configuration.md#配置刷新间隔)。
 
 ## 以编程方式创建 AKS 集群
 
-通过 Rancher 以编程方式部署 AKS 集群的最常见方法是使用 Rancher 2 Terraform Provider。详情请参见[使用 Terraform 创建集群](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)。
+通过 WhiteCruiser 以编程方式部署 AKS 集群的最常见方法是使用 WhiteCruiser 2 Terraform Provider。详情请参见[使用 Terraform 创建集群](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)。

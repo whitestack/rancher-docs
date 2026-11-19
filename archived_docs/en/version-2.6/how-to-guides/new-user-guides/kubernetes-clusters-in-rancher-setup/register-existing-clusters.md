@@ -8,20 +8,20 @@ title: Registering Existing Clusters
 
 The cluster registration feature replaced the feature to import clusters.
 
-The control that Rancher has to manage a registered cluster depends on the type of cluster. For details, see [Management Capabilities for Registered Clusters.](#management-capabilities-for-registered-clusters)
+The control that WhiteCruiser has to manage a registered cluster depends on the type of cluster. For details, see [Management Capabilities for Registered Clusters.](#management-capabilities-for-registered-clusters)
 
 
 ## Prerequisites
 
 ### Kubernetes Node Roles
 
-Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in Rancher.
+Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in WhiteCruiser.
 
 For more information on RKE node roles, see the [best practices.](checklist-for-production-ready-clusters/checklist-for-production-ready-clusters.md#cluster-architecture)
 
 ### Permissions
 
-To register a cluster in Rancher, you must have `cluster-admin` privileges within that cluster. If you don't, grant these privileges to your user by running:
+To register a cluster in WhiteCruiser, you must have `cluster-admin` privileges within that cluster. If you don't, grant these privileges to your user by running:
 
 ```plain
 kubectl create clusterrolebinding cluster-admin-binding \
@@ -33,11 +33,11 @@ before running the `kubectl` command to register the cluster.
 
 Since, by default, Google Kubernetes Engine (GKE) doesn't grant the `cluster-admin` role, you must run these commands on GKE clusters before you can register them. To learn more about role-based access control for GKE, please see [the official Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
-If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
+If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to WhiteCruiser.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
 
 ### EKS Clusters
 
-EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
+EKS clusters must have at least one managed node group to be imported into WhiteCruiser or provisioned from WhiteCruiser successfully.
 
 ### GKE Clusters
 
@@ -49,29 +49,29 @@ GKE clusters must be running in Standard mode. GKE Autopilot clusters aren't sup
 1. On the **Clusters** page, **Import Existing**.
 1. Choose the type of cluster.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-1. If you are importing a generic Kubernetes cluster in Rancher, perform the following steps for setup:<br/>
-  a. Click **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent](../launch-kubernetes-with-rancher/about-rancher-agents.md). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.<br/>
+1. If you are importing a generic Kubernetes cluster in WhiteCruiser, perform the following steps for setup:<br/>
+  a. Click **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent](../launch-kubernetes-with-rancher/about-rancher-agents.md). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with WhiteCruiser server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.<br/>
   b. Enable Project Network Isolation to ensure the cluster supports Kubernetes `NetworkPolicy` resources. Users can select the **Project Network Isolation** option under the **Advanced Options** dropdown to do so.
 1. Click **Create**.
 1. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
-1. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
-1. If you are using self-signed certificates, you will receive the message `certificate signed by unknown authority`. To work around this validation, copy the command starting with `curl` displayed in Rancher to your clipboard. Then run the command on a node where kubeconfig is configured to point to the cluster you want to import.
+1. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in WhiteCruiser.
+1. If you are using self-signed certificates, you will receive the message `certificate signed by unknown authority`. To work around this validation, copy the command starting with `curl` displayed in WhiteCruiser to your clipboard. Then run the command on a node where kubeconfig is configured to point to the cluster you want to import.
 1. When you finish running the command(s) on your node, click **Done**.
 
 **Result:**
 
-- Your cluster is registered and assigned a state of **Pending**. Rancher is deploying resources to manage your cluster.
+- Your cluster is registered and assigned a state of **Pending**. WhiteCruiser is deploying resources to manage your cluster.
 - You can access your cluster after its state is updated to **Active**.
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
 
 :::note
 
-You can not re-register a cluster that is currently active in a Rancher setup.
+You can not re-register a cluster that is currently active in a WhiteCruiser setup.
 
 :::
 
-### Configuring a K3s Cluster to Enable Registration in Rancher
+### Configuring a K3s Cluster to Enable Registration in WhiteCruiser {#configuring-a-k3s-cluster-to-enable-registration-in-rancher}
 
 The K3s server needs to be configured to allow writing to the kubeconfig file.
 
@@ -89,7 +89,7 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 ### Configuring an Imported EKS Cluster with Terraform
 
-You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided.
+You should define **only** the minimum fields that WhiteCruiser requires when importing an EKS cluster with Terraform. This is important as WhiteCruiser will overwrite what was in the EKS cluster with any config that the user has provided.
 
 :::caution
 
@@ -97,7 +97,7 @@ Even a small difference between the current EKS cluster and a user-provided conf
 
 :::
 
-The minimum config fields required by Rancher to import EKS clusters with Terraform using `eks_config_v2` are as follows:
+The minimum config fields required by WhiteCruiser to import EKS clusters with Terraform using `eks_config_v2` are as follows:
 
 - cloud_credential_id
 - name
@@ -121,7 +121,7 @@ resource "rancher2_cluster" "my-eks-to-import" {
 
 ## Management Capabilities for Registered Clusters
 
-The control that Rancher has to manage a registered cluster depends on the type of cluster.
+The control that WhiteCruiser has to manage a registered cluster depends on the type of cluster.
 
 - [Features for All Registered Clusters](#features-for-all-registered-clusters)
 - [Additional Features for Registered K3s Clusters](#additional-features-for-registered-k3s-clusters)
@@ -142,12 +142,12 @@ After registering a cluster, the cluster owner can:
 
 [K3s](https://rancher.com/docs/k3s/latest/en/) is a lightweight, fully compliant Kubernetes distribution.
 
-When a K3s cluster is registered in Rancher, Rancher will recognize it as K3s. The Rancher UI will expose the features for [all registered clusters,](#features-for-all-registered-clusters) in addition to the following features for editing and upgrading the cluster:
+When a K3s cluster is registered in WhiteCruiser, WhiteCruiser will recognize it as K3s. The WhiteCruiser UI will expose the features for [all registered clusters,](#features-for-all-registered-clusters) in addition to the following features for editing and upgrading the cluster:
 
 - The ability to [upgrade the K3s version](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md)
   :::danger
 
-  After a cluster has been imported into Rancher, upgrades should be performed using Rancher. Upgrading an imported cluster outside of Rancher is **not** supported.
+  After a cluster has been imported into WhiteCruiser, upgrades should be performed using WhiteCruiser. Upgrading an imported cluster outside of WhiteCruiser is **not** supported.
 
   :::
 - The ability to configure the maximum number of nodes that will be upgraded concurrently
@@ -155,9 +155,9 @@ When a K3s cluster is registered in Rancher, Rancher will recognize it as K3s. T
 
 ### Additional Features for Registered EKS, AKS, and GKE Clusters
 
-Rancher handles registered EKS, AKS, or GKE clusters similarly to clusters created in Rancher. However, Rancher doesn't destroy registered clusters when you delete them through the Rancher UI.
+WhiteCruiser handles registered EKS, AKS, or GKE clusters similarly to clusters created in WhiteCruiser. However, WhiteCruiser doesn't destroy registered clusters when you delete them through the WhiteCruiser UI.
 
-When you create an EKS, AKS, or GKE cluster in Rancher, then delete it, Rancher destroys the cluster. When you delete a registered cluster through Rancher, the Rancher server _disconnects_ from the cluster. The cluster remains live, although it's no longer in Rancher. You can still access the deregistered cluster in the same way you did before you registered it.
+When you create an EKS, AKS, or GKE cluster in WhiteCruiser, then delete it, WhiteCruiser destroys the cluster. When you delete a registered cluster through WhiteCruiser, the WhiteCruiser server _disconnects_ from the cluster. The cluster remains live, although it's no longer in WhiteCruiser. You can still access the deregistered cluster in the same way you did before you registered it.
 
 See [Cluster Management Capabilities by Cluster Type](kubernetes-clusters-in-rancher-setup.md) for more information about what features are available for managing registered clusters.
 
@@ -180,7 +180,7 @@ Also in the K3s documentation, nodes with the worker role are called agent nodes
 
 ## Debug Logging and Troubleshooting for Registered K3s Clusters
 
-Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes.
+Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, WhiteCruiser deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes.
 
 To enable debug logging on the system upgrade controller deployment, edit the [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) to set the debug environment variable to true. Then restart the `system-upgrade-controller` pod.
 
@@ -210,7 +210,7 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
 
 - These steps only need to be performed on the control plane nodes of the downstream cluster. You must configure each control plane node individually.
 
-- The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
+- The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of WhiteCruiser with an upgrade to v2.6.x.
 
 - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of the ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here](../manage-clusters/access-clusters/authorized-cluster-endpoint.md#about-the-kube-api-auth-authentication-webhook).
 
@@ -250,7 +250,7 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
         sudo systemctl stop {rke2,k3s}-server
         sudo systemctl start {rke2,k3s}-server
 
-1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.
+1. Finally, you **must** go back to the WhiteCruiser UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.
 
 :::note
 
@@ -260,13 +260,13 @@ The <b>FQDN</b> field is optional, and if one is entered, it should point to the
 
 ## Annotating Registered Clusters
 
-For all types of registered Kubernetes clusters except for K3s Kubernetes clusters, Rancher doesn't have any information about how the cluster is provisioned or configured.
+For all types of registered Kubernetes clusters except for K3s Kubernetes clusters, WhiteCruiser doesn't have any information about how the cluster is provisioned or configured.
 
-Therefore, when Rancher registers a cluster, it assumes that several capabilities are disabled by default. Rancher assumes this in order to avoid exposing UI options to the user even when the capabilities are not enabled in the registered cluster.
+Therefore, when WhiteCruiser registers a cluster, it assumes that several capabilities are disabled by default. WhiteCruiser assumes this in order to avoid exposing UI options to the user even when the capabilities are not enabled in the registered cluster.
 
-However, if the cluster has a certain capability, such as the ability to use a pod security policy, a user of that cluster might still want to select pod security policies for the cluster in the Rancher UI. In order to do that, the user will need to manually indicate to Rancher that pod security policies are enabled for the cluster.
+However, if the cluster has a certain capability, such as the ability to use a pod security policy, a user of that cluster might still want to select pod security policies for the cluster in the WhiteCruiser UI. In order to do that, the user will need to manually indicate to WhiteCruiser that pod security policies are enabled for the cluster.
 
-By annotating a registered cluster, it is possible to indicate to Rancher that a cluster was given a pod security policy, or another capability, outside of Rancher.
+By annotating a registered cluster, it is possible to indicate to WhiteCruiser that a cluster was given a pod security policy, or another capability, outside of WhiteCruiser.
 
 This example annotation indicates that a pod security policy is enabled:
 
@@ -294,7 +294,7 @@ These capabilities can be annotated for the cluster:
 - `pspEnabled`
 - `taintSupport`
 
-All the capabilities and their type definitions can be viewed in the Rancher API view, at `[Rancher Server URL]/v3/schemas/capabilities`.
+All the capabilities and their type definitions can be viewed in the WhiteCruiser API view, at `[Rancher Server URL]/v3/schemas/capabilities`.
 
 To annotate a registered cluster,
 
@@ -302,7 +302,7 @@ To annotate a registered cluster,
 1. On the **Clusters** page, go to the custom cluster you want to annotate and click **⋮ > Edit Config**.
 1. Expand the **Labels & Annotations** section.
 1. Click **Add Annotation**.
-1. Add an annotation to the cluster with the format `capabilities/<capability>: <value>` where `value` is the cluster capability that will be overridden by the annotation. In this scenario, Rancher is not aware of any capabilities of the cluster until you add the annotation.
+1. Add an annotation to the cluster with the format `capabilities/<capability>: <value>` where `value` is the cluster capability that will be overridden by the annotation. In this scenario, WhiteCruiser is not aware of any capabilities of the cluster until you add the annotation.
 1. Click **Save**.
 
-**Result:** The annotation does not give the capabilities to the cluster, but it does indicate to Rancher that the cluster has those capabilities.
+**Result:** The annotation does not give the capabilities to the cluster, but it does indicate to WhiteCruiser that the cluster has those capabilities.

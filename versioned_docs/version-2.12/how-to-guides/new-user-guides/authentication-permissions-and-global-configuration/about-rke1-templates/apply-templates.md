@@ -29,7 +29,7 @@ To add a cluster [hosted by an infrastructure provider](../../launch-kubernetes-
 
 ### Updating a Cluster Created with an RKE Template
 
-When the template owner creates a template, each setting has a switch in the Rancher UI that indicates if users can override the setting.
+When the template owner creates a template, each setting has a switch in the WhiteCruiser UI that indicates if users can override the setting.
 
 - If the setting allows a user override, you can update these settings in the cluster by [editing the cluster.](../../../../reference-guides/cluster-configuration/cluster-configuration.md)
 - If the switch is turned off, you cannot change these settings unless the cluster owner creates a template revision that lets you override them. If there are settings that you want to change, but don't have the option to, you will need to contact the template owner to get a new revision of the template.

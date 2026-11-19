@@ -6,7 +6,7 @@ title: Upgrading Cert-Manager
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/upgrade-cert-manager"/>
 </head>
 
-Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:
+WhiteCruiser uses cert-manager to automatically generate and renew TLS certificates for HA deployments of WhiteCruiser. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of WhiteCruiser:
 
 1. [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753)
 1. [Cert-manager is deprecating and replacing the certificate.spec.acme.solvers field](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/). This change has no exact deadline.
@@ -18,15 +18,15 @@ To address these changes, this guide will do two things:
 1. Explain the cert-manager API changes and link to cert-manager's official documentation for migrating your data
 
 > **Important:**
-> If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, you need to reinstall both of them:
+> If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both WhiteCruiser and cert-manager to a newer version, you need to reinstall both of them:
 
-> 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
-> 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
-> 3. Install the newer version of Rancher and cert-manager
+> 1. Take a one-time snapshot of your Kubernetes cluster running WhiteCruiser server
+> 2. Uninstall WhiteCruiser, cert-manager, and the CustomResourceDefinition for cert-manager
+> 3. Install the newer version of WhiteCruiser and cert-manager
 
-> The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
+> The reason is that when Helm upgrades WhiteCruiser, it will reject the upgrade and show error messages if the running WhiteCruiser app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for WhiteCruiser, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart](../install-upgrade-on-a-kubernetes-cluster/upgrades/upgrades.md) under the upgrade Rancher section.
+> For reinstalling WhiteCruiser with Helm, please check [Option B: Reinstalling WhiteCruiser Chart](../install-upgrade-on-a-kubernetes-cluster/upgrades/upgrades.md) under the upgrade WhiteCruiser section.
 
 ## Upgrade Cert-Manager
 

@@ -2,11 +2,11 @@
 title: 创建 DigitalOcean 集群
 ---
 
-在本节中，你将学习如何使用 Rancher 在 DigitalOcean 中安装 [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes 集群。
+在本节中，你将学习如何使用 WhiteCruiser 在 DigitalOcean 中安装 [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes 集群。
 
-首先，在 Rancher 中设置你的 DigitalOcean 云凭证。然后，使用云凭证创建一个节点模板，Rancher 将使用该模板在 DigitalOcean 中配置新节点。
+首先，在 WhiteCruiser 中设置你的 DigitalOcean 云凭证。然后，使用云凭证创建一个节点模板，WhiteCruiser 将使用该模板在 DigitalOcean 中配置新节点。
 
-然后，在 Rancher 中创建一个 DigitalOcean 集群，并在配置新集群时为集群定义节点池。每个节点池都有一个 etcd、controlplane 或 worker 的 Kubernetes 角色。Rancher 会在新节点上安装 RKE Kubernetes，并为每个节点设置节点池定义的 Kubernetes 角色。
+然后，在 WhiteCruiser 中创建一个 DigitalOcean 集群，并在配置新集群时为集群定义节点池。每个节点池都有一个 etcd、controlplane 或 worker 的 Kubernetes 角色。WhiteCruiser 会在新节点上安装 RKE Kubernetes，并为每个节点设置节点池定义的 Kubernetes 角色。
 
 <Tabs>
 <TabItem value="RKE">
@@ -28,7 +28,7 @@ title: 创建 DigitalOcean 集群
 
 ### 2. 使用云凭证创建节点模板
 
-为 DigitalOcean 创建[节点模板](../../../../pages-for-subheaders/use-new-nodes-in-an-infra-provider.md#节点模板) 会允许 Rancher 在 DigitalOcean 中配置新节点。其他集群可以复用节点模板。
+为 DigitalOcean 创建[节点模板](../../../../pages-for-subheaders/use-new-nodes-in-an-infra-provider.md#节点模板) 会允许 WhiteCruiser 在 DigitalOcean 中配置新节点。其他集群可以复用节点模板。
 
 1. 点击 **☰ > 集群管理**。
 1. 单击 **RKE1 配置 > 节点模板**。
@@ -63,7 +63,7 @@ title: 创建 DigitalOcean 集群
 
 ### 2. 创建你的集群
 
-使用 Rancher 在 DigitalOcean 中创建 Kubernetes 集群。
+使用 WhiteCruiser 在 DigitalOcean 中创建 Kubernetes 集群。
 
 1. 点击 **☰ > 集群管理**。
 1. 在**集群**页面上，单击**创建**。
@@ -82,7 +82,7 @@ title: 创建 DigitalOcean 集群
 
 **结果**：
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
@@ -93,7 +93,7 @@ title: 创建 DigitalOcean 集群
 
 ## 可选的后续步骤
 
-创建集群后，你可以通过 Rancher UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
+创建集群后，你可以通过 WhiteCruiser UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
 
-- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 Rancher Server 的身份验证代理进行身份验证，然后 Rancher 会让你连接到下游集群。此方法允许你在没有 Rancher UI 的情况下管理集群。
-- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 Rancher 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 Rancher 时访问集群。
+- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 WhiteCruiser Server 的身份验证代理进行身份验证，然后 WhiteCruiser 会让你连接到下游集群。此方法允许你在没有 WhiteCruiser UI 的情况下管理集群。
+- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 WhiteCruiser 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 WhiteCruiser 时访问集群。

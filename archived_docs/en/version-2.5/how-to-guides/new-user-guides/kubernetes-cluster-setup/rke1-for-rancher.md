@@ -6,18 +6,18 @@ title: Setting up a High-availability RKE Kubernetes Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher"/>
 </head>
 
-This section describes how to install a Kubernetes cluster. This cluster should be dedicated to run only the Rancher server.
+This section describes how to install a Kubernetes cluster. This cluster should be dedicated to run only the WhiteCruiser server.
 
-> As of Rancher v2.5, Rancher can run on any Kubernetes cluster, included hosted Kubernetes solutions such as Amazon EKS. The below instructions represent only one possible way to install Kubernetes.
+> As of WhiteCruiser v2.5, WhiteCruiser can run on any Kubernetes cluster, included hosted Kubernetes solutions such as Amazon EKS. The below instructions represent only one possible way to install Kubernetes.
 
 For systems without direct internet access, refer to [Air Gap: Kubernetes install.](../../../getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md)
 
 > **Single-node Installation Tip:**
-> In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
+> In a single-node Kubernetes cluster, the WhiteCruiser server does not have high availability, which is important for running WhiteCruiser in production. However, installing WhiteCruiser on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
 >
 > To set up a single-node RKE cluster, configure only one node in the `cluster.yml` . The single node should have all three roles: `etcd`, `controlplane`, and `worker`.
 >
-> In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
+> In both single-node setups, WhiteCruiser can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
 
 ## Installing Kubernetes
 
@@ -36,8 +36,6 @@ Using the sample below as a guide, create the `rancher-cluster.yml` file. Replac
 If your node has public and internal addresses, it is recommended to set the `internal_address:` so Kubernetes will use it for intra-cluster communication. Some services like AWS EC2 require setting the `internal_address:` if you want to use self-referencing security groups or firewalls.
 
 RKE will need to connect to each node over SSH, and it will look for a private key in the default location of `~/.ssh/id_rsa`. If your private key for a certain node is in a different location than the default, you will also need to configure the `ssh_key_path` option for that node.
-
-When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```yaml
 nodes:
@@ -84,7 +82,7 @@ kubernetes_version: v1.20.15-rancher2-1
 >
 > Please see the [RKE Documentation](https://rancher.com/docs/rke/latest/en/config-options/) for the full list of options and capabilities.
 >
-> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide](../../../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs.md).
+> For tuning your etcd cluster for larger WhiteCruiser installations, see the [etcd settings guide](../../../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs.md).
 
 ### 2. Run RKE
 
@@ -148,7 +146,7 @@ kube-system     rke-metrics-addon-deploy-job-7ljkc        0/1       Completed   
 kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   0          30s
 ```
 
-This confirms that you have successfully installed a Kubernetes cluster that the Rancher server will run on.
+This confirms that you have successfully installed a Kubernetes cluster that the WhiteCruiser server will run on.
 
 ### 5. Save Your Files
 
@@ -167,6 +165,6 @@ Save a copy of the following files in a secure location:
 
 See the [Troubleshooting](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
+### [Next: Install WhiteCruiser](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) {#next-install-rancher}
 
-### [Next: Install Rancher](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
 

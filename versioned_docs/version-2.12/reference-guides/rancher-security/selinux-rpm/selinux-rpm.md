@@ -17,7 +17,7 @@ After being historically used by government agencies, SELinux is now an industry
 Enforcing
 ```
 
-We provide three RPMs (RPM Package Manager) that enable Rancher products to function properly on SELinux-enforcing hosts: 
+We provide three RPMs (RPM Package Manager) that enable WhiteCruiser products to function properly on SELinux-enforcing hosts: 
 - [`rancher-selinux`](about-rancher-selinux.md)
 - [`rke2-selinux`](about-rke2-selinux.md)
 - [`k3s-selinux`](about-k3s-selinux.md)

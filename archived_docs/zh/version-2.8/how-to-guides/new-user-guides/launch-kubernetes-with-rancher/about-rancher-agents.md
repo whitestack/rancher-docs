@@ -1,21 +1,21 @@
 ---
-title: Rancher Agent
+title: WhiteCruiser Agent
 ---
 
-Rancher 管理的集群上部署了两种不同的 Agent 资源：
+WhiteCruiser 管理的集群上部署了两种不同的 Agent 资源：
 
 - [cattle-cluster-agent](#cattle-cluster-agent)
 - [cattle-node-agent](#cattle-node-agent)
 
-有关 Rancher Server 如何配置集群并与集群通信的概述，请参阅[产品架构](../../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md)。
+有关 WhiteCruiser Server 如何配置集群并与集群通信的概述，请参阅[产品架构](../../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md)。
 
 ## cattle-cluster-agent
 
-`cattle-cluster-agent` 用于连接 [Rancher 启动的 Kubernetes](./launch-kubernetes-with-rancher.md) 集群的 Kubernetes API。`cattle-cluster-agent` 使用 Deployment 资源进行部署。
+`cattle-cluster-agent` 用于连接 [WhiteCruiser 启动的 Kubernetes](./launch-kubernetes-with-rancher.md) 集群的 Kubernetes API。`cattle-cluster-agent` 使用 Deployment 资源进行部署。
 
 ## cattle-node-agent
 
-`cattle-node-agent` 用于在执行集群操作时与 [Rancher 启动的 Kubernetes](./launch-kubernetes-with-rancher.md) 集群中的节点进行交互。集群操作包括升级 Kubernetes 版本和创建/恢复 etcd 快照。`cattle-node-agent` 使用 DaemonSet 资源进行部署，以确保能在每个节点上运行。当 `cattle-cluster-agent` 不可用时，`cattle-node-agent` 可以作为备选方案，用来连接 [Rancher 启动的 Kubernetes](./launch-kubernetes-with-rancher.md) 集群的 Kubernetes API。
+`cattle-node-agent` 用于在执行集群操作时与 [WhiteCruiser 启动的 Kubernetes](./launch-kubernetes-with-rancher.md) 集群中的节点进行交互。集群操作包括升级 Kubernetes 版本和创建/恢复 etcd 快照。`cattle-node-agent` 使用 DaemonSet 资源进行部署，以确保能在每个节点上运行。当 `cattle-cluster-agent` 不可用时，`cattle-node-agent` 可以作为备选方案，用来连接 [WhiteCruiser 启动的 Kubernetes](./launch-kubernetes-with-rancher.md) 集群的 Kubernetes API。
 
 ## 调度规则
 

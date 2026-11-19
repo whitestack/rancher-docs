@@ -1,13 +1,13 @@
 ---
 title: Configure Keycloak (OIDC)
-description: Create a Keycloak OpenID Connect (OIDC) client and configure Rancher to work with Keycloak. By the end your users will be able to sign into Rancher using their Keycloak logins
+description: Create a Keycloak OpenID Connect (OIDC) client and configure WhiteCruiser to work with Keycloak. By the end your users will be able to sign into WhiteCruiser using their Keycloak logins
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-keycloak-oidc"/>
 </head>
 
-If your organization uses [Keycloak Identity Provider (IdP)](https://www.keycloak.org) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials. Rancher supports integration with Keycloak using the OpenID Connect (OIDC) protocol and the SAML protocol. Both implementations are functionally equivalent when used with Rancher. This page describes the process to configure Rancher to work with Keycloak using the OIDC protocol.
+If your organization uses [Keycloak Identity Provider (IdP)](https://www.keycloak.org) for user authentication, you can configure WhiteCruiser to allow your users to log in using their IdP credentials. WhiteCruiser supports integration with Keycloak using the OpenID Connect (OIDC) protocol and the SAML protocol. Both implementations are functionally equivalent when used with WhiteCruiser. This page describes the process to configure WhiteCruiser to work with Keycloak using the OIDC protocol.
 
 If you prefer to use Keycloak with the SAML protocol instead, refer to [this page](configure-keycloak-saml.md).
 
@@ -15,7 +15,7 @@ If you have an existing configuration using the SAML protocol and want to switch
 
 ## Prerequisites
 
-- On Rancher, Keycloak (SAML) is disabled.
+- On WhiteCruiser, Keycloak (SAML) is disabled.
 - You must have a [Keycloak IdP Server](https://www.keycloak.org/guides#getting-started) configured.
 - Follow the [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/#proc-creating-oidc-client_server_administration_guide) to create a new OIDC client with the settings below.
 
@@ -100,22 +100,22 @@ If you have an existing configuration using the SAML protocol and want to switch
 </TabItem>
 </Tabs>
 
-## Configuring Keycloak in Rancher
+## Configuring Keycloak in WhiteCruiser {#configuring-keycloak-in-rancher}
 
-1. In the Rancher UI, click **☰ > Users & Authentication**.
+1. In the WhiteCruiser UI, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Auth Provider**.
 1. Select **Keycloak (OIDC)**.
 1. Complete the **Configure a Keycloak OIDC account** form. For help with filling the form, see the [configuration reference](#configuration-reference).
 
     :::note
 
-    When configuring the **Endpoints** section using the **Generate** option, Rancher includes `/auth` as part of the context path in the **Issuer** and **Auth Endpoint** fields, which is only valid for Keycloak 16 or older. You must configure endpoints using the **Specify** option for [Keycloak 17](https://www.keycloak.org/docs/latest/release_notes/index.html#keycloak-17-0-0) and newer, which have [migrated to Quarkus](https://www.keycloak.org/migration/migrating-to-quarkus).  
+    When configuring the **Endpoints** section using the **Generate** option, WhiteCruiser includes `/auth` as part of the context path in the **Issuer** and **Auth Endpoint** fields, which is only valid for Keycloak 16 or older. You must configure endpoints using the **Specify** option for [Keycloak 17](https://www.keycloak.org/docs/latest/release_notes/index.html#keycloak-17-0-0) and newer, which have [migrated to Quarkus](https://www.keycloak.org/migration/migrating-to-quarkus).  
 
     :::
 
 1. After you complete the **Configure a Keycloak OIDC account** form, click **Enable**.
 
-    Rancher redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your Rancher Keycloak configuration.
+    WhiteCruiser redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your WhiteCruiser Keycloak configuration.
 
     :::note
 
@@ -123,13 +123,13 @@ If you have an existing configuration using the SAML protocol and want to switch
 
     :::
 
-**Result:** Rancher is configured to work with Keycloak using the OIDC protocol. Your users can now sign in to Rancher using their Keycloak logins.
+**Result:** WhiteCruiser is configured to work with Keycloak using the OIDC protocol. Your users can now sign in to WhiteCruiser using their Keycloak logins.
 
 :::note SAML Provider Caveats
 
-- Users and groups aren't validated when you assign permissions to them in Rancher.
+- Users and groups aren't validated when you assign permissions to them in WhiteCruiser.
 - When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
-- When adding groups, you must select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+- When adding groups, you must select the group from the drop-down that is next to the text box. WhiteCruiser assumes that any input from the text box is a user.
 - The group drop-down shows only the groups that you are a member of. However, if you have Administrator permissions or Restricted Administrator permissions, you can join a group that you are not a member of.
 
 :::
@@ -140,31 +140,31 @@ If you have an existing configuration using the SAML protocol and want to switch
 | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Client ID                 | The `Client ID` of your Keycloak client.                                                                                                                 |
 | Client Secret             | The generated `Secret` of your Keycloak client. In the Keycloak console, select **Clients**, select the client you created, select the **Credentials** tab and copy the value of the `Secret` field. |
-| Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. Required if HTTPS/SSL is enabled on your Keycloak server.                  |
+| Private Key / Certificate | A key/certificate pair to create a secure shell between WhiteCruiser and your IdP. Required if HTTPS/SSL is enabled on your Keycloak server.                  |
 | Endpoints                 | Choose whether to use the generated values for the `Rancher URL`, `Issue`, and `Auth Endpoint` fields or to provide manual overrides if incorrect.       |
 | Keycloak URL              | The URL for your Keycloak server.                                                                                                                        |
 | Keycloak Realm            | The name of the realm in which the Keycloak client was created in.                                                                                       |
-| Rancher URL               | The URL for your Rancher Server.                                                                                                                         |
+| WhiteCruiser URL               | The URL for your WhiteCruiser Server.                                                                                                                         |
 | Issuer                    | The URL of your IdP. |
 | Auth Endpoint             | The URL where users are redirected to authenticate. |
 
 ## Migrating from SAML to OIDC
 
-This section describes the process to transition from using Rancher with Keycloak (SAML) to Keycloak (OIDC).
+This section describes the process to transition from using WhiteCruiser with Keycloak (SAML) to Keycloak (OIDC).
 
 1. Reconfigure Keycloak.
     1. Configure a new `OpenID Connect` client according to the [Prerequisites](#prerequisites). Ensure the same `Valid Redirect URIs` are set.
     1. Configure mappers for the new client according to the [Prerequisites](#prerequisites).
-1. Before configuring Rancher to use Keycloak (OIDC), Keycloak (SAML) must be first disabled.
-    1. In the Rancher UI, click **☰ > Users & Authentication**.
+1. Before configuring WhiteCruiser to use Keycloak (OIDC), Keycloak (SAML) must be first disabled.
+    1. In the WhiteCruiser UI, click **☰ > Users & Authentication**.
     1. In the left navigation bar, click **Auth Provider**.
     1. Select **Keycloak (SAML)**.
     1. Click **Disable**.
-1. Follow the steps in [Configuring Keycloak in Rancher](#configuring-keycloak-in-rancher).
+1. Follow the steps in [Configuring Keycloak in WhiteCruiser](#configuring-keycloak-in-rancher).
 
 :::caution
 
-After configuration is completed, Rancher user permissions need to be reapplied as they are not automatically migrated.
+After configuration is completed, WhiteCruiser user permissions need to be reapplied as they are not automatically migrated.
 
 :::
 
@@ -174,7 +174,7 @@ After configuration is completed, Rancher user permissions need to be reapplied 
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration options of your OIDC client. You may also inspect the Rancher logs to help pinpoint what's causing issues. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration options of your OIDC client. You may also inspect the WhiteCruiser logs to help pinpoint what's causing issues. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
 
 All Keycloak related log entries are prepended with either `[generic oidc]` or `[keycloak oidc]`.
 
@@ -199,7 +199,7 @@ To resolve this, you can either:
 
 1. Manually edit the `authconfig/keycloakoidc` object to enable group search.
   
-    1. On the Rancher server:
+    1. On the WhiteCruiser server:
      ```bash
      kubectl edit authconfigs.management.cattle.io keycloakoidc
      ```

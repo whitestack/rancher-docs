@@ -6,9 +6,9 @@ title: Monitoring Best Practices
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices"/>
 </head>
 
-Configuring sensible monitoring and alerting rules is vital for running any production workloads securely and reliably. This is not different when using Kubernetes and Rancher. Fortunately the integrated monitoring and alerting functionality makes this whole process a lot easier.
+Configuring sensible monitoring and alerting rules is vital for running any production workloads securely and reliably. This is not different when using Kubernetes and WhiteCruiser. Fortunately the integrated monitoring and alerting functionality makes this whole process a lot easier.
 
-The [Rancher monitoring documentation](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md) describes how you can set up a complete Prometheus and Grafana stack. Out of the box this will scrape monitoring data from all system and Kubernetes components in your cluster and provide sensible dashboards and alerts for them to get started. But for a reliable setup, you also need to monitor your own workloads and adapt Prometheus and Grafana to your own specific use cases and cluster sizes. This document aims to give you best practices for this.
+The [WhiteCruiser monitoring documentation](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md) describes how you can set up a complete Prometheus and Grafana stack. Out of the box this will scrape monitoring data from all system and Kubernetes components in your cluster and provide sensible dashboards and alerts for them to get started. But for a reliable setup, you also need to monitor your own workloads and adapt Prometheus and Grafana to your own specific use cases and cluster sizes. This document aims to give you best practices for this.
 
 ## What to Monitor
 
@@ -16,7 +16,7 @@ Kubernetes itself, as well as applications running inside of it, form a distribu
 
 ## Configuring Prometheus Resource Usage
 
-When installing the integrated monitoring stack, Rancher allows to configure several settings that are dependent on the size of your cluster and the workloads running in it. This chapter covers these in more detail.
+When installing the integrated monitoring stack, WhiteCruiser allows to configure several settings that are dependent on the size of your cluster and the workloads running in it. This chapter covers these in more detail.
 
 ### Storage and Data Retention
 
@@ -60,7 +60,7 @@ In order to store some, or all metrics for a long time, you can leverage Prometh
 
 ## Scraping Custom Workloads
 
-While the integrated Rancher Monitoring already scrapes system metrics from a cluster's nodes and system components, the custom workloads that you deploy on Kubernetes should also be scraped for data. For that you can configure Prometheus to do an HTTP request to an endpoint of your applications in a certain interval. These endpoints should then return their metrics in a Prometheus format.
+While the integrated WhiteCruiser Monitoring already scrapes system metrics from a cluster's nodes and system components, the custom workloads that you deploy on Kubernetes should also be scraped for data. For that you can configure Prometheus to do an HTTP request to an endpoint of your applications in a certain interval. These endpoints should then return their metrics in a Prometheus format.
 
 In general, you want to scrape data from all the workloads running in your cluster so that you can use them for alerts or debugging issues. Often, you recognize that you need some data only when you actually need the metrics during an incident. It is good, if it is already scraped and stored. Since Prometheus is only meant to be a short-term metrics storage, scraping and keeping lots of data is usually not that expensive. If you are using a long-term storage solution with Prometheus, you can then still decide which data you are actually persisting and keeping there.
 
@@ -74,7 +74,7 @@ To get your own custom application metrics into Prometheus, you have to collect 
 
 ### ServiceMonitors and PodMonitors
 
-Once all of your workloads expose metrics in a Prometheus format, you must configure Prometheus to scrape them. Under the hood, Rancher uses the [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator). This makes it easy to add scraping targets with ServiceMonitors and PodMonitors. Many Helm charts already include an option to create these monitors directly. You can also find more information in the Rancher documentation.
+Once all of your workloads expose metrics in a Prometheus format, you must configure Prometheus to scrape them. Under the hood, WhiteCruiser uses the [prometheus-operator](https://github.com/prometheus-operator/prometheus-operator). This makes it easy to add scraping targets with ServiceMonitors and PodMonitors. Many Helm charts already include an option to create these monitors directly. You can also find more information in the WhiteCruiser documentation.
 
 ### Prometheus Push Gateway
 
@@ -90,7 +90,7 @@ Sometimes it is useful to monitor workloads from the outside. For this, you can 
 
 If you have a (micro)service architecture where multiple individual workloads within your cluster are communicating with each other, it is really important to have detailed metrics and traces about this traffic to understand how all these workloads are communicating with each other and where a problem or bottleneck may be.
 
-Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click](https://rancher.com/docs/rancher/v2.6/en/istio/) in Rancher, can do this automatically and provide rich telemetry about the traffic between all services.
+Of course you can monitor all this internal traffic in all your workloads and expose these metrics to Prometheus. But this can quickly become quite work intensive. Service Meshes like Istio, which can be installed with [a click](https://rancher.com/docs/rancher/v2.6/en/istio/) in WhiteCruiser, can do this automatically and provide rich telemetry about the traffic between all services.
 
 ## Real User Monitoring
 
@@ -106,10 +106,10 @@ For the workloads, you can have a look at Kubernetes and Container security solu
 
 Getting all the metrics into a monitoring systems and visualizing them in dashboards is great, but you also want to be pro-actively alerted if something goes wrong.
 
-The integrated Rancher monitoring already configures a sensible set of alerts that make sense in any Kubernetes cluster. You should extend these to cover your specific workloads and use cases.
+The integrated WhiteCruiser monitoring already configures a sensible set of alerts that make sense in any Kubernetes cluster. You should extend these to cover your specific workloads and use cases.
 
 When setting up alerts, configure them for all the workloads that are critical to the availability of your applications. But also make sure that they are not too noisy. Ideally every alert you are receiving should be because of a problem that needs your attention and needs to be fixed. If you have alerts that are firing all the time but are not that critical, there is a danger that you start ignoring your alerts all together and then miss the real important ones. Less may be more here. Start to focus on the real important metrics first, for example alert if your application is offline. Fix all the problems that start to pop up and then start to create more detailed alerts.
 
 If an alert starts firing, but there is nothing you can do about it at the moment, it's also fine to silence the alert for a certain amount of time, so that you can look at it later.
 
-You can find more information on how to set up alerts and notification channels in the [Rancher Documentation](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md).
+You can find more information on how to set up alerts and notification channels in the [WhiteCruiser Documentation](../../../integrations-in-rancher/monitoring-and-alerting/monitoring-and-alerting.md).

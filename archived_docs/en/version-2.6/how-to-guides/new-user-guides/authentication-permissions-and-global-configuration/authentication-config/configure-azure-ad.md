@@ -13,11 +13,11 @@ title: Configure Azure AD
 
 Microsoft Graph API is now the flow through which you will set up Azure AD. The below sections will assist [new users](#new-user-setup) in configuring Azure AD with a new instance as well as assist existing Azure app owners in [migrating to the new flow](#migrating-from-azure-ad-graph-api-to-microsoft-graph-api).
 
-The Microsoft Graph API flow in Rancher is constantly evolving. We recommend that you use the latest patched version of 2.6, as it is still in active development and will continue to receive new features and improvements.
+The Microsoft Graph API flow in WhiteCruiser is constantly evolving. We recommend that you use the latest patched version of 2.6, as it is still in active development and will continue to receive new features and improvements.
 
 ### New User Setup
 
-If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
+If you have an instance of Active Directory (AD) hosted in Azure, you can configure WhiteCruiser to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and WhiteCruiser.
 
 :::note Notes
 
@@ -28,17 +28,17 @@ If you have an instance of Active Directory (AD) hosted in Azure, you can config
 
 #### Azure Active Directory Configuration Outline
 
-Configuring Rancher to allow your users to authenticate with their Azure AD accounts involves multiple procedures. Review the outline below before getting started.
+Configuring WhiteCruiser to allow your users to authenticate with their Azure AD accounts involves multiple procedures. Review the outline below before getting started.
 
 :::tip
 
-Before you start, open two browser tabs: one for Rancher, and one for the Azure portal. This will help with copying and pasting configuration values from the portal to Rancher.
+Before you start, open two browser tabs: one for WhiteCruiser, and one for the Azure portal. This will help with copying and pasting configuration values from the portal to WhiteCruiser.
 
 :::
 
-#### 1. Register Rancher with Azure
+#### 1. Register WhiteCruiser with Azure {#1-register-rancher-with-azure}
 
-Before enabling Azure AD within Rancher, you must register Rancher with Azure.
+Before enabling Azure AD within WhiteCruiser, you must register WhiteCruiser with Azure.
 
 1. Log in to [Microsoft Azure](https://portal.azure.com/) as an administrative user. Configuration in future steps requires administrative access rights.
 
@@ -54,15 +54,15 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
         :::note
 
-        In the updated Azure portal, Redirect URIs are synonymous with Reply URLs. In order to use Azure AD with Rancher, you must whitelist Rancher with Azure (previously done through Reply URLs). Therefore, you must ensure to fill in the Redirect URI with your Rancher server URL, to include the verification path as listed below.
+        In the updated Azure portal, Redirect URIs are synonymous with Reply URLs. In order to use Azure AD with WhiteCruiser, you must whitelist WhiteCruiser with Azure (previously done through Reply URLs). Therefore, you must ensure to fill in the Redirect URI with your WhiteCruiser server URL, to include the verification path as listed below.
 
         :::
 
-    1. In the [**Redirect URI**](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url) section, make sure **Web** is selected from the dropdown and enter the URL of your Rancher Server in the text box next to the dropdown. This Rancher server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
+    1. In the [**Redirect URI**](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url) section, make sure **Web** is selected from the dropdown and enter the URL of your WhiteCruiser Server in the text box next to the dropdown. This WhiteCruiser server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 
        :::tip
 
-       You can find your personalized Azure Redirect URI (reply URL) in Rancher on the Azure AD Authentication page (Global View > Authentication > Web).
+       You can find your personalized Azure Redirect URI (reply URL) in WhiteCruiser on the Azure AD Authentication page (Global View > Authentication > Web).
 
        :::
 
@@ -76,11 +76,11 @@ It can take up to five minutes for this change to take affect, so don't be alarm
 
 #### 2. Create a new client secret
 
-From the Azure portal, create a client secret. Rancher will use this key to authenticate with Azure AD.
+From the Azure portal, create a client secret. WhiteCruiser will use this key to authenticate with Azure AD.
 
-1. Use search to open **App registrations** services. Then open the entry for Rancher that you created in the last procedure.
+1. Use search to open **App registrations** services. Then open the entry for WhiteCruiser that you created in the last procedure.
 
-     ![Open Rancher Registration](/img/open-rancher-app-reg.png)
+     ![Open WhiteCruiser Registration](/img/open-rancher-app-reg.png)
 
 1. From the navigation pane, click **Certificates & secrets**.
 
@@ -88,15 +88,15 @@ From the Azure portal, create a client secret. Rancher will use this key to auth
     ![Create new client secret](/img/new-client-secret.png)
 1. Enter a **Description** (something like `Rancher`).
 1. Select the duration from the options under **Expires**. This drop-down menu sets the expiration date for the key. Shorter durations are more secure, but require you to create a new key more frequently.
-Note that users won't be able to log in to Rancher if it detects that the application secret has expired. To avoid this problem, rotate the secret in Azure and update it in Rancher before it expires.
+Note that users won't be able to log in to WhiteCruiser if it detects that the application secret has expired. To avoid this problem, rotate the secret in Azure and update it in WhiteCruiser before it expires.
 1. Click **Add** (you don't need to enter a value—it will automatically populate after you save).
 <a id="secret"></a>
 
-1. You'll enter this key into the Rancher UI later as your **Application Secret**. Since you won't be able to access the key value again within the Azure UI, keep this window open for the rest of the setup process.
+1. You'll enter this key into the WhiteCruiser UI later as your **Application Secret**. Since you won't be able to access the key value again within the Azure UI, keep this window open for the rest of the setup process.
 
-#### 3. Set Required Permissions for Rancher
+#### 3. Set Required Permissions for WhiteCruiser {#3-set-required-permissions-for-rancher}
 
-Next, set API permissions for Rancher within Azure.
+Next, set API permissions for WhiteCruiser within Azure.
 
 :::caution
 
@@ -114,7 +114,7 @@ Ensure that you set Application permissions, and *not* Delegated permissions. Ot
 
 :::note
 
-In Rancher versions 2.6.7-2.6.10, you'll need to use `User.Read.All` and `Group.Read.All` for permissions. This was changed to allow for lower-scoped permissions (such as `Directory.Read.All`) in v2.6.11.
+In WhiteCruiser versions 2.6.7-2.6.10, you'll need to use `User.Read.All` and `Group.Read.All` for permissions. This was changed to allow for lower-scoped permissions (such as `Directory.Read.All`) in v2.6.11.
 
 :::
 
@@ -124,18 +124,18 @@ In Rancher versions 2.6.7-2.6.10, you'll need to use `User.Read.All` and `Group.
 
 :::note
 
-Rancher doesn't validate the permissions you grant to the app in Azure. You're free to try any permissions you want, as long as they allow Rancher to work with AD users and groups.
+WhiteCruiser doesn't validate the permissions you grant to the app in Azure. You're free to try any permissions you want, as long as they allow WhiteCruiser to work with AD users and groups.
 
- Specifically, Rancher needs permissions that allow the following actions:
+ Specifically, WhiteCruiser needs permissions that allow the following actions:
  - Get a user.
  - List all users.
  - List groups of which a given user is a member.
  - Get a group.
  - List all groups.
 
- Rancher performs these actions either to log in a user or to run a user/group search. Keep in mind that the permissions must be of type `Application`.
+ WhiteCruiser performs these actions either to log in a user or to run a user/group search. Keep in mind that the permissions must be of type `Application`.
 
- Here are a few examples of permission combinations that satisfy Rancher's needs:
+ Here are a few examples of permission combinations that satisfy WhiteCruiser's needs:
  - `Directory.Read.All`
  - `User.Read.All` and `GroupMember.Read.All`
  - `User.Read.All` and `Group.Read.All`
@@ -146,21 +146,21 @@ Rancher doesn't validate the permissions you grant to the app in Azure. You're f
 
 ![Application ID](/img/app-configuration.png)
 
-1. Obtain your Rancher **Tenant ID**.
+1. Obtain your WhiteCruiser **Tenant ID**.
 
     1. Use search to open **App registrations**.
 
-    1. Find the entry you created for Rancher.
+    1. Find the entry you created for WhiteCruiser.
 
-    1. Copy the **Directory ID** and paste it into Rancher as your **Tenant ID**.
+    1. Copy the **Directory ID** and paste it into WhiteCruiser as your **Tenant ID**.
 
-1. Obtain your Rancher **Application (Client) ID**.
+1. Obtain your WhiteCruiser **Application (Client) ID**.
 
     1. If you aren't already there, use search to open **App registrations**.
 
-    1. In **Overview**, find the entry you created for Rancher.
+    1. In **Overview**, find the entry you created for WhiteCruiser.
 
-    1. Copy the **Application (Client) ID** and paste it into Rancher as your **Application ID**.
+    1. Copy the **Application (Client) ID** and paste it into WhiteCruiser as your **Application ID**.
 
 1. In most cases, your endpoint options will either be [Standard](#global) or [China](#china). For either of these options, you only need to enter the **Tenant ID**, **Application ID**, and **Application Secret**.
 
@@ -168,7 +168,7 @@ Rancher doesn't validate the permissions you grant to the app in Azure. You're f
 
 **For Custom Endpoints:**
 
-**Warning:** Custom Endpoints are not tested or fully supported by Rancher.
+**Warning:** Custom Endpoints are not tested or fully supported by WhiteCruiser.
 
 You'll also need to manually enter the Graph, Token, and Auth Endpoints.
 
@@ -176,16 +176,16 @@ You'll also need to manually enter the Graph, Token, and Auth Endpoints.
 
 ![Click Endpoints](/img/endpoints.png)
 
-- The following endpoints will be your Rancher endpoint values. Make sure to use the v1 version of these endpoints:
+- The following endpoints will be your WhiteCruiser endpoint values. Make sure to use the v1 version of these endpoints:
   - **Microsoft Graph API endpoint** (Graph Endpoint)
   - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
   - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
 
-#### 5. Configure Azure AD in Rancher
+#### 5. Configure Azure AD in WhiteCruiser {#5-configure-azure-ad-in-rancher}
 
-From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
+From the WhiteCruiser UI, enter information about your AD instance hosted in Azure to complete configuration.
 
-1. Log into Rancher.
+1. Log into WhiteCruiser.
 
 1. In the top left corner, click **☰ > Users & Authentication**.
 
@@ -197,15 +197,15 @@ From the Rancher UI, enter information about your AD instance hosted in Azure to
 
     :::caution
 
-    The Azure AD account will be granted administrator privileges, since its details will be mapped to the Rancher local principal account. Make sure that this level of privilege is appropriate before you continue.
+    The Azure AD account will be granted administrator privileges, since its details will be mapped to the WhiteCruiser local principal account. Make sure that this level of privilege is appropriate before you continue.
 
     :::
 
     **For Standard or China Endpoints:**
 
-    The following table maps the values you copied in the Azure portal to the fields in Rancher:
+    The following table maps the values you copied in the Azure portal to the fields in WhiteCruiser:
 
-    | Rancher Field      | Azure Value                           |
+    | WhiteCruiser Field      | Azure Value                           |
     | ------------------ | ------------------------------------- |
     | Tenant ID          | Directory ID                          |
     | Application ID     | Application ID                        |
@@ -214,9 +214,9 @@ From the Rancher UI, enter information about your AD instance hosted in Azure to
 
     **For Custom Endpoints:**
 
-    The following table maps the custom config values you copied in the Azure portal to the fields in Rancher:
+    The following table maps the custom config values you copied in the Azure portal to the fields in WhiteCruiser:
 
-    | Rancher Field      | Azure Value                           |
+    | WhiteCruiser Field      | Azure Value                           |
     | ------------------ | ------------------------------------- |
     | Graph Endpoint     | Microsoft Graph API Endpoint          |
     | Token Endpoint     | OAuth 2.0 Token Endpoint              |
@@ -230,31 +230,31 @@ From the Rancher UI, enter information about your AD instance hosted in Azure to
 
 **Result:** Azure Active Directory authentication is configured.
 
-#### (Optional) Configure Authentication with Multiple Rancher Domains
+#### (Optional) Configure Authentication with Multiple WhiteCruiser Domains {#optional-configure-authentication-with-multiple-rancher-domains}
 
-If you have multiple Rancher domains, it's not possible to configure multiple redirect URIs through the Rancher UI. The Azure AD configuration file, `azuread`, only allows one redirect URI by default. You must manually edit `azuread` to set the redirect URI as needed for any other domains. If you don't manually edit `azuread`, then upon a successful login attempt to any domain, Rancher automatically redirects the user to the **Redirect URI** value you set when you registered the app in [Step 1. Register Rancher with Azure](#1-register-rancher-with-azure).
+If you have multiple WhiteCruiser domains, it's not possible to configure multiple redirect URIs through the WhiteCruiser UI. The Azure AD configuration file, `azuread`, only allows one redirect URI by default. You must manually edit `azuread` to set the redirect URI as needed for any other domains. If you don't manually edit `azuread`, then upon a successful login attempt to any domain, WhiteCruiser automatically redirects the user to the **Redirect URI** value you set when you registered the app in [Step 1. Register WhiteCruiser with Azure](#1-register-rancher-with-azure).
 
 ### Migrating from Azure AD Graph API to Microsoft Graph API
 
-Since the [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview) is deprecated and slated to retire in June 2023, admins should update their Azure AD App to use the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) in Rancher.
+Since the [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview) is deprecated and slated to retire in June 2023, admins should update their Azure AD App to use the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) in WhiteCruiser.
 This needs to be done well in advance of the endpoint being retired.
-If Rancher is still configured to use the Azure AD Graph API when it is retired, users may not be able to log into Rancher using Azure AD.
+If WhiteCruiser is still configured to use the Azure AD Graph API when it is retired, users may not be able to log into WhiteCruiser using Azure AD.
 
-#### Updating Endpoints in the Rancher UI
+#### Updating Endpoints in the WhiteCruiser UI {#updating-endpoints-in-the-rancher-ui}
 
 :::caution
 
-Admins should create a [Rancher backup](../../../new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md) before they commit to the endpoint migration described below.
+Admins should create a [WhiteCruiser backup](../../../new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md) before they commit to the endpoint migration described below.
 
 :::
 
 1. [Update](#3-set-required-permissions-for-rancher) the permissions of your Azure AD app registration. This is critical.
 
-1. Log into Rancher.
+1. Log into WhiteCruiser.
 
-1. In the Rancher UI homepage, make note of the banner at the top of screen that advises users to update their Azure AD authentication. Click on the link provided to do so.
+1. In the WhiteCruiser UI homepage, make note of the banner at the top of screen that advises users to update their Azure AD authentication. Click on the link provided to do so.
 
-    ![Rancher UI Banner](/img/rancher-ui-azure-update.png)
+    ![WhiteCruiser UI Banner](/img/rancher-ui-azure-update.png)
 
 1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**.
 
@@ -266,11 +266,11 @@ Admins should create a [Rancher backup](../../../new-user-guides/backup-restore-
 
     ![Azure Update Pop-up](/img/azure-update-popup.png)
 
-1. Refer to the [tables](#global) below for the full list of endpoint changes that Rancher performs. Admins do not need to do this manually.
+1. Refer to the [tables](#global) below for the full list of endpoint changes that WhiteCruiser performs. Admins do not need to do this manually.
 
 #### Air-Gapped Environments
 
-In air-gapped environments, admins should ensure that their endpoints are whitelisted (see note on [Step 3.2 of Register Rancher with Azure](#1-register-rancher-with-azure)) since the Graph Endpoint URL is changing.
+In air-gapped environments, admins should ensure that their endpoints are whitelisted (see note on [Step 3.2 of Register WhiteCruiser with Azure](#1-register-rancher-with-azure)) since the Graph Endpoint URL is changing.
 
 #### Rolling Back the Migration
 
@@ -278,24 +278,24 @@ If you need to roll back your migration, please note the following:
 
 1. Admins are encouraged to use the proper restore process if they want to go back. Please see [backup docs](../../../new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md), [restore docs](../../../new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.md), and [examples](../../../../reference-guides/backup-restore-configuration/examples.md) for reference.
 
-1. Azure app owners who want to rotate the Application Secret will need to also rotate it in Rancher as Rancher does not automatically update the Application Secret when it is changed in Azure. In Rancher, note that it is stored in a Kubernetes secret called `azureadconfig-applicationsecret` which is in the `cattle-global-data` namespace.
+1. Azure app owners who want to rotate the Application Secret will need to also rotate it in WhiteCruiser as WhiteCruiser does not automatically update the Application Secret when it is changed in Azure. In WhiteCruiser, note that it is stored in a Kubernetes secret called `azureadconfig-applicationsecret` which is in the `cattle-global-data` namespace.
 
 :::caution
 
-If you upgrade to Rancher v2.6.7+ with an existing Azure AD setup, and choose to disable the auth provider, you won't be able to restore the previous setup. You also won't be able to set up Azure AD using the old flow. You'll need to re-register with the new auth flow. Since Rancher now uses the Graph API, users need set up the [proper permissions in the Azure portal](#3-set-required-permissions-for-rancher).
+If you upgrade to WhiteCruiser v2.6.7+ with an existing Azure AD setup, and choose to disable the auth provider, you won't be able to restore the previous setup. You also won't be able to set up Azure AD using the old flow. You'll need to re-register with the new auth flow. Since WhiteCruiser now uses the Graph API, users need set up the [proper permissions in the Azure portal](#3-set-required-permissions-for-rancher).
 
 :::
 
 #### Global:
 
-Rancher Field    | Deprecated Endpoints
+WhiteCruiser Field    | Deprecated Endpoints
 ---------------- | -------------------------------------------------------------
 Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/authorize
 Endpoint         | https://login.microsoftonline.com/
 Graph Endpoint   | https://graph.windows.net/
 Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/token
 
-Rancher Field    | New Endpoints
+WhiteCruiser Field    | New Endpoints
 ---------------- | ------------------------------------------------------------------
 Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize
 Endpoint         | https://login.microsoftonline.com/
@@ -304,14 +304,14 @@ Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/toke
 
 #### China:
 
-Rancher Field    | Deprecated Endpoints
+WhiteCruiser Field    | Deprecated Endpoints
 ---------------- | ----------------------------------------------------------
 Auth Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize
 Endpoint         | https://login.chinacloudapi.cn/
 Graph Endpoint   | https://graph.chinacloudapi.cn/
 Token Endpoint   | https://login.chinacloudapi.cn/{tenantID}/oauth2/token
 
-Rancher Field    | New Endpoints
+WhiteCruiser Field    | New Endpoints
 ---------------- | -------------------------------------------------------------------------
 Auth Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize
 Endpoint         | https://login.partner.microsoftonline.cn/
@@ -326,15 +326,15 @@ Token Endpoint   | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2
 
 >**Important:**
 >
->- The [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview) is deprecated and will be retired by Microsoft at any time after June 30, 2023, without advance notice. We will update our docs to advise the community when it is retired. Rancher now uses the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) as the new flow to set up Azure AD as the external auth provider.
+>- The [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview) is deprecated and will be retired by Microsoft at any time after June 30, 2023, without advance notice. We will update our docs to advise the community when it is retired. WhiteCruiser now uses the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) as the new flow to set up Azure AD as the external auth provider.
 >
 >
->- If you're a new user, or wish to migrate, refer to the new flow instructions for <a href="#microsoft-graph-api/" target="_blank">Rancher v2.6.7+</a>.
+>- If you're a new user, or wish to migrate, refer to the new flow instructions for <a href="#microsoft-graph-api/" target="_blank">WhiteCruiser v2.6.7+</a>.
 >
 >
 >- If you don't  wish to upgrade to v2.6.7+ after the Azure AD Graph API is retired, you'll need to either:
-    - Use the built-in Rancher auth or
-    - Use another third-party auth system and set that up in Rancher. Please see the [authentication docs](authentication-config.md) to learn how to configure other open authentication providers.
+    - Use the built-in WhiteCruiser auth or
+    - Use another third-party auth system and set that up in WhiteCruiser. Please see the [authentication docs](authentication-config.md) to learn how to configure other open authentication providers.
 
 </TabItem>
 </Tabs>

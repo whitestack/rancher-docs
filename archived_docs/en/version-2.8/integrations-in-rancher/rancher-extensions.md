@@ -1,16 +1,16 @@
 ---
-title: Rancher Extensions
+title: WhiteCruiser Extensions
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/rancher-extensions"/>
 </head>
 
-Extensions allow users, developers, partners, and customers to extend and enhance the Rancher UI. In addition, users can make changes and create enhancements to their UI functionality independent of Rancher releases. Extensions will enable users to build on top of Rancher to better tailor it to their respective environments. Note that users will also have the ability to update to new versions as well as roll back to a previous version.
+Extensions allow users, developers, partners, and customers to extend and enhance the WhiteCruiser UI. In addition, users can make changes and create enhancements to their UI functionality independent of WhiteCruiser releases. Extensions will enable users to build on top of WhiteCruiser to better tailor it to their respective environments. Note that users will also have the ability to update to new versions as well as roll back to a previous version.
 
 Extensions are Helm charts that can only be installed once into a cluster; therefore, these charts have been simplified and separated from the general Helm charts listed under **Apps**.
 
-Examples of built-in Rancher extensions are Fleet, Explorer, and Harvester. Examples of other extensions that use the Extensions API that can be manually added are Kubewarden and Elemental.
+Examples of built-in WhiteCruiser extensions are Fleet, Explorer, and Harvester. Examples of other extensions that use the Extensions API that can be manually added are Kubewarden and Elemental.
 
 ## Prerequisites
 
@@ -22,9 +22,9 @@ Examples of built-in Rancher extensions are Fleet, Explorer, and Harvester. Exam
 
 2. If not already installed in **Apps**, you must enable the extension operator by clicking the **Enable** button.
 
-    - Click **OK** to add the Rancher extension repository if your installation is not air-gapped. Otherwise, uncheck the box to do so and click **OK**.
+    - Click **OK** to add the WhiteCruiser extension repository if your installation is not air-gapped. Otherwise, uncheck the box to do so and click **OK**.
 
-    ![Rancher extension repository](/img/add-rancher-extension-repo.png)
+    ![WhiteCruiser extension repository](/img/add-rancher-extension-repo.png)
 
 3. On the **Extensions** page, click on the **Available** tab to select which extensions you want to install.
 
@@ -99,9 +99,9 @@ To learn how to develop your own extensions, refer to the official [Getting Star
 
 If you intend to work with extensions in an air-gapped environment, you must perform some extra steps before you can complete certain tasks.
 
-### Accessing Rancher UI Extensions in an Air-Gapped Environment
+### Accessing WhiteCruiser UI Extensions in an Air-Gapped Environment {#accessing-rancher-ui-extensions-in-an-air-gapped-environment}
 
-Rancher provides some extensions, such as Kubewarden and Elemental, through the `ui-plugin-catalog` container image at https://hub.docker.com/r/rancher/ui-plugin-catalog/tags. If you're trying to install these extensions in an air-gapped environment, you must make the `ui-plugin-catalog` image accessible.
+WhiteCruiser provides some extensions, such as Kubewarden and Elemental, through the `ui-plugin-catalog` container image at https://hub.docker.com/r/rancher/ui-plugin-catalog/tags. If you're trying to install these extensions in an air-gapped environment, you must make the `ui-plugin-catalog` image accessible.
 
 1. Mirror the `ui-plugin-catalog` image to a private registry:
 

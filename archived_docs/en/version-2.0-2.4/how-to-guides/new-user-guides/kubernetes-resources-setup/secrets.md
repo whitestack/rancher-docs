@@ -36,7 +36,7 @@ When creating a secret, you can make it available for any deployment within a pr
 
 1. Click **Save**.
 
-**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Secrets** view.
+**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the WhiteCruiser UI from the **Resources > Secrets** view.
 
 Mounted secrets will be updated automatically unless they are mounted as subpath volumes. For details on how updated secrets are propagated, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/secret/#mounted-secrets-are-updated-automatically)
 

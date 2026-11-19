@@ -4,7 +4,7 @@ title: Example YAML File
 
 Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.
 
-In the [pipeline configuration reference](./pipeline-configuration.md), we provide examples of how to configure each feature using the Rancher UI or using YAML configuration.
+In the [pipeline configuration reference](./pipeline-configuration.md), we provide examples of how to configure each feature using the WhiteCruiser UI or using YAML configuration.
 
 Below is a full example `rancher-pipeline.yml` for those who want to jump right in.
 

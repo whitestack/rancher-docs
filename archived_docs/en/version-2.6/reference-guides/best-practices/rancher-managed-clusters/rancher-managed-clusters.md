@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Rancher Managed Clusters
+title: Best Practices for WhiteCruiser Managed Clusters
 ---
 
 <head>
@@ -18,6 +18,6 @@ Configuring sensible monitoring and alerting rules is vital for running any prod
 
 Running well-built containers can greatly impact the overall performance and security of your environment. Refer to this [guide](tips-to-set-up-containers.md) for tips.
 
-### Best Practices for Rancher Managed VMware vSphere Clusters
+### Best Practices for WhiteCruiser Managed VMware vSphere Clusters {#best-practices-for-rancher-managed-vmware-vsphere-clusters}
 
-This [guide](rancher-managed-clusters-in-vsphere.md) outlines a reference architecture for provisioning downstream Rancher clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.
+This [guide](rancher-managed-clusters-in-vsphere.md) outlines a reference architecture for provisioning downstream WhiteCruiser clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.

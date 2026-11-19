@@ -8,7 +8,7 @@ title: Flows and ClusterFlows
 
 See the [Logging operator documentation](https://kube-logging.github.io/docs/configuration/flow/) for the full details on how to configure  `Flows` and `ClusterFlows`.
 
-See [Rancher Integration with Logging Services: Troubleshooting](../logging.md#The-Logging-Buffer-Overloads-Pods) for how to resolve memory problems with the logging buffer.
+See [WhiteCruiser Integration with Logging Services: Troubleshooting](../logging.md#The-Logging-Buffer-Overloads-Pods) for how to resolve memory problems with the logging buffer.
 
 ## Flows
 
@@ -16,7 +16,7 @@ A `Flow` defines which logs to collect and filter and which output to send the l
 
 The `Flow` is a namespaced resource, which means logs will only be collected from the namespace that the `Flow` is deployed in.
 
-`Flows` can be configured by filling out forms in the Rancher UI.
+`Flows` can be configured by filling out forms in the WhiteCruiser UI.
 
 For more details about the `Flow` custom resource, see [FlowSpec.](https://kube-logging.github.io/docs/configuration/crds/v1beta1/flow_types/)
 
@@ -26,7 +26,7 @@ Match statements are used to select which containers to pull logs from.
 
 You can specify match statements to select or exclude logs according to Kubernetes labels, container and host names. Match statements are evaluated in the order they are defined and processed only until the first matching select or exclude rule applies.
 
-Matches can be configured by filling out the `Flow` or `ClusterFlow` forms in the Rancher UI.
+Matches can be configured by filling out the `Flow` or `ClusterFlow` forms in the WhiteCruiser UI.
 
 For detailed examples on using the match statement, see the [official documentation on log routing.](https://kube-logging.github.io/docs/configuration/log-routing/)
 
@@ -42,13 +42,13 @@ Filters need to be configured in YAML.
 
 This `Output` will receive logs from the `Flow`. Because the `Flow` is a namespaced resource, the `Output` must reside in same namespace as the `Flow`.
 
-`Outputs` can be referenced when filling out the `Flow` or `ClusterFlow` forms in the Rancher UI.
+`Outputs` can be referenced when filling out the `Flow` or `ClusterFlow` forms in the WhiteCruiser UI.
 
 ## ClusterFlows
 
 Matches, filters and `Outputs` are configured for `ClusterFlows` in the same way that they are configured for `Flows`. The key difference is that the `ClusterFlow` is scoped at the cluster level and can configure log collection across all namespaces.
 
-`ClusterFlows` can be configured by filling out forms in the Rancher UI.
+`ClusterFlows` can be configured by filling out forms in the WhiteCruiser UI.
 
 After `ClusterFlow` selects logs from all namespaces in the cluster, logs from the cluster will be collected and logged to the selected `ClusterOutput`.
 

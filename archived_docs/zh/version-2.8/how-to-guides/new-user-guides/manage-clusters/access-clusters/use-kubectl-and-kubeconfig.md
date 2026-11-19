@@ -1,15 +1,15 @@
 ---
 title: "使用 Kubectl 和 kubeconfig 访问集群"
-description: "了解如何通过 kubectl Shell 使用 kubectl，或通过 kubectl CLI 和 kubeconfig 文件，来访问和管理 Kubernetes 集群。kubeconfig 文件用于配置对 Kubernetes 的访问。当你使用 Rancher 创建集群时，Rancher 会自动为你的集群创建 kubeconfig。"
+description: "了解如何通过 kubectl Shell 使用 kubectl，或通过 kubectl CLI 和 kubeconfig 文件，来访问和管理 Kubernetes 集群。kubeconfig 文件用于配置对 Kubernetes 的访问。当你使用 WhiteCruiser 创建集群时，WhiteCruiser 会自动为你的集群创建 kubeconfig。"
 ---
 
-本文介绍如何通过 Rancher UI 或工作站来使用 kubectl 操作下游 Kubernetes 集群。
+本文介绍如何通过 WhiteCruiser UI 或工作站来使用 kubectl 操作下游 Kubernetes 集群。
 
 有关使用 kubectl 的更多信息，请参阅 [Kubernetes 文档：kubectl 概述](https://kubernetes.io/docs/reference/kubectl/overview/)。
 
-## 在 Rancher UI 中使用 kubectl shell 访问集群
+## 在 WhiteCruiser UI 中使用 kubectl shell 访问集群
 
-你可以通过登录 Rancher 并在 UI 中打开 kubectl shell 来访问和管理你的集群。你无需进一步配置。
+你可以通过登录 WhiteCruiser 并在 UI 中打开 kubectl shell 来访问和管理你的集群。你无需进一步配置。
 
 1. 点击 **☰ > 集群管理**。
 1. 转到要使用 kubectl 访问的集群，然后单击 **Explore**。
@@ -19,7 +19,7 @@ description: "了解如何通过 kubectl Shell 使用 kubectl，或通过 kubect
 
 本节介绍如何下载集群的 kubeconfig 文件、从工作站启动 kubectl 以及访问下游集群。
 
-这种访问集群的替代方法允许你在不使用 Rancher UI 的情况下通过 Rancher 进行身份验证并管理集群。
+这种访问集群的替代方法允许你在不使用 WhiteCruiser UI 的情况下通过 WhiteCruiser 进行身份验证并管理集群。
 
 :::note 先决条件：
 
@@ -39,17 +39,17 @@ kubectl --kubeconfig /custom/path/kube.config get pods
 
 ## 使用 kubectl 创建的资源的注意事项
 
-Rancher 会发现并显示由 `kubectl` 创建的资源。但是在发现资源的时候，这些资源可能没有包括所有必须的注释。如果资源已经使用 Rancher UI/API 进行操作（例如，扩展工作负载），但是由于缺少注释，资源的重新创建可能会触发。只有在首次对发现的资源进行操作时，这种情况才会发生。
+WhiteCruiser 会发现并显示由 `kubectl` 创建的资源。但是在发现资源的时候，这些资源可能没有包括所有必须的注释。如果资源已经使用 WhiteCruiser UI/API 进行操作（例如，扩展工作负载），但是由于缺少注释，资源的重新创建可能会触发。只有在首次对发现的资源进行操作时，这种情况才会发生。
 
 ## 直接使用下游集群进行身份验证
 
 本节旨在帮助你设置访问 [RKE 集群的替代方法](../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)。
 
-此方法仅适用于启用了[授权集群端点](../../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-授权集群端点)的 RKE、RKE2 和 K3s集群。在 Rancher 创建集群时，Rancher 会生成一个 kubeconfig 文件，其中包含用于访问集群的额外 kubectl 上下文。该上下文允许你使用 kubectl 通过下游集群进行身份验证，而无需通过 Rancher 进行身份验证。有关授权集群端点如何工作的详细说明，请参阅[此页面](authorized-cluster-endpoint.md)。
+此方法仅适用于启用了[授权集群端点](../../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-授权集群端点)的 RKE、RKE2 和 K3s集群。在 WhiteCruiser 创建集群时，WhiteCruiser 会生成一个 kubeconfig 文件，其中包含用于访问集群的额外 kubectl 上下文。该上下文允许你使用 kubectl 通过下游集群进行身份验证，而无需通过 WhiteCruiser 进行身份验证。有关授权集群端点如何工作的详细说明，请参阅[此页面](authorized-cluster-endpoint.md)。
 
 在 RKE2 和 K3s 集群上，你需要[手动启用](../../kubernetes-clusters-in-rancher-setup/register-existing-clusters.md#对-rke2-和-k3s-集群的授权集群端点支持)授权集群端点。
 
-我们的最佳实践是使用此方法来访问 RKE、RKE2 和 K3s集群。这样，万一你无法连接到 Rancher，你仍然可以访问该集群。
+我们的最佳实践是使用此方法来访问 RKE、RKE2 和 K3s集群。这样，万一你无法连接到 WhiteCruiser，你仍然可以访问该集群。
 
 :::note 先决条件：
 
@@ -66,7 +66,7 @@ CURRENT   NAME                        CLUSTER                     AUTHINFO     N
           my-cluster-controlplane-1   my-cluster-controlplane-1   user-46tmn
 ```
 
-在此示例中，当你将 `kubectl` 与第一个上下文 `my-cluster` 一起使用时，你将通过 Rancher Server 进行身份验证。
+在此示例中，当你将 `kubectl` 与第一个上下文 `my-cluster` 一起使用时，你将通过 WhiteCruiser Server 进行身份验证。
 
 使用第二个上下文 `my-cluster-controlplane-1`，你将使用授权集群端点进行身份验证，直接与下游 RKE 集群通信。
 
@@ -74,11 +74,11 @@ CURRENT   NAME                        CLUSTER                     AUTHINFO     N
 
 现在你已经有了直接使用集群进行身份验证所需的上下文名称，你可以在运行 kubectl 命令时将上下文名称作为选项传入。根据你的集群是否定义了 FQDN，这些命令会有所不同。以下几节提供了示例。
 
-当 `kubectl` 正常工作时，它确认你可以绕过 Rancher 的身份验证代理访问集群。
+当 `kubectl` 正常工作时，它确认你可以绕过 WhiteCruiser 的身份验证代理访问集群。
 
 ## 直接连接到定义了 FQDN 的集群
 
-如果集群定义了 FQDN，将会创建一个引用 FQDN 的上下文。上下文将命名为 `<CLUSTER_NAME>-fqdn`。当你想在没有 Rancher 的情况下使用 `kubectl` 访问这个集群时，你需要使用这个上下文。
+如果集群定义了 FQDN，将会创建一个引用 FQDN 的上下文。上下文将命名为 `<CLUSTER_NAME>-fqdn`。当你想在没有 WhiteCruiser 的情况下使用 `kubectl` 访问这个集群时，你需要使用这个上下文。
 
 假设 kubeconfig 文件位于 `~/.kube/config`：
 
@@ -94,7 +94,7 @@ kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-fqdn get 
 
 ## 直接连接到未定义 FQDN 的集群
 
-如果集群没有定义 FQDN，则会创建额外的上下文来引用 controlplane 中每个节点的 IP 地址。每个上下文将被命名为 `<CLUSTER_NAME>-<NODE_NAME>`。当你想在没有 Rancher 的情况下使用 `kubectl` 访问这个集群时，你需要使用这个上下文。
+如果集群没有定义 FQDN，则会创建额外的上下文来引用 controlplane 中每个节点的 IP 地址。每个上下文将被命名为 `<CLUSTER_NAME>-<NODE_NAME>`。当你想在没有 WhiteCruiser 的情况下使用 `kubectl` 访问这个集群时，你需要使用这个上下文。
 
 假设 kubeconfig 文件位于 `~/.kube/config`：
 

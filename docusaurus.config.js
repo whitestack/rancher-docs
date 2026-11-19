@@ -3,7 +3,7 @@
 const tailwindPlugin = require('./plugins/tailwind-plugin.cjs');
 
 module.exports = {
-  title: "Rancher",
+  title: "WhiteCruiser",
   tagline: "",
   url: "https://ranchermanager.docs.rancher.com/",
   baseUrl: "/",
@@ -48,26 +48,6 @@ module.exports = {
         autoCollapseCategories: true,
       },
     },
-    algolia: {
-      // The application ID provided by Algolia
-      appId: "30NEY6C9UY",
-
-      // Public API key: it is safe to commit it
-      apiKey: "8df59222c0ad79fdacb4d45d11e21d2e",
-
-      indexName: "docs_ranchermanager_rancher_io",
-
-      // Optional: see doc section below
-      contextualSearch: true,
-
-      // Optional: Algolia search parameters
-      searchParameters: {},
-
-      // Optional: path for search page that enabled by default (`false` to disable it)
-      searchPagePath: "search",
-
-      //... other Algolia params
-    },
     colorMode: {
       // 'light' | 'dark'
       defaultMode: "light",
@@ -80,10 +60,11 @@ module.exports = {
       additionalLanguages: ["rust"],
     },
     navbar: {
+      style: "dark",
       title: "",
       logo: {
-        alt: "logo",
-        src: "img/rancher-logo-horiz-color.svg",
+        alt: "WhiteCruiser",
+        src: "img/whitecruiser-logo.png",
         // href: 'en',
       },
       items: [
@@ -101,72 +82,12 @@ module.exports = {
           type: "search",
           position: "left",
         },
-        {
-          type: "dropdown",
-          label: "Quick Links",
-          position: "right",
-          items: [
-            {
-              href: "https://github.com/rancher/rancher",
-              label: "GitHub",
-            },
-            {
-              href: "https://github.com/rancher/rancher-docs",
-              label: "Docs GitHub",
-            },
-          ],
-        },
-        {
-          type: "dropdown",
-          label: "More from SUSE",
-          position: "right",
-          items: [
-            {
-              href: "https://www.rancher.com",
-              label: "Rancher",
-              className: "navbar__icon navbar__rancher",
-            },
-            {
-              type: "html",
-              value: '<hr style="margin: 0.3rem 0;">',
-            },
-            {
-              href: "https://elemental.docs.rancher.com/",
-              label: "Elemental",
-              className: "navbar__icon navbar__elemental",
-            },
-            {
-              href: "https://fleet.rancher.io/",
-              label: "Fleet",
-              className: "navbar__icon navbar__fleet",
-            },
-            {
-              href: "https://harvesterhci.io",
-              label: "Harvester",
-              className: "navbar__icon navbar__harvester",
-            },
-            {
-              href: "https://rancherdesktop.io/",
-              label: "Rancher Desktop",
-              className: "navbar__icon navbar__rancher__desktop",
-            },
-            {
-              type: "html",
-              value: '<hr style="margin: 0.3rem 0;">',
-            },
-            {
-              href: "https://opensource.suse.com",
-              label: "More Projects...",
-              className: "navbar__icon navbar__suse",
-            },
-          ],
-        },
       ],
     },
     footer: {
       style: "dark",
       links: [],
-      copyright: `Copyright © ${new Date().getFullYear()} SUSE Rancher. All Rights Reserved.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Whitestack. All Rights Reserved.`,
     },
   },
   presets: [
@@ -255,9 +176,6 @@ module.exports = {
         // ...
         theme: {
           customCss: [require.resolve("./src/css/custom.css")],
-        },
-        googleTagManager: {
-          containerId: "GTM-57KS2MW",
         },
       },
     ],
@@ -360,10 +278,6 @@ module.exports = {
             from: "/pages-for-subheaders/authentication-permissions-and-global-configuration",
           },
           {
-            to: "/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace",
-            from: "/pages-for-subheaders/aws-cloud-marketplace",
-          },
-          {
             to: "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
             from: "/pages-for-subheaders/backup-restore-and-disaster-recovery",
           },
@@ -382,10 +296,6 @@ module.exports = {
           {
             to: "/reference-guides/cli-with-rancher",
             from: "/pages-for-subheaders/cli-with-rancher",
-          },
-          {
-            to: "/integrations-in-rancher/cloud-marketplace",
-            from: "/pages-for-subheaders/cloud-marketplace",
           },
           {
             to: "/reference-guides/cluster-configuration",
@@ -582,10 +492,6 @@ module.exports = {
           {
             to: "/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker",
             from: "/pages-for-subheaders/rancher-on-a-single-node-with-docker",
-          },
-          {
-            to: "/reference-guides/rancher-security",
-            from: "/pages-for-subheaders/rancher-security",
           },
           {
             to: "/reference-guides/cluster-configuration/rancher-server-configuration",
@@ -1001,26 +907,6 @@ module.exports = {
             from: "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
           },
           {
-            to: "/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/adapter-requirements",
-            from: "/explanations/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/adapter-requirements",
-          },
-          {
-            to: "/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/install-adapter",
-            from: "/explanations/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/install-adapter",
-          },
-          {
-            to: "/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/uninstall-adapter",
-            from: "/explanations/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/uninstall-adapter",
-          },
-          {
-            to: "/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/common-issues",
-            from: "/explanations/integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/common-issues",
-          },
-          {
-            to: "/integrations-in-rancher/cloud-marketplace/supportconfig",
-            from: "/explanations/integrations-in-rancher/cloud-marketplace/supportconfig",
-          },
-          {
             to: "/integrations-in-rancher/fleet/architecture",
             from: "/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture",
           },
@@ -1190,19 +1076,5 @@ module.exports = {
         ],
       },
     ],
-  ],
-  scripts: [
-    {
-      src: "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js",
-      type: "text/javascript",
-      charset: "UTF-8",
-      "data-domain-script": "0f98beb0-fc4c-417d-a42e-564e2cae42d2",
-      async: true,
-    },
-    {
-      src: "/scripts/optanonwrapper.js",
-      type: "text/javascript",
-      async: true,
-    },
   ],
 };

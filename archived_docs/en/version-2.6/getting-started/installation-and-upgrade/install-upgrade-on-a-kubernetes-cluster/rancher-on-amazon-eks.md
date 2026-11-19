@@ -1,18 +1,18 @@
 ---
-title: Installing Rancher on Amazon EKS
+title: Installing WhiteCruiser on Amazon EKS
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks"/>
 </head>
 
-This page covers installing Rancher on an Amazon EKS cluster.  You can also [install Rancher through the AWS Marketplace](../../quick-start-guides/deploy-rancher-manager/aws-marketplace.md).
+This page covers installing WhiteCruiser on an Amazon EKS cluster.
 
-If you already have an EKS Kubernetes cluster, skip to the step about [installing an ingress.](#5-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart)
+If you already have an EKS Kubernetes cluster, skip to the step about [installing an ingress.](#5-install-an-ingress) Then install the WhiteCruiser Helm chart following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart)
 
-## Creating an EKS Cluster for the Rancher Server
+## Creating an EKS Cluster for the WhiteCruiser Server {#creating-an-eks-cluster-for-the-rancher-server}
 
-In this section, you'll install an EKS cluster with an ingress by using command line tools. This guide may be useful if you want to use fewer resources while trying out Rancher on EKS.
+In this section, you'll install an EKS cluster with an ingress by using command line tools. This guide may be useful if you want to use fewer resources while trying out WhiteCruiser on EKS.
 
 :::note Prerequisites:
 
@@ -50,7 +50,7 @@ Then enter the following values:
 
 ### 3. Create the EKS Cluster
 
-To create an EKS cluster, run the following command. Use the AWS region that applies to your use case. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+To create an EKS cluster, run the following command. Use the AWS region that applies to your use case.
 
 **Note:** If you're updating from an older version of Kubernetes, to Kubernetes v1.22 or above, you also need to [update](https://kubernetes.github.io/ingress-nginx/user-guide/k8s-122-migration/) ingress-nginx.
 
@@ -88,7 +88,7 @@ rancher-server-cluster		us-west-2	True
 
 ### 5. Install an Ingress
 
-The cluster needs an Ingress so that Rancher can be accessed from outside the cluster.
+The cluster needs an Ingress so that WhiteCruiser can be accessed from outside the cluster.
 
 To make sure that you choose the correct Ingress-NGINX Helm chart, first find an `Ingress-NGINX version` that's compatible with your Kubernetes version in the [Kubernetes/ingress-nginx support table](https://github.com/kubernetes/ingress-nginx#supported-versions-table). 
 
@@ -134,21 +134,21 @@ Save the `EXTERNAL-IP`.
 
 ### 7. Set up DNS
 
-External traffic to the Rancher server will need to be directed at the load balancer you created.
+External traffic to the WhiteCruiser server will need to be directed at the load balancer you created.
 
-Set up a DNS to point at the external IP that you saved. This DNS will be used as the Rancher server URL.
+Set up a DNS to point at the external IP that you saved. This DNS will be used as the WhiteCruiser server URL.
 
 There are many valid ways to set up the DNS. For help, refer to the AWS documentation on [routing traffic to an ELB load balancer.](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)
 
-### 8. Install the Rancher Helm Chart
+### 8. Install the WhiteCruiser Helm Chart {#8-install-the-rancher-helm-chart}
 
-Next, install the Rancher Helm chart by following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
+Next, install the WhiteCruiser Helm chart by following the instructions on [this page.](install-upgrade-on-a-kubernetes-cluster.md#install-the-rancher-helm-chart) The Helm instructions are the same for installing WhiteCruiser on any Kubernetes distribution.
 
-Use that DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
+Use that DNS name from the previous step as the WhiteCruiser server URL when you install WhiteCruiser. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
 
 **_New in v2.6.7_**
 
-When installing Rancher on top of this setup, you will also need to pass the value below into the Rancher Helm install command in order to set the name of the ingress controller to be used with Rancher's ingress resource:
+When installing WhiteCruiser on top of this setup, you will also need to pass the value below into the WhiteCruiser Helm install command in order to set the name of the ingress controller to be used with WhiteCruiser's ingress resource:
 
 ```
 --set ingress.ingressClassName=nginx

@@ -1,9 +1,9 @@
 ---
 title: 集群驱动
 ---
-集群驱动用于在[托管 Kubernetes 提供商](../../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md)（例如 Google GKE）中创建集群。创建集群时可以显示的集群驱动，是由集群驱动的状态定义的。只有 `active` 集群驱动将作为创建集群的选项显示。默认情况下，Rancher 与多个现有的云提供商集群驱动打包在一起，但你也可以将自定义集群驱动添加到 Rancher。
+集群驱动用于在[托管 Kubernetes 提供商](../../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md)（例如 Google GKE）中创建集群。创建集群时可以显示的集群驱动，是由集群驱动的状态定义的。只有 `active` 集群驱动将作为创建集群的选项显示。默认情况下，WhiteCruiser 与多个现有的云提供商集群驱动打包在一起，但你也可以将自定义集群驱动添加到 WhiteCruiser。
 
-如果你不想向用户显示特定的集群驱动，你可以在 Rancher 中停用这些集群驱动，它们将不会作为创建集群的选项出现。
+如果你不想向用户显示特定的集群驱动，你可以在 WhiteCruiser 中停用这些集群驱动，它们将不会作为创建集群的选项出现。
 
 ## 管理集群驱动
 
@@ -18,7 +18,7 @@ title: 集群驱动
 
 ## 激活/停用集群驱动
 
-默认情况下，Rancher 仅激活主流的云提供商 Google GKE、Amazon EKS 和 Azure AKS 的驱动。如果要显示或隐藏驱动，你可以更改驱动的状态：
+默认情况下，WhiteCruiser 仅激活主流的云提供商 Google GKE、Amazon EKS 和 Azure AKS 的驱动。如果要显示或隐藏驱动，你可以更改驱动的状态：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 
@@ -28,7 +28,7 @@ title: 集群驱动
 
 ## 添加自定义集群驱动
 
-如果你想使用 Rancher 不支持开箱即用的集群驱动，你可以添加提供商的驱动，从而使用该驱动来创建 _托管_ Kubernetes 集群：
+如果你想使用 WhiteCruiser 不支持开箱即用的集群驱动，你可以添加提供商的驱动，从而使用该驱动来创建 _托管_ Kubernetes 集群：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在左侧导航菜单中，单击**驱动**。
@@ -38,4 +38,4 @@ title: 集群驱动
 
 ## 开发自己的集群驱动
 
-如果要开发集群驱动并添加到 Rancher，请参考我们的[示例](https://github.com/rancher-plugins/kontainer-engine-driver-example)。
+如果要开发集群驱动并添加到 WhiteCruiser，请参考我们的[示例](https://github.com/rancher-plugins/kontainer-engine-driver-example)。

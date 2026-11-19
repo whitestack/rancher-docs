@@ -12,7 +12,7 @@ title: 跳过和不适用的测试
 
 | 数字 | 描述 | 跳过的原因 |
 | ---------- | ------------- | --------- |
-| 1.1.12 | 确保 etcd 数据目录所有权设置为 etcd:etcd（自动） | etcd 数据目录所有权需要系统 ServiceAccount。有关如何配置所有权的更多信息，请参阅 Rancher 的强化指南。 |
+| 1.1.12 | 确保 etcd 数据目录所有权设置为 etcd:etcd（自动） | etcd 数据目录所有权需要系统 ServiceAccount。有关如何配置所有权的更多信息，请参阅 WhiteCruiser 的强化指南。 |
 | 1.2.6 | 确保根据需要设置 --kubelet-certificate-authority 参数（自动） | 在生成服务证书时，功能可能会与某些云提供商所需的主机名覆盖一起中断。 |
 | 1.2.16 | 确保设置了准入控制插件 PodSecurityPolicy（自动） | 启用 Pod 安全策略可能会导致应用意外失败。 |
 | 1.2.33 | 确保能根据需要设置 --encryption-provider-config 参数（手动） | 启用加密会改变恢复加密数据的方式。 |

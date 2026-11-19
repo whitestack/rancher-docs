@@ -6,34 +6,34 @@ title: Creating Catalog Apps
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps"/>
 </head>
 
-Rancher's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in Rancher.
+WhiteCruiser's catalog service requires any custom catalogs to be structured in a specific format for the catalog service to be able to leverage it in WhiteCruiser.
 
 > For a complete walkthrough of developing charts, see the [Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) in the official Helm documentation.
 
 
 ## Chart Types
 
-Rancher supports two different types of charts: Helm charts and Rancher charts.
+WhiteCruiser supports two different types of charts: Helm charts and WhiteCruiser charts.
 
 ### Helm Charts
 
 Native Helm charts include an application along with other software required to run it. When deploying native Helm charts, you'll learn the chart's parameters and then configure them using **Answers**, which are sets of key value pairs.
 
-The Helm Stable and Helm Incubators are populated with native Helm charts. However, you can also use native Helm charts in Custom catalogs (although we recommend Rancher Charts).
+The Helm Stable and Helm Incubators are populated with native Helm charts. However, you can also use native Helm charts in Custom catalogs (although we recommend WhiteCruiser Charts).
 
-### Rancher Charts
+### WhiteCruiser Charts {#rancher-charts}
 
-Rancher charts mirror native Helm charts, although they add two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Additional Files for Rancher Charts](#additional-files-for-rancher-charts).
+WhiteCruiser charts mirror native Helm charts, although they add two files that enhance user experience: `app-readme.md` and `questions.yaml`. Read more about them in [Additional Files for WhiteCruiser Charts](#additional-files-for-rancher-charts).
 
-Advantages of Rancher charts include:
+Advantages of WhiteCruiser charts include:
 
-- **Enhanced revision tracking:** While Helm supports versioned deployments, Rancher adds tracking and revision history to display changes between different versions of the chart.
-- **Streamlined application launch:** Rancher charts add simplified chart descriptions and configuration forms to make catalog application deployment easy. Rancher users need not read through the entire list of Helm variables to understand how to launch an application.
-- **Application resource management:** Rancher tracks all the resources created by a specific application. Users can easily navigate to and troubleshoot on a page listing all the workload objects used to power an application.
+- **Enhanced revision tracking:** While Helm supports versioned deployments, WhiteCruiser adds tracking and revision history to display changes between different versions of the chart.
+- **Streamlined application launch:** WhiteCruiser charts add simplified chart descriptions and configuration forms to make catalog application deployment easy. WhiteCruiser users need not read through the entire list of Helm variables to understand how to launch an application.
+- **Application resource management:** WhiteCruiser tracks all the resources created by a specific application. Users can easily navigate to and troubleshoot on a page listing all the workload objects used to power an application.
 
 ## Chart Directory Structure
 
-The following table demonstrates the directory structure for a Rancher Chart. The `charts` directory is the top level directory under the repository base. Adding the repository to Rancher will expose all charts contained within it. This information is helpful when customizing charts for a custom catalog. The `questions.yaml`, `README.md`, and `requirements.yml` files are specific to Rancher charts, but are optional for chart customization.
+The following table demonstrates the directory structure for a WhiteCruiser Chart. The `charts` directory is the top level directory under the repository base. Adding the repository to WhiteCruiser will expose all charts contained within it. This information is helpful when customizing charts for a custom catalog. The `questions.yaml`, `README.md`, and `requirements.yml` files are specific to WhiteCruiser charts, but are optional for chart customization.
 
 ```
 <Repository-Base>/
@@ -49,23 +49,23 @@ The following table demonstrates the directory structure for a Rancher Chart. Th
  │   │   │   ├── templates/        # Directory containing templates that, when combined with values.yml, generates Kubernetes YAML.
 ```
 
-## Additional Files for Rancher Charts
+## Additional Files for WhiteCruiser Charts {#additional-files-for-rancher-charts}
 
-Before you create your own custom catalog, you should have a basic understanding about how a Rancher chart differs from a native Helm chart. Rancher charts differ slightly from Helm charts in their directory structures. Rancher charts include two files that Helm charts do not.
+Before you create your own custom catalog, you should have a basic understanding about how a WhiteCruiser chart differs from a native Helm chart. WhiteCruiser charts differ slightly from Helm charts in their directory structures. WhiteCruiser charts include two files that Helm charts do not.
 
 - `app-readme.md`
 
-    A file that provides descriptive text in the chart's UI header. The following image displays the difference between a Rancher chart (which includes `app-readme.md`) and a native Helm chart (which does not).
+    A file that provides descriptive text in the chart's UI header. The following image displays the difference between a WhiteCruiser chart (which includes `app-readme.md`) and a native Helm chart (which does not).
 
-    <figcaption>Rancher Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</figcaption>
+    <figcaption>WhiteCruiser Chart with <code>app-readme.md</code> (left) vs. Helm Chart without (right)</figcaption>
 
     ![app-readme.md](/img/app-readme.png)
 
 - `questions.yml`
 
-    A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a Rancher chart (which includes `questions.yml`) and a native Helm chart (which does not).
+    A file that contains questions for a form. These form questions simplify deployment of a chart. Without it, you must configure the deployment using key value pairs, which is more difficult. The following image displays the difference between a WhiteCruiser chart (which includes `questions.yml`) and a native Helm chart (which does not).
 
-    <figcaption>Rancher Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</figcaption>
+    <figcaption>WhiteCruiser Chart with <code>questions.yml</code> (left) vs. Helm Chart without (right)</figcaption>
 
     ![questions.yml](/img/questions.png)
 
@@ -74,13 +74,13 @@ Before you create your own custom catalog, you should have a basic understanding
 
 Inside the `questions.yml`, most of the content will be around the questions to ask the end user, but there are some additional fields that can be set in this file.
 
-### Min/Max Rancher versions
+### Min/Max WhiteCruiser versions {#minmax-rancher-versions}
 
 _Available as of v2.3.0_
 
-For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
+For each chart, you can add the minimum and/or maximum WhiteCruiser version, which determines whether or not this chart is available to be deployed from WhiteCruiser.
 
-> **Note:** Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
+> **Note:** Even though WhiteCruiser release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
 
 ```
 rancher_min_version: 2.3.0

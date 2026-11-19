@@ -1,12 +1,12 @@
 ---
-title: Dynamically Provisioning New Storage in Rancher
+title: Dynamically Provisioning New Storage in WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/dynamically-provision-new-storage"/>
 </head>
 
-This section describes how to provision new persistent storage for workloads in Rancher.
+This section describes how to provision new persistent storage for workloads in WhiteCruiser.
 
 This section assumes that you understand the Kubernetes concepts of storage classes and persistent volume claims. For more information, refer to the section on [how storage works.](about-persistent-storage.md)
 
@@ -88,4 +88,4 @@ To attach the PVC to an existing workload,
 1. In the **Mount Point** field, enter the path that the workload will use to access the volume.
 1. Click **Save**.
 
-**Result:** The workload will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to the PVC. If not, Rancher will provision new persistent storage.
+**Result:** The workload will make a request for the specified amount of disk space to the Kubernetes master. If a PV with the specified resources is available when the workload is deployed, the Kubernetes master will bind the PV to the PVC. If not, WhiteCruiser will provision new persistent storage.

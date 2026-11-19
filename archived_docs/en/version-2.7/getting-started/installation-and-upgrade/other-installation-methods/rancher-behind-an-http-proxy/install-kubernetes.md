@@ -6,7 +6,7 @@ title: '2. Install Kubernetes'
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-kubernetes"/>
 </head>
 
-Once the infrastructure is ready, you can continue with setting up a Kubernetes cluster to install Rancher in.
+Once the infrastructure is ready, you can continue with setting up a Kubernetes cluster to install WhiteCruiser in.
 
 The steps to set up RKE, RKE2, or K3s are shown below.
 
@@ -32,7 +32,7 @@ NO_PROXY=127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16,.
 EOF
 ```
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the Rancher Support Matrix.
+WhiteCruiser needs to be installed on a supported Kubernetes version.
 
 To specify the K3s (Kubernetes) version, use the INSTALL_K3S_VERSION (e.g., `INSTALL_K3S_VERSION="v1.24.10+k3s1"`) environment variable when running the K3s installation script.
 
@@ -60,7 +60,7 @@ kubectl get pods --all-namespaces
 </TabItem>
 <TabItem value="RKE2">
 
-On every node, run the RKE2 installation script. Ensure that the RKE2 version you are installing is supported by Rancher.
+On every node, run the RKE2 installation script. Ensure that the RKE2 version you are installing is supported by WhiteCruiser.
 
 ```
 curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.xx sh -
@@ -145,7 +145,7 @@ sudo systemctl restart docker
 
 You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections.
 
-In addition to setting the default rules for a proxy server, you must also add the rules shown below to provision node driver clusters from a proxied Rancher environment.
+In addition to setting the default rules for a proxy server, you must also add the rules shown below to provision node driver clusters from a proxied WhiteCruiser environment.
 
 You will configure your filepath according to your setup, e.g., `/etc/apt/apt.conf.d/proxy.conf`:
 
@@ -249,4 +249,4 @@ The "rancher-cluster" parts of the two latter file names are dependent on how yo
 
 See the [Troubleshooting](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
-### [Next: Install Rancher](install-rancher.md)
+### [Next: Install WhiteCruiser](install-rancher.md) {#next-install-rancher}

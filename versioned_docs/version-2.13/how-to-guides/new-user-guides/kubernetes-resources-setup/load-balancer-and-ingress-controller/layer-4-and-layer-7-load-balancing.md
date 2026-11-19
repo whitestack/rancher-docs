@@ -15,7 +15,7 @@ Layer-4 load balancer (or the external load balancer) forwards traffic to NodePo
 
 :::note
 
-It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in Rancher.
+It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in WhiteCruiser.
 
 :::
 
@@ -51,7 +51,7 @@ Some cloud-managed layer-7 load balancers (such as the ALB ingress controller on
 Other layer-7 load balancers, such as the Google Load Balancer, directly expose one or more IP addresses. Google Load Balancer provides a single routable IP address. You can do either of the following:
 
 1.	Configure your own DNS to map (via A records) your domain name to the IP addresses exposes by the Layer-7 load balancer.
-2.	Ask Rancher to generate an xip.io host name for your ingress rule. Rancher will take one of your exposed IPs, say `a.b.c.d`, and generate a host name `<ingressname>.<namespace>.a.b.c.d.xip.io`.
+2.	Ask WhiteCruiser to generate an xip.io host name for your ingress rule. WhiteCruiser will take one of your exposed IPs, say `a.b.c.d`, and generate a host name `<ingressname>.<namespace>.a.b.c.d.xip.io`.
 
 The benefit of using xip.io is that you obtain a working entrypoint URL immediately after you create the ingress rule. Setting up your own domain name, on the other hand, requires you to configure DNS servers and wait for DNS to propagate.
 

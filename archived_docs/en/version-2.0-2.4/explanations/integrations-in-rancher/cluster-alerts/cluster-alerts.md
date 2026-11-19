@@ -11,9 +11,9 @@ To keep your clusters and applications healthy and driving your organizational p
 
 ## About Alerts
 
-Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) and [project owners](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) of events they need to address.
+Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, WhiteCruiser can notify [cluster owners](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) and [project owners](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) of events they need to address.
 
-Before you can receive alerts, you must configure one or more notifier in Rancher.
+Before you can receive alerts, you must configure one or more notifier in WhiteCruiser.
 
 When you create a cluster, some alert rules are predefined. You can receive these alerts if you configure a [notifier](../notifiers.md) for them.
 
@@ -42,7 +42,7 @@ You can set an urgency level for each alert. This urgency appears in the notific
 
 The scope for alerts can be set at either the cluster level or [project level](../../../reference-guides/rancher-project-tools/project-alerts.md).
 
-At the cluster level, Rancher monitors components in your Kubernetes cluster, and sends you alerts related to:
+At the cluster level, WhiteCruiser monitors components in your Kubernetes cluster, and sends you alerts related to:
 
 - The state of your nodes.
 - The system services that manage your Kubernetes cluster.
@@ -61,7 +61,7 @@ After you set up cluster alerts, you can manage each alert object. To manage ale
 
 ## Adding Cluster Alerts
 
-As a [cluster owner](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure Rancher to send you alerts for cluster events.
+As a [cluster owner](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure WhiteCruiser to send you alerts for cluster events.
 
 >**Prerequisite:** Before you can receive cluster alerts, you must [add a notifier](../notifiers.md).
 
@@ -91,7 +91,7 @@ As a [cluster owner](../../../how-to-guides/advanced-user-guides/authentication-
 
 This alert type monitor for events that affect one of the Kubernetes master components, regardless of the node it occurs on.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -127,7 +127,7 @@ By default, the below options will apply to all alert rules within the group. Yo
 
 This alert type monitors for specific events that are thrown from a resource type.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -169,7 +169,7 @@ By default, the below options will apply to all alert rules within the group. Yo
 
 This alert type monitors for events that occur on a specific node.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -205,7 +205,7 @@ By default, the below options will apply to all alert rules within the group. Yo
 
 This alert type monitors for events that occur on any node on marked with a label. For more information, see the Kubernetes documentation for [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -242,7 +242,7 @@ _Available as of v2.4.0_
 
 This alert type is triggered based on the results of a CIS scan.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -277,7 +277,7 @@ By default, the below options will apply to all alert rules within the group. Yo
 
 This alert type monitors for the overload from Prometheus expression querying, it would be available after you enable monitoring.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 

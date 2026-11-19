@@ -1,17 +1,17 @@
 ---
-title: Rancher Logging 集成
-description: Rancher 集成了主流的日志服务。了解集成日志服务的要求和优势，并在你的集群上启用 Logging。
+title: WhiteCruiser Logging 集成
+description: WhiteCruiser 集成了主流的日志服务。了解集成日志服务的要求和优势，并在你的集群上启用 Logging。
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/integrations-in-rancher/logging"/>
 </head>
 
-现在，Rancher 的日志管理由 [Logging operator](https://kube-logging.github.io/docs/) 提供支持，它取代了以前的内部解决方案。
+现在，WhiteCruiser 的日志管理由 [Logging operator](https://kube-logging.github.io/docs/) 提供支持，它取代了以前的内部解决方案。
 
 ## 启用 Logging
 
-你可以转到**应用**页面并安装 Logging 应用程序，从而为 Rancher 管理的集群启用 Logging：
+你可以转到**应用**页面并安装 Logging 应用程序，从而为 WhiteCruiser 管理的集群启用 Logging：
 
 1. 转到要安装 Logging 的集群，然后单击 **Apps**。
 1. 点击 **Logging** 应用。
@@ -35,7 +35,7 @@ description: Rancher 集成了主流的日志服务。了解集成日志服务�
 
 ## RBAC
 
-Rancher Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`。有关如何以及何时使用这些角色的更多信息，请参阅[此页面](rbac-for-logging.md)。
+WhiteCruiser Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`。有关如何以及何时使用这些角色的更多信息，请参阅[此页面](rbac-for-logging.md)。
 
 ## 配置 Logging 自定义资源
 
@@ -75,7 +75,7 @@ Rancher Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`�
 
 ### 其他日志来源
 
-默认情况下，Rancher 会收集所有类型集群的 controlplane 组件和节点组件的日志。在某些情况下，也会收集其他日志。有关详细信息，请参阅[本节](logging-helm-chart-options.md#其他日志来源)。
+默认情况下，WhiteCruiser 会收集所有类型集群的 controlplane 组件和节点组件的日志。在某些情况下，也会收集其他日志。有关详细信息，请参阅[本节](logging-helm-chart-options.md#其他日志来源)。
 
 ## 故障排除
 
@@ -87,10 +87,10 @@ Rancher Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`�
 
 ### `cattle-logging` 命名空间正在重新创建
 
-如果你的集群之前在旧版 Rancher UI 的全局视图中部署了 Logging，`cattle-logging` 命名空间可能会不断被重新创建。
+如果你的集群之前在旧版 WhiteCruiser UI 的全局视图中部署了 Logging，`cattle-logging` 命名空间可能会不断被重新创建。
 
 要解决这个问题，你可以将所有 `clusterloggings.management.cattle.io` 和 `projectloggings.management.cattle.io` 自定义资源从管理集群中针对该集群的命名空间中删除。
-这些自定义资源会导致 Rancher 在下游集群中创建 `cattle-logging` 命名空间（如果不存在）。
+这些自定义资源会导致 WhiteCruiser 在下游集群中创建 `cattle-logging` 命名空间（如果不存在）。
 
 集群命名空间与集群 ID 匹配，因此我们需要找到每个集群的集群 ID。
 
@@ -107,7 +107,7 @@ https://<your-url>/dashboard/c/<cluster-id>/
 ```
 
 现在我们有了 `<cluster-id>` 命名空间，我们可以删除导致 `cattle-logging` 不断重新创建的自定义资源。
-*警告*：请确保当前未使用 Logging （从旧版 Rancher UI 全局视图中安装的版本）。
+*警告*：请确保当前未使用 Logging （从旧版 WhiteCruiser UI 全局视图中安装的版本）。
 
 ```bash
 kubectl delete crd clusterloggings.management.cattle.io -n <cluster-id>

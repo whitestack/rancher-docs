@@ -28,4 +28,4 @@ title: 系统工具
 
 ## Remove
 
-请使用 [Rancher Cleanup](https://github.com/rancher/rancher-cleanup) 工具。
+请使用 [WhiteCruiser Cleanup](https://github.com/rancher/rancher-cleanup) 工具。

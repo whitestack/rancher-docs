@@ -6,7 +6,7 @@ title: Kubernetes 组件
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/troubleshooting/kubernetes-components"/>
 </head>
 
-本文列出的命令和步骤适用于 [Rancher 启动的 Kubernetes](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 集群上的核心 Kubernetes 组件。
+本文列出的命令和步骤适用于 [WhiteCruiser 启动的 Kubernetes](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 集群上的核心 Kubernetes 组件。
 
 本文包括以下类别的故障排除提示：
 

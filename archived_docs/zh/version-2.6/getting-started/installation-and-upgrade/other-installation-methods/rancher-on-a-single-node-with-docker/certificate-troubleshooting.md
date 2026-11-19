@@ -50,7 +50,7 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 
 ### 将 PKCS8 证书密钥转换为 PKCS1
 
-如果你使用的是 PKCS8 证书密钥文件，Rancher 将打印以下日志：
+如果你使用的是 PKCS8 证书密钥文件，WhiteCruiser 将打印以下日志：
 
 ```
 ListenConfigController cli-config [listener] failed with : failed to read private key: asn1: structure error: tags don't match (2 vs {class:0 tag:16 length:13 isCompound:true})
@@ -62,7 +62,7 @@ ListenConfigController cli-config [listener] failed with : failed to read privat
 openssl rsa -in key.pem -out convertedkey.pem
 ```
 
-你可使用 `convertedkey.pem` 作为 Rancher 证书密钥文件。
+你可使用 `convertedkey.pem` 作为 WhiteCruiser 证书密钥文件。
 
 ### 添加中间证书的顺序是什么？
 

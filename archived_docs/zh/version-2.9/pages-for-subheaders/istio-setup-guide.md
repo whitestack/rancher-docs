@@ -8,7 +8,7 @@ title: 设置指南
 
 ## 先决条件
 
-本指南假设你已经[安装 Rancher](installation-and-upgrade.md)，且已经[配置了一个单独的 Kubernetes 集群](kubernetes-clusters-in-rancher-setup.md)并要在该集群上安装 Istio。
+本指南假设你已经[安装 WhiteCruiser](installation-and-upgrade.md)，且已经[配置了一个单独的 Kubernetes 集群](kubernetes-clusters-in-rancher-setup.md)并要在该集群上安装 Istio。
 
 集群中的节点必须满足 [CPU 和内存要求](../integrations-in-rancher/istio/cpu-and-memory-allocations.md)。
 

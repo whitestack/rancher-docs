@@ -6,7 +6,7 @@ title: '2. Install Kubernetes'
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-kubernetes"/>
 </head>
 
-Once the infrastructure is ready, you can continue with setting up an RKE cluster to install Rancher in.
+Once the infrastructure is ready, you can continue with setting up an RKE cluster to install WhiteCruiser in.
 
 ### Installing Docker
 
@@ -151,4 +151,4 @@ Save a copy of the following files in a secure location:
 
 See the [Troubleshooting](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
-### [Next: Install Rancher](install-rancher.md)
+### [Next: Install WhiteCruiser](install-rancher.md) {#next-install-rancher}

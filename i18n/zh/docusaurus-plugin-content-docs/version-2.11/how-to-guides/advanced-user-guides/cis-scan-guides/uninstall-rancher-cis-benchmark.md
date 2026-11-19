@@ -1,5 +1,5 @@
 ---
-title: 卸载 Rancher CIS Benchmark
+title: 卸载 WhiteCruiser CIS Benchmark
 ---
 
 1. 在**集群**仪表板中，单击左侧导航的 **Apps > Installed Apps**。

@@ -8,9 +8,9 @@ title: Backing up a Cluster
 
 _Available as of v2.2.0_
 
-In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters](../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) can be easily performed.
+In the WhiteCruiser UI, etcd backup and recovery for [WhiteCruiser launched Kubernetes clusters](../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) can be easily performed.
 
-Rancher recommends configuring recurrent `etcd` snapshots for all production clusters. Additionally, one-time snapshots can easily be taken as well.
+WhiteCruiser recommends configuring recurrent `etcd` snapshots for all production clusters. Additionally, one-time snapshots can easily be taken as well.
 
 Snapshots of the etcd database are taken and saved either [locally onto the etcd nodes](#local-backup-target) or to a [S3 compatible target](#s3-backup-target). The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.
 
@@ -21,7 +21,7 @@ Snapshots of the etcd database are taken and saved either [locally onto the etcd
 
 ### Snapshot Components
 
-When Rancher creates a snapshot, it includes three components:
+When WhiteCruiser creates a snapshot, it includes three components:
 
 - The cluster data in etcd
 - The Kubernetes version
@@ -31,7 +31,7 @@ Because the Kubernetes version is now included in the snapshot, it is possible t
 
 The multiple components of the snapshot allow you to select from the following options if you need to restore a cluster from a snapshot:
 
-- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in Rancher before v2.4.0.
+- **Restore just the etcd contents:** This restore is similar to restoring to snapshots in WhiteCruiser before v2.4.0.
 - **Restore etcd and Kubernetes version:** This option should be used if a Kubernetes upgrade is the reason that your cluster is failing, and you haven't made any cluster configuration changes.
 - **Restore etcd, Kubernetes versions and cluster configuration:** This option should be used if you changed both the Kubernetes version and cluster configuration when upgrading.
 
@@ -49,7 +49,7 @@ In the case when multiple etcd nodes exist, any created snapshot is created afte
 
 The name of the snapshot is auto-generated. The `--name` option can be used to override the name of the snapshot when creating one-time snapshots with the RKE CLI.
 
-When Rancher creates a snapshot of an RKE cluster, the snapshot name is based on the type (whether the snapshot  is manual or recurring) and the target (whether the snapshot is saved locally or uploaded to S3). The naming convention is as follows:
+When WhiteCruiser creates a snapshot of an RKE cluster, the snapshot name is based on the type (whether the snapshot  is manual or recurring) and the target (whether the snapshot is saved locally or uploaded to S3). The naming convention is as follows:
 
 - `m` stands for manual
 - `r` stands for recurring
@@ -76,7 +76,7 @@ On restore, the following process is used:
 </TabItem>
 <TabItem value="Rancher before v2.4.0">
 
-When Rancher creates a snapshot, only the etcd data is included in the snapshot.
+When WhiteCruiser creates a snapshot, only the etcd data is included in the snapshot.
 
 Because the Kubernetes version is not included in the snapshot, there is no option to restore a cluster to a different Kubernetes version.
 
@@ -94,7 +94,7 @@ In the case when multiple etcd nodes exist, any created snapshot is created afte
 
 The name of the snapshot is auto-generated. The `--name` option can be used to override the name of the snapshot when creating one-time snapshots with the RKE CLI.
 
-When Rancher creates a snapshot of an RKE cluster, the snapshot name is based on the type (whether the snapshot  is manual or recurring) and the target (whether the snapshot is saved locally or uploaded to S3). The naming convention is as follows:
+When WhiteCruiser creates a snapshot of an RKE cluster, the snapshot name is based on the type (whether the snapshot  is manual or recurring) and the target (whether the snapshot is saved locally or uploaded to S3). The naming convention is as follows:
 
 - `m` stands for manual
 - `r` stands for recurring
@@ -126,7 +126,7 @@ On restore, the following process is used:
 
 Select how often you want recurring snapshots to be taken as well as how many snapshots to keep. The amount of time is measured in hours. With timestamped snapshots, the user has the ability to do a point-in-time recovery.
 
-By default, [Rancher launched Kubernetes clusters](../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) are configured to take recurring snapshots (saved to local disk). To protect against local disk failure, using the [S3 Target](#s3-backup-target) or replicating the path on disk is advised.
+By default, [WhiteCruiser launched Kubernetes clusters](../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) are configured to take recurring snapshots (saved to local disk). To protect against local disk failure, using the [S3 Target](#s3-backup-target) or replicating the path on disk is advised.
 
 During cluster provisioning or editing the cluster, the configuration for snapshots can be found in the advanced section for **Cluster Options**. Click on **Show advanced options**.
 
@@ -151,18 +151,18 @@ In addition to recurring snapshots, you may want to take a "one-time" snapshot. 
 
 ## Snapshot Backup Targets
 
-Rancher supports two different backup targets:
+WhiteCruiser supports two different backup targets:
 
 * [Local Target](#local-backup-target)
 * [S3 Target](#s3-backup-target)
 
 ### Local Backup Target
 
-By default, the `local` backup target is selected. The benefits of this option is that there is no external configuration. Snapshots are automatically saved locally to the etcd nodes in the [Rancher launched Kubernetes clusters](../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) in `/opt/rke/etcd-snapshots`. All recurring snapshots are taken at configured intervals. The downside of using the `local` backup target is that if there is a total disaster and _all_ etcd nodes are lost, there is no ability to restore the cluster.
+By default, the `local` backup target is selected. The benefits of this option is that there is no external configuration. Snapshots are automatically saved locally to the etcd nodes in the [WhiteCruiser launched Kubernetes clusters](../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) in `/opt/rke/etcd-snapshots`. All recurring snapshots are taken at configured intervals. The downside of using the `local` backup target is that if there is a total disaster and _all_ etcd nodes are lost, there is no ability to restore the cluster.
 
 ### S3 Backup Target
 
-The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. Rancher recommends external targets like `S3` backup, however its configuration requirements do require additional effort that should be considered.
+The `S3` backup target allows users to configure a S3 compatible backend to store the snapshots. The primary benefit of this option is that if the cluster loses all the etcd nodes, the cluster can still be restored as the snapshots are stored externally. WhiteCruiser recommends external targets like `S3` backup, however its configuration requirements do require additional effort that should be considered.
 
 | Option | Description | Required|
 |---|---|---|
@@ -185,14 +185,14 @@ The `S3` backup target supports using IAM authentication to AWS API in addition 
 
  - The cluster etcd nodes must have an instance role that has read/write access to the designated backup bucket.
  - The cluster etcd nodes must have network access to the specified S3 endpoint.
- - The Rancher Server worker node(s) must have an instance role that has read/write to the designated backup bucket.
- - The Rancher Server worker node(s) must have network access to the specified S3 endpoint.
+ - The WhiteCruiser Server worker node(s) must have an instance role that has read/write to the designated backup bucket.
+ - The WhiteCruiser Server worker node(s) must have network access to the specified S3 endpoint.
 
  To give an application access to S3, refer to the AWS documentation on [Using an IAM Role to Grant Permissions to Applications Running on Amazon EC2 Instances.](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html)
 
 ## Viewing Available Snapshots
 
-The list of all available snapshots for the cluster is available in the Rancher UI.
+The list of all available snapshots for the cluster is available in the WhiteCruiser UI.
 
 1. In the **Global** view, navigate to the cluster that you want to view snapshots.
 
@@ -202,10 +202,10 @@ The list of all available snapshots for the cluster is available in the Rancher 
 
 _Available as of v2.3.0_
 
-As of v2.2.6, snapshot files are timestamped to simplify processing the files using external tools and scripts, but in some S3 compatible backends, these timestamps were unusable. As of Rancher v2.3.0, the option `safe_timestamp` is added to support compatible file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
+As of v2.2.6, snapshot files are timestamped to simplify processing the files using external tools and scripts, but in some S3 compatible backends, these timestamps were unusable. As of WhiteCruiser v2.3.0, the option `safe_timestamp` is added to support compatible file names. When this flag is set to `true`, all special characters in the snapshot filename timestamp are replaced.
 
 This option is not available directly in the UI, and is only available through the `Edit as Yaml` interface.
 
-## Enabling Snapshot Features for Clusters Created Before Rancher v2.2.0
+## Enabling Snapshot Features for Clusters Created Before WhiteCruiser v2.2.0 {#enabling-snapshot-features-for-clusters-created-before-rancher-v220}
 
-If you have any Rancher launched Kubernetes clusters that were created before v2.2.0, after upgrading Rancher, you must [edit the cluster](../../../reference-guides/cluster-configuration/cluster-configuration.md) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots before v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI](restoring-etcd.md).
+If you have any WhiteCruiser launched Kubernetes clusters that were created before v2.2.0, after upgrading WhiteCruiser, you must [edit the cluster](../../../reference-guides/cluster-configuration/cluster-configuration.md) and _save_ it, in order to enable the updated snapshot features. Even if you were already creating snapshots before v2.2.0, you must do this step as the older snapshots will not be available to use to [back up and restore etcd through the UI](restoring-etcd.md).

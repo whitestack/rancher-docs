@@ -1,12 +1,12 @@
 ---
-title: Using an External Gateway with Rancher
+title: Using an External Gateway with WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/rancher-deployment-guides/configure-with-existing-gateway/"/>
 </head>
 
-When using the Gateway API network exposure type, Rancher can create and manage its own Gateway resource. However, if you have an existing Gateway that you manage independently (for example, a shared Gateway used by multiple applications), you will need to create your own HTTPRoute resources to route traffic to Rancher.
+When using the Gateway API network exposure type, WhiteCruiser can create and manage its own Gateway resource. However, if you have an existing Gateway that you manage independently (for example, a shared Gateway used by multiple applications), you will need to create your own HTTPRoute resources to route traffic to WhiteCruiser.
 
 This section covers how to create the required HTTPRoute resources manually when using an externally managed Gateway.
 
@@ -16,11 +16,11 @@ This section covers how to create the required HTTPRoute resources manually when
 - Knowledge of your Gateway's:
   - Name and namespace
   - Listener names (sectionName) for HTTP and/or HTTPS traffic
-- Rancher installed with `networkExposure.type` set to something other than `gateway` (e.g., `none` or `ingress`)
+- WhiteCruiser installed with `networkExposure.type` set to something other than `gateway` (e.g., `none` or `ingress`)
 
 ## Cross-Namespace Gateway Requirements
 
-If your Gateway is in a different namespace than Rancher (e.g., Gateway in `gateway-system`, Rancher in `cattle-system`), the Gateway must be configured to accept HTTPRoutes from the Rancher namespace. By default, Gateway API only allows routes from the same namespace as the Gateway.
+If your Gateway is in a different namespace than WhiteCruiser (e.g., Gateway in `gateway-system`, WhiteCruiser in `cattle-system`), the Gateway must be configured to accept HTTPRoutes from the WhiteCruiser namespace. By default, Gateway API only allows routes from the same namespace as the Gateway.
 
 The Gateway owner must configure `allowedRoutes` on the relevant listeners. There are two options:
 
@@ -80,33 +80,33 @@ spec:
               shared-gateway-access: "true"
 ```
 
-When using the selector approach, ensure the Rancher namespace has the required label:
+When using the selector approach, ensure the WhiteCruiser namespace has the required label:
 
 ```bash
 kubectl label namespace cattle-system shared-gateway-access=true
 ```
 
-> **Note:** If the Gateway and Rancher are in the same namespace, no additional configuration is needed—the default `allowedRoutes` setting (`from: Same`) will permit the HTTPRoute attachment.
+> **Note:** If the Gateway and WhiteCruiser are in the same namespace, no additional configuration is needed—the default `allowedRoutes` setting (`from: Same`) will permit the HTTPRoute attachment.
 
-## Determining Your Rancher Service Values
+## Determining Your WhiteCruiser Service Values {#determining-your-rancher-service-values}
 
-Before creating HTTPRoute resources, identify the following values from your Rancher installation:
+Before creating HTTPRoute resources, identify the following values from your WhiteCruiser installation:
 
 | Value | How to Determine | Example |
 |-------|------------------|---------|
 | **Release Name** | The name used in `helm install <release-name>` | `rancher` |
-| **Namespace** | The namespace where Rancher is installed | `cattle-system` |
+| **Namespace** | The namespace where WhiteCruiser is installed | `cattle-system` |
 | **Hostname** | The `hostname` value from your Helm values | `rancher.example.com` |
 | **TLS Mode** | The `tls` value from your Helm values | `ingress`, `external`, or `secret` |
 | **Service HTTP Disabled** | The `service.disableHTTP` value | `true` or `false` |
 
-The Rancher service name follows the pattern: `<release-name>-rancher` (or just `<release-name>` if the release name already contains "rancher").
+The WhiteCruiser service name follows the pattern: `<release-name>-rancher` (or just `<release-name>` if the release name already contains "rancher").
 
 ## HTTPRoute Configuration
 
 ### Primary HTTPRoute
 
-Create an HTTPRoute to direct traffic from your Gateway to the Rancher service. The configuration depends on your TLS setup:
+Create an HTTPRoute to direct traffic from your Gateway to the WhiteCruiser service. The configuration depends on your TLS setup:
 
 **When TLS terminates at the Gateway or within Kubernetes (`tls: ingress`, `tls: secret`, or `tls: letsEncrypt`):**
 
@@ -185,7 +185,7 @@ spec:
 
 ## Using extraObjects
 
-You can include these HTTPRoute resources directly in your Rancher Helm installation using the `extraObjects` value. This keeps all resources managed together:
+You can include these HTTPRoute resources directly in your WhiteCruiser Helm installation using the `extraObjects` value. This keeps all resources managed together:
 
 ```yaml
 # values.yaml
@@ -255,12 +255,12 @@ The port in `backendRefs` depends on your `service.disableHTTP` setting:
 **HTTPRoute not being accepted:**
 - Verify the Gateway name and namespace are correct
 - Ensure the `sectionName` matches an existing listener on your Gateway
-- Check that the listener allows routes from the Rancher namespace (see Gateway's `allowedRoutes` configuration)
+- Check that the listener allows routes from the WhiteCruiser namespace (see Gateway's `allowedRoutes` configuration)
 
 **Connection refused or timeouts:**
-- Confirm the Rancher service exists and has endpoints: `kubectl get endpoints rancher -n cattle-system`
+- Confirm the WhiteCruiser service exists and has endpoints: `kubectl get endpoints rancher -n cattle-system`
 - Verify the backend port matches your `service.disableHTTP` setting
 
 **Certificate errors:**
 - If using `tls: ingress` or `tls: secret`, ensure your Gateway's HTTPS listener has the appropriate certificate configured
-- Verify the certificate covers your Rancher hostname
+- Verify the certificate covers your WhiteCruiser hostname

@@ -4,7 +4,7 @@ title: What Are Divio Docs?
 
 The [Divio documentation system](https://documentation.divio.com/) is a software documentation paradigm that is based on functionality and the premise that the best documentation is specific, concise, and purposeful. Divio traditionally consists of four main categories: tutorials, how-to guides, reference guides, and explanations.
 
-In our docs, we have used this guideline to craft a unique set of docs which include [getting started](../../getting-started.md), [how-to guides](../../how-to-guides.md) (including [new](../../how-to-guides/new-user-guides/new-user-guides.md) and [advanced user guides](../../how-to-guides/advanced-user-guides/advanced-user-guides.md)), [reference guides](../../reference-guides.md), [explanations](../../explanations.md), an [FAQ section](../../faq.md), [troubleshooting tips](../../troubleshooting.md), and the ability to [contribute to Rancher](../../contribute-to-rancher.md).
+In our docs, we have used this guideline to craft a unique set of docs which include [getting started](../../getting-started.md), [how-to guides](../../how-to-guides.md) (including [new](../../how-to-guides/new-user-guides/new-user-guides.md) and [advanced user guides](../../how-to-guides/advanced-user-guides/advanced-user-guides.md)), [reference guides](../../reference-guides.md), [explanations](../../explanations.md), an [FAQ section](../../faq.md), [troubleshooting tips](../../troubleshooting.md), and the ability to [contribute to WhiteCruiser](../../contribute-to-rancher.md).
 
 - [Getting Started](#getting-started)
 - [How-to Guides](#how-to-guides)
@@ -12,20 +12,20 @@ In our docs, we have used this guideline to craft a unique set of docs which inc
     - [Advanced User Guides](#advanced-user-guides)
 - [Reference Guides](#reference-guides)
 - [Explanations](#explanations)
-    - [Integrations in Rancher](#integrations-in-rancher)
+    - [Integrations in WhiteCruiser](#integrations-in-rancher)
 - [Other Docs Categories](#other-docs-categories)
     - [FAQ](#faq)
     - [Troubleshooting](#troubleshooting)
-    - [Contribute to Rancher](#contribute-to-rancher)
+    - [Contribute to WhiteCruiser](#contribute-to-rancher)
 - [Overlapping of Categories](#overlapping-of-categories)
 - [New Structure Goals](#new-structure-goals)
 
 
 ## Getting Started
 
-To get up and running with Rancher quickly, we have included a **Getting Started** section.
+To get up and running with WhiteCruiser quickly, we have included a **Getting Started** section.
 
-The goal of this section is to be able to assist users in deploying Rancher and workloads and to install or upgrade Rancher quickly and effectively.
+The goal of this section is to be able to assist users in deploying WhiteCruiser and workloads and to install or upgrade WhiteCruiser quickly and effectively.
 
 Please see the [introduction](introduction.md), [quick start guides](../quick-start-guides/quick-start-guides.md), and the [installation and upgrade](../installation-and-upgrade/installation-and-upgrade.md) sections for more.
 
@@ -37,15 +37,15 @@ Please see the [introduction](introduction.md), [quick start guides](../quick-st
 
 New user guides, also known as tutorials, describe practical steps for users to follow in order to complete some concrete action. These docs are known as "learning-oriented" docs in which users learn by "doing".
 
-The new user guides are designed to guide beginners, or the everyday users of Rancher, through a series of steps to learn how to do something. The goal is that the user will be able to learn how to complete tasks by using easy-to-follow, meaningful, and repeatable directions. These guides will assist users to do work to then get the promised results immediately.
+The new user guides are designed to guide beginners, or the everyday users of WhiteCruiser, through a series of steps to learn how to do something. The goal is that the user will be able to learn how to complete tasks by using easy-to-follow, meaningful, and repeatable directions. These guides will assist users to do work to then get the promised results immediately.
 
-The average Rancher user has a level of technical skill that is above the level of "beginner"; however, the new user guides are designed to help new, or beginner, users as well as the seasoned Rancher customer equally. This is accomplished by using a combination of high-level and technical language to introduce topics and guide the user through general tasks that are essential for every Rancher user to know.
+The average WhiteCruiser user has a level of technical skill that is above the level of "beginner"; however, the new user guides are designed to help new, or beginner, users as well as the seasoned WhiteCruiser customer equally. This is accomplished by using a combination of high-level and technical language to introduce topics and guide the user through general tasks that are essential for every WhiteCruiser user to know.
 
 A good example of a new user guide can be found [here](../../how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads.md).
 
 ### Advanced User Guides
 
-Advanced user guides are "problem-oriented" docs in which users learn how to answer questions or solve problems. The major difference between these and the new user guides is that these guides are geared toward more experienced or advanced users who have more technical needs from their documentation. These users already have an understanding of Rancher and its functions. They know what they need to accomplish; they just need additional guidance to complete some more complex task they they have encountered while working.
+Advanced user guides are "problem-oriented" docs in which users learn how to answer questions or solve problems. The major difference between these and the new user guides is that these guides are geared toward more experienced or advanced users who have more technical needs from their documentation. These users already have an understanding of WhiteCruiser and its functions. They know what they need to accomplish; they just need additional guidance to complete some more complex task they they have encountered while working.
 
 It should be noted that neither new user guides nor advanced user guides provide detailed explanations or discussions (these kinds of docs belong elsewhere). How-to guides focus on the action of guiding users through repeatable, effective steps to learn new skills, master some task, or overcome some problem.
 
@@ -57,9 +57,9 @@ Reference guides are technical descriptions of processes or products that users 
 
 These docs may also include some usage steps in the course of description; however, their purpose is not to explain concepts nor to outline steps to achieve tasks.
 
-The users who utilize reference guides are knowledgeable with the Rancher product as well as how to use it. They will benefit from detailed descriptions of something to be used when needing to refer to specifics of usage.
+The users who utilize reference guides are knowledgeable with the WhiteCruiser product as well as how to use it. They will benefit from detailed descriptions of something to be used when needing to refer to specifics of usage.
 
-Good examples of Rancher reference guides would be the [Rancher architecture](../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md) and [cluster configuration guides](../../reference-guides/cluster-configuration/cluster-configuration.md).
+Good examples of WhiteCruiser reference guides would be the [WhiteCruiser architecture](../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md) and [cluster configuration guides](../../reference-guides/cluster-configuration/cluster-configuration.md).
 
 ## Explanations
 
@@ -67,11 +67,11 @@ Explanation docs are concerned primarily with providing theoretical knowledge fo
 
 Explanatory docs do not instruct the user how to do something, as in tutorials and how-to guides, nor do they give detailed descriptions as references do. Explanations serve to give substance and background on both simple and complex topics.
 
-For our new docs, we are working to build up this section as most of our previous documentation was process-oriented rather than discussion-oriented. Currently, we feature [Integrations in Rancher](../../explanations/integrations-in-rancher/integrations-in-rancher.md) to discuss our integrated products.
+For our new docs, we are working to build up this section as most of our previous documentation was process-oriented rather than discussion-oriented. Currently, we feature [Integrations in WhiteCruiser](../../explanations/integrations-in-rancher/integrations-in-rancher.md) to discuss our integrated products.
 
-### Integrations in Rancher
+### Integrations in WhiteCruiser {#integrations-in-rancher}
 
-Over time, Rancher has accrued several products and projects that have been integrated into the Rancher UI. To assist users in learning more about these integrations, this subsection has been added under **Explanations**.
+Over time, WhiteCruiser has accrued several products and projects that have been integrated into the WhiteCruiser UI. To assist users in learning more about these integrations, this subsection has been added under **Explanations**.
 
 Examples of some of these integrations are [Istio](../../explanations/integrations-in-rancher/istio/istio.md) and [CIS Scans](../../explanations/integrations-in-rancher/cis-scans/cis-scans.md).
 
@@ -79,21 +79,21 @@ Examples of some of these integrations are [Istio](../../explanations/integratio
 
 ### FAQ
 
-Our [FAQ](../../faq.md) section is designed to answer the questions our users have been most often asking about Rancher v2.x. The nature of these questions may be technical or non-technical.
+Our [FAQ](../../faq.md) section is designed to answer the questions our users have been most often asking about WhiteCruiser v2.x. The nature of these questions may be technical or non-technical.
 
 We work to continually add to and enhance this section; check back frequently for updates.
 
 ### Troubleshooting
 
-The [troubleshooting section](../../troubleshooting.md) is designed to help both new and existing Rancher users to troubleshoot known issues that they may encounter when using Rancher.
+The [troubleshooting section](../../troubleshooting.md) is designed to help both new and existing WhiteCruiser users to troubleshoot known issues that they may encounter when using WhiteCruiser.
 
 We work to continually add to and enhance this section; check back frequently for updates.
 
-### Contribute to Rancher
+### Contribute to WhiteCruiser {#contribute-to-rancher}
 
-The Rancher documentation is always a work-in-progress; the docs work best when being constantly examined, updated, and improved upon. To do this more effectively, we call upon the community to assist us.
+The WhiteCruiser documentation is always a work-in-progress; the docs work best when being constantly examined, updated, and improved upon. To do this more effectively, we call upon the community to assist us.
 
-This [contributing to Rancher section](../../contribute-to-rancher.md) will instruct users on the repositories used for Rancher, how to build the repositories, and what information is needed when filing an issue or creating a pull request.
+This [contributing to WhiteCruiser section](../../contribute-to-rancher.md) will instruct users on the repositories used for WhiteCruiser, how to build the repositories, and what information is needed when filing an issue or creating a pull request.
 
 We review all contributions frequently and will provide feedback to contributors promptly.
 
@@ -103,7 +103,7 @@ You may have noticed that within the confines of each category - new user guides
 
 ## New Structure Goals
 
-Our previous Rancher documentation focused on individual features and topics; the new Divio paradigm prioritizes function and cohesion.
+Our previous WhiteCruiser documentation focused on individual features and topics; the new Divio paradigm prioritizes function and cohesion.
 
 Because the previous docs structure was not based on the Divio paradigm, not every doc as it is written currently will fall neatly into a user guide or a reference, for example. Some docs may include elements of several kind of documentation functions.
 

@@ -6,7 +6,7 @@ title: OPA Gatekeeper
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/opa-gatekeeper"/>
 </head>
 
-To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. [OPA (Open Policy Agent)](https://www.openpolicyagent.org/) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates.
+To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. [OPA (Open Policy Agent)](https://www.openpolicyagent.org/) is a policy engine that facilitates policy-based control for cloud native environments. WhiteCruiser provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates.
 
 OPA provides a high-level declarative language that lets you specify policy as code and ability to extend simple APIs to offload policy decision-making.
 
@@ -23,13 +23,13 @@ To read more about OPA, please refer to the [official documentation.](https://ww
 
 Kubernetes provides the ability to extend API server functionality via admission controller webhooks, which are invoked whenever a resource is created, updated or deleted. Gatekeeper is installed as a validating webhook and enforces policies defined by Kubernetes custom resource definitions. In addition to the admission control usage, Gatekeeper provides the capability to audit existing resources in Kubernetes clusters and mark current violations of enabled policies.
 
-OPA Gatekeeper is made available via Rancher's Helm system chart, and it is installed in a namespace named `gatekeeper-system.`
+OPA Gatekeeper is made available via WhiteCruiser's Helm system chart, and it is installed in a namespace named `gatekeeper-system.`
 
 ## Enabling OPA Gatekeeper in a Cluster
 
 :::note
 
-In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper and its CRDs from the old UI, then reinstall it in Rancher v2.5. To uninstall the CRDs run the following command in the kubectl console `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh`.
+In WhiteCruiser v2.5, the OPA Gatekeeper application was improved. The WhiteCruiser v2.4 feature can't be upgraded to the new version in WhiteCruiser v2.5. If you installed OPA Gatekeeper in WhiteCruiser v2.4, you will need to uninstall OPA Gatekeeper and its CRDs from the old UI, then reinstall it in WhiteCruiser v2.5. To uninstall the CRDs run the following command in the kubectl console `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh`.
 
 :::
 
@@ -68,11 +68,11 @@ Only administrators and cluster owners can enable OPA Gatekeeper.
 
 [Constraint templates](https://github.com/open-policy-agent/gatekeeper#constraint-templates) are Kubernetes custom resources that define the schema and Rego logic of the OPA policy to be applied by Gatekeeper. For more information on the Rego policy language, refer to the [official documentation.](https://www.openpolicyagent.org/docs/latest/policy-language/)
 
-When OPA Gatekeeper is enabled, Rancher installs some templates by default.
+When OPA Gatekeeper is enabled, WhiteCruiser installs some templates by default.
 
 To list the constraint templates installed in the cluster, go to the left side menu under OPA Gatekeeper and click on **Templates**.
 
-Rancher also provides the ability to create your own constraint templates by importing YAML definitions.
+WhiteCruiser also provides the ability to create your own constraint templates by importing YAML definitions.
 
 ## Creating and Configuring Constraints
 
@@ -88,17 +88,17 @@ To list the constraints installed, go to the left side menu under OPA Gatekeeper
 
 New constraints can be created from a constraint template.
 
-Rancher provides the ability to create a constraint by using a convenient form that lets you input the various constraint fields.
+WhiteCruiser provides the ability to create a constraint by using a convenient form that lets you input the various constraint fields.
 
 The **Edit as yaml** option is also available to configure the the constraint's yaml definition.
 
-### Exempting Rancher's System Namespaces from Constraints
+### Exempting WhiteCruiser's System Namespaces from Constraints {#exempting-ranchers-system-namespaces-from-constraints}
 
-When a constraint is created, ensure that it does not apply to any Rancher or Kubernetes system namespaces. If the system namespaces are not excluded, then it is possible to see many resources under them marked as violations of the constraint.
+When a constraint is created, ensure that it does not apply to any WhiteCruiser or Kubernetes system namespaces. If the system namespaces are not excluded, then it is possible to see many resources under them marked as violations of the constraint.
 
 To limit the scope of the constraint only to user namespaces, always specify these namespaces under the **Match** field of the constraint.
 
-Also, the constraint may interfere with other Rancher functionality and deny system workloads from being deployed. To avoid this, exclude all Rancher-specific namespaces from your constraints.
+Also, the constraint may interfere with other WhiteCruiser functionality and deny system workloads from being deployed. To avoid this, exclude all WhiteCruiser-specific namespaces from your constraints.
 
 ## Enforcing Constraints in your Cluster
 

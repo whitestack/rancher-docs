@@ -2,19 +2,19 @@
 title: 回滚
 ---
 
-## 回滚到 Rancher 2.5.0+
+## 回滚到 WhiteCruiser 2.5.0+
 
-要回滚到 Rancher 2.5.0+，使用 **Rancher 备份**应用并通过备份来恢复 Rancher。
+要回滚到 WhiteCruiser 2.5.0+，使用 **WhiteCruiser 备份**应用并通过备份来恢复 WhiteCruiser。
 
-回滚后，Rancher 必须以较低/较早的版本启动。
+回滚后，WhiteCruiser 必须以较低/较早的版本启动。
 
 还原是通过创建 Restore 自定义资源实现的。
 
 :::note 重要提示：
 
-* 请按照此页面上的说明在已备份的同一集群上还原 Rancher。要把 Rancher 迁移到新集群，请参照步骤[迁移 Rancher](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)。
+* 请按照此页面上的说明在已备份的同一集群上还原 WhiteCruiser。要把 WhiteCruiser 迁移到新集群，请参照步骤[迁移 WhiteCruiser](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)。
 
-* 在使用相同设置恢复 Rancher 时，Rancher deployment 在恢复开始前被手动缩减，然后 Operator 将在恢复完成后将其缩回。因此，在恢复完成之前，Rancher 和 UI 都将不可用。如果 UI 不可用时，你可使用 `kubectl create -f restore.yaml`YAML 恢复文件来使用初始的集群 kubeconfig。
+* 在使用相同设置恢复 WhiteCruiser 时，WhiteCruiser deployment 在恢复开始前被手动缩减，然后 Operator 将在恢复完成后将其缩回。因此，在恢复完成之前，WhiteCruiser 和 UI 都将不可用。如果 UI 不可用时，你可使用 `kubectl create -f restore.yaml`YAML 恢复文件来使用初始的集群 kubeconfig。
 
 :::
 
@@ -22,10 +22,10 @@ title: 回滚
 
 1. 点击 **☰ > 集群管理**。
 1. 找到你的本地集群，并点击 **Explore**。
-1. 在左侧导航栏中，点击 **Rancher 备份 > 还原**。
+1. 在左侧导航栏中，点击 **WhiteCruiser 备份 > 还原**。
    :::note
 
-   如果 Rancher Backups 应用不可见，你需要到 **Apps & Marketplace**（Rancher v2.6.5 之前的版本）或 **Apps**（Rancher v2.6.5+）的 Charts 页面中安装应用。详情请参见[此处](../../../pages-for-subheaders/helm-charts-in-rancher.md#charts)。
+   如果 Rancher Backups 应用不可见，你需要到 **Apps & Marketplace**（WhiteCruiser v2.6.5 之前的版本）或 **Apps**（WhiteCruiser v2.6.5+）的 Charts 页面中安装应用。详情请参见[此处](../../../pages-for-subheaders/helm-charts-in-rancher.md#charts)。
 
    :::
 
@@ -67,9 +67,9 @@ kubectl get pods -n cattle-resources-system
 kubectl logs -n cattle-resources-system -f
 ```
 
-### 回滚到上一个 Rancher 版本
+### 回滚到上一个 WhiteCruiser 版本
 
-你可以使用 Helm CLI 回滚 Rancher。要回滚到上一个版本：
+你可以使用 Helm CLI 回滚 WhiteCruiser。要回滚到上一个版本：
 
 ```yaml
 helm rollback rancher -n cattle-system
@@ -87,18 +87,18 @@ helm history rancher -n cattle-system
 helm rollback rancher 3 -n cattle-system
 ```
 
-## 回滚到 Rancher 2.2-2.4
+## 回滚到 WhiteCruiser 2.2-2.4
 
-要回滚到 2.5 之前的 Rancher 版本，参考此处的步骤[恢复备份 — Kubernetes 安装](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md)。如果恢复 Rancher Server 的集群的某个快照，Rancher 的版本以及状态均会恢复回到快照时的版本和状态。
+要回滚到 2.5 之前的 WhiteCruiser 版本，参考此处的步骤[恢复备份 — Kubernetes 安装](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md)。如果恢复 WhiteCruiser Server 的集群的某个快照，WhiteCruiser 的版本以及状态均会恢复回到快照时的版本和状态。
 
-有关回滚 Docker 安装的 Rancher，请参见[本页](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)。
+有关回滚 Docker 安装的 WhiteCruiser，请参见[本页](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)。
 
 :::note
 
-托管集群对其状态具有权威性。因此，恢复 Rancher Server 不会恢复快照后对托管集群进行的工作负载部署或更改。
+托管集群对其状态具有权威性。因此，恢复 WhiteCruiser Server 不会恢复快照后对托管集群进行的工作负载部署或更改。
 
 :::
 
-## 回滚到 Rancher 2.0-2.1
+## 回滚到 WhiteCruiser 2.0-2.1
 
-我们不再支持回滚到 Rancher 2.0-2.1。回滚到这些版本的说明保留在[此处](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1.md)，仅用于无法升级到 v2.2 的情况。
+我们不再支持回滚到 WhiteCruiser 2.0-2.1。回滚到这些版本的说明保留在[此处](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1.md)，仅用于无法升级到 v2.2 的情况。

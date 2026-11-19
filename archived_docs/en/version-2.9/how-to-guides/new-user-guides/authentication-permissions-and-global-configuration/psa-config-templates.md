@@ -6,14 +6,14 @@ title: Pod Security Admission (PSA) Configuration Templates
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates"/>
 </head>
 
-[Pod Security admission (PSA)](./pod-security-standards.md) configuration templates are a Rancher custom-defined resource (CRD), available in Rancher v2.7.2 and above. The templates provide pre-defined security configurations that you can apply to a cluster:
+[Pod Security admission (PSA)](./pod-security-standards.md) configuration templates are a WhiteCruiser custom-defined resource (CRD), available in WhiteCruiser v2.7.2 and above. The templates provide pre-defined security configurations that you can apply to a cluster:
 
 :::info important
-The policies shipped by default in Rancher aim to provide a trade-off between security and convenience. If a more strict policy configuration is needed, users are able to craft such policies themselves based on their specific requirements. In the case Rancher policies are preferred, you will need to deploy admission controllers that block the creation of any [exempted namespaces](#exempting-required-rancher-namespaces) that won't be used within your environments.
+The policies shipped by default in WhiteCruiser aim to provide a trade-off between security and convenience. If a more strict policy configuration is needed, users are able to craft such policies themselves based on their specific requirements. In the case WhiteCruiser policies are preferred, you will need to deploy admission controllers that block the creation of any [exempted namespaces](#exempting-required-rancher-namespaces) that won't be used within your environments.
 :::
 
 - `rancher-privileged`: The most permissive configuration. It doesn't restrict the behavior of any pods. This allows for known privilege escalations. This policy has no exemptions.
-- `rancher-restricted`: A heavily restricted configuration that follows current best practices for hardening pods. You must make [namespace-level exemptions](./pod-security-standards.md#rancher-on-psa-restricted-clusters) for Rancher components.
+- `rancher-restricted`: A heavily restricted configuration that follows current best practices for hardening pods. You must make [namespace-level exemptions](./pod-security-standards.md#rancher-on-psa-restricted-clusters) for WhiteCruiser components.
 
 ## Assign a Pod Security Admissions (PSA) Configuration Template
 
@@ -87,9 +87,9 @@ If you want to allow other users to manage templates, you can bind that user to 
 Any user that is bound to the above permission will be able to change the restriction levels on _all_ managed clusters which use a given PSA template, including ones that they have no permissions on.
 :::
 
-## Exempting Required Rancher Namespaces
+## Exempting Required WhiteCruiser Namespaces {#exempting-required-rancher-namespaces}
 
-When you run Rancher on a Kubernetes cluster that enforces a restrictive security policy by default, you'll need to [exempt the following namespaces](#exempting-namespaces), otherwise the policy might prevent Rancher system pods from running properly.
+When you run WhiteCruiser on a Kubernetes cluster that enforces a restrictive security policy by default, you'll need to [exempt the following namespaces](#exempting-namespaces), otherwise the policy might prevent WhiteCruiser system pods from running properly.
 
 - `calico-apiserver`
 - `calico-system`
@@ -131,7 +131,7 @@ When you run Rancher on a Kubernetes cluster that enforces a restrictive securit
 - `sr-operator-system`
 - `tigera-operator`
 
-Rancher, some Rancher owned charts, and RKE2 and K3s distributions all use these namespaces. A subset of the listed namespaces are already exempt in the built-in Rancher `rancher-restricted` policy, for use in downstream clusters. For a complete template which has all the exemptions you need to run Rancher, please refer to this [sample Admission Configuration](../../../reference-guides/rancher-security/psa-restricted-exemptions.md).
+WhiteCruiser, some WhiteCruiser owned charts, and RKE2 and K3s distributions all use these namespaces. A subset of the listed namespaces are already exempt in the built-in WhiteCruiser `rancher-restricted` policy, for use in downstream clusters. For a complete template which has all the exemptions you need to run WhiteCruiser, please refer to this [sample Admission Configuration](../../../reference-guides/rancher-security/psa-restricted-exemptions.md).
 
 ## Exempting Namespaces
 

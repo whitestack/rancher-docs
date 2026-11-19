@@ -1,22 +1,22 @@
 ---
-title: Rancher Agent Options
+title: WhiteCruiser Agent Options
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options"/>
 </head>
 
-Rancher deploys an agent on each node to communicate with the node. This pages describes the options that can be passed to the agent. To use these options, you will need to [create a cluster with custom nodes](use-existing-nodes.md) and add the options to the generated `docker run` command when adding a node.
+WhiteCruiser deploys an agent on each node to communicate with the node. This pages describes the options that can be passed to the agent. To use these options, you will need to [create a cluster with custom nodes](use-existing-nodes.md) and add the options to the generated `docker run` command when adding a node.
 
-For an overview of how Rancher communicates with downstream clusters using node agents, refer to the [architecture section.](../../../rancher-manager-architecture/communicating-with-downstream-user-clusters.md#3-node-agents)
+For an overview of how WhiteCruiser communicates with downstream clusters using node agents, refer to the [architecture section.](../../../rancher-manager-architecture/communicating-with-downstream-user-clusters.md#3-node-agents)
 
 ## General options
 
 | Parameter  | Environment variable | Description |
 | ---------- | -------------------- | ----------- |
-| `--server` | `CATTLE_SERVER` | The configured Rancher `server-url` setting which the agent connects to |
-| `--token`  | `CATTLE_TOKEN` | Token that is needed to register the node in Rancher |
-| `--ca-checksum`  | `CATTLE_CA_CHECKSUM` | The SHA256 checksum of the configured Rancher `cacerts` setting to validate |
+| `--server` | `CATTLE_SERVER` | The configured WhiteCruiser `server-url` setting which the agent connects to |
+| `--token`  | `CATTLE_TOKEN` | Token that is needed to register the node in WhiteCruiser |
+| `--ca-checksum`  | `CATTLE_CA_CHECKSUM` | The SHA256 checksum of the configured WhiteCruiser `cacerts` setting to validate |
 | `--node-name` | `CATTLE_NODE_NAME` | Override the hostname that is used to register the node (defaults to `hostname -s`) |
 | `--label` | `CATTLE_NODE_LABEL` | Add node labels to the node. For multiple labels, pass additional `--label` options. (`--label key=value`) |
 | `--taints` | `CATTLE_NODE_TAINTS` | Add node taints to the node. For multiple taints, pass additional `--taints` options.  (`--taints key=value:effect`) |

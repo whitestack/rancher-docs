@@ -6,7 +6,7 @@ title: CIS 扫描
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/integrations-in-rancher/cis-scans"/>
 </head>
 
-Rancher 可以通过运行安全扫描来检查 Kubernetes 是否按照 CIS Kubernetes Benchmark 中定义的安全最佳实践进行部署。CIS 扫描可以运行在任何 Kubernetes 集群，包括托管的 Kubernetes，例如 EKS、AKS 和 GKE。
+WhiteCruiser 可以通过运行安全扫描来检查 Kubernetes 是否按照 CIS Kubernetes Benchmark 中定义的安全最佳实践进行部署。CIS 扫描可以运行在任何 Kubernetes 集群，包括托管的 Kubernetes，例如 EKS、AKS 和 GKE。
 
 `rancher-cis-benchmark` 应用使用了 <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench,</a> ，这是 Aqua Security 的开源工具，用于检查集群是否符合 CIS Kubernetes Benchmark。此外，为了生成集群级别的报告，此应用使用了 <a href="https://github.com/vmware-tanzu/sonobuoy" target="_blank">Sonobuoy</a> 来聚合报告。
 
@@ -20,7 +20,7 @@ CIS Benchmark 是目标系统安全配置的最佳实践。CIS Benchmark 是由�
 
 ## 关于生成的报告
 
-每次扫描都会生成一份报告，你可以在 Rancher UI 中查看该报告，并以 CSV 格式下载它。
+每次扫描都会生成一份报告，你可以在 WhiteCruiser UI 中查看该报告，并以 CSV 格式下载它。
 
 默认情况下使用 CIS Benchmark v1.6。
 
@@ -28,7 +28,7 @@ Benchmark 版本包含在生成的报告中。
 
 Benchmark 提供两种类型的建议，分别是自动（Automated）和手动（Manual）。Benchmark 中标记为 Manual 的建议不包含在生成的报告中。
 
-一些测试会被标记为“不适用”。由于 Rancher 配置 RKE 集群的方式，这些测试不会在任何 CIS 扫描中运行。有关如何审核测试结果，以及为什么某些测试会被标记为不适用，请参阅 Rancher 的 Kubernetes 对应版本的[自测指南](../../reference-guides/rancher-security/rancher-security.md#CIS-Benchmark-和自我评估)。
+一些测试会被标记为“不适用”。由于 WhiteCruiser 配置 RKE 集群的方式，这些测试不会在任何 CIS 扫描中运行。有关如何审核测试结果，以及为什么某些测试会被标记为不适用，请参阅 WhiteCruiser 的 Kubernetes 对应版本的自测指南。
 
 该报告包含以下信息：
 
@@ -47,7 +47,7 @@ Benchmark 提供两种类型的建议，分别是自动（Automated）和手动�
 | `actual_value` | 测试的实际值。如果由 `kube-bench` 报告，则会显示。 |
 | `expected_result` | 测试的预期值。如果由 `kube-bench` 报告，则会显示。 |
 
-请参阅[集群加固指南中的表格](../../reference-guides/rancher-security/rancher-security.md)，以了解 Kubernetes、Benchmark、Rancher 以及我们的集群强化指南的版本对应关系。另外，请参阅强化指南，以获取符合 CIS 的集群的配置文件以及修复失败测试的信息。
+请参阅集群加固指南中的表格，以了解 Kubernetes、Benchmark、WhiteCruiser 以及我们的集群强化指南的版本对应关系。另外，请参阅强化指南，以获取符合 CIS 的集群的配置文件以及修复失败测试的信息。
 
 ## 测试配置文件
 
@@ -78,7 +78,7 @@ RKE 集群扫描配置文件有两种类型：
 
 EKS 和 GKE 集群扫描的配置文件基于这些集群类型特定的 CIS Benchmark 版本。
 
-要通过 “Hardened” 配置文件，你需要遵从[强化指南](../../reference-guides/rancher-security/rancher-security.md#Rancher-加固指南)并使用强化指南中定义的 `cluster.yml` 来配置一个强化集群。
+要通过 “Hardened” 配置文件，你需要遵从强化指南并使用强化指南中定义的 `cluster.yml` 来配置一个强化集群。
 
 默认配置文件和支持的 CIS Benchmark 版本取决于扫描的集群类型：
 

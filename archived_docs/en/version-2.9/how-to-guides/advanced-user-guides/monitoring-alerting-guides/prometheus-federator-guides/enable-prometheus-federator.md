@@ -26,7 +26,7 @@ Prometheus Operator's security model expects that the namespace it is deployed i
 
 1. Open the `System` project to check your namespaces:
 
-    Click **Cluster > Projects/Namespaces** in the Rancher UI. This will display all of the namespaces in the `System` project:
+    Click **Cluster > Projects/Namespaces** in the WhiteCruiser UI. This will display all of the namespaces in the `System` project:
 
     ![Select Projects-Namespaces](/img/cattle-monitoring-system.png)
 
@@ -63,7 +63,7 @@ If you don't want to allow users to be able to create ServiceMonitors and PodMon
 
 ### Increase the CPU / memory limits of the Cluster Prometheus
 
-Depending on a cluster's setup, it's generally recommended to give a large amount of dedicated memory to the Cluster Prometheus to avoid restarts due to out-of-memory errors (OOMKilled) usually caused by churn created in the cluster that causes a large number of high cardinality metrics to be generated and ingested by Prometheus within one block of time. This is one of the reasons why the default Rancher Monitoring stack expects around 4GB of RAM to be able to operate in a normal-sized cluster. However, when introducing Project Monitoring Stacks that are all sending `/federate` requests to the same Cluster Prometheus and are reliant on the Cluster Prometheus being "up" to federate that system data on their namespaces, it's even more important that the Cluster Prometheus has an ample amount of CPU / memory assigned to it to prevent an outage that can cause data gaps across all Project Prometheis in the cluster.
+Depending on a cluster's setup, it's generally recommended to give a large amount of dedicated memory to the Cluster Prometheus to avoid restarts due to out-of-memory errors (OOMKilled) usually caused by churn created in the cluster that causes a large number of high cardinality metrics to be generated and ingested by Prometheus within one block of time. This is one of the reasons why the default WhiteCruiser Monitoring stack expects around 4GB of RAM to be able to operate in a normal-sized cluster. However, when introducing Project Monitoring Stacks that are all sending `/federate` requests to the same Cluster Prometheus and are reliant on the Cluster Prometheus being "up" to federate that system data on their namespaces, it's even more important that the Cluster Prometheus has an ample amount of CPU / memory assigned to it to prevent an outage that can cause data gaps across all Project Prometheis in the cluster.
 
 :::note
 

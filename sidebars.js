@@ -34,14 +34,13 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "Deploying Rancher Server",
+              label: "Deploying WhiteCruiser Server",
               link: {
                 type: "doc",
                 id: "getting-started/quick-start-guides/deploy-rancher-manager/deploy-rancher-manager",
               },
               items: [
                 "getting-started/quick-start-guides/deploy-rancher-manager/aws",
-                "getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace",
                 "getting-started/quick-start-guides/deploy-rancher-manager/azure",
                 "getting-started/quick-start-guides/deploy-rancher-manager/digitalocean",
                 "getting-started/quick-start-guides/deploy-rancher-manager/gcp",
@@ -53,7 +52,6 @@ const sidebars = {
                 "getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
               ],
             },
-            "getting-started/quick-start-guides/deploy-rancher-manager/prime",
             {
               type: "category",
               label: "Deploying Workloads",
@@ -142,7 +140,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "Rancher on a Single Node with Docker",
+                  label: "WhiteCruiser on a Single Node with Docker",
                   link: {
                     type: "doc",
                     id: "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker",
@@ -155,7 +153,7 @@ const sidebars = {
                 },
                 {
                   type: "category",
-                  label: "Rancher Behind an HTTP Proxy",
+                  label: "WhiteCruiser Behind an HTTP Proxy",
                   link: {
                     type: "doc",
                     id: "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/rancher-behind-an-http-proxy",
@@ -390,7 +388,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Setting up a Kubernetes Cluster for Rancher Server",
+              label: "Setting up a Kubernetes Cluster for WhiteCruiser Server",
               link: {
                 type: "doc",
                 id: "how-to-guides/new-user-guides/kubernetes-cluster-setup/kubernetes-cluster-setup",
@@ -420,7 +418,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Kubernetes Clusters in Rancher Setup",
+              label: "Kubernetes Clusters in WhiteCruiser Setup",
               link: {
                 type: "doc",
                 id: "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup",
@@ -495,7 +493,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Launching Kubernetes with Rancher",
+              label: "Launching Kubernetes with WhiteCruiser",
               link: {
                 type: "doc",
                 id: "how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher",
@@ -652,7 +650,7 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "Rancher Deployment Guides",
+              label: "WhiteCruiser Deployment Guides",
               link: {
                 type: "doc",
                 id: "how-to-guides/advanced-user-guides/rancher-deployment-guides/rancher-deployment-guides",
@@ -816,7 +814,7 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "Rancher Server",
+              label: "WhiteCruiser Server",
               link: {
                 type: "doc",
                 id: "reference-guides/best-practices/rancher-server/rancher-server",
@@ -830,7 +828,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Rancher-Managed Clusters",
+              label: "WhiteCruiser-Managed Clusters",
               link: {
                 type: "doc",
                 id: "reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters",
@@ -847,7 +845,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Rancher Architecture",
+          label: "WhiteCruiser Architecture",
           link: {
             type: "doc",
             id: "reference-guides/rancher-manager-architecture/rancher-manager-architecture",
@@ -868,7 +866,7 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "Rancher Server Configuration",
+              label: "WhiteCruiser Server Configuration",
               link: {
                 type: "doc",
                 id: "reference-guides/cluster-configuration/rancher-server-configuration/rancher-server-configuration",
@@ -944,7 +942,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Single-Node Rancher in Docker",
+          label: "Single-Node WhiteCruiser in Docker",
           link: {
             type: "doc",
             id: "reference-guides/single-node-rancher-in-docker/single-node-rancher-in-docker",
@@ -1008,7 +1006,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "CLI with Rancher",
+          label: "CLI with WhiteCruiser",
           link: {
             type: "doc",
             id: "reference-guides/cli-with-rancher/cli-with-rancher",
@@ -1030,11 +1028,7 @@ const sidebars = {
         "reference-guides/rancher-webhook",
         {
           type: "category",
-          label: "Rancher Security Guides",
-          link: {
-            type: "doc",
-            id: "reference-guides/rancher-security/rancher-security",
-          },
+          label: "WhiteCruiser Security Guides",
           items: [
             {
               type: "category",
@@ -1059,7 +1053,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Integrations in Rancher",
+      label: "Integrations in WhiteCruiser",
       link: {
         type: "doc",
         id: "integrations-in-rancher/integrations-in-rancher",
@@ -1093,7 +1087,6 @@ const sidebars = {
           },
           items: ["integrations-in-rancher/neuvector/overview"],
         },
-        "integrations-in-rancher/suse-observability/suse-observability",
         "integrations-in-rancher/kubewarden/kubewarden",
         "integrations-in-rancher/elemental/elemental",
         {
@@ -1120,31 +1113,6 @@ const sidebars = {
           items: ["integrations-in-rancher/cluster-api/overview"],
         },
         "integrations-in-rancher/rancher-desktop",
-        {
-          type: "category",
-          label: "Cloud Marketplace Integration",
-          link: {
-            type: "doc",
-            id: "integrations-in-rancher/cloud-marketplace/cloud-marketplace",
-          },
-          items: [
-            {
-              type: "category",
-              label: "AWS Marketplace Integration",
-              link: {
-                type: "doc",
-                id: "integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/aws-cloud-marketplace",
-              },
-              items: [
-                "integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/adapter-requirements",
-                "integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/install-adapter",
-                "integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/uninstall-adapter",
-                "integrations-in-rancher/cloud-marketplace/aws-cloud-marketplace/common-issues",
-              ],
-            },
-            "integrations-in-rancher/cloud-marketplace/supportconfig",
-          ],
-        },
         {
           type: "category",
           label: "Compliance Scans",
@@ -1278,7 +1246,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Rancher Kubernetes API",
+      label: "WhiteCruiser Kubernetes API",
       items: [
         "api/quickstart",
         {

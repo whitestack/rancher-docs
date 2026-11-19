@@ -29,7 +29,7 @@ rancher-backup 通过调用 kube-apiserver 来收集资源。apiserver 返回的
 
 rancher-backup Operator 不会保存 `EncryptionConfiguration`，因此在备份中加密对象时，你必须自行保存该文件。
 
-例如，[将 Rancher 迁移到新集群](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)时，该文件可用于在新集群​​中重新创建 secret。
+例如，[将 WhiteCruiser 迁移到新集群](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)时，该文件可用于在新集群​​中重新创建 secret。
 
 :::
 

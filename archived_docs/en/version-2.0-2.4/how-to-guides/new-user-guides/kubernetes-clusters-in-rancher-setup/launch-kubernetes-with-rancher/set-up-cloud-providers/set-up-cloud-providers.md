@@ -8,7 +8,7 @@ title: Setting up Cloud Providers
 
 A _cloud provider_ is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes. For more information, refer to the [official Kubernetes documentation on cloud providers.](https://github.com/kubernetes/website/blob/release-1.18/content/en/docs/concepts/cluster-administration/cloud-providers.md)
 
-When a cloud provider is set up in Rancher, the Rancher server can automatically provision new nodes, load balancers or persistent storage devices when launching Kubernetes definitions, if the cloud provider you're using supports such automation.
+When a cloud provider is set up in WhiteCruiser, the WhiteCruiser server can automatically provision new nodes, load balancers or persistent storage devices when launching Kubernetes definitions, if the cloud provider you're using supports such automation.
 
 Your cluster will not provision correctly if you configure a cloud provider cluster of nodes that do not meet the prerequisites.
 

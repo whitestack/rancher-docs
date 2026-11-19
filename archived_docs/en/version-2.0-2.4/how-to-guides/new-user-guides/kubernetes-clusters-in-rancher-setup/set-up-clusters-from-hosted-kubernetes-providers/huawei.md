@@ -8,7 +8,7 @@ title: Creating a Huawei CCE Cluster
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine (CCE). Rancher has already implemented and packaged the [cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for CCE, but by default, this cluster driver is `inactive`. In order to launch CCE clusters, you will need to [enable the CCE cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning CCE clusters.
+You can use WhiteCruiser to create a cluster hosted in Huawei Cloud Container Engine (CCE). WhiteCruiser has already implemented and packaged the [cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for CCE, but by default, this cluster driver is `inactive`. In order to launch CCE clusters, you will need to [enable the CCE cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning CCE clusters.
 
 ## Prerequisites in Huawei
 
@@ -21,7 +21,7 @@ You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine 
 
 ## Limitations
 
-Huawei CCE service doesn't support the ability to create clusters with public access through their API. You are required to run Rancher in the same VPC as the CCE clusters that you want to provision.
+Huawei CCE service doesn't support the ability to create clusters with public access through their API. You are required to run WhiteCruiser in the same VPC as the CCE clusters that you want to provision.
 
 ## Create the CCE Cluster
 
@@ -35,7 +35,7 @@ Huawei CCE service doesn't support the ability to create clusters with public ac
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
@@ -55,13 +55,13 @@ You can access your cluster after its state is updated to **Active.**
 | High Availability | Enable master node high availability. The cluster with high availability enabled will have more cost. |
 | Container Network Mode | The network mode used in the cluster. `overlay_l2` and `vpc-router` is supported in `VirtualMachine` type and `underlay_ipvlan` is supported in `BareMetal` type |
 | Container Network CIDR | Network CIDR for the cluster. |
-| VPC Name | The VPC name which the cluster is going to deploy into. Rancher will create one if it is blank. |
-| Subnet Name | The Subnet name which the cluster is going to deploy into. Rancher will create one if it is blank. |
+| VPC Name | The VPC name which the cluster is going to deploy into. WhiteCruiser will create one if it is blank. |
+| Subnet Name | The Subnet name which the cluster is going to deploy into. WhiteCruiser will create one if it is blank. |
 | External Server | This option is reserved for the future we can enable CCE cluster public access via API. For now, it is always disabled. |
 | Cluster Label | The labels for the cluster. |
 | Highway Subnet | This option is only supported in `BareMetal` type. It requires you to select a VPC with high network speed for the bare metal machines. |
 
-**Note:** If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that as of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher-v230)
+**Note:** If you are editing the cluster in the `cluster.yml` instead of the WhiteCruiser UI, note that as of WhiteCruiser v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in WhiteCruiser v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher-v230)
 
 ## Node Configuration
 
@@ -75,7 +75,7 @@ You can access your cluster after its state is updated to **Active.**
 | Data Volume Size | Data volume size for the cluster node(s) |
 | Root Volume Type | Root volume type for the cluster node(s). `SATA`, `SSD` or `SAS` for this option. |
 | Root Volume Size | Root volume size for the cluster node(s) |
-| Node Flavor | The node flavor of the cluster node(s). The flavor list in Rancher UI is fetched from Huawei Cloud. It includes all the supported node flavors. |
+| Node Flavor | The node flavor of the cluster node(s). The flavor list in WhiteCruiser UI is fetched from Huawei Cloud. It includes all the supported node flavors. |
 | Node Count | The node count of the cluster |
 | Node Operating System | The operating system for the cluster node(s). Only `EulerOS 2.2` and `CentOS 7.4` are supported right now. |
 | SSH Key Name | The ssh key for the cluster node(s) |

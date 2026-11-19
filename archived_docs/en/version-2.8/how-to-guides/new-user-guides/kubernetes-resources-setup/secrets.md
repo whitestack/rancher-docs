@@ -46,14 +46,14 @@ Mounted secrets will be updated automatically unless they are mounted as subpath
 
 1. Click **Save**.
 
-**Result:** Your secret is added to the namespace you chose. You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
+**Result:** Your secret is added to the namespace you chose. You can view the secret in the WhiteCruiser UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
 
 Mounted secrets will be updated automatically unless they are mounted as subpath volumes. For details on how updated secrets are propagated, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/secret/#mounted-secrets-are-updated-automatically)
 
 
 ## Creating Secrets in Projects
 
-Before v2.6, secrets were required to be in a project scope. Projects are no longer required, and you may use the namespace scope instead. As a result, the Rancher UI was updated to reflect this new functionality. However, you may still create project-scoped secrets if desired. Note that you have to first enable the `legacy` feature flag and look at a single project to do so. Use the following steps to set up your project-level secret:
+Before v2.6, secrets were required to be in a project scope. Projects are no longer required, and you may use the namespace scope instead. As a result, the WhiteCruiser UI was updated to reflect this new functionality. However, you may still create project-scoped secrets if desired. Note that you have to first enable the `legacy` feature flag and look at a single project to do so. Use the following steps to set up your project-level secret:
 
 1. In the upper left corner, click **☰ > Global Settings** in the dropdown.
 1. Click **Feature Flags**.
@@ -65,7 +65,7 @@ Before v2.6, secrets were required to be in a project scope. Projects are no lon
 1. In the left navigation bar, click **Secrets**.
 1. Click **Add Secret**.
 
-**Result:** Your secret is added to the individual project you chose. You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
+**Result:** Your secret is added to the individual project you chose. You can view the secret in the WhiteCruiser UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
 
 Since project-scoped secrets are set at the project level, any changes made at the namespace level will be overwritten.
 

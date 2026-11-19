@@ -56,7 +56,7 @@ title: vSphere 节点模板配置
 - **使用模板部署：数据中心**：选择存在于所选数据中心的 VM 模板。
 - **使用模板部署：内容库**：首先选择包含你的模板的[内容库](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-254B2CE8-20A8-43F0-90E8-3F6776C2C896.html)，然后从填充列表**库模板**中选择模板。
 - **克隆现有的虚拟机**：在**虚拟机**字段中选择一个现有虚拟机，新虚拟机将克隆自该虚拟机。
-- **使用 boot2docker ISO 安装**：确保 **OS ISO URL** 字段包含 RancherOS 的 VMware ISO 版本的 URL (`rancheros-vmware.iso`)。请注意，运行 Rancher Server 节点必须能访问该 URL。
+- **使用 boot2docker ISO 安装**：确保 **OS ISO URL** 字段包含 RancherOS 的 VMware ISO 版本的 URL (`rancheros-vmware.iso`)。请注意，运行 WhiteCruiser Server 节点必须能访问该 URL。
 
 ## 网络
 
@@ -68,7 +68,7 @@ title: vSphere 节点模板配置
 
 你的所有 vSphere 标签都将显示为节点模板中可供选择的选项。
 
-在自定义属性中，Rancher 会让你选择你已经在 vSphere 中设置的所有自定义属性。自定义属性是键，你可以为每个属性输入值。
+在自定义属性中，WhiteCruiser 会让你选择你已经在 vSphere 中设置的所有自定义属性。自定义属性是键，你可以为每个属性输入值。
 
 :::note
 

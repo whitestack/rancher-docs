@@ -50,7 +50,7 @@ Alertmanager UI 可让你查看最近触发的告警。
 
 **结果**：在新选项卡中打开 Alertmanager UI。如需配置帮助，请参阅[官方 Alertmanager 文档](https://prometheus.io/docs/alerting/latest/alertmanager/)。
 
-有关在 Rancher 中配置 Alertmanager 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)。
+有关在 WhiteCruiser 中配置 Alertmanager 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)。
 
 <figcaption>Alertmanager UI</figcaption>
 
@@ -110,4 +110,4 @@ Alertmanager UI 可让你查看最近触发的告警。
 
 ![PrometheusRules UI](/img/prometheus-rules-ui.png)
 
-有关在 Rancher 中配置 PrometheusRule 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)。
+有关在 WhiteCruiser 中配置 PrometheusRule 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)。

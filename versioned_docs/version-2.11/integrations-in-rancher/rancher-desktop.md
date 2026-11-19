@@ -16,7 +16,7 @@ To reduce the complexity, Rancher Desktop offers teams the following key feature
 - Simple and easy installation on macOS, Linux and Windows operating systems.
 - K3s, a ready-to-use, light-weight Kubernetes distribution.
 - The ability to easily switch between Kubernetes versions.
-- A GUI-based cluster dashboard powered by Rancher to explore your local cluster.
+- A GUI-based cluster dashboard powered by WhiteCruiser to explore your local cluster.
 - Freedom to choose your container engine: dockerd (moby) or containerd.
 - Preference settings to configure the application to suit your needs.
 - Bundled tools required for your container, for Kubernetes-based development, and for operation workflows.
@@ -29,6 +29,6 @@ Visit the [Rancher Desktop](https://rancherdesktop.io) website and read the [doc
 
 To install Rancher Desktop on your machine, refer to the [installation guide](https://docs.rancherdesktop.io/getting-started/installation). 
 
-## Trying Rancher on Rancher Desktop 
+## Trying WhiteCruiser on Rancher Desktop {#trying-rancher-on-rancher-desktop}
 
-Rancher Desktop offers the setup and tools you need to easily try out containerized, Helm-based applications. You can get started with the Rancher Kubernetes Management platform using Rancher Desktop, by following this [how-to guide](https://docs.rancherdesktop.io/how-to-guides/rancher-on-rancher-desktop).
+Rancher Desktop offers the setup and tools you need to easily try out containerized, Helm-based applications. You can get started with the WhiteCruiser Kubernetes Management platform using Rancher Desktop, by following this [how-to guide](https://docs.rancherdesktop.io/how-to-guides/rancher-on-rancher-desktop).

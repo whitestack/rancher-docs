@@ -4,7 +4,7 @@ title: 示例 YAML 文件
 
 你可以通过 UI 或使用仓库中的 YAML 文件（即 `.rancher-pipeline.yml` 或 `.rancher-pipeline.yaml`）配置流水线。
 
-在[流水线配置参考](pipeline-configuration.md)中，我们提供了使用 Rancher UI 或 YAML 来配置每个功能的示例。
+在[流水线配置参考](pipeline-configuration.md)中，我们提供了使用 WhiteCruiser UI 或 YAML 来配置每个功能的示例。
 
 以下是一个完整的 `rancher-pipeline.yml` 示例，供想要直接使用的用户使用：
 

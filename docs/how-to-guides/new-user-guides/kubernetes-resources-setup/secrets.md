@@ -47,7 +47,7 @@ Mounted secrets are updated automatically unless they are mounted as subpath vol
 
 1. Click **Save**.
 
-**Result:** Your secret is added to the namespace you chose. You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
+**Result:** Your secret is added to the namespace you chose. You can view the secret in the WhiteCruiser UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
 
 Mounted secrets are updated automatically unless they are mounted as subpath volumes. For details on how updated secrets are propagated, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/secret/#mounted-secrets-are-updated-automatically)
 
@@ -85,13 +85,13 @@ When creating a secret in a project scope, the secret is copied into all namespa
 
 1. Click **Save**.
 
-**Result:** Your secret is added to each namespace within the project. You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
+**Result:** Your secret is added to each namespace within the project. You can view the secret in the WhiteCruiser UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
 
 ### Creating a Project Scoped Secret with kubectl
 
-Project scoped secrets work by creating the original secret on the management cluster in what's known as the "Project Backing Namespace". Rancher stores important project related information in this namespace. You can find it in the `status.backingNamespace` field in the project CRD, or by doing `kubectl get projects -A` in the management cluster.
+Project scoped secrets work by creating the original secret on the management cluster in what's known as the "Project Backing Namespace". WhiteCruiser stores important project related information in this namespace. You can find it in the `status.backingNamespace` field in the project CRD, or by doing `kubectl get projects -A` in the management cluster.
 
-In order for the secret to be acknowledged by Rancher as a project scoped secret, it also needs the label `management.cattle.io/project-scoped-secret: <projectID>`.
+In order for the secret to be acknowledged by WhiteCruiser as a project scoped secret, it also needs the label `management.cattle.io/project-scoped-secret: <projectID>`.
 
 Example yaml:
 

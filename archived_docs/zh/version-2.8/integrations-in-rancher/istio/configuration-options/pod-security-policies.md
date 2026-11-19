@@ -11,7 +11,7 @@ Istio CNI 插件不再要求每个应用 pod 具有特权 `NET_ADMIN` 容器。�
 - 集群必须是 RKE Kubernetes 集群。
 - 必须使用默认 PodSecurityPolicy 创建集群。
 
-要在使用 Rancher UI 创建 Kubernetes 集群时启用 Pod 安全策略支持，请转到<b>高级选项</b>。在 <b>Pod 安全策略支持</b>中，单击<b>启用</b>，然后选择一个默认的 pod 安全策略。
+要在使用 WhiteCruiser UI 创建 Kubernetes 集群时启用 Pod 安全策略支持，请转到<b>高级选项</b>。在 <b>Pod 安全策略支持</b>中，单击<b>启用</b>，然后选择一个默认的 pod 安全策略。
 
 :::
 

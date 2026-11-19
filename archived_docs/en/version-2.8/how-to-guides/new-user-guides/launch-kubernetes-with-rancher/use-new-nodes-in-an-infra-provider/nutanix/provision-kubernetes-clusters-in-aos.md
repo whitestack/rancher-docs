@@ -6,24 +6,24 @@ title: Provisioning Kubernetes Clusters in Nutanix AOS
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/nutanix/provision-kubernetes-clusters-in-aos"/>
 </head>
 
-To use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Nutanix AOS (AHV):
+To use WhiteCruiser to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Nutanix AOS (AHV):
 
-1. Locate Rancher's built-in Nutanix [node driver and activate it](../../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#activatingdeactivating-node-drivers).
+1. Locate WhiteCruiser's built-in Nutanix [node driver and activate it](../../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#activatingdeactivating-node-drivers).
 
-1. Create a node template, which Rancher will use to provision nodes in Nutanix AOS.
+1. Create a node template, which WhiteCruiser will use to provision nodes in Nutanix AOS.
 
-1. Create a Nutanix AOS cluster in Rancher. When configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+1. Create a Nutanix AOS cluster in WhiteCruiser. When configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. WhiteCruiser will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
 For details on configuring the Nutanix AOS node template, refer to the [Nutanix AOS node template configuration reference.](../../../../../reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/nutanix.md)
 
-For details on configuring RKE Kubernetes clusters in Rancher, refer to the [cluster configuration reference.](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)
+For details on configuring RKE Kubernetes clusters in WhiteCruiser, refer to the [cluster configuration reference.](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)
 
 - [Preparation in Nutanix AOS](#preparation-in-nutanix-aos)
 - [Creating a Nutanix AOS Cluster](#creating-a-nutanix-aos-cluster)
 
 ## Preparation in Nutanix AOS
 
-The following sections describe the requirements for setting up Nutanix AOS so that Rancher can provision VMs and clusters.
+The following sections describe the requirements for setting up Nutanix AOS so that WhiteCruiser can provision VMs and clusters.
 
 :::note
 
@@ -37,7 +37,7 @@ Before proceeding to create a cluster, you must ensure that you have a [Nutanix 
 
 ### Network Permissions
 
-You must ensure that the hosts running the Rancher server are able to establish the following network connections:
+You must ensure that the hosts running the WhiteCruiser server are able to establish the following network connections:
 
 - To the Nutanix Prism Central API (usually port 9440/TCP).
 - To port 22/TCP and 2376/TCP on the created VMs
@@ -55,7 +55,7 @@ Setting up [VM-VM Anti-Affinity Policies](https://portal.nutanix.com/page/docume
 
 ### 1. Create a node template
 
-Creating a [node template](../use-new-nodes-in-an-infra-provider.md#node-templates) for Nutanix AOS will allow Rancher to provision new nodes in Nutanix AOS. Node templates can be reused for other clusters.
+Creating a [node template](../use-new-nodes-in-an-infra-provider.md#node-templates) for Nutanix AOS will allow WhiteCruiser to provision new nodes in Nutanix AOS. Node templates can be reused for other clusters.
 
 1. Click **☰ > Cluster Management**.
 1. Click **RKE1 Configuration > Node Templates**.
@@ -67,7 +67,7 @@ Creating a [node template](../use-new-nodes-in-an-infra-provider.md#node-templat
 
 ### 2. Create a cluster with node pools using the node template
 
-Use Rancher to create a Kubernetes cluster in Nutanix AOS.
+Use WhiteCruiser to create a Kubernetes cluster in Nutanix AOS.
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
@@ -78,7 +78,7 @@ Use Rancher to create a Kubernetes cluster in Nutanix AOS.
 1. Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. For more information about node pools, including best practices for assigning Kubernetes roles to the nodes, see [this section.](../use-new-nodes-in-an-infra-provider.md#node-pools)
 1. Review your options to confirm they're correct. Then click **Create**.
 
-**Result:** Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+**Result:** Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -89,8 +89,8 @@ You can access your cluster after its state is updated to **Active**.
 
 ## Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
 
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.

@@ -12,7 +12,7 @@ If you have custom or imported hardened clusters, you must take special preparat
 
 :::note
 
-After you upgrade to v1.25, add the necessary Rancher namespace exemptions. See [Pod Security Admission (PSA) Configuration Templates](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md#exempting-required-rancher-namespaces) for more details.
+After you upgrade to v1.25, add the necessary WhiteCruiser namespace exemptions. See [Pod Security Admission (PSA) Configuration Templates](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md#exempting-required-rancher-namespaces) for more details.
 
 :::
 
@@ -32,11 +32,11 @@ Perform the following on each node in the cluster:
 
 Perform the following on each node in the cluster:
 
-Follow the official K3s instructions on [Upgrading Hardened Clusters from v1.24.x to v1.25.x](https://docs.k3s.io/known-issues#hardened-125), but use a [custom](./rancher-psact.yaml) Rancher PSA configuration template, instead of the configuration provided on the official K3s site.
+Follow the official K3s instructions on [Upgrading Hardened Clusters from v1.24.x to v1.25.x](https://docs.k3s.io/known-issues#hardened-125), but use a [custom](./rancher-psact.yaml) WhiteCruiser PSA configuration template, instead of the configuration provided on the official K3s site.
 </TabItem>
 </Tabs>
 
-After you perform these steps, you can upgrade the cluster's Kubernetes version through the Rancher UI:
+After you perform these steps, you can upgrade the cluster's Kubernetes version through the WhiteCruiser UI:
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Find the cluster you want to update in the **Clusters** table, and click the **⋮**.

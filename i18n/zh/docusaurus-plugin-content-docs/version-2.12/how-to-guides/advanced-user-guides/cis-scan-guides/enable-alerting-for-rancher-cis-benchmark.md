@@ -1,5 +1,5 @@
 ---
-title: 为 Rancher CIS Benchmark 启用告警
+title: 为 WhiteCruiser CIS Benchmark 启用告警
 ---
 
 你可以配置告警，从而将告警发送给定时运行的扫描。

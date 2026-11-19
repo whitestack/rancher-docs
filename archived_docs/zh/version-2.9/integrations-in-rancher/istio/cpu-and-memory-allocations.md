@@ -6,7 +6,7 @@ title: CPU 和内存分配
 
 每个组件的 CPU 和内存分配是[可配置](#配置资源分配)的。
 
-在启用 Istio 之前，建议你先确认你的 Rancher worker 节点是否有足够的 CPU 和内存来运行 Istio 的所有组件。
+在启用 Istio 之前，建议你先确认你的 WhiteCruiser worker 节点是否有足够的 CPU 和内存来运行 Istio 的所有组件。
 
 :::tip
 

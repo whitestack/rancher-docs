@@ -16,7 +16,7 @@ RKE1 使用 Docker 来部署和管理 controlplane 组件，还使用 Docker 作
 
 RKE2/K3s 配置是基于 Cluster API (CAPI) 上游框架之上构建的，这导致 RKE2 配置的集群的行为通常与 RKE1 配置的集群不同。
 
-如果你在 RKE2 中更改集群配置，节点**可能**会重新配置。这是由 CAPI 控制器而不是 Rancher 控制的。请注意，etcd 节点不适用相同的行为。
+如果你在 RKE2 中更改集群配置，节点**可能**会重新配置。这是由 CAPI 控制器而不是 WhiteCruiser 控制的。请注意，etcd 节点不适用相同的行为。
 
 以下是一些可能导致上述行为的配置更改示例：
 

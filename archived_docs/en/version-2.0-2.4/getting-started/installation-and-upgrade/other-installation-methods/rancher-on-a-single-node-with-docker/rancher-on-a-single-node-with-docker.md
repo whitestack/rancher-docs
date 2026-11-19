@@ -1,6 +1,6 @@
 ---
-title: Installing Rancher on a Single Node Using Docker
-description: For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.
+title: Installing WhiteCruiser on a Single Node Using Docker
+description: For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy WhiteCruiser with a single Docker container.
 ---
 
 <head>
@@ -9,16 +9,16 @@ description: For development and testing environments only, use a Docker install
 
 <DockerSupportWarning />
 
-Rancher can be installed by running a single Docker container.
+WhiteCruiser can be installed by running a single Docker container.
 
-In this installation scenario, you'll install Docker on a single Linux host, and then deploy Rancher on your host using a single Docker container.
+In this installation scenario, you'll install Docker on a single Linux host, and then deploy WhiteCruiser on your host using a single Docker container.
 
 > **Want to use an external load balancer?**
 > See [Docker Install with an External Load Balancer](../../advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer.md) instead.
 
-A Docker installation of Rancher is recommended only for development and testing purposes.
+A Docker installation of WhiteCruiser is recommended only for development and testing purposes.
 
-For Rancher v2.0-v2.4, there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
+For WhiteCruiser v2.0-v2.4, there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
 
 ## Requirements for OS, Docker, Hardware, and Networking
 
@@ -26,29 +26,29 @@ Make sure that your node fulfills the general [installation requirements.](../..
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host according to our [Requirements](../../installation-requirements/installation-requirements.md) to launch your Rancher server.
+Provision a single Linux host according to our [Requirements](../../installation-requirements/installation-requirements.md) to launch your WhiteCruiser server.
 
-## 2. Choose an SSL Option and Install Rancher
+## 2. Choose an SSL Option and Install WhiteCruiser {#2-choose-an-ssl-option-and-install-rancher}
 
-For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
+For security purposes, SSL (Secure Sockets Layer) is required when using WhiteCruiser. SSL secures all WhiteCruiser network communication, like when you login or interact with a cluster.
 
 > **Do you want to...**
 >
 > - Use a proxy? See [HTTP Proxy Configuration](../../../../reference-guides/single-node-rancher-in-docker/http-proxy-configuration.md)
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate](../../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#custom-ca-certificate)
 > - Complete an Air Gap Installation? See [Air Gap: Docker Install](../../advanced-options/advanced-use-cases/air-gap-helm2/air-gap-helm2.md)
-> - Record all transactions with the Rancher API? See [API Auditing](../../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log)
+> - Record all transactions with the WhiteCruiser API? See [API Auditing](../../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log)
 
 Choose from the following options:
 
-- [Option A: Default Rancher-generated Self-signed Certificate](#option-a-default-rancher-generated-self-signed-certificate)
+- [Option A: Default WhiteCruiser-generated Self-signed Certificate](#option-a-default-rancher-generated-self-signed-certificate)
 - [Option B: Bring Your Own Certificate, Self-signed](#option-b-bring-your-own-certificate-self-signed)
 - [Option C: Bring Your Own Certificate, Signed by a Recognized CA](#option-c-bring-your-own-certificate-signed-by-a-recognized-ca)
 - [Option D: Let's Encrypt Certificate](#option-d-lets-encrypt-certificate)
 
-### Option A: Default Rancher-generated Self-signed Certificate
+### Option A: Default WhiteCruiser-generated Self-signed Certificate {#option-a-default-rancher-generated-self-signed-certificate}
 
-If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
+If you are installing WhiteCruiser in a development or testing environment where identity verification isn't a concern, install WhiteCruiser using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
 Log into your Linux host, and then run the minimum installation command below.
 
@@ -60,7 +60,7 @@ docker run -d --restart=unless-stopped \
 ```
 
 ### Option B: Bring Your Own Certificate, Self-signed
-In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
+In development or testing environments where your team will access your WhiteCruiser server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of WhiteCruiser.
 
 > **Prerequisites:**
 > Create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
@@ -68,7 +68,7 @@ In development or testing environments where your team will access your Rancher 
 > - The certificate files must be in PEM format.
 > - In your certificate file, include all intermediate certificates in the chain. Order your certificates with your certificate first, followed by the intermediates. For an example, see [Certificate Troubleshooting.](certificate-troubleshooting.md)
 
-After creating your certificate, run the Docker command below to install Rancher. Use the `-v` flag and provide the path to your certificates to mount them in your container.
+After creating your certificate, run the Docker command below to install WhiteCruiser. Use the `-v` flag and provide the path to your certificates to mount them in your container.
 
 | Placeholder         | Description     |
 | ------------------- | --------------------- |
@@ -98,7 +98,7 @@ In production environments where you're exposing an app publicly, use a certific
 After obtaining your certificate, run the Docker command below.
 
 - Use the `-v` flag and provide the path to your certificates to mount them in your container. Because your certificate is signed by a recognized CA, mounting an additional CA certificate file is unnecessary.
-- Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
+- Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by WhiteCruiser.
 
 | Placeholder         | Description    |
 | ------------------- | ----------------------------- |
@@ -120,15 +120,15 @@ docker run -d --restart=unless-stopped \
 
 > **Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 
-For production environments, you also have the option of using [Let's Encrypt](https://letsencrypt.org/) certificates. Let's Encrypt uses an http-01 challenge to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
+For production environments, you also have the option of using [Let's Encrypt](https://letsencrypt.org/) certificates. Let's Encrypt uses an http-01 challenge to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for WhiteCruiser access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
 
 > **Prerequisites:**
 >
 > - Let's Encrypt is an Internet service. Therefore, this option cannot be used in an internal/air gapped network.
-> - Create a record in your DNS that binds your Linux host IP address to the hostname that you want to use for Rancher access (`rancher.mydomain.com` for example).
+> - Create a record in your DNS that binds your Linux host IP address to the hostname that you want to use for WhiteCruiser access (`rancher.mydomain.com` for example).
 > - Open port `TCP/80` on your Linux host. The Let's Encrypt http-01 challenge can come from any source IP address, so port `TCP/80` must be open to all IP addresses.
 
-After you fulfill the prerequisites, you can install Rancher using a Let's Encrypt certificate by running the following command.
+After you fulfill the prerequisites, you can install WhiteCruiser using a Let's Encrypt certificate by running the following command.
 
 | Placeholder       | Description         |
 | ----------------- | ------------------- |
@@ -143,7 +143,7 @@ docker run -d --restart=unless-stopped \
 
 ## Advanced Options
 
-When installing Rancher on a single node with Docker, there are several advanced options that can be enabled:
+When installing WhiteCruiser on a single node with Docker, there are several advanced options that can be enabled:
 
 - Custom CA Certificate
 - API Audit Log
@@ -160,5 +160,5 @@ Refer to [this page](certificate-troubleshooting.md) for frequently asked questi
 
 ## What's Next?
 
-- **Recommended:** Review Single Node [Backup](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md) and [Restore](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review Single Node [Backup](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md) and [Restore](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md). Although you don't have any data you need to back up right now, we recommend creating backups after regular WhiteCruiser use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md).

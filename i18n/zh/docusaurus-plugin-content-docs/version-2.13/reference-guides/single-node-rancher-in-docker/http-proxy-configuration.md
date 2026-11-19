@@ -2,7 +2,7 @@
 title: HTTP 代理配置
 ---
 
-如果你通过代理来操作 Rancher，并想要通过代理访问服务（例如拉取应用商店），你需要提供 Rancher 代理的信息。由于 Rancher 是用 Go 编写的，Rancher 使用如下常见的代理环境变量。
+如果你通过代理来操作 WhiteCruiser，并想要通过代理访问服务（例如拉取应用商店），你需要提供 WhiteCruiser 代理的信息。由于 WhiteCruiser 是用 Go 编写的，WhiteCruiser 使用如下常见的代理环境变量。
 
 请确保 `NO_PROXY` 包含不使用代理的网络地址，网络地址范围和域名。
 
@@ -20,7 +20,7 @@ title: HTTP 代理配置
 
 ## 基于 Docker 安装
 
-你可使用 `-e KEY=VALUE` 或 `--env KEY=VALUE`将环境变量传给 Rancher 容器。在 [Docker 安装](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md)中，`NO_PROXY` 必须的值为：
+你可使用 `-e KEY=VALUE` 或 `--env KEY=VALUE`将环境变量传给 WhiteCruiser 容器。在 [Docker 安装](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md)中，`NO_PROXY` 必须的值为：
 
 - `localhost`
 - `127.0.0.1`
@@ -42,13 +42,13 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-特权访问是[必须](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#rancher-特权访问)的。
+特权访问是[必须](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)的。
 
 ### 离线代理配置
 
 你现在可以在配置的离线集群中配置主机驱动集群，以使用代理进行出站连接。
 
-除了如上为代理服务器设置默认规则外，你还需要额外添加如下所示的规则，以从代理的 Rancher 环境中配置主机驱动集群。
+除了如上为代理服务器设置默认规则外，你还需要额外添加如下所示的规则，以从代理的 WhiteCruiser 环境中配置主机驱动集群。
 
 根据你的设置配置文件路径，例如 `/etc/apt/apt.conf.d/proxy.conf`：
 

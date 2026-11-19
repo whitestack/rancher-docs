@@ -11,7 +11,7 @@ title: 使用 kubectl 管理 HPA
 - 如果你使用 Prometheus 等第三方工具的指标，配置 HPA 以使用自定义指标进行扩缩
 
 
-你可以在 Rancher UI 中创建、查看和删除 HPA。你还可以根据 Rancher UI 中的 CPU/内存使用情况进行扩缩。有关详细信息，请参阅[使用 Rancher UI 管理 HPA](./manage-hpas-with-ui.md)。如果要使用 CPU/内存以外的指标来扩缩 HPA，你需要使用 `kubectl`。
+你可以在 WhiteCruiser UI 中创建、查看和删除 HPA。你还可以根据 WhiteCruiser UI 中的 CPU/内存使用情况进行扩缩。有关详细信息，请参阅[使用 WhiteCruiser UI 管理 HPA](./manage-hpas-with-ui.md)。如果要使用 CPU/内存以外的指标来扩缩 HPA，你需要使用 `kubectl`。
 
 ## 管理 HPA 的基本 kubectl 命令
 
@@ -75,7 +75,7 @@ spec:
 
 ## 使用资源指标（CPU 和内存）配置 HPA 以进行扩缩
 
-在 Rancher 2.0.7 及更高版本中创建的集群满足使用 Horizontal Pod Autoscaler 的所有要求（metrics-server 和 Kubernetes 集群配置）。
+在 WhiteCruiser 2.0.7 及更高版本中创建的集群满足使用 Horizontal Pod Autoscaler 的所有要求（metrics-server 和 Kubernetes 集群配置）。
 
 运行以下命令以检查你的安装中是否有可用的指标：
 
@@ -118,7 +118,7 @@ I1002 12:55:32.928597       1 serve.go:85] Serving securely on 0.0.0.0:443
 - Prometheus 配置正确，并从 pod、节点、命名空间等收集合适的指标。
 - Prometheus 暴露在以下 URL 和端口：`http://prometheus.mycompany.io:80`
 
-Prometheus 可用于 Rancher 2.0 应用商店中的 Deployment。如果它还没有运行在你的集群中，请在 Rancher 应用商店中部署它。
+Prometheus 可用于 WhiteCruiser 2.0 应用商店中的 Deployment。如果它还没有运行在你的集群中，请在 WhiteCruiser 应用商店中部署它。
 
 为了让 HPA 使用来自 Prometheus 的自定义指标，[k8s-prometheus-adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) 包需要在你集群的 `kube-system` 命名空间中。要安装 `k8s-prometheus-adapter`，使用 [banzai-charts](https://github.com/banzaicloud/banzai-charts) 提供的 Helm Chart。
 
@@ -191,7 +191,7 @@ Prometheus 可用于 Rancher 2.0 应用商店中的 Deployment。如果它还没
     {"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[{"name":"pods/fs_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_rss","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_period","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_read","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_user","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/last_seen","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/tasks_state","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_quota","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/start_time_seconds","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_write","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_cache","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_cfs_throttled_periods","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_working_set_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_udp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes_free","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_inodes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_time_weighted","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failures","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_swap","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_cpu_shares","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_swap_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_io_current","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_failcnt","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_writes_merged","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/network_tcp_usage","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/memory_max_usage_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/spec_memory_reservation_limit_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_load_average_10s","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/cpu_system","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_reads_bytes","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]},{"name":"pods/fs_sector_reads","singularName":"","namespaced":true,"kind":"MetricValueList","verbs":["get"]}]}
     </details>
 
-  - 如果你通过 Rancher 访问集群，请在 kubectl 配置中输入你的服务器 URL，格式是 `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`。将 `/k8s/clusters/<CLUSTER_ID>` 后缀添加到 API 路径：
+  - 如果你通过 WhiteCruiser 访问集群，请在 kubectl 配置中输入你的服务器 URL，格式是 `https://<RANCHER_URL>/k8s/clusters/<CLUSTER_ID>`。将 `/k8s/clusters/<CLUSTER_ID>` 后缀添加到 API 路径：
     ```
     # kubectl get --raw /k8s/clusters/<CLUSTER_ID>/apis/custom.metrics.k8s.io/v1beta1
     ```

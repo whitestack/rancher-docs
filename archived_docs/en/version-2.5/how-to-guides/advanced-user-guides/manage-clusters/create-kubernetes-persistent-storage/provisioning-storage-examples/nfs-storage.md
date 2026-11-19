@@ -6,11 +6,11 @@ title: NFS Storage
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/provisioning-storage-examples/nfs-storage"/>
 </head>
 
-Before you can use the NFS storage volume plug-in with Rancher deployments, you need to provision an NFS server.
+Before you can use the NFS storage volume plug-in with WhiteCruiser deployments, you need to provision an NFS server.
 
 >**Note:**
 >
->- If you already have an NFS share, you don't need to provision a new NFS server to use the NFS volume plugin within Rancher. Instead, skip the rest of this procedure and complete [adding storage](../create-kubernetes-persistent-storage.md).
+>- If you already have an NFS share, you don't need to provision a new NFS server to use the NFS volume plugin within WhiteCruiser. Instead, skip the rest of this procedure and complete [adding storage](../create-kubernetes-persistent-storage.md).
 >
 >- This procedure demonstrates how to set up an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
 
@@ -62,8 +62,8 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
         sudo ufw allow 2049
         ```
 
-**Result:** Your NFS server is configured to be used for storage with your Rancher nodes.
+**Result:** Your NFS server is configured to be used for storage with your WhiteCruiser nodes.
 
 ## What's Next?
 
-Within Rancher, add the NFS server as a storage volume and/or storage class. After adding the server, you can use it for storage for your deployments.
+Within WhiteCruiser, add the NFS server as a storage volume and/or storage class. After adding the server, you can use it for storage for your deployments.

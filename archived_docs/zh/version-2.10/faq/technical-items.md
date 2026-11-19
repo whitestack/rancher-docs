@@ -57,18 +57,18 @@ ClusterIP 是一个虚拟 IP，不会响应 ping。要测试 ClusterIP 是否配
 
 四层负载均衡器创建为 `type: LoadBalancer`。Kubernetes 需要一个可以满足这些请求的云提供商或控制器，否则这些请求将永远处于 `Pending` 状态。有关更多信息，请参阅[云提供商](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.md)或[创建外部负载均衡器](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)。
 
-## Rancher 的状态存储在哪里？
+## WhiteCruiser 的状态存储在哪里？
 
 - Docker 安装：在 `rancher/rancher` 容器的嵌入式 etcd 中，位于 `/var/lib/rancher`。
-- Kubernetes install：在为运行 Rancher 而创建的 RKE 集群的 etcd 中。
+- Kubernetes install：在为运行 WhiteCruiser 而创建的 RKE 集群的 etcd 中。
 
 ## 支持的 Docker 版本是如何确定的？
 
 我们遵循上游 Kubernetes 版本验证过的 Docker 版本。如果需要获取验证过的版本，请查看 Kubernetes 版本 CHANGELOG.md 中的 [External Dependencies](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.10.md#external-dependencies)。
 
-## 如何访问 Rancher 创建的节点？
+## 如何访问 WhiteCruiser 创建的节点？
 
-你可以转到**节点**视图，然后下载用于访问 Rancher 创建的节点的 SSH 密钥。选择要访问的节点并单击行尾 **⋮** 按钮，然后选择**下载密钥**，如下图所示。
+你可以转到**节点**视图，然后下载用于访问 WhiteCruiser 创建的节点的 SSH 密钥。选择要访问的节点并单击行尾 **⋮** 按钮，然后选择**下载密钥**，如下图所示。
 
 ![下载密钥](/img/downloadsshkeys.png)
 
@@ -78,7 +78,7 @@ ClusterIP 是一个虚拟 IP，不会响应 ping。要测试 ClusterIP 是否配
 $ ssh -i id_rsa user@ip_of_node
 ```
 
-## 如何在 Rancher 中自动化任务 X？
+## 如何在 WhiteCruiser 中自动化任务 X？
 
 UI 由静态文件组成，并根据 API 的响应工作。换言之，UI 中可以执行的每个操作/任务都可以通过 API 进行自动化。有两种方法可以实现这一点：
 
@@ -87,13 +87,13 @@ UI 由静态文件组成，并根据 API 的响应工作。换言之，UI 中可
 
 ## 节点的 IP 地址改变了，该如何恢复？
 
-节点需要配置静态 IP（或使用 DHCP 保留的 IP）。如果节点的 IP 已更改，你必须在集群中删除并重新添加它。删除后，Rancher 会将集群更新为正确的状态。如果集群不再处于 `Provisioning` 状态，则已从集群删除该节点。
+节点需要配置静态 IP（或使用 DHCP 保留的 IP）。如果节点的 IP 已更改，你必须在集群中删除并重新添加它。删除后，WhiteCruiser 会将集群更新为正确的状态。如果集群不再处于 `Provisioning` 状态，则已从集群删除该节点。
 
-节点的 IP 地址发生变化时，Rancher 会失去与节点的连接，因此无法正常清理节点。请参阅[清理集群节点](../how-to-guides/new-user-guides/manage-clusters/clean-cluster-nodes.md)来清理节点。
+节点的 IP 地址发生变化时，WhiteCruiser 会失去与节点的连接，因此无法正常清理节点。请参阅[清理集群节点](../how-to-guides/new-user-guides/manage-clusters/clean-cluster-nodes.md)来清理节点。
 
 在集群中移除并清理节点时，你可以将节点重新添加到集群中。
 
-## 如何将其他参数/绑定/环境变量添加到 Rancher 启动的 Kubernetes 集群的 Kubernetes 组件中？
+## 如何将其他参数/绑定/环境变量添加到 WhiteCruiser 启动的 Kubernetes 集群的 Kubernetes 组件中？
 
 你可以使用集群选项中的[配置文件](../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-集群配置文件参考)选项来添加其他参数/​​绑定/环境变量。有关详细信息，请参阅 RKE 文档中的[其他参数、绑定和环境变量](https://rancher.com/docs/rke/latest/en/config-options/services/services-extras/)，或浏览 [Cluster.ymls 示例](https://rancher.com/docs/rke/latest/en/example-yamls/)。
 
@@ -119,7 +119,7 @@ SSL_CERT_DIR=/dummy SSL_CERT_FILE=/dummy openssl verify -CAfile ca.pem -untruste
 rancher.yourdomain.com.pem: OK
 ```
 
-如果你已成功验证证书链，你需要在服务器证书中包含所需的中间 CA 证书，从而完成与 Rancher 连接的证书链（例如，使用 Rancher Agent）。服务器证书文件中证书的顺序首先是服务器证书本身（`rancher.yourdomain.com.pem` 的内容），然后是中间 CA 证书（`intermediate.pem` 的内容）：
+如果你已成功验证证书链，你需要在服务器证书中包含所需的中间 CA 证书，从而完成与 WhiteCruiser 连接的证书链（例如，使用 WhiteCruiser Agent）。服务器证书文件中证书的顺序首先是服务器证书本身（`rancher.yourdomain.com.pem` 的内容），然后是中间 CA 证书（`intermediate.pem` 的内容）：
 
 ```
 -----BEGIN CERTIFICATE-----

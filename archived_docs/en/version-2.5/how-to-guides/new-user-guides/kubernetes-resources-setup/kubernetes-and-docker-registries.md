@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Registry and Docker Registry
-description: Learn about the Docker registry and Kubernetes registry, their use cases and how to use a private registry with the Rancher UI
+description: Learn about the Docker registry and Kubernetes registry, their use cases and how to use a private registry with the WhiteCruiser UI
 ---
 
 <head>
@@ -16,7 +16,7 @@ The word "registry" can mean two things, depending on whether it is used to refe
 
 Deployments use the Kubernetes registry secret to authenticate with a private Docker registry and then pull a Docker image hosted on it.
 
-Currently, deployments pull the private registry credentials automatically only if the workload is created in the Rancher UI and not when it is created via kubectl.
+Currently, deployments pull the private registry credentials automatically only if the workload is created in the WhiteCruiser UI and not when it is created via kubectl.
 
 ## Creating a Registry
 
@@ -41,14 +41,14 @@ Currently, deployments pull the private registry credentials automatically only 
 **Result:**
 
 - Your secret is added to the project or namespace, depending on the scope you chose.
-- You can view the secret in the Rancher UI from the **Resources > Registries** view.
-- Any workload that you create in the Rancher UI will have the credentials to access the registry if the workload is within the registry's scope.
+- You can view the secret in the WhiteCruiser UI from the **Resources > Registries** view.
+- Any workload that you create in the WhiteCruiser UI will have the credentials to access the registry if the workload is within the registry's scope.
 
 ## Using a Private Registry
 
-You can deploy a workload with an image from a private registry through the Rancher UI, or with `kubectl`.
+You can deploy a workload with an image from a private registry through the WhiteCruiser UI, or with `kubectl`.
 
-### Using the Private Registry with the Rancher UI
+### Using the Private Registry with the WhiteCruiser UI {#using-the-private-registry-with-the-rancher-ui}
 
 To deploy a workload with an image from your private registry,
 
@@ -59,11 +59,11 @@ To deploy a workload with an image from your private registry,
 1. In the **Docker Image** field, enter the URL of the path to the Docker image in your private registry. For example, if your private registry is on Quay.io, you could use `quay.io/<Quay profile name>/<Image name>`.
 1. Click **Launch.**
 
-**Result:** Your deployment should launch, authenticate using the private registry credentials you added in the Rancher UI, and pull the Docker image that you specified.
+**Result:** Your deployment should launch, authenticate using the private registry credentials you added in the WhiteCruiser UI, and pull the Docker image that you specified.
 
 ### Using the Private Registry with kubectl
 
-When you create the workload using `kubectl`, you need to configure the pod so that its YAML has the path to the image in the private registry. You also have to create and reference the registry secret because the pod only automatically gets access to the private registry credentials if it is created in the Rancher UI.
+When you create the workload using `kubectl`, you need to configure the pod so that its YAML has the path to the image in the private registry. You also have to create and reference the registry secret because the pod only automatically gets access to the private registry credentials if it is created in the WhiteCruiser UI.
 
 The secret has to be created in the same namespace where the workload gets deployed.
 

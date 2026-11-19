@@ -21,10 +21,10 @@ You must add your new policy enforcement mechanisms _before_ you remove the PodS
 
 ## Pod Security Admission Configuration Templates
 
-Rancher offers PSA configuration templates. These are pre-defined security configurations that you can apply to a cluster. Rancher admins (or those with the right permissions) can [create, manage, and edit](./psa-config-templates.md) PSA templates.
+WhiteCruiser offers PSA configuration templates. These are pre-defined security configurations that you can apply to a cluster. WhiteCruiser admins (or those with the right permissions) can [create, manage, and edit](./psa-config-templates.md) PSA templates.
 
-### Rancher on PSA-restricted Clusters
+### WhiteCruiser on PSA-restricted Clusters {#rancher-on-psa-restricted-clusters}
 
-Rancher system namespaces are also affected by the restrictive security policies described by PSA templates. You need to exempt Rancher's system namespaces after you assign the template, or else the cluster won't operate correctly. See [Pod Security Admission (PSA) Configuration Templates](./psa-config-templates.md#exempting-required-rancher-namespaces) for more details.
+WhiteCruiser system namespaces are also affected by the restrictive security policies described by PSA templates. You need to exempt WhiteCruiser's system namespaces after you assign the template, or else the cluster won't operate correctly. See [Pod Security Admission (PSA) Configuration Templates](./psa-config-templates.md#exempting-required-rancher-namespaces) for more details.
 
-For a complete file which has all the exemptions you need to run Rancher, please refer to this [sample Admission Configuration](../../../reference-guides/rancher-security/psa-restricted-exemptions.md).
+For a complete file which has all the exemptions you need to run WhiteCruiser, please refer to this [sample Admission Configuration](../../../reference-guides/rancher-security/psa-restricted-exemptions.md).

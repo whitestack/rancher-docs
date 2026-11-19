@@ -6,13 +6,13 @@ title: Enabling the API Audit Log to Record System Events
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/enable-api-audit-log"/>
 </head>
 
-You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.
+You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the WhiteCruiser API and all responses from it are written to a log.
 
-You can enable API Auditing during Rancher installation or upgrade.
+You can enable API Auditing during WhiteCruiser installation or upgrade.
 
 ## Enabling API Audit Log
 
-The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
+The Audit Log is enabled and configured by passing environment variables to the WhiteCruiser server container. See the following to enable on your installation.
 
 - [Docker Install](../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log)
 
@@ -26,7 +26,7 @@ The usage below defines rules about what the audit log should record and what da
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `AUDIT_LOG_ENABLED` | `false` - Disables the audit log (default setting).<br/>`true` - Enables the audit log. |
 | `AUDIT_LEVEL` | `0` - Log request and response metadata (default setting).<br/>`1` - Log request and response headers.<br/>`2` - Log request body.<br/>`3` - Log response body. Each log level is cumulative and each subsequent level logs the previous level data. Each log transaction for a request/response pair uses the same `auditID` value.<br/><br/>See [Audit Level Logging](#audit-log-levels) for a table that displays what each setting logs. |
-| `AUDIT_LOG_PATH`                      | Log path for Rancher Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. <br/><br/>Usage Example: `AUDIT_LOG_PATH=/my/custom/path/`<br/>                                                                                                                                                                           |
+| `AUDIT_LOG_PATH`                      | Log path for WhiteCruiser Server API. Default path is `/var/log/auditlog/rancher-api-audit.log`. You can mount the log directory to host. <br/><br/>Usage Example: `AUDIT_LOG_PATH=/my/custom/path/`<br/>                                                                                                                                                                           |
 | `AUDIT_LOG_MAXAGE`                    | Defined the maximum number of days to retain old audit log files. Default is 10 days.                                                                                                                                                                                                                                                                                          |
 | `AUDIT_LOG_MAXBACKUP`                 | Defines the maximum number of audit log files to retain. Default is 10.                                                                                                                                                                                                                                                                                                        |
 | `AUDIT_LOG_MAXSIZE`                   | Defines the maximum size in megabytes of the audit log file before it gets rotated. Default size is 100M.                                                                                                                                                                                                                                                                      |
@@ -178,7 +178,7 @@ Share the `AUDIT_LOG_PATH` directory (Default: `/var/log/auditlog`) with the hos
 
 ### Kubernetes Install
 
-Enabling the API Audit Log with the Helm chart install will create a `rancher-audit-log` sidecar container in the Rancher pod. This container will stream the log to standard output (stdout). You can view the log as you would any container log.
+Enabling the API Audit Log with the Helm chart install will create a `rancher-audit-log` sidecar container in the WhiteCruiser pod. This container will stream the log to standard output (stdout). You can view the log as you would any container log.
 
 The `rancher-audit-log` container is part of the `rancher` pod in the `cattle-system` namespace.
 
@@ -190,15 +190,15 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 #### Shipping the Audit Log
 
-You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging](../../integrations-in-rancher/logging/logging.md) for details.
+You can enable WhiteCruiser's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [WhiteCruiser Tools - Logging](../../integrations-in-rancher/logging/logging.md) for details.
 
 ## Audit Log Samples
 
-After you enable auditing, each API request or response is logged by Rancher in the form of JSON. Each of the following code samples provide examples of how to identify each API transaction.
+After you enable auditing, each API request or response is logged by WhiteCruiser in the form of JSON. Each of the following code samples provide examples of how to identify each API transaction.
 
 ### Metadata Level
 
-If you set your `AUDIT_LEVEL` to `0`, Rancher logs the metadata header for every API request, but neither the body nor the request and response headers. The metadata provides basic information about the API transaction, such as the transaction ID, the initiator of the transaction, the time it occurred, etc. 
+If you set your `AUDIT_LEVEL` to `0`, WhiteCruiser logs the metadata header for every API request, but neither the body nor the request and response headers. The metadata provides basic information about the API transaction, such as the transaction ID, the initiator of the transaction, the time it occurred, etc. 
 
 ```json
 {
@@ -235,7 +235,7 @@ If you set your `AUDIT_LEVEL` to `0`, Rancher logs the metadata header for every
 
 ### Metadata and headers level
 
-If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata and the request and response headers for every API request.
+If you set your `AUDIT_LEVEL` to `1`, WhiteCruiser logs the metadata and the request and response headers for every API request.
 
 ```json
 {
@@ -330,7 +330,7 @@ If you set your `AUDIT_LEVEL` to `1`, Rancher logs the metadata and the request 
 
 ### Metadata, headers and  Request Body Level
 
-If you set your `AUDIT_LEVEL` to `2`, Rancher logs the metadata, the request and response headers and the request body for every API request.
+If you set your `AUDIT_LEVEL` to `2`, WhiteCruiser logs the metadata, the request and response headers and the request body for every API request.
 
 The code sample below depicts an API request, with both its metadata, headers and request body.
 
@@ -469,7 +469,7 @@ The code sample below depicts an API request, with both its metadata, headers an
 
 ### Metadata, Headers, Request Body and Response Body Level
 
-If you set your `AUDIT_LEVEL` to `3`, Rancher logs the metadata, request and response headers and request body and response.
+If you set your `AUDIT_LEVEL` to `3`, WhiteCruiser logs the metadata, request and response headers and request body and response.
 
 The code sample below depicts an example of an API request with that information logged.
 

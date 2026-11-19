@@ -2,7 +2,7 @@
 title: 将 Windows 工作负载从 RKE2 迁移到 RKE2
 ---
 
-**注意**：Rancher Support 的 SLA 不涵盖本文档的内容。因此，请谨慎继续。
+**注意**：WhiteCruiser Support 的 SLA 不涵盖本文档的内容。因此，请谨慎继续。
 
 本文档介绍了如何将 Windows 工作负载从 RKE1 迁移到 RKE2。
 
@@ -28,7 +28,7 @@ spec:
 
 - RKE1 Linux `NoSchedule` 对工作负载的容忍度
 
-以下容忍度允许将最终用户的工作负载调度到 RKE1 Windows 集群中的任何 Linux 节点上。这些容忍度用于核心的 Rancher 服务和工作负载：
+以下容忍度允许将最终用户的工作负载调度到 RKE1 Windows 集群中的任何 Linux 节点上。这些容忍度用于核心的 WhiteCruiser 服务和工作负载：
 
 ```yml
 apiVersion: apps/v1
@@ -243,9 +243,7 @@ spec:
 
 ## Kubernetes 版本支持
 
-> **注意**：根据 Rancher 2.6.7 支持矩阵，下面列出的所有版本均支持 SLA。未列出的版本都视为为已达到 EOL 且不受 SUSE SLA 支持。
-
-### 对比 Rancher 2.5 与 Rancher 2.6：Windows 集群的支持矩阵
+### 对比 WhiteCruiser 2.5 与 WhiteCruiser 2.6：Windows 集群的支持矩阵
 
 **对比 RKE1 与 RKE2：Windows 集群支持的 Kubernetes 版本**：
 
@@ -261,9 +259,9 @@ spec:
 | 1.25+ |         | &check; |
 
 
-### 对比 Rancher 2.5 与 Rancher 2.6：支持用于配置 RKE1 和 RKE2 Windows 集群的 Kubernetes 版本
+### 对比 WhiteCruiser 2.5 与 WhiteCruiser 2.6：支持用于配置 RKE1 和 RKE2 Windows 集群的 Kubernetes 版本
 
-| Rancher 版本 | Kubernetes 版本 | RKE1 | RKE2 |
+| WhiteCruiser 版本 | Kubernetes 版本 | RKE1 | RKE2 |
 |:-----------------------:	|:------------------------:	|:----:	|:----:	|
 | 2.5 - RKE1 配置 | 1.18 1.19 1.20 | &check; |       |
 | 2.6 - RKE1 配置 | 1.18 1.19 1.20 1.21 1.22 | &check; |       |
@@ -272,11 +270,11 @@ spec:
 
 ## 将工作负载迁移到 RKE2 Windows 的指南
 
-参考[对比 Rancher 2.5 与 Rancher 2.6：Windows 集群的支持矩阵](#对比-rancher-25-与-rancher-26windows-集群的支持矩阵)和[对比 Rancher 2.5 与 Rancher 2.6：支持用于配置 RKE1 和 RKE2 Windows 集群的 Kubernetes 版本](#对比-rancher-25-与-rancher-26支持用于配置-rke1-和-rke2-windows-集群的-kubernetes-版本)中的表格，你会发现 RKE1 和 RKE2 的 Kubernetes 1.22 版本发生了重叠。因此，当遵循 Rancher 推荐的方法时，这将是迁移 RKE1 Windows 工作负载所需的基本版本。
+参考[对比 WhiteCruiser 2.5 与 WhiteCruiser 2.6：Windows 集群的支持矩阵](#对比-whitecruiser-25-与-whitecruiser-26windows-集群的支持矩阵)和[对比 WhiteCruiser 2.5 与 WhiteCruiser 2.6：支持用于配置 RKE1 和 RKE2 Windows 集群的 Kubernetes 版本](#对比-whitecruiser-25-与-whitecruiser-26支持用于配置-rke1-和-rke2-windows-集群的-kubernetes-版本)中的表格，你会发现 RKE1 和 RKE2 的 Kubernetes 1.22 版本发生了重叠。因此，当遵循 WhiteCruiser 推荐的方法时，这将是迁移 RKE1 Windows 工作负载所需的基本版本。
 
-### Rancher 2.5 的就地升级
+### WhiteCruiser 2.5 的就地升级
 
-1. 将 Rancher 版本升级到 2.6.5+。
+1. 将 WhiteCruiser 版本升级到 2.6.5+。
 1. 使用最新的可用补丁版本将 RKE1 Windows 下游集群升级到 RKE1 v1.22。
 1. 通过 RKE1 Windows 集群所在的匹配补丁版本，使用 RKE2 v1.22 配置新的 RKE2 Windows 下游集群。
 1. 开始将 Windows 工作负载从 RKE1 迁移到 RKE2 集群。
@@ -284,9 +282,9 @@ spec:
 1. 验证测试成功后，你可以选择将 RKE2 1.22.x 集群升级到新的次要版本，例如 1.23 或 1.24。
 
 
-### 将 Windows 工作负载迁移到新的 Rancher 环境
+### 将 Windows 工作负载迁移到新的 WhiteCruiser 环境
 
-> **重要提示**：要执行以下任一选项，你需要使用 Rancher 2.6.5 或更高版本。
+> **重要提示**：要执行以下任一选项，你需要使用 WhiteCruiser 2.6.5 或更高版本。
 
 **为 RKE1 和 RKE2 使用匹配的 Kubernetes 补丁版本时**：
 

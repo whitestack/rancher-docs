@@ -6,7 +6,7 @@ title: Cluster Administration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters"/>
 </head>
 
-After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
+After you provision a cluster in WhiteCruiser, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
 
 :::note
 
@@ -14,9 +14,9 @@ This section assumes a basic familiarity with Docker and Kubernetes. For a brief
 
 :::
 
-## Managing Clusters in Rancher
+## Managing Clusters in WhiteCruiser {#managing-clusters-in-rancher}
 
-After clusters have been [provisioned into Rancher](../kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md), [cluster owners](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster.
+After clusters have been [provisioned into WhiteCruiser](../kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md), [cluster owners](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster.
 
 import ClusterCapabilitiesTable from '../../../shared-files/_cluster-capabilities-table.md';
 
@@ -24,7 +24,7 @@ import ClusterCapabilitiesTable from '../../../shared-files/_cluster-capabilitie
 
 ## Configuring Tools
 
-Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into the following categories:
+WhiteCruiser contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. WhiteCruiser can integrate with external services to help your clusters run more efficiently. Tools are divided into the following categories:
 
 - Alerts
 - Notifiers
@@ -33,4 +33,4 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - Istio Service Mesh
 - OPA Gatekeeper
 
-Tools can be installed through **Apps & Marketplace** (Rancher before v2.6.5) or **Apps** (Rancher v2.6.5+).
+Tools can be installed through **Apps & Marketplace** (WhiteCruiser before v2.6.5) or **Apps** (WhiteCruiser v2.6.5+).

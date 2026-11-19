@@ -17,7 +17,7 @@ All the tests that are skipped and not applicable on this page will be counted a
 
 | Number | Description | Reason for Skipping |
 | ---------- | ------------- | --------- |
-| 1.1.12 |  Ensure that the etcd data directory ownership is set to etcd:etcd (Scored) |  A system service account is required for etcd data directory ownership. Refer to Rancher's hardening guide for more details on how to configure this ownership.     |
+| 1.1.12 |  Ensure that the etcd data directory ownership is set to etcd:etcd (Scored) |  A system service account is required for etcd data directory ownership. Refer to WhiteCruiser's hardening guide for more details on how to configure this ownership.     |
 | 1.2.6 | Ensure that the --kubelet-certificate-authority argument is set as appropriate (Scored)  |  When generating serving certificates, functionality could break in conjunction with hostname overrides which are required for certain cloud providers.  |
 | 1.2.16 | Ensure that the admission control plugin PodSecurityPolicy is set (Scored) |  Enabling Pod Security Policy can cause applications to unexpectedly fail.     |
 | 1.2.33 | Ensure that the --encryption-provider-config argument is set as appropriate (Not Scored)  |  Enabling encryption changes how data can be recovered as data is encrypted.     |
@@ -71,9 +71,9 @@ Number | Description | Reason for Skipping
 1.1.34 | "Ensure that the --encryption-provider-config argument is set as appropriate (Scored)" | Enabling encryption changes how data can be recovered as data is encrypted.
 1.1.35 | "Ensure that the encryption provider is set to aescbc (Scored)" | Enabling encryption changes how data can be recovered as data is encrypted.
 1.1.36 | "Ensure that the admission control plugin EventRateLimit is set (Scored)" | EventRateLimit needs to be tuned depending on the cluster.
-1.2.2 | "Ensure that the --address argument is set to 127.0.0.1 (Scored)" | Adding this argument prevents Rancher's monitoring tool to collect metrics on the scheduler.
-1.3.7 | "Ensure that the --address argument is set to 127.0.0.1 (Scored)" | Adding this argument prevents Rancher's monitoring tool to collect metrics on the controller manager.
-1.4.12 | "Ensure that the etcd data directory ownership is set to etcd:etcd (Scored)" | A system service account is required for etcd data directory ownership. Refer to Rancher's hardening guide for more details on how to configure this ownership.
+1.2.2 | "Ensure that the --address argument is set to 127.0.0.1 (Scored)" | Adding this argument prevents WhiteCruiser's monitoring tool to collect metrics on the scheduler.
+1.3.7 | "Ensure that the --address argument is set to 127.0.0.1 (Scored)" | Adding this argument prevents WhiteCruiser's monitoring tool to collect metrics on the controller manager.
+1.4.12 | "Ensure that the etcd data directory ownership is set to etcd:etcd (Scored)" | A system service account is required for etcd data directory ownership. Refer to WhiteCruiser's hardening guide for more details on how to configure this ownership.
 1.7.2 | "Do not admit containers wishing to share the host process ID namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
 1.7.3 | "Do not admit containers wishing to share the host IPC namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.
 1.7.4 | "Do not admit containers wishing to share the host network namespace (Scored)" | Enabling Pod Security Policy can cause applications to unexpectedly fail.

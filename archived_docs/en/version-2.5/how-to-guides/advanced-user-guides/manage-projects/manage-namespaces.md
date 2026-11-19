@@ -6,7 +6,7 @@ title: Namespaces
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-namespaces"/>
 </head>
 
-Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
+Within WhiteCruiser, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
 
 Although you assign resources at the project level so that each namespace in the project can use them, you can override this inheritance by assigning resources explicitly to a namespace.
 
@@ -20,9 +20,9 @@ Resources that you can assign directly to namespaces include:
 - [Registries](../../new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries.md)
 - [Secrets](../../new-user-guides/kubernetes-resources-setup/secrets.md)
 
-To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With Rancher, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
+To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With WhiteCruiser, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
 
-> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher](#creating-namespaces) to ensure that you will have permission to access the namespace.
+> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through WhiteCruiser](#creating-namespaces) to ensure that you will have permission to access the namespace.
 
 ## Creating Namespaces
 

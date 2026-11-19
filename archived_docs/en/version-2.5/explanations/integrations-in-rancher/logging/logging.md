@@ -1,22 +1,22 @@
 ---
-title: Rancher Integration with Logging Services
-description: Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
+title: WhiteCruiser Integration with Logging Services
+description: WhiteCruiser integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging"/>
 </head>
 
-The [Logging operator](https://kube-logging.github.io/docs/) now powers Rancher's logging solution in place of the former, in-house solution.
+The [Logging operator](https://kube-logging.github.io/docs/) now powers WhiteCruiser's logging solution in place of the former, in-house solution.
 
 For an overview of the changes in v2.5, see [this section.](logging-architecture.md#changes-in-rancher-v25) For information about migrating from Logging V1, see [this page.](migrate-to-rancher-v2.5+-logging.md)
 
 
 ## Enabling Logging
 
-You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
+You can enable the logging for a WhiteCruiser managed cluster by going to the Apps page and installing the logging app.
 
-1. In the Rancher UI, go to the cluster where you want to install logging and click **Cluster Explorer**.
+1. In the WhiteCruiser UI, go to the cluster where you want to install logging and click **Cluster Explorer**.
 1. Click **Apps**.
 1. Click the `rancher-logging` app.
 1. Scroll to the bottom of the Helm chart README and click **Install**.
@@ -41,11 +41,11 @@ For more information about how the logging application works, see [this section.
 
 ## Role-based Access Control
 
-Rancher logging has two roles, `logging-admin` and `logging-view`. For more information on how and when to use these roles, see [this page.](rbac-for-logging.md)
+WhiteCruiser logging has two roles, `logging-admin` and `logging-view`. For more information on how and when to use these roles, see [this page.](rbac-for-logging.md)
 
 ## Configuring Logging Custom Resources
 
-To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`, go to the **Cluster Explorer** in the Rancher UI. In the upper left corner, click **Cluster Explorer > Logging**.
+To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`, go to the **Cluster Explorer** in the WhiteCruiser UI. In the upper left corner, click **Cluster Explorer > Logging**.
 
 ### Flows and ClusterFlows
 
@@ -64,7 +64,7 @@ For a list of options that can be configured when the logging application is ins
 <Tabs>
 <TabItem value="Rancher v2.5.8+">
 
-As of Rancher v2.5.8, logging support for Windows clusters has been added and logs can be collected from Windows nodes.
+As of WhiteCruiser v2.5.8, logging support for Windows clusters has been added and logs can be collected from Windows nodes.
 
 For details on how to enable or disable Windows node logging, see [this section.](logging-helm-chart-options.md#enabledisable-windows-node-logging)
 
@@ -99,7 +99,7 @@ For information on enabling the logging application for SELinux-enabled nodes, s
 
 ### Additional Logging Sources
 
-By default, Rancher collects logs for control plane components and node components for all cluster types. In some cases additional logs can be collected. For details, see [this section.](logging-helm-chart-options.md#additional-logging-sources)
+By default, WhiteCruiser collects logs for control plane components and node components for all cluster types. In some cases additional logs can be collected. For details, see [this section.](logging-helm-chart-options.md#additional-logging-sources)
 
 
 ## Troubleshooting
@@ -115,7 +115,7 @@ For a more complete description of how to configure the logging buffer to suit y
 If your cluster previously deployed logging from the Cluster Manager UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
 
 The solution is to delete all `clusterloggings.management.cattle.io` and `projectloggings.management.cattle.io` custom resources from the cluster specific namespace in the management cluster.
-The existence of these custom resources causes Rancher to create the `cattle-logging` namespace in the downstream cluster if it does not exist.
+The existence of these custom resources causes WhiteCruiser to create the `cattle-logging` namespace in the downstream cluster if it does not exist.
 
 The cluster namespace matches the cluster ID, so we need to find the cluster ID for each cluster.
 

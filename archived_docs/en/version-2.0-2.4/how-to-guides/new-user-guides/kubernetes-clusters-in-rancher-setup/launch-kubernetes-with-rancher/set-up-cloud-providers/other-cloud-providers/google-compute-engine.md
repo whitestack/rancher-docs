@@ -6,7 +6,7 @@ title: Setting up the Google Compute Engine Cloud Provider
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/google-compute-engine"/>
 </head>
 
-In this section, you'll learn how to enable the Google Compute Engine (GCE) cloud provider for custom clusters in Rancher. A custom cluster is one in which Rancher installs Kubernetes on existing nodes.
+In this section, you'll learn how to enable the Google Compute Engine (GCE) cloud provider for custom clusters in WhiteCruiser. A custom cluster is one in which WhiteCruiser installs Kubernetes on existing nodes.
 
 The official Kubernetes documentation for the GCE cloud provider is [here.](https://github.com/kubernetes/website/blob/release-1.18/content/en/docs/concepts/cluster-administration/cloud-providers.md#gce)
 
@@ -14,7 +14,7 @@ The official Kubernetes documentation for the GCE cloud provider is [here.](http
 
 If you are using Calico,
 
-1. Go to the cluster view in the Rancher UI, and click **&#8942; > Edit.**
+1. Go to the cluster view in the WhiteCruiser UI, and click **&#8942; > Edit.**
 1. Click **Edit as YAML,** and enter the following configuration:
 
     ```yaml
@@ -36,7 +36,7 @@ If you are using Calico,
 
 If you are using Canal or Flannel,
 
-1. Go to the cluster view in the Rancher UI, and click **&#8942; > Edit.**
+1. Go to the cluster view in the WhiteCruiser UI, and click **&#8942; > Edit.**
 1. Click **Edit as YAML,** and enter the following configuration:
 
     ```yaml

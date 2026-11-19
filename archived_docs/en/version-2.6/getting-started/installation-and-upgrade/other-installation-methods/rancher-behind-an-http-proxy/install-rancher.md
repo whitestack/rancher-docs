@@ -1,12 +1,12 @@
 ---
-title: 3. Install Rancher
+title: 3. Install WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"/>
 </head>
 
-Now that you have a running RKE cluster, you can install Rancher in it. For security reasons all traffic to Rancher must be encrypted with TLS. For this tutorial you are going to automatically issue a self-signed certificate through [cert-manager](https://cert-manager.io/). In a real-world use-case you will likely use Let's Encrypt or provide your own certificate.
+Now that you have a running RKE cluster, you can install WhiteCruiser in it. For security reasons all traffic to WhiteCruiser must be encrypted with TLS. For this tutorial you are going to automatically issue a self-signed certificate through [cert-manager](https://cert-manager.io/). In a real-world use-case you will likely use Let's Encrypt or provide your own certificate.
 
 :::note
 
@@ -63,9 +63,9 @@ kubectl rollout status deployment -n cert-manager cert-manager
 kubectl rollout status deployment -n cert-manager cert-manager-webhook
 ```
 
-### Install Rancher
+### Install WhiteCruiser {#install-rancher}
 
-Next you can install Rancher itself. First, add the Helm repository:
+Next you can install WhiteCruiser itself. First, add the Helm repository:
 
 ```
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
@@ -77,7 +77,7 @@ Create a namespace:
 kubectl create namespace cattle-system
 ```
 
-And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata:
+And install WhiteCruiser with Helm. WhiteCruiser also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata:
 
 ```
 helm upgrade --install rancher rancher-latest/rancher \
@@ -93,7 +93,7 @@ After waiting for the deployment to finish:
 kubectl rollout status deployment -n cattle-system rancher
 ```
 
-You can now navigate to `https://rancher.example.com` and start using Rancher.
+You can now navigate to `https://rancher.example.com` and start using WhiteCruiser.
 
 :::caution
 
@@ -103,8 +103,8 @@ If you don't intend to send telemetry data, opt out [telemetry](../../../../faq/
 
 ### Additional Resources
 
-These resources could be helpful when installing Rancher:
+These resources could be helpful when installing WhiteCruiser:
 
-- [Rancher Helm chart options](../../installation-references/helm-chart-options.md)
+- [WhiteCruiser Helm chart options](../../installation-references/helm-chart-options.md)
 - [Adding TLS secrets](../../resources/add-tls-secrets.md)
-- [Troubleshooting Rancher Kubernetes Installations](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)
+- [Troubleshooting WhiteCruiser Kubernetes Installations](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)

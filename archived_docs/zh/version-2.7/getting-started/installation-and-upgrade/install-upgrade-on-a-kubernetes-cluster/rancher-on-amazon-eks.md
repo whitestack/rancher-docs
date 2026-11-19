@@ -1,18 +1,18 @@
 ---
-title: 在 Amazon EKS 上安装 Rancher
+title: 在 Amazon EKS 上安装 WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks"/>
 </head>
 
-本文介绍了如何在 Amazon EKS 集群上安装 Rancher。你也可以[通过 AWS Marketplace 安装 Rancher](../../quick-start-guides/deploy-rancher-manager/aws-marketplace.md)。
+本文介绍了如何在 Amazon EKS 集群上安装 WhiteCruiser。
 
-如果你已经有一个 EKS Kubernetes 集群，请直接跳转到[安装 Ingress](#5-安装-ingress)这个步骤。然后按照[此处](install-upgrade-on-a-kubernetes-cluster.md#安装-rancher-helm-chart)的步骤安装 Rancher Helm Chart。
+如果你已经有一个 EKS Kubernetes 集群，请直接跳转到[安装 Ingress](#5-安装-ingress)这个步骤。然后按照[此处](install-upgrade-on-a-kubernetes-cluster.md#安装-whitecruiser-helm-chart)的步骤安装 WhiteCruiser Helm Chart。
 
-## 为 Rancher Server 创建 EKS 集群
+## 为 WhiteCruiser Server 创建 EKS 集群
 
-在本节中，你将使用命令行工具安装一个带有 Ingress 的 EKS 集群。如果你想在 EKS 上使用 Rancher 时使用较少的资源，请使用此方法。
+在本节中，你将使用命令行工具安装一个带有 Ingress 的 EKS 集群。如果你想在 EKS 上使用 WhiteCruiser 时使用较少的资源，请使用此方法。
 
 :::note 先决条件：
 
@@ -50,7 +50,7 @@ aws configure
 
 ### 3. 创建 EKS 集群
 
-运行以下命令创建一个 EKS 集群。使用适用于你的用例的 AWS 区域。在选择 Kubernetes 版本时，请务必先查阅[支持矩阵](https://rancher.com/support-matrix/)，以找出已针对你的 Rancher 版本验证的最新 Kubernetes 版本。
+运行以下命令创建一个 EKS 集群。使用适用于你的用例的 AWS 区域。
 
 **注意**：如果你要从旧的 Kubernetes 版本更新到 Kubernetes v1.22 或更高版本，你还需要[更新](https://kubernetes.github.io/ingress-nginx/user-guide/k8s-122-migration/) ingress-nginx。
 
@@ -88,7 +88,7 @@ rancher-server-cluster		us-west-2	True
 
 ### 5. 安装 Ingress
 
-集群需要一个 Ingress，以从集群外部访问 Rancher。
+集群需要一个 Ingress，以从集群外部访问 WhiteCruiser。
 
 为确保你选择了正确的 Ingress-NGINX Helm Chart，首先在 [Kubernetes/ingress-nginx 支持表](https://github.com/kubernetes/ingress-nginx#supported-versions-table)中找到与你的 Kubernetes 版本兼容的 `Ingress-NGINX 版本`。
 
@@ -134,22 +134,22 @@ ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c4
 
 ### 7. 设置 DNS
 
-到 Rancher Server 的外部流量需要重定向到你创建的负载均衡器。
+到 WhiteCruiser Server 的外部流量需要重定向到你创建的负载均衡器。
 
-创建指向你保存的外部 IP 地址的 DNS。这个 DNS 会用作 Rancher Server 的 URL。
+创建指向你保存的外部 IP 地址的 DNS。这个 DNS 会用作 WhiteCruiser Server 的 URL。
 
 设置 DNS 的有效方法有很多。如需获得帮助，请参见 AWS 文档中心的[转发流量到 ELB 负载均衡器](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-elb-load-balancer.html)。
 
-### 8. 安装 Rancher Helm Chart
+### 8. 安装 WhiteCruiser Helm Chart
 
-按照[本页](install-upgrade-on-a-kubernetes-cluster.md#安装-rancher-helm-chart)的说明安装 Rancher Helm Chart。任何 Kubernetes 发行版上安装的 Rancher 的 Helm 说明都是一样的。
+按照[本页](install-upgrade-on-a-kubernetes-cluster.md#安装-whitecruiser-helm-chart)的说明安装 WhiteCruiser Helm Chart。任何 Kubernetes 发行版上安装的 WhiteCruiser 的 Helm 说明都是一样的。
 
-安装 Rancher 时，使用上一步获取的 DNS 名称作为 Rancher Server 的 URL。它可以作为 Helm 选项传递进来。例如，如果 DNS 名称是 `rancher.my.org`，你需要使用 `--set hostname=rancher.my.org` 选项来运行 Helm 安装命令。
+安装 WhiteCruiser 时，使用上一步获取的 DNS 名称作为 WhiteCruiser Server 的 URL。它可以作为 Helm 选项传递进来。例如，如果 DNS 名称是 `rancher.my.org`，你需要使用 `--set hostname=rancher.my.org` 选项来运行 Helm 安装命令。
 
-在此设置之上安装 Rancher 时，你还需要将以下值传递到 Rancher Helm 安装命令，以设置与 Rancher 的 Ingress 资源一起使用的 Ingress Controller 的名称：
+在此设置之上安装 WhiteCruiser 时，你还需要将以下值传递到 WhiteCruiser Helm 安装命令，以设置与 WhiteCruiser 的 Ingress 资源一起使用的 Ingress Controller 的名称：
 
 ```
 --set ingress.ingressClassName=nginx
 ```
 
-请参阅[Helm 安装命令](install-upgrade-on-a-kubernetes-cluster.md#5-根据你选择的证书选项通过-helm-安装-rancher)了解你的证书选项。
+请参阅[Helm 安装命令](install-upgrade-on-a-kubernetes-cluster.md#5-根据你选择的证书选项通过-helm-安装-whitecruiser)了解你的证书选项。

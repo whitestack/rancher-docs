@@ -2,30 +2,30 @@
 title: Hardening Guide with CIS 1.6 Benchmark
 ---
 
-This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.5.4. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with WhiteCruiser v2.5.4. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 > This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
 
-This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
- Rancher Version | CIS Benchmark Version | Kubernetes Version
+ WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version
 ----------------|-----------------------|------------------
- Rancher v2.5.4 | Benchmark 1.6 | Kubernetes v1.18
+ WhiteCruiser v2.5.4 | Benchmark 1.6 | Kubernetes v1.18
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.6.pdf)
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a RKE cluster to be used for installing Rancher v2.5.4 with Kubernetes v1.18 or provisioning a RKE cluster with Kubernetes v1.18 to be used within Rancher v2.5.4. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a RKE cluster to be used for installing WhiteCruiser v2.5.4 with Kubernetes v1.18 or provisioning a RKE cluster with Kubernetes v1.18 to be used within WhiteCruiser v2.5.4. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.6 Benchmark - Self-Assessment Guide - Rancher v2.5.4](self-assessment-guide-with-cis-v1.6-benchmark.md).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.6 Benchmark - Self-Assessment Guide - WhiteCruiser v2.5.4](self-assessment-guide-with-cis-v1.6-benchmark.md).
 
 #### Known Issues
 
-- Rancher **exec shell** and **view logs** for pods are **not** functional in a CIS 1.6 hardened setup when only public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
-- When setting the `default_pod_security_policy_template_id:` to `restricted` Rancher creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS 1.6 5.1.5 check requires the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
+- WhiteCruiser **exec shell** and **view logs** for pods are **not** functional in a CIS 1.6 hardened setup when only public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
+- When setting the `default_pod_security_policy_template_id:` to `restricted` WhiteCruiser creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS 1.6 5.1.5 check requires the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
-Migration Rancher from 2.4 to 2.5. Addons were removed in HG 2.5, and therefore namespaces on migration may be not created on the downstream clusters. Pod may fail to run because of missing namesapce like ingress-nginx, cattle-system.
+Migration WhiteCruiser from 2.4 to 2.5. Addons were removed in HG 2.5, and therefore namespaces on migration may be not created on the downstream clusters. Pod may fail to run because of missing namesapce like ingress-nginx, cattle-system.
 
 ### Configure Kernel Runtime Parameters
 
@@ -424,7 +424,7 @@ upgrade_strategy:
 ### Reference Hardened RKE Template configuration
 
 The reference RKE Template provides the configuration needed to achieve a hardened install of Kubenetes.
-RKE Templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher
+RKE Templates are used to provision Kubernetes and define WhiteCruiser settings. Follow the WhiteCruiser
 [documentaion](https://rancher.com/docs/rancher/v2.5/en/installation) for additional installation and RKE Template details.
 
 ```yaml

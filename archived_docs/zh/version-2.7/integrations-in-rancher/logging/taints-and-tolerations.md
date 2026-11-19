@@ -12,13 +12,13 @@ title: 处理污点和容忍度
 
 两者都能让 pod 选择在哪个节点上运行。
 
-- [Rancher 日志堆栈中的默认实现](#rancher-日志堆栈中的默认实现)
+- [WhiteCruiser 日志堆栈中的默认实现](#whitecruiser-日志堆栈中的默认实现)
 - [为自定义污点添加 NodeSelector 设置和容忍度](#为自定义污点添加-nodeselector-设置和容忍度)
 
 
-### Rancher 日志堆栈中的默认实现
+### WhiteCruiser 日志堆栈中的默认实现
 
-默认情况下，Rancher 使用 `cattle.io/os=linux` 来将污点应用到所有 Linux 节点，而不影响 Windows 节点。
+默认情况下，WhiteCruiser 使用 `cattle.io/os=linux` 来将污点应用到所有 Linux 节点，而不影响 Windows 节点。
 日志堆栈 pod 具有针对此污点的`容忍度`，因此它们能够运行在 Linux 节点上。
 此外，大多数日志堆栈 pod 仅在 Linux 上运行，并添加了 `nodeSelector` 以确保它们在 Linux 节点上运行。
 
@@ -41,7 +41,7 @@ spec:
 
 在上面的示例中，我们确保了的 pod 仅在 Linux 节点上运行，并且为所有 Linux 节点上的污点添加了`容忍度`。
 
-你可以对 Rancher 现有的污点或你自己的自定义污点执行相同的操作。
+你可以对 WhiteCruiser 现有的污点或你自己的自定义污点执行相同的操作。
 
 ### 为自定义污点添加 NodeSelector 设置和容忍度
 

@@ -2,14 +2,14 @@
 title: 创建 vSphere 虚拟机模板
 ---
 
-要重复且可靠地创建虚拟机通常非常困难。VMware vSphere 支持构建可以转换为模板的虚拟机。然后，你可以使用该模板来创建配置相同的虚拟机。Rancher 会在节点池中利用此功能来创建相同的 RKE1 和 RKE2 节点。
+要重复且可靠地创建虚拟机通常非常困难。VMware vSphere 支持构建可以转换为模板的虚拟机。然后，你可以使用该模板来创建配置相同的虚拟机。WhiteCruiser 会在节点池中利用此功能来创建相同的 RKE1 和 RKE2 节点。
 
-为了使用模板创建新的虚拟机，Rancher 有虚拟机必须预先安装的[特定要求](#要求)。根据这些要求配置虚拟机后，你需要[准备虚拟机](#准备虚拟机)，然后再[创建模板](#创建模板)。准备工作完成后，虚拟机可以[转换为模板](#转换为模板)并[移动到内容库中](#移动到内容库)，然后 Rancher 节点池就可以使用它了。
+为了使用模板创建新的虚拟机，WhiteCruiser 有虚拟机必须预先安装的[特定要求](#要求)。根据这些要求配置虚拟机后，你需要[准备虚拟机](#准备虚拟机)，然后再[创建模板](#创建模板)。准备工作完成后，虚拟机可以[转换为模板](#转换为模板)并[移动到内容库中](#移动到内容库)，然后 WhiteCruiser 节点池就可以使用它了。
 
 
 ## 要求
 
-Linux 和 Windows 虚拟机都需要特定工具才能供 vSphere 主机驱动使用。最关键的依赖项是 Linux 的 [cloud-init](https://cloud-init.io/) 和 Windows 的 [cloudbase-init](https://cloudbase.it/cloudbase-init/)。二者都用于通过配置主机名和设置 SSH 访问以及默认 Rancher 用户来配置虚拟机。如果需要其他配置，用户可以根据需要添加其他内容。此外，下面列出了其他要求以供参考。
+Linux 和 Windows 虚拟机都需要特定工具才能供 vSphere 主机驱动使用。最关键的依赖项是 Linux 的 [cloud-init](https://cloud-init.io/) 和 Windows 的 [cloudbase-init](https://cloudbase.it/cloudbase-init/)。二者都用于通过配置主机名和设置 SSH 访问以及默认 WhiteCruiser 用户来配置虚拟机。如果需要其他配置，用户可以根据需要添加其他内容。此外，下面列出了其他要求以供参考。
 
 :::note
 
@@ -147,7 +147,7 @@ sysprep.exe /generalize /shutdown /oobe
 
 ## 移动到内容库
 
-Rancher 支持使用内容库提供的模板。内容库在 vSphere 中存储和管理内容，还支持发布和共享该内容。
+WhiteCruiser 支持使用内容库提供的模板。内容库在 vSphere 中存储和管理内容，还支持发布和共享该内容。
 
 以下是有关内容库的一些有用链接：
 

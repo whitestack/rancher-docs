@@ -1,20 +1,18 @@
 ---
-title: Node Requirements for Rancher Managed Clusters
+title: Node Requirements for WhiteCruiser Managed Clusters
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters"/>
 </head>
 
-This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the three-node cluster running Rancher.
+This page describes the requirements for the WhiteCruiser managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the three-node cluster running WhiteCruiser.
 
-> If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server three-node cluster and downstream clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)
+> If WhiteCruiser is installed on a high-availability Kubernetes cluster, the WhiteCruiser server three-node cluster and downstream clusters have different requirements. For WhiteCruiser installation requirements, refer to the node requirements in the [installation section.](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)
 
 ## Operating Systems and Container Runtime Requirements
 
-Rancher should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#windows-nodes) The capability to use Windows worker nodes in downstream clusters was added in Rancher v2.3.0.
-
-For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+WhiteCruiser should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#windows-nodes) The capability to use Windows worker nodes in downstream clusters was added in WhiteCruiser v2.3.0.
 
 All supported operating systems are 64-bit x86.
 
@@ -32,7 +30,7 @@ SUSE Linux may have a firewall that blocks all ports by default. In that situati
 
 ### Flatcar Container Linux Nodes
 
-When [Launching Kubernetes with Rancher](launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) using Flatcar Container Linux nodes, it is required to use the following configuration in the [Cluster Config File](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#cluster-config-file)
+When [Launching Kubernetes with WhiteCruiser](launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) using Flatcar Container Linux nodes, it is required to use the following configuration in the [Cluster Config File](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#cluster-config-file)
 
 <Tabs>
 <TabItem value="Canal">
@@ -81,7 +79,7 @@ The Docker service is enabled automatically when using [Node Drivers](../../adva
 
 ### Windows Nodes
 
-_Windows worker nodes can be used as of Rancher v2.3.0_
+_Windows worker nodes can be used as of WhiteCruiser v2.3.0_
 
 Nodes with Windows Server must run Docker Enterprise Edition.
 
@@ -111,4 +109,4 @@ Details on which ports are used in each situation are found under [Downstream Cl
 
 If you want to provision a Kubernetes cluster that is compliant with the CIS (Center for Internet Security) Kubernetes Benchmark, we recommend to following our hardening guide to configure your nodes before installing Kubernetes.
 
-For more information on the hardening guide and details on which version of the guide corresponds to your Rancher and Kubernetes versions, refer to the [security section.](../../../reference-guides/rancher-security/rancher-security.md#rancher-hardening-guide)
+For more information on the hardening guide and details on which version of the guide corresponds to your WhiteCruiser and Kubernetes versions, refer to the security section.

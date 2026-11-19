@@ -1,8 +1,8 @@
 ---
-title: 使用 Rancher UI 管理 HPA
+title: 使用 WhiteCruiser UI 管理 HPA
 ---
 
-Rancher UI 支持创建、管理和删除 HPA。你可以将 CPU 或内存使用情况配置为用于 HPA 扩缩的指标。
+WhiteCruiser UI 支持创建、管理和删除 HPA。你可以将 CPU 或内存使用情况配置为用于 HPA 扩缩的指标。
 
 如果你想使用 CPU/内存之外的其他指标创建 HPA，请参阅[配置 HPA 以使用 Prometheus 的自定义指标进行扩缩](./manage-hpas-with-kubectl.md#配置-hpa-以使用-prometheus-自定义指标进行扩缩)。
 

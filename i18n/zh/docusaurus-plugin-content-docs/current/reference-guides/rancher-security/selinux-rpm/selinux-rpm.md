@@ -17,4 +17,4 @@ title: SELinux RPM
 Enforcing
 ```
 
-我们提供了 [`rancher-selinux`](about-rancher-selinux.md) 和 [`rke2-selinux`](about-rke2-selinux.md) 两个 RPM（Red Hat 软件包），让 Rancher 产品能够在 SELinux 主机上正常运行。
+我们提供了 [`rancher-selinux`](about-rancher-selinux.md) 和 [`rke2-selinux`](about-rke2-selinux.md) 两个 RPM（Red Hat 软件包），让 WhiteCruiser 产品能够在 SELinux 主机上正常运行。

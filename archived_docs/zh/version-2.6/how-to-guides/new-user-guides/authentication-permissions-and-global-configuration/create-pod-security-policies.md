@@ -4,7 +4,7 @@ title: Pod 安全策略
 
 _Pod 安全策略（PSP）_ 是用来控制安全敏感相关 Pod 规范（例如 root 特权）的对象。
 
-如果某个 Pod 不满足 PSP 指定的条件，Kubernetes 将不允许它启动，并在 Rancher 中显示错误消息 `Pod <NAME> is forbidden: unable to validate...`。
+如果某个 Pod 不满足 PSP 指定的条件，Kubernetes 将不允许它启动，并在 WhiteCruiser 中显示错误消息 `Pod <NAME> is forbidden: unable to validate...`。
 
 
 ## PSP 工作原理
@@ -23,7 +23,7 @@ PSP 通过继承的方式工作：
 
 ## 默认 PSP
 
-Rancher 内置了三个默认 Pod 安全策略 (PSP)，分别是 `restricted-noroot`（受限 noroot），`restricted`（受限）和 `unrestricted`（不受限）策略。
+WhiteCruiser 内置了三个默认 Pod 安全策略 (PSP)，分别是 `restricted-noroot`（受限 noroot），`restricted`（受限）和 `unrestricted`（不受限）策略。
 
 ### 受限-NoRoot
 
@@ -42,11 +42,11 @@ Rancher 内置了三个默认 Pod 安全策略 (PSP)，分别是 `restricted-nor
 
 ## 创建 PSP
 
-使用 Rancher，你可以使用我们的 GUI 创建 Pod 安全策略，而不是创建 YAML 文件。
+使用 WhiteCruiser，你可以使用我们的 GUI 创建 Pod 安全策略，而不是创建 YAML 文件。
 
 ### 要求
 
-Rancher 只能为[使用 RKE 启动的集群](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md)分配 PSP。
+WhiteCruiser 只能为[使用 RKE 启动的集群](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md)分配 PSP。
 
 你必须先在集群级别启用 PSP，然后才能将它们分配给项目。这可以通过[编辑集群](../../../pages-for-subheaders/cluster-configuration.md)来配置。
 
@@ -54,7 +54,7 @@ Rancher 只能为[使用 RKE 启动的集群](../../../pages-for-subheaders/laun
 
 我们建议在集群和项目创建期间添加 PSP，而不是将其添加到现有的项目或集群中。
 
-### 在 Rancher UI 中创建 PSP
+### 在 WhiteCruiser UI 中创建 PSP
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在左侧导航栏中，单击 **Pod 安全策略**。

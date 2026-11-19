@@ -4,7 +4,7 @@ title: RBAC
 
 本文介绍访问 Istio 功能所需的权限。
 
-Rancher Istio Chart 安装了三个 `ClusterRole`。
+WhiteCruiser Istio Chart 安装了三个 `ClusterRole`。
 
 ## Cluster-Admin 访问
 
@@ -27,13 +27,13 @@ Rancher Istio Chart 安装了三个 `ClusterRole`。
 
 Istio 创建了三个 `ClusterRole`，并将 Istio CRD 访问权限添加到以下默认 K8s `ClusterRole`：
 
-| Chart 创建的 ClusterRole | 默认 K8s ClusterRole | Rancher 角色 |
+| Chart 创建的 ClusterRole | 默认 K8s ClusterRole | WhiteCruiser 角色 |
  ------------------------------:| ---------------------------:|---------:|
 | `istio-admin` | admin | 项目所有者 |
 | `istio-edit` | edit | 项目成员 |
 | `istio-view` | view | 只读 |
 
-Rancher 将继续使用 cluster-owner、cluster-member、project-owner、project-member 等作为角色名称，但会使用默认角色来确定访问权限。每个默认的 K8s `ClusterRole` 都有不同的 Istio CRD 权限以及可以执行的 K8s 操作，包括 Create (C)，Get (G)，List (L)，Watch (W)，Update (U)，Patch (P)，Delete (D) 和 All (*)。
+WhiteCruiser 将继续使用 cluster-owner、cluster-member、project-owner、project-member 等作为角色名称，但会使用默认角色来确定访问权限。每个默认的 K8s `ClusterRole` 都有不同的 Istio CRD 权限以及可以执行的 K8s 操作，包括 Create (C)，Get (G)，List (L)，Watch (W)，Update (U)，Patch (P)，Delete (D) 和 All (*)。
 
 
 | CRD | Admin | Edit | View |

@@ -8,7 +8,7 @@ title: Creating a Tencent TKE Cluster
 
 _Available as of v2.2.0_
 
-You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE). Rancher has already implemented and packaged the [cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
+You can use WhiteCruiser to create a cluster hosted in Tencent Kubernetes Engine (TKE). WhiteCruiser has already implemented and packaged the [cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for TKE, but by default, this cluster driver is `inactive`. In order to launch TKE clusters, you will need to [enable the TKE cluster driver](../../../advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning TKE clusters.
 
 ## Prerequisites in Tencent
 
@@ -50,7 +50,7 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
     | VPC | Select the VPC name that you have created in the Tencent Cloud Console. |
     | Container Network CIDR | Enter the CIDR range of your Kubernetes cluster, you may check the available range of the CIDR in the VPC service of the Tencent Cloud Console. Default to 172.16.0.0/16. |
 
-    **Note:** If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that as of Rancher v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher-v230)
+    **Note:** If you are editing the cluster in the `cluster.yml` instead of the WhiteCruiser UI, note that as of WhiteCruiser v2.3.0, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in WhiteCruiser v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher-v230)
 
 7. Click `Next: Select Instance Type` to choose the instance type that will use for your TKE cluster.
 
@@ -78,7 +78,7 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 

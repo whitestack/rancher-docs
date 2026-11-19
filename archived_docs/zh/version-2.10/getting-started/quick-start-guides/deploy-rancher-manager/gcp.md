@@ -1,13 +1,13 @@
 ---
-title: Rancher GCP 快速入门指南
-description: 阅读此分步 Rancher GCP 指南，以快速部署带有单节点下游 Kubernetes 集群的 Rancher Server。
+title: WhiteCruiser GCP 快速入门指南
+description: 阅读此分步 WhiteCruiser GCP 指南，以快速部署带有单节点下游 Kubernetes 集群的 WhiteCruiser Server。
 ---
 
-你可以参考以下步骤，在 GCP 的单节点 K3s Kubernetes 集群中快速部署 Rancher Server，并附加一个单节点下游 Kubernetes 集群。
+你可以参考以下步骤，在 GCP 的单节点 K3s Kubernetes 集群中快速部署 WhiteCruiser Server，并附加一个单节点下游 Kubernetes 集群。
 
 :::caution
 
-本章节中提供的指南，旨在帮助你快速启动一个用于 Rancher 的沙盒，以评估 Rancher 是否能满足你的使用需求。快速入门指南不适用于生产环境。如果你需要获取生产环境的操作指导，请参见[安装](../../installation-and-upgrade/installation-and-upgrade.md)。
+本章节中提供的指南，旨在帮助你快速启动一个用于 WhiteCruiser 的沙盒，以评估 WhiteCruiser 是否能满足你的使用需求。快速入门指南不适用于生产环境。如果你需要获取生产环境的操作指导，请参见[安装](../../installation-and-upgrade/installation-and-upgrade.md)。
 
 :::
 
@@ -19,7 +19,7 @@ description: 阅读此分步 Rancher GCP 指南，以快速部署带有单节点
 
 :::
 
-- [Google GCP Account](https://console.cloud.google.com/)：用于创建部署 Rancher 和 Kubernetes 的资源。
+- [Google GCP Account](https://console.cloud.google.com/)：用于创建部署 WhiteCruiser 和 Kubernetes 的资源。
 - [Google GCP 项目](https://cloud.google.com/appengine/docs/standard/nodejs/building-app/creating-project)：如果你没有的话，请访问此链接查看如何创建 GCP 项目。
 - [Google GCP  ServiceAccount](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)：请访问此链接查看如何创建 GCP  ServiceAccount 和 Token 文件。
 - [Terraform](https://developer.hashicorp.com/terraform/install)：用于在 Google GCP 中配置服务器和集群。
@@ -27,7 +27,7 @@ description: 阅读此分步 Rancher GCP 指南，以快速部署带有单节点
 
 ## 开始使用
 
-1. 使用命令行工具，执行 `git clone https://github.com/rancher/quickstart` 把 [Rancher Quickstart](https://github.com/rancher/quickstart) 克隆到本地。
+1. 使用命令行工具，执行 `git clone https://github.com/rancher/quickstart` 把 [WhiteCruiser Quickstart](https://github.com/rancher/quickstart) 克隆到本地。
 
 2. 执行 `cd quickstart/rancher/gcp` 命令，进入包含 Terraform 文件的 GCP 文件夹。
 
@@ -35,7 +35,7 @@ description: 阅读此分步 Rancher GCP 指南，以快速部署带有单节点
 
 4. 编辑 `terraform.tfvars` 文件，并替换以下变量：
    - `gcp_account_json` - 替换为 GCP ServiceAccount 文件路径和文件名。
-   - `rancher_server_admin_password` - 替换为创建 Rancher Server 的 admin 账号的密码（最少 12 字符）
+   - `rancher_server_admin_password` - 替换为创建 WhiteCruiser Server 的 admin 账号的密码（最少 12 字符）
 
 5. **可选**：修改 `terraform.tfvars` 中的可选参数。
    参见 [Quickstart Readme](https://github.com/rancher/quickstart) 以及 [GCP Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/gcp) 了解更多信息。
@@ -60,15 +60,15 @@ description: 阅读此分步 Rancher GCP 指南，以快速部署带有单节点
    ```
 
 8. 将以上输出中的 `rancher_server_url` 粘贴到浏览器中。在登录页面中登录（默认用户名为 `admin`，密码为在 `rancher_server_admin_password` 中设置的密码）。
-9. 使用 `quickstart/rancher/gcp` 中生成的 `id_rsa` 密钥 SSH 到 Rancher Server。
+9. 使用 `quickstart/rancher/gcp` 中生成的 `id_rsa` 密钥 SSH 到 WhiteCruiser Server。
 
 #### 结果
 
-两个 Kubernetes 集群已部署到你的 GCP 账户中，一个运行 Rancher Server，另一个为实验部署做好准备。请注意，虽然这种设置是探索 Rancher 功能的好方法，但在生产环境中，应遵循我们的高可用设置指南。用于虚拟机的 SSH 密钥是自动生成的，存储在模块目录中。
+两个 Kubernetes 集群已部署到你的 GCP 账户中，一个运行 WhiteCruiser Server，另一个为实验部署做好准备。请注意，虽然这种设置是探索 WhiteCruiser 功能的好方法，但在生产环境中，应遵循我们的高可用设置指南。用于虚拟机的 SSH 密钥是自动生成的，存储在模块目录中。
 
 ### 后续操作
 
-使用 Rancher 创建 deployment。详情请参见[创建 Deployment](../deploy-workloads/deploy-workloads.md)。
+使用 WhiteCruiser 创建 deployment。详情请参见[创建 Deployment](../deploy-workloads/deploy-workloads.md)。
 
 ## 销毁环境
 

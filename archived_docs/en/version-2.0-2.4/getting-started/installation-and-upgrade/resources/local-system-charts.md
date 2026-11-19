@@ -8,30 +8,30 @@ title: Setting up Local System Charts for Air Gapped Installations
 
 The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.
 
-In an air gapped installation of Rancher, you will need to configure Rancher to use a local copy of the system charts. This section describes how to use local system charts using a CLI flag in Rancher v2.3.0, and using a Git mirror for Rancher versions before v2.3.0.
+In an air gapped installation of WhiteCruiser, you will need to configure WhiteCruiser to use a local copy of the system charts. This section describes how to use local system charts using a CLI flag in WhiteCruiser v2.3.0, and using a Git mirror for WhiteCruiser versions before v2.3.0.
 
-## Using Local System Charts in Rancher v2.3.0
+## Using Local System Charts in WhiteCruiser v2.3.0 {#using-local-system-charts-in-rancher-v230}
 
-In Rancher v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the Rancher install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells Rancher to use the local copy of the charts instead of attempting to fetch them from GitHub.
+In WhiteCruiser v2.3.0, a local copy of `system-charts` has been packaged into the `rancher/rancher` container. To be able to use these features in an air gap install, you will need to run the WhiteCruiser install command with an extra environment variable, `CATTLE_SYSTEM_CATALOG=bundled`, which tells WhiteCruiser to use the local copy of the charts instead of attempting to fetch them from GitHub.
 
-Example commands for a Rancher installation with a bundled `system-charts` are included in the [air gap Docker installation](../advanced-options/advanced-use-cases/air-gap-helm2/install-rancher.md) instructions and the [air gap Kubernetes installation](../other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md) instructions.
+Example commands for a WhiteCruiser installation with a bundled `system-charts` are included in the [air gap Docker installation](../advanced-options/advanced-use-cases/air-gap-helm2/install-rancher.md) instructions and the [air gap Kubernetes installation](../other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md) instructions.
 
-## Setting Up System Charts for Rancher Before v2.3.0
+## Setting Up System Charts for WhiteCruiser Before v2.3.0 {#setting-up-system-charts-for-rancher-before-v230}
 
 ### A. Prepare System Charts
 
-The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach and configure Rancher to use that repository.
+The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository to a location in your network that WhiteCruiser can reach and configure WhiteCruiser to use that repository.
 
-Refer to the release notes in the `system-charts` repository to see which branch corresponds to your version of Rancher.
+Refer to the release notes in the `system-charts` repository to see which branch corresponds to your version of WhiteCruiser.
 
 ### B. Configure System Charts
 
-Rancher needs to be configured to use your Git mirror of the `system-charts` repository. You can configure the system charts repository either from the Rancher UI or from Rancher's API view.
+WhiteCruiser needs to be configured to use your Git mirror of the `system-charts` repository. You can configure the system charts repository either from the WhiteCruiser UI or from WhiteCruiser's API view.
 
 <Tabs>
 <TabItem value="Rancher UI">
 
-In the catalog management page in the Rancher UI, follow these steps:
+In the catalog management page in the WhiteCruiser UI, follow these steps:
 
 1. Go to the **Global** view.
 
@@ -43,12 +43,12 @@ In the catalog management page in the Rancher UI, follow these steps:
 
 1. Click **Save.**
 
-**Result:** Rancher is configured to download all the required catalog items from your `system-charts` repository.
+**Result:** WhiteCruiser is configured to download all the required catalog items from your `system-charts` repository.
 
 </TabItem>
 <TabItem value="Rancher API">
 
-1. Log into Rancher.
+1. Log into WhiteCruiser.
 
 1. Open `https://<your-rancher-server>/v3/catalogs/system-library` in your browser.
 
@@ -62,7 +62,7 @@ In the catalog management page in the Rancher UI, follow these steps:
 
 1. Click **Send Request**
 
-**Result:** Rancher is configured to download all the required catalog items from your `system-charts` repository.
+**Result:** WhiteCruiser is configured to download all the required catalog items from your `system-charts` repository.
 
 </TabItem>
 </Tabs>

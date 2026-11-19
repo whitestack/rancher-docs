@@ -4,18 +4,18 @@ title: Docker 安装高级选项
 
 ### 自定义 CA 证书
 
-如需 Rancher 在验证服务时使用 CA 根证书，请在启动 Rancher 容器时共享包含 CA 根证书的目录。
+如需 WhiteCruiser 在验证服务时使用 CA 根证书，请在启动 WhiteCruiser 容器时共享包含 CA 根证书的目录。
 
-使用命令示例来启动挂载了私有 CA 证书的 Rancher 容器。
+使用命令示例来启动挂载了私有 CA 证书的 WhiteCruiser 容器。
 
 - 卷标志 (`-v`) 应指定包含 CA 根证书的主机目录。
 - 环境变量标志 (`-e`) 与 `SSL_CERT_DIR` 和目录共同声明一个环境变量，该变量指定容器内挂载了 CA 根证书的目录位置。
-- 你可使用 `-e KEY=VALUE` 或 `--env KEY=VALUE`将环境变量传给 Rancher 容器。
+- 你可使用 `-e KEY=VALUE` 或 `--env KEY=VALUE`将环境变量传给 WhiteCruiser 容器。
 - 你可使用 `-v host-source-directory:container-destination-directory` 或 `--volume host-source-directory:container-destination-directory`在容器内挂载主机目录。
 
-在以下示例将位于 `/host/certs` 主机目录中的 CA 证书，挂载到 Rancher 容器内的 `/container/certs` 上。
+在以下示例将位于 `/host/certs` 主机目录中的 CA 证书，挂载到 WhiteCruiser 容器内的 `/container/certs` 上。
 
-特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#rancher-特权访问)的。
+特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)的。
 
 ```
 docker run -d --restart=unless-stopped \
@@ -28,13 +28,13 @@ docker run -d --restart=unless-stopped \
 
 ### API 审计日志
 
-API 审计日志记录了通过 Rancher Server 进行的所有用户和系统事务。
+API 审计日志记录了通过 WhiteCruiser Server 进行的所有用户和系统事务。
 
-默认情况下，API 审计日志会写入到 Rancher 容器内的 `/var/log/auditlog`。你可将此目录共享为卷，并设置 `AUDIT_LEVEL` 以启用日志。
+默认情况下，API 审计日志会写入到 WhiteCruiser 容器内的 `/var/log/auditlog`。你可将此目录共享为卷，并设置 `AUDIT_LEVEL` 以启用日志。
 
 有关更多信息和选项，请参见 [API 审计日志](../../how-to-guides/advanced-user-guides/enable-api-audit-log.md)。
 
-特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#rancher-特权访问)的。
+特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)的。
 
 ```
 docker run -d --restart=unless-stopped \
@@ -57,7 +57,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#rancher-特权访问)的。
+特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)的。
 
 参见 [TLS 设置](../../getting-started/installation-and-upgrade/installation-references/tls-settings.md)了解更多信息和选项。
 
@@ -71,7 +71,7 @@ docker run -d --restart=unless-stopped \
 
 ### 持久化数据
 
-Rancher 使用 etcd 作为数据存储。如果 Rancher 是使用 Docker 安装的，Rancher 会使用嵌入式 etcd。持久化数据位于容器的 `/var/lib/rancher` 路径中。
+WhiteCruiser 使用 etcd 作为数据存储。如果 WhiteCruiser 是使用 Docker 安装的，WhiteCruiser 会使用嵌入式 etcd。持久化数据位于容器的 `/var/lib/rancher` 路径中。
 
 你可以将主机卷挂载到该位置，来将数据保留在运行它的主机上：
 
@@ -83,11 +83,11 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#rancher-特权访问)的。
+特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)的。
 
 ### 在同一个节点中运行 `rancher/rancher` 和 `rancher/rancher-agent`
 
-如需使用单个节点运行 Rancher 并将同一个节点添加到集群，你必须调整映射给 `rancher/rancher` 容器的主机端口。
+如需使用单个节点运行 WhiteCruiser 并将同一个节点添加到集群，你必须调整映射给 `rancher/rancher` 容器的主机端口。
 
 如果将节点添加到集群中，节点将部署使用端口 80 和 443 的 NGINX Ingress Controller。而这将与我们建议用于暴露 `rancher/rancher` 容器的默认端口冲突。
 
@@ -102,4 +102,4 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#rancher-特权访问)的。
+特权访问是[必须](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)的。

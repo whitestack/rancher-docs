@@ -22,7 +22,7 @@ Alertmanager 根据接收器和路由树来代理 Prometheus 的告警，该路�
 
 Alerting Drivers 为 Alertmanager 将告警代理到非原生接收器，例如 Microsoft Teams 和 SMS。
 
-在配置路由和接收器的 Rancher UI 中，你可以配置有一个根的路由树，然后再配置一个深度，这样的树就有两个深度。但是如果在直接配置 Alertmanager 时使用 `continue` 路由，你可以让树更深。
+在配置路由和接收器的 WhiteCruiser UI 中，你可以配置有一个根的路由树，然后再配置一个深度，这样的树就有两个深度。但是如果在直接配置 Alertmanager 时使用 `continue` 路由，你可以让树更深。
 
 每个接收器用于一个或多个通知提供商。因此，如果你需要将发送到 Slack 的每个告警也发送到 PagerDuty，你可以在同一个接收器中配置两者。
 
@@ -49,14 +49,14 @@ Alerting Drivers 为 Alertmanager 将告警代理到非原生接收器，例如 
 
 ### 匹配
 
-**Match** 字段指一组相等匹配器，用于根据告警上定义的标签来识别要发送到指定路由的告警。在 Rancher UI 中添加键值对时，它们对应于以下格式的 YAML：
+**Match** 字段指一组相等匹配器，用于根据告警上定义的标签来识别要发送到指定路由的告警。在 WhiteCruiser UI 中添加键值对时，它们对应于以下格式的 YAML：
 
 ```yaml
 match:
   [ <labelname>: <labelvalue>, ... ]
 ```
 
-**Match Regex** 字段指一组正则表达式匹配器，用于根据在该告警上定义的标签来识别要发送到指定路由的告警。在 Rancher UI 中添加键值对时，它们对应于以下格式的 YAML：
+**Match Regex** 字段指一组正则表达式匹配器，用于根据在该告警上定义的标签来识别要发送到指定路由的告警。在 WhiteCruiser UI 中添加键值对时，它们对应于以下格式的 YAML：
 
 ```yaml
 match_re:

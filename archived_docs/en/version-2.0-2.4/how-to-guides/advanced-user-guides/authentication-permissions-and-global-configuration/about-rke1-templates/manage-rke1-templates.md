@@ -25,10 +25,10 @@ You can revise, share, and delete a template if you are an owner of the template
 1. From the **Global** view, click **Tools > RKE Templates.**
 1. Click **Add Template.**
 1. Provide a name for the template. An auto-generated name is already provided for the template' first version, which is created along with this template.
-1. Optional: Share the template with other users or groups by [adding them as members.](access-or-share-templates.md#sharing-templates-with-specific-users-or-groups) You can also make the template public to share with everyone in the Rancher setup.
+1. Optional: Share the template with other users or groups by [adding them as members.](access-or-share-templates.md#sharing-templates-with-specific-users-or-groups) You can also make the template public to share with everyone in the WhiteCruiser setup.
 1. Then follow the form on screen to save the cluster configuration parameters as part of the template's revision. The revision can be marked as default for this template.
 
-**Result:** An RKE template with one revision is configured. You can use this RKE template revision later when you [provision a Rancher-launched cluster](../../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md). After a cluster is managed by an RKE template, it cannot be disconnected and the option to uncheck **Use an existing RKE Template and Revision** will be unavailable.
+**Result:** An RKE template with one revision is configured. You can use this RKE template revision later when you [provision a WhiteCruiser-launched cluster](../../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md). After a cluster is managed by an RKE template, it cannot be disconnected and the option to uncheck **Use an existing RKE Template and Revision** will be unavailable.
 
 ### Updating a Template
 
@@ -124,7 +124,7 @@ To permanently delete a revision,
 
 To upgrade a cluster to use a new template revision,
 
-1. From the **Global** view in Rancher, click the **Clusters** tab.
+1. From the **Global** view in WhiteCruiser, click the **Clusters** tab.
 1. Go to the cluster that you want to upgrade and click **&#8942; > Edit.**
 1. In the **Cluster Options** section, click the dropdown menu for the template revision, then select the new template revision.
 1. Click **Save.**
@@ -139,7 +139,7 @@ This exports the cluster's settings as a new RKE template, and also binds the cl
 
 To convert an existing cluster to use an RKE template,
 
-1. From the **Global** view in Rancher, click the **Clusters** tab.
+1. From the **Global** view in WhiteCruiser, click the **Clusters** tab.
 1. Go to the cluster that will be converted to use an RKE template. Click **&#8942;** > **Save as RKE Template.**
 1. Enter a name for the template in the form that appears, and click **Create.**
 

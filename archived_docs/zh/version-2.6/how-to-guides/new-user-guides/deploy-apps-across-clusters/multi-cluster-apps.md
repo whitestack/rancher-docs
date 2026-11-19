@@ -2,7 +2,7 @@
 title: 多集群应用
 ---
 
-通常，大多数应用都部署在单个 Kubernetes 集群上，但有时你可能需要跨不同集群和/或项目部署同一应用的多个副本。在 Rancher 中，_多集群应用_ 指的是使用 Helm Chart 跨多个集群部署的应用。由于能够跨多个集群部署相同的应用，因此可以避免在每个集群上重复执行相同的应用配置操作而引入的人为错误。使用多集群应用，你可以通过自定义在所有项目/集群中使用相同的配置，并根据你的目标项目更改配置。由于多集群应用被视为单个应用，因此更容易管理和维护。
+通常，大多数应用都部署在单个 Kubernetes 集群上，但有时你可能需要跨不同集群和/或项目部署同一应用的多个副本。在 WhiteCruiser 中，_多集群应用_ 指的是使用 Helm Chart 跨多个集群部署的应用。由于能够跨多个集群部署相同的应用，因此可以避免在每个集群上重复执行相同的应用配置操作而引入的人为错误。使用多集群应用，你可以通过自定义在所有项目/集群中使用相同的配置，并根据你的目标项目更改配置。由于多集群应用被视为单个应用，因此更容易管理和维护。
 
 全局应用商店中的任何 Helm Chart 都可用于部署和管理多集群应用。
 
@@ -12,14 +12,14 @@ title: 多集群应用
 
 ### 权限
 
-要在 Rancher 中创建多集群应用，你至少需要具有以下权限之一：
+要在 WhiteCruiser 中创建多集群应用，你至少需要具有以下权限之一：
 
 - 目标集群中的[项目成员角色](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)，能够创建、读取、更新和删除工作负载
 - 目标项目所在集群的[集群所有者角色](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)
 
 ### 启用旧版功能
 
-由于 Rancher 2.5 已弃用多集群应用并使用 Fleet 取代它，你需要使用功能开关以启用多集群应用。
+由于 WhiteCruiser 2.5 已弃用多集群应用并使用 Fleet 取代它，你需要使用功能开关以启用多集群应用。
 
 1. 在左上角，单击 **☰ > 全局设置**。
 1. 单击**功能开关**。
@@ -42,7 +42,7 @@ title: 多集群应用
 
 ## 多集群应用配置选项
 
-Rancher 将多集群应用的配置选项分为以下几个部分。
+WhiteCruiser 将多集群应用的配置选项分为以下几个部分。
 
 ### 目标
 
@@ -62,13 +62,13 @@ Rancher 将多集群应用的配置选项分为以下几个部分。
 
 多集群应用由 _系统用户_ 部署，系统用户还被指定为所有底层资源的创建者。由于实际用户可以从某个目标项目中删除，因此使用 _系统用户_ 而不是实际用户。如果实际用户从其中一个项目中删除，则该用户将不再能够管理其他项目的应用。
 
-Rancher 允许你选择**项目**或**集群**的角色选项。Rancher 将允许你根据用户的权限使用其中一个角色进行创建。
+WhiteCruiser 允许你选择**项目**或**集群**的角色选项。WhiteCruiser 将允许你根据用户的权限使用其中一个角色进行创建。
 
-- **项目** - 相当于[项目成员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)。如果你选择此角色，Rancher 将检查用户是否在所有目标项目中至少具有[项目成员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)的角色。虽然用户可能没有被明确授予 _项目成员_ 角色，但如果用户是[管理员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)、[集群所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)或[项目所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)，则认为该用户具有所需的权限级别。
+- **项目** - 相当于[项目成员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)。如果你选择此角色，WhiteCruiser 将检查用户是否在所有目标项目中至少具有[项目成员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)的角色。虽然用户可能没有被明确授予 _项目成员_ 角色，但如果用户是[管理员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)、[集群所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)或[项目所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)，则认为该用户具有所需的权限级别。
 
-- **集群** - 相当于[集群所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)。如果你选择此角色，Rancher 将检查用户是否在所有目标项目中至少具有[集群所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)的角色。虽然用户可能没有被明确授予 _集群所有者_ 角色，但如果用户是[管理员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)，则认为该用户具有所需的权限级别。
+- **集群** - 相当于[集群所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)。如果你选择此角色，WhiteCruiser 将检查用户是否在所有目标项目中至少具有[集群所有者](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#项目角色)的角色。虽然用户可能没有被明确授予 _集群所有者_ 角色，但如果用户是[管理员](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)，则认为该用户具有所需的权限级别。
 
-在启动应用时，Rancher 会在启动应用之前确认你在目标项目中是否拥有这些权限。
+在启动应用时，WhiteCruiser 会在启动应用之前确认你在目标项目中是否拥有这些权限。
 
 :::note
 
@@ -78,7 +78,7 @@ Rancher 允许你选择**项目**或**集群**的角色选项。Rancher 将允�
 
 ## 应用配置选项
 
-对于每个 Helm Chart，你需要输入一个必须的答案列表才能成功部署 Chart。由于 Rancher 会将答案作为 `--set` 标志传递给 Helm，因此你必须按照[使用 Helm：–set 的格式和限制](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set)中的语法规则来格式化这些答案。
+对于每个 Helm Chart，你需要输入一个必须的答案列表才能成功部署 Chart。由于 WhiteCruiser 会将答案作为 `--set` 标志传递给 Helm，因此你必须按照[使用 Helm：–set 的格式和限制](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set)中的语法规则来格式化这些答案。
 
 :::note 示例
 
@@ -88,7 +88,7 @@ Rancher 允许你选择**项目**或**集群**的角色选项。Rancher 将允�
 
 ### 使用 questions.yml 文件
 
-如果你部署的 Helm Chart 包含 `questions.yml` 文件，Rancher UI 会将此文件转换成易于使用的 UI 来收集问题的答案。
+如果你部署的 Helm Chart 包含 `questions.yml` 文件，WhiteCruiser UI 会将此文件转换成易于使用的 UI 来收集问题的答案。
 
 ### 原生 Helm Chart 的键值对
 
@@ -131,10 +131,10 @@ Rancher 允许你选择**项目**或**集群**的角色选项。Rancher 将允�
 ## 升级多集群应用角色和项目
 
 - **在现有的多集群应用上更改角色**
-   多集群应用的创建者和任何具有“所有者”访问类型的用户都可以升级其**角色**。添加新角色时，我们会检查用户在所有当前目标项目中是否具有该角色。Rancher 会根据 `Roles` 字段的安装部分，相应地检查用户是否具有全局管理员、集群所有者或项目所有者的角色。
+   多集群应用的创建者和任何具有“所有者”访问类型的用户都可以升级其**角色**。添加新角色时，我们会检查用户在所有当前目标项目中是否具有该角色。WhiteCruiser 会根据 `Roles` 字段的安装部分，相应地检查用户是否具有全局管理员、集群所有者或项目所有者的角色。
 
 - **添加/删除目标项目**
-1. 多集群应用的创建者和任何具有“所有者”访问类型的用户都添加或移除目标项目。添加新项目时，我们检查此请求的调用者是否具有多集群应用中定义的所有角色。Rancher 会检查用户是否具有全局管理员、集群所有者和项目所有者的角色。
+1. 多集群应用的创建者和任何具有“所有者”访问类型的用户都添加或移除目标项目。添加新项目时，我们检查此请求的调用者是否具有多集群应用中定义的所有角色。WhiteCruiser 会检查用户是否具有全局管理员、集群所有者和项目所有者的角色。
 2. 删除目标项目时，我们不会进行这些成员资格检查。这是因为调用者的权限可能与目标项目有关，或者由于该项目已被删除导致调用者希望将该项目从目标列表中删除。
 
 
@@ -154,7 +154,7 @@ Rancher 允许你选择**项目**或**集群**的角色选项。Rancher 将允�
 
    * **克隆**：创建另一个具有相同配置的多集群应用。通过使用此选项，你可以轻松复制多集群应用。
    * **升级**：升级多集群应用以更改某些配置。在为多集群应用执行升级时，如果你有合适的[访问类型](#成员)，则可以修改[升级策略](#升级)。
-   * **回滚**：将你的应用回滚到特定版本。如果你的一个或多个[目标](#目标)的多集群应用在升级后出现问题，你可以使用 Rancher 存储的多达 10 个多集群应用版本进行回滚。回滚多集群应用会恢复**所有**目标集群和项目的应用，而不仅仅是受升级问题影响的目标。
+   * **回滚**：将你的应用回滚到特定版本。如果你的一个或多个[目标](#目标)的多集群应用在升级后出现问题，你可以使用 WhiteCruiser 存储的多达 10 个多集群应用版本进行回滚。回滚多集群应用会恢复**所有**目标集群和项目的应用，而不仅仅是受升级问题影响的目标。
 
 ## 删除多集群应用
 

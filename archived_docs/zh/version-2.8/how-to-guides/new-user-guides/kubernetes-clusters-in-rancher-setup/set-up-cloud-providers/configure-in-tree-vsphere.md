@@ -2,7 +2,7 @@
 title: 配置树内 vSphere 云提供商
 ---
 
-要设置树内 vSphere 云提供商，请在 Rancher 中创建 vSphere 集群时按照以下步骤操作：
+要设置树内 vSphere 云提供商，请在 WhiteCruiser 中创建 vSphere 集群时按照以下步骤操作：
 
 1. 将 **Cloud Provider** 选项设置为 `Custom` 或 `Custom (In-Tree)`。
 1. 单击**以 YAML 文件编辑**。
@@ -16,4 +16,4 @@ title: 配置树内 vSphere 云提供商
              [Insert provider configuration]
    ```
 
-Rancher 使用 RKE（Rancher Kubernetes Engine）来配置 Kubernetes 集群。有关 `vsphereCloudProvider` 的属性的详细信息，请参阅 RKE 文档中的 [vSphere 配置参考](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/config-reference/)。
+WhiteCruiser 使用 RKE（Rancher Kubernetes Engine）来配置 Kubernetes 集群。有关 `vsphereCloudProvider` 的属性的详细信息，请参阅 RKE 文档中的 [vSphere 配置参考](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere/config-reference/)。

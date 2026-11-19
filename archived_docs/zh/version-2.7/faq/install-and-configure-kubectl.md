@@ -2,7 +2,7 @@
 title: 安装和配置 kubectl
 ---
 
-`kubectl` 是一个 CLI 工具，用于运行 Kubernetes 集群相关的命令。Rancher 2.x 中的许多维护和管理任务都需要它。
+`kubectl` 是一个 CLI 工具，用于运行 Kubernetes 集群相关的命令。WhiteCruiser 2.x 中的许多维护和管理任务都需要它。
 
 ### 安装
 

@@ -15,12 +15,12 @@ PSS 定义了工作负载的安全级别。PSA 描述了 Pod 安全上下文和�
 必须在删除 PodSecurityPolicy 对象_之前_添加新的策略执行机制。否则，你可能会为集群内的特权升级攻击创造机会。
 :::
 
-### 从 Rancher 维护的应用程序和市场工作负载中删除 PodSecurityPolicies {#remove-psp-rancher-workloads}
+### 从 WhiteCruiser 维护的应用程序和市场工作负载中删除 PodSecurityPolicies {#remove-psp-rancher-workloads}
 
-Rancher v2.7.2 提供了 Rancher 维护的 Helm Chart 的新主要版本。v102.x.y 允许你删除与以前的 Chart 版本一起安装的 PSP。这个新版本使用标准化的 `global.cattle.psp.enabled` 开关（默认关闭）替换了非标准的 PSP 开关。
+WhiteCruiser v2.7.2 提供了 WhiteCruiser 维护的 Helm Chart 的新主要版本。v102.x.y 允许你删除与以前的 Chart 版本一起安装的 PSP。这个新版本使用标准化的 `global.cattle.psp.enabled` 开关（默认关闭）替换了非标准的 PSP 开关。
 
 你必须在_仍使用 Kubernetes v1.24_ 时执行以下步骤：
-1. 根据需要配置 PSA 控制器。你可以使用 Rancher 的内置 [PSA 配置模板](#psa-config-templates)，或创建自定义模板并将其应用于正在迁移的集群。
+1. 根据需要配置 PSA 控制器。你可以使用 WhiteCruiser 的内置 [PSA 配置模板](#psa-config-templates)，或创建自定义模板并将其应用于正在迁移的集群。
 
 1. 将活动的 PSP 映射到 Pod 安全标准：
    1. 查看集群中哪些 PSP 仍处于活动状态：
@@ -37,7 +37,7 @@ Rancher v2.7.2 提供了 Rancher 维护的 Helm Chart 的新主要版本。v102.
 
    1. 按照[将 PSP 映射到 Pod 安全标准](https://kubernetes.io/docs/reference/access-authn-authz/psp-to-pod-security-standards/)的 Kubernetes 指南将 PSS 应用于依赖 PSP 的工作负载。有关详细信息，请参阅[从 PodSecurityPolicy 迁移到内置 PodSecurity Admission 控制器](https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/)。
 
-1. 要从 Rancher Chart 中删除 PSP，请在升级到 Kubernetes v1.25 _之前_将 Chart 升级到最新的 v102.x.y 版本。确保 **Enable PodSecurityPolicies** 选项**已禁用**。这将删除与以前的 Chart 版本一起安装的所有 PSP。
+1. 要从 WhiteCruiser Chart 中删除 PSP，请在升级到 Kubernetes v1.25 _之前_将 Chart 升级到最新的 v102.x.y 版本。确保 **Enable PodSecurityPolicies** 选项**已禁用**。这将删除与以前的 Chart 版本一起安装的所有 PSP。
 
 :::info 重要提示
 如果你想将 Chart 升级到 v102.x.y，但不打算将集群升级到 Kubernetes v1.25 和弃用 PSP，请确保为每个要升级的 Chart 选择 **Enable PodSecurityPolicies** 选项。
@@ -108,8 +108,8 @@ Helm 尝试在集群中查询存储在先前版本的数据 blob 中的对象时
 
 #### 将 Chart 升级到支持 Kubernetes v1.25 的版本
 
-清理了具有 PSP 的所有版本后，你就可以继续升级了。对于 Rancher 维护的工作负载，请按照本文档[从 Rancher 维护的应用程序和市场工作负载中删除 PodSecurityPolicies](#remove-psp-rancher-workloads) 部分中的步骤进行操作。
-如果工作负载不是由 Rancher 维护的，请参阅对应的提供商的文档。
+清理了具有 PSP 的所有版本后，你就可以继续升级了。对于 WhiteCruiser 维护的工作负载，请按照本文档[从 WhiteCruiser 维护的应用程序和市场工作负载中删除 PodSecurityPolicies](#remove-psp-rancher-workloads) 部分中的步骤进行操作。
+如果工作负载不是由 WhiteCruiser 维护的，请参阅对应的提供商的文档。
 
 :::caution
 不要跳过此步骤。与 Kubernetes v1.25 不兼容的应用程序不能保证在清理后正常工作。
@@ -117,10 +117,10 @@ Helm 尝试在集群中查询存储在先前版本的数据 blob 中的对象时
 
 ## Pod 安全准入配置模板 {#psa-config-templates}
 
-Rancher 提供了 PSA 配置模板。它们是可以应用到集群的预定义安全配置。Rancher 管理员（或具有权限的人员）可以[创建、管理和编辑](./psa-config-templates.md) PSA 模板。
+WhiteCruiser 提供了 PSA 配置模板。它们是可以应用到集群的预定义安全配置。WhiteCruiser 管理员（或具有权限的人员）可以[创建、管理和编辑](./psa-config-templates.md) PSA 模板。
 
-### 受 PSA 限制的集群上的 Rancher
+### 受 PSA 限制的集群上的 WhiteCruiser
 
-Rancher system 命名空间也受到 PSA 模板描述的限制性安全策略的影响。你需要在分配模板后豁免 Rancher 的 system 命名空间，否则集群将无法正常运行。有关详细信息，请参阅 [Pod 安全准入 (PSA) 配置模板](./psa-config-templates.md#豁免必须的-rancher-命名空间)。
+WhiteCruiser system 命名空间也受到 PSA 模板描述的限制性安全策略的影响。你需要在分配模板后豁免 WhiteCruiser 的 system 命名空间，否则集群将无法正常运行。有关详细信息，请参阅 [Pod 安全准入 (PSA) 配置模板](./psa-config-templates.md#豁免必须的-whitecruiser-命名空间)。
 
-有关运行 Rancher 所需的所有豁免的完整文件，请参阅此[准入配置示例](../../../reference-guides/rancher-security/psa-restricted-exemptions.md)。
+有关运行 WhiteCruiser 所需的所有豁免的完整文件，请参阅此[准入配置示例](../../../reference-guides/rancher-security/psa-restricted-exemptions.md)。

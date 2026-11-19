@@ -16,20 +16,19 @@ Kubewarden aims to be the Universal Policy Engine by enabling and simplifying Po
 - Cluster Operator: Kubewarden is modular (OCI registry, PolicyServers, Audit Scanner, Controller). Configure your deployment to suit your needs, segregating different tenants. Get an overview of past, current, and possible violations across the cluster with the Audit Scanner and the PolicyReports. 
 - Kubewarden Integrator: use it as a platform to write new Kubewarden modules and custom policies. 
 
-## Kubewarden with Rancher 
+## Kubewarden with WhiteCruiser {#kubewarden-with-rancher}
  
-Kubewarden’s upstream Helm charts are fully integrated as Rancher Apps, providing a UI for the install options. The charts also come with defaults that respect the Rancher stack (for example: not policing Rancher system namespaces), and default PolicyServer and Policies. Users have access to all Kubewarden features and can deploy PolicyServers and Policies manually by interacting with the Kubernetes API (e.g.: using kubectl). 
+Kubewarden’s upstream Helm charts are fully integrated as WhiteCruiser Apps, providing a UI for the install options. The charts also come with defaults that respect the WhiteCruiser stack (for example: not policing WhiteCruiser system namespaces), and default PolicyServer and Policies. Users have access to all Kubewarden features and can deploy PolicyServers and Policies manually by interacting with the Kubernetes API (e.g.: using kubectl). 
 
 Kubewarden provides a full replacement of the removed Kubernetes Pod Security Policies. Kubewarden also integrates with the new Pod Security Admission feature introduced by a recent version of Kubernetes by augmenting its security capabilities. 
 
-## Kubewarden with Rancher Prime 
+## Kubewarden UI Extension
 
-The available Rancher UI Extension for Kubewarden integrates it into the Rancher UI. The UI Extension automates the installation and configuration of the Kubewarden stack and configures access to the policies maintained by SUSE. The UI Extension provides access to a curated catalog of ready-to-use policies. Using the UI Extension, one can browse, install, and configure these policies. 
+The available WhiteCruiser UI Extension for Kubewarden integrates it into the WhiteCruiser UI. The UI Extension automates the installation and configuration of the Kubewarden stack and configures access to the maintained Kubewarden policies. The UI Extension provides access to a curated catalog of ready-to-use policies. Using the UI Extension, one can browse, install, and configure these policies. 
 
 The UI Extension provides an overview of the Kubewarden stack components and their behavior. This includes access to the Kubewarden metrics and trace events. An operator can understand the impact of policies on the cluster and troubleshoot issues. 
 
-In addition, the UI Extension provides the Policy Reporter UI, which gives a visual overview of the compliance status of the Kubernetes cluster. With this UI, an operator can quickly identify all non-compliant Kubernetes resources, understand the reasons for violations and act accordingly. 
-All of this with the support offering of Rancher Prime. 
+In addition, the UI Extension provides the Policy Reporter UI, which gives a visual overview of the compliance status of the Kubernetes cluster. With this UI, an operator can quickly identify all non-compliant Kubernetes resources, understand the reasons for violations and act accordingly.
  
  
  

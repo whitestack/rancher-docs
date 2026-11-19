@@ -6,23 +6,23 @@ title: Docker Install Commands
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/docker-install-commands"/>
 </head>
 
-The Docker installation is for Rancher users who want to test out Rancher.
+The Docker installation is for WhiteCruiser users who want to test out WhiteCruiser.
 
-Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
+Instead of running on a Kubernetes cluster, you install the WhiteCruiser server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your WhiteCruiser server.
 
-For Rancher v2.5+, the backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)
+For WhiteCruiser v2.5+, the backup application can be used to migrate the WhiteCruiser server from a Docker install to a Kubernetes install using [these steps.](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)
 
-For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
+For security purposes, SSL (Secure Sockets Layer) is required when using WhiteCruiser. SSL secures all WhiteCruiser network communication, like when you login or interact with a cluster.
 
 | Environment Variable Key         | Environment Variable Value       | Description     |
 | -------------------------------- | -------------------------------- | ---- |
-| `CATTLE_SYSTEM_DEFAULT_REGISTRY` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
-| `CATTLE_SYSTEM_CATALOG`          | `bundled`                        | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. |
+| `CATTLE_SYSTEM_DEFAULT_REGISTRY` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure WhiteCruiser server to always pull from your private registry when provisioning clusters.  |
+| `CATTLE_SYSTEM_CATALOG`          | `bundled`                        | Configure WhiteCruiser server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within WhiteCruiser is much easier than setting up a Git mirror. |
 
 > **Do you want to...**
 >
 > - Configure custom CA root certificate to access your services? See [Custom CA root certificate](../../resources/custom-ca-root-certificates.md/).
-> - Record all transactions with the Rancher API? See [API Auditing](../../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log).
+> - Record all transactions with the WhiteCruiser API? See [API Auditing](../../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log).
 
 Choose from the following options:
 
@@ -31,16 +31,16 @@ Choose from the following options:
 <details id="option-a">
   <summary>Click to expand</summary>
 
-If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
+If you are installing WhiteCruiser in a development or testing environment where identity verification isn't a concern, install WhiteCruiser using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
 Log into your Linux host, and then run the installation command below. When entering the command, use the table below to replace each placeholder.
 
 | Placeholder                      | Description                                                                                                                   |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [WhiteCruiser version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
 
-As of Rancher v2.5, privileged access is [required.](../rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
+As of WhiteCruiser v2.5, privileged access is [required.](../rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
 
 ```
 docker run -d --restart=unless-stopped \
@@ -58,7 +58,7 @@ docker run -d --restart=unless-stopped \
 <details id="option-b">
   <summary>Click to expand</summary>
 
-In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
+In development or testing environments where your team will access your WhiteCruiser server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of WhiteCruiser.
 
 > **Prerequisites:**
 > From a computer with an internet connection, create a self-signed certificate using [OpenSSL](https://www.openssl.org/) or another method of your choice.
@@ -75,9 +75,9 @@ After creating your certificate, log into your Linux host, and then run the inst
 | `<PRIVATE_KEY.pem>`              | The path to the private key for your certificate.                                                                             |
 | `<CA_CERTS.pem>`                     | The path to the certificate authority's certificate.                                                                          |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [WhiteCruiser version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
 
-As of Rancher v2.5, privileged access is [required.](../rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
+As of WhiteCruiser v2.5, privileged access is [required.](../rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
 
 ```
 docker run -d --restart=unless-stopped \
@@ -110,11 +110,11 @@ After obtaining your certificate, log into your Linux host, and then run the ins
 | `<FULL_CHAIN.pem>`               | The path to your full certificate chain.                                                                                      |
 | `<PRIVATE_KEY.pem>`              | The path to the private key for your certificate.                                                                             |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [WhiteCruiser version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
 
-> **Note:** Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by Rancher.
+> **Note:** Use the `--no-cacerts` as argument to the container to disable the default CA certificate generated by WhiteCruiser.
 
-As of Rancher v2.5, privileged access is [required.](../rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
+As of WhiteCruiser v2.5, privileged access is [required.](../rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
 
 ```
 docker run -d --restart=unless-stopped \

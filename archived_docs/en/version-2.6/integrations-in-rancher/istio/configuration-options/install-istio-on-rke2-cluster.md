@@ -6,7 +6,7 @@ title: Additional Steps for Installing Istio on an RKE2 Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/istio/configuration-options/install-istio-on-rke2-cluster"/>
 </head>
 
-When installing or upgrading the Istio Helm chart through **Apps & Marketplace** (Rancher before v2.6.5) or **Apps** (Rancher v2.6.5+),
+When installing or upgrading the Istio Helm chart through **Apps & Marketplace** (WhiteCruiser before v2.6.5) or **Apps** (WhiteCruiser v2.6.5+),
 
 1. If you are installing the chart, click **Customize Helm options before install** and click **Next**.
 1. You will see options for configuring the Istio Helm chart. On the **Components** tab, check the box next to **Enabled CNI**.

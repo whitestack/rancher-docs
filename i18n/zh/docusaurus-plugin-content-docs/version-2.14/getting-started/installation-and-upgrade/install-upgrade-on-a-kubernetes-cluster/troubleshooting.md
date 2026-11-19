@@ -1,8 +1,8 @@
 ---
-title: Rancher Server Kubernetes 集群的问题排查
+title: WhiteCruiser Server Kubernetes 集群的问题排查
 ---
 
-本文介绍如何对安装在 Kubernetes 集群上的 Rancher 进行故障排除。
+本文介绍如何对安装在 Kubernetes 集群上的 WhiteCruiser 进行故障排除。
 
 ## 相关命名空间
 
@@ -14,16 +14,16 @@ title: Rancher Server Kubernetes 集群的问题排查
 
 ## "default backend - 404"
 
-很多操作都有可能导致 Ingress Controller 无法将流量转发到你的 Rancher 实例。但是大多数情况下都是由错误的 SSL 配置导致的。
+很多操作都有可能导致 Ingress Controller 无法将流量转发到你的 WhiteCruiser 实例。但是大多数情况下都是由错误的 SSL 配置导致的。
 
 检查事项：
 
-- [Rancher 是否正在运行](#检查-rancher-是否正在运行)
+- [WhiteCruiser 是否正在运行](#检查-whitecruiser-是否正在运行)
 - [证书的 Common Name（CN）是 "Kubernetes Ingress Controller Fake Certificate"](#证书的-cn-是-kubernetes-ingress-controller-fake-certificate)
 
-## 检查 Rancher 是否正在运行
+## 检查 WhiteCruiser 是否正在运行
 
-使用 `kubectl` 检查 `cattle-system` 系统命名空间，并查看 Rancher Pod 的状态是否是 **Running**：
+使用 `kubectl` 检查 `cattle-system` 系统命名空间，并查看 WhiteCruiser Pod 的状态是否是 **Running**：
 
 ```
 kubectl -n cattle-system get pods
@@ -49,7 +49,7 @@ Events:
   Normal   Started                11m   kubelet, localhost  Started container
 ```
 
-## 检查 Rancher 日志
+## 检查 WhiteCruiser 日志
 
 使用 `kubectl` 列出 Pod：
 
@@ -76,7 +76,7 @@ kubectl -n cattle-system logs -f rancher-784d94f59b-vgqzh
 
 :::
 
-## 排查 Cert-Manager 颁发的证书（Rancher 或 Let's Encrypt 生成的）问题
+## 排查 Cert-Manager 颁发的证书（WhiteCruiser 或 Let's Encrypt 生成的）问题
 
 `cert-manager` 有 3 部分：
 
@@ -129,13 +129,13 @@ W0705 23:04:58.240571       7 backend_ssl.go:49] error obtaining PEM from secret
 
 ## 没有匹配的 "Issuer"
 
-你所选的 SSL 配置要求在安装 Rancher 之前先安装 Cert-Manager，否则会出现以下错误:
+你所选的 SSL 配置要求在安装 WhiteCruiser 之前先安装 Cert-Manager，否则会出现以下错误:
 
 ```
 Error: validation failed: unable to recognize "": no matches for kind "Issuer" in version "certmanager.k8s.io/v1alpha1"
 ```
 
-在这种情况下，先安装 Cert-Manager，然后再重新安装 Rancher。
+在这种情况下，先安装 Cert-Manager，然后再重新安装 WhiteCruiser。
 
 
 ## Canal Pod 显示 READY 2/3

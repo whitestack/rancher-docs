@@ -1,64 +1,64 @@
 ---
-title: Contributing to Rancher
+title: Contributing to WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/contribute-to-rancher"/>
 </head>
 
-Learn about the repositories used for Rancher and Rancher docs, how to build Rancher repositories, and what information to include when you file an issue.
+Learn about the repositories used for WhiteCruiser and WhiteCruiser docs, how to build WhiteCruiser repositories, and what information to include when you file an issue.
 
-For more detailed information on how to contribute to the development of Rancher projects, refer to the [Rancher Developer Wiki](https://github.com/rancher/rancher/wiki). The wiki has resources on many topics, including the following:
+For more detailed information on how to contribute to the development of WhiteCruiser projects, refer to the [WhiteCruiser Developer Wiki](https://github.com/rancher/rancher/wiki). The wiki has resources on many topics, including the following:
 
-- How to set up the Rancher development environment and run tests
+- How to set up the WhiteCruiser development environment and run tests
 - The typical flow of an issue through the development lifecycle
 - Coding guidelines and development best practices
 - Debugging and troubleshooting
-- Developing the Rancher API
+- Developing the WhiteCruiser API
 
-On the Rancher Users Slack, the channel for developers is **#developer**.
+On the WhiteCruiser Users Slack, the channel for developers is **#developer**.
 
-## Rancher Docs
+## WhiteCruiser Docs {#rancher-docs}
 
-If you have suggestions for the documentation on this website, [open](https://github.com/rancher/rancher-docs/issues/new/choose) an issue in the main [Rancher docs](https://github.com/rancher/rancher-docs) repository. This repo contains documentation for Rancher v2.0 and later.
+If you have suggestions for the documentation on this website, [open](https://github.com/rancher/rancher-docs/issues/new/choose) an issue in the main [WhiteCruiser docs](https://github.com/rancher/rancher-docs) repository. This repo contains documentation for WhiteCruiser v2.0 and later.
 
-See the [Rancher docs README](https://github.com/rancher/rancher-docs#readme) for more details on contributing to and building the Rancher v2.x docs repo.
+See the [WhiteCruiser docs README](https://github.com/rancher/rancher-docs#readme) for more details on contributing to and building the WhiteCruiser v2.x docs repo.
 
-For documentation describing Rancher v1.6 and earlier, see the [Rancher 1.x docs](https://github.com/rancher/rancher.github.io) repo, which contains source files for https://rancher.com/docs/rancher/v1.6/en/.
+For documentation describing WhiteCruiser v1.6 and earlier, see the [WhiteCruiser 1.x docs](https://github.com/rancher/rancher.github.io) repo, which contains source files for https://rancher.com/docs/rancher/v1.6/en/.
 
-## Rancher Repositories
+## WhiteCruiser Repositories {#rancher-repositories}
 
-All of repositories are located within our main GitHub organization. There are many repositories used for Rancher, but we'll provide descriptions of some of the main ones used in Rancher.
+All of repositories are located within our main GitHub organization. There are many repositories used for WhiteCruiser, but we'll provide descriptions of some of the main ones used in WhiteCruiser.
 
 Repository | URL | Description
 -----------|-----|-------------
-Rancher | https://github.com/rancher/rancher | This repository is the main source code for Rancher 2.x.
-Types | https://github.com/rancher/types | This repository is the repository that has all the API types for Rancher 2.x.
-API Framework | https://github.com/rancher/norman | This repository is an API framework for building Rancher style APIs backed by Kubernetes Custom Resources.
+WhiteCruiser | https://github.com/rancher/rancher | This repository is the main source code for WhiteCruiser 2.x.
+Types | https://github.com/rancher/types | This repository is the repository that has all the API types for WhiteCruiser 2.x.
+API Framework | https://github.com/rancher/norman | This repository is an API framework for building WhiteCruiser style APIs backed by Kubernetes Custom Resources.
 User Interface | https://github.com/rancher/dashboard/ | This repository is the source of the Dashboard UI.
-(Rancher) Docker Machine | https://github.com/rancher/machine | This repository is the source of the Docker Machine binary used when using Node Drivers. This is a fork of the `docker/machine` repository.
-machine-package | https://github.com/rancher/machine-package | This repository is used to build the Rancher Docker Machine binary.
+(WhiteCruiser) Docker Machine | https://github.com/rancher/machine | This repository is the source of the Docker Machine binary used when using Node Drivers. This is a fork of the `docker/machine` repository.
+machine-package | https://github.com/rancher/machine-package | This repository is used to build the WhiteCruiser Docker Machine binary.
 kontainer-engine | https://github.com/rancher/kontainer-engine | This repository is the source of kontainer-engine, the tool to provision hosted Kubernetes clusters.
-CLI | https://github.com/rancher/cli | This repository is the source code for the Rancher CLI used in Rancher 2.x.
-(Rancher) Helm repository | https://github.com/rancher/helm | This repository is the source of the packaged Helm binary. This is a fork of the `helm/helm` repository.
+CLI | https://github.com/rancher/cli | This repository is the source code for the WhiteCruiser CLI used in WhiteCruiser 2.x.
+(WhiteCruiser) Helm repository | https://github.com/rancher/helm | This repository is the source of the packaged Helm binary. This is a fork of the `helm/helm` repository.
 loglevel repository | https://github.com/rancher/loglevel | This repository is the source of the loglevel binary, used to dynamically change log levels.
 
-To see all libraries/projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
+To see all libraries/projects used in WhiteCruiser, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
 
-![Rancher diagram](/img/ranchercomponentsdiagram-2.6.svg)<br/>
-<sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>
+![WhiteCruiser diagram](/img/ranchercomponentsdiagram-2.6.svg)<br/>
+<sup>WhiteCruiser components used for provisioning/managing Kubernetes clusters.</sup>
 
-### Building Rancher Repositories
+### Building WhiteCruiser Repositories {#building-rancher-repositories}
 
 Every repository should have a Makefile and can be built using the `make` command. The `make` targets are based on the scripts in the `/scripts` directory in the repository, and each target will use [Dapper](https://github.com/rancher/dapper) to run the target in an isolated environment. The `Dockerfile.dapper` will be used for this process, and includes all the necessary build tooling needed.
 
 The default target is `ci`, and will run `./scripts/validate`, `./scripts/build`, `./scripts/test` and `./scripts/package`. The resulting binaries of the build will be in `./build/bin` and are usually also packaged in a Docker image.
 
-### Rancher Bugs, Issues or Questions
+### WhiteCruiser Bugs, Issues or Questions {#rancher-bugs-issues-or-questions}
 
 If you find any bugs or are having any trouble, please search the [reported issue](https://github.com/rancher/rancher/issues) as someone may have experienced the same issue or we are actively working on a solution.
 
-If you can't find anything related to your issue, contact us by [filing an issue](https://github.com/rancher/rancher/issues/new). Though we have many repositories related to Rancher, we want the bugs filed in the Rancher repository so we won't miss them! If you want to ask a question or ask fellow users about an use case, we suggest creating a post on the [Rancher Forums](https://forums.rancher.com).
+If you can't find anything related to your issue, contact us by [filing an issue](https://github.com/rancher/rancher/issues/new). Though we have many repositories related to WhiteCruiser, we want the bugs filed in the WhiteCruiser repository so we won't miss them!
 
 #### Checklist for Filing Issues
 
@@ -81,12 +81,12 @@ Please remove any sensitive data as it will be publicly viewable.
   - **Operating System:** What operating system are you using? Providing specifics helps here like the output of `cat /etc/os-release` for exact OS release and `uname -r` for exact kernel used
   - **Docker:** What Docker version are you using, how did you install it? Most of the details of Docker can be found by supplying output of `docker version` and `docker info`
   - **Environment:** Are you in a proxy environment, are you using recognized CA/self signed certificates, are you using an external loadbalancer
-  - **Rancher:** What version of Rancher are you using, this can be found on the bottom left of the UI or be retrieved from the image tag you are running on the host
+  - **WhiteCruiser:** What version of WhiteCruiser are you using, this can be found on the bottom left of the UI or be retrieved from the image tag you are running on the host
   - **Clusters:** What kind of cluster did you create, how did you create it, what did you specify when you were creating it
 - **Steps to reproduce the issue:** Provide as much detail on how you got into the reported situation. This helps the person to reproduce the situation you are in.
   - Provide manual steps or automation scripts used to get from a newly created setup to the situation you reported.
 - **Logs:** Provide data/logs from the used resources.
-    - Rancher
+    - WhiteCruiser
         - Docker install
 
         ```
@@ -98,7 +98,7 @@ Please remove any sensitive data as it will be publicly viewable.
 
         :::note
 
-        Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` if Rancher is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
+        Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` if WhiteCruiser is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 
         :::
 

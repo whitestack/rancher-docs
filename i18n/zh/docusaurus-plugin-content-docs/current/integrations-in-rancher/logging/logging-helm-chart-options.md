@@ -47,9 +47,9 @@ Logging v2 已在 RHEL/CentOS 7 和 8 上使用 SELinux 进行了测试。
 
 ## 其他日志来源
 
-默认情况下，Rancher 会收集所有类型集群的 [controlplane 组件](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components)和[节点组件](https://kubernetes.io/docs/concepts/overview/components/#node-components)的日志。
+默认情况下，WhiteCruiser 会收集所有类型集群的 [controlplane 组件](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components)和[节点组件](https://kubernetes.io/docs/concepts/overview/components/#node-components)的日志。
 
-在某些情况下，Rancher 也能收集其他的日志。
+在某些情况下，WhiteCruiser 也能收集其他的日志。
 
 下表总结了每种节点类型可以收集的其他日志来源：
 
@@ -63,13 +63,13 @@ Logging v2 已在 RHEL/CentOS 7 和 8 上使用 SELinux 进行了测试。
 
 要将托管 Kubernetes 的提供商作为额外的日志来源，在安装或升级 Logging Helm Chart 时，请启用 **Enable enhanced cloud provider logging** 选项。
 
-启用后，Rancher 会收集提供商开放可用的所有其他节点和 controlplane 日志，不同提供商可能有所不同。
+启用后，WhiteCruiser 会收集提供商开放可用的所有其他节点和 controlplane 日志，不同提供商可能有所不同。
 
 如果你已经使用了云提供商的日志解决方案，例如 AWS CloudWatch 或 Google Cloud Operations Suite（以前称为 Stackdriver），由于原生解决方案可以不受限制地访问所有日志，因此你无需启用此选项。
 
 ## Systemd 配置
 
-在 Rancher Logging 中，你必须为 K3s 和 RKE2 Kubernetes 发行版配置 `SystemdLogPath`。
+在 WhiteCruiser Logging 中，你必须为 K3s 和 RKE2 Kubernetes 发行版配置 `SystemdLogPath`。
 
 K3s 和 RKE2 Kubernetes 发行版将日志写入到 journald，它是 systemd 的子系统，用于日志记录。要收集这些日志，你需要定义 `systemdLogPath`。默认路径是 `run/log/journal`，但某些 Linux 发行版不默认使用该路径。例如，Ubuntu 默认使用 `var/log/journal`。要确定你的 `systemdLogPath` 配置，请参阅以下步骤。
 
@@ -84,7 +84,7 @@ K3s 和 RKE2 Kubernetes 发行版将日志写入到 journald，它是 systemd �
 
 :::note 注意事项：
 
-如果返回的值不包括在上述描述中，Rancher Logging 将无法收集 controlplane 日志。要解决此问题，你需要在每个 controlplane 节点上执行以下操作。
+如果返回的值不包括在上述描述中，WhiteCruiser Logging 将无法收集 controlplane 日志。要解决此问题，你需要在每个 controlplane 节点上执行以下操作。
 
 * 在 journald.conf 中设置 `Storage=volatile`。
 * 重启主机。

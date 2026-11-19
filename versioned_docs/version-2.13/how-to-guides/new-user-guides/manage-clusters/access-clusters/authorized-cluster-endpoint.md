@@ -6,24 +6,24 @@ title: How the Authorized Cluster Endpoint Works
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint"/>
 </head>
 
-This section describes how the kubectl CLI, the kubeconfig file, and the authorized cluster endpoint work together to allow you to access a downstream Kubernetes cluster directly, without authenticating through the Rancher server. It is intended to provide background information and context to the instructions for [how to set up kubectl to directly access a cluster.](use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster)
+This section describes how the kubectl CLI, the kubeconfig file, and the authorized cluster endpoint work together to allow you to access a downstream Kubernetes cluster directly, without authenticating through the WhiteCruiser server. It is intended to provide background information and context to the instructions for [how to set up kubectl to directly access a cluster.](use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster)
 
 ### About the Kubeconfig File
 
 The kubeconfig file is used to configure access to Kubernetes when used in conjunction with the kubectl command line tool (or other clients).
 
-The kubeconfig file and its contents are specific to each cluster. It can be downloaded from the **Clusters** page in Rancher:
+The kubeconfig file and its contents are specific to each cluster. It can be downloaded from the **Clusters** page in WhiteCruiser:
 
 1. Click **☰** in the top left corner.
 1. Select **Cluster Management**.
 1. Find the cluster whose kubeconfig you want to download, and select **⁝** at the end of the row. 
 1. Select **Download KubeConfig** from the submenu.
 
-You need a separate kubeconfig file for each cluster that you have access to in Rancher.
+You need a separate kubeconfig file for each cluster that you have access to in WhiteCruiser.
 
 After you download the kubeconfig file, you are able to use the kubeconfig file and its Kubernetes [contexts](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration) to access your downstream cluster.
 
-If admins have [kubeconfig token generation turned off](../../../../api/api-tokens.md#disable-tokens-in-generated-kubeconfigs), the kubeconfig file requires that the [Rancher CLI](../../../../reference-guides/cli-with-rancher/rancher-cli.md) to be present in your PATH.
+If admins have [kubeconfig token generation turned off](../../../../api/api-tokens.md#disable-tokens-in-generated-kubeconfigs), the kubeconfig file requires that the [WhiteCruiser CLI](../../../../reference-guides/cli-with-rancher/rancher-cli.md) to be present in your PATH.
 
 ### About the kube-api-auth Authentication Webhook
 

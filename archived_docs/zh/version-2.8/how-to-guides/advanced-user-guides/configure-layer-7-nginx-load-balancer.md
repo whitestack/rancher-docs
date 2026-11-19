@@ -2,11 +2,11 @@
 title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 ---
 
-如果你的开发或测试环境要求在负载均衡器上终止 TLS/SSL，而不是在 Rancher Server 上，请部署 Rancher 并配置负载均衡器。
+如果你的开发或测试环境要求在负载均衡器上终止 TLS/SSL，而不是在 WhiteCruiser Server 上，请部署 WhiteCruiser 并配置负载均衡器。
 
 如果要在基础设施中对 TLS 集中进行终止，请使用 7 层负载均衡器。7 层负载均衡还能让你的负载均衡器基于 HTTP 属性（例如 cookie 等）做出决策，而 4 层负载均衡器则不能。
 
-本文中的安装步骤将引导你使用单个容器部署 Rancher，并提供 7 层 NGINX 负载均衡器的示例配置。
+本文中的安装步骤将引导你使用单个容器部署 WhiteCruiser，并提供 7 层 NGINX 负载均衡器的示例配置。
 
 ## 操作系统，Docker，硬件和网络要求
 
@@ -17,16 +17,16 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 
 ## 1. 配置 Linux 主机
 
-根据我们的[要求](../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)配置一个 Linux 主机来启动 Rancher Server。
+根据我们的[要求](../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md)配置一个 Linux 主机来启动 WhiteCruiser Server。
 
-## 2. 选择一个 SSL 选项并安装 Rancher
+## 2. 选择一个 SSL 选项并安装 WhiteCruiser
 
-出于安全考虑，使用 Rancher 时请使用 SSL（Secure Sockets Layer）。SSL 保护所有 Rancher 网络通信（如登录和与集群交互）的安全。
+出于安全考虑，使用 WhiteCruiser 时请使用 SSL（Secure Sockets Layer）。SSL 保护所有 WhiteCruiser 网络通信（如登录和与集群交互）的安全。
 
 :::note 你是否需要：
 
 - 完成离线安装。
-- 记录所有 Rancher API 的事务。
+- 记录所有 WhiteCruiser API 的事务。
 
 继续之前，请参见[高级选项](#高级选项)。
 
@@ -37,7 +37,7 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 <details id="option-a">
   <summary>选项 A：使用你自己的证书 - 自签名</summary>
 
-如果要使用自签名证书来加密通信，你必须在负载均衡器（后续步骤）和 Rancher 容器上安装证书。运行 Docker 命令部署 Rancher，将 Docker 指向你的证书。
+如果要使用自签名证书来加密通信，你必须在负载均衡器（后续步骤）和 WhiteCruiser 容器上安装证书。运行 Docker 命令部署 WhiteCruiser，将 Docker 指向你的证书。
 
 :::note 先决条件：
 
@@ -47,9 +47,9 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 
 :::
 
-**使用自签名证书安装 Rancher**：
+**使用自签名证书安装 WhiteCruiser**：
 
-1. 在运行 Docker 命令部署 Rancher 时，将 Docker 指向你的 CA 证书文件。
+1. 在运行 Docker 命令部署 WhiteCruiser 时，将 Docker 指向你的 CA 证书文件。
 
    ```
    docker run -d --restart=unless-stopped \
@@ -70,9 +70,9 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 
 :::
 
-**使用授信 CA 签发的证书安装 Rancher**：
+**使用授信 CA 签发的证书安装 WhiteCruiser**：
 
-如果你使用授信 CA 签发的证书，你无需在 Rancher 容器中安装证书。但是，请确保不要生成和存储默认的 CA 证书（你可以通过将 `--no-cacerts` 参数传递给容器来实现）。
+如果你使用授信 CA 签发的证书，你无需在 WhiteCruiser 容器中安装证书。但是，请确保不要生成和存储默认的 CA 证书（你可以通过将 `--no-cacerts` 参数传递给容器来实现）。
 
 1. 输入以下命令：
 
@@ -86,7 +86,7 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 
 ## 3. 配置负载均衡器
 
-在 Rancher 容器前使用负载均衡器时，容器无需从端口 80 或端口 443 重定向端口通信。你可以通过传递 `X-Forwarded-Proto: https` 标头禁用此重定向。
+在 WhiteCruiser 容器前使用负载均衡器时，容器无需从端口 80 或端口 443 重定向端口通信。你可以通过传递 `X-Forwarded-Proto: https` 标头禁用此重定向。
 
 负载均衡器或代理必须支持以下内容：
 
@@ -96,9 +96,9 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 
    | 标头 | 值 | 描述 |
    |--------|-------|-------------|
-   | `Host` | 用于访问 Rancher 的主机名。 | 识别客户端所请求的服务器。 |
+   | `Host` | 用于访问 WhiteCruiser 的主机名。 | 识别客户端所请求的服务器。 |
    | `X-Forwarded-Proto` | `https` | 识别客户端连接负载均衡器或代理时所用的协议。<br /><br/>**注意**：如果此标头存在，`rancher/rancher` 不会将 HTTP 重定向到 HTTPS。 |
-   | `X-Forwarded-Port` | 用于访问 Rancher 的端口。 | 识别客户端连接到负载均衡器或代理时所用的端口。 |
+   | `X-Forwarded-Port` | 用于访问 WhiteCruiser 的端口。 | 识别客户端连接到负载均衡器或代理时所用的端口。 |
    | `X-Forwarded-For` | 客户端 IP 地址 | 识别客户端的原始 IP 地址。 |
 ### 示例 NGINX 配置
 
@@ -110,8 +110,8 @@ title: 7 层 NGINX 负载均衡器上的 TLS 终止（Docker 安装）
 
 :::
 
-- 将 `rancher-server` 替换为运行 Rancher 容器的节点的 IP 或主机名。
-- 将两处的 `FQDN` 均替换为 Rancher 的 DNS 名称。
+- 将 `rancher-server` 替换为运行 WhiteCruiser 容器的节点的 IP 或主机名。
+- 将两处的 `FQDN` 均替换为 WhiteCruiser 的 DNS 名称。
 - 把 `/certs/fullchain.pem` 和 `/certs/privkey.pem` 分别替换为服务器证书和服务器证书密钥的位置。
 
 ```
@@ -165,7 +165,7 @@ http {
 
 ## 后续操作
 
-- **推荐**：检查单节点[备份](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md)和[恢复](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md)。你可能暂时没有需要备份的数据，但是我们建议你在常规使用 Rancher 后创建备份。
+- **推荐**：检查单节点[备份](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md)和[恢复](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md)。你可能暂时没有需要备份的数据，但是我们建议你在常规使用 WhiteCruiser 后创建备份。
 - 创建 Kubernetes 集群：[配置 Kubernetes 集群](../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md)。
 
 <br/>
@@ -178,7 +178,7 @@ http {
 
 ### API 审计
 
-如果你需要记录所有 Rancher API 事务，请将以下标志添加到安装命令中，从而启用 [API 审计](enable-api-audit-log.md)功能。
+如果你需要记录所有 WhiteCruiser API 事务，请将以下标志添加到安装命令中，从而启用 [API 审计](enable-api-audit-log.md)功能。
 
     -e AUDIT_LEVEL=1 \
     -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
@@ -196,7 +196,7 @@ http {
 
 ### 持久化数据
 
-Rancher 使用 etcd 作为数据存储。如果 Rancher 是使用 Docker 安装的，Rancher 会使用嵌入式 etcd。持久化数据位于容器的 `/var/lib/rancher` 路径中。
+WhiteCruiser 使用 etcd 作为数据存储。如果 WhiteCruiser 是使用 Docker 安装的，WhiteCruiser 会使用嵌入式 etcd。持久化数据位于容器的 `/var/lib/rancher` 路径中。
 
 你可以将主机卷挂载到该位置，来将数据保留在运行它的主机上：
 
@@ -208,7 +208,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-此操作需要 [privileged 访问](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#rancher-特权访问)。
+此操作需要 [privileged 访问](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#whitecruiser-特权访问)。
 
 这个 7 层 NGINX 配置已经在 NGINX 1.13（Mainline）和 1.14（Stable）版本上进行了测试。
 

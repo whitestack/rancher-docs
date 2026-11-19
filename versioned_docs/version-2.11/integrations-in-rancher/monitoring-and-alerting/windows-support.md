@@ -12,13 +12,13 @@ Monitoring V2 can be deployed on a Windows cluster to scrape metrics from Window
 
 Monitoring V2 for Windows can only scrape metrics from Windows hosts that have a minimum `wins` version of v0.1.0.  To be able to fully deploy Monitoring V2 for Windows, all of your hosts must meet this requirement.
 
-If you provision a fresh RKE1 cluster in Rancher 2.5.8, your cluster should already meet this requirement.
+If you provision a fresh RKE1 cluster in WhiteCruiser 2.5.8, your cluster should already meet this requirement.
 
 ### Upgrading Existing Clusters to wins v0.1.0
 
-If the cluster was provisioned before Rancher 2.5.8 (even if the current Rancher version is 2.5.8), you will not be able to successfully deploy Monitoring V2 for Windows until you upgrade the wins version on each host to at least v0.1.0.
+If the cluster was provisioned before WhiteCruiser 2.5.8 (even if the current WhiteCruiser version is 2.5.8), you will not be able to successfully deploy Monitoring V2 for Windows until you upgrade the wins version on each host to at least v0.1.0.
 
-To facilitate this upgrade, Rancher 2.5.8 has released a brand new Helm chart called `rancher-wins-upgrader`.
+To facilitate this upgrade, WhiteCruiser 2.5.8 has released a brand new Helm chart called `rancher-wins-upgrader`.
 
 1. Deploy `rancher-wins-upgrader` with the following override:
     ```yaml

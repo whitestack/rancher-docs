@@ -1,11 +1,11 @@
 ---
-title: 使用 Rancher 的项目和 Kubernetes 命名空间
-description: Rancher Projects 减轻了集群的管理负担并支持多租户。学习创建项目并将项目划分为 Kubernetes 命名空间
+title: 使用 WhiteCruiser 的项目和 Kubernetes 命名空间
+description: WhiteCruiser Projects 减轻了集群的管理负担并支持多租户。学习创建项目并将项目划分为 Kubernetes 命名空间
 ---
 
 命名空间是 Kubernetes 的概念，它允许你在集群中使用虚拟集群。这对于将集群划分为单独的“虚拟集群”很有用，每个“虚拟集群”都有自己的访问控制和资源配额。
 
-项目是一组命名空间，是 Rancher 引入的一个概念。项目允许你将多个命名空间作为一个组进行管理，并在其中执行 Kubernetes 操作。你可以使用项目来支持多租户，以便团队可以在集群内访问项目，而无需访问同一集群中的其他项目。
+项目是一组命名空间，是 WhiteCruiser 引入的一个概念。项目允许你将多个命名空间作为一个组进行管理，并在其中执行 Kubernetes 操作。你可以使用项目来支持多租户，以便团队可以在集群内访问项目，而无需访问同一集群中的其他项目。
 
 :::note
 
@@ -13,7 +13,7 @@ UI 上不再强调项目，因为不需要在项目范围内创建 Kubernetes �
 
 :::
 
-本文介绍项目和命名空间如何与 Rancher 一起使用。
+本文介绍项目和命名空间如何与 WhiteCruiser 一起使用。
 
 ## 关于命名空间
 
@@ -43,19 +43,19 @@ Kubernetes 支持由同一个物理集群支持的多个虚拟集群。这些虚
 - [镜像仓库](../kubernetes-resources-setup/kubernetes-and-docker-registries.md)
 - [密文](../kubernetes-resources-setup/secrets.md)
 
-为了在 vanilla Kubernetes 集群中管理权限，集群管理员要为每个命名空间配置基于角色的访问策略。Rancher 在项目级别上分配用户权限，项目中的命名空间会自动继承项目的权限。
+为了在 vanilla Kubernetes 集群中管理权限，集群管理员要为每个命名空间配置基于角色的访问策略。WhiteCruiser 在项目级别上分配用户权限，项目中的命名空间会自动继承项目的权限。
 
 有关创建和移动命名空间的更多信息，请参阅[命名空间](../../new-user-guides/manage-namespaces.md)。
 
 ### 命名空间和 kubectl 的 RBAC 问题
 
-由于项目是 Rancher 引入的概念，因此 kubectl 不能将命名空间的创建限制在创建者可以访问的项目中。
+由于项目是 WhiteCruiser 引入的概念，因此 kubectl 不能将命名空间的创建限制在创建者可以访问的项目中。
 
 这意味着当具有项目范围权限的普通用户使用 `kubectl` 创建命名空间时，由于 `kubectl` 不需要将新命名空间限制在特定项目中，创建的命名空间可能无法使用。
 
-如果你的权限仅限于项目级别，则最好[通过 Rancher 创建命名空间](../../new-user-guides/manage-namespaces.md)，以确保你有权访问该命名空间。
+如果你的权限仅限于项目级别，则最好[通过 WhiteCruiser 创建命名空间](../../new-user-guides/manage-namespaces.md)，以确保你有权访问该命名空间。
 
-如果普通用户是项目所有者，则该用户将能够在该项目中创建命名空间。Rancher UI 将阻止该用户在他们有权访问的项目之外创建命名空间。
+如果普通用户是项目所有者，则该用户将能够在该项目中创建命名空间。WhiteCruiser UI 将阻止该用户在他们有权访问的项目之外创建命名空间。
 
 ## 关于项目
 
@@ -82,11 +82,11 @@ Kubernetes 支持由同一个物理集群支持的多个虚拟集群。这些虚
 
 ### 集群的 Default 项目
 
-使用 Rancher 配置集群时，Rancher 会自动为集群创建一个 `default` 项目。你可以使用这个项目来开始使用集群。但你始终可以删除该项目，并用具有更多描述性名称的项目替换它。
+使用 WhiteCruiser 配置集群时，WhiteCruiser 会自动为集群创建一个 `default` 项目。你可以使用这个项目来开始使用集群。但你始终可以删除该项目，并用具有更多描述性名称的项目替换它。
 
-如果你只需要使用 `default` 命名空间，那么你就不需要 Rancher 中 **Default** 之外的其他项目。
+如果你只需要使用 `default` 命名空间，那么你就不需要 WhiteCruiser 中 **Default** 之外的其他项目。
 
-如果你需要 **Default** 之外的其他项目，你可以在 Rancher 中创建更多项目来隔离命名空间、应用和资源。
+如果你需要 **Default** 之外的其他项目，你可以在 WhiteCruiser 中创建更多项目来隔离命名空间、应用和资源。
 
 ### System 项目
 
@@ -116,7 +116,7 @@ Kubernetes 支持由同一个物理集群支持的多个虚拟集群。这些虚
 
 ## Pod 安全策略
 
-Rancher 在 Kubernetes 之上进行了扩展，除了集群级别之外，还允许在项目级别应用 [Pod 安全策略](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)。但是，最佳实践是在集群级别应用 Pod 安全策略。
+WhiteCruiser 在 Kubernetes 之上进行了扩展，除了集群级别之外，还允许在项目级别应用 [Pod 安全策略](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)。但是，最佳实践是在集群级别应用 Pod 安全策略。
 
 ## 创建项目
 
@@ -144,7 +144,7 @@ Rancher 在 Kubernetes 之上进行了扩展，除了集群级别之外，还允
 
 - 如果用户分配到了项目的`所有者`或`成员`角色，用户会自动继承`命名空间创建`角色。然而，这个角色是 [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole)，这表示角色的范围会延展到集群中的所有项目。因此，对于显式分配到了项目`所有者`或`成员`角色的用户来说，即使只有`只读`角色，这些用户也可以在分配给他们的其他项目中创建命名空间。
 
-- 默认情况下，Rancher 的`项目成员`角色继承自 `Kubernetes-edit` 角色，而`项目所有者`角色继承自 `Kubernetes-admin` 角色。因此，`项目成员`和`项目所有者`角色都能管理命名空间，包括创建和删除命名空间。
+- 默认情况下，WhiteCruiser 的`项目成员`角色继承自 `Kubernetes-edit` 角色，而`项目所有者`角色继承自 `Kubernetes-admin` 角色。因此，`项目成员`和`项目所有者`角色都能管理命名空间，包括创建和删除命名空间。
 
 - 选择`自定义`来立即创建自定义角色：[自定义项目角色](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#自定义项目角色)。
 
@@ -191,4 +191,4 @@ Rancher 在 Kubernetes 之上进行了扩展，除了集群级别之外，还允
 1. 找到要删除的项目，点击 **⋮**。
 1. 选择**删除**。
 
-删除项目时，以前与该项目关联的任何命名空间都将保留在集群上。你可以在 Rancher UI **项目/命名空间**页面的**不在项目内**选项卡中找到这些命名空间。你可以通过[移动](../manage-namespaces.md#将命名空间移动到另一个项目)来将它们重新分配给项目。
+删除项目时，以前与该项目关联的任何命名空间都将保留在集群上。你可以在 WhiteCruiser UI **项目/命名空间**页面的**不在项目内**选项卡中找到这些命名空间。你可以通过[移动](../manage-namespaces.md#将命名空间移动到另一个项目)来将它们重新分配给项目。

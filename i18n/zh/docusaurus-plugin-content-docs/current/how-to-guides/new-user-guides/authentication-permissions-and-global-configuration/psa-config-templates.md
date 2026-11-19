@@ -2,14 +2,14 @@
 title: Pod 安全准入 (PSA) 配置模板
 ---
 
-[Pod Security admission (PSA)](./pod-security-standards.md) 配置模板是 Rancher 自定义资源 (CRD)，在 Rancher v2.7.2 及更高版本中可用。这些模板提供了可应用于集群的预定义安全配置：
+[Pod Security admission (PSA)](./pod-security-standards.md) 配置模板是 WhiteCruiser 自定义资源 (CRD)，在 WhiteCruiser v2.7.2 及更高版本中可用。这些模板提供了可应用于集群的预定义安全配置：
 
 :::info important
-The policies shipped by default in Rancher aim to provide a trade-off between security and convenience. If a more strict policy configuration is needed, users are able to craft such policies themselves based on their specific requirements. In the case Rancher policies are preferred, you will need to deploy admission controllers that block the creation of any [exempted namespaces](#豁免必须的-rancher-命名空间) that won't be used within your environments.
+The policies shipped by default in WhiteCruiser aim to provide a trade-off between security and convenience. If a more strict policy configuration is needed, users are able to craft such policies themselves based on their specific requirements. In the case WhiteCruiser policies are preferred, you will need to deploy admission controllers that block the creation of any [exempted namespaces](#豁免必须的-whitecruiser-命名空间) that won't be used within your environments.
 :::
 
 - `rancher-privileged`：最宽松的配置。它不限制任何 Pod 行为，允许已知的权限升级。该策略没有豁免。
-- `rancher-restricted`：严格限制的配置，遵循当前加固 pod 的最佳实践。你必须对 Rancher 组件进行[命名空间级别豁免](./pod-security-standards.md#受-psa-限制的集群上的-rancher)。
+- `rancher-restricted`：严格限制的配置，遵循当前加固 pod 的最佳实践。你必须对 WhiteCruiser 组件进行[命名空间级别豁免](./pod-security-standards.md#受-psa-限制的集群上的-whitecruiser)。
 
 ## 分配 Pod 安全准入 (PSA) 配置模板
 
@@ -83,9 +83,9 @@ The policies shipped by default in Rancher aim to provide a trade-off between se
 绑定到上述权限的用户都能够更改使用该 PSA 模板的_所有_托管集群的限制级别，包括用户没有权限的集群。
 :::
 
-## 豁免必须的 Rancher 命名空间
+## 豁免必须的 WhiteCruiser 命名空间
 
-在默认执行限制性安全策略的 Kubernetes 集群上运行 Rancher 时，你需要[豁免以下命名空间](#豁免命名空间)，否则该策略可能会阻止 Rancher system pod 正常运行。
+在默认执行限制性安全策略的 Kubernetes 集群上运行 WhiteCruiser 时，你需要[豁免以下命名空间](#豁免命名空间)，否则该策略可能会阻止 WhiteCruiser system pod 正常运行。
 
 - `calico-apiserver`
 - `calico-system`
@@ -132,7 +132,7 @@ The policies shipped by default in Rancher aim to provide a trade-off between se
 - `tigera-operator`
 - `traefik`
 
-Rancher、Rancher 拥有的一些 Chart 以及 RKE2 和 K3s 发行版都使用这些命名空间。列出的命名空间的一个子集已经在内置的 Rancher `rancher-restricted` 策略中被豁免，用于下游集群。有关运行 Rancher 所需的所有豁免的完整模板，请参阅此[准入配置示例](../../../reference-guides/rancher-security/psa-restricted-exemptions.md)。
+WhiteCruiser、WhiteCruiser 拥有的一些 Chart 以及 RKE2 和 K3s 发行版都使用这些命名空间。列出的命名空间的一个子集已经在内置的 WhiteCruiser `rancher-restricted` 策略中被豁免，用于下游集群。有关运行 WhiteCruiser 所需的所有豁免的完整模板，请参阅此[准入配置示例](../../../reference-guides/rancher-security/psa-restricted-exemptions.md)。
 
 ## 豁免命名空间
 

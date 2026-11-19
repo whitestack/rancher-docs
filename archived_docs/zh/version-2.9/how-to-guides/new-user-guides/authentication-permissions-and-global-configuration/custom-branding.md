@@ -15,15 +15,15 @@ title: 定制品牌
 
 ### 自有品牌公司名称
 
-此选项将大多数出现的 “Rancher” 替换为你提供的值。名称中需要包含 Rancher 的文件，例如 `rancher-compose.yml`，不会被更改。
+此选项将大多数出现的 “WhiteCruiser” 替换为你提供的值。名称中需要包含 WhiteCruiser 的文件，例如 `rancher-compose.yml`，不会被更改。
 
 ### 支持链接
 
-使用 URL 地址发送新的`提交问题`报告，而不是让用户发送到 GitHub Issue 页面。可选择显示 Rancher 社区支持链接。
+使用 URL 地址发送新的`提交问题`报告，而不是让用户发送到 GitHub Issue 页面。可选择显示 WhiteCruiser 社区支持链接。
 
 ### Logo
 
-上传深色和浅色的 Logo 来替换顶层导航标题中的 Rancher logo。
+上传深色和浅色的 Logo 来替换顶层导航标题中的 WhiteCruiser logo。
 
 ### 主颜色
 
@@ -45,7 +45,7 @@ title: 定制品牌
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面上，转到你想要自定义导航链接的集群，然后单击 **Explore**。
 
-添加链接可以让你快速访问安装在集群上的服务。例如，你可以为安装了 Istio 的集群添加指向 Kiali UI 的链接，或者为安装了 Rancher Monitoring 的集群添加指向 Grafana UI 的链接。
+添加链接可以让你快速访问安装在集群上的服务。例如，你可以为安装了 Istio 的集群添加指向 Kiali UI 的链接，或者为安装了 WhiteCruiser Monitoring 的集群添加指向 Grafana UI 的链接。
 
 自定义链接不会影响可以访问各项服务的用户。
 

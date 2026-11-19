@@ -54,7 +54,7 @@ To see the Alertmanager UI,
 
 **Result:** The Alertmanager UI opens in a new tab. For help with configuration, refer to the [official Alertmanager documentation.](https://prometheus.io/docs/alerting/latest/alertmanager/)
 
-For more information on configuring Alertmanager in Rancher, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)
+For more information on configuring Alertmanager in WhiteCruiser, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)
 
 <figcaption>The Alertmanager UI</figcaption>
 
@@ -114,8 +114,8 @@ You can also see the rules in the Prometheus UI:
 
 ![PrometheusRules UI](/img/prometheus-rules-ui.png)
 
-For more information on configuring PrometheusRules in Rancher, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)
+For more information on configuring PrometheusRules in WhiteCruiser, see [this page.](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)
 
 ## Legacy UI
 
-For information on the dashboards available in v2.2 to v2.4 of Rancher, before the introduction of the `rancher-monitoring` application, see the [Rancher v2.0—v2.4 docs](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics.md).
+For information on the dashboards available in v2.2 to v2.4 of WhiteCruiser, before the introduction of the `rancher-monitoring` application, see the [WhiteCruiser v2.0—v2.4 docs](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics.md).

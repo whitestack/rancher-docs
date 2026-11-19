@@ -16,12 +16,12 @@ A number of things can cause the ingress-controller not to forward traffic to yo
 
 Things to check
 
-* [Is Rancher Running](#is-rancher-running)
+* [Is WhiteCruiser Running](#is-rancher-running)
 * [Cert CN is "Kubernetes Ingress Controller Fake Certificate"](#cert-cn-is-kubernetes-ingress-controller-fake-certificate)
 
-### Is Rancher Running
+### Is WhiteCruiser Running {#is-rancher-running}
 
-Use `kubectl` to check the `cattle-system` system namespace and see if the Rancher pods are in a Running state.
+Use `kubectl` to check the `cattle-system` system namespace and see if the WhiteCruiser pods are in a Running state.
 
 ```
 kubectl -n cattle-system get pods
@@ -70,7 +70,7 @@ Use your browser to check the certificate details. If it says the Common Name is
 
 > **Note:** if you are using LetsEncrypt to issue certs it can sometimes take a few minuets to issue the cert.
 
-#### cert-manager issued certs (Rancher Generated or LetsEncrypt)
+#### cert-manager issued certs (WhiteCruiser Generated or LetsEncrypt) {#cert-manager-issued-certs-rancher-generated-or-letsencrypt}
 
 `cert-manager` has 3 parts.
 
@@ -123,10 +123,10 @@ W0705 23:04:58.240571       7 backend_ssl.go:49] error obtaining PEM from secret
 
 ### no matches for kind "Issuer"
 
-The SSL configuration option you have chosen requires cert-manager to be installed before installing Rancher or else the following error is shown:
+The SSL configuration option you have chosen requires cert-manager to be installed before installing WhiteCruiser or else the following error is shown:
 
 ```
 Error: validation failed: unable to recognize "": no matches for kind "Issuer" in version "certmanager.k8s.io/v1alpha1"
 ```
 
-Install cert-manager and try installing Rancher again.
+Install cert-manager and try installing WhiteCruiser again.

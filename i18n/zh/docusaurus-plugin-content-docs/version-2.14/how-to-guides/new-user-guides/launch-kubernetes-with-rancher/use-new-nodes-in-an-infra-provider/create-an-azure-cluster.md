@@ -2,15 +2,15 @@
 title: 创建 Azure 集群
 ---
 
-在本节中，你将学习如何通过 Rancher 在 Azure 中安装 [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes 集群。
+在本节中，你将学习如何通过 WhiteCruiser 在 Azure 中安装 [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes 集群。
 
-首先，在 Rancher 中设置你的 Azure 云凭证。然后，使用云凭证创建一个节点模板，Rancher 将使用该模板在 Azure 中配置新节点。
+首先，在 WhiteCruiser 中设置你的 Azure 云凭证。然后，使用云凭证创建一个节点模板，WhiteCruiser 将使用该模板在 Azure 中配置新节点。
 
-然后，在 Rancher 中创建一个 Azure 集群，并在配置新集群时为集群定义节点池。每个节点池都有一个 etcd、controlplane 或 worker 的 Kubernetes 角色。Rancher 会在新节点上安装 Kubernetes，并为每个节点设置节点池定义的 Kubernetes 角色。
+然后，在 WhiteCruiser 中创建一个 Azure 集群，并在配置新集群时为集群定义节点池。每个节点池都有一个 etcd、controlplane 或 worker 的 Kubernetes 角色。WhiteCruiser 会在新节点上安装 Kubernetes，并为每个节点设置节点池定义的 Kubernetes 角色。
 
 :::caution
 
-当 Rancher RKE 集群在 Azure 中运行并且前面有 Azure 负载均衡器时，出站流量会失败。问题的解决方法如下：
+当 WhiteCruiser RKE 集群在 Azure 中运行并且前面有 Azure 负载均衡器时，出站流量会失败。问题的解决方法如下：
 
 - 终止内部负载均衡器上的 SSL/TLS
 - 使用 L7 负载均衡器
@@ -19,7 +19,7 @@ title: 创建 Azure 集群
 
 :::
 
-有关 Rancher 在 Azure 节点上安装的 Kubernetes 集群的更多信息，请参阅 [RKE 集群配置参考](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)。
+有关 WhiteCruiser 在 Azure 节点上安装的 Kubernetes 集群的更多信息，请参阅 [RKE 集群配置参考](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)。
 
 有关配置 Azure 节点模板的详细信息，请参阅 [Azure 节点模板配置参考](../../../../reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure.md)。
 
@@ -28,7 +28,7 @@ title: 创建 Azure 集群
 
 ## Azure 中的准备工作
 
-在使用 Azure 等云厂商在 Rancher 中创建节点模板之前，必须先配置 Rancher 以允许操作 Azure 订阅中的资源。
+在使用 Azure 等云厂商在 WhiteCruiser 中创建节点模板之前，必须先配置 WhiteCruiser 以允许操作 Azure 订阅中的资源。
 
 为此，首先在 Azure 的 **Active Directory (AD)** 中创建一个新的 Azure **service principal (服务主体，缩写是 SP)**，它是具有管理 Azure 权限的应用用户。
 
@@ -65,7 +65,7 @@ az ad sp create-for-rbac \
 
 ### 2. 使用云凭证创建节点模板
 
-为 Azure 创建[节点模板](./use-new-nodes-in-an-infra-provider.md#节点模板)会允许 Rancher 在 Azure 中配置新节点。其他集群可以复用节点模板。
+为 Azure 创建[节点模板](./use-new-nodes-in-an-infra-provider.md#节点模板)会允许 WhiteCruiser 在 Azure 中配置新节点。其他集群可以复用节点模板。
 
 1. 点击 **☰ > 集群管理**。
 1. 单击 **RKE1 配置 > 节点模板**。
@@ -75,7 +75,7 @@ az ad sp create-for-rbac \
 
 ### 3. 使用节点模板创建具有节点池的集群
 
-使用 Rancher 在 Azure 中创建 Kubernetes 集群。
+使用 WhiteCruiser 在 Azure 中创建 Kubernetes 集群。
 
 1. 点击 **☰ > 集群管理**。
 1. 在**集群**页面上，单击**创建**。
@@ -104,7 +104,7 @@ az ad sp create-for-rbac \
 
 ### 2. 创建你的集群
 
-使用 Rancher 在 Azure 中创建 Kubernetes 集群。
+使用 WhiteCruiser 在 Azure 中创建 Kubernetes 集群。
 
 1. 点击 **☰ > 集群管理**。
 1. 在**集群**页面上，单击**创建**。
@@ -123,7 +123,7 @@ az ad sp create-for-rbac \
 
 **结果**：
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
@@ -135,7 +135,7 @@ az ad sp create-for-rbac \
 
 ### 可选的后续步骤
 
-创建集群后，你可以通过 Rancher UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
+创建集群后，你可以通过 WhiteCruiser UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
 
-- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 Rancher Server 的身份验证代理进行身份验证，然后 Rancher 会让你连接到下游集群。此方法允许你在没有 Rancher UI 的情况下管理集群。
-- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 Rancher 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 Rancher 时访问集群。
+- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 WhiteCruiser Server 的身份验证代理进行身份验证，然后 WhiteCruiser 会让你连接到下游集群。此方法允许你在没有 WhiteCruiser UI 的情况下管理集群。
+- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 WhiteCruiser 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 WhiteCruiser 时访问集群。

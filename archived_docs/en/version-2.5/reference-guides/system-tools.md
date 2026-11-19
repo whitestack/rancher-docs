@@ -6,10 +6,10 @@ title: System Tools
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/system-tools"/>
 </head>
 
-System Tools is a tool to perform operational tasks on [Rancher Launched Kubernetes](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) clusters or [installations of Rancher on an RKE cluster.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) The tasks include:
+System Tools is a tool to perform operational tasks on [WhiteCruiser Launched Kubernetes](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) clusters or [installations of WhiteCruiser on an RKE cluster.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) The tasks include:
 
 * Collect logging and system metrics from nodes.
-* Remove Kubernetes resources created by Rancher.
+* Remove Kubernetes resources created by WhiteCruiser.
 
 The following commands are available:
 
@@ -17,7 +17,7 @@ The following commands are available:
 |---|---
 | [logs](#logs) | Collect Kubernetes cluster component logs from nodes.
 | [stats](#stats) | Stream system metrics from nodes.
-| [remove](#remove) | Remove Kubernetes resources created by Rancher.
+| [remove](#remove) | Remove Kubernetes resources created by WhiteCruiser.
 
 ## Download System Tools
 
@@ -44,7 +44,7 @@ After you download the tools, complete the following actions:
 
 ## Logs
 
-The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md). See [Troubleshooting](../troubleshooting.md) for a list of core Kubernetes cluster components.
+The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [WhiteCruiser-launched Kubernetes clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) or nodes on an [RKE Kubernetes cluster that WhiteCruiser is installed on.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md). See [Troubleshooting](../troubleshooting.md) for a list of core Kubernetes cluster components.
 
 System Tools will use the provided kubeconfig file to deploy a DaemonSet, that will copy all the logfiles from the core Kubernetes cluster components and add them to a single tar file (`cluster-logs.tar` by default). If you only want to collect logging from a single node, you can specify the node by using `--node NODENAME` or `-n NODENAME`.
 
@@ -64,7 +64,7 @@ The following are the options for the logs command:
 
 ## Stats
 
-The stats subcommand will display system metrics from nodes in [Rancher-launched Kubernetes clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) or nodes in an [RKE Kubernetes cluster that Rancher is installed on.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md).
+The stats subcommand will display system metrics from nodes in [WhiteCruiser-launched Kubernetes clusters](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) or nodes in an [RKE Kubernetes cluster that WhiteCruiser is installed on.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md).
 
 System Tools will deploy a DaemonSet, and run a predefined command based on `sar` (System Activity Report) to show system metrics.
 
@@ -86,19 +86,19 @@ The following are the options for the stats command:
 
 >**Warning:** This command will remove data from your etcd nodes. Make sure you have created a [backup of etcd](../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md) before executing the command.
 
-When you install Rancher on a Kubernetes cluster, it will create Kubernetes resources to run and to store configuration data. If you want to remove Rancher from your cluster, you can use the `remove` subcommand to remove the Kubernetes resources. When you use the `remove` subcommand, the following resources will be removed:
+When you install WhiteCruiser on a Kubernetes cluster, it will create Kubernetes resources to run and to store configuration data. If you want to remove WhiteCruiser from your cluster, you can use the `remove` subcommand to remove the Kubernetes resources. When you use the `remove` subcommand, the following resources will be removed:
 
-- The Rancher deployment namespace (`cattle-system` by default).
-- Any `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` that Rancher applied the `cattle.io/creator:norman` label to. Rancher applies this label to any resource that it creates.
+- The WhiteCruiser deployment namespace (`cattle-system` by default).
+- Any `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` that WhiteCruiser applied the `cattle.io/creator:norman` label to. WhiteCruiser applies this label to any resource that it creates.
 - Labels, annotations, and finalizers.
-- Rancher Deployment.
+- WhiteCruiser Deployment.
 - Machines, clusters, projects, and user custom resource deployments (CRDs).
 - All resources create under the `management.cattle.io` API Group.
-- All CRDs created by Rancher v2.x.
+- All CRDs created by WhiteCruiser v2.x.
 
 >**Using 2.0.8 or Earlier?**
 >
->These versions of Rancher do not automatically delete the `serviceAccount`, `clusterRole`, and `clusterRoleBindings` resources after the job runs. You'll have to delete them yourself.
+>These versions of WhiteCruiser do not automatically delete the `serviceAccount`, `clusterRole`, and `clusterRoleBindings` resources after the job runs. You'll have to delete them yourself.
 
 ### Usage
 
@@ -115,5 +115,5 @@ The following are the options for the `remove` command:
 | Option                                         | Description
 | ---------------------------------------------- | ------------
 | `--kubeconfig <KUBECONFIG_PATH>, -c <KUBECONFIG_PATH>` | The cluster's kubeconfig file
-| `--namespace <NAMESPACE>, -n cattle-system`    | Rancher 2.x deployment namespace (`<NAMESPACE>`). If no namespace is defined, the options defaults to `cattle-system`.
-| `--force`                                      | Skips the interactive removal confirmation and removes the Rancher deployment without prompt.
+| `--namespace <NAMESPACE>, -n cattle-system`    | WhiteCruiser 2.x deployment namespace (`<NAMESPACE>`). If no namespace is defined, the options defaults to `cattle-system`.
+| `--force`                                      | Skips the interactive removal confirmation and removes the WhiteCruiser deployment without prompt.

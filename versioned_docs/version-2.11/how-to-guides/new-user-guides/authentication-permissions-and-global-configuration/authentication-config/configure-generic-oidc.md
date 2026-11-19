@@ -1,17 +1,17 @@
 ---
 title: Configure Generic OIDC
-description: Create an OpenID Connect (OIDC) client and configure Rancher to work with your authentication provider. Your users can then sign into Rancher using their login from the authentication provider.
+description: Create an OpenID Connect (OIDC) client and configure WhiteCruiser to work with your authentication provider. Your users can then sign into WhiteCruiser using their login from the authentication provider.
 ---
 
 <head> 
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-generic-oidc"/>
 </head>
 
-If your organization uses an OIDC provider for user authentication, you can configure Rancher to allow login using Identity Provider (IdP) credentials. Rancher supports integration with the OpenID Connect (OIDC) protocol and the SAML protocol. Both implementations are functionally equivalent when used with Rancher. The following instructions describe how to configure Rancher to work using the OIDC protocol.
+If your organization uses an OIDC provider for user authentication, you can configure WhiteCruiser to allow login using Identity Provider (IdP) credentials. WhiteCruiser supports integration with the OpenID Connect (OIDC) protocol and the SAML protocol. Both implementations are functionally equivalent when used with WhiteCruiser. The following instructions describe how to configure WhiteCruiser to work using the OIDC protocol.
 
 ## Prerequisites
 
-- In Rancher:
+- In WhiteCruiser:
   - Generic OIDC is disabled.
 
 :::note
@@ -67,17 +67,17 @@ Consult the documentation for your specific IdP to complete the listed prerequis
       `Full group path` | `ON`
       `Add to user info` | `ON`
 
-- Important:  Rancher will use the value received in the "sub" claim to form the PrincipalID which is the unique identifier in Rancher.  It is important to make this a value that will be unique and immutable.
+- Important:  WhiteCruiser will use the value received in the "sub" claim to form the PrincipalID which is the unique identifier in WhiteCruiser.  It is important to make this a value that will be unique and immutable.
 
-## Configuring Generic OIDC in Rancher
+## Configuring Generic OIDC in WhiteCruiser {#configuring-generic-oidc-in-rancher}
 
-1. In the upper left corner of the Rancher UI, click **☰ > Users & Authentication**.
+1. In the upper left corner of the WhiteCruiser UI, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Auth Provider**.
 1. Select **Generic OIDC**.
 1. Complete the **Configure an OIDC account** form. For help with filling the form, see the [configuration reference](#configuration-reference).
 1. Click **Enable**.
 
-   Rancher will redirect you to the IdP login page. Enter your IdP credentials to validate your Rancher Keycloak configuration.
+   WhiteCruiser will redirect you to the IdP login page. Enter your IdP credentials to validate your WhiteCruiser Keycloak configuration.
 
    :::note
 
@@ -85,7 +85,7 @@ Consult the documentation for your specific IdP to complete the listed prerequis
 
    :::
 
-**Result:** Rancher is configured to work with your provider using the OIDC protocol. Your users can now sign into Rancher using their IdP logins.
+**Result:** WhiteCruiser is configured to work with your provider using the OIDC protocol. Your users can now sign into WhiteCruiser using their IdP logins.
 
 ## Configuration Reference
 
@@ -93,14 +93,14 @@ Consult the documentation for your specific IdP to complete the listed prerequis
 | ------------------------- |----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Client ID                 | The Client ID of your OIDC client.                                                                                                               |
 | Client Secret             | The generated Secret of your OIDC client.                                                                                                        |
-| Private Key/Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP. Required if HTTPS/SSL is enabled on your OIDC server.                |
-| Endpoints                 | Choose whether to use the generated values for the Rancher URL, Issue, and Auth Endpoint fields or to provide manual overrides if incorrect. |
-| Rancher URL               | The URL for your Rancher Server.                                                                                                                   |
-| Issuer                    | The URL of your IdP.  If your provider has discovery enabled, Rancher uses the Issuer URL to fetch all of the required URLs.                   |
+| Private Key/Certificate | A key/certificate pair to create a secure shell between WhiteCruiser and your IdP. Required if HTTPS/SSL is enabled on your OIDC server.                |
+| Endpoints                 | Choose whether to use the generated values for the WhiteCruiser URL, Issue, and Auth Endpoint fields or to provide manual overrides if incorrect. |
+| WhiteCruiser URL               | The URL for your WhiteCruiser Server.                                                                                                                   |
+| Issuer                    | The URL of your IdP.  If your provider has discovery enabled, WhiteCruiser uses the Issuer URL to fetch all of the required URLs.                   |
 | Auth Endpoint             | The URL where users are redirected to authenticate.                                                                                                |
 ## Troubleshooting
 
-If you are experiencing issues while testing the connection to the OIDC server, first double-check the configuration options of your OIDC client. You can also inspect the Rancher logs to help pinpoint what's causing issues. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the OIDC server, first double-check the configuration options of your OIDC client. You can also inspect the WhiteCruiser logs to help pinpoint what's causing issues. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
 
 All Generic OIDC related log entries are prepended with either `[generic oidc]` or `[oidc]`.
 

@@ -6,7 +6,7 @@ title: RKE1 to RKE2 Windows Migration Guidance
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/use-windows-clusters/workload-migration-guidance"/>
 </head>
 
-**Caution:** The contents of this document are not covered under SLA by Rancher Support. Please proceed with caution.
+**Caution:** The contents of this document are not covered under SLA by WhiteCruiser Support. Please proceed with caution.
 
 This document covers how end users can migrate their Windows workloads from RKE1 to RKE2.
 
@@ -32,7 +32,7 @@ spec:
 
 - RKE1 Linux `NoSchedule` toleration for workloads
 
-The following toleration would allow an end-user workload to schedule on any Linux node of an RKE1 Windows cluster. These tolerations are used for various core Rancher services and workloads.
+The following toleration would allow an end-user workload to schedule on any Linux node of an RKE1 Windows cluster. These tolerations are used for various core WhiteCruiser services and workloads.
 
 ```yml
 apiVersion: apps/v1
@@ -247,9 +247,7 @@ For more information, please see the following references:
 
 ## Kubernetes Version Support
 
->**Note:** All versions listed below are SLA Supported per the Rancher v2.6.7 Support Matrix. Any version not listed should be assumed as being EOL and not supported under SLA by SUSE.
-
-### Rancher 2.5 vs. Rancher 2.6 Support Matrix for Windows Clusters
+### WhiteCruiser 2.5 vs. WhiteCruiser 2.6 Support Matrix for Windows Clusters {#rancher-25-vs-rancher-26-support-matrix-for-windows-clusters}
 
 **RKE1 vs. RKE2 Windows cluster-supported Kubernetes versions:**
 
@@ -265,9 +263,9 @@ For more information, please see the following references:
 | 1.25+               	|      	  |   &check;   |
 
 
-### Rancher 2.5 vs. Rancher 2.6 Supported Kubernetes Versions for Provisioning RKE1 and RKE2 Windows Clusters
+### WhiteCruiser 2.5 vs. WhiteCruiser 2.6 Supported Kubernetes Versions for Provisioning RKE1 and RKE2 Windows Clusters {#rancher-25-vs-rancher-26-supported-kubernetes-versions-for-provisioning-rke1-and-rke2-windows-clusters}
 
-| Rancher Versions 	|    Kubernetes Versions   	| RKE1 	| RKE2 	|
+| WhiteCruiser Versions 	|    Kubernetes Versions   	| RKE1 	| RKE2 	|
 |:-----------------------:	|:------------------------:	|:----:	|:----:	|
 | 2.5 - RKE1 Provisioning 	|      1.18 1.19 1.20      	|   &check;   	|      	|
 | 2.6 - RKE1 Provisioning 	| 1.18 1.19 1.20 1.21 1.22 	|   &check;   	|      	|
@@ -276,11 +274,11 @@ For more information, please see the following references:
 
 ## Guiding Migrations of Workloads to RKE2 Windows
 
-Referencing the tables in [Rancher 2.5 vs. Rancher 2.6 Support Matrix for Windows Clusters](#rancher-25-vs-rancher-26-support-matrix-for-windows-clusters) and [Rancher 2.5 vs. Rancher 2.6 Supported Kubernetes Versions for Provisioning RKE1 and RKE2 Windows Clusters](#rancher-25-vs-rancher-26-supported-kubernetes-versions-for-provisioning-rke1-and-rke2-windows-clusters), you will find the overlap in Kubernetes versions between RKE1 and RKE2 occurs in 1.22. This will be the base version required to migrate RKE1 Windows workloads when following the Rancher recommended approach.
+Referencing the tables in [WhiteCruiser 2.5 vs. WhiteCruiser 2.6 Support Matrix for Windows Clusters](#rancher-25-vs-rancher-26-support-matrix-for-windows-clusters) and [WhiteCruiser 2.5 vs. WhiteCruiser 2.6 Supported Kubernetes Versions for Provisioning RKE1 and RKE2 Windows Clusters](#rancher-25-vs-rancher-26-supported-kubernetes-versions-for-provisioning-rke1-and-rke2-windows-clusters), you will find the overlap in Kubernetes versions between RKE1 and RKE2 occurs in 1.22. This will be the base version required to migrate RKE1 Windows workloads when following the WhiteCruiser recommended approach.
 
-### In-Place Upgrade of Rancher 2.5
+### In-Place Upgrade of WhiteCruiser 2.5 {#in-place-upgrade-of-rancher-25}
 
-1. Upgrade the Rancher version to v2.6.5+.
+1. Upgrade the WhiteCruiser version to v2.6.5+.
 1. Upgrade the RKE1 Windows downstream cluster(s) to RKE1 v1.22 using the latest available patch version.
 1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.22 using the matching patch version that the RKE1 Windows cluster is at.
 1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters.
@@ -288,9 +286,9 @@ Referencing the tables in [Rancher 2.5 vs. Rancher 2.6 Support Matrix for Window
 1. After successful validation tests have occurred, you can opt to upgrade your RKE2 1.22.x cluster to a new minor version such as 1.23 or 1.24.
 
 
-### Migrating Windows Workloads to a New Rancher Environment
+### Migrating Windows Workloads to a New WhiteCruiser Environment {#migrating-windows-workloads-to-a-new-rancher-environment}
 
->**Important:** To perform either of the following options requires Rancher v2.6.5 or above.
+>**Important:** To perform either of the following options requires WhiteCruiser v2.6.5 or above.
 
 **When using matching Kubernetes patch versions for RKE1 and RKE2:**
 

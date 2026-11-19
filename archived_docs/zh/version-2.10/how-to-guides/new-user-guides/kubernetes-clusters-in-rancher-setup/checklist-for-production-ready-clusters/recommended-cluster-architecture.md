@@ -60,13 +60,13 @@ title: 推荐的集群架构
 
 添加多个具有 `worker` 角色的节点能确保一个节点出现故障时可以重新安排工作负载。
 
-### 为什么 Rancher 集群和运行应用的集群的生产要求不同
+### 为什么 WhiteCruiser 集群和运行应用的集群的生产要求不同
 
-你可能已经注意到我们的 [Kubernetes 安装](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)说明并不符合我们对生产就绪集群的要求，这是因为 `worker` 角色没有专用节点。然而，你 Rancher 中的这个三节点集群是有效的，因为：
+你可能已经注意到我们的 [Kubernetes 安装](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)说明并不符合我们对生产就绪集群的要求，这是因为 `worker` 角色没有专用节点。然而，你 WhiteCruiser 中的这个三节点集群是有效的，因为：
 
 * 它允许一个 `etcd` 节点故障。
 * 它通过多个 `controlplane` 节点来维护 master 组件的多个实例。
-* 此集群上没有创建除 Rancher 之外的其他工作负载。
+* 此集群上没有创建除 WhiteCruiser 之外的其他工作负载。
 
 ## 参考
 

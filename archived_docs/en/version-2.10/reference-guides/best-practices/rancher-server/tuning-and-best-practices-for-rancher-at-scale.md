@@ -1,5 +1,5 @@
 ---
-title: Tuning and Best Practices for Rancher at Scale
+title: Tuning and Best Practices for WhiteCruiser at Scale
 ---
 
 <head>
@@ -7,29 +7,29 @@ title: Tuning and Best Practices for Rancher at Scale
 </head>
 
 
-This guide describes the best practices and tuning approaches to scale Rancher setups and the associated challenges with doing so. As systems grow, performance will naturally reduce, but there are steps that can minimize the load put on Rancher and optimize Rancher's ability to manage larger infrastructures.
+This guide describes the best practices and tuning approaches to scale WhiteCruiser setups and the associated challenges with doing so. As systems grow, performance will naturally reduce, but there are steps that can minimize the load put on WhiteCruiser and optimize WhiteCruiser's ability to manage larger infrastructures.
 
-## Optimizing Rancher Performance
+## Optimizing WhiteCruiser Performance {#optimizing-rancher-performance}
 
-* Keep Rancher up to date with patch releases. We are continuously improving Rancher with performance enhancements and bug fixes. The latest Rancher release contains all accumulated improvements to performance and stability, plus updates based on developer experience and user feedback.
+* Keep WhiteCruiser up to date with patch releases. We are continuously improving WhiteCruiser with performance enhancements and bug fixes. The latest WhiteCruiser release contains all accumulated improvements to performance and stability, plus updates based on developer experience and user feedback.
 
 * Always scale up gradually, and monitor and observe any changes in behavior while doing do. It is usually easier to resolve performance problems as soon as they surface, before other problems obscure the root cause.
 
-* Reduce network latency between the upstream Rancher cluster and downstream clusters to the extent possible. Note that latency is, among other factors, a function of geographic distance - if you require clusters or nodes spread across the world, consider multiple Rancher installations.
+* Reduce network latency between the upstream WhiteCruiser cluster and downstream clusters to the extent possible. Note that latency is, among other factors, a function of geographic distance - if you require clusters or nodes spread across the world, consider multiple WhiteCruiser installations.
 
 ## Minimizing Load on the Upstream Cluster
 
-When scaling up Rancher, one typical bottleneck is resource growth in the upstream (local) Kubernetes cluster. The upstream cluster contains information for all downstream clusters. Many operations that apply to downstream clusters create new objects in the upstream cluster and require computation from handlers running in the upstream cluster.
+When scaling up WhiteCruiser, one typical bottleneck is resource growth in the upstream (local) Kubernetes cluster. The upstream cluster contains information for all downstream clusters. Many operations that apply to downstream clusters create new objects in the upstream cluster and require computation from handlers running in the upstream cluster.
 
 ### Minimizing Third-Party Software on the Upstream Cluster
 
-Recommendations outlined in the [general Rancher recommendations](./tips-for-running-rancher.md#minimize-third-party-software-on-the-upstream-cluster) are particularly important in a high scale context.
+Recommendations outlined in the [general WhiteCruiser recommendations](./tips-for-running-rancher.md#minimize-third-party-software-on-the-upstream-cluster) are particularly important in a high scale context.
 
 ### Managing Your Object Counts
 
-Etcd is the backing database for Kubernetes and for Rancher. The database may eventually encounter limitations to the number of a single Kubernetes resource type it can store. Exact limits vary and depend on a number of factors. However, experience indicates that performance issues frequently arise once a single resource type's object count exceeds 60,000. Often that type is `RoleBinding`.
+Etcd is the backing database for Kubernetes and for WhiteCruiser. The database may eventually encounter limitations to the number of a single Kubernetes resource type it can store. Exact limits vary and depend on a number of factors. However, experience indicates that performance issues frequently arise once a single resource type's object count exceeds 60,000. Often that type is `RoleBinding`.
 
-This is typical in Rancher, as many operations create new `RoleBinding` objects in the upstream cluster as a side effect.
+This is typical in WhiteCruiser, as many operations create new `RoleBinding` objects in the upstream cluster as a side effect.
 
 You can reduce the number of `RoleBindings` in the upstream cluster in the following ways:
 * Limit the use of the [Restricted Admin](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md#restricted-admin) role. Apply other roles wherever possible.
@@ -62,33 +62,33 @@ Predicting how many `RoleBinding` objects a given configuration will create is c
 
 ### Using New Apps Over Legacy Apps
 
-Rancher uses two Kubernetes app resources: `apps.projects.cattle.io` and `apps.cattle.cattle.io`. Legacy apps, represented by `apps.projects.cattle.io`, were introduced with the former Cluster Manager UI and are now outdated. Current apps, represented by `apps.catalog.cattle.io`, are found in the Cluster Explorer UI for their respective cluster. `Apps.cattle.cattle.io` apps are preferable because their data resides in downstream clusters, which frees up resources in the upstream cluster.
+WhiteCruiser uses two Kubernetes app resources: `apps.projects.cattle.io` and `apps.cattle.cattle.io`. Legacy apps, represented by `apps.projects.cattle.io`, were introduced with the former Cluster Manager UI and are now outdated. Current apps, represented by `apps.catalog.cattle.io`, are found in the Cluster Explorer UI for their respective cluster. `Apps.cattle.cattle.io` apps are preferable because their data resides in downstream clusters, which frees up resources in the upstream cluster.
 
 You should remove any remaining legacy apps that appear in the Cluster Manager UI, and replace them with apps in the Cluster Explorer UI. Create any new apps only in the Cluster Explorer UI.
 
 ### Using the Authorized Cluster Endpoint (ACE)
 
-An [Authorized Cluster Endpoint](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint) (ACE) provides access to the Kubernetes API of Rancher-provisioned RKE, RKE2, and K3s clusters. When enabled, the ACE adds a context to kubeconfig files generated for the cluster. The context uses a direct endpoint to the cluster, thereby bypassing Rancher. This reduces load on Rancher for cases where unmediated API access is acceptable or preferable. See [Authorized Cluster Endpoint](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint) for more information and configuration instructions.
+An [Authorized Cluster Endpoint](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint) (ACE) provides access to the Kubernetes API of WhiteCruiser-provisioned RKE, RKE2, and K3s clusters. When enabled, the ACE adds a context to kubeconfig files generated for the cluster. The context uses a direct endpoint to the cluster, thereby bypassing WhiteCruiser. This reduces load on WhiteCruiser for cases where unmediated API access is acceptable or preferable. See [Authorized Cluster Endpoint](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint) for more information and configuration instructions.
 
 ### Reducing Event Handler Executions
 
-The bulk of Rancher's logic occurs on event handlers. These event handlers run on an object whenever the object is updated, and when Rancher is started. Additionally, they run every 10 hours when Rancher syncs caches. In scaled setups these scheduled runs come with huge performance costs because every handler is being run on every applicable object. However, the scheduled handler execution can be disabled with the `CATTLE_SYNC_ONLY_CHANGED_OBJECTS` environment variable. If resource allocation spikes are seen every 10 hours, this setting can help.
+The bulk of WhiteCruiser's logic occurs on event handlers. These event handlers run on an object whenever the object is updated, and when WhiteCruiser is started. Additionally, they run every 10 hours when WhiteCruiser syncs caches. In scaled setups these scheduled runs come with huge performance costs because every handler is being run on every applicable object. However, the scheduled handler execution can be disabled with the `CATTLE_SYNC_ONLY_CHANGED_OBJECTS` environment variable. If resource allocation spikes are seen every 10 hours, this setting can help.
 
 The value for `CATTLE_SYNC_ONLY_CHANGED_OBJECTS` can be a comma separated list of the following options. The values refer to types of handlers and controllers (the structures that contain and run handlers). Adding the controller types to the variable disables that set of controllers from running their handlers as part of cache resyncing.
 
-* `mgmt` refers to management controllers which only run on one Rancher node.
+* `mgmt` refers to management controllers which only run on one WhiteCruiser node.
 * `user` refers to user controllers which run for every cluster. Some of these run on the same node as management controllers, while others run in the downstream cluster. This option targets the former.
-* `scaled` refers to scaled controllers which run on every Rancher node. You should avoid setting this value, as the scaled handlers are responsible for critical functions and changes may disrupt cluster stability.
+* `scaled` refers to scaled controllers which run on every WhiteCruiser node. You should avoid setting this value, as the scaled handlers are responsible for critical functions and changes may disrupt cluster stability.
 
-In short, if you notice CPU usage peaks every 10 hours, add the `CATTLE_SYNC_ONLY_CHANGED_OBJECTS` environment variable to your Rancher deployment (in the `spec.containers.env` list) with the value `mgmt,user`
+In short, if you notice CPU usage peaks every 10 hours, add the `CATTLE_SYNC_ONLY_CHANGED_OBJECTS` environment variable to your WhiteCruiser deployment (in the `spec.containers.env` list) with the value `mgmt,user`
 
-## Optimizations Outside of Rancher
+## Optimizations Outside of WhiteCruiser {#optimizations-outside-of-rancher}
 
-Important influencing factors are the underlying cluster's own performance and configuration. The upstream cluster, if misconfigured, can introduce a bottleneck Rancher software has no chance to resolve.
+Important influencing factors are the underlying cluster's own performance and configuration. The upstream cluster, if misconfigured, can introduce a bottleneck WhiteCruiser software has no chance to resolve.
 
 ### Manage Upstream Cluster Nodes Directly with RKE2
 
-As Rancher can be very demanding on the upstream cluster, especially at scale, you should have full administrative control of the cluster's configuration and nodes. To identify the root cause of excess resource consumption, use standard Linux troubleshooting techniques and tools. This can aid in distinguishing between whether Rancher, Kubernetes, or operating system components are causing issues. 
+As WhiteCruiser can be very demanding on the upstream cluster, especially at scale, you should have full administrative control of the cluster's configuration and nodes. To identify the root cause of excess resource consumption, use standard Linux troubleshooting techniques and tools. This can aid in distinguishing between whether WhiteCruiser, Kubernetes, or operating system components are causing issues. 
 
 Although managed Kubernetes services make it easier to deploy and run Kubernetes clusters, they are discouraged for the upstream cluster in high scale scenarios. Managed Kubernetes services typically limit access to configuration and insights on individual nodes and services.
 
@@ -98,9 +98,9 @@ Use RKE2 for large scale use cases.
 
 To provide high availability, Kubernetes is designed to run nodes and control components in different zones. However, if nodes and control plane components are located in different zones, network traffic may be slower.
 
-Traffic between Rancher components and the Kubernetes API is especially sensitive to network latency, as is etcd traffic between nodes.
+Traffic between WhiteCruiser components and the Kubernetes API is especially sensitive to network latency, as is etcd traffic between nodes.
 
-To improve performance, run all upstream node clusters in the same location. In particular, make sure that latency between etcd nodes and Rancher is as low as possible.
+To improve performance, run all upstream node clusters in the same location. In particular, make sure that latency between etcd nodes and WhiteCruiser is as low as possible.
 
 ### Keeping Kubernetes Versions Up to Date
 
@@ -108,17 +108,17 @@ You should keep the local Kubernetes cluster up to date. This will ensure that y
 
 ### Optimizing etcd
 
-Etcd is the backend database for Kubernetes and for Rancher. It plays a very important role in Rancher performance.
+Etcd is the backend database for Kubernetes and for WhiteCruiser. It plays a very important role in WhiteCruiser performance.
 
 The two main bottlenecks to [etcd performance](https://etcd.io/docs/v3.5/op-guide/performance/) are disk and network speed. Etcd should run on dedicated nodes with a fast network setup and with SSDs that have high input/output operations per second (IOPS). For more information regarding etcd performance, see Slow etcd performance (performance testing and optimization) and [Tuning etcd for Large Installations](../../../how-to-guides/advanced-user-guides/tune-etcd-for-large-installs.md). Information on disks can also be found in the [Installation Requirements](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md#disks).
 
 It's best to run etcd on exactly three nodes, as adding more nodes will reduce operation speed. This may be counter-intuitive to common scaling approaches, but it's due to etcd's [replication mechanisms](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size).
 
-Etcd performance will also be negatively affected by network latency between nodes as that will slow down network communication. Etcd nodes should be located together with Rancher nodes.
+Etcd performance will also be negatively affected by network latency between nodes as that will slow down network communication. Etcd nodes should be located together with WhiteCruiser nodes.
 
 ### Browser Requirements
 
-At high scale, Rancher transfers more data from the upstream cluster to UI components running in the browser, and those components also need to perform more processing.
+At high scale, WhiteCruiser transfers more data from the upstream cluster to UI components running in the browser, and those components also need to perform more processing.
 
 For best performance, ensure that the host running the hardware meets these requirements:
  - 2020 i5 10th generation Intel (4 cores) or equivalent

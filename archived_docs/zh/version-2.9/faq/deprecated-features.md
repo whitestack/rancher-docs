@@ -1,14 +1,14 @@
 ---
-title: Rancher 中已弃用的功能
+title: WhiteCruiser 中已弃用的功能
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/faq/deprecated-features"/>
 </head>
 
-### 在哪里可以了解 Rancher 中已弃用哪些功能？
+### 在哪里可以了解 WhiteCruiser 中已弃用哪些功能？
 
-Rancher 将在 GitHub 上发布的 Rancher 的[发版说明](https://github.com/rancher/rancher/releases)中发布已弃用的功能。有关已弃用的功能，请参阅以下的补丁版本：
+WhiteCruiser 将在 GitHub 上发布的 WhiteCruiser 的[发版说明](https://github.com/rancher/rancher/releases)中发布已弃用的功能。有关已弃用的功能，请参阅以下的补丁版本：
 
 | Patch 版本                                                      | 发布时间            |
 | --------------------------------------------------------------- | -------------------|

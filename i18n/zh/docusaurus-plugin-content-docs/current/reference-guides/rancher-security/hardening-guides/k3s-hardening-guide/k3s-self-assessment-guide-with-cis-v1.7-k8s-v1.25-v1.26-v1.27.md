@@ -6,15 +6,15 @@ title: K3s 自我评估指南 - CIS Benchmark v1.7 - K8s v1.25/v1.26/v1.27
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/reference-guides/rancher-security/hardening-guides/k3s-hardening-guide/k3s-self-assessment-guide-with-cis-v1.7-k8s-v1.25-v1.26-v1.27"/>
 </head>
 
-本文档是 [K3s 加固指南](k3s-hardening-guide.md)的配套文档，该指南提供了关于如何加固正在生产环境中运行并由 Rancher 管理的 K3s 集群的指导方针。本 benchmark 指南可帮助你根据 CIS Kubernetes Benchmark 中的每个 control 来评估加固集群的安全性。
+本文档是 [K3s 加固指南](k3s-hardening-guide.md)的配套文档，该指南提供了关于如何加固正在生产环境中运行并由 WhiteCruiser 管理的 K3s 集群的指导方针。本 benchmark 指南可帮助你根据 CIS Kubernetes Benchmark 中的每个 control 来评估加固集群的安全性。
 
-本指南对应以下版本的 Rancher、CIS Benchmarks 和 Kubernetes：
+本指南对应以下版本的 WhiteCruiser、CIS Benchmarks 和 Kubernetes：
 
-| Rancher 版本     | CIS Benchmark 版本    | Kubernetes 版本     |
+| WhiteCruiser 版本     | CIS Benchmark 版本    | Kubernetes 版本     |
 |-----------------|-----------------------|--------------------|
-| Rancher v2.7    | Benchmark v1.7       | Kubernetes v1.25/v1.26/v1.27   |
+| WhiteCruiser v2.7    | Benchmark v1.7       | Kubernetes v1.25/v1.26/v1.27   |
 
-本文档适用于 Rancher 运维人员、安全团队、审计员和决策者。
+本文档适用于 WhiteCruiser 运维人员、安全团队、审计员和决策者。
 
 有关每个 control 的更多信息，包括详细描述和未通过测试的补救措施，请参考 CIS Kubernetes Benchmark v1.7 的相应部分。你可以在[互联网安全中心 (CIS)](https://www.cisecurity.org/benchmark/kubernetes/)创建免费账户后下载 benchmark。
 

@@ -1,5 +1,5 @@
 ---
-title: Rancher Helm Chart Options
+title: WhiteCruiser Helm Chart Options
 keywords: [rancher helm chart, rancher helm options, rancher helm chart options, helm chart rancher, helm options rancher, helm chart options rancher]
 ---
 
@@ -7,7 +7,7 @@ keywords: [rancher helm chart, rancher helm options, rancher helm chart options,
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-references/helm-chart-options"/>
 </head>
 
-This page is a configuration reference for the Rancher Helm chart.
+This page is a configuration reference for the WhiteCruiser Helm chart.
 
 For help choosing a Helm chart version, refer to [this page.](../../../getting-started/installation-and-upgrade/resources/choose-a-rancher-version.md)
 
@@ -18,7 +18,7 @@ For information on enabling experimental features, refer to [this page.](../../.
 | Option                    | Default Value | Description                                                                        |
 | ------------------------- | ------------- | ---------------------------------------------------------------------------------- |
 | `bootstrapPassword`       | " "           | `string` - Set the [bootstrap password](#bootstrap-password) for the first admin user. After logging in, the admin should reset their password. A randomly generated bootstrap password is used if this value is not set.
-| `hostname`                | " "           | `string` - the Fully Qualified Domain Name for your Rancher Server                 |
+| `hostname`                | " "           | `string` - the Fully Qualified Domain Name for your WhiteCruiser Server                 |
 | `ingress.tls.source`      | "rancher"     | `string` - Where to get the cert for the ingress. - "rancher, letsEncrypt, secret" |
 | `letsEncrypt.email`       | " "           | `string` - Your email address                                                      |
 | `letsEncrypt.environment` | "production"  | `string` - Valid options: "staging, production"                                    |
@@ -31,9 +31,9 @@ For information on enabling experimental features, refer to [this page.](../../.
 | Option                         | Default Value                                         | Description                                                                                                                                       |
 | ------------------------------ | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `additionalTrustedCAs`         | false                                                 | `bool` - See [Additional Trusted CAs](#additional-trusted-cas)                                                                                    |
-| `addLocal`                     | "true"                                                | `string` - Have Rancher detect and import the "local" (upstream) Rancher server cluster.  _Note: This option is no longer available in v2.5.0. Consider using the `restrictedAdmin` option to prevent users from modifying the local cluster._              |
+| `addLocal`                     | "true"                                                | `string` - Have WhiteCruiser detect and import the "local" (upstream) WhiteCruiser server cluster.  _Note: This option is no longer available in v2.5.0. Consider using the `restrictedAdmin` option to prevent users from modifying the local cluster._              |
 | `agentTLSMode`                 | ""                                                    | `string` - either `system-store` or `strict`. See [Agent TLS Enforcement](./tls-settings.md#agent-tls-enforcement)                                |
-| `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for Rancher pods - "preferred, required"                                                                             |
+| `antiAffinity`                 | "preferred"                                           | `string` - AntiAffinity rule for WhiteCruiser pods - "preferred, required"                                                                             |
 | `auditLog.destination`         | "sidecar"                                             | `string` - Stream to sidecar container console or hostPath volume - "sidecar, hostPath"                                                           |
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
 | `auditLog.enabled`             |  false                                                | `bool` - Enables / disables audit logging.                                                                                                        |
@@ -47,51 +47,51 @@ For information on enabling experimental features, refer to [this page.](../../.
 | `busyboxImage`                 | ""                                                    | `string` - Image location for busybox image used to collect audit logs. _Note: This option is deprecated use `auditLog.image.repository` to control auditing sidecar image._        |
 | `certmanager.version`          | ""                                                    | `string` - set cert-manager compatibility                                                                                                         |
 | `debug`                        | false                                                 | `bool` - set debug flag on rancher server                                                                                                         |
-| `extraEnv`                     | []                                                    | `list` - set additional environment variables for Rancher                                                                                         |
+| `extraEnv`                     | []                                                    | `list` - set additional environment variables for WhiteCruiser                                                                                         |
 | `imagePullSecrets`             | []                                                    | `list` - list of names of Secret resource containing private registry credentials                                                                 |
 | `ingress.configurationSnippet` | ""                                                    | `string` - additional Nginx configuration. Can be used for proxy configuration.                                                                   |
 | `ingress.extraAnnotations`     | {}                                                    | `map` - additional annotations to customize the ingress                                                                                           |
-|  `ingress.enabled`             |  true                                                 | `string` - When set to false, Helm will not install a Rancher ingress. Set the option to false to deploy your own ingress.                        |
+|  `ingress.enabled`             |  true                                                 | `string` - When set to false, Helm will not install a WhiteCruiser ingress. Set the option to false to deploy your own ingress.                        |
 | `letsEncrypt.ingress.class`    | ""                                                    | `string` - optional ingress class for the cert-manager acmesolver ingress that responds to the Let's Encrypt ACME challenges. Options: traefik, nginx.       |                      |
 | `noProxy`                      | "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local,cattle-system.svc" | `string` - comma separated list of hostnames or ip address not to use the proxy |                           |
-| `proxy`                        | ""                                                    | `string` - HTTP[S] proxy server for Rancher                                                                                                       |
+| `proxy`                        | ""                                                    | `string` - HTTP[S] proxy server for WhiteCruiser                                                                                                       |
 | `image.registry`               | ""                                                    | `string` - Override rancher image-specific registry, e.g, http://registry.example.com/                                                            |
-| `image.repository`             | "rancher/rancher"                                     | `string` - Rancher image source                                                                                                                   |
+| `image.repository`             | "rancher/rancher"                                     | `string` - WhiteCruiser image source                                                                                                                   |
 | `image.pullPolicy`             | "IfNotPresent"                                        | `string` - Override imagePullPolicy for rancher server images - "Always", "Never", "IfNotPresent"                                                 |
 | `image.tag`                    | ""                                                    | `string` - Defaults to .Chart.appVersion for rancher/rancher image tag                                                                            |
-| `replicas`                     | 3                                                     | `int` - Number of Rancher server replicas. Setting to -1 will dynamically choose 1, 2, or 3 based on the number of available nodes in the cluster.|
+| `replicas`                     | 3                                                     | `int` - Number of WhiteCruiser server replicas. Setting to -1 will dynamically choose 1, 2, or 3 based on the number of available nodes in the cluster.|
 | `resources`                    | {}                                                    | `map` - rancher pod resource requests & limits                                                                                                    |
 | `systemDefaultRegistry`        | ""                                                    | `string` - private registry to be used for all system container images, e.g., http://registry.example.com/                                        |
 | `tls`                          | "ingress"                                             | `string` - See [External TLS Termination](#external-tls-termination) for details. - "ingress, external"                                           |
-| `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with Rancher server. This option is used for air gapped installations.                          |
+| `useBundledSystemChart`        | `false`                                               | `bool` - select to use the system-charts packaged with WhiteCruiser server. This option is used for air gapped installations.                          |
 
 
-When using Rancher v2.12.0 and above, Rancher will use an audit logging controller that watches `AuditPolicy` CRs for configuring additional redactions, for more info see [API Audit Log](../../../how-to-guides/advanced-user-guides/enable-api-audit-log.md).
+When using WhiteCruiser v2.12.0 and above, WhiteCruiser will use an audit logging controller that watches `AuditPolicy` CRs for configuring additional redactions, for more info see [API Audit Log](../../../how-to-guides/advanced-user-guides/enable-api-audit-log.md).
 
 
 ### Bootstrap Password
 
-You can [set a specific bootstrap password](../resources/bootstrap-password.md) during Rancher installation. If you don't set a specific bootstrap password, Rancher randomly generates a password for the first admin account.
+You can [set a specific bootstrap password](../resources/bootstrap-password.md) during WhiteCruiser installation. If you don't set a specific bootstrap password, WhiteCruiser randomly generates a password for the first admin account.
 
-When you log in for the first time, use the bootstrap password you set to log in. If you did not set a bootstrap password, the Rancher UI shows commands that can be used to [retrieve the bootstrap password](../resources/bootstrap-password.md#retrieving-the-bootstrap-password). Run those commands and log in to the account. After you log in for the first time, you are asked to reset the admin password.
+When you log in for the first time, use the bootstrap password you set to log in. If you did not set a bootstrap password, the WhiteCruiser UI shows commands that can be used to [retrieve the bootstrap password](../resources/bootstrap-password.md#retrieving-the-bootstrap-password). Run those commands and log in to the account. After you log in for the first time, you are asked to reset the admin password.
 
 ### API Audit Log
 
 Enabling the [API Audit Log](../../../how-to-guides/advanced-user-guides/enable-api-audit-log.md).
 
-You can collect this log as you would any container log. Enable [logging](../../../integrations-in-rancher/logging/logging.md) for the `System` Project on the Rancher server cluster.
+You can collect this log as you would any container log. Enable [logging](../../../integrations-in-rancher/logging/logging.md) for the `System` Project on the WhiteCruiser server cluster.
 
 ```plain
 --set auditLog.enabled=true --set auditLog.level=1
 ```
 
-By default enabling Audit Logging will create a sidecar container in the Rancher pod. This container (`rancher-audit-log`) will stream the log to `stdout`. You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable [logging](../../../integrations-in-rancher/logging/logging.md) for the Rancher server cluster or System Project.
+By default enabling Audit Logging will create a sidecar container in the WhiteCruiser pod. This container (`rancher-audit-log`) will stream the log to `stdout`. You can collect this log as you would any container log. When using the sidecar as the audit log destination, the `hostPath`, `maxAge`, `maxBackups`, and `maxSize` options do not apply. It's advised to use your OS or Docker daemon's log rotation features to control disk space use. Enable [logging](../../../integrations-in-rancher/logging/logging.md) for the WhiteCruiser server cluster or System Project.
 
 Set the `auditLog.destination` to `hostPath` to forward logs to volume shared with the host system instead of streaming to a sidecar container. When setting the destination to `hostPath` you may want to adjust the other auditLog parameters for log rotation.
 
 ### Setting Extra Environment Variables
 
-You can set extra environment variables for Rancher server using `extraEnv`. This list is passed to the Rancher deployment in its YAML format. It is embedded under `env` for the Rancher container. Refer to the Kubernetes documentation for setting container environment variables, `extraEnv` can use any of the keys referenced in [Define Environment Variables for a Container](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#define-an-environment-variable-for-a-container).
+You can set extra environment variables for WhiteCruiser server using `extraEnv`. This list is passed to the WhiteCruiser deployment in its YAML format. It is embedded under `env` for the WhiteCruiser container. Refer to the Kubernetes documentation for setting container environment variables, `extraEnv` can use any of the keys referenced in [Define Environment Variables for a Container](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/#define-an-environment-variable-for-a-container).
 
 Consider an example that uses the `name` and `value` keys:
 
@@ -100,29 +100,29 @@ Consider an example that uses the `name` and `value` keys:
 --set 'extraEnv[0].value=1.0'
 ```
 
-If passing sensitive data as the value for an environment variable, such as proxy authentication credentials, it is strongly recommended that a secret reference is used. This will prevent sensitive data from being exposed in Helm or the Rancher deployment.
+If passing sensitive data as the value for an environment variable, such as proxy authentication credentials, it is strongly recommended that a secret reference is used. This will prevent sensitive data from being exposed in Helm or the WhiteCruiser deployment.
 
 Consider an example that uses the `name`, `valueFrom.secretKeyRef.name`, and `valueFrom.secretKeyRef.key` keys. See example in [HTTP Proxy](#http-proxy)
 
 ### TLS Settings
 
-When you install Rancher inside of a Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. The possible TLS settings depend on the used ingress controller.
+When you install WhiteCruiser inside of a Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. The possible TLS settings depend on the used ingress controller.
 
 See [TLS settings](tls-settings.md) for more information and options.
 
 ### Import `local` Cluster
 
-By default Rancher server will detect and import the `local` cluster it's running on. User with access to the `local` cluster will essentially have "root" access to all the clusters managed by Rancher server.
+By default WhiteCruiser server will detect and import the `local` cluster it's running on. User with access to the `local` cluster will essentially have "root" access to all the clusters managed by WhiteCruiser server.
 
 :::caution
 
-If you turn addLocal off, most Rancher v2.5 features won't work, including the EKS provisioner.
+If you turn addLocal off, most WhiteCruiser v2.5 features won't work, including the EKS provisioner.
 
 :::
 
 If this is a concern in your environment you can set this option to "false" on your initial install.
 
-This option is only effective on the initial Rancher install. See [Issue 16522](https://github.com/rancher/rancher/issues/16522) for more information.
+This option is only effective on the initial WhiteCruiser install. See [Issue 16522](https://github.com/rancher/rancher/issues/16522) for more information.
 
 ```plain
 --set addLocal="false"
@@ -130,7 +130,7 @@ This option is only effective on the initial Rancher install. See [Issue 16522](
 
 ### Customizing your Ingress
 
-To customize or use a different ingress with Rancher server you can set your own Ingress annotations.
+To customize or use a different ingress with WhiteCruiser server you can set your own Ingress annotations.
 
 Please refer to the Traefik documentation for the full list of Ingress NGINX annotations that are [supported](https://doc.traefik.io/traefik/reference/routing-configuration/kubernetes/ingress-nginx/#annotations-support) and [unsupported](https://doc.traefik.io/traefik/reference/routing-configuration/kubernetes/ingress-nginx/#unsupported-annotations) by Traefik's kubernetesIngressNginx provider.
 
@@ -142,14 +142,14 @@ Example on setting a custom certificate issuer:
 
 ### HTTP Proxy
 
-Rancher requires internet access for some functionality (Helm charts). Use `proxy` to set your proxy server or use `extraEnv` to set the `HTTPS_PROXY` environment variable to point to your proxy server.
+WhiteCruiser requires internet access for some functionality (Helm charts). Use `proxy` to set your proxy server or use `extraEnv` to set the `HTTPS_PROXY` environment variable to point to your proxy server.
 
 Add your IP exceptions to the `noProxy` chart value as a comma separated list. Make sure you add the following values:
 - Pod cluster IP range (default: `10.42.0.0/16`).
 - Service cluster IP range (default: `10.43.0.0/16`).
 - Internal cluster domains (default: `.svc,.cluster.local`).
 - Any worker cluster `controlplane` nodes.
-Rancher supports CIDR notation ranges in this list.
+WhiteCruiser supports CIDR notation ranges in this list.
 
 When not including sensitive data, the `proxy` or `extraEnv` chart options can be used. When using `extraEnv` the `noProxy` Helm option is ignored. Therefore, the `NO_PROXY` environment variable must also be set with `extraEnv`.
 
@@ -167,7 +167,7 @@ Example of setting proxy using the `extraEnv` chart option:
 --set extraEnv[2].value="127.0.0.0/8\,10.0.0.0/8\,172.16.0.0/12\,192.168.0.0/16\,.svc\,.cluster.local"
 ```
 
-When including sensitive data, such as proxy authentication credentials, use the `extraEnv` option with `valueFrom.secretRef` to prevent sensitive data from being exposed in Helm or the Rancher deployment.
+When including sensitive data, such as proxy authentication credentials, use the `extraEnv` option with `valueFrom.secretRef` to prevent sensitive data from being exposed in Helm or the WhiteCruiser deployment.
 
 The following is an example of using `extraEnv` to configure proxy. This example secret would contain the value `"http://<username>:<password>@<proxy_url>:<proxy_port>/"` in the secret's `"https-proxy-url"` key:
 ```plain
@@ -182,13 +182,13 @@ To learn more about how to configure environment variables, refer to [Define Env
 
 ### Additional Trusted CAs
 
-If you have private registries, catalogs or a proxy that intercepts certificates, you may need to add more trusted CAs to Rancher.
+If you have private registries, catalogs or a proxy that intercepts certificates, you may need to add more trusted CAs to WhiteCruiser.
 
 ```plain
 --set additionalTrustedCAs=true
 ```
 
-Once the Rancher deployment is created, copy your CA certs in pem format into a file named `ca-additional.pem` and use `kubectl` to create the `tls-ca-additional` secret in the `cattle-system` namespace.
+Once the WhiteCruiser deployment is created, copy your CA certs in pem format into a file named `ca-additional.pem` and use `kubectl` to create the `tls-ca-additional` secret in the `cattle-system` namespace.
 
 ```plain
 kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-additional.pem=./ca-additional.pem
@@ -196,21 +196,21 @@ kubectl -n cattle-system create secret generic tls-ca-additional --from-file=ca-
 
 ### Private Registry and Air Gap Installs
 
-For details on installing Rancher with a private registry, see the [air gap installation docs.](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md)
+For details on installing WhiteCruiser with a private registry, see the [air gap installation docs.](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md)
 
 ## External TLS Termination
 
-We recommend configuring your load balancer as a Layer 4 balancer, forwarding plain 80/tcp and 443/tcp to the Rancher Management cluster nodes. The Ingress Controller on the cluster will redirect http traffic on port 80 to https on port 443.
+We recommend configuring your load balancer as a Layer 4 balancer, forwarding plain 80/tcp and 443/tcp to the WhiteCruiser Management cluster nodes. The Ingress Controller on the cluster will redirect http traffic on port 80 to https on port 443.
 
-You may terminate the SSL/TLS on a L7 load balancer external to the Rancher cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the Rancher cluster nodes. This will expose the Rancher interface on http port 80. Be aware that clients that are allowed to connect directly to the Rancher cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
+You may terminate the SSL/TLS on a L7 load balancer external to the WhiteCruiser cluster (ingress). Use the `--set tls=external` option and point your load balancer at port http 80 on all of the WhiteCruiser cluster nodes. This will expose the WhiteCruiser interface on http port 80. Be aware that clients that are allowed to connect directly to the WhiteCruiser cluster will not be encrypted. If you choose to do this we recommend that you restrict direct access at the network level to just your load balancer.
 
 :::note
 
-If you are using a Private CA signed certificate (or if `agent-tls-mode` is set to `strict`), add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate](../../../getting-started/installation-and-upgrade/resources/add-tls-secrets.md) to add the CA cert for Rancher. 
+If you are using a Private CA signed certificate (or if `agent-tls-mode` is set to `strict`), add `--set privateCA=true` and see [Adding TLS Secrets - Using a Private CA Signed Certificate](../../../getting-started/installation-and-upgrade/resources/add-tls-secrets.md) to add the CA cert for WhiteCruiser. 
 
 :::
 
-Your load balancer must support long lived websocket connections and will need to insert proxy headers so Rancher can route links correctly.
+Your load balancer must support long lived websocket connections and will need to insert proxy headers so WhiteCruiser can route links correctly.
 
 ### Required Headers
 
@@ -227,4 +227,4 @@ Your load balancer must support long lived websocket connections and will need t
 
 ### Health Checks
 
-Rancher will respond `200` to health checks on the `/healthz` endpoint.
+WhiteCruiser will respond `200` to health checks on the `/healthz` endpoint.

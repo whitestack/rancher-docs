@@ -1,25 +1,25 @@
 ---
-title: Rancher Agents
+title: WhiteCruiser Agents
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents"/>
 </head>
 
-There are two different agent resources deployed on Rancher managed clusters:
+There are two different agent resources deployed on WhiteCruiser managed clusters:
 
 - [cattle-cluster-agent](#cattle-cluster-agent)
 - [rancher-system-agent](#rancher-system-agent)
 
-For a conceptual overview of how the Rancher server provisions clusters and communicates with them, refer to the [architecture](../../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md).
+For a conceptual overview of how the WhiteCruiser server provisions clusters and communicates with them, refer to the [architecture](../../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md).
 
 ### cattle-cluster-agent
 
-The `cattle-cluster-agent` is used to connect to the Kubernetes API of [Rancher Launched Kubernetes](launch-kubernetes-with-rancher.md) clusters. The `cattle-cluster-agent` is deployed using a Deployment resource.
+The `cattle-cluster-agent` is used to connect to the Kubernetes API of [WhiteCruiser Launched Kubernetes](launch-kubernetes-with-rancher.md) clusters. The `cattle-cluster-agent` is deployed using a Deployment resource.
 
 ### rancher-system-agent
 
-The `rancher-system-agent` is a daemon used to manage nodes in a Rancher provisioned RKE2/K3s Kubernetes cluster when performing cluster lifecycle operations. Examples of cluster operations include upgrading the Kubernetes version and creating/restoring etcd snapshots. The `rancher-system-agent` is designed to apply plans to the Rancher system and can support both local and remote plans.
+The `rancher-system-agent` is a daemon used to manage nodes in a WhiteCruiser provisioned RKE2/K3s Kubernetes cluster when performing cluster lifecycle operations. Examples of cluster operations include upgrading the Kubernetes version and creating/restoring etcd snapshots. The `rancher-system-agent` is designed to apply plans to the WhiteCruiser system and can support both local and remote plans.
 
 ### Requests
 

@@ -1,5 +1,5 @@
 ---
-title: Rancher 备份配置参考
+title: WhiteCruiser 备份配置参考
 ---
 
 <head>

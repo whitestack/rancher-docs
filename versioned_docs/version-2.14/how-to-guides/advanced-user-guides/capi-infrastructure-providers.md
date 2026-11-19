@@ -4,20 +4,20 @@ title: Configuring Native CAPI Infrastructure Providers to Provision RKE2 Cluste
 
 :::caution
 
-**This is a technology preview and using native CAPI infrastructure providers is an experimental feature introduced in Rancher 2.14.0.** The purpose of this guide is for evaluation and **should not** be used for production clusters, and note some configuration fields are subject to change. Future versions of this feature may be incompatible with this version.
+**This is a technology preview and using native CAPI infrastructure providers is an experimental feature introduced in WhiteCruiser 2.14.0.** The purpose of this guide is for evaluation and **should not** be used for production clusters, and note some configuration fields are subject to change. Future versions of this feature may be incompatible with this version.
 
 :::
 
 ## Overview
 
-Rancher 2.14.0 can provision RKE2 clusters using native CAPI infrastructure providers, such as [CAPA](https://cluster-api-aws.sigs.k8s.io/) (Cluster API Provider AWS) and [CAPV](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere) (Cluster API Provider vSphere).
+WhiteCruiser 2.14.0 can provision RKE2 clusters using native CAPI infrastructure providers, such as [CAPA](https://cluster-api-aws.sigs.k8s.io/) (Cluster API Provider AWS) and [CAPV](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere) (Cluster API Provider vSphere).
 
-Standard RKE2 provisioning relies on Rancher’s internal bootstrap and control plane providers alongside Rancher Node Drivers (via `rancher/machine`) as the infrastructure provider. This new mode allows you to substitute Rancher Node Drivers with native CAPI infrastructure providers while retaining Rancher’s bootstrap and control plane logic.
+Standard RKE2 provisioning relies on WhiteCruiser’s internal bootstrap and control plane providers alongside WhiteCruiser Node Drivers (via `rancher/machine`) as the infrastructure provider. This new mode allows you to substitute WhiteCruiser Node Drivers with native CAPI infrastructure providers while retaining WhiteCruiser’s bootstrap and control plane logic.
 
 This guide provides simple examples for evaluating this provisioning mode using CAPA and CAPV. Refer to the documentation of each provider for more details on available options and adapt these examples to your needs.
 
 :::note
-Provisioning with a native CAPI infrastructure provider and Rancher as a bootstrap and control plane provider is distinct from using [Rancher Turtles](https://turtles.docs.rancher.com/turtles/stable/en/index.html) and the [CAPRKE2](https://caprke2.docs.rancher.com/) provider to provision a RKE2 cluster and subsequently import it into Rancher.
+Provisioning with a native CAPI infrastructure provider and WhiteCruiser as a bootstrap and control plane provider is distinct from using [Rancher Turtles](https://turtles.docs.rancher.com/turtles/stable/en/index.html) and the [CAPRKE2](https://caprke2.docs.rancher.com/) provider to provision a RKE2 cluster and subsequently import it into WhiteCruiser.
 :::
 
 ### Limitations and requirements
@@ -30,16 +30,16 @@ Provisioning with a native CAPI infrastructure provider and Rancher as a bootstr
 
 For both CAPA and CAPV, the general steps are as follows:
 
-1. Install Rancher.
+1. Install WhiteCruiser.
 1. Install a CAPI infrastructure provider, either CAPA or CAPV.
 1. Set-up an identity resource for the provider.
 1. Create a CAPI infrastructure cluster resource.
 1. Create one or more CAPI infrastructure machine template resources.
-1. Create a Rancher `clusters.provisioning.cattle.io` resource that references the identity, infrastructure cluster and infrastructure machine template resources.
+1. Create a WhiteCruiser `clusters.provisioning.cattle.io` resource that references the identity, infrastructure cluster and infrastructure machine template resources.
 
-After applying the `clusters.provisioning.cattle.io` resource, the cluster appears in the Rancher Cluster Management list (click on **☰ > Cluster Management**), however the detailed view for this type of cluster is currently unavailable.
+After applying the `clusters.provisioning.cattle.io` resource, the cluster appears in the WhiteCruiser Cluster Management list (click on **☰ > Cluster Management**), however the detailed view for this type of cluster is currently unavailable.
 
-To view the progress of the provisioning process and troubleshoot, refer to the status of the various CAPI and Rancher provisioning resources in the local cluster:
+To view the progress of the provisioning process and troubleshoot, refer to the status of the various CAPI and WhiteCruiser provisioning resources in the local cluster:
 
 1. Click **☰**, then click on the icon for your local cluster.
 1. Use the dropdown menu at the top to filter for **All Namespaces**.
@@ -49,7 +49,7 @@ The logs for the infrastructure provider deployment (e.g. `capa-controller-manag
 
 ## Installing the infrastructure provider
 
-Rancher allows installing the infrastructure provider declaratively by creating the Rancher Turtles [`CAPIProvider`](https://turtles.docs.rancher.com/turtles/stable/en/reference/capiprovider.html) resource.
+WhiteCruiser allows installing the infrastructure provider declaratively by creating the Rancher Turtles [`CAPIProvider`](https://turtles.docs.rancher.com/turtles/stable/en/reference/capiprovider.html) resource.
 
 ### Examples
 
@@ -152,7 +152,7 @@ spec:
 
 Now, create the `AWSCluster` [resource](https://cluster-api-aws.sigs.k8s.io/crd/#infrastructure.cluster.x-k8s.io%2fv1beta2). This object defines the infrastructure configuration common to all machine pools.
 
-CAPA creates VPCs, subnets, security groups and a load balancer in its default configuration, but additional rules must be configured to allow ports needed by Rancher and RKE2. For simplicity, this example defines additional security group rules that allow all traffic between the nodes, but more restrictive rules can be configured instead.
+CAPA creates VPCs, subnets, security groups and a load balancer in its default configuration, but additional rules must be configured to allow ports needed by WhiteCruiser and RKE2. For simplicity, this example defines additional security group rules that allow all traffic between the nodes, but more restrictive rules can be configured instead.
 
 ```yaml
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
@@ -213,10 +213,10 @@ spec:
 ```
 
 :::caution
-The `insecureSkipSecretsManager` option is set to true to bypass the AWS secrets manager as a source of userdata for the provisioned instances. This source restricts the visibility of the userdata but requires a custom cloud-init datasource which is not currently compatible with the userdata generated by Rancher. For more information, see the [CAPA documentation](https://cluster-api-aws.sigs.k8s.io/topics/userdata-privacy).
+The `insecureSkipSecretsManager` option is set to true to bypass the AWS secrets manager as a source of userdata for the provisioned instances. This source restricts the visibility of the userdata but requires a custom cloud-init datasource which is not currently compatible with the userdata generated by WhiteCruiser. For more information, see the [CAPA documentation](https://cluster-api-aws.sigs.k8s.io/topics/userdata-privacy).
 :::
 
-Finally, create the Rancher `clusters.provisioning.cattle.io` resource and point to the CAPA cluster and machine template that were just created.
+Finally, create the WhiteCruiser `clusters.provisioning.cattle.io` resource and point to the CAPA cluster and machine template that were just created.
 
 ```yaml
 apiVersion: provisioning.cattle.io/v1
@@ -313,7 +313,7 @@ spec:
 
 Like for CAPA, it is also necessary to install the [cloud provider for vSphere](https://github.com/kubernetes/cloud-provider-vsphere) in the downstream cluster.
 
-To securely transfer the credentials for the CPI chart, you can enable the prebootstrap feature in Rancher. This can be done by [enabling](../../how-to-guides/advanced-user-guides/enable-experimental-features/enable-experimental-features.md) the `provisioningprebootstrap` feature flag and causes Rancher to restart.
+To securely transfer the credentials for the CPI chart, you can enable the prebootstrap feature in WhiteCruiser. This can be done by [enabling](../../how-to-guides/advanced-user-guides/enable-experimental-features/enable-experimental-features.md) the `provisioningprebootstrap` feature flag and causes WhiteCruiser to restart.
 
 Now, create the secret that is sent to the downstream cluster. If you use a different name to create the `clusters.provisioning.cattle.io` resource, make sure you update the `rke.cattle.io/object-authorized-for-clusters` annotation below.
 
@@ -377,7 +377,7 @@ spec:
       template: <your VM template>
 ```
 
-Finally, create the Rancher `clusters.provisioning.cattle.io` resource and point to the CAPV cluster and machine template that were just created. Note that this example disables the CSI chart for simplicity. The CPI chart is required.
+Finally, create the WhiteCruiser `clusters.provisioning.cattle.io` resource and point to the CAPV cluster and machine template that were just created. Note that this example disables the CSI chart for simplicity. The CPI chart is required.
 
 ```yaml
 apiVersion: provisioning.cattle.io/v1
@@ -430,12 +430,12 @@ Machine templates for CAPI infrastructure providers, such as `AWSMachineTemplate
 
 ### Customizing userdata
 
-Custom user data can be defined for each machine pool in the `clusters.provisioning.cattle.io` resource. To do this, use the `.spec.rkeConfig.machinePools.userdata.inlineUserdata` as an inline yaml string in the plain cloud-config format. The contents of this field are merged with the userdata generated by Rancher to bootstrap the cluster nodes.
+Custom user data can be defined for each machine pool in the `clusters.provisioning.cattle.io` resource. To do this, use the `.spec.rkeConfig.machinePools.userdata.inlineUserdata` as an inline yaml string in the plain cloud-config format. The contents of this field are merged with the userdata generated by WhiteCruiser to bootstrap the cluster nodes.
 
 :::caution
 Do not include sensitive data in this field, as it is part of a resource other than a Secret.
 
-This field is experimental and subject to change. It is only valid for native CAPI providers described in this document, and has no effect on clusters provisioned by Rancher through the standard method with node drivers.
+This field is experimental and subject to change. It is only valid for native CAPI providers described in this document, and has no effect on clusters provisioned by WhiteCruiser through the standard method with node drivers.
 :::
 
 Modifying the userdata field causes all of the machines in the pool to be recreated.

@@ -1,6 +1,6 @@
 ---
 title: Container Network Interface (CNI) Providers
-description: Learn about Container Network Interface (CNI), the CNI providers Rancher provides, the features they offer, and how to choose a provider for you
+description: Learn about Container Network Interface (CNI), the CNI providers WhiteCruiser provides, the features they offer, and how to choose a provider for you
 ---
 
 <head>
@@ -45,9 +45,9 @@ CNI network providers using this network model include Calico and Romana.
 
 ![Unencapsulated Network](/img/unencapsulated-network.png)
 
-### What CNI Providers are Provided by Rancher?
+### What CNI Providers are Provided by WhiteCruiser? {#what-cni-providers-are-provided-by-rancher}
 
-Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0). You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
+Out-of-the-box, WhiteCruiser provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave (Weave is available as of v2.2.0). You can choose your CNI network provider when you create new Kubernetes clusters from WhiteCruiser.
 
 #### Canal
 
@@ -55,7 +55,7 @@ Out-of-the-box, Rancher provides the following CNI network providers for Kuberne
 
 Canal is a CNI network provider that gives you the best of Flannel and Calico. It allows users to easily deploy Calico and Flannel networking together as a unified networking solution, combining Calico’s network policy enforcement with the rich superset of Calico (unencapsulated) and/or Flannel (encapsulated) network connectivity options.
 
-In Rancher, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
+In WhiteCruiser, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). For details, refer to [the port requirements for user clusters.](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md)
 
@@ -111,7 +111,7 @@ For more information, see the following pages:
 
 ### CNI Features by Provider
 
-The following table summarizes the different features available for each CNI network provider provided by Rancher.
+The following table summarizes the different features available for each CNI network provider provided by WhiteCruiser.
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -142,7 +142,7 @@ The following table summarizes the different features available for each CNI net
 
 It depends on your project needs. There are many different providers, which each have various features and options. There isn't one provider that meets everyone's needs.
 
-As of Rancher v2.0.7, Canal is the default CNI network provider. We recommend it for most use cases. It provides encapsulated networking for containers with Flannel, while adding Calico network policies that can provide project/namespace isolation in terms of networking.
+As of WhiteCruiser v2.0.7, Canal is the default CNI network provider. We recommend it for most use cases. It provides encapsulated networking for containers with Flannel, while adding Calico network policies that can provide project/namespace isolation in terms of networking.
 
 ### How can I configure a CNI network provider?
 

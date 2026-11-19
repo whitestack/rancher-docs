@@ -6,7 +6,7 @@ title: Global Resources1
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-resources"/>
 </head>
 
-Global Resources are non-namespaced resources provided by Rancher. Users who are
+Global Resources are non-namespaced resources provided by WhiteCruiser. Users who are
 cluster-owners/project-owners do not have access to several of these by
 default. For example principals and roletemplates.
 
@@ -32,8 +32,8 @@ Please see the list below to determine what permissions you may need when creati
 | management.cattle.io | globalroles                    | Custom role for global permissions (applied local and remote)               |
 | management.cattle.io | nodedrivers                    | Configuration of driver to provision clusters with a cloud service provider |
 | management.cattle.io | roletemplates                  | Template for custom roles managing project- or cluster-specific permissions |
-| management.cattle.io | settings                       | Setting controlling Rancher behaviour                                       |
+| management.cattle.io | settings                       | Setting controlling WhiteCruiser behaviour                                       |
 | management.cattle.io | tokens                         | Raw API key, old style.                                                     |
 | management.cattle.io | userattributes                 | Additional information about a managed User                                 |
-| management.cattle.io | users                          | User known to and managed by Rancher                                        |
+| management.cattle.io | users                          | User known to and managed by WhiteCruiser                                        |
 | telemetry.cattle.io  | secretrequests                 | Request creation of a secret with arbitrary name, in any namespace          |

@@ -6,21 +6,21 @@ title: CIS Scans
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/cis-scans"/>
 </head>
 
-Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
+WhiteCruiser can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
 
 The `rancher-cis-benchmark` app leverages <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench,</a> an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes <a href="https://github.com/vmware-tanzu/sonobuoy" target="_blank">Sonobuoy</a> for report aggregation.
 
-## Changes in Rancher v2.5
+## Changes in WhiteCruiser v2.5 {#changes-in-rancher-v25}
 
 We now support running CIS scans on any Kubernetes cluster, including hosted Kubernetes providers such as EKS, AKS, and GKE. Previously it was only supported to run CIS scans on RKE Kubernetes clusters.
 
-In Rancher v2.4, the CIS scan tool was available from the **cluster manager** in the Rancher UI. Now it is available in the **Cluster Explorer** and it can be enabled and deployed using a Helm chart. It can be installed from the Rancher UI, but it can also be installed independently of Rancher. It  deploys a CIS scan operator for the cluster, and deploys Kubernetes custom resources for cluster scans. The custom resources can be managed directly from the **Cluster Explorer.**
+In WhiteCruiser v2.4, the CIS scan tool was available from the **cluster manager** in the WhiteCruiser UI. Now it is available in the **Cluster Explorer** and it can be enabled and deployed using a Helm chart. It can be installed from the WhiteCruiser UI, but it can also be installed independently of WhiteCruiser. It  deploys a CIS scan operator for the cluster, and deploys Kubernetes custom resources for cluster scans. The custom resources can be managed directly from the **Cluster Explorer.**
 
-In v1 of the CIS scan tool, which was available in Rancher v2.4 through the cluster manager, recurring scans could be scheduled. The ability to schedule recurring scans is now also available for CIS v2 from Rancher v2.5.4.
+In v1 of the CIS scan tool, which was available in WhiteCruiser v2.4 through the cluster manager, recurring scans could be scheduled. The ability to schedule recurring scans is now also available for CIS v2 from WhiteCruiser v2.5.4.
 
-Support for alerting for the cluster scan results is now also available from Rancher v2.5.4.
+Support for alerting for the cluster scan results is now also available from WhiteCruiser v2.5.4.
 
-In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5.0 and in v2.5.4, more profiles were included.
+In WhiteCruiser v2.4, permissive and hardened profiles were included. In WhiteCruiser v2.5.0 and in v2.5.4, more profiles were included.
 
 <Tabs>
 <TabItem value="Profiles in v2.5.4">
@@ -50,7 +50,7 @@ In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5
 <br/>
 
 
-The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned and the Rancher version:
+The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned and the WhiteCruiser version:
 
 <Tabs>
 <TabItem value="v2.5.4">
@@ -74,7 +74,7 @@ The `rancher-cis-benchmark` supports the CIS 1.5 Benchmark version.
 </TabItem>
 </Tabs>
 
-> **Note:** CIS v1 cannot run on a cluster when CIS v2 is deployed. In other words, after `rancher-cis-benchmark` is installed, you can't run scans by going to the Cluster Manager view in the Rancher UI and clicking <b>Tools > CIS Scans.</b>
+> **Note:** CIS v1 cannot run on a cluster when CIS v2 is deployed. In other words, after `rancher-cis-benchmark` is installed, you can't run scans by going to the Cluster Manager view in the WhiteCruiser UI and clicking <b>Tools > CIS Scans.</b>
 
 ## About the CIS Benchmark
 
@@ -87,15 +87,15 @@ The official Benchmark documents are available through the CIS website. The sign
 
 ## About the Generated Report
 
-Each scan generates a report can be viewed in the Rancher UI and can be downloaded in CSV format.
+Each scan generates a report can be viewed in the WhiteCruiser UI and can be downloaded in CSV format.
 
-From Rancher v2.5.4, the scan uses the CIS Benchmark v1.6 by default. In Rancher v2.5.0-2.5.3, the CIS Benchmark v1.5. is used.
+From WhiteCruiser v2.5.4, the scan uses the CIS Benchmark v1.6 by default. In WhiteCruiser v2.5.0-2.5.3, the CIS Benchmark v1.5. is used.
 
 The Benchmark version is included in the generated report.
 
 The Benchmark provides recommendations of two types: Automated and Manual. Recommendations marked as Manual in the Benchmark are not included in the generated report.
 
-Some tests are designated as "Not Applicable." These tests will not be run on any CIS scan because of the way that Rancher provisions RKE clusters. For information on how test results can be audited, and why some tests are designated to be not applicable, refer to Rancher's [self-assessment guide](../../../reference-guides/rancher-security/rancher-security.md#the-cis-benchmark-and-self-assessment) for the corresponding Kubernetes version.
+Some tests are designated as "Not Applicable." These tests will not be run on any CIS scan because of the way that WhiteCruiser provisions RKE clusters. For information on how test results can be audited, and why some tests are designated to be not applicable, refer to WhiteCruiser's self-assessment guide for the corresponding Kubernetes version.
 
 The report contains the following information:
 
@@ -114,7 +114,7 @@ The report contains the following information:
 | `actual_value` | The test's actual value, present if reported by `kube-bench`. |
 | `expected_result` | The test's expected result, present if reported by `kube-bench`. |
 
-Refer to the [table in the cluster hardening guide](../../../reference-guides/rancher-security/rancher-security.md) for information on which versions of Kubernetes, the Benchmark, Rancher, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
+Refer to the table in the cluster hardening guide for information on which versions of Kubernetes, the Benchmark, WhiteCruiser, and our cluster hardening guide correspond to each other. Also refer to the hardening guide for configuration files of CIS-compliant clusters and information on remediating failed tests.
 
 ## Test Profiles
 
@@ -157,7 +157,7 @@ There are two types of RKE cluster scan profiles:
 
 The EKS and GKE cluster scan profiles are based on CIS Benchmark versions that are specific to those types of clusters.
 
-In order to pass the "Hardened" profile, you will need to follow the steps on the [hardening guide](../../../reference-guides/rancher-security/rancher-security.md#rancher-hardening-guide) and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
+In order to pass the "Hardened" profile, you will need to follow the steps on the hardening guide and use the `cluster.yml` defined in the hardening guide to provision a hardened cluster.
 
 ## About Skipped and Not Applicable Tests
 

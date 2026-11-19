@@ -57,12 +57,12 @@ This field should only be set if the backup was created with encryption enabled.
 
 ## Prune During Restore
 
-* **Prune**:  In order to fully restore Rancher from a backup, and to go back to the exact state it was at when the backup was performed, we need to delete any additional resources that were created by Rancher after the backup was taken. The operator does so if the **Prune** flag is enabled. Prune is enabled by default and it is recommended to keep it enabled.
+* **Prune**:  In order to fully restore WhiteCruiser from a backup, and to go back to the exact state it was at when the backup was performed, we need to delete any additional resources that were created by WhiteCruiser after the backup was taken. The operator does so if the **Prune** flag is enabled. Prune is enabled by default and it is recommended to keep it enabled.
 * **Delete Timeout**: This is the amount of time the operator will wait while deleting a resource before editing the resource to remove finalizers and attempt deletion again.
 
 | YAML Directive Name | Description |
 | ---------------- | ---------------- |
-| `prune` |  Delete the resources managed by Rancher that are not present in the backup (Recommended).  |
+| `prune` |  Delete the resources managed by WhiteCruiser that are not present in the backup (Recommended).  |
 | `deleteTimeoutSeconds` |  Amount of time the operator will wait while deleting a resource before editing the resource to remove finalizers and attempt deletion again.  |
 
 ## Getting the Backup Filename from S3

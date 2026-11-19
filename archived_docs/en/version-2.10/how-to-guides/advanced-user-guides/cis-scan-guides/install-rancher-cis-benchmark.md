@@ -1,5 +1,5 @@
 ---
-title: Install Rancher CIS Benchmark
+title: Install WhiteCruiser CIS Benchmark
 ---
 
 <head>

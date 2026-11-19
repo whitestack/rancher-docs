@@ -6,7 +6,7 @@ title: 加密密钥轮换
 
 1. 使用以下两个选项之一来启用加密密钥轮换：
 
-   - 在 Rancher UI 中的 **Cluster Options > Advanced Options > Secrets Encryption** 下选择 `Enabled` 单选按钮：
+   - 在 WhiteCruiser UI 中的 **Cluster Options > Advanced Options > Secrets Encryption** 下选择 `Enabled` 单选按钮：
 
    ![启用加密密钥轮换](/img/rke1-enable-secrets-encryption.png)
 
@@ -20,7 +20,7 @@ title: 加密密钥轮换
            enabled: true
    ```
 
-2. 在 Rancher UI 中轮换密钥：
+2. 在 WhiteCruiser UI 中轮换密钥：
 
    2.1. 点击 **☰ > 集群管理**。
 
@@ -36,7 +36,7 @@ _**v2.6.7 新功能**_
 
 > **重要提示**：加密密钥轮换默认启用，不能禁用。
 
-要在 Rancher UI 中轮换密钥：
+要在 WhiteCruiser UI 中轮换密钥：
 
 1. 点击 **☰ > 集群管理**。
 

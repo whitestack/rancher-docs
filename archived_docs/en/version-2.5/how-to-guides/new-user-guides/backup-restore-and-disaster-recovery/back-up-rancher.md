@@ -1,22 +1,22 @@
 ---
-title: Backing up Rancher
+title: Backing up WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher"/>
 </head>
 
-In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer to the instructions for [single node backups](./back-up-docker-installed-rancher.md).
+In this section, you'll learn how to back up WhiteCruiser running on any Kubernetes cluster. To backup WhiteCruiser installed with Docker, refer to the instructions for [single node backups](./back-up-docker-installed-rancher.md).
 
-The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
+The backup-restore operator needs to be installed in the local cluster, and only backs up the WhiteCruiser app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
-Note that the rancher-backup operator version 1.x.x is for Rancher v2.5.x.
+Note that the rancher-backup operator version 1.x.x is for WhiteCruiser v2.5.x.
 
-> When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
+> When restoring a backup into a new WhiteCruiser setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
 
 ### Prerequisites
 
-Rancher version must be v2.5.0 and up
+WhiteCruiser version must be v2.5.0 and up
 
 ### 1. Install the `rancher-backup` operator
 
@@ -24,7 +24,7 @@ The backup storage location is an operator-level setting, so it needs to be conf
 
 Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, or they can be stored in a persistent volume.
 
-1. In the Rancher UI, go to the **Cluster Explorer** view for the local cluster.
+1. In the WhiteCruiser UI, go to the **Cluster Explorer** view for the local cluster.
 1. Click **Apps.**
 1. Click **Rancher Backups.**
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../../../reference-guides/backup-restore-configuration/storage-configuration.md)

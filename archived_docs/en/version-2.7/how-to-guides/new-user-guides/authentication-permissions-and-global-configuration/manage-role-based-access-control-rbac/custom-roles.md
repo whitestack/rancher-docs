@@ -6,7 +6,7 @@ title: Custom Roles
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/custom-roles"/>
 </head>
 
-Within Rancher, _roles_ determine what actions a user can make within a cluster or project.
+Within WhiteCruiser, _roles_ determine what actions a user can make within a cluster or project.
 
 Note that _roles_ are different from _permissions_, which determine what clusters and projects you can access.
 
@@ -26,13 +26,13 @@ To complete the tasks on this page, one of the following permissions are require
 
 ## Creating A Custom Role
 
-While Rancher comes out-of-the-box with a set of default user roles, you can also create default custom roles to provide users with very specific permissions within Rancher.
+While WhiteCruiser comes out-of-the-box with a set of default user roles, you can also create default custom roles to provide users with very specific permissions within WhiteCruiser.
 
-The steps to add custom roles differ depending on the version of Rancher.
+The steps to add custom roles differ depending on the version of WhiteCruiser.
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**. 
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1.  Select a tab to determine the scope of the role you're adding. The tabs are:
 
   - **Global:** The role is valid for allowing members to manage global scoped resources.
@@ -47,27 +47,27 @@ The steps to add custom roles differ depending on the version of Rancher.
 
 1.  Use the **Grant Resources** options to assign individual [Kubernetes API endpoints](https://kubernetes.io/docs/reference/) to the role.
 
-    > When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+    > When viewing the resources associated with default roles created by WhiteCruiser, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
     > The Resource text field provides a method to search for pre-defined Kubernetes API resources, or enter a custom resource name for the grant. The pre-defined or `(Custom)` resource must be selected from the dropdown, after entering a resource name into this field.
 
     You can also choose the individual cURL methods (`Create`, `Delete`, `Get`, etc.) available for use with each endpoint you assign.
 
-1.  Use the **Inherit from** options to assign individual Rancher roles to your custom roles. Note: When a custom role inherits from a parent role, the parent role cannot be deleted until the child role is deleted.
+1.  Use the **Inherit from** options to assign individual WhiteCruiser roles to your custom roles. Note: When a custom role inherits from a parent role, the parent role cannot be deleted until the child role is deleted.
 
 1.  Click **Create**.
 
 ## Creating a Custom Role that Inherits from Another Role
 
-If you have a group of individuals that need the same level of access in Rancher, it can save time to create a custom role in which all of the rules from another role, such as the administrator role, are copied into a new role. This allows you to only configure the variations between the existing role and the new role.
+If you have a group of individuals that need the same level of access in WhiteCruiser, it can save time to create a custom role in which all of the rules from another role, such as the administrator role, are copied into a new role. This allows you to only configure the variations between the existing role and the new role.
 
-The custom role can then be assigned to a user or group so that the role takes effect the first time the user or users sign into Rancher.
+The custom role can then be assigned to a user or group so that the role takes effect the first time the user or users sign into WhiteCruiser.
 
 To create a custom role based on an existing role,
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**. 
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. Click the **Cluster** or **Project/Namespaces** tab. Click **Create Cluster Role** or **Create Project/Namespaces Role** depending on the scope. Note: Only cluster roles and project/namespace roles can inherit from another role.
 1. Enter a name for the role.
 1. In the **Inherit From** tab, select the role(s) that the custom role will inherit permissions from.
@@ -81,7 +81,7 @@ To create a custom role based on an existing role,
 
 When deleting a custom role, all global role bindings with this custom role are deleted.
 
-If a user is only assigned one custom role, and the role is deleted, the user would lose access to Rancher. For the user to regain access, an administrator would need to edit the user and apply new global permissions.
+If a user is only assigned one custom role, and the role is deleted, the user would lose access to WhiteCruiser. For the user to regain access, an administrator would need to edit the user and apply new global permissions.
 
 Custom roles can be deleted, but built-in roles cannot be deleted.
 
@@ -89,13 +89,13 @@ To delete a custom role,
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**. 
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. Go to the custom global role that should be deleted and click **⋮ (…) > Delete**.
 1. Click **Delete**.
 
 ## Assigning a Custom Role to a Group
 
-If you have a group of individuals that need the same level of access in Rancher, it can save time to create a custom role. When the role is assigned to a group, the users in the group have the appropriate level of access the first time they sign into Rancher.
+If you have a group of individuals that need the same level of access in WhiteCruiser, it can save time to create a custom role. When the role is assigned to a group, the users in the group have the appropriate level of access the first time they sign into WhiteCruiser.
 
 When a user in the group logs in, they get the built-in Standard User global role by default. They will also get the permissions assigned to their groups.
 
@@ -120,8 +120,8 @@ To assign a custom role to a group, follow these steps:
 1. Optional: In the **Global Permissions** or **Built-in** sections, select any additional permissions that the group should have.
 1. Click **Save.**.
 
-**Result:** The custom role will take effect when the users in the group log into Rancher.
+**Result:** The custom role will take effect when the users in the group log into WhiteCruiser.
 
 ## Privilege Escalation
 
-The `Configure Catalogs` custom permission is powerful and should be used with caution. When an admin assigns the  `Configure Catalogs` permission to a standard user, it could result in privilege escalation in which the user could give themselves admin access to Rancher provisioned clusters. Anyone with this permission should be considered equivalent to an admin.
+The `Configure Catalogs` custom permission is powerful and should be used with caution. When an admin assigns the  `Configure Catalogs` permission to a standard user, it could result in privilege escalation in which the user could give themselves admin access to WhiteCruiser provisioned clusters. Anyone with this permission should be considered equivalent to an admin.

@@ -6,26 +6,26 @@ title: '2. Collect and Publish Images to your Private Registry'
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images"/>
 </head>
 
-This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
+This section describes how to set up your private registry so that when you install WhiteCruiser, WhiteCruiser will pull all the required images from this registry.
 
-By default, all images used to [provision Kubernetes clusters](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) or launch any [tools](../../../../reference-guides/rancher-cluster-tools.md) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
+By default, all images used to [provision Kubernetes clusters](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) or launch any [tools](../../../../reference-guides/rancher-cluster-tools.md) in WhiteCruiser, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of WhiteCruiser, you will need a private registry that is located somewhere accessible by your WhiteCruiser server. Then, you will load the registry with all the images.
 
-Populating the private registry with images is the same process for installing Rancher with Docker and for installing Rancher on a Kubernetes cluster.
+Populating the private registry with images is the same process for installing WhiteCruiser with Docker and for installing WhiteCruiser on a Kubernetes cluster.
 
-The steps in this section differ depending on whether or not you are planning to use Rancher to provision a downstream cluster with Windows nodes or not. By default, we provide the steps of how to populate your private registry assuming that Rancher will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/use-windows-clusters.md), there are separate instructions to support the images needed.
+The steps in this section differ depending on whether or not you are planning to use WhiteCruiser to provision a downstream cluster with Windows nodes or not. By default, we provide the steps of how to populate your private registry assuming that WhiteCruiser will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/use-windows-clusters.md), there are separate instructions to support the images needed.
 
 > **Prerequisites:**
 >
 > You must have a [private registry](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry) available to use.
 >
-> If the registry has certs, follow [this K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the Rancher container.
+> If the registry has certs, follow [this K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the WhiteCruiser container.
 
 <Tabs>
 <TabItem value="Linux Only Clusters">
 
-For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
+For WhiteCruiser servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
-1. [Find the required assets for your Rancher version](#1-find-the-required-assets-for-your-rancher-version)
+1. [Find the required assets for your WhiteCruiser version](#1-find-the-required-assets-for-your-rancher-version)
 2. [Collect the cert-manager image](#2-collect-the-cert-manager-image) (unless you are bringing your own certificates or terminating TLS on a load balancer)
 3. [Save the images to your workstation](#3-save-the-images-to-your-workstation)
 4. [Populate the private registry](#4-populate-the-private-registry)
@@ -36,15 +36,15 @@ These steps expect you to use a Linux workstation that has internet access, acce
 
 If you will use ARM64 hosts, the registry must support manifests. As of April 2020, Amazon Elastic Container Registry does not support manifests.
 
-### 1. Find the required assets for your Rancher version
+### 1. Find the required assets for your WhiteCruiser version {#1-find-the-required-assets-for-your-rancher-version}
 
-1. Go to our [releases page,](https://github.com/rancher/rancher/releases) find the Rancher v2.x.x release that you want to install, and click **Assets.** Note: Don't use releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Go to our [releases page,](https://github.com/rancher/rancher/releases) find the WhiteCruiser v2.x.x release that you want to install, and click **Assets.** Note: Don't use releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
-2. From the release's **Assets** section, download the following files, which are required to install Rancher in an air gap environment:
+2. From the release's **Assets** section, download the following files, which are required to install WhiteCruiser in an air gap environment:
 
 | Release File   | Description  |
 | ---------------- | -------------- |
-| `rancher-images.txt`     | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools. |
+| `rancher-images.txt`     | This file contains a list of images needed to install WhiteCruiser, provision clusters and user WhiteCruiser tools. |
 | `rancher-save-images.sh` | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
 | `rancher-load-images.sh` | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.   |
 
@@ -52,11 +52,11 @@ If you will use ARM64 hosts, the registry must support manifests. As of April 20
 
 > Skip this step if you are using your own certificates, or if you are terminating TLS on an external load balancer.
 
-In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well.
+In a Kubernetes Install, if you elect to use the WhiteCruiser default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well.
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
-    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation](../../resources/upgrade-cert-manager.md).
+    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading WhiteCruiser and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation](../../resources/upgrade-cert-manager.md).
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io
@@ -111,13 +111,13 @@ The `rancher-images.txt` is expected to be on the workstation in the same direct
 
 _Available as of v2.3.0_
 
-For Rancher servers that will provision Linux and Windows clusters, there are distinctive steps to populate your private registry for the Windows images and the Linux images. Since a Windows cluster is a mix of Linux and Windows nodes, the Linux images pushed into the private registry are manifests.
+For WhiteCruiser servers that will provision Linux and Windows clusters, there are distinctive steps to populate your private registry for the Windows images and the Linux images. Since a Windows cluster is a mix of Linux and Windows nodes, the Linux images pushed into the private registry are manifests.
 
 ## Windows Steps
 
 The Windows images need to be collected and pushed from a Windows server workstation.
 
-1. <a href="#windows-1">Find the required assets for your Rancher version</a>
+1. <a href="#windows-1">Find the required assets for your WhiteCruiser version</a>
 2. <a href="#windows-2">Save the images to your Windows Server workstation</a>
 3. <a href="#windows-3">Prepare the Docker daemon</a>
 4. <a href="#windows-4">Populate the private registry</a>
@@ -132,9 +132,9 @@ Your registry must support manifests. As of April 2020, Amazon Elastic Container
 
 <a name="windows-1"></a>
 
-### 1. Find the required assets for your Rancher version
+### 1. Find the required assets for your WhiteCruiser version {#1-find-the-required-assets-for-your-rancher-version-1}
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
+1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the WhiteCruiser v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments.
 
 2. From the release's "Assets" section, download the following files:
 
@@ -196,7 +196,7 @@ The `rancher-windows-images.txt` is expected to be on the workstation in the sam
 
 The Linux images needs to be collected and pushed from a Linux host, but _must be done after_ populating the Windows images into the private registry. These step are different from the Linux only steps as the Linux images that are pushed will actually manifests that support Windows and Linux images.
 
-1. <a href="#linux-1">Find the required assets for your Rancher version</a>
+1. <a href="#linux-1">Find the required assets for your WhiteCruiser version</a>
 2. <a href="#linux-2">Collect all the required images</a>
 3. <a href="#linux-3">Save the images to your Linux workstation</a>
 4. <a href="#linux-4">Populate the private registry</a>
@@ -211,15 +211,15 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 <a name="linux-1"></a>
 
-### 1. Find the required assets for your Rancher version
+### 1. Find the required assets for your WhiteCruiser version {#1-find-the-required-assets-for-your-rancher-version-2}
 
-1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the Rancher v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets.**
+1. Browse to our [releases page](https://github.com/rancher/rancher/releases) and find the WhiteCruiser v2.x.x release that you want to install. Don't download releases marked `rc` or `Pre-release`, as they are not stable for production environments. Click **Assets.**
 
 2. From the release's **Assets** section, download the following files:
 
 | Release File                 | Description    |
 |----------------------------| -------------------------- |
-| `rancher-images.txt`         | This file contains a list of images needed to install Rancher, provision clusters and user Rancher tools.           |
+| `rancher-images.txt`         | This file contains a list of images needed to install WhiteCruiser, provision clusters and user WhiteCruiser tools.           |
 | `rancher-windows-images.txt` | This file contains a list of images needed to provision Windows clusters.                                                            |
 | `rancher-save-images.sh`     | This script pulls all the images in the `rancher-images.txt` from Docker Hub and saves all of the images as `rancher-images.tar.gz`. |
 | `rancher-load-images.sh`     | This script loads images from the `rancher-images.tar.gz` file and pushes them to your private registry.                             |
@@ -228,10 +228,10 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### 2. Collect all the required images
 
-**For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+**For Kubernetes Installs using WhiteCruiser Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the WhiteCruiser default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
 1. Fetch the latest `cert-manager` Helm chart and parse the template for image details:
-   > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation](../../resources/upgrade-cert-manager.md).
+   > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading WhiteCruiser and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation](../../resources/upgrade-cert-manager.md).
    ```plain
    helm repo add jetstack https://charts.jetstack.io
    helm repo update
@@ -293,4 +293,4 @@ chmod +x rancher-load-images.sh
 
 ### [Next step for Kubernetes Installs - Launch a Kubernetes Cluster](install-kubernetes.md)
 
-### [Next step for Docker Installs - Install Rancher](install-rancher-ha.md)
+### [Next step for Docker Installs - Install WhiteCruiser](install-rancher-ha.md) {#next-step-for-docker-installs---install-rancher}

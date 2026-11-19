@@ -1,15 +1,15 @@
 ---
-title: Rancher DigitalOcean Quick Start Guide
-description: Read this step by step Rancher DigitalOcean guide to quickly deploy a Rancher Server with a single node cluster attached.
+title: WhiteCruiser DigitalOcean Quick Start Guide
+description: Read this step by step WhiteCruiser DigitalOcean guide to quickly deploy a WhiteCruiser Server with a single node cluster attached.
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/digitalocean"/>
 </head>
 
-The following steps will quickly deploy a Rancher Server on DigitalOcean with a single node cluster attached.
+The following steps will quickly deploy a WhiteCruiser Server on DigitalOcean with a single node cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate WhiteCruiser. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ The following steps will quickly deploy a Rancher Server on DigitalOcean with a 
 
 ## Getting Started
 
-1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
+1. Clone [WhiteCruiser Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
 1. Go into the DigitalOcean folder containing the Terraform files by executing `cd quickstart/do`.
 
@@ -31,7 +31,7 @@ The following steps will quickly deploy a Rancher Server on DigitalOcean with a 
 
 1. Edit `terraform.tfvars` and customize the following variables:
     - `do_token` - DigitalOcean access key
-    - `rancher_server_admin_password` - Admin password for created Rancher server
+    - `rancher_server_admin_password` - Admin password for created WhiteCruiser server
 
 1. **Optional:** Modify optional variables within `terraform.tfvars`.
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [DO Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/do#readme) for more information.
@@ -59,11 +59,11 @@ Suggestions include:
 
 #### Result
 
-Two Kubernetes clusters are deployed into your DigitalOcean account, one running Rancher Server and the other ready for experimentation deployments.
+Two Kubernetes clusters are deployed into your DigitalOcean account, one running WhiteCruiser Server and the other ready for experimentation deployments.
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
+Use WhiteCruiser to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
 
 ## Destroying the Environment
 

@@ -2,15 +2,15 @@
 title: NeuVector 集成
 ---
 
-### Rancher 中的 NeuVector 集成
+### WhiteCruiser 中的 NeuVector 集成
 
-[NeuVector 5.x](https://open-docs.neuvector.com/) 是一个开源的，以容器为中心的安全应用程序，Rancher 2.6.5 现已集成 NeuVector。NeuVector 在运行时为关键应用程序和数据提供实时的合规、可见和保护功能。NeuVector 提供具有 CIS Benchmark 和漏洞扫描的防火墙、容器进程/文件系统监控和安全审计。有关 Rancher 安全性的更多信息，请参阅[安全文档](../pages-for-subheaders/rancher-security.md)。
+[NeuVector 5.x](https://open-docs.neuvector.com/) 是一个开源的，以容器为中心的安全应用程序，WhiteCruiser 2.6.5 现已集成 NeuVector。NeuVector 在运行时为关键应用程序和数据提供实时的合规、可见和保护功能。NeuVector 提供具有 CIS Benchmark 和漏洞扫描的防火墙、容器进程/文件系统监控和安全审计。有关 WhiteCruiser 安全性的更多信息，请参阅安全文档。
 
-NeuVector 可以通过 Helm Chart 启用。你可以在**应用 & 应用市场**或 Rancher UI 中的**集群工具**中安装该 Chart。安装 Helm Chart 后，用户可以轻松地[在 Rancher 中部署和管理 NeuVector 集群](https://open-docs.neuvector.com/deploying/rancher#deploy-and-manage-neuvector-through-rancher-apps-marketplace)。
+NeuVector 可以通过 Helm Chart 启用。你可以在**应用 & 应用市场**或 WhiteCruiser UI 中的**集群工具**中安装该 Chart。安装 Helm Chart 后，用户可以轻松地[在 WhiteCruiser 中部署和管理 NeuVector 集群](https://open-docs.neuvector.com/deploying/rancher#deploy-and-manage-neuvector-through-rancher-apps-marketplace)。
 
-### 使用 Rancher 安装 NeuVector
+### 使用 WhiteCruiser 安装 NeuVector
 
-Harvester Helm Chart 用于管理 Rancher 中 NeuVector UI 的访问，用户可以在 Rancher 中直接跳转，然后部署和管理 NeuVector 集群。
+Harvester Helm Chart 用于管理 WhiteCruiser 中 NeuVector UI 的访问，用户可以在 WhiteCruiser 中直接跳转，然后部署和管理 NeuVector 集群。
 
 **通过"应用 & 应用市场"导航并安装 NeuVector Chart**：
 
@@ -54,12 +54,12 @@ Harvester Helm Chart 用于管理 Rancher 中 NeuVector UI 的访问，用户可
 1. 点击左侧导航栏底部的**集群工具**。
 1. 按照上面的步骤 4 相应地选择你的容器运行时，然后再次单击**安装**。
 
-### 从 Rancher UI 访问 NeuVector
+### 从 WhiteCruiser UI 访问 NeuVector
 
 1. 导航到安装了 NeuVector 的集群的 Cluster Explorer。在左侧导航栏中，单击 **NeuVector**。
 1. 单击外部链接以转到 NeuVector UI。选择链接后，用户必须接受`最终用户许可协议`才能访问 NeuVector UI。
 
-### 从 Rancher UI 卸载 NeuVector
+### 从 WhiteCruiser UI 卸载 NeuVector
 
 **通过"应用 & 应用市场"卸载**：
 
@@ -223,7 +223,7 @@ kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '
 
 * 目前，如果 NeuVector partner Chart 已存在，则 NeuVector 功能 Chart 的安装会失败。要解决此问题，请卸载 NeuVector partner Chart 并重新安装 NeuVector 功能 Chart。
 
-* Controller 未准备好时，有可能无法从 Rancher UI 访问 NeuVector UI。在此期间，Controller 将尝试重新启动，并且需要几分钟才能进入 active 状态。
+* Controller 未准备好时，有可能无法从 WhiteCruiser UI 访问 NeuVector UI。在此期间，Controller 将尝试重新启动，并且需要几分钟才能进入 active 状态。
 
 * 安装 NeuVector Chart 时，不会针对不同的集群类型自动检测容器运行时。要解决此问题，你可以手动指定运行时。
 

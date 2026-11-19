@@ -6,15 +6,15 @@ title: Minimum EKS Permissions
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/eks"/>
 </head>
 
-Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher. Additional permissions are required for Rancher to provision the `Service Role` and `VPC` resources. Optionally these resources can be created **before** the cluster creation and will be selectable when defining the cluster configuration.
+Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in WhiteCruiser. Additional permissions are required for WhiteCruiser to provision the `Service Role` and `VPC` resources. Optionally these resources can be created **before** the cluster creation and will be selectable when defining the cluster configuration.
 
 Resource | Description
 ---------|------------
-Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. Rancher can create the service role with the following [Service Role Permissions](#service-role-permissions).
-VPC | Provides isolated network resources utilised by EKS and worker nodes. Rancher can create the VPC resources with the following [VPC Permissions](#vpc-permissions).
+Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. WhiteCruiser can create the service role with the following [Service Role Permissions](#service-role-permissions).
+VPC | Provides isolated network resources utilised by EKS and worker nodes. WhiteCruiser can create the VPC resources with the following [VPC Permissions](#vpc-permissions).
 
 
-Resource targeting uses `*` as the ARN of many of the resources created cannot be known before creating the EKS cluster in Rancher.
+Resource targeting uses `*` as the ARN of many of the resources created cannot be known before creating the EKS cluster in WhiteCruiser.
 
 ```json
 {
@@ -128,7 +128,7 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
 
 ### Service Role Permissions
 
-Permissions required for Rancher to create service role on users behalf during the EKS cluster creation process.
+Permissions required for WhiteCruiser to create service role on users behalf during the EKS cluster creation process.
 
 ```json
 {
@@ -162,7 +162,7 @@ Permissions required for Rancher to create service role on users behalf during t
 }
 ```
 
-When an EKS cluster is created, Rancher will create a service role with the following trust policy:
+When an EKS cluster is created, WhiteCruiser will create a service role with the following trust policy:
 
 ```json
 {
@@ -189,7 +189,7 @@ arn:aws:iam::aws:policy/AmazonEKSServicePolicy
 
 ### VPC Permissions
 
-Permissions required for Rancher to create VPC and associated resources.
+Permissions required for WhiteCruiser to create VPC and associated resources.
 
 ```json
 {

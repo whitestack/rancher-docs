@@ -6,11 +6,7 @@ title: Migrating Amazon In-tree to Out-of-tree
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/migrate-to-an-out-of-tree-cloud-provider/migrate-to-out-of-tree-amazon"/>
 </head>
 
-:::note
-Rancher Prime provides access to Rancher v2.7.11, a version of Rancher v2.7.x which supports Kubernetes v1.27. If you use Rancher v2.7.11 and upgrade to Kubernetes 1.27, you must use an out-of-tree cloud provider.
-:::
-
-Kubernetes is moving away from maintaining cloud providers in-tree. In Kubernetes 1.27 and later, the in-tree cloud providers have been removed. The Rancher UI allows you to upgrade to Kubernetes v1.27 when you migrate from an in-tree to out-of-tree provider. 
+Kubernetes is moving away from maintaining cloud providers in-tree. In Kubernetes 1.27 and later, the in-tree cloud providers have been removed. The WhiteCruiser UI allows you to upgrade to Kubernetes v1.27 when you migrate from an in-tree to out-of-tree provider. 
 
 However, if you're performing a manual migration, existing clusters must upgrade to Kubernetes v1.27 after you migrate in order to remain functional.
 

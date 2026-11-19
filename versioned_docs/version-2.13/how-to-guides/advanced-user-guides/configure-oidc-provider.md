@@ -1,17 +1,17 @@
 ---
-title: Configure Rancher as an OIDC provider
+title: Configure WhiteCruiser as an OIDC provider
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/configure-oidc-provider"/>
 </head>
 
-Rancher can function as a standard OpenID Connect (OIDC) provider, allowing external applications to use Rancher for authentication.
-This can be used for enabling single sign-on (SSO) across Rancher Prime components. For example, see the documentation for configuring the OIDC provider for SUSE Observability.
+WhiteCruiser can function as a standard OpenID Connect (OIDC) provider, allowing external applications to use WhiteCruiser for authentication.
+This can be used for enabling single sign-on (SSO) across WhiteCruiser components.
 
 The OIDC provider can be enabled with the `oidc-provider` feature flag. When this flag is on the following endpoints are available:
 
-- `https://{rancher-url}/oidc/authorize`: This endpoint initiates the authentication flow. If a user is already logged into Rancher, it returns an authorization code. Otherwise, it redirects the user to the Rancher login page. Authorization codes and related request information are securely stored in session secrets. Codes are single-use and expire after 10 minutes.
+- `https://{rancher-url}/oidc/authorize`: This endpoint initiates the authentication flow. If a user is already logged into WhiteCruiser, it returns an authorization code. Otherwise, it redirects the user to the WhiteCruiser login page. Authorization codes and related request information are securely stored in session secrets. Codes are single-use and expire after 10 minutes.
 
 - `https://{rancher-url}/oidc/token`: This endpoint exchanges an authorization code for an `id_token`, `access_token`, and `refresh_token`.
 
@@ -23,7 +23,7 @@ The OIDC provider supports the OIDC Authentication Code Flow with PKCE.
 
 ## Configure OIDCClient
 
-An `OIDCClient` represents an external application that will be authenticating against Rancher.
+An `OIDCClient` represents an external application that will be authenticating against WhiteCruiser.
 
 ### Programmatically
 
@@ -40,8 +40,8 @@ spec:
   redirectURIs:
     - "https://myredirecturl.com" # replace with your redirect url
 ```
-Rancher automatically generates a client ID and client secret for each `OIDCClient`.
-Once the resource is created, Rancher populates the status field with the client id:
+WhiteCruiser automatically generates a client ID and client secret for each `OIDCClient`.
+Once the resource is created, WhiteCruiser populates the status field with the client id:
 
 ```yaml
 apiVersion: management.cattle.io/v3
@@ -61,7 +61,7 @@ status:
       lastFiveCharacters: xxx
 ```
 
-Rancher automatically generates a Kubernetes `Secret` in the `cattle-oidc-client-secrets` namespace for each `OIDCClient` resource. The Secret's name matches the `OIDCClient` client ID.
+WhiteCruiser automatically generates a Kubernetes `Secret` in the `cattle-oidc-client-secrets` namespace for each `OIDCClient` resource. The Secret's name matches the `OIDCClient` client ID.
 Initially, the `Secret` contains a single client secret.
 
 To retrieve the client secret:
@@ -86,7 +86,7 @@ You can manage multiple client secrets per `OIDCClient`. Use annotations on the 
 - Removal: Adding the `cattle.io/oidc-client-secret-remove:client-secret-1` annotation removes the specified client secrets.
 - Regeneration: Adding the `cattle.io/oidc-client-secret-regenerate:client-secret-1` annotation regenerates the specified client secrets.
 
-### Rancher UI
+### WhiteCruiser UI {#rancher-ui}
 
 Create an OIDCClient:
 
@@ -105,7 +105,7 @@ In the OIDC App page:
 
 ## Signing key
 
-A default key pair for signing the `id_token`, `access_token`, and `refresh_token` tokens is created by Rancher in a `Secret` called `oidc-signing-key` in the `cattle-system` namespace. Only one key will be used for signing, but multiple public keys can be returned in the jwks endpoint in order to avoid disruption when doing a key rotation. 
+A default key pair for signing the `id_token`, `access_token`, and `refresh_token` tokens is created by WhiteCruiser in a `Secret` called `oidc-signing-key` in the `cattle-system` namespace. Only one key will be used for signing, but multiple public keys can be returned in the jwks endpoint in order to avoid disruption when doing a key rotation. 
 
 ### Rotation without disruption
 
@@ -125,13 +125,13 @@ data:
  key2.pub: <base64-encoded-new-public-key>
 ```
 
-Rancher will sign tokens using `key2.pem`, while the JWKS endpoint will serve both `key1.pub` and `key2.pub`. This ensures a smooth 
+WhiteCruiser will sign tokens using `key2.pem`, while the JWKS endpoint will serve both `key1.pub` and `key2.pub`. This ensures a smooth 
 key rotation from `key1` to `key2` without disrupting existing token verification. Note that only one private key (.pem) can be stored in the 
 secret at a time, and each key pair must share the same base name, differing only by their suffix: .pem for the private key and .pub for the public key.
 
 ### Rotation with disruption
 
-Removing the `oidc-signing-key` `Secret` will cause Rancher to regenerate the signing key on the next restart.
+Removing the `oidc-signing-key` `Secret` will cause WhiteCruiser to regenerate the signing key on the next restart.
 
 :::warning
 This will invalidate all previously issued `id_token`, `access_token`, and `refresh_token` tokens making them unusable.

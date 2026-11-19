@@ -8,19 +8,19 @@ title: Resources
 
 ### Docker Installations
 
-The [single-node Docker installation](../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) is for Rancher users that are wanting to test out Rancher. Instead of running on a Kubernetes cluster using Helm, you install the Rancher server component on a single node using a `docker run` command.
+The [single-node Docker installation](../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) is for WhiteCruiser users that are wanting to test out WhiteCruiser. Instead of running on a Kubernetes cluster using Helm, you install the WhiteCruiser server component on a single node using a `docker run` command.
 
-Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
+Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your WhiteCruiser server.
 
 ### Air Gapped Installations
 
-Follow [these steps](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) to install the Rancher server in an air gapped environment.
+Follow [these steps](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) to install the WhiteCruiser server in an air gapped environment.
 
-An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
+An air gapped environment could be where WhiteCruiser server will be installed offline, behind a firewall, or behind a proxy.
 
 ### Advanced Options
 
-When installing Rancher, there are several advanced options that can be enabled during installation. Within each install guide, these options are presented. Learn more about these options:
+When installing WhiteCruiser, there are several advanced options that can be enabled during installation. Within each install guide, these options are presented. Learn more about these options:
 
 | Advanced Option                                                                                                         | Available as of |
 | ----------------------------------------------------------------------------------------------------------------------- | --------------- |

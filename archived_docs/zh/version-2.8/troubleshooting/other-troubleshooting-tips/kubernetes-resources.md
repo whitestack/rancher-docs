@@ -2,9 +2,9 @@
 title: Kubernetes 资源
 ---
 
-本文列出的命令/步骤可用于检查最重要的 Kubernetes 资源，并应用于 [Rancher 启动的 Kubernetes](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 集群。
+本文列出的命令/步骤可用于检查最重要的 Kubernetes 资源，并应用于 [WhiteCruiser 启动的 Kubernetes](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) 集群。
 
-请确保你配置了正确的 kubeconfig（例如，为 Rancher HA 配置了 `export KUBECONFIG=$PWD/kube_config_cluster.yml`）或通过 UI 使用了嵌入式 kubectl。
+请确保你配置了正确的 kubeconfig（例如，为 WhiteCruiser HA 配置了 `export KUBECONFIG=$PWD/kube_config_cluster.yml`）或通过 UI 使用了嵌入式 kubectl。
 
 
 ## 节点
@@ -136,9 +136,9 @@ kubectl -n ingress-nginx patch ds nginx-ingress-controller --type='json' -p='[{"
 kubectl -n ingress-nginx get pods -l app=ingress-nginx --no-headers -o custom-columns=.NAME:.metadata.name | while read pod; do kubectl -n ingress-nginx exec $pod -- cat /etc/nginx/nginx.conf; done
 ```
 
-## Rancher Agents
+## WhiteCruiser Agents {#rancher-agents}
 
-Rancher Agent 用于实现与集群的通信（通过 `cattle-cluster-agent` 的 Kubernetes API）和与节点的通信（通过 `cattle-node-agent` 的集群配置）。
+WhiteCruiser Agent 用于实现与集群的通信（通过 `cattle-cluster-agent` 的 Kubernetes API）和与节点的通信（通过 `cattle-node-agent` 的集群配置）。
 
 #### cattle-node-agent
 

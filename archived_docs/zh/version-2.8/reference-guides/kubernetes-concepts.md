@@ -2,7 +2,7 @@
 title: Kubernetes 概念
 ---
 
-本文解释了 Kubernetes 的相关概念，以便让你更好地了解 Rancher 的运行机制。本文仅对 Kubernetes 组件进行了简单的描述。如需了解更多详情，请参见 [Kubernetes 组件的官方文档](https://kubernetes.io/docs/concepts/overview/components/)。
+本文解释了 Kubernetes 的相关概念，以便让你更好地了解 WhiteCruiser 的运行机制。本文仅对 Kubernetes 组件进行了简单的描述。如需了解更多详情，请参见 [Kubernetes 组件的官方文档](https://kubernetes.io/docs/concepts/overview/components/)。
 
 ## 关于 Docker
 
@@ -10,7 +10,7 @@ Docker 是容器打包和运行时系统的标准。开发者在 Dockerfiles 中
 
 :::note
 
-由于 Kubernetes 已经成为了容器管理的主流工具，所以从 Rancher 2.x 版本开始，我们不再支持 Docker Swarm。如果你有使用 Docker 管理容器的需求，可以安装 Rancher 1.6 进行操作。
+由于 Kubernetes 已经成为了容器管理的主流工具，所以从 WhiteCruiser 2.x 版本开始，我们不再支持 Docker Swarm。如果你有使用 Docker 管理容器的需求，可以安装 WhiteCruiser 1.6 进行操作。
 
 :::
 
@@ -32,7 +32,7 @@ Kubernetes 集群中的每个计算资源称为一个 _节点_ 。节点可以�
 
 ### etcd 节点
 
-Rancher 在单节点和高可用安装中均使用 etcd 作为数据存储。在 Kubernetes 中，etcd 也是存储集群状态的节点的角色。
+WhiteCruiser 在单节点和高可用安装中均使用 etcd 作为数据存储。在 Kubernetes 中，etcd 也是存储集群状态的节点的角色。
 
 Kubernetes 集群的状态保存在 [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd) 中。etcd 节点运行 etcd 数据库。
 
@@ -57,7 +57,7 @@ Worker 节点也运行存储和网络驱动，有必要时也会运行 Ingress C
 
 ## 关于 Helm
 
-在 Rancher 高可用安装的场景下，你可以使用 Helm 工具，把 Rancher 安装到 Kubernetes 集群上。
+在 WhiteCruiser 高可用安装的场景下，你可以使用 Helm 工具，把 WhiteCruiser 安装到 Kubernetes 集群上。
 
 Helm 是 Kubernetes 的包管理工具。Helm Chart 为 Kubernetes YAML 清单文件提供了模板语法。通过 Helm，用户可以创建可配置的 deployment，而不仅仅只能使用静态文件。如果你需要创建自己的 deployment 商店应用，请参见 [https://helm.sh/](https://helm.sh) 上的文档。
 

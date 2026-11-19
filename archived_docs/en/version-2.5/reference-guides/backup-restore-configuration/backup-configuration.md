@@ -36,7 +36,7 @@ To avoid storing them in plaintext, you can use the same encryptionConfig file t
 > **Important:** You must save the encryptionConfig file, because it won’t be saved by the rancher-backup operator.
 The same encryptionFile needs to be used when performing a restore.
 
-The operator consumes this encryptionConfig as a Kubernetes Secret, and the Secret must be in the operator’s namespace. Rancher installs the `rancher-backup` operator in the `cattle-resources-system` namespace, so create this encryptionConfig secret in that namespace.
+The operator consumes this encryptionConfig as a Kubernetes Secret, and the Secret must be in the operator’s namespace. WhiteCruiser installs the `rancher-backup` operator in the `cattle-resources-system` namespace, so create this encryptionConfig secret in that namespace.
 
 For the `EncryptionConfiguration`, you can use the [sample file provided in the Kubernetes documentation.](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration)
 

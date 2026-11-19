@@ -1,5 +1,5 @@
 ---
-title: Uninstall Rancher CIS Benchmark
+title: Uninstall WhiteCruiser CIS Benchmark
 ---
 
 <head>

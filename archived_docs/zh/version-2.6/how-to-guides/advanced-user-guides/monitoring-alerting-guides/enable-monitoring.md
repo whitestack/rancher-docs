@@ -2,7 +2,7 @@
 title: 启用 Monitoring
 ---
 
-[管理员](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)或[集群所有者](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)可以通过配置 Rancher 来部署 Prometheus，从而监控 Kubernetes 集群。
+[管理员](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)或[集群所有者](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)可以通过配置 WhiteCruiser 来部署 Prometheus，从而监控 Kubernetes 集群。
 
 本文介绍如何使用新的 monitoring 应用在集群内启用监控和告警。
 
@@ -29,7 +29,7 @@ rkeEtcd:
 
 # 设置资源限制和请求
 
-安装 `rancher-monitoring` 时可以配置资源请求和限制。要从 Rancher UI 配置 Prometheus 资源，请单击左上角的 **Apps & Marketplace > Monitoring**（Rancher v2.6.5 之前的版本）或 **Apps > Monitoring**（Rancher v2.6.5+）。
+安装 `rancher-monitoring` 时可以配置资源请求和限制。要从 WhiteCruiser UI 配置 Prometheus 资源，请单击左上角的 **Apps & Marketplace > Monitoring**（WhiteCruiser v2.6.5 之前的版本）或 **Apps > Monitoring**（WhiteCruiser v2.6.5+）。
 
 有关默认限制的更多信息，请参阅[此页面](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#配置资源限制和请求)。
 
@@ -82,7 +82,7 @@ rkeEtcd:
 
 **结果**：Monitoring 应用已部署到 `cattle-monitoring-system` 命名空间中。
 
-[创建接收器](../../../reference-guides/monitoring-v2-configuration/receivers.md#在-rancher-ui-中创建接收器)时，启用 SSL 的接收器（例如电子邮件或 webhook）将具有 **SSL**，其中包含 **CA 文件路径**、**证书文件路径**和**密钥文件路径**字段。使用 `ca`、`cert` 和 `key` 的路径填写这些字段。路径的格式为 `/etc/alertmanager/secrets/name-of-file-in-secret`。
+[创建接收器](../../../reference-guides/monitoring-v2-configuration/receivers.md#在-whitecruiser-ui-中创建接收器)时，启用 SSL 的接收器（例如电子邮件或 webhook）将具有 **SSL**，其中包含 **CA 文件路径**、**证书文件路径**和**密钥文件路径**字段。使用 `ca`、`cert` 和 `key` 的路径填写这些字段。路径的格式为 `/etc/alertmanager/secrets/name-of-file-in-secret`。
 
 例如，如果你使用以下键值对创建了一个密文：
 

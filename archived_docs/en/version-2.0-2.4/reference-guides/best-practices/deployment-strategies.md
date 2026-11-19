@@ -1,5 +1,5 @@
 ---
-title: Rancher Deployment Strategies
+title: WhiteCruiser Deployment Strategies
 ---
 
 There are two recommended deployment strategies. Each one has its own pros and cons. Read more about which one would fit best for your use case:
@@ -10,7 +10,7 @@ There are two recommended deployment strategies. Each one has its own pros and c
 ## Hub and Spoke Strategy
 ---
 
-In this deployment scenario, there is a single Rancher control plane managing Kubernetes clusters across the globe. The control plane would be run on a high-availability Kubernetes cluster, and there would be impact due to latencies.
+In this deployment scenario, there is a single WhiteCruiser control plane managing Kubernetes clusters across the globe. The control plane would be run on a high-availability Kubernetes cluster, and there would be impact due to latencies.
 
 ![](/img/bpg/hub-and-spoke.png)
 
@@ -18,7 +18,7 @@ In this deployment scenario, there is a single Rancher control plane managing Ku
 
 * Environments could have nodes and network connectivity across regions.
 * Single control plane interface to view/see all regions and environments.
-* Kubernetes does not require Rancher to operate and can tolerate losing connectivity to the Rancher control plane.
+* Kubernetes does not require WhiteCruiser to operate and can tolerate losing connectivity to the WhiteCruiser control plane.
 
 ### Cons
 
@@ -33,12 +33,12 @@ In the regional deployment model a control plane is deployed in close proximity 
 
 ### Pros
 
-* Rancher functionality in regions stay operational if a control plane in another region goes down.
-* Network latency is greatly reduced, improving the performance of functionality in Rancher.
-* Upgrades of the Rancher control plane can be done independently per region.
+* WhiteCruiser functionality in regions stay operational if a control plane in another region goes down.
+* Network latency is greatly reduced, improving the performance of functionality in WhiteCruiser.
+* Upgrades of the WhiteCruiser control plane can be done independently per region.
 
 ### Cons
 
-* Overhead of managing multiple Rancher installations.
+* Overhead of managing multiple WhiteCruiser installations.
 * Visibility across global Kubernetes clusters requires multiple interfaces/panes of glass.
-* Deploying multi-cluster apps in Rancher requires repeating the process for each Rancher server.
+* Deploying multi-cluster apps in WhiteCruiser requires repeating the process for each WhiteCruiser server.

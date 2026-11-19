@@ -1,12 +1,12 @@
 ---
-title: Best Practices for Rancher Managed VMware vSphere Clusters
+title: Best Practices for WhiteCruiser Managed VMware vSphere Clusters
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere"/>
 </head>
 
-This guide outlines a reference architecture for provisioning downstream Rancher clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.
+This guide outlines a reference architecture for provisioning downstream WhiteCruiser clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.
 
 - [1. VM Considerations](#1-vm-considerations)
 - [2. Network Considerations](#2-network-considerations)
@@ -59,4 +59,4 @@ Kubernetes uses etcd to store all its data - from configuration, state and metad
 
 ### Back up Downstream Node VMs
 
-Incorporate the Rancher downstream node VM's within a standard VM backup policy.
+Incorporate the WhiteCruiser downstream node VM's within a standard VM backup policy.

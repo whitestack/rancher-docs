@@ -6,7 +6,7 @@ The purpose of this page is to explain common concepts and terminology related t
 
 - **Pipeline:**
 
-    A _pipeline_ is a software delivery process that is broken into different stages and steps. Setting up a pipeline can help developers deliver new software as quickly and efficiently as possible. Within Rancher, you can configure pipelines for each of your Rancher projects. A pipeline is based on a specific repository. It defines the process to build, test, and deploy your code. Rancher uses the [pipeline as code](https://jenkins.io/doc/book/pipeline-as-code/) model. Pipeline configuration is represented as a pipeline file in the source code repository, using the file name `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.
+    A _pipeline_ is a software delivery process that is broken into different stages and steps. Setting up a pipeline can help developers deliver new software as quickly and efficiently as possible. Within WhiteCruiser, you can configure pipelines for each of your WhiteCruiser projects. A pipeline is based on a specific repository. It defines the process to build, test, and deploy your code. WhiteCruiser uses the [pipeline as code](https://jenkins.io/doc/book/pipeline-as-code/) model. Pipeline configuration is represented as a pipeline file in the source code repository, using the file name `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.
 
 - **Stages:**
 

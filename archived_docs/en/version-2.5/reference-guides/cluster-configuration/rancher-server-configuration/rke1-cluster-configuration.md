@@ -8,15 +8,15 @@ title: RKE Cluster Configuration
 
 In [clusters launched by RKE](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md), you can edit any of the remaining options that follow.
 
-- [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui)
+- [Configuration Options in the WhiteCruiser UI](#configuration-options-in-the-rancher-ui)
 - [Editing Clusters with YAML](#editing-clusters-with-yaml)
 - [Updating ingress-nginx](#updating-ingress-nginx)
 
-## Configuration Options in the Rancher UI
+## Configuration Options in the WhiteCruiser UI {#configuration-options-in-the-rancher-ui}
 
 To edit your cluster, open the **Global** view, make sure the **Clusters** tab is selected, and then select **&#8942; > Edit** for the cluster that you want to edit.
 
-Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the RKE cluster configuration file in YAML. For the complete reference of configurable options for RKE Kubernetes clusters in YAML, see the [RKE documentation.](https://rancher.com/docs/rke/latest/en/config-options/)
+Some advanced configuration options are not exposed in the WhiteCruiser UI forms, but they can be enabled by editing the RKE cluster configuration file in YAML. For the complete reference of configurable options for RKE Kubernetes clusters in YAML, see the [RKE documentation.](https://rancher.com/docs/rke/latest/en/config-options/)
 
 ### Kubernetes Version
 
@@ -30,7 +30,7 @@ The \container networking interface (CNI) that powers networking for your cluste
 
 If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication.
 
-Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE.
+Before WhiteCruiser v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE.
 
 In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
@@ -48,7 +48,7 @@ Enables [pod security policies](../../../how-to-guides/advanced-user-guides/auth
 
 ### Docker version on nodes
 
-Configures whether nodes are allowed to run versions of Docker that Rancher doesn't officially support. If you choose to require a supported Docker version, Rancher will stop pods from running on nodes that don't have a supported Docker version installed.
+Configures whether nodes are allowed to run versions of Docker that WhiteCruiser doesn't officially support. If you choose to require a supported Docker version, WhiteCruiser will stop pods from running on nodes that don't have a supported Docker version installed.
 
 ### Docker Root Directory
 
@@ -64,9 +64,9 @@ If you're using a cloud provider to host cluster nodes launched by RKE, enable [
 
 ## Editing Clusters with YAML
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the options available in an RKE installation, except for system_images configuration, by specifying them in YAML.
+Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create an RKE config file. Using a config file allows you to set any of the options available in an RKE installation, except for system_images configuration, by specifying them in YAML.
 
-- To edit an RKE config file directly from the Rancher UI, click **Edit as YAML**.
+- To edit an RKE config file directly from the WhiteCruiser UI, click **Edit as YAML**.
 - To read from an existing RKE file, click **Read from File**.
 
 ![image](/img/cluster-options-yaml.png)

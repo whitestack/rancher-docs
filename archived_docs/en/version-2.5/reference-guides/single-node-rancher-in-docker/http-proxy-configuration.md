@@ -6,7 +6,7 @@ title: HTTP Proxy Configuration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/single-node-rancher-in-docker/http-proxy-configuration"/>
 </head>
 
-If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.
+If you operate WhiteCruiser behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide WhiteCruiser information about your proxy. As WhiteCruiser is written in Go, it uses the common proxy environment variables as shown below.
 
 Make sure `NO_PROXY` contains the network addresses, network address ranges and domains that should be excluded from using the proxy.
 
@@ -20,7 +20,7 @@ Make sure `NO_PROXY` contains the network addresses, network address ranges and 
 
 ## Docker Installation
 
-Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) are:
+Passing environment variables to the WhiteCruiser container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) are:
 
 - `localhost`
 - `127.0.0.1`
@@ -42,4 +42,4 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-As of Rancher v2.5, privileged access is [required.](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
+As of WhiteCruiser v2.5, privileged access is [required.](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)

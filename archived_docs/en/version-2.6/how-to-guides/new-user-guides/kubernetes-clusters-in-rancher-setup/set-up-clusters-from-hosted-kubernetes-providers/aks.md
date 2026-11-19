@@ -6,7 +6,7 @@ title: Creating an AKS Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks"/>
 </head>
 
-You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
+You can use WhiteCruiser to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
 
 
 ## Prerequisites in Microsoft Azure
@@ -87,7 +87,7 @@ To give role-based access to your service principal,
 
 ## Create the AKS Cloud Credentials
 
-1. In the Rancher UI, click **☰ > Cluster Management**.
+1. In the WhiteCruiser UI, click **☰ > Cluster Management**.
 1. Click **Cloud Credentials**.
 1. Click **Create**.
 1. Click **Azure**.
@@ -96,7 +96,7 @@ To give role-based access to your service principal,
 
 ## Create the AKS Cluster
 
-Use Rancher to set up and configure your Kubernetes cluster.
+Use WhiteCruiser to set up and configure your Kubernetes cluster.
 
 1. Click **☰ > Cluster Management**.
 1. In the **Clusters** section, click **Create**.
@@ -104,29 +104,29 @@ Use Rancher to set up and configure your Kubernetes cluster.
 1. Fill out the form. For help with filling out the form, see the [configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md)
 1. Click **Create**.
 
-**Result:** Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+**Result:** Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
 ## Configure Role-based Access Control
 
-When provisioning an AKS cluster in the Rancher UI, RBAC is not configurable because it is required to be enabled.
+When provisioning an AKS cluster in the WhiteCruiser UI, RBAC is not configurable because it is required to be enabled.
 
-RBAC is required for AKS clusters that are registered or imported into Rancher.
+RBAC is required for AKS clusters that are registered or imported into WhiteCruiser.
 
 ## AKS Cluster Configuration Reference
 
-For more information about how to configure AKS clusters from the Rancher UI, see the [configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md)
+For more information about how to configure AKS clusters from the WhiteCruiser UI, see the [configuration reference.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration.md)
 
 ## Private Clusters
 
 Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private. In a private cluster, the control plane does not have a public endpoint.
 
-Rancher can connect to a private AKS cluster in one of two ways.
+WhiteCruiser can connect to a private AKS cluster in one of two ways.
 
-The first way to ensure that Rancher is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+The first way to ensure that WhiteCruiser is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
 
-The second way is to run a command to register the cluster with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
+The second way is to run a command to register the cluster with WhiteCruiser. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
 
 :::note
 
@@ -138,10 +138,10 @@ For more information about connecting to an AKS private cluster, see the [AKS do
 
 ## Syncing
 
-The AKS provisioner can synchronize the state of an AKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)
+The AKS provisioner can synchronize the state of an AKS cluster between WhiteCruiser and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)
 
 For information on configuring the refresh interval, see [this section.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md#configuring-the-refresh-interval)
 
 ## Programmatically Creating AKS Clusters
 
-The most common way to programmatically deploy AKS clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)
+The most common way to programmatically deploy AKS clusters through WhiteCruiser is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)

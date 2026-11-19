@@ -143,7 +143,7 @@ IAM policy for nodes with the `etcd` or `worker` role:
 
 The following resources need to tagged with a `ClusterID`:
 
-- **Nodes**: All hosts added in Rancher.
+- **Nodes**: All hosts added in WhiteCruiser.
 - **Subnet**: The subnet used for your cluster.
 - **Security Group**: The security group used for your cluster.
 
@@ -184,7 +184,7 @@ The kubelet component has the ability to automatically obtain ECR credentials, w
 
 1. [Node name conventions and other prerequisites](https://cloud-provider-aws.sigs.k8s.io/prerequisites/) must be followed for the cloud provider to find the instance correctly.
 
-2. Rancher managed RKE2/K3s clusters don't support configuring `providerID`. However, the engine will set the node name correctly if the following configuration is set on the provisioning cluster object:
+2. WhiteCruiser managed RKE2/K3s clusters don't support configuring `providerID`. However, the engine will set the node name correctly if the following configuration is set on the provisioning cluster object:
 
 ```yaml
 spec:
@@ -284,7 +284,7 @@ spec:
 
 <TabItem value="RKE">
 
-1. [Node name conventions and other prerequisites ](https://cloud-provider-aws.sigs.k8s.io/prerequisites/) must be followed so that the cloud provider can find the instance. Rancher provisioned clusters don't support configuring `providerID`. 
+1. [Node name conventions and other prerequisites ](https://cloud-provider-aws.sigs.k8s.io/prerequisites/) must be followed so that the cloud provider can find the instance. WhiteCruiser provisioned clusters don't support configuring `providerID`. 
 
 :::note
 
@@ -292,7 +292,7 @@ If you use IP-based naming, the nodes must be named after the instance followed 
 
 :::
 
-To meet node naming conventions, Rancher allows setting `useInstanceMetadataHostname` when the `External Amazon` cloud provider is selected. Enabling `useInstanceMetadataHostname` will query ec2 metadata service and set `/hostname` as `hostname-override` for `kubelet` and `kube-proxy`:
+To meet node naming conventions, WhiteCruiser allows setting `useInstanceMetadataHostname` when the `External Amazon` cloud provider is selected. Enabling `useInstanceMetadataHostname` will query ec2 metadata service and set `/hostname` as `hostname-override` for `kubelet` and `kube-proxy`:
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -301,7 +301,7 @@ rancher_kubernetes_engine_config:
     useInstanceMetadataHostname: true
 ```
 
-You must not enable `useInstanceMetadataHostname` when setting custom values for `hostname-override` for custom clusters. When you create a [custom cluster](../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md), add [`--node-name`](../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md) to the `docker run` node registration command to set `hostname-override` — for example, `"$(hostname -f)"`. This can be done manually or by using **Show Advanced Options** in the Rancher UI to add **Node Name**.
+You must not enable `useInstanceMetadataHostname` when setting custom values for `hostname-override` for custom clusters. When you create a [custom cluster](../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md), add [`--node-name`](../../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md) to the `docker run` node registration command to set `hostname-override` — for example, `"$(hostname -f)"`. This can be done manually or by using **Show Advanced Options** in the WhiteCruiser UI to add **Node Name**.
 
 2. Select the cloud provider. 
 
@@ -641,7 +641,7 @@ kubectl rollout status daemonset -n kube-system aws-cloud-controller-manager
       - get
 ```
 
-9. Rancher-provisioned RKE2 nodes are tainted `node-role.kubernetes.io/control-plane`. Update tolerations and the nodeSelector:
+9. WhiteCruiser-provisioned RKE2 nodes are tainted `node-role.kubernetes.io/control-plane`. Update tolerations and the nodeSelector:
 
 ```yaml
 tolerations:
@@ -661,7 +661,7 @@ nodeSelector:
 
 :::note
 
-There's currently a [known issue](https://github.com/rancher/dashboard/issues/9249) where nodeSelector can't be updated from the Rancher UI.  Continue installing the chart and then edit the Daemonset manually to set the `nodeSelector`:
+There's currently a [known issue](https://github.com/rancher/dashboard/issues/9249) where nodeSelector can't be updated from the WhiteCruiser UI.  Continue installing the chart and then edit the Daemonset manually to set the `nodeSelector`:
 
 ```yaml
 nodeSelector:
@@ -707,7 +707,7 @@ nodeSelector:
       - get
 ```
 
-9. Rancher-provisioned RKE nodes are tainted `node-role.kubernetes.io/controlplane`. Update tolerations and the nodeSelector:
+9. WhiteCruiser-provisioned RKE nodes are tainted `node-role.kubernetes.io/controlplane`. Update tolerations and the nodeSelector:
 
 ```yaml
 tolerations:
@@ -727,7 +727,7 @@ nodeSelector:
 
 :::note
 
-There's currently a [known issue](https://github.com/rancher/dashboard/issues/9249) where `nodeSelector` can't be updated from the Rancher UI.  Continue installing the chart and then Daemonset manually to set the `nodeSelector`:
+There's currently a [known issue](https://github.com/rancher/dashboard/issues/9249) where `nodeSelector` can't be updated from the WhiteCruiser UI.  Continue installing the chart and then Daemonset manually to set the `nodeSelector`:
 
 ``` yaml 
 nodeSelector:

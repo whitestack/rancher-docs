@@ -1,18 +1,18 @@
 ---
-title: 更新 Rancher 证书
+title: 更新 WhiteCruiser 证书
 ---
 
 ## 更新私有 CA 证书
 
-本文介绍如何更新 Rancher [高可用 Kubernetes 安装](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md) 中 Ingress 的 SSL 证书，以及如何从默认的自签名证书切换到自定义证书。
+本文介绍如何更新 WhiteCruiser [高可用 Kubernetes 安装](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md) 中 Ingress 的 SSL 证书，以及如何从默认的自签名证书切换到自定义证书。
 
 步骤概述：
 
 1. 使用新证书和私钥创建或更新 `tls-rancher-ingress` Kubernetes 密文资源。
 2. 使用根 CA 证书创建或更新 `tls-ca` Kubernetes 密文资源（仅在使用私有 CA 时需要）。
-3. 使用 Helm CLI 更新 Rancher 安装。
-4. 重新配置 Rancher Agent 以信任新的 CA 证书。
-5. 选择 Fleet 集群的强制更新，来将 fleet-agent 连接到 Rancher。
+3. 使用 Helm CLI 更新 WhiteCruiser 安装。
+4. 重新配置 WhiteCruiser Agent 以信任新的 CA 证书。
+5. 选择 Fleet 集群的强制更新，来将 fleet-agent 连接到 WhiteCruiser。
 
 各个步骤的详细说明如下。
 
@@ -20,7 +20,7 @@ title: 更新 Rancher 证书
 
 首先，将服务器证书和所有中间证书合并到名为 `tls.crt` 的文件，并在名为 `tls.key` 的文件中提供相应的证书密钥。
 
-如果你想切换 Rancher 自签名证书或 Let's Encrypt 证书，请运行以下命令，在 Rancher 高可用集群中创建 `tls-rancher-ingress` 密文资源：
+如果你想切换 WhiteCruiser 自签名证书或 Let's Encrypt 证书，请运行以下命令，在 WhiteCruiser 高可用集群中创建 `tls-rancher-ingress` 密文资源：
 
 ```
 $ kubectl -n cattle-system create secret tls tls-rancher-ingress \
@@ -56,17 +56,17 @@ $ kubectl -n cattle-system create secret generic tls-ca \
   --dry-run --save-config -o yaml | kubectl apply -f -
 ```
 
-### 3. 重新配置 Rancher 部署
+### 3. 重新配置 WhiteCruiser 部署
 
 :::note
 
-在继续之前，在 Rancher UI (<b>用户 > API & 密钥 </b>) 中生成一个 API Token，并保存持有者 Token（你在步骤 4 中可能需要）。
+在继续之前，在 WhiteCruiser UI (<b>用户 > API & 密钥 </b>) 中生成一个 API Token，并保存持有者 Token（你在步骤 4 中可能需要）。
 
 :::
 
-只有在最初安装 Rancher 时使用了自签名证书 （`ingress.tls.source=rancher`）或 Let's Encrypt 证书（`ingress.tls.source=letsEncrypt`）时，你才需要执行此步骤。
+只有在最初安装 WhiteCruiser 时使用了自签名证书 （`ingress.tls.source=rancher`）或 Let's Encrypt 证书（`ingress.tls.source=letsEncrypt`）时，你才需要执行此步骤。
 
-这一步骤确保 Rancher Pod 和 Ingress 资源能够重新配置，来使用新的服务器和可选的 CA 证书。
+这一步骤确保 WhiteCruiser Pod 和 Ingress 资源能够重新配置，来使用新的服务器和可选的 CA 证书。
 
 要更新 Helm 部署，请使用初始安装时的选项（`--set`）。运行以下命令检查：
 
@@ -74,7 +74,7 @@ $ kubectl -n cattle-system create secret generic tls-ca \
 $ helm get values rancher -n cattle-system
 ```
 
-获取当前部署的 Rancher Chart 的版本字符串：
+获取当前部署的 WhiteCruiser Chart 的版本字符串：
 
 ```
 $ helm ls -A
@@ -95,29 +95,29 @@ helm upgrade rancher rancher-stable/rancher \
 
 升级完成后，访问 `https://<Rancher_SERVER>/v3/settings/cacerts`，验证该值是否与先前写入 `tls-ca` 密文中的 CA 证书匹配。
 
-### 4. 重新配置 Rancher Agent 以信任私有 CA
+### 4. 重新配置 WhiteCruiser Agent 以信任私有 CA
 
-本节介绍了重新配置 Rancher Agent 以信任私有 CA 的三种方法。如果你的实际情况符合以下任意一个条件，请执行此步骤：
+本节介绍了重新配置 WhiteCruiser Agent 以信任私有 CA 的三种方法。如果你的实际情况符合以下任意一个条件，请执行此步骤：
 
-- Rancher 初始配置中使用了 Rancher 自签名证书 (`ingress.tls.source=rancher`) 或 Let's Encrypt 证书 (`ingress.tls.source=letsEncrypt`)。
+- WhiteCruiser 初始配置中使用了 WhiteCruiser 自签名证书 (`ingress.tls.source=rancher`) 或 Let's Encrypt 证书 (`ingress.tls.source=letsEncrypt`)。
 - 新自定义证书的根 CA 证书已更改。
 
 #### 为什么要执行这一步骤？
 
-如果 Rancher 配置了私有 CA 签名的证书时，CA 证书链会下载到 Rancher Agent 容器中。Agent 会对下载证书的校验和及 `CATTLE_CA_CHECKSUM` 环境变量进行比较。如果私有 CA 证书在 Rancher Server 端更改了，环境变量 `CATTLE_CA_CHECKSUM` 必须相应进行更新。
+如果 WhiteCruiser 配置了私有 CA 签名的证书时，CA 证书链会下载到 WhiteCruiser Agent 容器中。Agent 会对下载证书的校验和及 `CATTLE_CA_CHECKSUM` 环境变量进行比较。如果私有 CA 证书在 WhiteCruiser Server 端更改了，环境变量 `CATTLE_CA_CHECKSUM` 必须相应进行更新。
 
 #### 可使用的方法
 
 - 方法 1（最简单的方法）：
-在轮换证书后将所有集群连接到 Rancher。适用于更新 Rancher 部署（步骤 3）后立即执行的情况。
+在轮换证书后将所有集群连接到 WhiteCruiser。适用于更新 WhiteCruiser 部署（步骤 3）后立即执行的情况。
 
-- 方法 2：适用于集群失去了与 Rancher 的连接，但是你已启动了[授权集群端点（ACE）](https://rancher.com/docs/rancher/v2.6/en/cluster-admin/cluster-access/ace/)的情况。
+- 方法 2：适用于集群失去了与 WhiteCruiser 的连接，但是你已启动了[授权集群端点（ACE）](https://rancher.com/docs/rancher/v2.6/en/cluster-admin/cluster-access/ace/)的情况。
 
 - 方法 3：方法 1 和方法 2 不可用的情况下可使用。
 
 #### 方法 1：Kubectl 命令
 
-对于**集群管理**中的每个集群（除去 `local` Rancher 管理集群），使用 Rancher 管理集群（RKE 或 K3S）的 `Kubeconfig` 文件运行以下命令：
+对于**集群管理**中的每个集群（除去 `local` WhiteCruiser 管理集群），使用 WhiteCruiser 管理集群（RKE 或 K3S）的 `Kubeconfig` 文件运行以下命令：
 
 ```
 kubectl patch clusters.management.cattle.io <REPLACE_WITH_CLUSTERID> -p '{"status":{"agentImage":"dummy"}}' --type merge
@@ -142,22 +142,22 @@ $ kubectl edit -n cattle-system ds/cattle-node-agent
 $ kubectl edit -n cattle-system deployment/cattle-cluster-agent
 ```
 
-#### 方法 3：重新创建 Rancher Agent
+#### 方法 3：重新创建 WhiteCruiser Agent
 
-你可以在每个下游集群的 controlplane 节点上运行一组命令，来重新创建 Rancher Agent。
+你可以在每个下游集群的 controlplane 节点上运行一组命令，来重新创建 WhiteCruiser Agent。
 
 首先，生成 Agent 定义（参见[此处](https://gist.github.com/superseb/076f20146e012f1d4e289f5bd1bd4971)）。
 
 然后，SSH 连接到下游集群的 controlplane 节点，创建 Kubeconfig 并应用定义（参见[此处](
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b)）。
 
-### 5. 选择 Fleet 集群的强制更新，来将 fleet-agent 连接到 Rancher
+### 5. 选择 Fleet 集群的强制更新，来将 fleet-agent 连接到 WhiteCruiser
 
-在 Rancher UI 的[持续交付](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#在-rancher-ui-中访问-fleet)中，为集群选择“强制更新”，来允许下游集群中的 fleet-agent 成功连接到 Rancher。
+在 WhiteCruiser UI 的[持续交付](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#在-whitecruiser-ui-中访问-fleet)中，为集群选择“强制更新”，来允许下游集群中的 fleet-agent 成功连接到 WhiteCruiser。
 
 #### 为什么要执行这一步骤？
 
-Rancher 管理的集群中的 Fleet agent 存储 kubeconfig，该配置用于连接到 Fleet 系统命名空间的 fleet-agent 密文中的 Rancher 代理 kube-api。kubeconfig 包括一个包含 Rancher CA 的证书授权数据块。更改 Rancher CA 时，需要更新此块来使 fleet-agent 成功连接到 Rancher。
+WhiteCruiser 管理的集群中的 Fleet agent 存储 kubeconfig，该配置用于连接到 Fleet 系统命名空间的 fleet-agent 密文中的 WhiteCruiser 代理 kube-api。kubeconfig 包括一个包含 WhiteCruiser CA 的证书授权数据块。更改 WhiteCruiser CA 时，需要更新此块来使 fleet-agent 成功连接到 WhiteCruiser。
 
 ## 将私有 CA 证书更改为通用证书
 
@@ -171,7 +171,7 @@ Rancher 管理的集群中的 Fleet agent 存储 kubeconfig，该配置用于连
 
 首先，将服务器证书和所有中间证书合并到名为 `tls.crt` 的文件，并在名为 `tls.key` 的文件中提供相应的证书密钥。
 
-如果你想切换 Rancher 自签名证书或 Let's Encrypt 证书，请运行以下命令，在 Rancher 高可用集群中创建 `tls-rancher-ingress` 密文资源：
+如果你想切换 WhiteCruiser 自签名证书或 Let's Encrypt 证书，请运行以下命令，在 WhiteCruiser 高可用集群中创建 `tls-rancher-ingress` 密文资源：
 
 ```
 $ kubectl -n cattle-system create secret tls tls-rancher-ingress \
@@ -204,17 +204,17 @@ kubectl -n cattle-system get secret tls-ca -o yaml > tls-ca.yaml
 kubectl -n cattle-system delete secret tls-ca
 ```
 
-### 3. 重新配置 Rancher 部署
+### 3. 重新配置 WhiteCruiser 部署
 
 :::note 重要提示：
 
-在继续之前，先[在 Rancher UI 中生成 API 令牌](../../../reference-guides/user-settings/api-keys.md#创建-api-密钥)（在 <b>User > API & Keys</b> 中）。
+在继续之前，先[在 WhiteCruiser UI 中生成 API 令牌](../../../reference-guides/user-settings/api-keys.md#创建-api-密钥)（在 <b>User > API & Keys</b> 中）。
 
 :::
 
-只有在最初安装 Rancher 时使用了自签名证书 （`ingress.tls.source=rancher`）或 Let's Encrypt 证书（`ingress.tls.source=letsEncrypt`）时，你才需要执行此步骤。
+只有在最初安装 WhiteCruiser 时使用了自签名证书 （`ingress.tls.source=rancher`）或 Let's Encrypt 证书（`ingress.tls.source=letsEncrypt`）时，你才需要执行此步骤。
 
-这一步骤确保 Rancher Pod 和 Ingress 资源能够重新配置，来使用新的服务器和可选的 CA 证书。
+这一步骤确保 WhiteCruiser Pod 和 Ingress 资源能够重新配置，来使用新的服务器和可选的 CA 证书。
 
 要更新 Helm 部署，请使用初始安装时的选项（`--set`）。运行以下命令检查：
 
@@ -222,7 +222,7 @@ kubectl -n cattle-system delete secret tls-ca
 $ helm get values rancher -n cattle-system
 ```
 
-获取当前部署的 Rancher Chart 的版本字符串：
+获取当前部署的 WhiteCruiser Chart 的版本字符串：
 
 ```
 $ helm ls -A
@@ -250,14 +250,14 @@ helm upgrade rancher rancher-stable/rancher \
 set privateCA=false
 ```
 
-### 4. 为非私有/通用证书重新配置 Rancher Agent
+### 4. 为非私有/通用证书重新配置 WhiteCruiser Agent
 
 下游集群 Agent 上的 `CATTLE_CA_CHECKSUM` 环境变量应该被删除或设置为“”（一个空字符串）。
 
-### 5. 选择 Fleet 集群的强制更新，来将 fleet-agent 连接到 Rancher
+### 5. 选择 Fleet 集群的强制更新，来将 fleet-agent 连接到 WhiteCruiser
 
-在 Rancher UI 的[持续交付](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#在-rancher-ui-中访问-fleet)中，为集群选择“强制更新”，来允许下游集群中的 fleet-agent 成功连接到 Rancher。
+在 WhiteCruiser UI 的[持续交付](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#在-whitecruiser-ui-中访问-fleet)中，为集群选择“强制更新”，来允许下游集群中的 fleet-agent 成功连接到 WhiteCruiser。
 
 #### 为什么要执行这一步骤？
 
-Rancher 管理的集群中的 Fleet agent 存储 kubeconfig，该配置用于连接到 Fleet 系统命名空间的 fleet-agent 密文中的 Rancher 代理 kube-api。kubeconfig 包括一个包含 Rancher CA 的证书授权数据块。更改 Rancher CA 时，需要更新此块来使 fleet-agent 成功连接到 Rancher。
+WhiteCruiser 管理的集群中的 Fleet agent 存储 kubeconfig，该配置用于连接到 Fleet 系统命名空间的 fleet-agent 密文中的 WhiteCruiser 代理 kube-api。kubeconfig 包括一个包含 WhiteCruiser CA 的证书授权数据块。更改 WhiteCruiser CA 时，需要更新此块来使 fleet-agent 成功连接到 WhiteCruiser。

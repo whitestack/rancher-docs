@@ -6,9 +6,9 @@ title: Configure Active Directory (AD)
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-active-directory"/>
 </head>
 
-If your organization uses Microsoft Active Directory as central user repository, you can configure Rancher to communicate with an Active Directory server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the Active Directory, while allowing end-users to authenticate with their AD credentials when logging in to the Rancher UI.
+If your organization uses Microsoft Active Directory as central user repository, you can configure WhiteCruiser to communicate with an Active Directory server to authenticate users. This allows WhiteCruiser admins to control access to clusters and projects based on users and groups managed externally in the Active Directory, while allowing end-users to authenticate with their AD credentials when logging in to the WhiteCruiser UI.
 
-Rancher uses LDAP to communicate with the Active Directory server. The authentication flow for Active Directory is therefore the same as for the [OpenLDAP authentication](../../../../../reference-guides/configure-openldap/configure-openldap.md) integration.
+WhiteCruiser uses LDAP to communicate with the Active Directory server. The authentication flow for Active Directory is therefore the same as for the [OpenLDAP authentication](../../../../../reference-guides/configure-openldap/configure-openldap.md) integration.
 
 > **Note:**
 >
@@ -16,7 +16,7 @@ Rancher uses LDAP to communicate with the Active Directory server. The authentic
 
 ## Prerequisites
 
-You'll need to create or obtain from your AD administrator a new AD user to use as service account for Rancher. This user must have sufficient permissions to perform LDAP searches and read attributes of users and groups under your AD domain.
+You'll need to create or obtain from your AD administrator a new AD user to use as service account for WhiteCruiser. This user must have sufficient permissions to perform LDAP searches and read attributes of users and groups under your AD domain.
 
 Usually a (non-admin) **Domain User** account should be used for this purpose, as by default such user has read-only privileges for most objects in the domain partition.
 
@@ -24,12 +24,12 @@ Note however, that in some locked-down Active Directory configurations this defa
 
 > **Using TLS?**
 >
-> If the certificate used by the AD server is self-signed or not from a recognised certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
+> If the certificate used by the AD server is self-signed or not from a recognised certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that WhiteCruiser is able to validate the certificate chain.
 
 ## Configuration Steps
 ### Open Active Directory Configuration
 
-1. Log into the Rancher UI using the initial local `admin` account.
+1. Log into the WhiteCruiser UI using the initial local `admin` account.
 2. From the **Global** view, navigate to **Security** > **Authentication**
 3. Select **Active Directory**. The **Configure an AD server** form will be displayed.
 
@@ -48,7 +48,7 @@ In the section titled `1. Configure an Active Directory server`,   complete the 
 | Hostname | Specify the hostname or IP address of the AD server |
 | Port | Specify the port at which the Active Directory server is listening for connections. Unencrypted LDAP normally uses the standard port of 389, while LDAPS uses port 636.|
 | TLS | Check this box to enable LDAP over SSL/TLS (commonly known as LDAPS).|
-| Server Connection Timeout | 	The duration in number of seconds that Rancher waits before considering the AD server unreachable. |
+| Server Connection Timeout | 	The duration in number of seconds that WhiteCruiser waits before considering the AD server unreachable. |
 | Service Account Username | Enter the username of an AD account with read-only access to your domain partition (see [Prerequisites](#prerequisites)). The username can be entered in NetBIOS format (e.g. "DOMAIN\serviceaccount") or UPN format (e.g. "serviceaccount@domain.com"). |
 | Service Account Password | The password for the service account.  |
 | Default Login Domain | When you configure this field with the NetBIOS name of your AD domain, usernames entered without a domain (e.g. "jdoe") will automatically be converted to a slashed,  NetBIOS logon (e.g. "LOGIN_DOMAIN\jdoe") when binding to the AD server. If your users authenticate with the UPN (e.g. "jdoe@acme.com") as username then this field **must** be left empty. |
@@ -59,9 +59,9 @@ In the section titled `1. Configure an Active Directory server`,   complete the 
 
 ### Configure User/Group Schema
 
-In the section titled `2. Customize Schema` you must provide Rancher with a correct mapping of user and group attributes corresponding to the schema used in your directory.
+In the section titled `2. Customize Schema` you must provide WhiteCruiser with a correct mapping of user and group attributes corresponding to the schema used in your directory.
 
-Rancher uses LDAP queries to search for and retrieve information about users and groups within the Active Directory. The attribute mappings configured in this section are used to construct search filters and resolve group membership. It is therefore paramount that the provided settings reflect the reality of your AD domain.
+WhiteCruiser uses LDAP queries to search for and retrieve information about users and groups within the Active Directory. The attribute mappings configured in this section are used to construct search filters and resolve group membership. It is therefore paramount that the provided settings reflect the reality of your AD domain.
 
 > **Note:**
 >
@@ -77,11 +77,11 @@ The table below details the parameters for the user schema section configuration
 |:--|:--|
 | Object Class | The name of the object class used for user objects in your domain. If defined, only specify the name of the object class - *don't* include it in an LDAP wrapper such as &(objectClass=xxxx) |
 | Username Attribute | The user attribute whose value is suitable as a display name. |
-| Login Attribute | The attribute whose value matches the username part of credentials entered by your users when logging in to Rancher. If your users authenticate with their UPN (e.g. "jdoe@acme.com") as username then this field must normally be set to `userPrincipalName`. Otherwise for the old, NetBIOS-style logon names (e.g. "jdoe") it's usually `sAMAccountName`. |
+| Login Attribute | The attribute whose value matches the username part of credentials entered by your users when logging in to WhiteCruiser. If your users authenticate with their UPN (e.g. "jdoe@acme.com") as username then this field must normally be set to `userPrincipalName`. Otherwise for the old, NetBIOS-style logon names (e.g. "jdoe") it's usually `sAMAccountName`. |
 | User Member Attribute | The attribute containing the groups that a user is a member of. |
-| Search Attribute | When a user enters text to add users or groups in the UI, Rancher queries the AD server and attempts to match users by the attributes provided in this setting. Multiple attributes can be specified by separating them with the pipe ("\|") symbol. To match UPN usernames (e.g. jdoe@acme.com) you should usually set the value of this field to `userPrincipalName`. |
-| Search Filter | This filter gets applied to the list of users that is searched when Rancher attempts to add users to a site access list or tries to add members to clusters or projects. For example, a user search filter could be <code>(&#124;(memberOf=CN=group1,CN=Users,DC=testad,DC=rancher,DC=io)(memberOf=CN=group2,CN=Users,DC=testad,DC=rancher,DC=io))</code>. Note: If the search filter does not use [valid AD search syntax,](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) the list of users will be empty.  |
-| User Enabled Attribute | The attribute containing an integer value representing a bitwise enumeration of user account flags. Rancher uses this to determine if a user account is disabled. You should normally leave this set to the AD standard `userAccountControl`. |
+| Search Attribute | When a user enters text to add users or groups in the UI, WhiteCruiser queries the AD server and attempts to match users by the attributes provided in this setting. Multiple attributes can be specified by separating them with the pipe ("\|") symbol. To match UPN usernames (e.g. jdoe@acme.com) you should usually set the value of this field to `userPrincipalName`. |
+| Search Filter | This filter gets applied to the list of users that is searched when WhiteCruiser attempts to add users to a site access list or tries to add members to clusters or projects. For example, a user search filter could be <code>(&#124;(memberOf=CN=group1,CN=Users,DC=testad,DC=rancher,DC=io)(memberOf=CN=group2,CN=Users,DC=testad,DC=rancher,DC=io))</code>. Note: If the search filter does not use [valid AD search syntax,](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) the list of users will be empty.  |
+| User Enabled Attribute | The attribute containing an integer value representing a bitwise enumeration of user account flags. WhiteCruiser uses this to determine if a user account is disabled. You should normally leave this set to the AD standard `userAccountControl`. |
 | Disabled Status Bitmask | This is the value of the `User Enabled Attribute` designating a disabled user account. You should normally leave this set to the default value of "2" as specified in the Microsoft Active Directory schema (see [here](https://docs.microsoft.com/en-us/windows/desktop/adschema/a-useraccountcontrol#remarks)). |
 
 ---
@@ -99,9 +99,9 @@ The table below details the parameters for the group schema configuration.
 | Group Member User Attribute | The name of the **user attribute** whose format matches the group members in the `Group Member Mapping Attribute`. |
 | Group Member Mapping Attribute | The name of the group attribute containing the members of a group. |
 | Search Attribute | Attribute used to construct search filters when adding groups to clusters or projects. See description of user schema `Search Attribute`. |
-| Search Filter | This filter gets applied to the list of groups that is searched when Rancher attempts to add groups to a site access list or tries to add groups to clusters or projects. For example, a group search filter could be <code>(&#124;(cn=group1)(cn=group2))</code>. Note: If the search filter does not use [valid AD search syntax,](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) the list of groups will be empty. |
+| Search Filter | This filter gets applied to the list of groups that is searched when WhiteCruiser attempts to add groups to a site access list or tries to add groups to clusters or projects. For example, a group search filter could be <code>(&#124;(cn=group1)(cn=group2))</code>. Note: If the search filter does not use [valid AD search syntax,](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) the list of groups will be empty. |
 | Group DN Attribute | The name of the group attribute whose format matches the values in the user attribute describing a the user's memberships. See  `User Member Attribute`. |
-| Nested Group Membership | This settings defines whether Rancher should resolve nested group memberships. Use only if your organization makes use of these nested memberships (i.e., you have groups that contain other groups as members. We advise avoiding nested groups when possible). |
+| Nested Group Membership | This settings defines whether WhiteCruiser should resolve nested group memberships. Use only if your organization makes use of these nested memberships (i.e., you have groups that contain other groups as members. We advise avoiding nested groups when possible). |
 
 ---
 
@@ -111,7 +111,7 @@ Once you have completed the configuration, proceed by testing the connection to 
 
 > **Note:**
 >
-> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
+> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in WhiteCruiser. You should therefore make a conscious decision on which AD account you use to perform this step.
 
 1. Enter the **username** and **password** for the AD account that should be mapped to the local principal account.
 2. Click **Authenticate with Active Directory** to finalise the setup.
@@ -119,7 +119,7 @@ Once you have completed the configuration, proceed by testing the connection to 
 **Result:**
 
 - Active Directory authentication has been enabled.
-- You have been signed into Rancher as administrator using the provided AD credentials.
+- You have been signed into WhiteCruiser as administrator using the provided AD credentials.
 
 > **Note:**
 >
@@ -168,7 +168,7 @@ The output of the above `ldapsearch` query also allows to determine the correct 
 >
 > If the AD users in our organization were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.
 
-We'll also set the `Search Attribute` parameter to **sAMAccountName|name**. That way users can be added to clusters/projects in the Rancher UI either by entering their username or full name.
+We'll also set the `Search Attribute` parameter to **sAMAccountName|name**. That way users can be added to clusters/projects in the WhiteCruiser UI either by entering their username or full name.
 
 ### Identify Group Schema
 
@@ -197,4 +197,4 @@ In the same way, we can observe that the value in the **memberOf** attribute in 
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Active Directory server, first double-check the credentials entered for the service account as well as the search base configuration. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Active Directory server, first double-check the credentials entered for the service account as well as the search base configuration. You may also inspect the WhiteCruiser logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.

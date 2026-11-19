@@ -1,6 +1,6 @@
 ---
 title: Port Requirements
-description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes
+description: Read about port requirements needed in order for WhiteCruiser to operate properly, both for WhiteCruiser nodes and downstream Kubernetes cluster nodes
 ---
 
 <head>
@@ -11,21 +11,21 @@ import PortsIaasNodes from '@site/src/components/PortsIaasNodes'
 import PortsCustomNodes from '@site/src/components/PortsCustomNodes'
 import PortsImportedHosted from '@site/src/components/PortsImportedHosted'
 
-To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes.
+To operate properly, WhiteCruiser requires a number of ports to be open on WhiteCruiser nodes and on downstream Kubernetes cluster nodes.
 
-## Rancher Nodes
+## WhiteCruiser Nodes {#rancher-nodes}
 
-The following table lists the ports that need to be open to and from nodes that are running the Rancher server.
+The following table lists the ports that need to be open to and from nodes that are running the WhiteCruiser server.
 
-The port requirements differ based on the Rancher server architecture.
+The port requirements differ based on the WhiteCruiser server architecture.
 
 > **Notes:**
 >
-> - Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
+> - WhiteCruiser nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
 > - Kubernetes recommends TCP 30000-32767 for node port services.
 > - For firewalls, traffic may need to be enabled within the cluster and pod CIDR.
 
-### Ports for Rancher Server Nodes on K3s
+### Ports for WhiteCruiser Server Nodes on K3s {#ports-for-rancher-server-nodes-on-k3s}
 
 <details>
   <summary>Click to expand</summary>
@@ -40,41 +40,41 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 
 The following tables break down the port requirements for inbound and outbound traffic:
 
-<figcaption>Inbound Rules for Rancher Server Nodes</figcaption>
+<figcaption>Inbound Rules for WhiteCruiser Server Nodes</figcaption>
 
 | Protocol | Port | Source | Description
 |-----|-----|----------------|---|
-| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | Rancher UI/API when external SSL termination is used |
-| TCP      | 443  | <ul><li>server nodes</li><li>agent nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl               |
+| TCP      | 80   | Load balancer/proxy that does external SSL termination                                                                                                                                | WhiteCruiser UI/API when external SSL termination is used |
+| TCP      | 443  | <ul><li>server nodes</li><li>agent nodes</li><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the WhiteCruiser UI or API</li></ul> | WhiteCruiser agent, WhiteCruiser UI/API, kubectl               |
 | TCP | 6443 | K3s server nodes | Kubernetes API
 | UDP | 8472 | K3s server and agent nodes | Required only for Flannel VXLAN.
 | TCP | 10250 | K3s server and agent nodes | kubelet
 
-<figcaption>Outbound Rules for Rancher Nodes</figcaption>
+<figcaption>Outbound Rules for WhiteCruiser Nodes</figcaption>
 
 | Protocol | Port | Destination                                              | Description                                   |
 | -------- | ---- | -------------------------------------------------------- | --------------------------------------------- |
 | TCP      | 22   | Any node IP from a node created using Node Driver        | SSH provisioning of nodes using Node Driver   |
-| TCP      | 443  | git.rancher.io |  Rancher catalog                    |
+| TCP      | 443  | git.rancher.io |  WhiteCruiser catalog                    |
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
 </details>
 
-### Ports for Rancher Server Nodes on RKE
+### Ports for WhiteCruiser Server Nodes on RKE {#ports-for-rancher-server-nodes-on-rke}
 
 <details>
   <summary>Click to expand</summary>
 
-Typically Rancher is installed on three RKE nodes that all have the etcd, control plane and worker roles.
+Typically WhiteCruiser is installed on three RKE nodes that all have the etcd, control plane and worker roles.
 
-The following tables break down the port requirements for traffic between the Rancher nodes:
+The following tables break down the port requirements for traffic between the WhiteCruiser nodes:
 
-<figcaption>Rules for traffic between Rancher nodes</figcaption>
+<figcaption>Rules for traffic between WhiteCruiser nodes</figcaption>
 
 | Protocol | Port | Description |
 |-----|-----|----------------|
-| TCP | 443 | Rancher agents |
+| TCP | 443 | WhiteCruiser agents |
 | TCP | 2379 | etcd client requests |
 | TCP | 2380 | etcd peer communication |
 | TCP | 6443 | Kubernetes apiserver |
@@ -85,20 +85,20 @@ The following tables break down the port requirements for traffic between the Ra
 
 The following tables break down the port requirements for inbound and outbound traffic:
 
-<figcaption>Inbound Rules for Rancher Nodes</figcaption>
+<figcaption>Inbound Rules for WhiteCruiser Nodes</figcaption>
 
 | Protocol | Port | Source | Description |
 |-----|-----|----------------|---|
 | TCP | 22 | RKE CLI | SSH provisioning of node by RKE |
-| TCP | 80 | Load Balancer/Reverse Proxy | HTTP traffic to Rancher UI/API |
-| TCP | 443 | <ul><li>Load Balancer/Reverse Proxy</li><li>IPs of all cluster nodes and other API/UI clients</li></ul> | HTTPS traffic to Rancher UI/API |
+| TCP | 80 | Load Balancer/Reverse Proxy | HTTP traffic to WhiteCruiser UI/API |
+| TCP | 443 | <ul><li>Load Balancer/Reverse Proxy</li><li>IPs of all cluster nodes and other API/UI clients</li></ul> | HTTPS traffic to WhiteCruiser UI/API |
 | TCP | 6443 | Kubernetes API clients | HTTPS traffic to Kubernetes API |
 
-<figcaption>Outbound Rules for Rancher Nodes</figcaption>
+<figcaption>Outbound Rules for WhiteCruiser Nodes</figcaption>
 
 | Protocol | Port | Destination | Description |
 |-----|-----|----------------|---|
-| TCP | 443 | `35.160.43.145`,`35.167.242.46`,`52.33.59.17` | Rancher catalog (git.rancher.io) |
+| TCP | 443 | `35.160.43.145`,`35.167.242.46`,`52.33.59.17` | WhiteCruiser catalog (git.rancher.io) |
 | TCP | 22 | Any node created using a node driver | SSH provisioning of node by node driver |
 | TCP | 2376 | Any node created using a node driver | Docker daemon TLS port used by node driver |
 | TCP | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
@@ -106,26 +106,26 @@ The following tables break down the port requirements for inbound and outbound t
 
 </details>
 
-### Ports for Rancher Server in Docker
+### Ports for WhiteCruiser Server in Docker {#ports-for-rancher-server-in-docker}
 
 <details>
   <summary>Click to expand</summary>
 
-The following tables break down the port requirements for Rancher nodes, for inbound and outbound traffic:
+The following tables break down the port requirements for WhiteCruiser nodes, for inbound and outbound traffic:
 
-<figcaption>Inbound Rules for Rancher Node</figcaption>
+<figcaption>Inbound Rules for WhiteCruiser Node</figcaption>
 
 | Protocol | Port | Source | Description
 |-----|-----|----------------|---|
-| TCP | 80 | Load balancer/proxy that does external SSL termination | Rancher UI/API when external SSL termination is used
-| TCP | 443 | <ul><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl
+| TCP | 80 | Load balancer/proxy that does external SSL termination | WhiteCruiser UI/API when external SSL termination is used
+| TCP | 443 | <ul><li>hosted/imported Kubernetes</li><li>any source that needs to be able to use the WhiteCruiser UI or API</li></ul> | WhiteCruiser agent, WhiteCruiser UI/API, kubectl
 
-<figcaption>Outbound Rules for Rancher Node</figcaption>
+<figcaption>Outbound Rules for WhiteCruiser Node</figcaption>
 
 | Protocol | Port | Source | Description |
 |-----|-----|----------------|---|
 | TCP | 22 | Any node IP from a node created using Node Driver | SSH provisioning of nodes using Node Driver |
-| TCP | 443 | git.rancher.io |  Rancher catalog |
+| TCP | 443 | git.rancher.io |  WhiteCruiser catalog |
 | TCP | 2376 | Any node IP from a node created using a node driver | Docker daemon TLS port used by Docker Machine |
 | TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
 
@@ -133,13 +133,13 @@ The following tables break down the port requirements for Rancher nodes, for inb
 
 ## Downstream Kubernetes Cluster Nodes
 
-Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that Rancher can communicate with them.
+Downstream Kubernetes clusters run your apps and services. This section describes what ports need to be opened on the nodes in downstream clusters so that WhiteCruiser can communicate with them.
 
 The port requirements differ depending on how the downstream cluster was launched. Each of the tabs below list the ports that need to be opened for different [cluster types](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md).
 
 The following diagram depicts the ports that are opened for each [cluster type](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md).
 
-<figcaption>Port Requirements for the Rancher Management Plane</figcaption>
+<figcaption>Port Requirements for the WhiteCruiser Management Plane</figcaption>
 
 ![Basic Port Requirements](/img/port-communications.svg)
 
@@ -147,26 +147,26 @@ The following diagram depicts the ports that are opened for each [cluster type](
 >
 >If security isn't a large concern and you're okay with opening a few additional ports, you can use the table in [Commonly Used Ports](#commonly-used-ports) as your port reference instead of the comprehensive tables below.
 
-### Ports for Rancher Launched Kubernetes Clusters using Node Pools
+### Ports for WhiteCruiser Launched Kubernetes Clusters using Node Pools {#ports-for-rancher-launched-kubernetes-clusters-using-node-pools}
 
 <details>
   <summary>Click to expand</summary>
 
-The following table depicts the port requirements for [Rancher Launched Kubernetes](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) with nodes created in an [Infrastructure Provider](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md).
+The following table depicts the port requirements for [WhiteCruiser Launched Kubernetes](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) with nodes created in an [Infrastructure Provider](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md).
 
 >**Note:**
->The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
+>The required ports are automatically opened by WhiteCruiser during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
 
 <PortsIaasNodes/>
 
 </details>
 
-### Ports for Rancher Launched Kubernetes Clusters using Custom Nodes
+### Ports for WhiteCruiser Launched Kubernetes Clusters using Custom Nodes {#ports-for-rancher-launched-kubernetes-clusters-using-custom-nodes}
 
 <details>
   <summary>Click to expand</summary>
 
-The following table depicts the port requirements for [Rancher Launched Kubernetes](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) with [Custom Nodes](../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md).
+The following table depicts the port requirements for [WhiteCruiser Launched Kubernetes](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) with [Custom Nodes](../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md).
 
 <PortsCustomNodes/>
 
@@ -219,9 +219,9 @@ However, this traffic may be blocked when:
 
 In these cases, you have to explicitly allow this traffic in your host firewall, or in case of public/private cloud hosted machines (i.e. AWS or OpenStack), in your security group configuration. Keep in mind that when using a security group as source or destination in your security group, explicitly opening ports only applies to the private interface of the nodes / instances.
 
-### Rancher AWS EC2 Security Group
+### WhiteCruiser AWS EC2 Security Group {#rancher-aws-ec2-security-group}
 
-When using the [AWS EC2 node driver](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster.md) to provision cluster nodes in Rancher, you can choose to let Rancher create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
+When using the [AWS EC2 node driver](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster.md) to provision cluster nodes in WhiteCruiser, you can choose to let WhiteCruiser create a security group called `rancher-nodes`. The following rules are automatically added to this security group.
 
 |       Type      | Protocol |  Port Range | Source/Destination     | Rule Type |
 |-----------------|:--------:|:-----------:|------------------------|:---------:|

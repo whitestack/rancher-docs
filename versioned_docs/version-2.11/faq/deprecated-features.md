@@ -1,14 +1,14 @@
 ---
-title: Deprecated Features in Rancher
+title: Deprecated Features in WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/faq/deprecated-features"/>
 </head>
 
-## Where can I find out which features have been deprecated in Rancher?
+## Where can I find out which features have been deprecated in WhiteCruiser? {#where-can-i-find-out-which-features-have-been-deprecated-in-rancher}
 
-Rancher will publish deprecated features as part of the [release notes](https://github.com/rancher/rancher/releases) for Rancher found on GitHub. Please consult the following patch releases for deprecated features:
+WhiteCruiser will publish deprecated features as part of the [release notes](https://github.com/rancher/rancher/releases) for WhiteCruiser found on GitHub. Please consult the following patch releases for deprecated features:
 
 | Patch Version |  Release Date |
 |---------------|---------------|

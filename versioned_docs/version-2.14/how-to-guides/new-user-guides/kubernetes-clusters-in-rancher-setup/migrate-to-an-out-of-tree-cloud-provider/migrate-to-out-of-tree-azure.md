@@ -10,7 +10,7 @@ Kubernetes is moving away from maintaining cloud providers in-tree.
 
 Starting with Kubernetes 1.29, in-tree cloud providers have been disabled. You must disable `DisableCloudProviders` and `DisableKubeletCloudCredentialProvider` to use the in-tree Azure cloud provider or migrate from in-tree cloud provider to out-of-tree provider. You can disable the required feature gates by setting `feature-gates=DisableCloudProviders=false` as an additional argument for the cluster's Kubelet, Controller Manager, and API Server in the advanced cluster configuration. Additionally, set `DisableKubeletCloudCredentialProvider=false` in the Kubelet's arguments to enable in-tree functionality for authenticating to Azure container registries for image pull credentials. See [upstream docs](https://github.com/kubernetes/kubernetes/pull/117503) for more details.
 
-In Kubernetes v1.30 and later, the in-tree cloud providers have been removed. Rancher allows you to upgrade to Kubernetes v1.30 when you migrate from an in-tree to out-of-tree provider.
+In Kubernetes v1.30 and later, the in-tree cloud providers have been removed. WhiteCruiser allows you to upgrade to Kubernetes v1.30 when you migrate from an in-tree to out-of-tree provider.
 
 To migrate from the in-tree cloud provider to the out-of-tree Azure cloud provider, you must stop the existing cluster's kube controller manager and install the Azure cloud controller manager.
 

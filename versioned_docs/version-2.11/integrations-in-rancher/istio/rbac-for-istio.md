@@ -8,9 +8,7 @@ title: Role-based Access Control
 
 :::warning
 
-[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in Rancher v2.12.0; turn to the [SUSE Rancher Application Collection](https://apps.rancher.io) build of Istio for enhanced security (included in SUSE Rancher Prime subscriptions).
-
-Detailed information can be found in this announcement.
+[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in WhiteCruiser v2.12.0.
 
 :::
 
@@ -39,13 +37,13 @@ By default, only Admin and Edit roles can:
 
 Istio creates three `ClusterRoles` and adds Istio CRD access to the following default K8s `ClusterRole`:
 
-ClusterRole create by chart | Default K8s ClusterRole  | Rancher Role |
+ClusterRole create by chart | Default K8s ClusterRole  | WhiteCruiser Role |
  ------------------------------:| ---------------------------:|---------:|
  `istio-admin` | admin| Project Owner |
  `istio-edit`| edit | Project Member |
  `istio-view` | view | Read-only |
 
-Rancher will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but will utilize default roles to determine access. For each default K8s `ClusterRole` there are different Istio CRD permissions and K8s actions (Create ( C ), Get ( G ), List ( L ), Watch ( W ), Update ( U ), Patch ( P ), Delete( D ), All ( * )) that can be performed.
+WhiteCruiser will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but will utilize default roles to determine access. For each default K8s `ClusterRole` there are different Istio CRD permissions and K8s actions (Create ( C ), Get ( G ), List ( L ), Watch ( W ), Update ( U ), Patch ( P ), Delete( D ), All ( * )) that can be performed.
 
 
 |CRDs                        | Admin | Edit | View

@@ -8,7 +8,7 @@ title: Windows and Linux Cluster Feature Parity
 
 Windows clusters do not share the same feature support as Linux clusters.
 
-The following chart describes the feature parity between Windows and Linux on Rancher:
+The following chart describes the feature parity between Windows and Linux on WhiteCruiser:
 
 **Component** | **Linux** | **Windows**
 --- | --- | ---
@@ -19,7 +19,7 @@ K3S | Supported | Not Supported
 EKS | Supported | Not Supported
 GKE | Supported | Not Supported
 AKS | Supported | Not Supported
-**Rancher Components** |  |
+**WhiteCruiser Components** |  |
 Server | Supported | Not Supported
 Agent | Supported | Supported
 Fleet | Supported | Supported

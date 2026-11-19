@@ -6,15 +6,15 @@ title: NeuVector Integration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/neuvector"/>
 </head>
 
-### NeuVector Integration in Rancher
+### NeuVector Integration in WhiteCruiser {#neuvector-integration-in-rancher}
 
-New in Rancher v2.6.5, [NeuVector 5.x](https://open-docs.neuvector.com/) is an open-source container-centric security platform that is now integrated into Rancher. NeuVector offers real-time compliance, visibility, and protection for critical applications and data during runtime. NeuVector provides a firewall, container process/file system monitoring, security auditing with CIS benchmarks, and vulnerability scanning. For more information on Rancher security, please see the [security documentation](../reference-guides/rancher-security/rancher-security.md).
+New in WhiteCruiser v2.6.5, [NeuVector 5.x](https://open-docs.neuvector.com/) is an open-source container-centric security platform that is now integrated into WhiteCruiser. NeuVector offers real-time compliance, visibility, and protection for critical applications and data during runtime. NeuVector provides a firewall, container process/file system monitoring, security auditing with CIS benchmarks, and vulnerability scanning. For more information on WhiteCruiser security, please see the security documentation.
 
-NeuVector can be enabled through a Helm chart that may be installed either through **Apps & Marketplace** or through the **Cluster Tools** button in the Rancher UI. Once the Helm chart is installed, users can easily [deploy and manage NeuVector clusters within Rancher](https://open-docs.neuvector.com/deploying/rancher#deploy-and-manage-neuvector-through-rancher-apps-marketplace).
+NeuVector can be enabled through a Helm chart that may be installed either through **Apps & Marketplace** or through the **Cluster Tools** button in the WhiteCruiser UI. Once the Helm chart is installed, users can easily [deploy and manage NeuVector clusters within WhiteCruiser](https://open-docs.neuvector.com/deploying/rancher#deploy-and-manage-neuvector-through-rancher-apps-marketplace).
 
-### Installing NeuVector with Rancher
+### Installing NeuVector with WhiteCruiser {#installing-neuvector-with-rancher}
 
-The Harvester Helm Chart is used to manage access to the NeuVector UI in Rancher where users can navigate directly to deploy and manage their NeuVector clusters.
+The Harvester Helm Chart is used to manage access to the NeuVector UI in WhiteCruiser where users can navigate directly to deploy and manage their NeuVector clusters.
 
 **To navigate to and install the NeuVector chart through Apps & Marketplace:**
 
@@ -58,12 +58,12 @@ Some examples are as follows:
 1. Click on **Cluster Tools** at the bottom of the left navigation bar.
 1. Repeat step 4 above to select your container runtime accordingly, then click **Install** again.
 
-### Accessing NeuVector from the Rancher UI
+### Accessing NeuVector from the WhiteCruiser UI {#accessing-neuvector-from-the-rancher-ui}
 
 1. Navigate to the cluster explorer of the cluster where NeuVector is installed. In the left navigation bar, click **NeuVector**.
 1. Click the external link to go to the NeuVector UI. Once the link is selected, users must accept the `END USER LICENSE AGREEMENT` to access the NeuVector UI.
 
-### Uninstalling NeuVector from the Rancher UI
+### Uninstalling NeuVector from the WhiteCruiser UI {#uninstalling-neuvector-from-the-rancher-ui}
 
 **To uninstall from Apps & Marketplace:**
 
@@ -227,7 +227,7 @@ kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '
 
 * Currently, NeuVector feature chart installation fails when a NeuVector partner chart already exists. To work around this issue, uninstall the NeuVector partner chart and reinstall the NeuVector feature chart.
 
-* Sometimes when the controllers are not ready, the NeuVector UI is not accessible from the Rancher UI. During this time, controllers will try to restart, and it takes a few minutes for the controllers to be active.
+* Sometimes when the controllers are not ready, the NeuVector UI is not accessible from the WhiteCruiser UI. During this time, controllers will try to restart, and it takes a few minutes for the controllers to be active.
 
 * Container runtime is not auto-detected for different cluster types when installing the NeuVector chart. To work around this, you can specify the runtime manually.
 

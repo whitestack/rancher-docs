@@ -1,12 +1,12 @@
 ---
-title: 1. 在 Microsoft AD FS 中配置 Rancher
+title: 1. 在 Microsoft AD FS 中配置 WhiteCruiser
 ---
 
 <head> 
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher"/>
 </head>
 
-在配置 Rancher 以支持 Active Directory Federation Service (AD FS) 之前，你必须在 AD FS 中将 Rancher 添加为 [relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts)（信赖方信任）。
+在配置 WhiteCruiser 以支持 Active Directory Federation Service (AD FS) 之前，你必须在 AD FS 中将 WhiteCruiser 添加为 [relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts)（信赖方信任）。
 
 1. 以管理用户身份登录 AD 服务器。
 
@@ -26,7 +26,7 @@ title: 1. 在 Microsoft AD FS 中配置 Rancher
 
    ![](/img/adfs/adfs-add-rpt-4.png)
 
-1. 留空 **optional token encryption certificate**，因为 Rancher AD FS 不会使用它。
+1. 留空 **optional token encryption certificate**，因为 WhiteCruiser AD FS 不会使用它。
 
    ![](/img/adfs/adfs-add-rpt-5.png)
 
@@ -81,8 +81,8 @@ title: 1. 在 Microsoft AD FS 中配置 Rancher
 https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml
 ```
 
-**结果**：你已将 Rancher 添加为依赖信任方。现在你可以配置 Rancher 来使用 AD。
+**结果**：你已将 WhiteCruiser 添加为依赖信任方。现在你可以配置 WhiteCruiser 来使用 AD。
 
 ## 后续操作
 
-[在 Rancher 中配置 Microsoft AD FS ](configure-rancher-for-ms-adfs.md)
+[在 WhiteCruiser 中配置 Microsoft AD FS ](configure-rancher-for-ms-adfs.md)

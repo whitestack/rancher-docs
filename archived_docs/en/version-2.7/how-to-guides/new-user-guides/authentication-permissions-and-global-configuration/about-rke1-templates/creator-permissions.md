@@ -41,13 +41,13 @@ Alternatively, the administrator can give all new users the default permission t
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**.
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. Select **Create new RKE Cluster Templates** and click **⋮ > Edit Config**.
 1. Select the option **Yes: Default role for new users**.
 1. Click **Save**.
 1. If you would like new users to also be able to create RKE template revisions, enable that role as default as well.
 
-**Result:** Any new user created in this Rancher installation will be able to create RKE templates. Existing users will not get this permission.
+**Result:** Any new user created in this WhiteCruiser installation will be able to create RKE templates. Existing users will not get this permission.
 
 ### Revoking Permission to Create Templates
 

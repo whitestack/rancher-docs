@@ -6,7 +6,7 @@ title: Kubernetes 资源
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/kubernetes-resources-setup"/>
 </head>
 
-你可以在 Rancher UI 中查看和操作 Kubernetes 集群中的所有自定义资源和 CRD。
+你可以在 WhiteCruiser UI 中查看和操作 Kubernetes 集群中的所有自定义资源和 CRD。
 
 ## 工作负载
 
@@ -28,7 +28,7 @@ title: Kubernetes 资源
 
 如果你希望你的应用程序可以从外部访问，则必须向集群添加负载均衡器。如果用户知道负载均衡器的 IP 地址和应用的端口号，负载均衡器可以为外部连接创建一个访问集群的网关。
 
-Rancher 支持两种类型的负载均衡器：
+WhiteCruiser 支持两种类型的负载均衡器：
 
 - [Layer-4 负载均衡器](./load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing.md#四层负载均衡器)
 - [Layer-7 负载均衡器](./load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing.md#七层负载均衡器)
@@ -53,11 +53,11 @@ Ingress 是一组充当负载均衡器的规则。Ingress 与一个或多个 Ing
 
 ## 应用程序
 
-除了启动应用程序的各个组件外，你还可以使用 Rancher 应用商店来启动应用，即 Helm Chart。
+除了启动应用程序的各个组件外，你还可以使用 WhiteCruiser 应用商店来启动应用，即 Helm Chart。
 
 ## Kubernetes 资源
 
-在 Rancher 项目或命名空间的上下文中，_资源_ 是支持 Pod 操作的文件和数据。在 Rancher 中，证书、镜像仓库和密文都被视为资源。但是，Kubernetes 将资源划分为不同类型的[密文（secret）](https://kubernetes.io/docs/concepts/configuration/secret/)。因此，在单个项目或命名空间中，各个资源必须具有唯一的名称以避免冲突。资源主要用于承载敏感信息，但也有其他用途。
+在 WhiteCruiser 项目或命名空间的上下文中，_资源_ 是支持 Pod 操作的文件和数据。在 WhiteCruiser 中，证书、镜像仓库和密文都被视为资源。但是，Kubernetes 将资源划分为不同类型的[密文（secret）](https://kubernetes.io/docs/concepts/configuration/secret/)。因此，在单个项目或命名空间中，各个资源必须具有唯一的名称以避免冲突。资源主要用于承载敏感信息，但也有其他用途。
 
 资源包括：
 

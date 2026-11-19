@@ -31,7 +31,7 @@ title: Nutanix 节点模板配置
 | 虚拟机磁盘大小 |          | 虚拟机主磁盘的新大小（以 GiB 为单位） |
 | 其他磁盘大小 |          | 要添加到虚拟机的其他磁盘的大小（以 GiB 为单位） |
 | 储存容器 |          | 要配置其他磁盘的存储容器 _UUID_ |
-| Cloud Config YAML |          | 要提供给虚拟机的 cloud-init（将使用 Rancher root 用户修补） |
+| Cloud Config YAML |          | 要提供给虚拟机的 cloud-init（将使用 WhiteCruiser root 用户修补） |
 | 网络 | ✓ | 要附加到虚拟机的网络的名称 |
 | 虚拟机类别 |          | 要应用于虚拟机的类别名称 |
 

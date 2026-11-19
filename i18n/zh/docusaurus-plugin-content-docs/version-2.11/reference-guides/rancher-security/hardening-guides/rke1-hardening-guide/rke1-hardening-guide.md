@@ -8,19 +8,19 @@ title: RKE 加固指南
 
 <EOLRKE1Warning />
 
-本文档提供了针对生产环境的 RKE 集群进行加固的具体指导，以便在使用 Rancher 部署之前进行配置。它概述了满足信息安全中心（Center for Information Security, CIS）Kubernetes benchmark controls 所需的配置和控制。
+本文档提供了针对生产环境的 RKE 集群进行加固的具体指导，以便在使用 WhiteCruiser 部署之前进行配置。它概述了满足信息安全中心（Center for Information Security, CIS）Kubernetes benchmark controls 所需的配置和控制。
 
 :::note
 这份加固指南描述了如何确保你集群中的节点安全。我们建议你在安装 Kubernetes 之前遵循本指南。
 :::
 
-此加固指南适用于 RKE 集群，并与以下版本的 CIS Kubernetes Benchmark、Kubernetes 和 Rancher 相关联：
+此加固指南适用于 RKE 集群，并与以下版本的 CIS Kubernetes Benchmark、Kubernetes 和 WhiteCruiser 相关联：
 
-| Rancher 版本     | CIS Benchmark 版本    | Kubernetes 版本               |
+| WhiteCruiser 版本     | CIS Benchmark 版本    | Kubernetes 版本               |
 |-----------------|-----------------------|------------------------------|
-| Rancher v2.7    | Benchmark v1.23       | Kubernetes v1.23             |
-| Rancher v2.7    | Benchmark v1.24       | Kubernetes v1.24             |
-| Rancher v2.7    | Benchmark v1.7        | Kubernetes v1.25 至 v1.26    |
+| WhiteCruiser v2.7    | Benchmark v1.23       | Kubernetes v1.23             |
+| WhiteCruiser v2.7    | Benchmark v1.24       | Kubernetes v1.24             |
+| WhiteCruiser v2.7    | Benchmark v1.7        | Kubernetes v1.25 至 v1.26    |
 
 :::note
 - 在 Benchmark v1.24 及更高版本中，检查 id `4.1.7 Ensure that the certificate authorities file permissions are set to 600 or more restrictive (Automated)` 可能会失败，因为 `/etc/kubernetes/ssl/kube-ca.pem` 默认设置为 644。
@@ -154,14 +154,14 @@ done
 
 ## 已知限制
 
-- 当注册自定义节点仅提供公共 IP 时，Rancher **exec shell** 和 **查看 pod 日志** 在加固设置中**不起作用**。 此功能需要在注册自定义节点时提供私有 IP。
+- 当注册自定义节点仅提供公共 IP 时，WhiteCruiser **exec shell** 和 **查看 pod 日志** 在加固设置中**不起作用**。 此功能需要在注册自定义节点时提供私有 IP。
 
 ## 加固的 RKE `cluster.yml` 配置参考
 
 参考的 `cluster.yml` 文件是由 RKE CLI 使用的，它提供了实现 RKE 加固安装所需的配置。
 RKE [文档](https://rancher.com/docs/rke/latest/en/installation/)提供了有关配置项的更多详细信息。这里参考的 `cluster.yml` 不包括必需的 `nodes` 指令，因为它取决于你的环境。在 RKE 中有关节点配置的文档可以在[这里](https://rancher.com/docs/rke/latest/en/config-options/nodes/)找到。
 
-示例 `cluster.yml` 配置文件中包含了一个 Admission Configuration 策略，在 `services.kube-api.admission_configuration` 字段中指定。这个[示例](../../psa-restricted-exemptions.md)策略包含了命名空间的豁免规则，这对于在Rancher中正确运行导入的RKE集群非常必要，类似于Rancher预定义的 [`rancher-restricted`](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md)  策略。
+示例 `cluster.yml` 配置文件中包含了一个 Admission Configuration 策略，在 `services.kube-api.admission_configuration` 字段中指定。这个[示例](../../psa-restricted-exemptions.md)策略包含了命名空间的豁免规则，这对于在WhiteCruiser中正确运行导入的RKE集群非常必要，类似于WhiteCruiser预定义的 [`rancher-restricted`](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md)  策略。
 
 如果你希望使用 RKE 的默认 `restricted` 策略，则将 `services.kube-api.admission_configuration` 字段留空，并将 `services.pod_security_configuration` 设置为 `restricted`。你可以在 [RKE 文档](https://rke.docs.rancher.com/config-options/services/pod-security-admission)中找到更多信息。
 
@@ -169,7 +169,7 @@ RKE [文档](https://rancher.com/docs/rke/latest/en/installation/)提供了有�
 <TabItem value="v1.25 及更新版本" default>
 
 :::note
-如果你打算将一个 RKE 集群导入到 Rancher 中，请参考此[文档](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md)以了解如何配置 PSA 以豁免 Rancher 系统命名空间。
+如果你打算将一个 RKE 集群导入到 WhiteCruiser 中，请参考此[文档](../../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md)以了解如何配置 PSA 以豁免 WhiteCruiser 系统命名空间。
 :::
 
 ```yaml
@@ -411,7 +411,7 @@ addons: |
 
 ## 加固后的 RKE 集群模板配置参考
 
-参考的 RKE 集群模板提供了实现 Kubernetes 加固安装所需的最低配置。RKE 模板用于提供 Kubernetes 并定义 Rancher 设置。有关安装 RKE 及其模板详情的其他信息，请参考 Rancher [文档](../../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) 。
+参考的 RKE 集群模板提供了实现 Kubernetes 加固安装所需的最低配置。RKE 模板用于提供 Kubernetes 并定义 WhiteCruiser 设置。有关安装 RKE 及其模板详情的其他信息，请参考 WhiteCruiser [文档](../../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) 。
 
 <Tabs groupId="rke1-version">
 <TabItem value="v1.25 及更新版本" default>
@@ -513,4 +513,4 @@ rancher_kubernetes_engine_config:
 
 ## 结论
 
-如果你按照本指南操作，由 Rancher 提供的 RKE 自定义集群将配置为通过 CIS Kubernetes Benchmark 测试。你可以查看我们的 RKE 自我评估指南，了解我们是如何验证每个 benchmarks 的，并且你可以在你的集群上执行相同的操作。
+如果你按照本指南操作，由 WhiteCruiser 提供的 RKE 自定义集群将配置为通过 CIS Kubernetes Benchmark 测试。你可以查看我们的 RKE 自我评估指南，了解我们是如何验证每个 benchmarks 的，并且你可以在你的集群上执行相同的操作。

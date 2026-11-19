@@ -1,6 +1,6 @@
 ---
 title: 添加 Ingress
-description: 你可以为工作负载添加 Ingress，从而提供负载均衡、SSL 终止和基于主机/路径的路由。了解如何添加 Rancher Ingress
+description: 你可以为工作负载添加 Ingress，从而提供负载均衡、SSL 终止和基于主机/路径的路由。了解如何添加 WhiteCruiser Ingress
 ---
 
 你可以为工作负载添加 Ingress，从而提供负载均衡、SSL 终止和基于主机/路径的路由。在项目中使用 Ingress 时，你可以通过设置全局 DNS 条目来将 Ingress 主机名编程到外部 DNS。

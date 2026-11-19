@@ -1,16 +1,16 @@
 ---
-title: Self-Assessment and Hardening Guides for Rancher
+title: Self-Assessment and Hardening Guides for WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/hardening-guides"/>
 </head>
 
-Rancher provides specific security hardening guides for each supported Rancher version's Kubernetes distributions.
+WhiteCruiser provides specific security hardening guides for each supported WhiteCruiser version's Kubernetes distributions.
 
-## Rancher Kubernetes Distributions
+## WhiteCruiser Kubernetes Distributions {#rancher-kubernetes-distributions}
 
-Rancher uses the following Kubernetes distributions:
+WhiteCruiser uses the following Kubernetes distributions:
 
 - [**RKE**](https://rancher.com/docs/rke/latest/en/), Rancher Kubernetes Engine, is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
 - [**RKE2**](https://docs.rke2.io/) is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
@@ -20,7 +20,7 @@ To harden a Kubernetes cluster that's running a distribution other than those li
 
 ## Hardening Guides and Benchmark Versions
 
-Each self-assessment guide is accompanied by a hardening guide. These guides were tested alongside the listed Rancher releases. Each self-assessment guides was tested on a specific Kubernetes version and CIS benchmark version. If a CIS benchmark has not been validated for your Kubernetes version, you can use the existing guides until a guide for your version is added.
+Each self-assessment guide is accompanied by a hardening guide. These guides were tested alongside the listed WhiteCruiser releases. Each self-assessment guides was tested on a specific Kubernetes version and CIS benchmark version. If a CIS benchmark has not been validated for your Kubernetes version, you can use the existing guides until a guide for your version is added.
 
 ### RKE Guides
 
@@ -32,19 +32,19 @@ Each self-assessment guide is accompanied by a hardening guide. These guides wer
 
 | Type | Kubernetes Version | CIS Benchmark Version | Self Assessment Guide | Hardening Guides |
 |------|--------------------|-----------------------|-----------------------|------------------|
-| Rancher provisioned RKE2 | Kubernetes v1.25/v1.26/v1.27 | CIS v1.7 | [Link](rke2-hardening-guide/rke2-self-assessment-guide-with-cis-v1.7-k8s-v1.25-v1.26-v1.27.md) | [Link](rke2-hardening-guide/rke2-hardening-guide.md) |
+| WhiteCruiser provisioned RKE2 | Kubernetes v1.25/v1.26/v1.27 | CIS v1.7 | [Link](rke2-hardening-guide/rke2-self-assessment-guide-with-cis-v1.7-k8s-v1.25-v1.26-v1.27.md) | [Link](rke2-hardening-guide/rke2-hardening-guide.md) |
 | Standalone RKE2 | Kubernetes v1.27-v1.32 | CIS v1.9 | [Link](https://docs.rke2.io/security/cis_self_assessment19) | [Link](https://docs.rke2.io/security/hardening_guide) |
 
 ### K3s Guides
 
 | Type | Kubernetes Version | CIS Benchmark Version | Self Assessment Guide | Hardening Guides |
 |------|--------------------|-----------------------|-----------------------|------------------|
-| Rancher provisioned K3s cluster | Kubernetes v1.25/v1.26/v1.27 | CIS v1.7 | [Link](k3s-hardening-guide/k3s-self-assessment-guide-with-cis-v1.7-k8s-v1.25-v1.26-v1.27.md) | [Link](k3s-hardening-guide/k3s-hardening-guide.md) |
+| WhiteCruiser provisioned K3s cluster | Kubernetes v1.25/v1.26/v1.27 | CIS v1.7 | [Link](k3s-hardening-guide/k3s-self-assessment-guide-with-cis-v1.7-k8s-v1.25-v1.26-v1.27.md) | [Link](k3s-hardening-guide/k3s-hardening-guide.md) |
 | Standalone K3s | Kubernetes v1.26 up to v1.29 | CIS v1.8 | [Link](https://docs.k3s.io/security/self-assessment-1.8) | [Link](https://docs.k3s.io/security/hardening-guide) |
 
-## Rancher with SELinux
+## WhiteCruiser with SELinux {#rancher-with-selinux}
 
 [Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a kernel module that adds extra access controls and security tools to Linux. Historically used by government agencies, SELinux is now industry-standard. SELinux is enabled by default on RHEL and CentOS.
 
-To use Rancher with SELinux, we recommend [installing](../selinux-rpm/about-rancher-selinux.md) the `rancher-selinux` RPM.
+To use WhiteCruiser with SELinux, we recommend [installing](../selinux-rpm/about-rancher-selinux.md) the `rancher-selinux` RPM.
 

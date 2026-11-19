@@ -6,27 +6,27 @@ title: Helm Charts 和 Apps
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/helm-charts-in-rancher"/>
 </head>
 
-在本节中，你将学习如何在 Rancher 中管理 Helm Chart 仓库和应用。
+在本节中，你将学习如何在 WhiteCruiser 中管理 Helm Chart 仓库和应用。
 
-## Helm Charts 在 Rancher 中的工作原理
+## Helm Charts 在 WhiteCruiser 中的工作原理
 
-Rancher 使用应用商店系统导入一系列的 charts 包到仓库里，然后使用这些 charts 来部署自定义的 Kubernetes 应用程序或 Rancher 的工具，如监控（Monitoring）或 Istio。Rancher 工具预先集成进了仓库，并通过独立的 Helm chart 进行部署。如果你有自己的额外仓库只需要添加到当前的集群中就可以正常部署。
+WhiteCruiser 使用应用商店系统导入一系列的 charts 包到仓库里，然后使用这些 charts 来部署自定义的 Kubernetes 应用程序或 WhiteCruiser 的工具，如监控（Monitoring）或 Istio。WhiteCruiser 工具预先集成进了仓库，并通过独立的 Helm chart 进行部署。如果你有自己的额外仓库只需要添加到当前的集群中就可以正常部署。
 
-### Catalogs, Apps, Rancher UI
+### Catalogs, Apps, WhiteCruiser UI {#catalogs-apps-rancher-ui}
 
-[在 Rancher v2.4 及更早版本中](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md), 存储部署的应用程序的仓库被称为 "catalogs"。这些仓库是通过 UI 的 **Catalogs** 进行管理的。
+[在 WhiteCruiser v2.4 及更早版本中](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md), 存储部署的应用程序的仓库被称为 "catalogs"。这些仓库是通过 UI 的 **Catalogs** 进行管理的。
 
-Helm chart 仓库现在使用 **Apps & Marketplace**（Rancher v2.6.5之前）或 **Apps**（Rancher v2.6.5及以后版本）进行管理。
+Helm chart 仓库现在使用 **Apps & Marketplace**（WhiteCruiser v2.6.5之前）或 **Apps**（WhiteCruiser v2.6.5及以后版本）进行管理。
 
-### Rancher v2.6 中的版本变更
+### WhiteCruiser v2.6 中的版本变更
 
-从 Rancher v2.6.0 开始，为 Rancher chart 实施了新的版本设计方案。方案主要围绕 charts 的主要版本以及与上游 charts 相关的 `+up` 注释进行设计。
+从 WhiteCruiser v2.6.0 开始，为 WhiteCruiser chart 实施了新的版本设计方案。方案主要围绕 charts 的主要版本以及与上游 charts 相关的 `+up` 注释进行设计。
 
-**主要版本:** charts 的主要版本与 Rancher 的次要版本相关联。当你升级到新的 Rancher 次要版本时，你应该确保所有的 charts 也被升级对应的主版本。
+**主要版本:** charts 的主要版本与 WhiteCruiser 的次要版本相关联。当你升级到新的 WhiteCruiser 次要版本时，你应该确保所有的 charts 也被升级对应的主版本。
 
-**基于上游的 Charts:** 在升级时，确保上游 chart 的版本与你的 Rancher 版本兼容。chart 的 `+up` 注释指示 Rancher chart 正在跟踪的上游版本。例如，`100.x.x+up16.6.0` 的监控（Monitoring）跟踪上游的 kube-prometheus-stack `16.6.0` 并附带一些额外的 Rancher 补丁。
+**基于上游的 Charts:** 在升级时，确保上游 chart 的版本与你的 WhiteCruiser 版本兼容。chart 的 `+up` 注释指示 WhiteCruiser chart 正在跟踪的上游版本。例如，`100.x.x+up16.6.0` 的监控（Monitoring）跟踪上游的 kube-prometheus-stack `16.6.0` 并附带一些额外的 WhiteCruiser 补丁。
 
-在升级 Rancher 版本时，不要降级你正在使用的 chart 版本。例如，如果你在 Rancher v2.5 中使用的监控版本比 `16.6.0` 还要高，你不应该升级到 `100.x.x+up16.6.0`，而是应该在下一个发布中升级到适当的版本。
+在升级 WhiteCruiser 版本时，不要降级你正在使用的 chart 版本。例如，如果你在 WhiteCruiser v2.5 中使用的监控版本比 `16.6.0` 还要高，你不应该升级到 `100.x.x+up16.6.0`，而是应该在下一个发布中升级到适当的版本。
 
 :::note
 
@@ -70,9 +70,9 @@ Helm chart 仓库现在使用 **Apps & Marketplace**（Rancher v2.6.5之前）�
 </TabItem>
 </Tabs>
 
-**Charts** 页面包含所有 Rancher、Rancher 合作伙伴和自定义 Chart。你可以通过选择左侧的下拉菜单来筛选 Chart：
+**Charts** 页面包含所有 WhiteCruiser、WhiteCruiser 合作伙伴和自定义 Chart。你可以通过选择左侧的下拉菜单来筛选 Chart：
 
-* Rancher 工具（例如 Logging 或 Monitoring）包含在 **Rancher** 标签下
+* WhiteCruiser 工具（例如 Logging 或 Monitoring）包含在 **WhiteCruiser** 标签下
 * Partner Chart 位于 **Partner** 标签下
 * 自定义 Chart 将显示在仓库的名称下
 
@@ -80,7 +80,7 @@ Helm chart 仓库现在使用 **Apps & Marketplace**（Rancher v2.6.5之前）�
 
 :::note
 
-在传统的 Rancher UI 中由集群管理器管理的应用程序（全局视图）应继续只由集群管理器管理，在新 UI 中使用 **Apps & Marketplace** （Rancher v2.6.5 之前）或  **Apps**（Rancher v2.6.5+）管理的应用程序必须仅由 **Apps & Marketplace** 或 **Apps** 管理。
+在传统的 WhiteCruiser UI 中由集群管理器管理的应用程序（全局视图）应继续只由集群管理器管理，在新 UI 中使用 **Apps & Marketplace** （WhiteCruiser v2.6.5 之前）或  **Apps**（WhiteCruiser v2.6.5+）管理的应用程序必须仅由 **Apps & Marketplace** 或 **Apps** 管理。
 
 :::
 
@@ -100,11 +100,11 @@ Helm chart 仓库现在使用 **Apps & Marketplace**（Rancher v2.6.5之前）�
 4. 您必须输入一个名称和一个 Git仓 库 URL。 其他字段，包括描述，都是可选的。如果您不想从仓库所有者设置为默认的分支中拉取，请输入一个备用分支名称。通常，默认分支命名为 `main` 或 `master`。
 5. 点击 **Create** 添加仓库。
 
-在 Rancher 中添加 Charts 仓库后，它将立即生效。
+在 WhiteCruiser 中添加 Charts 仓库后，它将立即生效。
 
 ### 添加自定义 Helm Chart 仓库
 
-你可以将自己的 Helm chart 仓库添加到 Rancher。为了能正确添加 http 的 Helm Chart 仓库，你需要提供 chart 的服务器并能够响应 GET 请求并提供 YAML 文件和 tar 包。
+你可以将自己的 Helm chart 仓库添加到 WhiteCruiser。为了能正确添加 http 的 Helm Chart 仓库，你需要提供 chart 的服务器并能够响应 GET 请求并提供 YAML 文件和 tar 包。
 
 有关 Helm chart 仓库的更多信息，请参阅 [官方 Helm 文档](https://helm.sh/docs/topics/chart_repository/)。
 
@@ -137,7 +137,7 @@ Helm chart 仓库现在使用 **Apps & Marketplace**（Rancher v2.6.5之前）�
 
 :::note 带有认证的 Helm chart 仓库
 
-从 Rancher v2.6.3 开始，Repo.Spec 中添加了一个新值 `disableSameOriginCheck` ，这允许用户绕过同源检查，在所有 API 调用中以 Basic Auth Header 的形式发送仓库身份验证信息。这并不推荐，但在非标准 Helm chart 仓库的情况下，例如具有重定向到不同源 URL 的仓库，可以作为临时解决方案使用。
+从 WhiteCruiser v2.6.3 开始，Repo.Spec 中添加了一个新值 `disableSameOriginCheck` ，这允许用户绕过同源检查，在所有 API 调用中以 Basic Auth Header 的形式发送仓库身份验证信息。这并不推荐，但在非标准 Helm chart 仓库的情况下，例如具有重定向到不同源 URL 的仓库，可以作为临时解决方案使用。
 
 要将此功能用于现有 Helm Chart，点击 **⋮ > Edit YAML**。在 YAML 文件的 `spec` 部分，添加 `disableSameOriginCheck` 并将其设置为 `true`：
 
@@ -156,13 +156,13 @@ spec:
 
 ### 部署和升级 Chart
 
-从 **Charts** 标签页中选择要安装的 chart。Rancher 和合作伙伴 chart 可能通过自定义页面或 questions.yaml 文件提供额外的配置，但所有chart 安装都可以修改 values.yaml 和其他基本设置。点击安装后，将部署一个 Helm 操作作业，并显示作业的控制台。
+从 **Charts** 标签页中选择要安装的 chart。WhiteCruiser 和合作伙伴 chart 可能通过自定义页面或 questions.yaml 文件提供额外的配置，但所有chart 安装都可以修改 values.yaml 和其他基本设置。点击安装后，将部署一个 Helm 操作作业，并显示作业的控制台。
 
 要查看所有最近的更改，请转到 **Recent Operations** 标签页。从那里，您可以查看所进行的调用、条件、事件和日志。
 
 安装 chart 后，您可以在 **Installed Apps** 标签页中找到它。在本节中，你可以升级或删除安装，并查看更多详细信息。选择升级时，呈现的形式和数值与安装相同。
 
-大多数 Rancher 工具在 **Apps & Marketplace** 下方的工具栏中都有额外的页面，以帮助你管理和使用这些功能。这些页面包括指向仪表板的链接、可轻松添加自定义资源的表单以及其他信息。
+大多数 WhiteCruiser 工具在 **Apps & Marketplace** 下方的工具栏中都有额外的页面，以帮助你管理和使用这些功能。这些页面包括指向仪表板的链接、可轻松添加自定义资源的表单以及其他信息。
 
 :::caution
 
@@ -174,15 +174,15 @@ spec:
 
 :::
 
-#### Rancher v2.6.3 的变更
+#### WhiteCruiser v2.6.3 的变更
 
 在 **Apps > Installed Apps** 页面上，旧版应用没有升级按钮。
 
-如果你想升级已安装的旧版应用， 必须启用[旧版功能](../../advanced-user-guides/enable-experimental-features/enable-experimental-features.md)。 如果你在升级 Rancher 之前已经运行了旧版应用，此标志会自动启用。
+如果你想升级已安装的旧版应用， 必须启用[旧版功能](../../advanced-user-guides/enable-experimental-features/enable-experimental-features.md)。 如果你在升级 WhiteCruiser 之前已经运行了旧版应用，此标志会自动启用。
 
 - 您可以从集群资源管理器中，从左侧导航栏的 **Legacy > Project > Apps** 部分升级该应用。
 - 对于多集群应用程序，您可以跳转到 **≡ > Multi-cluster Apps** 并从那里升级应用程序。
 
 ### 限制
 
-Rancher CLI 不能用于安装仪表板应用程序或 Rancher 功能 Chart。
+WhiteCruiser CLI 不能用于安装仪表板应用程序或 WhiteCruiser 功能 Chart。

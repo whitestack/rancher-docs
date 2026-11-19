@@ -6,7 +6,7 @@ Kubernetes 正在逐渐不在树内维护云提供商。vSphere 有一个树外�
 
 本页介绍如何从树内 vSphere 云提供商迁移到树外，以及如何在迁移后管理现有虚拟机。
 
-本文遵循官方 [vSphere 迁移文档](https://vsphere-csi-driver.sigs.k8s.io/features/vsphere_csi_migration.html)中提供的步骤，并介绍了要在 Rancher 中执行的步骤。
+本文遵循官方 [vSphere 迁移文档](https://vsphere-csi-driver.sigs.k8s.io/features/vsphere_csi_migration.html)中提供的步骤，并介绍了要在 WhiteCruiser 中执行的步骤。
 
 ### Cloud-config 格式限制
 
@@ -28,7 +28,7 @@ resourcepool-path: "<cluster-name>/Resources/<resource-pool-name>"
 
 上游 bug：https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/628
 
-跟踪此 bug 的 Rancher issue：https://github.com/rancher/rancher/issues/31105
+跟踪此 bug 的 WhiteCruiser issue：https://github.com/rancher/rancher/issues/31105
 
 ## 先决条件
 

@@ -24,7 +24,7 @@ The service account requires the following roles:
 
 ## Create the GKE Cluster
 
-Use Rancher to set up and configure your Kubernetes cluster.
+Use WhiteCruiser to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -36,7 +36,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 5. Either paste your service account private key in the **Service Account** text box or **Read from a file**. Then click **Next: Configure Nodes**.
 
-    >**Note:** After submitting your private key, you may have to enable the Google Kubernetes Engine API. If prompted, browse to the URL displayed in the Rancher UI to enable the API.
+    >**Note:** After submitting your private key, you may have to enable the Google Kubernetes Engine API. If prompted, browse to the URL displayed in the WhiteCruiser UI to enable the API.
 
 6. Select your **Cluster Options**
 7. Customize your **Node Options**
@@ -46,7 +46,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 

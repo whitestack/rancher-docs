@@ -8,9 +8,7 @@ title: Istio Setup Guides
 
 :::warning
 
-[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in Rancher v2.12.0; turn to the [SUSE Rancher Application Collection](https://apps.rancher.io) build of Istio for enhanced security (included in SUSE Rancher Prime subscriptions).
-
-Detailed information can be found in this announcement.
+[Rancher-Istio](https://github.com/rancher/charts/tree/release-v2.11/charts/rancher-istio) will be deprecated in WhiteCruiser v2.12.0.
 
 :::
 
@@ -20,7 +18,7 @@ If you use Istio for traffic management, you will need to allow external traffic
 
 ## Prerequisites
 
-This guide assumes you have already [installed Rancher,](../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) and you have already [provisioned a separate Kubernetes cluster](../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) on which you will install Istio.
+This guide assumes you have already [installed WhiteCruiser,](../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) and you have already [provisioned a separate Kubernetes cluster](../../new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) on which you will install Istio.
 
 The nodes in your cluster must meet the [CPU and memory requirements.](../../../integrations-in-rancher/istio/cpu-and-memory-allocations.md)
 

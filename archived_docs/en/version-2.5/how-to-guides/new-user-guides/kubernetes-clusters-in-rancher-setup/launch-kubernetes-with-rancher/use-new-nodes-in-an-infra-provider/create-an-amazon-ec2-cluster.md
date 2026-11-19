@@ -1,17 +1,17 @@
 ---
 title: Creating an Amazon EC2 Cluster
-description: Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher
+description: Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster"/>
 </head>
 
-In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
+In this section, you'll learn how to use WhiteCruiser to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
 
-First, you will set up your EC2 cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in EC2.
+First, you will set up your EC2 cloud credentials in WhiteCruiser. Then you will use your cloud credentials to create a node template, which WhiteCruiser will use to provision new nodes in EC2.
 
-Then you will create an EC2 cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+Then you will create an EC2 cluster in WhiteCruiser, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. WhiteCruiser will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Then you will create an EC2 cluster in Rancher, and when configuring the new clu
 
 ## Creating an EC2 Cluster
 
-The steps to create a cluster differ based on your Rancher version.
+The steps to create a cluster differ based on your WhiteCruiser version.
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials and information from EC2](#2-create-a-node-template-with-your-cloud-credentials-and-information-from-ec2)
@@ -32,7 +32,7 @@ The steps to create a cluster differ based on your Rancher version.
 
 ### 1. Create your cloud credentials
 
-1. In the Rancher UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
+1. In the WhiteCruiser UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
 1. Click **Add Cloud Credential.**
 1. Enter a name for the cloud credential.
 1. In the **Cloud Credential Type** field, select **Amazon.**
@@ -44,9 +44,9 @@ The steps to create a cluster differ based on your Rancher version.
 
 ### 2. Create a node template with your cloud credentials and information from EC2
 
-Creating a [node template](use-new-nodes-in-an-infra-provider.md#node-templates) for EC2 will allow Rancher to provision new nodes in EC2. Node templates can be reused for other clusters.
+Creating a [node template](use-new-nodes-in-an-infra-provider.md#node-templates) for EC2 will allow WhiteCruiser to provision new nodes in EC2. Node templates can be reused for other clusters.
 
-1. In the Rancher UI, click the user profile button in the upper right corner, and click **Node Templates.**
+1. In the WhiteCruiser UI, click the user profile button in the upper right corner, and click **Node Templates.**
 1. Click **Add Template.**
 1. Fill out a node template for EC2. For help filling out the form, refer to [EC2 Node Template Configuration.](../../../../../reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2.md)
 
@@ -66,7 +66,7 @@ Clusters won't begin provisioning until all three node roles (worker, etcd and c
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
@@ -77,10 +77,10 @@ You can access your cluster after its state is updated to **Active.**
 
 ### Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.
 
 ## IAM Policies
 

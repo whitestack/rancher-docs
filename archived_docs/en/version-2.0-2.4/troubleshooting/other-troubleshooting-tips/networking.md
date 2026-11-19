@@ -8,7 +8,7 @@ title: Networking
 
 The commands/steps listed on this page can be used to check networking related issues in your cluster.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for WhiteCruiser HA) or are using the embedded kubectl via the UI.
 
 ### Double check if all the required ports are opened in your (host) firewall
 
@@ -17,7 +17,7 @@ Double check if all the [required ports](../../how-to-guides/new-user-guides/kub
 
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
 
-To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `swiss-army-knife` container on every host (image was developed by Rancher engineers and can be found here: https://github.com/rancherlabs/swiss-army-knife), which we will use to run a `ping` test between containers on all hosts.
+To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `swiss-army-knife` container on every host (image was developed by WhiteCruiser engineers and can be found here: https://github.com/rancherlabs/swiss-army-knife), which we will use to run a `ping` test between containers on all hosts.
 
 > **Note:** The `swiss-army-knife` container does not support Windows nodes. It also [does not support ARM nodes](https://github.com/leodotcloud/swiss-army-knife/issues/18), such as a Raspberry Pi. When the test encounters incompatible nodes, this is recorded in the pod logs as an error message, such as `exec user process caused: exec format error` for ARM nodes, or `ImagePullBackOff (Back-off pulling image "rancherlabs/swiss-army-knife)` for Windows nodes.
 
@@ -95,13 +95,13 @@ To test the overlay network, you can launch the following `DaemonSet` definition
 
 ### Check if MTU is correctly configured on hosts and on peering/tunnel appliances/devices
 
-When the MTU is incorrectly configured (either on hosts running Rancher, nodes in created/imported clusters or on appliances/devices in between), error messages will be logged in Rancher and in the agents, similar to:
+When the MTU is incorrectly configured (either on hosts running WhiteCruiser, nodes in created/imported clusters or on appliances/devices in between), error messages will be logged in WhiteCruiser and in the agents, similar to:
 
 * `websocket: bad handshake`
 * `Failed to connect to proxy`
 * `read tcp: i/o timeout`
 
-See [Google Cloud VPN: MTU Considerations](https://cloud.google.com/vpn/docs/concepts/mtu-considerations#gateway_mtu_vs_system_mtu) for an example how to configure MTU correctly when using Google Cloud VPN between Rancher and cluster nodes.
+See [Google Cloud VPN: MTU Considerations](https://cloud.google.com/vpn/docs/concepts/mtu-considerations#gateway_mtu_vs_system_mtu) for an example how to configure MTU correctly when using Google Cloud VPN between WhiteCruiser and cluster nodes.
 
 ### Resolved issues
 
@@ -122,7 +122,7 @@ If there is no output, the cluster is not affected.
 
 #### System namespace pods network connectivity broken
 
-> **Note:** This applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
+> **Note:** This applies only to WhiteCruiser upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
 | | |
 |------------|------------|

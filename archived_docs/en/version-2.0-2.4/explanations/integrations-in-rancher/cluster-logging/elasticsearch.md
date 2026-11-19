@@ -2,7 +2,7 @@
 title: Elasticsearch
 ---
 
-If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs.
+If your organization uses [Elasticsearch](https://www.elastic.co/), either on premise or in the cloud, you can configure WhiteCruiser to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs.
 
 >**Prerequisites:** Configure an [Elasticsearch deployment](https://www.elastic.co/guide/en/cloud/saas-release/ec-create-deployment.html).
 

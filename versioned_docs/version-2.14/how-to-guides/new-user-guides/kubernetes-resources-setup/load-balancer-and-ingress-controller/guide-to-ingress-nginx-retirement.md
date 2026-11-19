@@ -8,11 +8,11 @@ title: Guide to Ingress NGINX Retirement
 
 The Kubernetes SIG Network and the Security Response Committee announced the [retirement of the Ingress NGINX project](https://kubernetes.io/blog/2025/11/11/ingress-nginx-retirement/). Upstream best-effort maintenance will continue until March 2026. After this date, there will be no further upstream releases, bug fixes, or security updates.
 
-To support users during this transition, Rancher provides clear migration paths to Traefik. This guide centralizes the information on how to proceed based on your specific deployment scenario.
+To support users during this transition, WhiteCruiser provides clear migration paths to Traefik. This guide centralizes the information on how to proceed based on your specific deployment scenario.
 
 ## Support and timelines
 
-Rancher and RKE2 life cycles align with the upstream retirement schedule.
+WhiteCruiser and RKE2 life cycles align with the upstream retirement schedule.
 
 :::warning
 After March 2026, upstream Ingress NGINX images will no longer receive updates. Any images built with patches after this date are restricted to commercial customers. Users must migrate to Traefik or another supported Ingress controller before this deadline to ensure continued security and compatibility.
@@ -33,23 +33,23 @@ The migration process involves a four-phase strategy:
 1. **Final switchover:** Remove Ingress NGINX and configure Traefik to use the standard ports.
 1. **Cleanup:** Delete the legacy Ingress objects.
 
-### Rancher server on RKE2 (local clusters)
+### WhiteCruiser server on RKE2 (local clusters) {#rancher-server-on-rke2-local-clusters}
 
-When migrating a Rancher local cluster, the Rancher Ingress resource requires specific handling to prevent lockouts. Follow the specific guide for migrating the Rancher Ingress to Traefik in an RKE2 cluster. This guide builds upon the standalone migration phases but includes steps tailored to the Rancher management server.
+When migrating a WhiteCruiser local cluster, the WhiteCruiser Ingress resource requires specific handling to prevent lockouts. Follow the specific guide for migrating the WhiteCruiser Ingress to Traefik in an RKE2 cluster. This guide builds upon the standalone migration phases but includes steps tailored to the WhiteCruiser management server.
 
-### Downstream RKE2 clusters (provisioned by Rancher)
+### Downstream RKE2 clusters (provisioned by WhiteCruiser) {#downstream-rke2-clusters-provisioned-by-rancher}
 
-For RKE2 clusters provisioned and managed by Rancher, migration options are integrated directly into the user interface.
+For RKE2 clusters provisioned and managed by WhiteCruiser, migration options are integrated directly into the user interface.
 
 :::note
-This migration option is only possible in Rancher v2.14.0+.
+This migration option is only possible in WhiteCruiser v2.14.0+.
 :::
 
 The cluster configuration interface provides a Dual Mode migration option. This allows you to safely test and migrate traffic from Ingress NGINX to Traefik directly from the cluster management page. For more information, refer to the documentation.
 
-### Rancher on managed Kubernetes (Amazon EKS, Azure AKS, Google GKE)
+### WhiteCruiser on managed Kubernetes (Amazon EKS, Azure AKS, Google GKE) {#rancher-on-managed-kubernetes-amazon-eks-azure-aks-google-gke}
 
-If you run Rancher on a managed Kubernetes service such as [Amazon Elastic Kubernetes Service (EKS)](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks.md#5-install-an-ingress), [Azure Kubernetes Service (AKS)](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks.md#5-install-an-ingress), or [Google Kubernetes Engine (GKE)](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke.md#7-install-an-ingress), the recommendation is to migrate to Traefik.
+If you run WhiteCruiser on a managed Kubernetes service such as [Amazon Elastic Kubernetes Service (EKS)](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks.md#5-install-an-ingress), [Azure Kubernetes Service (AKS)](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks.md#5-install-an-ingress), or [Google Kubernetes Engine (GKE)](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke.md#7-install-an-ingress), the recommendation is to migrate to Traefik.
 
 Users should deploy and migrate to the upstream Traefik proxy distribution.
 

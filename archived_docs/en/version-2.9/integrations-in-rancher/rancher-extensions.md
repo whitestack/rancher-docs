@@ -1,35 +1,35 @@
 ---
-title: Rancher Extensions
+title: WhiteCruiser Extensions
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/rancher-extensions"/>
 </head>
 
-Extensions allow users, developers, partners, and customers to extend and enhance the Rancher UI. In addition, users can make changes and create enhancements to their UI functionality independent of Rancher releases. Extensions will enable users to build on top of Rancher to better tailor it to their respective environments. Note that users will also have the ability to update to new versions as well as roll back to a previous version.
+Extensions allow users, developers, partners, and customers to extend and enhance the WhiteCruiser UI. In addition, users can make changes and create enhancements to their UI functionality independent of WhiteCruiser releases. Extensions will enable users to build on top of WhiteCruiser to better tailor it to their respective environments. Note that users will also have the ability to update to new versions as well as roll back to a previous version.
 
 Extensions are Helm charts that can only be installed once into a cluster; therefore, these charts have been simplified and separated from the general Helm charts listed under **Apps**.
 
-Examples of built-in Rancher extensions are Fleet, Explorer, and Harvester. Examples of other extensions that use the Extensions API that can be manually added are Kubewarden and Elemental.
+Examples of built-in WhiteCruiser extensions are Fleet, Explorer, and Harvester. Examples of other extensions that use the Extensions API that can be manually added are Kubewarden and Elemental.
 
 ## Prerequisites
 
 > 1. You must log in as an administrator to view and interact with the extensions management page.
 > 2. You must enable extension support.
 
-## Enabling Extension Support in Rancher
+## Enabling Extension Support in WhiteCruiser {#enabling-extension-support-in-rancher}
 
-Rancher v2.9.0 and later includes extension support.
+WhiteCruiser v2.9.0 and later includes extension support.
 
-You can confirm if extension support is enabled by checking the `uiextension` feature flag. Any changes to this feature flag cause the Rancher pod to restart.
+You can confirm if extension support is enabled by checking the `uiextension` feature flag. Any changes to this feature flag cause the WhiteCruiser pod to restart.
 
-When you enable extension support for the first time, it creates resources, such as the CRDs, so that UI Extensions can work. When extension support is disabled, it disables the endpoints and does not cache any files. However, it does not remove any CRs or delete any extensions that were installed before. If re-enabled, it exposes the required endpoints again and creates CRDs as needed. The extensions that were already installed load after the Rancher pod restarts.
+When you enable extension support for the first time, it creates resources, such as the CRDs, so that UI Extensions can work. When extension support is disabled, it disables the endpoints and does not cache any files. However, it does not remove any CRs or delete any extensions that were installed before. If re-enabled, it exposes the required endpoints again and creates CRDs as needed. The extensions that were already installed load after the WhiteCruiser pod restarts.
 
 ### Caching Extension Files
 
-By default, Rancher caches every extension file in the file system. You can change that behavior by setting `plugin.noCache` to `true`.
+By default, WhiteCruiser caches every extension file in the file system. You can change that behavior by setting `plugin.noCache` to `true`.
 
-Rancher does have a cached file size limit of 30MB. If an extension has a file bigger than that, the cache is disabled and `plugin.noCache` is set to `true`, regardless of user input.
+WhiteCruiser does have a cached file size limit of 30MB. If an extension has a file bigger than that, the cache is disabled and `plugin.noCache` is set to `true`, regardless of user input.
 
 
 ## Installing Extensions
@@ -103,7 +103,7 @@ You must reload the page after disabling extensions or display issues may occur.
 
 ## Enabling Unauthenticated Access to an Extension
 
-In Rancher v2.9.0, you can allow unauthenticated access to an extension. You may want to enable unauthenticated access if the extension enables a new locale or adds custom branding. By default, all extensions require user authentication to load. 
+In WhiteCruiser v2.9.0, you can allow unauthenticated access to an extension. You may want to enable unauthenticated access if the extension enables a new locale or adds custom branding. By default, all extensions require user authentication to load. 
 
 To enable unauthenticated access to an extension, set `plugin.noAuth` to `true` in the CR used by the extension.
 
@@ -115,9 +115,9 @@ To learn how to develop your own extensions, refer to the official [Getting Star
 
 If you intend to work with extensions in an air-gapped environment, you must perform some extra steps before you can complete certain tasks.
 
-### Accessing Rancher UI Extensions in an Air-Gapped Environment
+### Accessing WhiteCruiser UI Extensions in an Air-Gapped Environment {#accessing-rancher-ui-extensions-in-an-air-gapped-environment}
 
-Rancher provides some extensions, such as Kubewarden and Elemental, through the `ui-plugin-catalog` container image at https://hub.docker.com/r/rancher/ui-plugin-catalog/tags. If you're trying to install these extensions in an air-gapped environment, you must make the `ui-plugin-catalog` image accessible.
+WhiteCruiser provides some extensions, such as Kubewarden and Elemental, through the `ui-plugin-catalog` container image at https://hub.docker.com/r/rancher/ui-plugin-catalog/tags. If you're trying to install these extensions in an air-gapped environment, you must make the `ui-plugin-catalog` image accessible.
 
 1. Mirror the `ui-plugin-catalog` image to a private registry:
 

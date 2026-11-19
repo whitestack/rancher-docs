@@ -6,13 +6,13 @@ title: '3. Install Kubernetes (Skip for Docker Installs)'
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes"/>
 </head>
 
-> Skip this section if you are installing Rancher on a single node with Docker.
+> Skip this section if you are installing WhiteCruiser on a single node with Docker.
 
-This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.](../../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
+This section describes how to install a Kubernetes cluster according to our [best practices for the WhiteCruiser server environment.](../../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations) This cluster should be dedicated to run only the WhiteCruiser server.
 
-For Rancher before v2.4, Rancher should be installed on an [RKE](https://rancher.com/docs/rke/latest/en/) (Rancher Kubernetes Engine) Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
+For WhiteCruiser before v2.4, WhiteCruiser should be installed on an [RKE](https://rancher.com/docs/rke/latest/en/) (Rancher Kubernetes Engine) Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
 
-In Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. The Rancher management server can only be run on a Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
+In WhiteCruiser v2.4, the WhiteCruiser management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by WhiteCruiser, but is newer than RKE. We recommend installing WhiteCruiser on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. The WhiteCruiser management server can only be run on a Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of WhiteCruiser on hosted Kubernetes providers, such as EKS, is not supported. Note: After WhiteCruiser is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
 
 The steps to set up an air-gapped Kubernetes cluster on RKE or K3s are shown below.
 
@@ -68,7 +68,7 @@ For more information on private registries configuration file for K3s, refer to 
 
 ## 3. Install K3s
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+WhiteCruiser needs to be installed on a supported Kubernetes version.
 
 To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
@@ -97,13 +97,13 @@ The node-token is on the server at `/var/lib/rancher/k3s/server/node-token`
 
 ## 4. Save and Start Using the kubeconfig File
 
-When you installed K3s on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
+When you installed K3s on each WhiteCruiser server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
 To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/k3s/k3s.yaml` and save it to the directory `~/.kube/config` on your local machine.
-3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
+3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the WhiteCruiser server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
 
 ```
 apiVersion: v1
@@ -156,7 +156,7 @@ Install RKE by following the instructions in the [RKE documentation.](https://ra
 
 From a system that can access ports 22/TCP and 6443/TCP on the Linux host node(s) that you set up in a previous step, use the sample below to create a new file named `rancher-cluster.yml`.
 
-This file is an RKE configuration file, which is a configuration for the cluster you're deploying Rancher to.
+This file is an RKE configuration file, which is a configuration for the cluster you're deploying WhiteCruiser to.
 
 Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the [3 nodes](../../advanced-options/advanced-use-cases/air-gap-helm2/prepare-nodes.md) you created.
 
@@ -227,4 +227,4 @@ Save a copy of the following files in a secure location:
 
 See the [Troubleshooting](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
-## [Next: Install Rancher](install-rancher-ha.md)
+## [Next: Install WhiteCruiser](install-rancher-ha.md) {#next-install-rancher}

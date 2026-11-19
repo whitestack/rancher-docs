@@ -6,11 +6,11 @@ title: Cluster Templates
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/manage-cluster-templates"/>
 </head>
 
-Cluster templates encompass both Kubernetes configuration and node pool configuration, allowing a single template to contain all the information Rancher needs to provision new nodes in a cloud provider and install Kubernetes on those nodes.
+Cluster templates encompass both Kubernetes configuration and node pool configuration, allowing a single template to contain all the information WhiteCruiser needs to provision new nodes in a cloud provider and install Kubernetes on those nodes.
 
 ## Overview
 
-Cluster templates are provided as Helm charts. To use them, you will need to clone and fork the templates, change them according to your use case, and then install the Helm charts on the Rancher management cluster. When the Helm chart is installed on the Rancher management cluster, a new cluster resource is created, which Rancher uses to provision the new cluster.
+Cluster templates are provided as Helm charts. To use them, you will need to clone and fork the templates, change them according to your use case, and then install the Helm charts on the WhiteCruiser management cluster. When the Helm chart is installed on the WhiteCruiser management cluster, a new cluster resource is created, which WhiteCruiser uses to provision the new cluster.
 
 After the cluster is provisioned using the template, no changes to the template will affect the cluster. After the cluster is created from the cluster template, its configuration and infrastructure can change, because no restrictions are enforced by cluster templates.
 
@@ -20,19 +20,19 @@ Cluster templates can use any Kubernetes distribution. For now, we provide an ex
 
 ### Versioning
 
-Rancher doesn't manage version control for cluster templates. Version control is handled in the repository containing the template's Helm chart.
+WhiteCruiser doesn't manage version control for cluster templates. Version control is handled in the repository containing the template's Helm chart.
 
 ## RKE2 Cluster Template
 
-The example repository for an RKE2 cluster template is [here](https://github.com/rancher/cluster-template-examples). As of Rancher v2.6.0, we provide an RKE2 cluster template and may add more in the future.
+The example repository for an RKE2 cluster template is [here](https://github.com/rancher/cluster-template-examples). As of WhiteCruiser v2.6.0, we provide an RKE2 cluster template and may add more in the future.
 
-## Adding a Cluster Template to Rancher
+## Adding a Cluster Template to WhiteCruiser {#adding-a-cluster-template-to-rancher}
 
-In this section, you'll learn how to add the cluster template to the `local` cluster's chart repo list. The result is that Rancher will include the cluster template as an option when users install new Kubernetes clusters.
+In this section, you'll learn how to add the cluster template to the `local` cluster's chart repo list. The result is that WhiteCruiser will include the cluster template as an option when users install new Kubernetes clusters.
 
 :::note Prerequisites:
 
-- You will need permission to install Helm charts on the `local` Rancher cluster.
+- You will need permission to install Helm charts on the `local` WhiteCruiser cluster.
 - To make the chart viewable in the cluster creation form, both the chart and the index.yaml file must have the annotation, `catalog.cattle.io/type: cluster-template`.
 
 :::
@@ -40,38 +40,38 @@ In this section, you'll learn how to add the cluster template to the `local` clu
 <Tabs>
 <TabItem value="Rancher v2.6.5+">
 
-1. Go to a cluster template example repository. Rancher's examples are in [this GitHub repository.](https://github.com/rancher/cluster-template-examples) As of Rancher v2.6.0, we provide an RKE2 cluster template and add to more in the future.
+1. Go to a cluster template example repository. WhiteCruiser's examples are in [this GitHub repository.](https://github.com/rancher/cluster-template-examples) As of WhiteCruiser v2.6.0, we provide an RKE2 cluster template and add to more in the future.
 1. Fork the repository.
 1. Optional: Edit the cluster options by editing the `values.yaml` file. For help editing the file, see the cluster template's Helm chart README.
-1. Add the chart repository to Rancher. Click **☰ > Cluster Management**.
+1. Add the chart repository to WhiteCruiser. Click **☰ > Cluster Management**.
 1. Go to the `local` cluster and click **Explore.**
 1. In the left navigation bar, click **Apps > Chart Repositories.**
 1. Click **Create.**
 1. Enter a name for the cluster template repository.
 1. Click **Git Repository containing Helm chart definitions.**
 1. In the **Git Repo URL** field, enter the URL for the repository. For example, `https://github.com/rancher/cluster-template-examples.git`.
-1. In the **Git Branch** field, enter the branch to use as the source for the template. Rancher's example repository uses `main`.
+1. In the **Git Branch** field, enter the branch to use as the source for the template. WhiteCruiser's example repository uses `main`.
 1. Click **Create.**
 
-**Result:** The cluster template available from the **Apps** in Rancher's `local` cluster. It can now be used to deploy clusters.
+**Result:** The cluster template available from the **Apps** in WhiteCruiser's `local` cluster. It can now be used to deploy clusters.
 
 </TabItem>
 <TabItem value="Rancher before v2.6.5">
 
-1. Go to a cluster template example repository. Rancher's examples are in [this GitHub repository.](https://github.com/rancher/cluster-template-examples) As of Rancher v2.6.0, we provide an RKE2 cluster template and add to more in the future.
+1. Go to a cluster template example repository. WhiteCruiser's examples are in [this GitHub repository.](https://github.com/rancher/cluster-template-examples) As of WhiteCruiser v2.6.0, we provide an RKE2 cluster template and add to more in the future.
 1. Fork the repository.
 1. Optional: Edit the cluster options by editing the `values.yaml` file. For help editing the file, see the cluster template's Helm chart README.
-1. Add the chart repository to Rancher. Click **☰ > Cluster Management**.
+1. Add the chart repository to WhiteCruiser. Click **☰ > Cluster Management**.
 1. Go to the `local` cluster and click **Explore.**
 1. In the left navigation bar, click **Apps & Marketplace > Chart Repositories.**
 1. Click **Create.**
 1. Enter a name for the cluster template repository.
 1. Click **Git Repository containing Helm chart definitions.**
 1. In the **Git Repo URL** field, enter the URL for the repository. For example, `https://github.com/rancher/cluster-template-examples.git`.
-1. In the **Git Branch** field, enter the branch to use as the source for the template. Rancher's example repository uses `main`.
+1. In the **Git Branch** field, enter the branch to use as the source for the template. WhiteCruiser's example repository uses `main`.
 1. Click **Create.**
 
-**Result:** The cluster template available from the **Apps & Marketplace** in Rancher's `local` cluster. It can now be used to deploy clusters.
+**Result:** The cluster template available from the **Apps & Marketplace** in WhiteCruiser's `local` cluster. It can now be used to deploy clusters.
 
 </TabItem>
 </Tabs>
@@ -97,11 +97,11 @@ If you are a restricted admin and don’t have access to the `local` cluster, yo
 1. Click the name of your cluster template.
 1. Finish installing the Helm chart.
 
-**Result:** After Rancher provisions the new cluster, it is managed in the same way as any other Rancher-launched Kubernetes cluster. You can configure any options through the UI if the cluster template has options for the user to choose from.
+**Result:** After WhiteCruiser provisions the new cluster, it is managed in the same way as any other WhiteCruiser-launched Kubernetes cluster. You can configure any options through the UI if the cluster template has options for the user to choose from.
 
 ## Updating a Cluster Created from a Cluster Template
 
-You can update any clusters using a template from the **Apps & Marketplace > Installed Apps** (Rancher before v2.6.5) or **Apps > Installed Apps** (Rancher v2.6.5++) page, given there is a new version of a template being used by those clusters.
+You can update any clusters using a template from the **Apps & Marketplace > Installed Apps** (WhiteCruiser before v2.6.5) or **Apps > Installed Apps** (WhiteCruiser v2.6.5++) page, given there is a new version of a template being used by those clusters.
 
 ## Deploying Clusters from a Template with Fleet
 
@@ -120,7 +120,7 @@ You can update any clusters using a template from the **Apps & Marketplace > Ins
 1. On the **Clusters** page, click **Create.**
 1. Click **Create Cluster from Template.**
 
-**Result:** After Rancher provisions the new cluster, it is managed by Fleet.
+**Result:** After WhiteCruiser provisions the new cluster, it is managed by Fleet.
 
 ## Uninstalling Cluster Templates
 
@@ -145,7 +145,7 @@ You can update any clusters using a template from the **Apps & Marketplace > Ins
 
 **Result:** The cluster template is uninstalled. This action does not affect clusters created with the cluster template.
 
-An admin with access to the `local` cluster can also remove a cluster deployed via cluster templates through the **Apps & Marketplace > Installed Apps** (Rancher before v2.6.5) or **Apps > Installed Apps** (Rancher v2.6.5+) page.
+An admin with access to the `local` cluster can also remove a cluster deployed via cluster templates through the **Apps & Marketplace > Installed Apps** (WhiteCruiser before v2.6.5) or **Apps > Installed Apps** (WhiteCruiser v2.6.5+) page.
 
 ## Configuration Options
 
@@ -154,8 +154,8 @@ Cluster templates are flexible enough that they can be used to configure all of 
 - Node configuration
 - Node pools
 - Pre-specified cloud credentials
-- Enable/configure an authorized cluster endpoint to get kubectl access to the cluster without using Rancher as a proxy
-- Install Rancher V2 monitoring
+- Enable/configure an authorized cluster endpoint to get kubectl access to the cluster without using WhiteCruiser as a proxy
+- Install WhiteCruiser V2 monitoring
 - Kubernetes version
 - Assign cluster members
 - Infrastructure configuration such as AWS VPC/subnets or vSphere data center

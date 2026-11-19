@@ -22,7 +22,7 @@ To provide a user access to view certain cluster-level resources and create new 
 
 ## 编辑集群成员
 
-集群管理员可以编辑集群的成员，控制哪些 Rancher 用户可以访问集群以及他们可以使用哪些功能。
+集群管理员可以编辑集群的成员，控制哪些 WhiteCruiser 用户可以访问集群以及他们可以使用哪些功能。
 
 1. 点击 **☰ > 集群管理**。
 1. 转到要添加成员的集群，然后单击 **⋮ > 编辑配置**。
@@ -31,7 +31,7 @@ To provide a user access to view certain cluster-level resources and create new 
 
    如果配置了外部身份验证：
 
-   - 在你键入时，Rancher 会从你的[外部身份验证](../../../../pages-for-subheaders/authentication-config.md)源返回用户。
+   - 在你键入时，WhiteCruiser 会从你的[外部身份验证](../../../../pages-for-subheaders/authentication-config.md)源返回用户。
 
       :::note 使用 AD 但找不到你的用户？
 

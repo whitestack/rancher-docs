@@ -2,15 +2,15 @@
 title: 在 vSphere 中配置 Kubernetes 集群
 ---
 
-在本节中，你将学习如何使用 Rancher 在 vSphere 中安装 [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes 集群。
+在本节中，你将学习如何使用 WhiteCruiser 在 vSphere 中安装 [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes 集群。
 
-首先，在 Rancher 中设置你的 vSphere 云凭证。然后，使用云凭证创建一个节点模板，Rancher 将使用该模板在 vSphere 中配置节点。
+首先，在 WhiteCruiser 中设置你的 vSphere 云凭证。然后，使用云凭证创建一个节点模板，WhiteCruiser 将使用该模板在 vSphere 中配置节点。
 
-然后，在 Rancher 中创建一个 vSphere 集群，并在配置新集群时为集群定义节点池。每个节点池都有一个 etcd、controlplane 或 worker 的 Kubernetes 角色。Rancher 会在新节点上安装 RKE Kubernetes，并为每个节点设置节点池定义的 Kubernetes 角色。
+然后，在 WhiteCruiser 中创建一个 vSphere 集群，并在配置新集群时为集群定义节点池。每个节点池都有一个 etcd、controlplane 或 worker 的 Kubernetes 角色。WhiteCruiser 会在新节点上安装 RKE Kubernetes，并为每个节点设置节点池定义的 Kubernetes 角色。
 
 有关配置 vSphere 节点模板的详细信息，请参阅 [vSphere 节点模板配置参考](../../../../../reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere.md)。
 
-有关在 Rancher 中配置 RKE Kubernetes 集群的详细信息，请参阅[集群配置参考](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-集群配置文件参考)。
+有关在 WhiteCruiser 中配置 RKE Kubernetes 集群的详细信息，请参阅[集群配置参考](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-集群配置文件参考)。
 
 
 - [vSphere 中的准备工作](#vsphere-中的准备工作)
@@ -18,7 +18,7 @@ title: 在 vSphere 中配置 Kubernetes 集群
 
 ## vSphere 中的准备工作
 
-本节介绍设置 vSphere 的要求，以便 Rancher 可以配置虚拟机和集群。
+本节介绍设置 vSphere 的要求，以便 WhiteCruiser 可以配置虚拟机和集群。
 
 节点模板已使用 vSphere Web Services API 6.5 版本进行记录和测试。
 
@@ -26,11 +26,11 @@ title: 在 vSphere 中配置 Kubernetes 集群
 
 在继续创建集群之前，确保你的 vSphere 用户拥有足够的权限。设置节点模板时，模板将需要使用这些 vSphere 凭证。
 
-有关如何在 vSphere 中创建具有所需权限的用户的说明，请参阅此[操作指南](create-credentials.md)。这些步骤会产生需要向 Rancher 提供的用户名和密码，从而允许 Rancher 在 vSphere 中配置资源。
+有关如何在 vSphere 中创建具有所需权限的用户的说明，请参阅此[操作指南](create-credentials.md)。这些步骤会产生需要向 WhiteCruiser 提供的用户名和密码，从而允许 WhiteCruiser 在 vSphere 中配置资源。
 
 ### 网络权限
 
-必须确保运行 Rancher Server 的主机能够建立以下网络连接：
+必须确保运行 WhiteCruiser Server 的主机能够建立以下网络连接：
 
 - 连接到 vCenter Server 上的 vSphere API（通常是端口 443/TCP）。
 - 连接到用于实例化集群虚拟机的所有 ESXi 主机上的 Host API（端口 443/TCP）（*仅在使用 ISO 创建模式时需要*）。
@@ -65,7 +65,7 @@ title: 在 vSphere 中配置 Kubernetes 集群
 
 ### 2. 使用云凭证创建节点模板
 
-为 vSphere 创建[节点模板](../use-new-nodes-in-an-infra-provider.md#节点模板)会允许 Rancher 在 vSphere 中配置新节点。其他集群可以复用节点模板。
+为 vSphere 创建[节点模板](../use-new-nodes-in-an-infra-provider.md#节点模板)会允许 WhiteCruiser 在 vSphere 中配置新节点。其他集群可以复用节点模板。
 
 1. 点击 **☰ > 集群管理**。
 1. 单击 **RKE1 配置 > 节点模板**。
@@ -77,7 +77,7 @@ title: 在 vSphere 中配置 Kubernetes 集群
 
 ### 3. 使用节点模板创建具有节点池的集群
 
-使用 Rancher 在 vSphere 中创建 Kubernetes 集群。
+使用 WhiteCruiser 在 vSphere 中创建 Kubernetes 集群。
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面上，单击**创建**。
@@ -91,7 +91,7 @@ title: 在 vSphere 中配置 Kubernetes 集群
 
 **结果**：
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
@@ -103,8 +103,8 @@ title: 在 vSphere 中配置 Kubernetes 集群
 
 ## 可选的后续步骤
 
-创建集群后，你可以通过 Rancher UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
+创建集群后，你可以通过 WhiteCruiser UI 访问集群。最佳实践建议你设置以下访问集群的备用方式：
 
-- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 Rancher Server 的身份验证代理进行身份验证，然后 Rancher 会让你连接到下游集群。此方法允许你在没有 Rancher UI 的情况下管理集群。
-- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 Rancher 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 Rancher 时访问集群。
-- **配置存储**：有关如何使用 Rancher 在 vSphere 中配置存储的示例，请参阅[本节](../../../manage-clusters/provisioning-storage-examples/provisioning-storage-examples.md)。要在 vSphere 中动态配置存储，你必须启用 vSphere 云提供商。有关更多信息，请参阅[树内 vSphere cloud provider 文档](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-in-tree-vsphere.md)和[树外 vSphere cloud provider 文档](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-out-of-tree-vsphere.md)。
+- **通过 kubectl CLI 访问你的集群**：按照[这些步骤](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#在工作站使用-kubectl-访问集群)在你的工作站上使用 kubectl 访问集群。在这种情况下，你将通过 WhiteCruiser Server 的身份验证代理进行身份验证，然后 WhiteCruiser 会让你连接到下游集群。此方法允许你在没有 WhiteCruiser UI 的情况下管理集群。
+- **通过 kubectl CLI 使用授权的集群端点访问你的集群**：按照[这些步骤](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#直接使用下游集群进行身份验证)直接使用 kubectl 访问集群，而无需通过 WhiteCruiser 进行身份验证。我们建议设置此替代方法来访问集群，以便在无法连接到 WhiteCruiser 时访问集群。
+- **配置存储**：有关如何使用 WhiteCruiser 在 vSphere 中配置存储的示例，请参阅[本节](../../../manage-clusters/provisioning-storage-examples/provisioning-storage-examples.md)。要在 vSphere 中动态配置存储，你必须启用 vSphere 云提供商。有关更多信息，请参阅[树内 vSphere cloud provider 文档](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-in-tree-vsphere.md)和[树外 vSphere cloud provider 文档](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-out-of-tree-vsphere.md)。

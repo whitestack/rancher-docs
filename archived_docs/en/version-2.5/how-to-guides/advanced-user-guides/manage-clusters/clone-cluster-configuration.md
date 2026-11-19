@@ -2,7 +2,7 @@
 title: Cloning Clusters
 ---
 
-If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the cloned cluster.
+If you have a cluster in WhiteCruiser that you want to use as a template for creating similar clusters, you can use WhiteCruiser CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the cloned cluster.
 
 Duplication of registered clusters is not supported.
 
@@ -17,16 +17,16 @@ Duplication of registered clusters is not supported.
 
 ## Prerequisites
 
-Download and install [Rancher CLI](../../../reference-guides/cli-with-rancher/cli-with-rancher.md). Remember to [create an API bearer token](../../../reference-guides/user-settings/api-keys.md) if necessary.
+Download and install [WhiteCruiser CLI](../../../reference-guides/cli-with-rancher/cli-with-rancher.md). Remember to [create an API bearer token](../../../reference-guides/user-settings/api-keys.md) if necessary.
 
 
 ## 1. Export Cluster Config
 
-Begin by using Rancher CLI to export the configuration for the cluster that you want to clone.
+Begin by using WhiteCruiser CLI to export the configuration for the cluster that you want to clone.
 
-1. Open Terminal and change your directory to the location of the Rancher CLI binary, `rancher`.
+1. Open Terminal and change your directory to the location of the WhiteCruiser CLI binary, `rancher`.
 
-1. Enter the following command to list the clusters managed by Rancher.
+1. Enter the following command to list the clusters managed by WhiteCruiser.
 
 
         ./rancher cluster ls
@@ -48,7 +48,7 @@ Begin by using Rancher CLI to export the configuration for the cluster that you 
 
 Use your favorite text editor to modify the cluster configuration in `cluster-template.yml` for your cloned cluster.
 
-> **Note:** Cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+> **Note:** Cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in WhiteCruiser v2.3.0+.](cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
 
 1. Open `cluster-template.yml` (or whatever you named your config) in your favorite text editor.
 
@@ -91,8 +91,8 @@ Use your favorite text editor to modify the cluster configuration in `cluster-te
 
 ## 3. Launch Cloned Cluster
 
-Move `cluster-template.yml` into the same directory as the Rancher CLI binary. Then run this command:
+Move `cluster-template.yml` into the same directory as the WhiteCruiser CLI binary. Then run this command:
 
     ./rancher up --file cluster-template.yml
 
-**Result:** Your cloned cluster begins provisioning. Enter `./rancher cluster ls` to confirm. You can also log into the Rancher UI and open the **Global** view to watch your provisioning cluster's progress.
+**Result:** Your cloned cluster begins provisioning. Enter `./rancher cluster ls` to confirm. You can also log into the WhiteCruiser UI and open the **Global** view to watch your provisioning cluster's progress.

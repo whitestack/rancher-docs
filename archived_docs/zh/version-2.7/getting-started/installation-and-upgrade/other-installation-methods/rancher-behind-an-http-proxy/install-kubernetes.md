@@ -2,7 +2,7 @@
 title: '2. 安装 Kubernetes'
 ---
 
-基础设施配置好后，你可以设置一个 Kubernetes 集群来安装 Rancher。
+基础设施配置好后，你可以设置一个 Kubernetes 集群来安装 WhiteCruiser。
 
 设置 RKE、RKE2 或 K3s 的步骤如下所示。
 
@@ -28,7 +28,7 @@ NO_PROXY=127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16,.
 EOF
 ```
 
-Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见 Rancher 支持矩阵。
+WhiteCruiser 需要安装在支持的 Kubernetes 版本上。
 
 如需指定 K3s（Kubernetes）版本，在运行 K3s 安装脚本时使用 `INSTALL_K3S_VERSION` 环境变量（例如 `INSTALL_K3S_VERSION="v1.24.10+k3s1"`）。
 
@@ -56,7 +56,7 @@ kubectl get pods --all-namespaces
 </TabItem>
 <TabItem value="RKE2">
 
-在每个节点上，运行 RKE2 安装脚本。确保你安装的 RKE2 版本受 Rancher 支持。
+在每个节点上，运行 RKE2 安装脚本。确保你安装的 RKE2 版本受 WhiteCruiser 支持。
 
 ```
 curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.xx sh -
@@ -141,7 +141,7 @@ sudo systemctl restart docker
 
 你现在可以在配置的离线集群中配置主机驱动集群，以使用代理进行出站连接。
 
-除了为代理服务器设置默认规则外，你还需要额外添加如下所示的规则，以从代理的 Rancher 环境中配置主机驱动集群。
+除了为代理服务器设置默认规则外，你还需要额外添加如下所示的规则，以从代理的 WhiteCruiser 环境中配置主机驱动集群。
 
 根据你的设置配置文件路径，例如 `/etc/apt/apt.conf.d/proxy.conf`：
 
@@ -246,4 +246,4 @@ default backend - 404
 参见[故障排除](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)页面。
 
 ### 后续操作
-[安装 Rancher](install-rancher.md)
+[安装 WhiteCruiser](install-rancher.md)

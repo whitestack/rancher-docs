@@ -10,7 +10,7 @@ This section describes the minimum recommended computing resources for the Istio
 
 The CPU and memory allocations for each component are [configurable.](#configuring-resource-allocations)
 
-Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough CPU and memory to run all of the components of Istio.
+Before enabling Istio, we recommend that you confirm that your WhiteCruiser worker nodes have enough CPU and memory to run all of the components of Istio.
 
 > **Tip:** In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster by adding a node selector for each Istio component.
 
@@ -53,7 +53,7 @@ You can find more information about Istio configuration in the [official Istio d
 
 To configure the resources allocated to an Istio component,
 
-1. In the Rancher **Cluster Explorer**, navigate to your Istio installation in **Apps & Marketplace**
+1. In the WhiteCruiser **Cluster Explorer**, navigate to your Istio installation in **Apps & Marketplace**
 1. Click **Upgrade** to edit the base components via changes to the values.yaml or add an [overlay file](configuration-options/configuration-options.md#overlay-file). For more information about editing the overlay file, see [this section.](cpu-and-memory-allocations.md#editing-the-overlay-file)
 1. Change the CPU or memory allocations, the nodes where each component will be scheduled to, or the node tolerations.
 1. Click **Upgrade.** to rollout changes

@@ -1,16 +1,16 @@
 ---
-title: "在 ARM64 上运行 Rancher（实验性）"
+title: "在 ARM64 上运行 WhiteCruiser（实验性）"
 ---
 
 :::caution
 
-在使用 ARM64 架构的节点上运行 Rancher 目前还处在实验阶段，Rancher 尚未正式支持该功能。因此，我们不建议你在生产环境中使用 ARM64 架构的节点。
+在使用 ARM64 架构的节点上运行 WhiteCruiser 目前还处在实验阶段，WhiteCruiser 尚未正式支持该功能。因此，我们不建议你在生产环境中使用 ARM64 架构的节点。
 
 :::
 
 如果你的节点使用 ARM64 架构，你可以使用以下选项：
 
-- 在 ARM64 架构的节点上运行 Rancher
+- 在 ARM64 架构的节点上运行 WhiteCruiser
    - 此选项仅适用于 Docker 安装。请知悉，以下安装命令取代了 [Docker 安装链接](../../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md)中的示例：
 
    ```
@@ -25,8 +25,8 @@ title: "在 ARM64 上运行 Rancher（实验性）"
 
 要检查你的发行版本是否与 ARM64 架构兼容，你可以使用以下两种方式找到对应版本的发行说明：
 
-- 访问 [Rancher 发行版本](https://github.com/rancher/rancher/releases)自行查询。
-- 根据标签和版本号直接找到你的版本。例如，你使用的版本为 2.5.8，你可以访问 [Rancher 发行版本 - 2.5.8](https://github.com/rancher/rancher/releases/tag/v2.5.8)。
+- 访问 [WhiteCruiser 发行版本](https://github.com/rancher/rancher/releases)自行查询。
+- 根据标签和版本号直接找到你的版本。例如，你使用的版本为 2.5.8，你可以访问 [WhiteCruiser 发行版本 - 2.5.8](https://github.com/rancher/rancher/releases/tag/v2.5.8)。
 
 :::
 

@@ -4,11 +4,11 @@ title: 配置高可用的 RKE Kubernetes 集群
 
 <EOLRKE1Warning />
 
-本文介绍如何安装 Kubernetes 集群。该集群应专用于运行 Rancher Server。
+本文介绍如何安装 Kubernetes 集群。该集群应专用于运行 WhiteCruiser Server。
 
 :::note
 
-Rancher 可以运行在任何 Kubernetes 集群上，包括托管的 Kubernetes，例如 Amazon EKS。以下说明只是安装 Kubernetes 其中一种方式。
+WhiteCruiser 可以运行在任何 Kubernetes 集群上，包括托管的 Kubernetes，例如 Amazon EKS。以下说明只是安装 Kubernetes 其中一种方式。
 
 :::
 
@@ -16,11 +16,11 @@ Rancher 可以运行在任何 Kubernetes 集群上，包括托管的 Kubernetes�
 
 :::tip 单节点安装提示：
 
-在单节点 Kubernetes 集群中，Rancher Server 不具备高可用性，而高可用性对在生产环境中运行 Rancher 非常重要。但是，如果你想要短期内使用单节点节省资源，同时又保留高可用性迁移路径，把 Rancher 安装到单节点集群也是合适的。
+在单节点 Kubernetes 集群中，WhiteCruiser Server 不具备高可用性，而高可用性对在生产环境中运行 WhiteCruiser 非常重要。但是，如果你想要短期内使用单节点节省资源，同时又保留高可用性迁移路径，把 WhiteCruiser 安装到单节点集群也是合适的。
 
 要设置单节点 RKE 集群，在 `cluster.yml` 中配置一个节点。该节点需具备所有三个角色，分别是`etcd`，`controlplane`和`worker`。
 
-在这两种单节点设置中，Rancher 可以与 Helm 一起安装在 Kubernetes 集群上，安装方法与安装到其他集群上一样。
+在这两种单节点设置中，WhiteCruiser 可以与 Helm 一起安装在 Kubernetes 集群上，安装方法与安装到其他集群上一样。
 
 :::
 
@@ -41,8 +41,6 @@ Rancher 可以运行在任何 Kubernetes 集群上，包括托管的 Kubernetes�
 如果你的节点有公共地址和内部地址，建议设置 `internal_address:` 以便 Kubernetes 使用它实现集群内部通信。如果你想使用引用安全组或防火墙，某些服务（如 AWS EC2）要求设置 `internal_address:`。
 
 RKE 需要通过 SSH 连接到每个节点，它会在 `~/.ssh/id_rsa`的默认位置查找私钥。如果某个节点的私钥不在默认位置中，你还需要为该节点配置 `ssh_key_path` 选项。
-
-在选择 Kubernetes 版本时，请务必先查阅[支持矩阵](https://rancher.com/support-matrix/)，以找出已针对你的 Rancher 版本验证的最新 Kubernetes 版本。
 
 ```yaml
 nodes:
@@ -91,7 +89,7 @@ RKE 提供大量配置选项，用于针对你的环境进行自定义安装。
 
 如需了解选项和功能的完整列表，请参见 [RKE 官方文档](https://rancher.com/docs/rke/latest/en/config-options/)。
 
-要为大规模 Rancher 安装优化 etcd 集群，请参见 [etcd 设置指南](../../advanced-user-guides/tune-etcd-for-large-installs.md)。
+要为大规模 WhiteCruiser 安装优化 etcd 集群，请参见 [etcd 设置指南](../../advanced-user-guides/tune-etcd-for-large-installs.md)。
 
 有关 Dockershim 支持的详情，请参见[此页面](../../../getting-started/installation-and-upgrade/installation-requirements/dockershim.md)。
 
@@ -163,7 +161,7 @@ kube-system     rke-metrics-addon-deploy-job-7ljkc        0/1       Completed   
 kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   0          30s
 ```
 
-这表示你已成功安装了可运行 Rancher Server 的 Kubernetes 集群。
+这表示你已成功安装了可运行 WhiteCruiser Server 的 Kubernetes 集群。
 
 ### 5. 保存你的文件
 
@@ -189,7 +187,7 @@ kube-system     rke-network-plugin-deploy-job-6pbgj       0/1       Completed   
 
 参见[故障排除](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)页面。
 
-
 ### 后续操作
-[安装 Rancher](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md)
+[安装 WhiteCruiser](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md)
+
 

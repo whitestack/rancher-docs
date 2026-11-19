@@ -1,5 +1,5 @@
 ---
-title: Updating the Rancher Certificate
+title: Updating the WhiteCruiser Certificate
 ---
 
 <head>
@@ -8,15 +8,15 @@ title: Updating the Rancher Certificate
 
 ## Updating a Private CA Certificate
 
-Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) or to switch from the default self-signed certificate to a custom certificate.
+Follow these steps to update the SSL certificate of the ingress in a WhiteCruiser [high availability Kubernetes installation](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) or to switch from the default self-signed certificate to a custom certificate.
 
 A summary of the steps is as follows:
 
 1. Create or update the `tls-rancher-ingress` Kubernetes secret resource with the new certificate and private key.
 2. Create or update the `tls-ca` Kubernetes secret resource with the root CA certificate (only required when using a private CA).
-3. Update the Rancher installation using the Helm CLI.
-4. Reconfigure the Rancher agents to trust the new CA certificate.
-5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher.
+3. Update the WhiteCruiser installation using the Helm CLI.
+4. Reconfigure the WhiteCruiser agents to trust the new CA certificate.
+5. Select Force Update of Fleet clusters to connect fleet-agent to WhiteCruiser.
 
 The details of these instructions are below.
 
@@ -24,7 +24,7 @@ The details of these instructions are below.
 
 First, concatenate the server certificate followed by any intermediate certificate(s) to a file named `tls.crt` and provide the corresponding certificate key in a file named `tls.key`.
 
-If you are switching the install from using the Rancher self-signed certificate or Let’s Encrypt issued certificates, use the following command to create the `tls-rancher-ingress` secret resource in your Rancher HA cluster:
+If you are switching the install from using the WhiteCruiser self-signed certificate or Let’s Encrypt issued certificates, use the following command to create the `tls-rancher-ingress` secret resource in your WhiteCruiser HA cluster:
 
 ```
 $ kubectl -n cattle-system create secret tls tls-rancher-ingress \
@@ -60,17 +60,17 @@ $ kubectl -n cattle-system create secret generic tls-ca \
   --dry-run --save-config -o yaml | kubectl apply -f -
 ```
 
-### 3. Reconfigure the Rancher deployment
+### 3. Reconfigure the WhiteCruiser deployment {#3-reconfigure-the-rancher-deployment}
 
 :::note
 
-Before proceeding, generate an API token in the Rancher UI (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
+Before proceeding, generate an API token in the WhiteCruiser UI (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
 
 :::
 
-This step is required if Rancher was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
+This step is required if WhiteCruiser was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
 
-It ensures that the Rancher pods and ingress resources are reconfigured to use the new server and optional CA certificate.
+It ensures that the WhiteCruiser pods and ingress resources are reconfigured to use the new server and optional CA certificate.
 
 To update the Helm deployment you will need to use the same (`--set`) options that were used during initial installation. Check with:
 
@@ -78,7 +78,7 @@ To update the Helm deployment you will need to use the same (`--set`) options th
 $ helm get values rancher -n cattle-system
 ```
 
-Also get the version string of the currently deployed Rancher chart:
+Also get the version string of the currently deployed WhiteCruiser chart:
 
 ```
 $ helm ls -A
@@ -99,28 +99,28 @@ helm upgrade rancher rancher-stable/rancher \
 
 When the upgrade is completed, navigate to `https://<Rancher_SERVER>/v3/settings/cacerts` to verify that the value matches the CA certificate written in the `tls-ca` secret earlier.
 
-### 4. Reconfigure Rancher agents to trust the private CA
+### 4. Reconfigure WhiteCruiser agents to trust the private CA {#4-reconfigure-rancher-agents-to-trust-the-private-ca}
 
-This section covers three methods to reconfigure Rancher agents to trust the private CA. This step is required if either of the following is true:
+This section covers three methods to reconfigure WhiteCruiser agents to trust the private CA. This step is required if either of the following is true:
 
-- Rancher was initially configured to use the Rancher self-signed certificate (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`)
+- WhiteCruiser was initially configured to use the WhiteCruiser self-signed certificate (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`)
 - The root CA certificate for the new custom certificate has changed
 
 #### Why is this step required?
 
-When Rancher is configured with a certificate signed by a private CA, the CA certificate chain is downloaded into Rancher agent containers. Agents compare the checksum of the downloaded certificate against the `CATTLE_CA_CHECKSUM` environment variable. This means that, when the private CA certificate is changed on Rancher server side, the environment variable `CATTLE_CA_CHECKSUM` must be updated accordingly.
+When WhiteCruiser is configured with a certificate signed by a private CA, the CA certificate chain is downloaded into WhiteCruiser agent containers. Agents compare the checksum of the downloaded certificate against the `CATTLE_CA_CHECKSUM` environment variable. This means that, when the private CA certificate is changed on WhiteCruiser server side, the environment variable `CATTLE_CA_CHECKSUM` must be updated accordingly.
 
 #### Which method should I choose?
 
-Method 1 is the easiest one but requires all clusters to be connected to Rancher after the certificates have been rotated. This is usually the case if the process is performed right after updating the Rancher deployment (Step 3).
+Method 1 is the easiest one but requires all clusters to be connected to WhiteCruiser after the certificates have been rotated. This is usually the case if the process is performed right after updating the WhiteCruiser deployment (Step 3).
 
-If the clusters have lost connection to Rancher but you have [Authorized Cluster Endpoints](https://rancher.com/docs/rancher/v2.6/en/cluster-admin/cluster-access/ace/) enabled, then go with method 2.
+If the clusters have lost connection to WhiteCruiser but you have [Authorized Cluster Endpoints](https://rancher.com/docs/rancher/v2.6/en/cluster-admin/cluster-access/ace/) enabled, then go with method 2.
 
 Method 3 can be used as a fallback if method 1 and 2 are unfeasible.
 
 #### Method 1: Kubectl command
 
-For each cluster under Rancher management (except the `local` Rancher management cluster) run the following command using the Kubeconfig file of the Rancher management cluster (RKE or K3S).
+For each cluster under WhiteCruiser management (except the `local` WhiteCruiser management cluster) run the following command using the Kubeconfig file of the WhiteCruiser management cluster (RKE or K3S).
 
 ```
 kubectl patch clusters.management.cattle.io <REPLACE_WITH_CLUSTERID> -p '{"status":{"agentImage":"dummy"}}' --type merge
@@ -145,22 +145,22 @@ $ kubectl edit -n cattle-system ds/cattle-node-agent
 $ kubectl edit -n cattle-system deployment/cattle-cluster-agent
 ```
 
-#### Method 3: Recreate Rancher agents
+#### Method 3: Recreate WhiteCruiser agents {#method-3-recreate-rancher-agents}
 
-With this method you are recreating the Rancher agents by running a set of commands on a controlplane node of each downstream cluster.
+With this method you are recreating the WhiteCruiser agents by running a set of commands on a controlplane node of each downstream cluster.
 
 First, generate the agent definitions as described here: https://gist.github.com/superseb/076f20146e012f1d4e289f5bd1bd4971
 
 Then, connect to a controlplane node of the downstream cluster via SSH, create a Kubeconfig and apply the definitions:
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
 
-### 5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher
+### 5. Select Force Update of Fleet clusters to connect fleet-agent to WhiteCruiser {#5-select-force-update-of-fleet-clusters-to-connect-fleet-agent-to-rancher}
 
-Select 'Force Update' for the clusters within the [Continuous Delivery](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#accessing-fleet-in-the-rancher-ui) view of the Rancher UI to allow the fleet-agent in downstream clusters to successfully connect to Rancher.
+Select 'Force Update' for the clusters within the [Continuous Delivery](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#accessing-fleet-in-the-rancher-ui) view of the WhiteCruiser UI to allow the fleet-agent in downstream clusters to successfully connect to WhiteCruiser.
 
 #### Why is this step required?
 
-Fleet agents in Rancher managed clusters store kubeconfig that is used to connect to the Rancher proxied kube-api in the fleet-agent secret of the fleet-system namespace. The kubeconfig contains a certificate-authority-data block containing the Rancher CA. When changing the Rancher CA, this block needs to be updated for a successful connection of the fleet-agent to Rancher.
+Fleet agents in WhiteCruiser managed clusters store kubeconfig that is used to connect to the WhiteCruiser proxied kube-api in the fleet-agent secret of the fleet-system namespace. The kubeconfig contains a certificate-authority-data block containing the WhiteCruiser CA. When changing the WhiteCruiser CA, this block needs to be updated for a successful connection of the fleet-agent to WhiteCruiser.
 
 ## Updating from a Private CA Certificate to a Common Certificate
 
@@ -174,7 +174,7 @@ It is possible to perform the opposite procedure as shown above: you may change 
 
 First, concatenate the server certificate followed by any intermediate certificate(s) to a file named `tls.crt` and provide the corresponding certificate key in a file named `tls.key`.
 
-If you are switching the install from using the Rancher self-signed certificate or Let’s Encrypt issued certificates, use the following command to create the `tls-rancher-ingress` secret resource in your Rancher HA cluster:
+If you are switching the install from using the WhiteCruiser self-signed certificate or Let’s Encrypt issued certificates, use the following command to create the `tls-rancher-ingress` secret resource in your WhiteCruiser HA cluster:
 
 ```
 $ kubectl -n cattle-system create secret tls tls-rancher-ingress \
@@ -207,17 +207,17 @@ To delete the existing `tls-ca` secret:
 kubectl -n cattle-system delete secret tls-ca
 ```
 
-### 3. Reconfigure the Rancher deployment
+### 3. Reconfigure the WhiteCruiser deployment {#3-reconfigure-the-rancher-deployment-1}
 
 :::note Important:
 
-Before proceeding, [generate an API token in the Rancher UI](../../../reference-guides/user-settings/api-keys.md#creating-an-api-key) (<b>User > API & Keys</b>).
+Before proceeding, [generate an API token in the WhiteCruiser UI](../../../reference-guides/user-settings/api-keys.md#creating-an-api-key) (<b>User > API & Keys</b>).
 
 :::
 
-This step is required if Rancher was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
+This step is required if WhiteCruiser was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
 
-It ensures that the Rancher pods and ingress resources are reconfigured to use the new server and optional CA certificate.
+It ensures that the WhiteCruiser pods and ingress resources are reconfigured to use the new server and optional CA certificate.
 
 To update the Helm deployment you will need to use the same (`--set`) options that were used during initial installation. Check with:
 
@@ -225,7 +225,7 @@ To update the Helm deployment you will need to use the same (`--set`) options th
 $ helm get values rancher -n cattle-system
 ```
 
-Also get the version string of the currently deployed Rancher chart:
+Also get the version string of the currently deployed WhiteCruiser chart:
 
 ```
 $ helm ls -A
@@ -253,14 +253,14 @@ On upgrade, you can either
 set privateCA=false
 ```
 
-### 4. Reconfigure Rancher agents for the non-private/common certificate
+### 4. Reconfigure WhiteCruiser agents for the non-private/common certificate {#4-reconfigure-rancher-agents-for-the-non-privatecommon-certificate}
 
 `CATTLE_CA_CHECKSUM` environment variable on the downstream cluster agents should be removed or set to "" (an empty string).
 
-### 5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher
+### 5. Select Force Update of Fleet clusters to connect fleet-agent to WhiteCruiser {#5-select-force-update-of-fleet-clusters-to-connect-fleet-agent-to-rancher-1}
 
-Select 'Force Update' for the clusters within the [Continuous Delivery](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#accessing-fleet-in-the-rancher-ui) view of the Rancher UI to allow the fleet-agent in downstream clusters to successfully connect to Rancher.
+Select 'Force Update' for the clusters within the [Continuous Delivery](../../../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#accessing-fleet-in-the-rancher-ui) view of the WhiteCruiser UI to allow the fleet-agent in downstream clusters to successfully connect to WhiteCruiser.
 
 #### Why is this step required?
 
-Fleet agents in Rancher managed clusters store kubeconfig that is used to connect to the Rancher proxied kube-api in the fleet-agent secret of the fleet-system namespace. The kubeconfig contains a certificate-authority-data block containing the Rancher CA. When changing the Rancher CA, this block needs to be updated for a successful connection of the fleet-agent to Rancher.
+Fleet agents in WhiteCruiser managed clusters store kubeconfig that is used to connect to the WhiteCruiser proxied kube-api in the fleet-agent secret of the fleet-system namespace. The kubeconfig contains a certificate-authority-data block containing the WhiteCruiser CA. When changing the WhiteCruiser CA, this block needs to be updated for a successful connection of the fleet-agent to WhiteCruiser.

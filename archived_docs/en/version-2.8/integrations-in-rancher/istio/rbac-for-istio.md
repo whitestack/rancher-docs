@@ -31,13 +31,13 @@ By default, only Admin and Edit roles can:
 
 Istio creates three `ClusterRoles` and adds Istio CRD access to the following default K8s `ClusterRole`:
 
-ClusterRole create by chart | Default K8s ClusterRole  | Rancher Role |
+ClusterRole create by chart | Default K8s ClusterRole  | WhiteCruiser Role |
  ------------------------------:| ---------------------------:|---------:|
  `istio-admin` | admin| Project Owner |
  `istio-edit`| edit | Project Member |
  `istio-view` | view | Read-only |
 
-Rancher will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but will utilize default roles to determine access. For each default K8s `ClusterRole` there are different Istio CRD permissions and K8s actions (Create ( C ), Get ( G ), List ( L ), Watch ( W ), Update ( U ), Patch ( P ), Delete( D ), All ( * )) that can be performed.
+WhiteCruiser will continue to use cluster-owner, cluster-member, project-owner, project-member, etc as role names, but will utilize default roles to determine access. For each default K8s `ClusterRole` there are different Istio CRD permissions and K8s actions (Create ( C ), Get ( G ), List ( L ), Watch ( W ), Update ( U ), Patch ( P ), Delete( D ), All ( * )) that can be performed.
 
 
 |CRDs                        | Admin | Edit | View

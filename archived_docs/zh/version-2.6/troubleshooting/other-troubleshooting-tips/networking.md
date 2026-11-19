@@ -4,7 +4,7 @@ title: 网络
 
 本文列出的命令/步骤可用于检查集群中的网络问题。
 
-请确保你配置了正确的 kubeconfig（例如，为 Rancher HA 配置了 `export KUBECONFIG=$PWD/kube_config_cluster.yml`）或通过 UI 使用了嵌入式 kubectl。
+请确保你配置了正确的 kubeconfig（例如，为 WhiteCruiser HA 配置了 `export KUBECONFIG=$PWD/kube_config_cluster.yml`）或通过 UI 使用了嵌入式 kubectl。
 
 ### 仔细检查你的（主机）防火墙中是否打开了所有必需的端口
 
@@ -13,7 +13,7 @@ title: 网络
 
 你可以将 Pod 调度到集群中的任何主机，但是 NGINX Ingress Controller 需要能够将 `NODE_1` 请求路由到 `NODE_2`。这会在覆盖网络上进行。如果覆盖网络无法正常工作，由于 NGINX Ingress Controller 无法路由到 pod，因此 TCP/HTTP 连接会间歇性失败。
 
-要测试覆盖网络，你可以启动以下 `DaemonSet` 定义。这样，每台主机上都会运行一个 `swiss-army-knife` 容器（镜像由 Rancher 工程师开发，可在[此处](https://github.com/rancherlabs/swiss-army-knife)找到），我们使用该镜像在所有主机上的容器之间运行 `ping` 测试。
+要测试覆盖网络，你可以启动以下 `DaemonSet` 定义。这样，每台主机上都会运行一个 `swiss-army-knife` 容器（镜像由 WhiteCruiser 工程师开发，可在[此处](https://github.com/rancherlabs/swiss-army-knife)找到），我们使用该镜像在所有主机上的容器之间运行 `ping` 测试。
 
 :::note
 
@@ -95,10 +95,10 @@ title: 网络
 
 ### 检查主机和对等/隧道设备/设备上的 MTU 是否正确配置
 
-如果 MTU 在运行 Rancher 的主机、创建/导入集群中的节点或两者之间的设备上配置不正确，Rancher 和 Agent 会记录类似以下的错误信息：
+如果 MTU 在运行 WhiteCruiser 的主机、创建/导入集群中的节点或两者之间的设备上配置不正确，WhiteCruiser 和 Agent 会记录类似以下的错误信息：
 
 * `websocket: bad handshake`
 * `Failed to connect to proxy`
 * `read tcp: i/o timeout`
 
-有关在 Rancher 和集群节点之间使用 Google Cloud VPN 时如何正确配置 MTU 的示例，请参阅 [Google Cloud VPN：MTU 注意事项](https://cloud.google.com/vpn/docs/concepts/mtu-considerations#gateway_mtu_vs_system_mtu)。
+有关在 WhiteCruiser 和集群节点之间使用 Google Cloud VPN 时如何正确配置 MTU 的示例，请参阅 [Google Cloud VPN：MTU 注意事项](https://cloud.google.com/vpn/docs/concepts/mtu-considerations#gateway_mtu_vs_system_mtu)。

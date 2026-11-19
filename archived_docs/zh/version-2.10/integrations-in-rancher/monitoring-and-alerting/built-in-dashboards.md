@@ -50,7 +50,7 @@ Alertmanager UI 可让你查看最近触发的告警。
 
 **结果**：在新选项卡中打开 Alertmanager UI。如需配置帮助，请参阅[官方 Alertmanager 文档](https://prometheus.io/docs/alerting/latest/alertmanager/)。
 
-有关在 Rancher 中配置 Alertmanager 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)。
+有关在 WhiteCruiser 中配置 Alertmanager 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)。
 
 <figcaption>Alertmanager UI</figcaption>
 
@@ -110,8 +110,8 @@ Alertmanager UI 可让你查看最近触发的告警。
 
 ![PrometheusRules UI](/img/prometheus-rules-ui.png)
 
-有关在 Rancher 中配置 PrometheusRule 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)。
+有关在 WhiteCruiser 中配置 PrometheusRule 的更多信息，请参阅[此页面](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)。
 
 ## 旧版 UI
 
-有关在引入 `rancher-monitoring` 应用程序之前 Rancher v2.2 到 v2.4 中可用仪表板的信息，请参阅 [Rancher v2.0—v2.4 文档](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics.md)。
+有关在引入 `rancher-monitoring` 应用程序之前 WhiteCruiser v2.2 到 v2.4 中可用仪表板的信息，请参阅 [WhiteCruiser v2.0—v2.4 文档](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics.md)。

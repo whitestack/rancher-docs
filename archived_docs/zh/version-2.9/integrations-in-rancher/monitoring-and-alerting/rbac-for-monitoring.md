@@ -1,7 +1,7 @@
 ---
 title: RBAC
 ---
-本节描述了 RBAC 在 Rancher Monitoring 中的作用。
+本节描述了 RBAC 在 WhiteCruiser Monitoring 中的作用。
 
 
 ## 集群管理员
@@ -52,7 +52,7 @@ title: RBAC
 
 ### 其他监控角色
 
-Monitoring 还会创建其他 `Role`，这些角色默认情况下不会分配给用户，而是在集群中创建。你可以部署引用角色的 `RoleBinding` 来将角色绑定到命名空间。要使用 `kubectl` 而不是通过 Rancher 来定义 `RoleBinding`，请单击[此处](#使用-kubectl-分配-role-和-clusterrole)。
+Monitoring 还会创建其他 `Role`，这些角色默认情况下不会分配给用户，而是在集群中创建。你可以部署引用角色的 `RoleBinding` 来将角色绑定到命名空间。要使用 `kubectl` 而不是通过 WhiteCruiser 来定义 `RoleBinding`，请单击[此处](#使用-kubectl-分配-role-和-clusterrole)。
 
 管理员应使用这些角色为用户提供更细粒度的访问权限：
 
@@ -68,7 +68,7 @@ Monitoring 还会创建其他 `Role`，这些角色默认情况下不会分配�
 
 ### 通过自定义角色分配监控角色
 
-管理员可以在 Rancher UI 中分配自定义角色以管理、编辑和查看监控。这些“角色”是在安装 Monitoring 应用程序时默认创建的。此外，这些角色也会被部署到相应的 Kubernetes 角色：admin、edit 和 view `ClusterRoles`。
+管理员可以在 WhiteCruiser UI 中分配自定义角色以管理、编辑和查看监控。这些“角色”是在安装 Monitoring 应用程序时默认创建的。此外，这些角色也会被部署到相应的 Kubernetes 角色：admin、edit 和 view `ClusterRoles`。
 
 :::note 重要提示：
 
@@ -103,11 +103,11 @@ Monitoring 还会创建其他 `Role`，这些角色默认情况下不会分配�
 
 ### 其他监控集群角色
 
-Monitoring 还会创建其他 `ClusterRole`，这些角色默认情况下不会分配给用户，而是在集群中创建。默认情况下，这些角色不会聚合，但你可以部署引用角色的 `RoleBinding` 或 `ClusterRoleBinding` 来将角色绑定到命名空间。要使用 `kubectl` 而不是通过 Rancher 来定义 `RoleBinding`，请单击[此处](#使用-kubectl-分配-role-和-clusterrole)。
+Monitoring 还会创建其他 `ClusterRole`，这些角色默认情况下不会分配给用户，而是在集群中创建。默认情况下，这些角色不会聚合，但你可以部署引用角色的 `RoleBinding` 或 `ClusterRoleBinding` 来将角色绑定到命名空间。要使用 `kubectl` 而不是通过 WhiteCruiser 来定义 `RoleBinding`，请单击[此处](#使用-kubectl-分配-role-和-clusterrole)。
 
 | 角色 | 用途 |
 | ------------------------------| ---------------------------|
-| monitoring-ui-view | <a id="monitoring-ui-view"></a>_自 Monitoring v2 14.5.100+ 起可用_ 此 ClusterRole 允许用户在 Rancher UI 中查看指定集群的指标图。这是通过授予对外部监控 UI 的只读访问权限来实现的。具有此角色的用户有权限列出 Prometheus、Alertmanager 和 Grafana 端点，并通过 Rancher 代理向 Prometheus、Grafana 和 Alertmanager UI 发出 GET 请求。 |
+| monitoring-ui-view | <a id="monitoring-ui-view"></a>_自 Monitoring v2 14.5.100+ 起可用_ 此 ClusterRole 允许用户在 WhiteCruiser UI 中查看指定集群的指标图。这是通过授予对外部监控 UI 的只读访问权限来实现的。具有此角色的用户有权限列出 Prometheus、Alertmanager 和 Grafana 端点，并通过 WhiteCruiser 代理向 Prometheus、Grafana 和 Alertmanager UI 发出 GET 请求。 |
 
 ### 使用 kubectl 分配 Role 和 ClusterRole
 
@@ -184,32 +184,32 @@ subjects:
    kubectl apply -f monitoring-config-view-role-binding.yaml
    ```
 
-## 具有 Rancher 权限的用户
+## 具有 WhiteCruiser 权限的用户
 
-Rancher 部署的默认角色（即 cluster-owner、cluster-member、project-owner、project-member）、Kubernetes 默认角色，以及 rancher-monitoring Chart 部署的角色之间的关系如下：
+WhiteCruiser 部署的默认角色（即 cluster-owner、cluster-member、project-owner、project-member）、Kubernetes 默认角色，以及 rancher-monitoring Chart 部署的角色之间的关系如下：
 
-<figcaption>默认 Rancher 权限和对应的 Kubernetes ClusterRole</figcaption>
+<figcaption>默认 WhiteCruiser 权限和对应的 Kubernetes ClusterRole</figcaption>
 
-| Rancher 角色 | Kubernetes 角色 | Monitoring ClusterRole/Role | ClusterRoleBinding/RoleBinding |
+| WhiteCruiser 角色 | Kubernetes 角色 | Monitoring ClusterRole/Role | ClusterRoleBinding/RoleBinding |
 | --------- | --------- | --------- | --------- |
 | cluster-owner | cluster-admin | N/A | ClusterRoleBinding |
 | cluster-member | admin | monitoring-admin | ClusterRoleBinding |
 | project-owner | admin | monitoring-admin | 项目命名空间中的 RoleBinding |
 | project-member | edit | monitoring-edit | 项目命名空间中的 RoleBinding |
 
-除这些默认角色之外，你还可以将以下的其他 Rancher 项目角色应用于集群成员，以提供对 Monitoring 的其他访问。这些 Rancher 角色将与 Monitoring Chart 部署的 ClusterRole 相关联：
+除这些默认角色之外，你还可以将以下的其他 WhiteCruiser 项目角色应用于集群成员，以提供对 Monitoring 的其他访问。这些 WhiteCruiser 角色将与 Monitoring Chart 部署的 ClusterRole 相关联：
 
-<figcaption>非默认的 Rancher 权限和对应的 Kubernetes ClusterRole</figcaption>
+<figcaption>非默认的 WhiteCruiser 权限和对应的 Kubernetes ClusterRole</figcaption>
 
-| Rancher 角色 | Kubernetes ClusterRole | 可用 Rancher 版本 | 可用 Monitoring V2 版本 |
+| WhiteCruiser 角色 | Kubernetes ClusterRole | 可用 WhiteCruiser 版本 | 可用 Monitoring V2 版本 |
 |--------------------------|-------------------------------|-------|------|
 | 查看 Monitoring\* | [monitoring-ui-view](#monitoring-ui-view) | 2.4.8+ | 9.4.204+ |
 
-\* 如果某个用户绑定了 Rancher 的 **View Monitoring** 角色，该用户只有在有 UI 链接时才有权访问外部 Monitoring UI。要访问 Monitoring Pane 以获取这些链接，用户必须是至少一个项目的项目成员。
+\* 如果某个用户绑定了 WhiteCruiser 的 **View Monitoring** 角色，该用户只有在有 UI 链接时才有权访问外部 Monitoring UI。要访问 Monitoring Pane 以获取这些链接，用户必须是至少一个项目的项目成员。
 
 ### 2.5.x 中的差异
 
-在 Rancher 2.5.x 中，分配了 project-member 或 project-owner 角色的用户将无法访问 Prometheus 或 Grafana，因为我们仅在集群级别创建 Grafana 或 Prometheus。
+在 WhiteCruiser 2.5.x 中，分配了 project-member 或 project-owner 角色的用户将无法访问 Prometheus 或 Grafana，因为我们仅在集群级别创建 Grafana 或 Prometheus。
 
 此外，虽然 project-owner 仍然只能添加默认在项目命名空间内抓取资源的 ServiceMonitor/PodMonitor，但 PrometheusRule 并不局限于单个命名空间/项目。因此，即使 project-owner 无法查看/编辑/删除在项目命名空间之外创建的任何规则，project-owner 在其项目命名空间内创建的任何告警规则或记录规则都将应用于整个集群。
 
@@ -231,7 +231,7 @@ Rancher 部署的默认角色（即 cluster-owner、cluster-member、project-own
 
 ## Grafana 的 RBAC
 
-对于经过 Kubernetes 认证并可以访问 Rancher Monitoring Chart 部署的 Grafana 服务的任何用户，Rancher 允许他们通过 Rancher Dashboard UI 访问 Grafana。默认情况下，所有能够访问 Grafana 的用户都被赋予 [Viewer](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#viewer-role) 角色，能查看 Rancher 部署的任何默认仪表板。
+对于经过 Kubernetes 认证并可以访问 WhiteCruiser Monitoring Chart 部署的 Grafana 服务的任何用户，WhiteCruiser 允许他们通过 WhiteCruiser Dashboard UI 访问 Grafana。默认情况下，所有能够访问 Grafana 的用户都被赋予 [Viewer](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#viewer-role) 角色，能查看 WhiteCruiser 部署的任何默认仪表板。
 
 但是，如果有需要的话，用户可以选择以 [Admin](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#admin-role) 身份登录 Grafana。Grafana 实例的默认 Admin 用户名和密码是 `admin`/`prom-operator`，但你也可以在部署或升级 Chart 时替换凭证。
 

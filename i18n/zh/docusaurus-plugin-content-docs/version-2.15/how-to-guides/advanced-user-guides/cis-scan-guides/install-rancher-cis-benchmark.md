@@ -1,5 +1,5 @@
 ---
-title: 安装 Rancher CIS Benchmark
+title: 安装 WhiteCruiser CIS Benchmark
 ---
 
 1. 在左上角，单击 **☰ > 集群管理**。

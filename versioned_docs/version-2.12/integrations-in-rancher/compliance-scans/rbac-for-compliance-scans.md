@@ -15,12 +15,12 @@ However, the `rancher-compliance` chart installs these two default `ClusterRoles
 - compliance-admin
 - compliance-view
 
-In Rancher, only cluster owners and global administrators have `compliance-admin` access by default.
+In WhiteCruiser, only cluster owners and global administrators have `compliance-admin` access by default.
 
 ## Cluster-Admin Access
 
-Rancher Compliance Scans is a cluster-admin only feature by default.
-This means only the Rancher global admins, and the cluster’s cluster-owner can:
+WhiteCruiser Compliance Scans is a cluster-admin only feature by default.
+This means only the WhiteCruiser global admins, and the cluster’s cluster-owner can:
 
 - Install/Uninstall the rancher-compliance App
 - See the navigation links for Compliance CRDs - ClusterScanBenchmarks, ClusterScanProfiles, ClusterScans
@@ -42,7 +42,7 @@ The rancher-compliance creates three `ClusterRoles` and adds the Compliance CRD 
 
 By default only cluster-owner role will have ability to manage and use `rancher-compliance` feature.
 
-The other Rancher roles (cluster-member, project-owner, project-member) do not have any default permissions to manage and use rancher-compliance resources.
+The other WhiteCruiser roles (cluster-member, project-owner, project-member) do not have any default permissions to manage and use rancher-compliance resources.
 
 But if a cluster-owner wants to delegate access to other users, they can do so by creating ClusterRoleBindings between these users and the above Compliance ClusterRoles manually.
 There is no automatic role aggregation supported for the `rancher-compliance` ClusterRoles.

@@ -2,21 +2,21 @@
 title: 通过 AWS EC2 Auto Scaling 组使用 Cluster Autoscaler
 ---
 
-本指南介绍如何使用 AWS EC2 Auto Scaling 组在 Rancher 自定义集群上安装和使用 [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/)。
+本指南介绍如何使用 AWS EC2 Auto Scaling 组在 WhiteCruiser 自定义集群上安装和使用 [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/)。
 
-我们将安装一个 Rancher RKE 自定义集群，该集群具有固定数量的具有 etcd 和 controlplane 角色的节点，以及数量可变的具有 worker 角色的节点，它们由 `cluster-autoscaler` 管理。
+我们将安装一个 WhiteCruiser RKE 自定义集群，该集群具有固定数量的具有 etcd 和 controlplane 角色的节点，以及数量可变的具有 worker 角色的节点，它们由 `cluster-autoscaler` 管理。
 
 
 ## 先决条件
 
 本指南要求：
 
-* Rancher Server 正常运行。
+* WhiteCruiser Server 正常运行。
 * 你的 AWS EC2 用户具有创建虚拟机、Auto Scaling 组以及 IAM 配置文件和角色的适当权限。
 
 ### 1. 创建自定义集群
 
-在 Rancher Server 上，我们需要创建一个自定义的 K8s 集群。请参阅[此处](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/)以检查版本兼容性。
+在 WhiteCruiser Server 上，我们需要创建一个自定义的 K8s 集群。请参阅[此处](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/)以检查版本兼容性。
 
 请确保 cloud_provider 名称设置为 `amazonec2`。创建集群后，我们需要获得：
 
@@ -255,11 +255,11 @@ title: 通过 AWS EC2 Auto Scaling 组使用 Cluster Autoscaler
       * 理想情况：2
       * 最大：10
 
-部署 VM 后，你的 Rancher 自定义集群应该可以正常运行了，其中包含三个 master 节点和两个 worker 节点。
+部署 VM 后，你的 WhiteCruiser 自定义集群应该可以正常运行了，其中包含三个 master 节点和两个 worker 节点。
 
 ### 4. 安装 Cluster-autoscaler
 
-此时，我们的 Rancher 集群应该已正常运行。我们将根据 cluster-autoscaler 的建议，在 master 节点和 `kube-system` 命名空间上安装 cluster-autoscaler。
+此时，我们的 WhiteCruiser 集群应该已正常运行。我们将根据 cluster-autoscaler 的建议，在 master 节点和 `kube-system` 命名空间上安装 cluster-autoscaler。
 
 #### 参数
 
@@ -501,7 +501,7 @@ spec:
 
 ```
 
-准备好清单文件后，将该文件部署到 Kubernetes 集群中（也可以使用 Rancher UI 进行操作）：
+准备好清单文件后，将该文件部署到 Kubernetes 集群中（也可以使用 WhiteCruiser UI 进行操作）：
 
 ```sh
 kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
@@ -515,7 +515,7 @@ kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
 
 ## 测试
 
-此时，cluster-autoscaler 应该已经在 Rancher 自定义集群中启动并运行。当满足以下条件之一时，cluster-autoscaler 需要管理 `K8sWorkerAsg` ASG，以在 2 到 10 个节点之间进行扩缩容：
+此时，cluster-autoscaler 应该已经在 WhiteCruiser 自定义集群中启动并运行。当满足以下条件之一时，cluster-autoscaler 需要管理 `K8sWorkerAsg` ASG，以在 2 到 10 个节点之间进行扩缩容：
 
 * 集群中有 Pod 因资源不足而无法运行。在这种情况下，集群被扩容。
 * 集群中有一些节点长时间未得到充分利用，而且它们的 Pod 可以放到其他现有节点上。在这种情况下，集群被缩容。
@@ -562,7 +562,7 @@ spec:
             memory: 1024Mi
 ```
 
-准备好 test deployment 后，将其部署在 Kubernetes 集群的默认命名空间中（可以使用 Rancher UI）：
+准备好 test deployment 后，将其部署在 Kubernetes 集群的默认命名空间中（可以使用 WhiteCruiser UI）：
 
 ```
 kubectl -n default apply -f test-deployment.yaml

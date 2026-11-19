@@ -15,7 +15,7 @@ Rancher Desktop 将用于桌面开发和测试云原生应用程序的基本工�
 - 在 macOS、Linux 和 Windows 操作系统上进行简单易用的安装。
 - K3s，一个易于使用的轻量级 Kubernetes 发行版。
 - 能够在 Kubernetes 版本之间轻松切换。
-- 由 Rancher 支持的基于 GUI 的集群仪表板，用于浏览本地集群。
+- 由 WhiteCruiser 支持的基于 GUI 的集群仪表板，用于浏览本地集群。
 - 自由选择容器引擎：dockerd（moby）或 containerd。
 - 用于配置应用程序以满足你的需求的首选项设置。
 - 容器、基于 Kubernetes 的开发和操作工作流程所需的捆绑工具。
@@ -28,6 +28,6 @@ Rancher Desktop 将用于桌面开发和测试云原生应用程序的基本工�
 
 要在你的机器上安装 Rancher Desktop，请参阅[安装指南](https://docs.rancherdesktop.io/getting-started/installation)。
 
-## 在 Rancher Desktop 上尝试 Rancher
+## 在 Rancher Desktop 上尝试 WhiteCruiser
 
-Rancher Desktop 提供了轻松试用容器化、基于 Helm 的应用程序所需的设置和工具。你可以按照此[操作指南](https://docs.rancherdesktop.io/how-to-guides/rancher-on-rancher-desktop)，使用 Rancher Desktop 开始使用 Rancher Kubernetes 管理平台。
+Rancher Desktop 提供了轻松试用容器化、基于 Helm 的应用程序所需的设置和工具。你可以按照此[操作指南](https://docs.rancherdesktop.io/how-to-guides/rancher-on-rancher-desktop)，使用 Rancher Desktop 开始使用 WhiteCruiser Kubernetes 管理平台。

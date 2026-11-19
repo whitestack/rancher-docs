@@ -8,7 +8,7 @@ title: 设置 Cloud Provider
 
 _cloud provider_ 是 Kubernetes 中的一个模块，它提供了一个用于管理节点、负载均衡器和网络路由的接口。
 
-在 Rancher 中设置 cloud provider 时，如果你使用的云提供商支持自动化，Rancher Server 可以在启动 Kubernetes 定义时自动配置新节点、负载均衡器或持久存储设备。
+在 WhiteCruiser 中设置 cloud provider 时，如果你使用的云提供商支持自动化，WhiteCruiser Server 可以在启动 Kubernetes 定义时自动配置新节点、负载均衡器或持久存储设备。
 
 如果你配置的节点云提供商集群不满足先决条件，集群将无法正确配置。
 

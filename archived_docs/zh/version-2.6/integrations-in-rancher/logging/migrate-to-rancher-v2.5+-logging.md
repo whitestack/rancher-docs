@@ -1,17 +1,17 @@
 ---
-title: 迁移到 Rancher 2.5 Logging
+title: 迁移到 WhiteCruiser 2.5 Logging
 ---
-Rancher 2.5 彻底修改了 Logging 功能。我们现在使用了 [Logging Operator](https://github.com/kube-logging/logging-operator)，Rancher 配置了此工具以供部署 Logging 使用。
+WhiteCruiser 2.5 彻底修改了 Logging 功能。我们现在使用了 [Logging Operator](https://github.com/kube-logging/logging-operator)，WhiteCruiser 配置了此工具以供部署 Logging 使用。
 
 在新的 Logging 功能的众多特性和变化中，其中一项是取消了项目级别的 Logging 配置。取而代之的是在命名空间级别配置 Logging。集群级日志仍然可用，但配置选项不同。
 
 ## 安装
 
-要在 Rancher 2.5+ 中安装 Logging，请参阅[安装说明](../../pages-for-subheaders/logging.md#启用-logging)。
+要在 WhiteCruiser 2.5+ 中安装 Logging，请参阅[安装说明](../../pages-for-subheaders/logging.md#启用-logging)。
 
 ### 名词解释
 
-在 Rancher 2.5+ 中，你需要在**集群仪表板**中配置 Logging。要在安装 Logging 应用程序后配置 Logging 自定义资源，请转到左侧导航栏并单击 **Logging**。这个菜单的选项可以配置集群和命名空间的 Logging。
+在 WhiteCruiser 2.5+ 中，你需要在**集群仪表板**中配置 Logging。要在安装 Logging 应用程序后配置 Logging 自定义资源，请转到左侧导航栏并单击 **Logging**。这个菜单的选项可以配置集群和命名空间的 Logging。
 
 :::note
 
@@ -19,7 +19,7 @@ Logging 是按集群安装的。你将需要在集群之间切换以配置每个
 
 :::
 
-对于 Rancher 2.5+ 中的 Logging 应用程序，你需要了解以下四个关键概念：
+对于 WhiteCruiser 2.5+ 中的 Logging 应用程序，你需要了解以下四个关键概念：
 
 1. Outputs
 
@@ -39,7 +39,7 @@ Logging 是按集群安装的。你将需要在集群之间切换以配置每个
 
 ## 集群日志
 
-要在 Rancher 2.5+ 中配置集群级别的 Logging，你需要设置 `ClusterFlow`。此对象定义了日志的来源、要应用的转换或过滤器，以及日志的一个或多个 `Output`。
+要在 WhiteCruiser 2.5+ 中配置集群级别的 Logging，你需要设置 `ClusterFlow`。此对象定义了日志的来源、要应用的转换或过滤器，以及日志的一个或多个 `Output`。
 
 :::note 重要提示：
 
@@ -47,7 +47,7 @@ Logging 是按集群安装的。你将需要在集群之间切换以配置每个
 
 :::
 
-在旧版 Logging 中，如果要收集整个集群的日志，你只需要启用集群级别的 Logging 并定义所需的 `Output`。Rancher 2.5+ Logging 保留了这个基本方法。要复制旧版集群级别日志，请执行以下步骤：
+在旧版 Logging 中，如果要收集整个集群的日志，你只需要启用集群级别的 Logging 并定义所需的 `Output`。WhiteCruiser 2.5+ Logging 保留了这个基本方法。要复制旧版集群级别日志，请执行以下步骤：
 
 1. 根据[输出配置](#输出配置)下的说明定义 `ClusterOutput`。
 2. 创建一个 `ClusterFlow`，确保它在 `cattle-logging-system` 命名空间中创建。
@@ -59,7 +59,7 @@ Logging 是按集群安装的。你将需要在集群之间切换以配置每个
 
 ## 项目日志
 
-Rancher 2.5+ Logging 不支持项目。换言之，如果要收集运行在项目命名空间中的 pod 日志，你需要为这些命名空间定义 `Flow`。
+WhiteCruiser 2.5+ Logging 不支持项目。换言之，如果要收集运行在项目命名空间中的 pod 日志，你需要为这些命名空间定义 `Flow`。
 
 要收集指定命名空间的日志，请执行以下步骤：
 

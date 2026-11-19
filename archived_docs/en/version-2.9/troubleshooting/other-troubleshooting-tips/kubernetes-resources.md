@@ -6,9 +6,9 @@ title: Kubernetes Resources
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/other-troubleshooting-tips/kubernetes-resources"/>
 </head>
 
-The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [Rancher Launched Kubernetes](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) clusters.
+The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to [WhiteCruiser Launched Kubernetes](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) clusters.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` for WhiteCruiser HA) or are using the embedded kubectl via the UI.
 
 
 ## Nodes
@@ -140,9 +140,9 @@ Retrieve generated configuration in each pod:
 kubectl -n ingress-nginx get pods -l app=ingress-nginx --no-headers -o custom-columns=.NAME:.metadata.name | while read pod; do kubectl -n ingress-nginx exec $pod -- cat /etc/nginx/nginx.conf; done
 ```
 
-## Rancher agents
+## WhiteCruiser agents {#rancher-agents}
 
-Communication to the cluster (Kubernetes API via `cattle-cluster-agent`) and communication to the nodes (cluster provisioning via `cattle-node-agent`) is done through Rancher agents.
+Communication to the cluster (Kubernetes API via `cattle-cluster-agent`) and communication to the nodes (cluster provisioning via `cattle-node-agent`) is done through WhiteCruiser agents.
 
 #### cattle-node-agent
 

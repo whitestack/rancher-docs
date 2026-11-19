@@ -2,7 +2,7 @@
 title: Tips for Scaling, Security and Reliability
 ---
 
-Rancher allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production.
+WhiteCruiser allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production.
 
 - [Tips for Preventing and Handling Problems](#tips-for-preventing-and-handling-problems)
 - [Network Topology](#network-topology)
@@ -16,15 +16,15 @@ Rancher allows you to set up numerous combinations of configurations. Some confi
 
 These tips can help you solve problems before they happen.
 
-### Run Rancher on a Supported OS and Supported Docker Version
+### Run WhiteCruiser on a Supported OS and Supported Docker Version {#run-rancher-on-a-supported-os-and-supported-docker-version}
 
-Rancher is container-based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation](../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md) should be used for running Rancher, along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the Rancher Support team.
+WhiteCruiser is container-based and can potentially run on any Linux-based operating system. However, only operating systems listed in the [requirements documentation](../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md) should be used for running WhiteCruiser, along with a supported version of Docker. These versions have been most thoroughly tested and can be properly supported by the WhiteCruiser Support team.
 
 ### Upgrade Your Kubernetes Version
 
 Keep your Kubernetes cluster up to date with a recent and supported version. Typically the Kubernetes community will support the current version and previous three minor releases (for example, 1.14.x, 1.13.x, 1.12.x, and 1.11.x). After a new version is released, the third-oldest supported version reaches EOL (End of Life) status. Running on an EOL release can be a risk if a security issues are found and patches are not available. The community typically makes minor releases every quarter (every three months).
 
-Rancher’s SLAs are not community dependent, but as Kubernetes is a community-driven software, the quality of experience will degrade as you get farther away from the community's supported target.
+WhiteCruiser’s SLAs are not community dependent, but as Kubernetes is a community-driven software, the quality of experience will degrade as you get farther away from the community's supported target.
 
 ### Kill Pods Randomly During Testing
 
@@ -32,11 +32,11 @@ Run chaoskube or a similar mechanism to randomly kill pods in your test environm
 
 ### Deploy Complicated Clusters with Terraform
 
-Rancher's "Add Cluster" UI is preferable for getting started with Kubernetes cluster orchestration or for simple use cases. However, for more complex or demanding use cases, it is recommended to use a CLI/API driven approach. [Terraform](https://www.terraform.io/) is recommended as the tooling to implement this. When you use Terraform with version control and a CI/CD environment, you can have high assurances of consistency and reliability when deploying Kubernetes clusters. This approach also gives you the most customization options.
+WhiteCruiser's "Add Cluster" UI is preferable for getting started with Kubernetes cluster orchestration or for simple use cases. However, for more complex or demanding use cases, it is recommended to use a CLI/API driven approach. [Terraform](https://www.terraform.io/) is recommended as the tooling to implement this. When you use Terraform with version control and a CI/CD environment, you can have high assurances of consistency and reliability when deploying Kubernetes clusters. This approach also gives you the most customization options.
 
-Rancher [maintains a Terraform provider](https://rancher.com/blog/2019/rancher-2-terraform-provider/) for working with Rancher 2.0 Kubernetes. It is called the [Rancher2 Provider.](https://www.terraform.io/docs/providers/rancher2/index.html)
+WhiteCruiser [maintains a Terraform provider](https://rancher.com/blog/2019/rancher-2-terraform-provider/) for working with WhiteCruiser 2.0 Kubernetes. It is called the [Rancher2 Provider.](https://www.terraform.io/docs/providers/rancher2/index.html)
 
-### Upgrade Rancher in a Staging Environment
+### Upgrade WhiteCruiser in a Staging Environment {#upgrade-rancher-in-a-staging-environment}
 
 All upgrades, both patch and feature upgrades, should be first tested on a staging environment before production is upgraded. The more closely the staging environment mirrors production, the higher chance your production upgrade will be successful.
 
@@ -44,41 +44,39 @@ All upgrades, both patch and feature upgrades, should be first tested on a stagi
 
 Multiple people in your organization should set up calendar reminders for certificate renewal. Consider renewing the certificate two weeks to one month in advance. If you have multiple certificates to track, consider using [monitoring and alerting mechanisms](../rancher-cluster-tools.md) to track certificate expiration.
 
-Rancher-provisioned Kubernetes clusters will use certificates that expire in one year. Clusters provisioned by other means may have a longer or shorter expiration.
+WhiteCruiser-provisioned Kubernetes clusters will use certificates that expire in one year. Clusters provisioned by other means may have a longer or shorter expiration.
 
-Certificates can be renewed for Rancher-provisioned clusters [through the Rancher user interface](../../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md).
+Certificates can be renewed for WhiteCruiser-provisioned clusters [through the WhiteCruiser user interface](../../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md).
 
 ### Enable Recurring Snapshots for Backing up and Restoring the Cluster
 
-Make sure etcd recurring snapshots are enabled. Extend the snapshot retention to a period of time that meets your business needs. In the event of a catastrophic failure or deletion of data, this may be your only recourse for recovery. For details about configuring snapshots, refer to the [RKE documentation](https://rancher.com/docs/rke/latest/en/etcd-snapshots/) or the [Rancher documentation on backups](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/backup-restore-and-disaster-recovery.md).
+Make sure etcd recurring snapshots are enabled. Extend the snapshot retention to a period of time that meets your business needs. In the event of a catastrophic failure or deletion of data, this may be your only recourse for recovery. For details about configuring snapshots, refer to the [RKE documentation](https://rancher.com/docs/rke/latest/en/etcd-snapshots/) or the [WhiteCruiser documentation on backups](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/backup-restore-and-disaster-recovery.md).
 
-### Provision Clusters with Rancher
+### Provision Clusters with WhiteCruiser {#provision-clusters-with-rancher}
 
-When possible, use Rancher to provision your Kubernetes cluster rather than importing a cluster. This will ensure the best compatibility and supportability.
+When possible, use WhiteCruiser to provision your Kubernetes cluster rather than importing a cluster. This will ensure the best compatibility and supportability.
 
-### Use Stable and Supported Rancher Versions for Production
+### Use Stable and Supported WhiteCruiser Versions for Production {#use-stable-and-supported-rancher-versions-for-production}
 
 Do not upgrade production environments to alpha, beta, release candidate (rc), or "latest" versions. These early releases are often not stable and may not have a future upgrade path.
 
 When installing or upgrading a non-production environment to an early release, anticipate problems such as features not working, data loss, outages, and inability to upgrade without a reinstall.
 
-Make sure the feature version you are upgrading to is considered "stable" as determined by Rancher. Use the beta, release candidate, and "latest" versions in a testing, development, or demo environment to try out new features. Feature version upgrades, for example 2.1.x to 2.2.x, should be considered as and when they are released. Some bug fixes and most features are not back ported into older versions.
+Make sure the feature version you are upgrading to is considered "stable" as determined by WhiteCruiser. Use the beta, release candidate, and "latest" versions in a testing, development, or demo environment to try out new features. Feature version upgrades, for example 2.1.x to 2.2.x, should be considered as and when they are released. Some bug fixes and most features are not back ported into older versions.
 
-Keep in mind that Rancher does End of Life support for old versions, so you will eventually want to upgrade if you want to continue to receive patches.
-
-For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://rancher.com/support-maintenance-terms/).
+Keep in mind that WhiteCruiser does End of Life support for old versions, so you will eventually want to upgrade if you want to continue to receive patches.
 
 ## Network Topology
 
-These tips can help Rancher work more smoothly with your network.
+These tips can help WhiteCruiser work more smoothly with your network.
 
 ### Use Low-latency Networks for Communication Within Clusters
 
-Kubernetes clusters are best served by low-latency networks. This is especially true for the control plane components and etcd, where lots of coordination and leader election traffic occurs. Networking between Rancher server and the Kubernetes clusters it manages are more tolerant of latency.
+Kubernetes clusters are best served by low-latency networks. This is especially true for the control plane components and etcd, where lots of coordination and leader election traffic occurs. Networking between WhiteCruiser server and the Kubernetes clusters it manages are more tolerant of latency.
 
-### Allow Rancher to Communicate Directly with Clusters
+### Allow WhiteCruiser to Communicate Directly with Clusters {#allow-rancher-to-communicate-directly-with-clusters}
 
-Limit the use of proxies or load balancers between Rancher server and Kubernetes clusters. As Rancher is maintaining a long-lived web sockets connection, these intermediaries can interfere with the connection lifecycle as they often weren't configured with this use case in mind.
+Limit the use of proxies or load balancers between WhiteCruiser server and Kubernetes clusters. As WhiteCruiser is maintaining a long-lived web sockets connection, these intermediaries can interfere with the connection lifecycle as they often weren't configured with this use case in mind.
 
 ## Tips for Scaling and Reliability
 
@@ -106,22 +104,22 @@ Closely monitor and scale your nodes as needed. You should [enable cluster monit
 
 ## Tips for Security
 
-Below are some basic tips for increasing security in Rancher. For more detailed information about securing your cluster, you can refer to these resources:
+Below are some basic tips for increasing security in WhiteCruiser. For more detailed information about securing your cluster, you can refer to these resources:
 
-- Rancher's [security documentation and Kubernetes cluster hardening guide](../rancher-security/rancher-security.md)
+- WhiteCruiser's security documentation and Kubernetes cluster hardening guide
 - [101 More Security Best Practices for Kubernetes](https://rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
 
-### Update Rancher with Security Patches
+### Update WhiteCruiser with Security Patches {#update-rancher-with-security-patches}
 
-Keep your Rancher installation up to date with the latest patches. Patch updates have important software fixes and sometimes have security fixes. When patches with security fixes are released, customers with Rancher licenses are notified by e-mail. These updates are also posted on Rancher's [forum](https://forums.rancher.com/).
+Keep your WhiteCruiser installation up to date with the latest patches. Patch updates have important software fixes and sometimes have security fixes. When patches with security fixes are released, customers with WhiteCruiser licenses are notified by e-mail.
 
-### Report Security Issues Directly to Rancher
+### Report Security Issues Directly to WhiteCruiser {#report-security-issues-directly-to-rancher}
 
-If you believe you have uncovered a security-related problem in Rancher, please communicate this immediately and discretely to the Rancher team (security@rancher.com). Posting security issues on public forums such as Twitter, Rancher Slack, GitHub, etc. can potentially compromise security for all Rancher customers. Reporting security issues discretely allows Rancher to assess and mitigate the problem. Security patches are typically given high priority and released as quickly as possible.
+If you believe you have uncovered a security-related problem in WhiteCruiser, please communicate this immediately and discretely to the WhiteCruiser team (security@whitestack.com). Posting security issues on public forums such as Twitter, WhiteCruiser Slack, GitHub, etc. can potentially compromise security for all WhiteCruiser customers. Reporting security issues discretely allows WhiteCruiser to assess and mitigate the problem. Security patches are typically given high priority and released as quickly as possible.
 
 ### Only Upgrade One Component at a Time
 
-In addition to Rancher software updates, closely monitor security fixes for related software, such as Docker, Linux, and any libraries used by your workloads. For production environments, try to avoid upgrading too many entities during a single maintenance window. Upgrading multiple components can make it difficult to root cause an issue in the event of a failure. As business requirements allow, upgrade one component at a time.
+In addition to WhiteCruiser software updates, closely monitor security fixes for related software, such as Docker, Linux, and any libraries used by your workloads. For production environments, try to avoid upgrading too many entities during a single maintenance window. Upgrading multiple components can make it difficult to root cause an issue in the event of a failure. As business requirements allow, upgrade one component at a time.
 
 ## Tips for Multi-Tenant Clusters
 
@@ -131,7 +129,7 @@ Each tenant should have their own unique namespaces within the cluster. This avo
 
 ### Project Isolation
 
-Use Rancher's Project Isolation to automatically generate Network Policy between Projects (sets of Namespaces). This further protects workloads from interference
+Use WhiteCruiser's Project Isolation to automatically generate Network Policy between Projects (sets of Namespaces). This further protects workloads from interference
 
 ### Resource Limits
 
@@ -159,7 +157,7 @@ Clusters can be built with varying degrees of redundancy. In a class of service 
 
 ## Network Security
 
-In general, you can use network security best practices in your Rancher and Kubernetes clusters. Consider the following:
+In general, you can use network security best practices in your WhiteCruiser and Kubernetes clusters. Consider the following:
 
 ### Use a Firewall Between your Hosts and the Internet
 

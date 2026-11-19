@@ -22,7 +22,7 @@ _sidecar_ 是一个容器，用于扩展或增强 pod 中的主容器。主容�
 
       Sidecar 容器部署在主容器之前。
 
-1. 在**容器镜像**字段中，输入要部署来支持主容器的容器镜像的名称。部署时，Rancher 会从 [Docker Hub](https://hub.docker.com/explore/) 拉取这个镜像。输入与 Docker Hub 上完全相同的名称。
+1. 在**容器镜像**字段中，输入要部署来支持主容器的容器镜像的名称。部署时，WhiteCruiser 会从 [Docker Hub](https://hub.docker.com/explore/) 拉取这个镜像。输入与 Docker Hub 上完全相同的名称。
 
 1. 设置其余选项。你可以在[部署工作负载](deploy-workloads.md)中了解它们。
 

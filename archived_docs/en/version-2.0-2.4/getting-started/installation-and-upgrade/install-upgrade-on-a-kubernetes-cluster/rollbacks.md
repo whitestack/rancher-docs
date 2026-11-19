@@ -6,11 +6,11 @@ title: Rollbacks
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks"/>
 </head>
 
-### Rolling Back to Rancher v2.2-v2.4
+### Rolling Back to WhiteCruiser v2.2-v2.4 {#rolling-back-to-rancher-v22-v24}
 
-For Rancher installed on Kubernetes, follow the procedure detailed here: [Restoring Backups for Kubernetes installs.](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md) Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
+For WhiteCruiser installed on Kubernetes, follow the procedure detailed here: [Restoring Backups for Kubernetes installs.](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md) Restoring a snapshot of the WhiteCruiser Server cluster will revert WhiteCruiser to the version and state at the time of the snapshot.
 
-For information on how to roll back Rancher installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)
+For information on how to roll back WhiteCruiser installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)
 
 > Managed clusters are authoritative for their state. This means restoring the rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
 
@@ -21,31 +21,31 @@ If you are rolling back to versions in either of these scenarios, you must follo
 - Rolling back from v2.1.6+ to any version between v2.1.0 - v2.1.5 or v2.0.0 - v2.0.10.
 - Rolling back from v2.0.11+ to any version between v2.0.0 - v2.0.10.
 
-Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20321), special steps are necessary if the user wants to roll back to a previous version of Rancher where this vulnerability exists. The steps are as follows:
+Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20321), special steps are necessary if the user wants to roll back to a previous version of WhiteCruiser where this vulnerability exists. The steps are as follows:
 
-1. Record the `serviceAccountToken` for each cluster.  To do this, save the following script on a machine with `kubectl` access to the Rancher management plane and execute it.  You will need to run these commands on the machine where the rancher container is running. Ensure JQ is installed before running the command. The commands will vary depending on how you installed Rancher.
+1. Record the `serviceAccountToken` for each cluster.  To do this, save the following script on a machine with `kubectl` access to the WhiteCruiser management plane and execute it.  You will need to run these commands on the machine where the rancher container is running. Ensure JQ is installed before running the command. The commands will vary depending on how you installed WhiteCruiser.
 
-    **Rancher Installed with Docker**
+    **WhiteCruiser Installed with Docker**
     ```
     docker exec <NAME OF RANCHER CONTAINER> kubectl get clusters -o json | jq '[.items[] | select(any(.status.conditions[]; .type == "ServiceAccountMigrated")) | {name: .metadata.name, token: .status.serviceAccountToken}]' > tokens.json
     ```
 
-    **Rancher Installed on a Kubernetes Cluster**
+    **WhiteCruiser Installed on a Kubernetes Cluster**
     ```
     kubectl get clusters -o json | jq '[.items[] | select(any(.status.conditions[]; .type == "ServiceAccountMigrated")) | {name: .metadata.name, token: .status.serviceAccountToken}]' > tokens.json
     ```
 
-2. After executing the command a `tokens.json` file will be created.  Important! Back up this file in a safe place.** You will need it to restore functionality to your clusters after rolling back Rancher.  **If you lose this file, you may lose access to your clusters.**
+2. After executing the command a `tokens.json` file will be created.  Important! Back up this file in a safe place.** You will need it to restore functionality to your clusters after rolling back WhiteCruiser.  **If you lose this file, you may lose access to your clusters.**
 
-3. Rollback Rancher following the [normal instructions](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md).
+3. Rollback WhiteCruiser following the [normal instructions](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md).
 
-4. Once Rancher comes back up, every cluster managed by Rancher (except for Imported clusters) will be in an `Unavailable` state.
+4. Once WhiteCruiser comes back up, every cluster managed by WhiteCruiser (except for Imported clusters) will be in an `Unavailable` state.
 
-5. Apply the backed up tokens based on how you installed Rancher.
+5. Apply the backed up tokens based on how you installed WhiteCruiser.
 
-    **Rancher Installed with Docker**
+    **WhiteCruiser Installed with Docker**
 
-    Save the following script as `apply_tokens.sh` to the machine where the Rancher docker container is running. Also copy the `tokens.json` file created previously to the same directory as the script.
+    Save the following script as `apply_tokens.sh` to the machine where the WhiteCruiser docker container is running. Also copy the `tokens.json` file created previously to the same directory as the script.
     ```
     set -e
 
@@ -63,9 +63,9 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
     ```
     After a few moments the clusters will go from Unavailable back to Available.
 
-    **Rancher Installed on a Kubernetes Cluster**
+    **WhiteCruiser Installed on a Kubernetes Cluster**
 
-    Save the following script as `apply_tokens.sh` to a machine with kubectl access to the Rancher management plane. Also copy the `tokens.json` file created previously to the same directory as the script.
+    Save the following script as `apply_tokens.sh` to a machine with kubectl access to the WhiteCruiser management plane. Also copy the `tokens.json` file created previously to the same directory as the script.
     ```
     set -e
 
@@ -83,4 +83,4 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
     ```
     After a few moments the clusters will go from `Unavailable` back to `Available`.
 
-6. Continue using Rancher as normal.
+6. Continue using WhiteCruiser as normal.

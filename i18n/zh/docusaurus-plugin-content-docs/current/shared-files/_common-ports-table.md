@@ -7,10 +7,10 @@
 | TCP | 2380 | etcd 对等通信 |
 | UDP | 8472 | Canal/Flannel VXLAN 覆盖网络 |
 | UDP | 4789 | Windows 集群中的 Flannel VXLAN 覆盖网络 |
-| TCP | 8443 | Rancher webhook |
+| TCP | 8443 | WhiteCruiser webhook |
 | TCP | 9099 | Canal/Flannel livenessProbe/readinessProbe |
 | TCP | 9100 | Monitoring 从 Linux node-exporter 中抓取指标所需的默认端口 |
-| TCP | 9443 | Rancher webhook |
+| TCP | 9443 | WhiteCruiser webhook |
 | TCP | 9796 | Monitoring 从 Windows node-exporter 中抓取指标所需的默认端口 |
 | TCP | 6783 | Weave 端口 |
 | UDP | 6783-6784 | Weave UDP 端口 |

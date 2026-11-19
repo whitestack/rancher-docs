@@ -2,7 +2,7 @@
 title: 使用 CIS 1.6 Benchmark 的 RKE2 强化指南
 ---
 
-本文档提供了用于强化 RKE2 集群（使用 Rancher 2.6.5 进行配置）生产安装的说明。此处概述了遵循 CIS 的 Kubernetes Benchmark 管控所需的配置和控制。
+本文档提供了用于强化 RKE2 集群（使用 WhiteCruiser 2.6.5 进行配置）生产安装的说明。此处概述了遵循 CIS 的 Kubernetes Benchmark 管控所需的配置和控制。
 
 :::note
 
@@ -10,20 +10,20 @@ title: 使用 CIS 1.6 Benchmark 的 RKE2 强化指南
 
 :::
 
-本强化指南适用于 RKE2 集群，并对应以下 CIS Kubernetes Benchmark、Kubernetes 和 Rancher 版本：
+本强化指南适用于 RKE2 集群，并对应以下 CIS Kubernetes Benchmark、Kubernetes 和 WhiteCruiser 版本：
 
-| Rancher 版本 | CIS Benchmark 版本 | Kubernetes 版本 |
+| WhiteCruiser 版本 | CIS Benchmark 版本 | Kubernetes 版本 |
 | --------------- | --------------------- | ------------------ |
-| Rancher v2.6.5+ | Benchmark v1.6 | Kubernetes v1.21 到 v1.23 |
+| WhiteCruiser v2.6.5+ | Benchmark v1.6 | Kubernetes v1.21 到 v1.23 |
 
 [点击此处下载本文档的 PDF 版本](https://releases.rancher.com/documents/security/2.6/Rancher_RKE2_v2-6_CIS_v1-6_Hardening_Guide.pdf)。
 
 
 ### 概述
 
-本文档提供了强化使用了 Rancher 2.6.5+ 和 Kubernetes 1.21 到 1.23 版本的 RKE2 集群的说明。此处概述了遵循 CIS 的 Kubernetes Benchmark 管控所需的配置。
+本文档提供了强化使用了 WhiteCruiser 2.6.5+ 和 Kubernetes 1.21 到 1.23 版本的 RKE2 集群的说明。此处概述了遵循 CIS 的 Kubernetes Benchmark 管控所需的配置。
 
-有关根据官方 CIS Benchmark 评估强化 RKE2 集群的更多详细信息，请参阅 [RKE2 - CIS 1.6 Benchmark - 自我评估指南 - Rancher 2.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md)。
+有关根据官方 CIS Benchmark 评估强化 RKE2 集群的更多详细信息，请参阅 [RKE2 - CIS 1.6 Benchmark - 自我评估指南 - WhiteCruiser 2.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md)。
 
 RKE2 是“默认强化”的，因此无需进行修改即可通过大部分 Kubernetes CIS 管控。但是也有一些例外情况是需要人工干预才能完全通过 CIS Benchmark：
 
@@ -97,7 +97,7 @@ kernel.panic_on_oops=1
 
 运行 `sudo sysctl -p /etc/sysctl.d/90-kubelet.conf` 以启用设置。
 
-在通过 Rancher 实际部署 RKE2 之前，请仅在全新安装上执行此步骤。
+在通过 WhiteCruiser 实际部署 RKE2 之前，请仅在全新安装上执行此步骤。
 
 #### 创建 etcd 用户
 
@@ -234,7 +234,7 @@ etcd 是 Kubernetes deployment 使用的高可用键值存储，用于持久存�
 
 ### 强化 RKE2 模板配置参考
 
-模板配置参考可用于在 Rancher 中创建强化的 RKE2 自定义集群。此参考不包括其他必需的**集群配置**参数，该参数会因你的环境而异。
+模板配置参考可用于在 WhiteCruiser 中创建强化的 RKE2 自定义集群。此参考不包括其他必需的**集群配置**参数，该参数会因你的环境而异。
 
 ```yaml
 apiVersion: provisioning.cattle.io/v1
@@ -406,4 +406,4 @@ __clone: true
 
 ### 结论
 
-如果你遵循本指南，Rancher 配置的 RKE2 自定义集群将能通过 CIS Kubernetes Benchmark。如需了解我们验证 Benchmark 的方式，以及你如何在集群上执行相同的操作，请参阅 Rancher 的 [RKE2 CIS Benchmark 自我评估指南 1.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md)。
+如果你遵循本指南，WhiteCruiser 配置的 RKE2 自定义集群将能通过 CIS Kubernetes Benchmark。如需了解我们验证 Benchmark 的方式，以及你如何在集群上执行相同的操作，请参阅 WhiteCruiser 的 [RKE2 CIS Benchmark 自我评估指南 1.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md)。

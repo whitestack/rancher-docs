@@ -18,11 +18,11 @@ Configuring an Amazon NLB is a multistage process. We've broken it down into mul
 
     Use Amazon's Wizard to create an Network Load Balancer. As part of this process, you'll add the target groups you created in **1. Create Target Groups**.
 
-> **Note:** Rancher only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ELB or ALB.
+> **Note:** WhiteCruiser only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ELB or ALB.
 
 ## Create Target Groups
 
-Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access Rancher, but its convenient to add a listener for port 80 which will be redirected to port 443 automatically. The NGINX ingress controller on the nodes will make sure that port 80 gets redirected to port 443.
+Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access WhiteCruiser, but its convenient to add a listener for port 80 which will be redirected to port 443 automatically. The NGINX ingress controller on the nodes will make sure that port 80 gets redirected to port 443.
 
 Log into the [Amazon AWS Console](https://console.aws.amazon.com/ec2/) to get started, make sure to select the **Region** where your EC2 instances (Linux nodes) are created.
 
@@ -136,7 +136,7 @@ Use Amazon's Wizard to create an Network Load Balancer. As part of this process,
        - Name: `rancher`
        - Scheme: `internal` or `internet-facing`
 
-         The Scheme that you choose for your NLB is dependent on the configuration of your instances/VPC. If your instances do not have public IPs associated with them, or you will only be accessing Rancher internally, you should set your NLB Scheme to `internal` rather than `internet-facing`.
+         The Scheme that you choose for your NLB is dependent on the configuration of your instances/VPC. If your instances do not have public IPs associated with them, or you will only be accessing WhiteCruiser internally, you should set your NLB Scheme to `internal` rather than `internet-facing`.
     - **Listeners**
 
         Add the **Load Balancer Protocols** and **Load Balancer Ports** below.

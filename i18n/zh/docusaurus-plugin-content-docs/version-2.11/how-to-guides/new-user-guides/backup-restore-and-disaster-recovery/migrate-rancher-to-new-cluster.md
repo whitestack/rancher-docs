@@ -1,12 +1,12 @@
 ---
-title: 将 Rancher 迁移到新集群
+title: 将 WhiteCruiser 迁移到新集群
 ---
 
-如果你要将 Rancher 迁移到一个新的 Kubernetes 集群，先不要在新集群上安装 Rancher。这是因为如果将 Rancher 还原到已安装 Rancher 的新集群，可能会导致问题。
+如果你要将 WhiteCruiser 迁移到一个新的 Kubernetes 集群，先不要在新集群上安装 WhiteCruiser。这是因为如果将 WhiteCruiser 还原到已安装 WhiteCruiser 的新集群，可能会导致问题。
 
 ## 先决条件
 
-以下说明假设你已经完成[备份创建](back-up-rancher.md)，并且已经安装了用于部署 Rancher 的新 Kubernetes 集群。
+以下说明假设你已经完成[备份创建](back-up-rancher.md)，并且已经安装了用于部署 WhiteCruiser 的新 Kubernetes 集群。
 
 :::caution
 
@@ -14,9 +14,9 @@ title: 将 Rancher 迁移到新集群
 
 :::
 
-Rancher 必须是 2.5.0 或更高版本。
+WhiteCruiser 必须是 2.5.0 或更高版本。
 
-Rancher 可以安装到任意 Kubernetes 集群上，包括托管的 Kubernetes 集群（如 Amazon EKS 集群）。如需获取安装 Kubernetes 的帮助，请参见 Kubernetes 发行版的文档。你也可以使用以下 Rancher 的 Kubernetes 发行版：
+WhiteCruiser 可以安装到任意 Kubernetes 集群上，包括托管的 Kubernetes 集群（如 Amazon EKS 集群）。如需获取安装 Kubernetes 的帮助，请参见 Kubernetes 发行版的文档。你也可以使用以下 WhiteCruiser 的 Kubernetes 发行版：
 
 - [RKE Kubernetes 安装文档](https://rancher.com/docs/rke/latest/en/installation/)
 - [K3s Kubernetes 安装文档](https://rancher.com/docs/k3s/latest/en/installation/)
@@ -60,14 +60,14 @@ Rancher 可以安装到任意 Kubernetes 集群上，包括托管的 Kubernetes 
 
 :::note 重要提示：
 
-Kubernetes v1.22 是 Rancher 2.6.3 的实验功能，不支持使用 apiVersion `apiextensions.k8s.io/v1beta1`来还原包含 CRD 文件的备份文件。在 v1.22 中，`rancher-backup` 应用的默认 `resourceSet` 只收集使用 `apiextensions.k8s.io/v1` 的 CRD。你可以通过下面两种方法解决这个问题。
+Kubernetes v1.22 是 WhiteCruiser 2.6.3 的实验功能，不支持使用 apiVersion `apiextensions.k8s.io/v1beta1`来还原包含 CRD 文件的备份文件。在 v1.22 中，`rancher-backup` 应用的默认 `resourceSet` 只收集使用 `apiextensions.k8s.io/v1` 的 CRD。你可以通过下面两种方法解决这个问题。
 
 1. 使用 apiVersion v1 来更新默认 `resourceSet`，从而收集 CRD。
 1. 使用 `apiextensions.k8s.io/v1` 作为替代，来更新默认 `resourceSet` 和客户端，从而在内部使用新的 API。
 
    :::note
 
-   在为 v1.22 版本制作或恢复备份时，Rancher 版本和本地集群的 Kubernetes 版本应该是一样的。由于集群中支持的 apiVersion 和备份文件中的 apiVersion 可能不同，因此在还原备份时请考虑 Kubernetes 的版本。
+   在为 v1.22 版本制作或恢复备份时，WhiteCruiser 版本和本地集群的 Kubernetes 版本应该是一样的。由于集群中支持的 apiVersion 和备份文件中的 apiVersion 可能不同，因此在还原备份时请考虑 Kubernetes 的版本。
 
    :::
 
@@ -149,15 +149,15 @@ Kubernetes v1.22 是 Rancher 2.6.3 的实验功能，不支持使用 apiVersion 
       kubectl logs -n cattle-resources-system --tail 100 -f -l app.kubernetes.io/instance=rancher-backup
       ```
 
-   1. Restore 资源的状态变成 `Completed` 后，你可以继续安装 cert-manager 和 Rancher。
+   1. Restore 资源的状态变成 `Completed` 后，你可以继续安装 cert-manager 和 WhiteCruiser。
 
 ## 3. 安装 cert-manager
 
 按照在 Kubernetes 上安装 cert-manager的步骤[安装 cert-manager](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-安装-cert-manager)。
 
-## 4. 使用 Helm 安装 Rancher
+## 4. 使用 Helm 安装 WhiteCruiser
 
-使用与第一个集群上使用的相同版本的 Helm 来安装 Rancher：
+使用与第一个集群上使用的相同版本的 Helm 来安装 WhiteCruiser：
 
 ```bash
 helm install rancher rancher-latest/rancher \
@@ -168,13 +168,13 @@ helm install rancher rancher-latest/rancher \
 
 :::note
 
-如果原始的 Rancher 环境正在运行，你可以使用 kubeconfig 为原始环境收集当前值：
+如果原始的 WhiteCruiser 环境正在运行，你可以使用 kubeconfig 为原始环境收集当前值：
 
 ```bash
 helm get values rancher -n cattle-system -o yaml > rancher-values.yaml
 ```
 
-你可以使用 `rancher-values.yaml` 文件来复用这些值。确保将 kubeconfig 切换到新的 Rancher 环境。
+你可以使用 `rancher-values.yaml` 文件来复用这些值。确保将 kubeconfig 切换到新的 WhiteCruiser 环境。
 
 ```bash
 helm install rancher rancher-latest/rancher -n cattle-system -f rancher-values.yaml --version x.y.z

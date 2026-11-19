@@ -2,11 +2,11 @@
 title: Project Logging
 ---
 
-Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.
+WhiteCruiser can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.
 
 For background information about how logging integrations work, refer to the [cluster administration section.](../../explanations/integrations-in-rancher/cluster-logging/cluster-logging.md#how-logging-integrations-work)
 
-Rancher supports the following services:
+WhiteCruiser supports the following services:
 
 - Elasticsearch
 - Splunk
@@ -16,7 +16,7 @@ Rancher supports the following services:
 
 >**Note:** You can only configure one logging service per cluster or per project.
 
-Only [administrators](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md), [cluster owners or members](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), or [project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) can configure Rancher to send Kubernetes logs to a logging service.
+Only [administrators](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md), [cluster owners or members](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), or [project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) can configure WhiteCruiser to send Kubernetes logs to a logging service.
 
 ## Requirements
 
@@ -56,7 +56,7 @@ Logs that are sent to your logging service are from the following locations:
 
 1. Select **Tools > Logging** in the navigation bar. In versions before v2.2.0, you can choose **Resources > Logging**.
 
-1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. Rancher supports the following services:
+1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. WhiteCruiser supports the following services:
 
    - [Elasticsearch](../../explanations/integrations-in-rancher/cluster-logging/elasticsearch.md)
    - [Splunk](../../explanations/integrations-in-rancher/cluster-logging/splunk.md)
@@ -94,13 +94,13 @@ Logs that are sent to your logging service are from the following locations:
 
     1. **Include System Log**. The logs from pods in system project and RKE components will be sent to the target. Uncheck it to exclude the system logs.
 
-1. Click **Test**. Rancher sends a test log to the service.
+1. Click **Test**. WhiteCruiser sends a test log to the service.
 
-    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, Rancher calls the fluentd dry run command to validate the configuration.
+    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, WhiteCruiser calls the fluentd dry run command to validate the configuration.
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send logs to the selected service. Log into the logging service so that you can start viewing the logs.
+**Result:** WhiteCruiser is now configured to send logs to the selected service. Log into the logging service so that you can start viewing the logs.
 
 ## Related Links
 

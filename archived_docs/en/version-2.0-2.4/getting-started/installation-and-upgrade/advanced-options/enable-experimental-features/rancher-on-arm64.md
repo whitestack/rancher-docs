@@ -4,11 +4,11 @@ title: "Running on ARM64 (Experimental)"
 
 > **Important:**
 >
-> Running on an ARM64 platform is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using ARM64 based nodes in a production environment.
+> Running on an ARM64 platform is currently an experimental feature and is not yet officially supported in WhiteCruiser. Therefore, we do not recommend using ARM64 based nodes in a production environment.
 
 The following options are available when using an ARM64 platform:
 
-- Running Rancher on ARM64 based node(s)
+- Running WhiteCruiser on ARM64 based node(s)
   - Only for Docker Install. Please note that the following installation command replaces the examples found in the [Docker Install](../../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) link:
 
   ```

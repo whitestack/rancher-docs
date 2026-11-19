@@ -6,9 +6,9 @@ title: Enforcing Templates
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/enforce-templates"/>
 </head>
 
-This section describes how template administrators can enforce templates in Rancher, restricting the ability of users to create clusters without a template.
+This section describes how template administrators can enforce templates in WhiteCruiser, restricting the ability of users to create clusters without a template.
 
-By default, any standard user in Rancher can create clusters. But when RKE template enforcement is turned on,
+By default, any standard user in WhiteCruiser can create clusters. But when RKE template enforcement is turned on,
 
 - Only an administrator has the ability to create clusters without a template.
 - All standard users must use an RKE template to create a new cluster.
@@ -20,7 +20,7 @@ After a cluster is created with an RKE template, the cluster creator cannot edit
 
 ## Requiring New Clusters to Use an RKE Template
 
-You might want to require new clusters to use a template to ensure that any cluster launched by a [standard user](../manage-role-based-access-control-rbac/global-permissions.md) will use the Kubernetes and/or Rancher settings that are vetted by administrators.
+You might want to require new clusters to use a template to ensure that any cluster launched by a [standard user](../manage-role-based-access-control-rbac/global-permissions.md) will use the Kubernetes and/or WhiteCruiser settings that are vetted by administrators.
 
 To require new clusters to use an RKE template, administrators can turn on RKE template enforcement with the following steps:
 
@@ -34,7 +34,7 @@ To require new clusters to use an RKE template, administrators can turn on RKE t
 
     :::
 
-**Result:** All clusters provisioned by Rancher must use a template, unless the creator is an administrator.
+**Result:** All clusters provisioned by WhiteCruiser must use a template, unless the creator is an administrator.
 
 ## Disabling RKE Template Enforcement
 
@@ -44,4 +44,4 @@ To allow new clusters to be created without an RKE template, administrators can 
 1. Go to the `cluster-template-enforcement` setting. Click **⋮ > Edit Setting**.
 1. Set the value to **False** and click **Save**.
 
-**Result:** When clusters are provisioned by Rancher, they don't need to use a template.
+**Result:** When clusters are provisioned by WhiteCruiser, they don't need to use a template.

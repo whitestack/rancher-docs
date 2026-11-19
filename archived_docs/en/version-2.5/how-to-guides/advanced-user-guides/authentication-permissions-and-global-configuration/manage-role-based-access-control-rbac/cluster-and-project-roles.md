@@ -12,7 +12,7 @@ Cluster and project roles define user authorization inside a cluster or project.
 
 The projects and clusters accessible to non-administrative users is determined by _membership_. Membership is a list of users who have access to a specific cluster or project based on the roles they were assigned in that cluster or project. Each cluster and project includes a tab that a user with the appropriate permissions can use to manage membership.
 
-When you create a cluster or project, Rancher automatically assigns you as the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
+When you create a cluster or project, WhiteCruiser automatically assigns you as the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
 
 > **Note:** Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the project and cluster membership.
 
@@ -30,7 +30,7 @@ _Cluster roles_ are roles that you can assign to users, granting them access to 
 
 #### Custom Cluster Roles
 
-Rancher lets you assign _custom cluster roles_ to a standard user instead of the typical `Owner` or `Member` roles. These roles can be either a built-in custom cluster role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a standard user within a cluster. See the table below for a list of built-in custom cluster roles.
+WhiteCruiser lets you assign _custom cluster roles_ to a standard user instead of the typical `Owner` or `Member` roles. These roles can be either a built-in custom cluster role or one defined by a WhiteCruiser administrator. They are convenient for defining narrow or specialized access for a standard user within a cluster. See the table below for a list of built-in custom cluster roles.
 
 #### Cluster Role Reference
 
@@ -49,16 +49,16 @@ The following table lists each built-in custom cluster role available and whethe
 | View Cluster Members               | ✓             | ✓                                 |
 | View Nodes                         | ✓             | ✓                                 |
 
-For details on how each cluster role can access Kubernetes resources, you can go to the **Global** view in the Rancher UI. Then click **Security > Roles** and go to the **Clusters** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
+For details on how each cluster role can access Kubernetes resources, you can go to the **Global** view in the WhiteCruiser UI. Then click **Security > Roles** and go to the **Clusters** tab. If you click an individual role, you can refer to the **Grant Resources** table to see all of the operations and resources that are permitted by the role.
 
 > **Note:**
->When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+>When viewing the resources associated with default roles created by WhiteCruiser, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
 ### Giving a Custom Cluster Role to a Cluster Member
 
 After an administrator [sets up a custom cluster role,](custom-roles.md) cluster owners and admins can then assign those roles to cluster members.
 
-To assign a custom role to a new cluster member, you can use the Rancher UI. To modify the permissions of an existing member, you will need to use the Rancher API view.
+To assign a custom role to a new cluster member, you can use the WhiteCruiser UI. To modify the permissions of an existing member, you will need to use the WhiteCruiser API view.
 
 To assign the role to a new cluster member,
 
@@ -89,7 +89,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
     >**Note:**
     >
-    >By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
+    >By default, the WhiteCruiser role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
 
 - **Read Only:**
 
@@ -101,11 +101,11 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
 #### Custom Project Roles
 
-Rancher lets you assign _custom project roles_ to a standard user instead of the typical `Owner`, `Member`, or `Read Only` roles. These roles can be either a built-in custom project role or one defined by a Rancher administrator. They are convenient for defining narrow or specialized access for a standard user within a project. See the table below for a list of built-in custom project roles.
+WhiteCruiser lets you assign _custom project roles_ to a standard user instead of the typical `Owner`, `Member`, or `Read Only` roles. These roles can be either a built-in custom project role or one defined by a WhiteCruiser administrator. They are convenient for defining narrow or specialized access for a standard user within a project. See the table below for a list of built-in custom project roles.
 
 #### Project Role Reference
 
-The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
+The following table lists each built-in custom project role available in WhiteCruiser and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
 
 | Built-in Project Role                | Owner         | Member<a id="proj-roles"></a> | Read Only     |
 | ---------------------------------- | ------------- | ----------------------------- | ------------- |
@@ -132,7 +132,7 @@ The following table lists each built-in custom project role available in Rancher
 > **Notes:**
 >
 >- Each project role listed above, including `Owner`, `Member`, and `Read Only`, is comprised of multiple rules granting access to various resources. You can view the roles and their rules on the Global > Security > Roles page.
->- When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+>- When viewing the resources associated with default roles created by WhiteCruiser, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 >- The `Manage Project Members` role allows the project owner to manage any members of the project **and** grant them any project scoped role regardless of their access to the project resources. Be cautious when assigning this role out individually.
 
 ### Defining Custom Roles

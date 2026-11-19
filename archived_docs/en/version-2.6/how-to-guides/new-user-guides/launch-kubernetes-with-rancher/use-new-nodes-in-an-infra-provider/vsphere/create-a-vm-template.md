@@ -6,14 +6,14 @@ title: Creating a VMware vSphere Virtual Machine Template
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/vsphere/create-a-vm-template"/>
 </head>
 
-Creating virtual machines in a repeatable and reliable fashion can often be difficult. VMware vSphere offers the ability to build one VM that can then be converted to a template. The template can then be used to create identically configured VMs. Rancher leverages this capability within node pools to create identical RKE1 and RKE2 nodes.
+Creating virtual machines in a repeatable and reliable fashion can often be difficult. VMware vSphere offers the ability to build one VM that can then be converted to a template. The template can then be used to create identically configured VMs. WhiteCruiser leverages this capability within node pools to create identical RKE1 and RKE2 nodes.
 
-In order to leverage the template to create new VMs, Rancher has some [specific requirements](#requirements) that the VM must have pre-installed. After you configure the VM with these requirements, you will next need to [prepare the VM](#preparing-your-vm) before [creating the template](#creating-a-template). Finally, once preparation is complete, the VM can be [converted to a template](#converting-to-a-template) and [moved into a content library](#moving-to-a-content-library), ready for Rancher node pool usage.
+In order to leverage the template to create new VMs, WhiteCruiser has some [specific requirements](#requirements) that the VM must have pre-installed. After you configure the VM with these requirements, you will next need to [prepare the VM](#preparing-your-vm) before [creating the template](#creating-a-template). Finally, once preparation is complete, the VM can be [converted to a template](#converting-to-a-template) and [moved into a content library](#moving-to-a-content-library), ready for WhiteCruiser node pool usage.
 
 
 ## Requirements
 
-There is specific tooling required for both Linux and Windows VMs to be usable by the vSphere node driver. The most critical dependency is [cloud-init](https://cloud-init.io/) for Linux and [cloudbase-init](https://cloudbase.it/cloudbase-init/) for Windows. Both of these are used for provisioning the VMs by configuring the hostname and by setting up the SSH access and the default Rancher user. Users can add more content to these as desired if other configuration is needed. In addition, other requirements are listed below for reference.
+There is specific tooling required for both Linux and Windows VMs to be usable by the vSphere node driver. The most critical dependency is [cloud-init](https://cloud-init.io/) for Linux and [cloudbase-init](https://cloudbase.it/cloudbase-init/) for Windows. Both of these are used for provisioning the VMs by configuring the hostname and by setting up the SSH access and the default WhiteCruiser user. Users can add more content to these as desired if other configuration is needed. In addition, other requirements are listed below for reference.
 
 :::note
 
@@ -23,7 +23,7 @@ If you have any specific firewall rules or configuration, you will need to add t
 
 ## Linux Dependencies
 
-The packages that need to be installed on the template are listed below. These will have slightly different names based on distribution; for example, some distributions ship these dependencies by default. The cluster provisioner will automatically install the dependencies required for Kubernetes. The dependencies listed below are required for the functioning of the Rancher cluster provisioner (not for Kubernetes):
+The packages that need to be installed on the template are listed below. These will have slightly different names based on distribution; for example, some distributions ship these dependencies by default. The cluster provisioner will automatically install the dependencies required for Kubernetes. The dependencies listed below are required for the functioning of the WhiteCruiser cluster provisioner (not for Kubernetes):
 
 * curl
 * wget
@@ -149,7 +149,7 @@ For additional information on converting a VM to a template, see the [VMware gui
 
 ## Moving to a Content library
 
-Rancher has the ability to use templates provided by a content library. Content libraries store and manage content within vSphere, and they also offer the ability to publish and share that content.
+WhiteCruiser has the ability to use templates provided by a content library. Content libraries store and manage content within vSphere, and they also offer the ability to publish and share that content.
 
 Below are some helpful links on content libraries:
 

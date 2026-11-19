@@ -1,5 +1,5 @@
 ---
-title: Install Rancher Compliance
+title: Install WhiteCruiser Compliance
 ---
 
 <head>

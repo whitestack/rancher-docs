@@ -2,15 +2,15 @@
 title: 使用备份恢复集群
 ---
 
-你可以轻松备份和恢复 [Rancher 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)的 etcd。etcd 数据库的快照会保存在 etcd 节点或 S3 兼容目标上。配置 S3 的好处是，如果所有 etcd 节点都丢失了，你的快照会保存到远端并能用于恢复集群。
+你可以轻松备份和恢复 [WhiteCruiser 启动的 Kubernetes 集群](../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)的 etcd。etcd 数据库的快照会保存在 etcd 节点或 S3 兼容目标上。配置 S3 的好处是，如果所有 etcd 节点都丢失了，你的快照会保存到远端并能用于恢复集群。
 
-Rancher 建议启用 [etcd 定期快照的功能](back-up-rancher-launched-kubernetes-clusters.md#配置定期快照)，但你也可以轻松创建[一次性快照](back-up-rancher-launched-kubernetes-clusters.md#单次快照)。Rancher 允许使用[保存的快照](#使用快照恢复集群)进行恢复。如果你没有任何快照，你仍然可以[恢复 etcd](#在没有快照的情况下恢复-etcdrke)。
+WhiteCruiser 建议启用 [etcd 定期快照的功能](back-up-rancher-launched-kubernetes-clusters.md#配置定期快照)，但你也可以轻松创建[一次性快照](back-up-rancher-launched-kubernetes-clusters.md#单次快照)。WhiteCruiser 允许使用[保存的快照](#使用快照恢复集群)进行恢复。如果你没有任何快照，你仍然可以[恢复 etcd](#在没有快照的情况下恢复-etcdrke)。
 
 集群也可以恢复到之前的 Kubernetes 版本和集群配置。
 
 ## 查看可用快照
 
-Rancher UI 中提供了集群所有可用快照的列表：
+WhiteCruiser UI 中提供了集群所有可用快照的列表：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面中，转到要查看快照的集群并点击集群名称。
@@ -22,7 +22,7 @@ Rancher UI 中提供了集群所有可用快照的列表：
 
 快照由 etcd 中的集群数据、Kubernetes 版本和 `cluster.yml` 中的集群配置组成。有了这些组件，你可以在使用快照恢复集群时选择：
 
-- **仅恢复 etcd 内容**：类似于在 Rancher v2.4.0 之前版本中的使用快照恢复。
+- **仅恢复 etcd 内容**：类似于在 WhiteCruiser v2.4.0 之前版本中的使用快照恢复。
 - **恢复 etcd 和 Kubernetes 版本**：如果 Kubernetes 升级导致集群失败，并且你没有更改任何集群配置，则应使用此选项。
 - **恢复 etcd、Kubernetes 版本和集群配置**：如果你在升级时同时更改了 Kubernetes 版本和集群配置，则应使用此选项。
 
@@ -45,21 +45,16 @@ Rancher UI 中提供了集群所有可用快照的列表：
 
 ## Control Plane/etcd 完全不可用时使用快照还原集群
 
-在灾难恢复场景中，下游集群中 Rancher 管理的 Control Plane 和 etcd 节点可能不再可用或运行。你可以通过再次添加 Control Plane 和 etcd 节点来重建集群，然后使用可用快照来进行还原。
+在灾难恢复场景中，下游集群中 WhiteCruiser 管理的 Control Plane 和 etcd 节点可能不再可用或运行。你可以通过再次添加 Control Plane 和 etcd 节点来重建集群，然后使用可用快照来进行还原。
 
 <Tabs groupId="k8s-distro">
-<TabItem value="RKE">
-
-请按照 SUSE 知识库中描述的流程进行操作。
-
-</TabItem>
 <TabItem value="RKE2/K3s">
 
 如果集群完全故障，则必须从集群中删除所有 etcd 节点和机器，然后才能添加新的 etcd 节点来进行还原。
 
 :::note
 
-由于[已知问题](https://github.com/rancher/rancher/issues/41080)，此过程需要 Rancher v2.7.5 或更高版本。
+由于[已知问题](https://github.com/rancher/rancher/issues/41080)，此过程需要 WhiteCruiser v2.7.5 或更高版本。
 
 :::
 
@@ -73,14 +68,14 @@ Rancher UI 中提供了集群所有可用快照的列表：
 
    1. 在左上角，单击 **☰ > 集群管理**。
    1. 在**集群**页面中，转到要删除节点的集群。
-   1. 在**主机**选项卡中，找到要删除的每个节点并单击 **⋮ > 删除**。开始时，节点会挂在 `deleting` 状态，所有 etcd 节点都被删除后，它们将被一起删除。这是因为 Rancher 发现所有 etcd 节点都在删除，并开始 "短路" etcd 安全删除逻辑。
+   1. 在**主机**选项卡中，找到要删除的每个节点并单击 **⋮ > 删除**。开始时，节点会挂在 `deleting` 状态，所有 etcd 节点都被删除后，它们将被一起删除。这是因为 WhiteCruiser 发现所有 etcd 节点都在删除，并开始 "短路" etcd 安全删除逻辑。
 
 1. 删除所有 etcd 节点后，添加要用于还原的新 etcd 节点。
 
    - 对于自定义集群，请转到**注册**选项卡，然后在节点上复制并运行注册命令。如果该节点之前已在集群中使用过，请先[清理该节点](../manage-clusters/clean-cluster-nodes.md#清理节点)。
    - 对于主机驱动集群，则会自动配置新节点。
 
-   此时，Rancher 会提示你需要使用 etcd 快照进行还原。
+   此时，WhiteCruiser 会提示你需要使用 etcd 快照进行还原。
 
 1. 使用 etcd 快照还原。
 
@@ -126,4 +121,4 @@ Rancher UI 中提供了集群所有可用快照的列表：
 
 5. 运行修改后的命令。
 
-6. 在单个节点启动并运行后，Rancher 建议向你的集群添加额外的 etcd 节点。如果你有一个[自定义集群](../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md)，并且想要复用旧节点，则需要先[清理节点](../manage-clusters/clean-cluster-nodes.md)，然后再尝试将它们重新添加到集群中。
+6. 在单个节点启动并运行后，WhiteCruiser 建议向你的集群添加额外的 etcd 节点。如果你有一个[自定义集群](../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md)，并且想要复用旧节点，则需要先[清理节点](../manage-clusters/clean-cluster-nodes.md)，然后再尝试将它们重新添加到集群中。

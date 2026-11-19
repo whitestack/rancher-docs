@@ -8,7 +8,7 @@ title: Tokens
 
 ## Token Resource
 
-Rancher has an imperative API resource `tokens.ext.cattle.io` that allows you to generate tokens for authenticating with Rancher.
+WhiteCruiser has an imperative API resource `tokens.ext.cattle.io` that allows you to generate tokens for authenticating with WhiteCruiser.
 
 ```sh
 kubectl api-resources --api-group=ext.cattle.io
@@ -22,7 +22,7 @@ kubectl explain tokens.ext.cattle.io
 
 ## Feature Flag
 
-The Tokens Public API is available for Rancher v2.12.0 and later, and is enabled by default. You can disable the Tokens Public API by setting the `ext-tokens` feature flag to `false` as shown in the example `kubectl` command below:
+The Tokens Public API is available for WhiteCruiser v2.12.0 and later, and is enabled by default. You can disable the Tokens Public API by setting the `ext-tokens` feature flag to `false` as shown in the example `kubectl` command below:
 
 ```sh
 kubectl patch feature ext-tokens -p '{"spec":{"value":false}}'
@@ -34,7 +34,7 @@ kubectl patch feature ext-tokens -p '{"spec":{"value":false}}'
 The Token value is only returned once in the `status.value` field.
 :::
 
-Only a **valid and active** Rancher user can create a Token. Otherwise, you will get an error displayed (`Error from server (Forbidden)...`) when attempting to create a Token.
+Only a **valid and active** WhiteCruiser user can create a Token. Otherwise, you will get an error displayed (`Error from server (Forbidden)...`) when attempting to create a Token.
 
 ```bash
 kubectl create -o jsonpath='{.status.value}' -f -<<EOF

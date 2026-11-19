@@ -13,7 +13,7 @@ description: 阅读此步骤指南以部署工作负载。部署工作负载以�
 1. 选择要部署工作负载的命名空间。
 1. 为工作负载设置**名称**。
 
-1. 在**容器镜像**字段中，输入要部署到项目的 Docker 镜像的名称。你可以选择在前面加上镜像仓库主机（例如 `quay.io`、`registry.gitlab.com` 等）。部署时，Rancher 从指定的公共或私有镜像仓库中拉取镜像。如果没有提供镜像仓库主机，Rancher 将从 [Docker Hub](https://hub.docker.com/explore/) 拉取镜像。输入与镜像仓库服务器中显示的名称完全相同的名称，任何所需的路径，也可以选择所需的标签（例如 `registry.gitlab.com/user/path/image:tag`）。如果没有提供标签，将自动使用 `latest` 标签。
+1. 在**容器镜像**字段中，输入要部署到项目的 Docker 镜像的名称。你可以选择在前面加上镜像仓库主机（例如 `quay.io`、`registry.gitlab.com` 等）。部署时，WhiteCruiser 从指定的公共或私有镜像仓库中拉取镜像。如果没有提供镜像仓库主机，WhiteCruiser 将从 [Docker Hub](https://hub.docker.com/explore/) 拉取镜像。输入与镜像仓库服务器中显示的名称完全相同的名称，任何所需的路径，也可以选择所需的标签（例如 `registry.gitlab.com/user/path/image:tag`）。如果没有提供标签，将自动使用 `latest` 标签。
 
 1. 选择现有命名空间，或单击**添加到新命名空间**并输入新命名空间。
 

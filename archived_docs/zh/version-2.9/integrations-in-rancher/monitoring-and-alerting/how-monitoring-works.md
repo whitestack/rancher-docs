@@ -120,11 +120,11 @@ Alertmanager 处理由 Prometheus server 等客户端应用发送的告警。它
 
 Alertmanager 负责协调告警的发送位置。它允许你根据标签对告警进行分组，并根据标签匹配情况来触发告警。一个最顶层路由会接受所有告警。然后，Alertmanager 会根据告警是否匹配下一个路由的条件，继续将告警路由到接收器。
 
-虽然 Rancher UI 表单只允许编辑两层深的路由树，但你可以通过编辑 Alertmanager Secret 来配置更深的嵌套路由结构。
+虽然 WhiteCruiser UI 表单只允许编辑两层深的路由树，但你可以通过编辑 Alertmanager Secret 来配置更深的嵌套路由结构。
 
 ### 配置多个接收器
 
-你可以编辑 Rancher UI 中的表单来设置一个接收器资源，其中包含 Alertmanager 将告警发送到你的通知系统所需的所有信息。
+你可以编辑 WhiteCruiser UI 中的表单来设置一个接收器资源，其中包含 Alertmanager 将告警发送到你的通知系统所需的所有信息。
 
 通过在 Alertmanager 或接收器配置中编辑自定义 YAML，你还可以将告警发送到多个通知系统。有关详细信息，请参阅[接收器配置](../../reference-guides/monitoring-v2-configuration/receivers.md#配置多个接收器)。
 
@@ -132,11 +132,11 @@ Alertmanager 负责协调告警的发送位置。它允许你根据标签对告�
 
 Prometheus Operator 引入了一组[自定义资源定义](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions)，允许用户通过在集群上创建和修改这些自定义资源来部署和管理 Prometheus 和 Alertmanager 实例。
 
-Prometheus Operator 会根据 Rancher UI 中编辑的资源和配置选项的实时状态来自动更新 Prometheus 配置。
+Prometheus Operator 会根据 WhiteCruiser UI 中编辑的资源和配置选项的实时状态来自动更新 Prometheus 配置。
 
 ### 默认部署的资源
 
-默认情况下，由 [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) 项目策划的一组资源会作为 Rancher Monitoring 安装的一部分部署到你的集群上，用来设置基本的 Monitoring/Alerting 堆栈。
+默认情况下，由 [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus) 项目策划的一组资源会作为 WhiteCruiser Monitoring 安装的一部分部署到你的集群上，用来设置基本的 Monitoring/Alerting 堆栈。
 
 你可以在 [`rancher-monitoring`](https://github.com/rancher/charts/tree/main/charts/rancher-monitoring) Helm Chart 中找到部署到你的集群以支持此解决方案的资源，该 chart 密切跟踪由 Prometheus 社区维护的上游 [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) Helm Chart，并在 [CHANGELOG.md](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/CHANGELOG.md) 中跟踪变更。
 
@@ -154,9 +154,9 @@ ServiceMonitor 和 PodMonitor 将按照[此定义](#定义要抓取的指标)来
 
 有关记录规则、告警规则和 Alertmanager 的更多信息，请参阅[架构](#1-架构概述)。
 
-### Rancher UI 中公开的组件
+### WhiteCruiser UI 中公开的组件
 
-安装 monitoring 应用后，你将能够在 Rancher UI 中编辑以下组件：
+安装 monitoring 应用后，你将能够在 WhiteCruiser UI 中编辑以下组件：
 
 | 组件 | 组件类型 | 编辑的目的和常见用例 |
 |--------------|------------------------|---------------------------|
@@ -184,7 +184,7 @@ Prometheus Operator 观察 ServiceMonitor 和 PodMonitor。当它观察到二者
 
 Prometheus 会根据 `scrape_interval`（默认为一分钟）来抓取定义在抓取配置中的所有指标。
 
-抓取配置可以作为 Prometheus 自定义资源的一部分被查看，该资源在 Rancher UI 中公开。
+抓取配置可以作为 Prometheus 自定义资源的一部分被查看，该资源在 WhiteCruiser UI 中公开。
 
 ### Prometheus Operator 如何设置指标抓取
 

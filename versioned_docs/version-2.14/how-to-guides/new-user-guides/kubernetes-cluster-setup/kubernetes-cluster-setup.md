@@ -1,5 +1,5 @@
 ---
-title: Setting up a Kubernetes Cluster for Rancher Server
+title: Setting up a Kubernetes Cluster for WhiteCruiser Server
 ---
 
 <head>
@@ -8,6 +8,6 @@ title: Setting up a Kubernetes Cluster for Rancher Server
 
 Don't have a Kubernetes cluster? Try one of these tutorials.
 
-This section contains information on how to install a Kubernetes cluster that the Rancher server can be installed on.
+This section contains information on how to install a Kubernetes cluster that the WhiteCruiser server can be installed on.
 
-Rancher can run on any Kubernetes cluster.
+WhiteCruiser can run on any Kubernetes cluster.

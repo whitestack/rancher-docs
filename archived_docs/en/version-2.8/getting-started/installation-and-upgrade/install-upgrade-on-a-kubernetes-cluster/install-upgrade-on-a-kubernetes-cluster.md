@@ -1,13 +1,13 @@
 ---
-title: Install/Upgrade Rancher on a Kubernetes Cluster
-description: Learn how to install Rancher in development and production environments. Read about single node and high availability installation
+title: Install/Upgrade WhiteCruiser on a Kubernetes Cluster
+description: Learn how to install WhiteCruiser in development and production environments. Read about single node and high availability installation
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster"/>
 </head>
 
-In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.
+In this section, you'll learn how to deploy WhiteCruiser on a Kubernetes cluster using the Helm CLI.
 
 
 ## Prerequisites
@@ -18,27 +18,27 @@ In this section, you'll learn how to deploy Rancher on a Kubernetes cluster usin
 
 ### Kubernetes Cluster
 
-Set up the Rancher server's local Kubernetes cluster.
+Set up the WhiteCruiser server's local Kubernetes cluster.
 
-Rancher can be installed on any Kubernetes cluster. This cluster can use upstream Kubernetes, or it can use one of Rancher's Kubernetes distributions, or it can be a managed Kubernetes cluster from a provider such as Amazon EKS.
+WhiteCruiser can be installed on any Kubernetes cluster. This cluster can use upstream Kubernetes, or it can use one of WhiteCruiser's Kubernetes distributions, or it can be a managed Kubernetes cluster from a provider such as Amazon EKS.
 
 For help setting up a Kubernetes cluster, we provide these tutorials:
 
 - **RKE:** For the tutorial to install an RKE Kubernetes cluster, refer to [this page.](../../../how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher.md) For help setting up the infrastructure for a high-availability RKE cluster, refer to [this page.](../../../how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster.md)
 - **K3s:** For the tutorial to install a K3s Kubernetes cluster, refer to [this page.](../../../how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher.md) For help setting up the infrastructure for a high-availability K3s cluster, refer to [this page.](../../../how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster.md)
 - **RKE2:** For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.](../../../how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher.md) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.](../../../how-to-guides/new-user-guides/infrastructure-setup/ha-rke2-kubernetes-cluster.md)
-- **Amazon EKS:** For details on how to install Rancher on Amazon EKS, including how to install an Ingress controller so that the Rancher server can be accessed, refer to [this page.](rancher-on-amazon-eks.md)
-- **AKS:** For details on how to install Rancher with Azure Kubernetes Service, including how to install an Ingress controller so that the Rancher server can be accessed, refer to [this page.](rancher-on-aks.md)
-- **GKE:** For details on how to install Rancher with Google Kubernetes Engine, including how to install an Ingress controller so that the Rancher server can be accessed, refer to [this page.](rancher-on-gke.md) GKE has two modes of operation when creating a Kubernetes cluster, Autopilot and Standard mode. The cluster configuration for Autopilot mode has restrictions on editing the kube-system namespace. However, Rancher needs to create resources in the kube-system namespace during installation. As a result, you will not be able to install Rancher on a GKE cluster created in Autopilot mode.
+- **Amazon EKS:** For details on how to install WhiteCruiser on Amazon EKS, including how to install an Ingress controller so that the WhiteCruiser server can be accessed, refer to [this page.](rancher-on-amazon-eks.md)
+- **AKS:** For details on how to install WhiteCruiser with Azure Kubernetes Service, including how to install an Ingress controller so that the WhiteCruiser server can be accessed, refer to [this page.](rancher-on-aks.md)
+- **GKE:** For details on how to install WhiteCruiser with Google Kubernetes Engine, including how to install an Ingress controller so that the WhiteCruiser server can be accessed, refer to [this page.](rancher-on-gke.md) GKE has two modes of operation when creating a Kubernetes cluster, Autopilot and Standard mode. The cluster configuration for Autopilot mode has restrictions on editing the kube-system namespace. However, WhiteCruiser needs to create resources in the kube-system namespace during installation. As a result, you will not be able to install WhiteCruiser on a GKE cluster created in Autopilot mode.
 
 
 ### Ingress Controller
 
-The Rancher UI and API are exposed through an Ingress. This means the Kubernetes cluster that you install Rancher in must contain an Ingress controller.
+The WhiteCruiser UI and API are exposed through an Ingress. This means the Kubernetes cluster that you install WhiteCruiser in must contain an Ingress controller.
 
 For RKE, RKE2, and K3s installations, you don't have to install the Ingress controller manually because one is installed by default.
 
-For distributions that do not include an Ingress Controller by default, like a hosted Kubernetes cluster such as EKS, GKE, or AKS, you have to deploy an Ingress controller first. Note that the Rancher Helm chart does not set an `ingressClassName` on the ingress by default. Because of this, you have to configure the Ingress controller to also watch ingresses without an `ingressClassName`.
+For distributions that do not include an Ingress Controller by default, like a hosted Kubernetes cluster such as EKS, GKE, or AKS, you have to deploy an Ingress controller first. Note that the WhiteCruiser Helm chart does not set an `ingressClassName` on the ingress by default. Because of this, you have to configure the Ingress controller to also watch ingresses without an `ingressClassName`.
 
 Examples are included in the **Amazon EKS**, **AKS**, and **GKE** tutorials above.
 
@@ -47,17 +47,17 @@ Examples are included in the **Amazon EKS**, **AKS**, and **GKE** tutorials abov
 The following CLI tools are required for setting up the Kubernetes cluster. Please make sure these tools are installed and available in your `$PATH`.
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) - Kubernetes command-line tool.
-- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements](../resources/helm-version-requirements.md) to choose a version of Helm to install Rancher. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
+- [helm](https://docs.helm.sh/using_helm/#installing-helm) - Package management for Kubernetes. Refer to the [Helm version requirements](../resources/helm-version-requirements.md) to choose a version of Helm to install WhiteCruiser. Refer to the [instructions provided by the Helm project](https://helm.sh/docs/intro/install/) for your specific platform.
 
-## Install the Rancher Helm Chart
+## Install the WhiteCruiser Helm Chart {#install-the-rancher-helm-chart}
 
-Rancher is installed using the [Helm](https://helm.sh/) package manager for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm, we can create configurable deployments instead of just using static files.
+WhiteCruiser is installed using the [Helm](https://helm.sh/) package manager for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm, we can create configurable deployments instead of just using static files.
 
 For systems without direct internet access, see [Air Gap: Kubernetes install](../other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md).
 
-To choose a Rancher version to install, refer to [Choosing a Rancher Version.](../resources/choose-a-rancher-version.md)
+To choose a WhiteCruiser version to install, refer to [Choosing a WhiteCruiser Version.](../resources/choose-a-rancher-version.md)
 
-To choose a version of Helm to install Rancher with, refer to the [Helm version requirements](../resources/helm-version-requirements.md)
+To choose a version of Helm to install WhiteCruiser with, refer to the [Helm version requirements](../resources/helm-version-requirements.md)
 
 :::note
 
@@ -65,19 +65,19 @@ The installation instructions assume you are using Helm 3.
 
 :::
 
-To set up Rancher,
+To set up WhiteCruiser,
 
 1. [Add the Helm chart repository](#1-add-the-helm-chart-repository)
-2. [Create a namespace for Rancher](#2-create-a-namespace-for-rancher)
+2. [Create a namespace for WhiteCruiser](#2-create-a-namespace-for-rancher)
 3. [Choose your SSL configuration](#3-choose-your-ssl-configuration)
 4. [Install cert-manager](#4-install-cert-manager) (unless you are bringing your own certificates, or TLS will be terminated on a load balancer)
-5. [Install Rancher with Helm and your chosen certificate option](#5-install-rancher-with-helm-and-your-chosen-certificate-option)
-6. [Verify that the Rancher server is successfully deployed](#6-verify-that-the-rancher-server-is-successfully-deployed)
+5. [Install WhiteCruiser with Helm and your chosen certificate option](#5-install-rancher-with-helm-and-your-chosen-certificate-option)
+6. [Verify that the WhiteCruiser server is successfully deployed](#6-verify-that-the-rancher-server-is-successfully-deployed)
 7. [Save your options](#7-save-your-options)
 
 ### 1. Add the Helm Chart Repository
 
-Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Rancher Version](../resources/choose-a-rancher-version.md).
+Use `helm repo add` command to add the Helm chart repository that contains charts to install WhiteCruiser. For more information about the repository choices and which is best for your use case, see [Choosing a WhiteCruiser Version](../resources/choose-a-rancher-version.md).
 
 - Latest: Recommended for trying out the newest features
     ```
@@ -93,7 +93,7 @@ Use `helm repo add` command to add the Helm chart repository that contains chart
     ```
     Note: Upgrades are not supported to, from, or between Alphas.
 
-### 2. Create a Namespace for Rancher
+### 2. Create a Namespace for WhiteCruiser {#2-create-a-namespace-for-rancher}
 
 We'll need to define a Kubernetes namespace where the resources created by the Chart should be installed. This should always be `cattle-system`:
 
@@ -103,7 +103,7 @@ kubectl create namespace cattle-system
 
 ### 3. Choose your SSL Configuration
 
-The Rancher management server is designed to be secure by default and requires SSL/TLS configuration.
+The WhiteCruiser management server is designed to be secure by default and requires SSL/TLS configuration.
 
 :::note
 
@@ -111,16 +111,16 @@ If you want to externally terminate SSL/TLS, see [TLS termination on an External
 
 :::
 
-There are three recommended options for the source of the certificate used for TLS termination at the Rancher server:
+There are three recommended options for the source of the certificate used for TLS termination at the WhiteCruiser server:
 
-- **Rancher-generated TLS certificate:** In this case, you will need to install `cert-manager` into the cluster. Rancher utilizes `cert-manager` to issue and maintain its certificates. Rancher will generate a CA certificate of its own, and sign a cert using that CA. `cert-manager` is then responsible for managing that certificate. No extra action is needed when `agent-tls-mode` is set to strict. More information can be found on this setting in [Agent TLS Enforcement](../installation-references/tls-settings.md#agent-tls-enforcement).
+- **WhiteCruiser-generated TLS certificate:** In this case, you will need to install `cert-manager` into the cluster. WhiteCruiser utilizes `cert-manager` to issue and maintain its certificates. WhiteCruiser will generate a CA certificate of its own, and sign a cert using that CA. `cert-manager` is then responsible for managing that certificate. No extra action is needed when `agent-tls-mode` is set to strict. More information can be found on this setting in [Agent TLS Enforcement](../installation-references/tls-settings.md#agent-tls-enforcement).
 - **Let's Encrypt:** The Let's Encrypt option also uses `cert-manager`. However, in this case, cert-manager is combined with a special Issuer for Let's Encrypt that performs all actions (including request and validation) necessary for getting a Let's Encrypt issued cert. This configuration uses HTTP validation (`HTTP-01`), so the load balancer must have a public DNS record and be accessible from the internet. When setting `agent-tls-mode` to `strict`, you must also specify `--privateCA=true` and upload the Let's Encrypt CA as described in [Adding TLS Secrets](../resources/add-tls-secrets.md). More information can be found on this setting in [Agent TLS Enforcement](../installation-references/tls-settings.md#agent-tls-enforcement).
-- **Bring your own certificate:** This option allows you to bring your own public- or private-CA signed certificate. Rancher will use that certificate to secure websocket and HTTPS traffic. In this case, you must upload this certificate (and associated key) as PEM-encoded files with the name `tls.crt` and `tls.key`. If you are using a private CA, you must also upload that certificate. This is due to the fact that this private CA may not be trusted by your nodes. Rancher will take that CA certificate, and generate a checksum from it, which the various Rancher components will use to validate their connection to Rancher. If `agent-tls-mode` is set to `strict`, the CA must be uploaded, so that downstream clusters can successfully connect. More information can be found on this setting in [Agent TLS Enforcement](../installation-references/tls-settings.md#agent-tls-enforcement).
+- **Bring your own certificate:** This option allows you to bring your own public- or private-CA signed certificate. WhiteCruiser will use that certificate to secure websocket and HTTPS traffic. In this case, you must upload this certificate (and associated key) as PEM-encoded files with the name `tls.crt` and `tls.key`. If you are using a private CA, you must also upload that certificate. This is due to the fact that this private CA may not be trusted by your nodes. WhiteCruiser will take that CA certificate, and generate a checksum from it, which the various WhiteCruiser components will use to validate their connection to WhiteCruiser. If `agent-tls-mode` is set to `strict`, the CA must be uploaded, so that downstream clusters can successfully connect. More information can be found on this setting in [Agent TLS Enforcement](../installation-references/tls-settings.md#agent-tls-enforcement).
 
 
 | Configuration                  | Helm Chart Option           | Requires cert-manager                 |
 | ------------------------------ | ----------------------- | ------------------------------------- |
-| Rancher Generated Certificates (Default) | `ingress.tls.source=rancher`  | [yes](#4-install-cert-manager) |
+| WhiteCruiser Generated Certificates (Default) | `ingress.tls.source=rancher`  | [yes](#4-install-cert-manager) |
 | Let’s Encrypt                  | `ingress.tls.source=letsEncrypt`  | [yes](#4-install-cert-manager) |
 | Certificates from Files        | `ingress.tls.source=secret`        | no               |
 
@@ -128,14 +128,14 @@ There are three recommended options for the source of the certificate used for T
 
 > You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer](../installation-references/helm-chart-options.md#external-tls-termination).
 
-This step is only required to use certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
+This step is only required to use certificates issued by WhiteCruiser's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
 
 <details id="cert-manager">
   <summary>Click to Expand</summary>
 
 :::note Important:
 
-Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation](../resources/upgrade-cert-manager.md).
+Recent changes to cert-manager require an upgrade. If you are upgrading WhiteCruiser and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation](../resources/upgrade-cert-manager.md).
 
 :::
 
@@ -177,29 +177,29 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 </details>
 
-### 5. Install Rancher with Helm and Your Chosen Certificate Option
+### 5. Install WhiteCruiser with Helm and Your Chosen Certificate Option {#5-install-rancher-with-helm-and-your-chosen-certificate-option}
 
-The exact command to install Rancher differs depending on the certificate configuration.
+The exact command to install WhiteCruiser differs depending on the certificate configuration.
 
-However, irrespective of the certificate configuration, the name of the Rancher installation in the `cattle-system` namespace should always be `rancher`.
+However, irrespective of the certificate configuration, the name of the WhiteCruiser installation in the `cattle-system` namespace should always be `rancher`.
 
 :::tip Testing and Development:
 
-This final command to install Rancher requires a domain name that forwards traffic to Rancher. If you are using the Helm CLI to set up a proof-of-concept, you can use a fake domain name when passing the `hostname` option. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`, which would expose Rancher on an IP where it is running. Production installs would require a real domain name.
+This final command to install WhiteCruiser requires a domain name that forwards traffic to WhiteCruiser. If you are using the Helm CLI to set up a proof-of-concept, you can use a fake domain name when passing the `hostname` option. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`, which would expose WhiteCruiser on an IP where it is running. Production installs would require a real domain name.
 
 :::
 
 <Tabs>
 <TabItem value="Rancher-generated Certificates">
 
-The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface.
+The default is for WhiteCruiser to generate a CA and uses `cert-manager` to issue the certificate for access to the WhiteCruiser server interface.
 
 Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
 - Set the `bootstrapPassword` to something unique for the `admin` user.
-- To install a specific Rancher version, use the `--version` flag, example: `--version 2.7.0`
-- For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose.
+- To install a specific WhiteCruiser version, use the `--version` flag, example: `--version 2.7.0`
+- For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using WhiteCruiser v2.7.2-v2.7.4. This is not necessary for WhiteCruiser v2.7.5 and above, but you can still manually set the option if you choose.
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -214,7 +214,7 @@ If you are installing an alpha version, Helm requires adding the `--devel` optio
 helm install rancher rancher-alpha/rancher --devel
 ```
 
-Wait for Rancher to be rolled out:
+Wait for WhiteCruiser to be rolled out:
 
 ```
 kubectl -n cattle-system rollout status deploy/rancher
@@ -240,11 +240,11 @@ In the following command,
 - `ingress.tls.source` is set to `letsEncrypt`
 - `letsEncrypt.email` is set to the email address used for communication about your certificate (for example, expiry notices)
 - Set `letsEncrypt.ingress.class` to whatever your ingress controller is, e.g., `traefik`, `nginx`, `haproxy`, etc.
-- For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose.
+- For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using WhiteCruiser v2.7.2-v2.7.4. This is not necessary for WhiteCruiser v2.7.5 and above, but you can still manually set the option if you choose.
 
 :::warning
 
-When `agent-tls-mode` is set to `strict`, you must supply the `privateCA=true` chart value (e.x. through `--set privateCA=true`) and upload the Let's Encrypt Certificate Authority as outlined in [Adding TLS Secrets](../resources/add-tls-secrets.md). Information on identifying the Let's Encrypt Root CA can be found in the Let's Encrypt [docs](https://letsencrypt.org/certificates/). If you don't upload the CA, then Rancher may fail to connect to new or existing downstream clusters.
+When `agent-tls-mode` is set to `strict`, you must supply the `privateCA=true` chart value (e.x. through `--set privateCA=true`) and upload the Let's Encrypt Certificate Authority as outlined in [Adding TLS Secrets](../resources/add-tls-secrets.md). Information on identifying the Let's Encrypt Root CA can be found in the Let's Encrypt [docs](https://letsencrypt.org/certificates/). If you don't upload the CA, then WhiteCruiser may fail to connect to new or existing downstream clusters.
 
 :::
 
@@ -264,7 +264,7 @@ If you are installing an alpha version, Helm requires adding the `--devel` optio
 helm install rancher rancher-alpha/rancher --devel
 ```
 
-Wait for Rancher to be rolled out:
+Wait for WhiteCruiser to be rolled out:
 
 ```
 kubectl -n cattle-system rollout status deploy/rancher
@@ -274,7 +274,7 @@ deployment "rancher" successfully rolled out
 
 </TabItem>
 <TabItem value="Certificates from Files">
-In this option, Kubernetes secrets are created from your own certificates for Rancher to use.
+In this option, Kubernetes secrets are created from your own certificates for WhiteCruiser to use.
 
 When you run this command, the `hostname` option must match the `Common Name` or a `Subject Alternative Names` entry in the server certificate or the Ingress controller will fail to configure correctly.
 
@@ -289,7 +289,7 @@ If you want to check if your certificates are correct, see [How do I check Commo
 - Set the `hostname`.
 - Set the `bootstrapPassword` to something unique for the `admin` user.
 - Set `ingress.tls.source` to `secret`.
-- For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using Rancher v2.7.2-v2.7.4. This is not necessary for Rancher v2.7.5 and above, but you can still manually set the option if you choose.
+- For Kubernetes v1.25 or later, set `global.cattle.psp.enabled` to `false` when using WhiteCruiser v2.7.2-v2.7.4. This is not necessary for WhiteCruiser v2.7.5 and above, but you can still manually set the option if you choose.
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -315,12 +315,12 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --set privateCA=true
 ```
 
-Now that Rancher is deployed, see [Adding TLS Secrets](../resources/add-tls-secrets.md) to publish the certificate files so Rancher and the Ingress controller can use them.
+Now that WhiteCruiser is deployed, see [Adding TLS Secrets](../resources/add-tls-secrets.md) to publish the certificate files so WhiteCruiser and the Ingress controller can use them.
 
 </TabItem>
 </Tabs>
 
-The Rancher chart configuration has many options for customizing the installation to suit your specific environment. Here are some common advanced scenarios.
+The WhiteCruiser chart configuration has many options for customizing the installation to suit your specific environment. Here are some common advanced scenarios.
 
 - [HTTP Proxy](../installation-references/helm-chart-options.md#http-proxy)
 - [Private Container Image Registry](../installation-references/helm-chart-options.md#private-registry-and-air-gap-installs)
@@ -329,9 +329,9 @@ The Rancher chart configuration has many options for customizing the installatio
 See the [Chart Options](../installation-references/helm-chart-options.md) for the full list of options.
 
 
-### 6. Verify that the Rancher Server is Successfully Deployed
+### 6. Verify that the WhiteCruiser Server is Successfully Deployed {#6-verify-that-the-rancher-server-is-successfully-deployed}
 
-After adding the secrets, check if Rancher was rolled out successfully:
+After adding the secrets, check if WhiteCruiser was rolled out successfully:
 
 ```
 kubectl -n cattle-system rollout status deploy/rancher
@@ -351,11 +351,11 @@ It should show the same count for `DESIRED` and `AVAILABLE`.
 
 ### 7. Save Your Options
 
-Make sure you save the `--set` options you used. You will need to use the same options when you upgrade Rancher to new versions with Helm.
+Make sure you save the `--set` options you used. You will need to use the same options when you upgrade WhiteCruiser to new versions with Helm.
 
 ### Finishing Up
 
-That's it. You should have a functional Rancher server.
+That's it. You should have a functional WhiteCruiser server.
 
 In a web browser, go to the DNS name that forwards traffic to your load balancer. Then you should be greeted by the colorful login page.
 

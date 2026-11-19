@@ -1,18 +1,18 @@
 ---
-title: 为 Rancher 设置高可用 K3s Kubernetes 集群
+title: 为 WhiteCruiser 设置高可用 K3s Kubernetes 集群
 ---
 
-本文介绍了如何根据 [Rancher Server 环境的最佳实践](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#kubernetes-安装环境)安装 Kubernetes 集群。
+本文介绍了如何根据 [WhiteCruiser Server 环境的最佳实践](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#kubernetes-安装环境)安装 Kubernetes 集群。
 
 如果你的系统无法直接访问互联网，请参见离线安装说明。
 
 :::tip 单节点安装提示：
 
-在单节点 Kubernetes 集群中，Rancher Server 不具备高可用性，而高可用性对在生产环境中运行 Rancher 非常重要。但是，如果你想要短期内使用单节点节省资源，同时又保留高可用性迁移路径，把 Rancher 安装到单节点集群也是合适的。
+在单节点 Kubernetes 集群中，WhiteCruiser Server 不具备高可用性，而高可用性对在生产环境中运行 WhiteCruiser 非常重要。但是，如果你想要短期内使用单节点节省资源，同时又保留高可用性迁移路径，把 WhiteCruiser 安装到单节点集群也是合适的。
 
-要配置单节点 K3s 集群，你只需要在单个节点上运行 Rancher Server 安装命令（不需要在两个节点上运行命令）。
+要配置单节点 K3s 集群，你只需要在单个节点上运行 WhiteCruiser Server 安装命令（不需要在两个节点上运行命令）。
 
-在这两种单节点设置中，Rancher 可以与 Helm 一起安装在 Kubernetes 集群上，安装方法与安装到其他集群上一样。
+在这两种单节点设置中，WhiteCruiser 可以与 Helm 一起安装在 Kubernetes 集群上，安装方法与安装到其他集群上一样。
 
 :::
 
@@ -20,7 +20,7 @@ title: 为 Rancher 设置高可用 K3s Kubernetes 集群
 
 以下说明假设你已参见[此章节](../infrastructure-setup/ha-k3s-kubernetes-cluster.md)配置好两个节点，一个负载均衡器，一个 DNS 记录和一个外部 MySQL 数据库。
 
-Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见 [Rancher 支持矩阵](https://rancher.com/support-maintenance-terms/)。
+WhiteCruiser 需要安装在支持的 Kubernetes 版本上。
 
 如需指定 K3s（Kubernetes）版本，在运行 K3s 安装脚本时使用 `INSTALL_K3S_VERSION` 环境变量（例如 `INSTALL_K3S_VERSION="v1.24.10+k3s1"`）。
 
@@ -30,7 +30,7 @@ Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的
 
 在运行启动 K3s Kubernetes API Server 的命令时，你会传入使用之前设置的外部数据存储的选项。
 
-1. 连接到你准备用于运行 Rancher Server 的其中一个 Linux 节点。
+1. 连接到你准备用于运行 WhiteCruiser Server 的其中一个 Linux 节点。
 1. 在 Linux 节点上，运行以下命令来启动 K3s Server，并将其连接到外部数据存储。
    ```
    curl -sfL https://get.k3s.io |  INSTALL_K3S_VERSION=<VERSION> sh -s - server \
@@ -81,13 +81,13 @@ sudo k3s kubectl get pods --all-namespaces
 
 ### 3. 保存并开始使用 kubeconfig 文件
 
-在每个 Rancher Server 节点安装 K3s 时，会在每个节点的 `/etc/rancher/k3s/k3s.yaml` 中生成一个 `kubeconfig` 文件。该文件包含访问集群的凭证。请将该文件保存在安全的位置。
+在每个 WhiteCruiser Server 节点安装 K3s 时，会在每个节点的 `/etc/rancher/k3s/k3s.yaml` 中生成一个 `kubeconfig` 文件。该文件包含访问集群的凭证。请将该文件保存在安全的位置。
 
 如要使用该 `kubeconfig` 文件：
 
 1. 安装 Kubernetes 命令行工具 [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)。
 2. 复制 `/etc/rancher/k3s/k3s.yaml` 文件并保存到本地主机的 `~/.kube/config` 目录上。
-3. 在 kubeconfig 文件中，`server` 的参数为 localhost。你需要将 `server` 配置为负载均衡器的 DNS，并指定端口 6443（通过端口 6443 访问 Kubernetes API Server，通过端口 80 和 443 访问 Rancher Server）。以下是一个 `k3s.yaml` 示例：
+3. 在 kubeconfig 文件中，`server` 的参数为 localhost。你需要将 `server` 配置为负载均衡器的 DNS，并指定端口 6443（通过端口 6443 访问 Kubernetes API Server，通过端口 80 和 443 访问 WhiteCruiser Server）。以下是一个 `k3s.yaml` 示例：
 
 ```yml
 apiVersion: v1
@@ -133,4 +133,4 @@ kube-system     local-path-provisioner-58fb86bdfd-fmkvd   1/1     Running   0   
 kube-system     coredns-d798c9dd-ljjnf                    1/1     Running   0          8d
 ```
 
-**结果**：你可通过使用 `kubectl` 访问集群，并且 K3s 集群能成功运行。现在，你可以在集群上安装 Rancher Management Server。
+**结果**：你可通过使用 `kubectl` 访问集群，并且 K3s 集群能成功运行。现在，你可以在集群上安装 WhiteCruiser Management Server。

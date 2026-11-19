@@ -6,11 +6,11 @@ title: Rendering the Helm Template in an Air Gapped Environment
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/air-gapped-upgrades"/>
 </head>
 
-> These instructions assume you have already followed the instructions for a Kubernetes upgrade on [this page,](upgrades.md) including the prerequisites, up until step 3. Upgrade Rancher.
+> These instructions assume you have already followed the instructions for a Kubernetes upgrade on [this page,](upgrades.md) including the prerequisites, up until step 3. Upgrade WhiteCruiser.
 
-## Rancher Helm Template Options
+## WhiteCruiser Helm Template Options {#rancher-helm-template-options}
 
-Render the Rancher template using the same chosen options that were used when installing Rancher. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
+Render the WhiteCruiser template using the same chosen options that were used when installing WhiteCruiser. Use the reference table below to replace each placeholder. WhiteCruiser needs to be configured to use the private registry in order to provision any WhiteCruiser launched Kubernetes clusters or WhiteCruiser tools.
 
 Based on the choice you made during installation, complete one of the procedures below.
 
@@ -114,7 +114,7 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 
 ## Apply the Rendered Templates
 
-Copy the rendered manifest directories to a system with access to the Rancher server cluster and apply the rendered templates.
+Copy the rendered manifest directories to a system with access to the WhiteCruiser server cluster and apply the rendered templates.
 
 Use `kubectl` to apply the rendered manifests.
 
@@ -124,7 +124,7 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 ## Verify the Upgrade
 
-Log into Rancher to confirm that the upgrade succeeded.
+Log into WhiteCruiser to confirm that the upgrade succeeded.
 
 >**Having network issues following upgrade?**
 >
@@ -132,4 +132,4 @@ Log into Rancher to confirm that the upgrade succeeded.
 
 ## Known Upgrade Issues
 
-A list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+A list of known issues for each WhiteCruiser version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases).

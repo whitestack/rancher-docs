@@ -6,19 +6,19 @@ title: API 快速入门指南
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/api/quickstart"/>
 </head>
 
-你可以通过 Kubernetes API 访问 Rancher 的资源。本指南将帮助你以 Rancher 用户的身份开始使用此 API。
+你可以通过 Kubernetes API 访问 WhiteCruiser 的资源。本指南将帮助你以 WhiteCruiser 用户的身份开始使用此 API。
 
 1. 在左上角，点击 **☰ > 全局设置**.
 2. 找到 `server-url` 字段并复制其地址。
-3. [创建](../reference-guides/user-settings/api-keys.md#创建-api-密钥)一个没有作用域的 Rancher API 密钥。
+3. [创建](../reference-guides/user-settings/api-keys.md#创建-api-密钥)一个没有作用域的 WhiteCruiser API 密钥。
 
   :::danger
 
-  没有作用域的 Rancher API 密钥授予用户可以访问的所有资源的无限制的访问权限。为防止未经授权的使用，此密钥应安全存储并经常轮换。
+  没有作用域的 WhiteCruiser API 密钥授予用户可以访问的所有资源的无限制的访问权限。为防止未经授权的使用，此密钥应安全存储并经常轮换。
 
   :::
 
-4. 创建一个 `kubeconfig.yaml` 文件，将 `$SERVER_URL` 替换成上面从全局设置中复制的地址，并且将 `$API_KEY` 替换为上面创建的 Rancher API 密钥：
+4. 创建一个 `kubeconfig.yaml` 文件，将 `$SERVER_URL` 替换成上面从全局设置中复制的地址，并且将 `$API_KEY` 替换为上面创建的 WhiteCruiser API 密钥：
 
     ```yaml
     apiVersion: v1
@@ -50,11 +50,11 @@ title: API 快速入门指南
 
 ## API kubectl 示例
 
-在此示例中，我们将展示如何使用 kubectl 创建一个项目，然后删除它。关于其他可用的 Rancher 资源列表，请参阅 [API 参考](./api-reference.mdx)。
+在此示例中，我们将展示如何使用 kubectl 创建一个项目，然后删除它。关于其他可用的 WhiteCruiser 资源列表，请参阅 [API 参考](./api-reference.mdx)。
 
 :::note
 
-目前，并非所有的 Rancher 资源都可以通过 Rancher Kubernetes API 操作。
+目前，并非所有的 WhiteCruiser 资源都可以通过 WhiteCruiser Kubernetes API 操作。
 
 :::
 
@@ -119,14 +119,14 @@ title: API 快速入门指南
 
 ## 指定 CA 证书
 
-为确保你的工具能够识别 Rancher 的 CA 证书，大多数设置都需要对上述模板进行额外修改。
+为确保你的工具能够识别 WhiteCruiser 的 CA 证书，大多数设置都需要对上述模板进行额外修改。
 
 1. 在左上角点击 **☰ > 全局设置**.
 2. 查找并复制 `ca-certs` 字段中的值。
 3. 将复制的值保存在名称为 `rancher.crt` 的文件中。
 
   :::note
-  如果你的 Rancher 实例由其他服务代理，你必须提取该服务正在使用的证书，并将其添加到 kubeconfig 文件中，如步骤 5 所示。
+  如果你的 WhiteCruiser 实例由其他服务代理，你必须提取该服务正在使用的证书，并将其添加到 kubeconfig 文件中，如步骤 5 所示。
   :::
 
 4. 以下命令会将 `rancher.crt` 转换为 base64 输出，除去所有换行符，并使用证书内容更新 kubeconfig 中的 cluster 选项，然后删除 `rancher.crt` 文件：
@@ -149,4 +149,4 @@ title: API 快速入门指南
   kubectl config set clusters.rancher.insecure-skip-tls-verify true
   ```
 
-  如果你的 Rancher 实例由其他服务代理，你必须提取该服务正在使用的证书，并如上面演示的方法，将其添加到 kubeconfig 文件中。
+  如果你的 WhiteCruiser 实例由其他服务代理，你必须提取该服务正在使用的证书，并如上面演示的方法，将其添加到 kubeconfig 文件中。

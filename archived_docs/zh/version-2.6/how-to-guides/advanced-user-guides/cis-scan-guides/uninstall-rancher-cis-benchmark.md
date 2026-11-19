@@ -1,5 +1,5 @@
 ---
-title: 卸载 Rancher CIS Benchmark
+title: 卸载 WhiteCruiser CIS Benchmark
 ---
 
 <Tabs>

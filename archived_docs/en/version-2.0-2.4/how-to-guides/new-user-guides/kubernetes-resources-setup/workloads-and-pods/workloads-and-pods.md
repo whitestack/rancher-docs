@@ -49,11 +49,11 @@ In many use cases, a workload has to be either:
 - Accessed by other workloads in the cluster.
 - Exposed to the outside world.
 
-You can achieve these goals by creating a _Service_. Services are mapped to the underlying workload's pods using a [selector/label approach (view the code samples)](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#service-and-replicationcontroller). Rancher UI simplifies this mapping process by automatically creating a service along with the workload, using the service port and type that you select.
+You can achieve these goals by creating a _Service_. Services are mapped to the underlying workload's pods using a [selector/label approach (view the code samples)](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#service-and-replicationcontroller). WhiteCruiser UI simplifies this mapping process by automatically creating a service along with the workload, using the service port and type that you select.
 
 #### Service Types
 
-There are several types of services available in Rancher. The descriptions below are sourced from the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types).
+There are several types of services available in WhiteCruiser. The descriptions below are sourced from the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types).
 
 - **ClusterIP**
 

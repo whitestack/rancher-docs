@@ -1,23 +1,23 @@
 ---
-title: 迁移到 Rancher 2.5+ Monitoring
+title: 迁移到 WhiteCruiser 2.5+ Monitoring
 ---
 
-如果你在 Rancher 2.5 之前启用了 Monitoring、Alerting 或 Notifiers，则无法自动升级到新的监控/告警解决方案。在 Cluster Explorer 中部署新的监控解决方案之前，你需要禁用并删除整个集群所有项目中的所有自定义告警、通知器和监控安装。
+如果你在 WhiteCruiser 2.5 之前启用了 Monitoring、Alerting 或 Notifiers，则无法自动升级到新的监控/告警解决方案。在 Cluster Explorer 中部署新的监控解决方案之前，你需要禁用并删除整个集群所有项目中的所有自定义告警、通知器和监控安装。
 
 
-## Rancher 2.5 之前的 Monitoring
+## WhiteCruiser 2.5 之前的 Monitoring
 
-从 2.2.0 开始，旧版 Rancher UI 中的全局视图允许用户在集群内独立启用 Monitoring & Alerting V1（均由 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 提供支持）。
+从 2.2.0 开始，旧版 WhiteCruiser UI 中的全局视图允许用户在集群内独立启用 Monitoring & Alerting V1（均由 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 提供支持）。
 
 启用 Monitoring 后，Monitoring V1 会将 [Prometheus](https://prometheus.io/) 和 [Grafana](https://grafana.com/docs/grafana/latest/introduction/) 部署到集群上，从而监控集群节点、Kubernetes 组件和软件部署的进程状态，并创建自定义仪表板来简化指标的可视化。
 
-Monitoring V1 可以在集群级别和项目级别进行配置，并且会自动抓取 Rancher 集群上部署为应用的某些工作负载。
+Monitoring V1 可以在集群级别和项目级别进行配置，并且会自动抓取 WhiteCruiser 集群上部署为应用的某些工作负载。
 
-如果启用了 Alerts 或 Notifiers，Alerting V1 将 [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) 和一组 Rancher 控制器部署到集群上，允许用户定义告警并配置电子邮件、Slack、PagerDuty 等告警通知。用户可以根据需要监控的内容（例如系统服务、资源、CIS 扫描等）创建不同类型的告警。但是，只有在启用 Monitoring V1 时才能创建基于 PromQL 表达式的告警。
+如果启用了 Alerts 或 Notifiers，Alerting V1 将 [Prometheus Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) 和一组 WhiteCruiser 控制器部署到集群上，允许用户定义告警并配置电子邮件、Slack、PagerDuty 等告警通知。用户可以根据需要监控的内容（例如系统服务、资源、CIS 扫描等）创建不同类型的告警。但是，只有在启用 Monitoring V1 时才能创建基于 PromQL 表达式的告警。
 
-## 通过 Rancher 2.5 中的 Cluster Explorer 进行监控和告警
+## 通过 WhiteCruiser 2.5 中的 Cluster Explorer 进行监控和告警
 
-从 2.5.0 开始，Rancher 的 Cluster Explorer 允许用户在集群内同时启用 Monitoring & Alerting V2（均由 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 提供支持）。
+从 2.5.0 开始，WhiteCruiser 的 Cluster Explorer 允许用户在集群内同时启用 Monitoring & Alerting V2（均由 [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 提供支持）。
 
 与 Monitoring & Alerting V1 不同，现在这两个功能都打包在[此处](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring)的单个 Helm Chart 中。此 Chart 和可配置字段与 Prometheus 社区 Helm Chart [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) 非常匹配，与上游 Chart 的任何偏差都可以在 [CHANGELOG.md](https://github.com/rancher/charts/blob/main/charts/rancher-monitoring/CHANGELOG.md) 中找到。
 

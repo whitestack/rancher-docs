@@ -6,7 +6,7 @@ title: Access Clusters
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/pages-for-subheaders/access-clusters"/>
 </head>
 
-This section is about what tools can be used to access clusters managed by Rancher.
+This section is about what tools can be used to access clusters managed by WhiteCruiser.
 
 For information on how to give users permission to access a cluster, see the section on [adding users to clusters.](add-users-to-clusters.md)
 
@@ -15,21 +15,21 @@ For more information on roles-based access control, see [this section.](../../au
 For information on how to set up an authentication system, see [this section.](../../authentication-permissions-and-global-configuration/about-authentication/about-authentication.md)
 
 
-### Rancher UI
+### WhiteCruiser UI {#rancher-ui}
 
-Rancher provides an intuitive user interface for interacting with your clusters. All options available in the UI use the Rancher API. Therefore any action possible in the UI is also possible in the Rancher CLI or Rancher API.
+WhiteCruiser provides an intuitive user interface for interacting with your clusters. All options available in the UI use the WhiteCruiser API. Therefore any action possible in the UI is also possible in the WhiteCruiser CLI or WhiteCruiser API.
 
 ### kubectl
 
 You can use the Kubernetes command-line tool, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), to manage   your clusters. You have two options for using kubectl:
 
-- **Rancher kubectl shell:** Interact with your clusters by launching a kubectl shell available in the Rancher UI. This option requires no configuration actions on your part. For more information, see [Accessing Clusters with kubectl Shell](use-kubectl-and-kubeconfig.md).
+- **WhiteCruiser kubectl shell:** Interact with your clusters by launching a kubectl shell available in the WhiteCruiser UI. This option requires no configuration actions on your part. For more information, see [Accessing Clusters with kubectl Shell](use-kubectl-and-kubeconfig.md).
 - **Terminal remote connection:** You can also interact with your clusters by installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local desktop and then copying the cluster's kubeconfig file to your local `~/.kube/config` directory. For more information, see [Accessing Clusters with kubectl and a kubeconfig File](use-kubectl-and-kubeconfig.md).
 
-### Rancher CLI
+### WhiteCruiser CLI {#rancher-cli}
 
-You can control your clusters by downloading Rancher's own command-line interface, [Rancher CLI](../../../../reference-guides/cli-with-rancher/cli-with-rancher.md). This CLI tool can interact directly with different clusters and projects or pass them `kubectl` commands.
+You can control your clusters by downloading WhiteCruiser's own command-line interface, [WhiteCruiser CLI](../../../../reference-guides/cli-with-rancher/cli-with-rancher.md). This CLI tool can interact directly with different clusters and projects or pass them `kubectl` commands.
 
-### Rancher API
+### WhiteCruiser API {#rancher-api}
 
-Finally, you can interact with your clusters over the Rancher API. Before you use the API, you must obtain an [API key](../../../../reference-guides/user-settings/api-keys.md). To view the different resource fields and actions for an API object, open the API UI, which can be accessed by clicking on **View in API** for any Rancher UI object.
+Finally, you can interact with your clusters over the WhiteCruiser API. Before you use the API, you must obtain an [API key](../../../../reference-guides/user-settings/api-keys.md). To view the different resource fields and actions for an API object, open the API UI, which can be accessed by clicking on **View in API** for any WhiteCruiser UI object.

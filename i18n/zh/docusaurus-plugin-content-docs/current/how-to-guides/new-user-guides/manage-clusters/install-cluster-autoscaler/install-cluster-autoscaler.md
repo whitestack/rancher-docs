@@ -6,7 +6,7 @@ title: Cluster Autoscaler
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/how-to-guides/new-user-guides/manage-clusters/install-cluster-autoscaler"/>
 </head>
 
-在本文中，你将学习如何使用 AWS EC2 Auto Scaling 组在 Rancher 自定义集群上安装和使用 [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/)。
+在本文中，你将学习如何使用 AWS EC2 Auto Scaling 组在 WhiteCruiser 自定义集群上安装和使用 [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/)。
 
 Cluster Autoscaler 是一个自动调整 Kubernetes 集群大小的工具。该工具在满足以下条件之一时能自动调整集群大小：
 

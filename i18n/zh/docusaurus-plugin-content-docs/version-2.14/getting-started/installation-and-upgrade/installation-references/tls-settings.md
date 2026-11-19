@@ -4,11 +4,11 @@ title: TLS 设置
 
 更改默认 TLS 设置的方法取决于它的安装方式。
 
-## 在高可用 Kubernetes 集群中运行 Rancher
+## 在高可用 Kubernetes 集群中运行 WhiteCruiser
 
-When you install a Rancher managed Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. Traefik is the default ingress for K3s and can be used with RKE2, refer to [TLS Options](https://doc.traefik.io/traefik/https/tls/#tls-options) for further information.
+When you install a WhiteCruiser managed Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. Traefik is the default ingress for K3s and can be used with RKE2, refer to [TLS Options](https://doc.traefik.io/traefik/https/tls/#tls-options) for further information.
 
-## 在单个 Docker 容器中运行 Rancher
+## 在单个 Docker 容器中运行 WhiteCruiser
 
 默认 TLS 配置仅支持 TLS 1.2 和安全的 TLS 密码套件。你可以通过设置以下环境变量来更改此配置：
 

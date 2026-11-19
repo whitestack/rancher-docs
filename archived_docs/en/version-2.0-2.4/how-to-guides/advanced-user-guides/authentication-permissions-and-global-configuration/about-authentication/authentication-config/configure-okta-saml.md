@@ -8,7 +8,7 @@ title: Configure Okta (SAML)
 
 _Available as of v2.2.0_
 
-If your organization uses Okta Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
+If your organization uses Okta Identity Provider (IdP) for user authentication, you can configure WhiteCruiser to allow your users to log in using their IdP credentials.
 
 >**Note:** Okta integration only supports Service Provider initiated logins.
 
@@ -21,13 +21,13 @@ Setting | Value
 `Single Sign on URL` | `https://yourRancherHostURL/v1-saml/okta/saml/acs`
 `Audience URI (SP Entity ID)` | `https://yourRancherHostURL/v1-saml/okta/saml/metadata`
 
-## Configuring Okta in Rancher
+## Configuring Okta in WhiteCruiser {#configuring-okta-in-rancher}
 
 1.	From the **Global** view, select **Security > Authentication** from the main menu.
 
 1.	Select **Okta**.
 
-1.	Complete the **Configure Okta Account** form. The examples below describe how you can map Okta attributes from attribute statements to fields within Rancher.
+1.	Complete the **Configure Okta Account** form. The examples below describe how you can map Okta attributes from attribute statements to fields within WhiteCruiser.
 
     | Field                     | Description                                                                   |
     | ------------------------- | ----------------------------------------------------------------------------- |
@@ -35,7 +35,7 @@ Setting | Value
     | User Name Field           | The attribute name from an attribute statement that contains the user name/given name.                         |
     | UID Field                 | The attribute name from an attribute statement that is unique to every user.                                    |
     | Groups Field              | The attribute name in a group attribute statement that exposes your groups.        |
-    | Rancher API Host          | The URL for your Rancher Server.                                              |
+    | Rancher API Host          | The URL for your WhiteCruiser Server.                                              |
     | Private Key / Certificate | A key/certificate pair used for Assertion Encryption.                         |
     | Metadata XML              | The `Identity Provider metadata` file that you find in the application `Sign On` section.  |
 
@@ -47,17 +47,17 @@ Setting | Value
 
 1. After you complete the **Configure Okta Account** form, click **Authenticate with Okta**, which is at the bottom of the page.
 
-    Rancher redirects you to the IdP login page. Enter credentials that authenticate with Okta IdP to validate your Rancher Okta configuration.
+    WhiteCruiser redirects you to the IdP login page. Enter credentials that authenticate with Okta IdP to validate your WhiteCruiser Okta configuration.
 
     >**Note:** If nothing seems to happen, it's likely because your browser blocked the pop-up. Make sure you disable the pop-up blocker for your rancher domain and whitelist it in any other extensions you might utilize.
 
-**Result:** Rancher is configured to work with Okta. Your users can now sign into Rancher using their Okta logins.
+**Result:** WhiteCruiser is configured to work with Okta. Your users can now sign into WhiteCruiser using their Okta logins.
 
 :::note SAML Provider Caveats:
 
-- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
+- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to WhiteCruiser.
 - When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
-- When adding groups, you must select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+- When adding groups, you must select the group from the drop-down that is next to the text box. WhiteCruiser assumes that any input from the text box is a user.
 - The group drop-down shows only the groups that you are a member of. You will not be able to add groups that you are not a member of.
 
 :::

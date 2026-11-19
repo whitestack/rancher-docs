@@ -40,7 +40,7 @@ Alternatively, the administrator can give all new users the default permission t
 1. Under the **Global** roles tab, go to the role **Create RKE Templates** and click the **&#8942; > Edit**.
 1. Select the option **Yes: Default role for new users** and click **Save.**
 
-**Result:** Any new user created in this Rancher installation will be able to create RKE templates. Existing users will not get this permission.
+**Result:** Any new user created in this WhiteCruiser installation will be able to create RKE templates. Existing users will not get this permission.
 
 ### Revoking Permission to Create Templates
 

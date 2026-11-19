@@ -6,7 +6,7 @@ title: General Troubleshooting
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/general-troubleshooting"/>
 </head>
 
-This section contains information to help you troubleshoot issues when using Rancher.
+This section contains information to help you troubleshoot issues when using WhiteCruiser.
 
 - [Kubernetes components](kubernetes-components/kubernetes-components.md)
 
@@ -21,7 +21,7 @@ This section contains information to help you troubleshoot issues when using Ran
 
 - [Kubernetes resources](other-troubleshooting-tips/kubernetes-resources.md)
 
-    Options for troubleshooting Kubernetes resources like Nodes, Ingress Controller and Rancher Agents are described in this section.
+    Options for troubleshooting Kubernetes resources like Nodes, Ingress Controller and WhiteCruiser Agents are described in this section.
 
 - [Networking](other-troubleshooting-tips/networking.md)
 
@@ -31,9 +31,9 @@ This section contains information to help you troubleshoot issues when using Ran
 
     When you experience name resolution issues in your cluster.
 
-- [Troubleshooting Rancher installed on Kubernetes](other-troubleshooting-tips/rancher-ha.md)
+- [Troubleshooting WhiteCruiser installed on Kubernetes](other-troubleshooting-tips/rancher-ha.md)
 
-    If you experience issues with your [Rancher server installed on Kubernetes](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
+    If you experience issues with your [WhiteCruiser server installed on Kubernetes](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md)
 
 - [Logging](other-troubleshooting-tips/logging.md)
 
@@ -41,8 +41,8 @@ This section contains information to help you troubleshoot issues when using Ran
 
 - [User ID Tracking in Audit Logs](other-troubleshooting-tips/user-id-tracking-in-audit-logs.md)
 
-    Read more about how a Rancher Admin can trace an event from the Rancher audit logs and into the Kubernetes audit logs using the external Identity Provider username.
+    Read more about how a WhiteCruiser Admin can trace an event from the WhiteCruiser audit logs and into the Kubernetes audit logs using the external Identity Provider username.
 
 - [Expired Webhook Certificates](other-troubleshooting-tips/expired-webhook-certificate-rotation.md)  
 
-    Read more about how to rotate a Rancher webhook certificate secret after it expires on an annual basis.
+    Read more about how to rotate a WhiteCruiser webhook certificate secret after it expires on an annual basis.

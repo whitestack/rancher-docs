@@ -6,7 +6,7 @@ title: Configure Alerts for Periodic Scan on a Schedule
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule"/>
 </head>
 
-Rancher provides a set of alerts for cluster scans. which are not configured to have notifiers by default:
+WhiteCruiser provides a set of alerts for cluster scans. which are not configured to have notifiers by default:
 
 - A manual cluster scan was completed
 - A manual cluster scan has failures
@@ -21,7 +21,7 @@ You need to configure a [notifier](../../../explanations/integrations-in-rancher
 
 To activate an existing alert for a CIS scan result,
 
-1. From the cluster view in Rancher, click **Tools > Alerts.**
+1. From the cluster view in WhiteCruiser, click **Tools > Alerts.**
 1. Go to the section called **A set of alerts for cluster scans.**
 1. Go to the alert you want to activate and click **⋮ > Activate.**
 1. Go to the alert rule group **A set of alerts for cluster scans** and click **⋮ > Edit.**

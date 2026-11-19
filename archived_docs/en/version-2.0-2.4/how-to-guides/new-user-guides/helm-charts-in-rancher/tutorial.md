@@ -2,24 +2,24 @@
 title: "Tutorial: Example Custom Chart Creation"
 ---
 
-In this tutorial, you'll learn how to create a Helm chart and deploy it to a  repository. The repository can then be used as a source for a custom catalog in Rancher.
+In this tutorial, you'll learn how to create a Helm chart and deploy it to a  repository. The repository can then be used as a source for a custom catalog in WhiteCruiser.
 
-You can fill your custom catalogs with either Helm Charts or Rancher Charts, although we recommend Rancher Charts due to their enhanced user experience.
+You can fill your custom catalogs with either Helm Charts or WhiteCruiser Charts, although we recommend WhiteCruiser Charts due to their enhanced user experience.
 
 > For a complete walkthrough of developing charts, see the upstream Helm chart [developer reference](https://helm.sh/docs/chart_template_guide/).
 
 1. Within the GitHub repo that you're using as your custom catalog, create a directory structure that mirrors the structure listed in the [Chart Directory Structure](./creating-apps.md#chart-directory-structure).
 
-    Rancher requires this directory structure, although `app-readme.md` and `questions.yml` are optional.
+    WhiteCruiser requires this directory structure, although `app-readme.md` and `questions.yml` are optional.
 
     >**Tip:**
     >
-    >- To begin customizing a chart, copy one from either the [Rancher Library](https://github.com/rancher/charts) or the [Helm Stable](https://github.com/kubernetes/charts/tree/master/stable).
+    >- To begin customizing a chart, copy one from either the [WhiteCruiser Library](https://github.com/rancher/charts) or the [Helm Stable](https://github.com/kubernetes/charts/tree/master/stable).
     >- For a complete walk through of developing charts, see the upstream Helm chart [developer reference](https://docs.helm.sh/developing_charts/).
 
 2. **Recommended:** Create an `app-readme.md` file.
 
-    Use this file to create custom text for your chart's header in the Rancher UI. You can use this text to notify users that the chart is customized for your environment or provide special instruction on how to use it.
+    Use this file to create custom text for your chart's header in the WhiteCruiser UI. You can use this text to notify users that the chart is customized for your environment or provide special instruction on how to use it.
     <br/>
     <br/>
     **Example**:
@@ -68,4 +68,4 @@ You can fill your custom catalogs with either Helm Charts or Rancher Charts, alt
 
 4. Check the customized chart into your GitHub repo.
 
-**Result:** Your custom chart is added to the repo. Your Rancher Server will replicate the chart within a few minutes.
+**Result:** Your custom chart is added to the repo. Your WhiteCruiser Server will replicate the chart within a few minutes.

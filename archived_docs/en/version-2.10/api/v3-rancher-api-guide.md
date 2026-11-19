@@ -1,12 +1,12 @@
 ---
-title: Previous v3 Rancher API Guide
+title: Previous v3 WhiteCruiser API Guide
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/api/v3-rancher-api-guide"/>
 </head>
 
-Rancher v2.8.0 introduced the Rancher Kubernetes API (RK-API). The previous v3 Rancher API is still available. This page describes the v3 API. For more information on RK-API, see the [RK-API quickstart](./quickstart.md) and [reference guide](./api-reference.mdx).
+WhiteCruiser v2.8.0 introduced the WhiteCruiser Kubernetes API (RK-API). The previous v3 WhiteCruiser API is still available. This page describes the v3 API. For more information on RK-API, see the [RK-API quickstart](./quickstart.md) and [reference guide](./api-reference.mdx).
 
 ## How to Use the API
 
@@ -17,12 +17,12 @@ The previous v3 API has its own user interface accessible from a [web browser](#
 
 1. Click your user avatar in the upper right corner.
 1. Click **Account & API Keys**.
-1. Under the **API Keys** section, find the **API Endpoint** field and click the link. The link looks something like `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your Rancher deployment.
+1. Under the **API Keys** section, find the **API Endpoint** field and click the link. The link looks something like `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your WhiteCruiser deployment.
 
 </TabItem>
 <TabItem value="Rancher before v2.6.4">
 
-Go to the URL endpoint at `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your Rancher deployment.
+Go to the URL endpoint at `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your WhiteCruiser deployment.
 
 </TabItem>
 </Tabs>
@@ -44,7 +44,7 @@ The API is generally RESTful but has several features to make the definition of 
   - Every field that allows filtering.
   - What HTTP verb methods are available for the collection itself, or for individual resources in the collection.
 
-The design allows you to load just the list of schemas and access everything about the API. The UI for the API contains no code specific to Rancher itself. The URL to get Schemas is sent in every HTTP response as a `X-Api-Schemas` header. From there you can follow the `collection` link on each schema to know where to list resources, and follow other `links` inside of the returned resources to get any other information.
+The design allows you to load just the list of schemas and access everything about the API. The UI for the API contains no code specific to WhiteCruiser itself. The URL to get Schemas is sent in every HTTP response as a `X-Api-Schemas` header. From there you can follow the `collection` link on each schema to know where to list resources, and follow other `links` inside of the returned resources to get any other information.
 
 In practice, you may just want to construct URL strings. We highly suggest limiting this to the top-level to list a collection (`/v3/<type>`) or get a specific resource (`/v3/<type>/<id>`). Anything deeper than that is subject to change in future releases.
 
@@ -74,13 +74,13 @@ API responses are paginated with a limit of 100 resources per page by default. T
 
 You can use browser developer tools to capture how the v3 API is called. For example, you could follow these steps to use the Chrome developer tools to get the API call for provisioning an RKE cluster:
 
-1. In the Rancher UI, go to **Cluster Management** and click **Create.**
+1. In the WhiteCruiser UI, go to **Cluster Management** and click **Create.**
 1. Click one of the cluster types. This example uses Digital Ocean.
 1. Fill out the form with a cluster name and node template, but don't click **Create**.
-1. You need to open the developer tools before the cluster creation to see the API call being recorded. To open the tools, right-click the Rancher UI and click **Inspect.**
+1. You need to open the developer tools before the cluster creation to see the API call being recorded. To open the tools, right-click the WhiteCruiser UI and click **Inspect.**
 1. In the developer tools, click the **Network** tab.
 1. On the **Network** tab, make sure **Fetch/XHR** is selected.
-1. In the Rancher UI, click **Create**. In the developer tools, you should see a new network request with the name `cluster?_replace=true`.
+1. In the WhiteCruiser UI, click **Create**. In the developer tools, you should see a new network request with the name `cluster?_replace=true`.
 1. Right-click `cluster?_replace=true` and click **Copy > Copy as cURL.**
 1. Paste the result into any text editor. You can see the POST request, including the URL it was sent to, all headers, and the full body of the request. This command can be used to create a cluster from the command line. Note: the request should be stored in a safe place because it contains credentials.
 

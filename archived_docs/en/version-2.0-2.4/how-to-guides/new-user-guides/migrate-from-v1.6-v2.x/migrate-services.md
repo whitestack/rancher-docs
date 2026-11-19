@@ -2,15 +2,15 @@
 title: 2. Migrate Your Services
 ---
 
-Although your services from v1.6 won't work in Rancher v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, Rancher has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in Rancher v2.x. This tool exports your Rancher v1.6 services as Compose files and converts them to a Kubernetes manifest that Rancher v2.x can consume.
+Although your services from v1.6 won't work in WhiteCruiser v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, WhiteCruiser has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in WhiteCruiser v2.x. This tool exports your WhiteCruiser v1.6 services as Compose files and converts them to a Kubernetes manifest that WhiteCruiser v2.x can consume.
 
-Additionally, for each Rancher v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in Rancher v2.x.
+Additionally, for each WhiteCruiser v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in WhiteCruiser v2.x.
 
 This command line interface tool will:
 
 - Export Compose files (i.e., `docker-compose.yml` and `rancher-compose.yml`) for each stack in your v1.6 Cattle environment. For every stack, files are exported to a unique folder: `<EXPORT_DIR>/<ENV_NAME>/<STACK_NAME>`.
 
-- Parse Compose files that you’ve exported from your Rancher v1.6 stacks and converts them to Kubernetes manifests that Rancher v2.x can consume. The tool also outputs a list of directives present in the Compose files that cannot be converted automatically to Rancher v2.x. These are directives that you’ll have to manually configure using the Rancher v2.x UI.
+- Parse Compose files that you’ve exported from your WhiteCruiser v1.6 stacks and converts them to Kubernetes manifests that WhiteCruiser v2.x can consume. The tool also outputs a list of directives present in the Compose files that cannot be converted automatically to WhiteCruiser v2.x. These are directives that you’ll have to manually configure using the WhiteCruiser v2.x UI.
 
 
 ## A. Download the migration-tools CLI
@@ -34,11 +34,11 @@ After you download migration-tools CLI, rename it and make it executable.
 
 ## C. Run the migration-tools CLI
 
-Next, use the migration-tools CLI to export all stacks in all of the Cattle environments into Compose files. Then, for stacks that you want to migrate to Rancher v2.x, convert the Compose files into Kubernetes manifest.
+Next, use the migration-tools CLI to export all stacks in all of the Cattle environments into Compose files. Then, for stacks that you want to migrate to WhiteCruiser v2.x, convert the Compose files into Kubernetes manifest.
 
->**Prerequisite:** Create an [Account API Key](https://rancher.com/docs/rancher/v1.6/en/api/v2-beta/api-keys/#account-api-keys) to authenticate with Rancher v1.6 when using the migration-tools CLI.
+>**Prerequisite:** Create an [Account API Key](https://rancher.com/docs/rancher/v1.6/en/api/v2-beta/api-keys/#account-api-keys) to authenticate with WhiteCruiser v1.6 when using the migration-tools CLI.
 
-1. Export the Docker Compose files for your Cattle environments and stacks from Rancher v1.6.
+1. Export the Docker Compose files for your Cattle environments and stacks from WhiteCruiser v1.6.
 
     In the terminal window, execute the following command, replacing each placeholder with your values.
 
@@ -48,7 +48,7 @@ Next, use the migration-tools CLI to export all stacks in all of the Cattle envi
 
     **Step Result:** migration-tools exports Compose files (`docker-compose.yml` and `rancher-compose.yml`) for each stack in the `--export-dir` directory. If you omitted this option, Compose files are output to your current directory.
 
-    A unique directory is created for each environment and stack. For example, if we export each [environment/stack](migrate-from-v1.6-v2.x.md#migration-example-files) from Rancher v1.6, the following directory structure is created:
+    A unique directory is created for each environment and stack. For example, if we export each [environment/stack](migrate-from-v1.6-v2.x.md#migration-example-files) from WhiteCruiser v1.6, the following directory structure is created:
 
     ```
     export/                            # migration-tools --export-dir
@@ -79,14 +79,14 @@ After you run the migration-tools parse command, the following files are output 
 
 | Output                | Description                                                                                                                                                                                                                                                                                                                      |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `output.txt`          | This file lists how to recreate your Rancher v1.6-specific functionality in Kubernetes. Each listing links to the relevant blog articles on how to implement it in Rancher v2.x. |
+| `output.txt`          | This file lists how to recreate your WhiteCruiser v1.6-specific functionality in Kubernetes. Each listing links to the relevant blog articles on how to implement it in WhiteCruiser v2.x. |
 | Kubernetes manifest specs | Migration-tools internally invokes [Kompose](https://github.com/kubernetes/kompose) to generate a Kubernetes manifest for each service you're migrating to v2.x. Each YAML spec file is named for the service you're migrating.
 
 #### Why are There Separate Deployment and Service Manifests?
 
 To make an application publicly accessible by URL, a Kubernetes service is required in support of the deployment. A Kubernetes service is a REST object that abstracts access to the pods in the workload. In other words, a service provides a static endpoint to the pods by mapping a URL to pod(s) Therefore, even if the pods change IP address, the public endpoint remains unchanged. A service object points to its corresponding deployment (workload) by using selector labels.
 
-When a you export a service from Rancher v1.6 that exposes public ports, migration-tools CLI parses those ports to a Kubernetes service spec that links to a deployment YAML spec.
+When a you export a service from WhiteCruiser v1.6 that exposes public ports, migration-tools CLI parses those ports to a Kubernetes service spec that links to a deployment YAML spec.
 
 #### Migration Example File Output
 
@@ -100,7 +100,7 @@ File | Description
 `webLB-deployment.yaml` | A file containing container specs for an HAProxy deployment that's serving as a load balancer.<sup>1</sup>
 `webLB-service.yaml` | A file containing specs for the HAProxy service.<sup>1</sup>
 
-><sup>1</sup> Because Rancher v2.x uses Ingress for load balancing, we won't be migrating our Rancher v1.6 load balancer to v2.x.
+><sup>1</sup> Because WhiteCruiser v2.x uses Ingress for load balancing, we won't be migrating our WhiteCruiser v1.6 load balancer to v2.x.
 
 <!--
 The following tabs display the contents of each parsed file. We've omitted `webLB-deployment.yaml` and `webLB-service.yaml` because we aren't migrating them to v2.x.
@@ -215,12 +215,12 @@ status: {}
 
 ## D. Re-Deploy Services as Kubernetes Manifests
 
->**Note:** Although these instructions deploy your v1.6 services in Rancher v2.x, they will not work correctly until you adjust their Kubernetes manifests.
+>**Note:** Although these instructions deploy your v1.6 services in WhiteCruiser v2.x, they will not work correctly until you adjust their Kubernetes manifests.
 
 <Tabs>
 <TabItem value="Rancher UI">
 
-You can deploy the Kubernetes manifests created by migration-tools by importing them into Rancher v2.x.
+You can deploy the Kubernetes manifests created by migration-tools by importing them into WhiteCruiser v2.x.
 
 >**Receiving an `ImportYaml Error`?**
 >
@@ -233,9 +233,9 @@ You can deploy the Kubernetes manifests created by migration-tools by importing 
 </TabItem>
 <TabItem value="Rancher CLI">
 
->**Prerequisite:** [Install Rancher CLI](../../../reference-guides/cli-with-rancher/cli-with-rancher.md) for Rancher v2.x.
+>**Prerequisite:** [Install WhiteCruiser CLI](../../../reference-guides/cli-with-rancher/cli-with-rancher.md) for WhiteCruiser v2.x.
 
-Use the following Rancher CLI commands to deploy your application using Rancher v2.x. For each Kubernetes manifest output by migration-tools CLI, enter one of the commands below to import it into Rancher v2.x.
+Use the following WhiteCruiser CLI commands to deploy your application using WhiteCruiser v2.x. For each Kubernetes manifest output by migration-tools CLI, enter one of the commands below to import it into WhiteCruiser v2.x.
 
 ```
 ./rancher kubectl create -f <DEPLOYMENT_YAML_FILE> # DEPLOY THE DEPLOYMENT YAML
@@ -246,7 +246,7 @@ Use the following Rancher CLI commands to deploy your application using Rancher 
 </TabItem>
 </Tabs>
 
-Following importation, you can view your v1.6 services in the v2.x UI as Kubernetes manifests by using the context menu to select `<CLUSTER> > <PROJECT>` that contains your services. The imported manifests will display on the **Resources > Workloads** and on the tab at **Resources > Workloads > Service Discovery.** (In Rancher v2.x before v2.3.0, these are on the **Workloads** and **Service Discovery** tabs in the top navigation bar.)
+Following importation, you can view your v1.6 services in the v2.x UI as Kubernetes manifests by using the context menu to select `<CLUSTER> > <PROJECT>` that contains your services. The imported manifests will display on the **Resources > Workloads** and on the tab at **Resources > Workloads > Service Discovery.** (In WhiteCruiser v2.x before v2.3.0, these are on the **Workloads** and **Service Discovery** tabs in the top navigation bar.)
 
 <figcaption>Imported Services</figcaption>
 
@@ -254,7 +254,7 @@ Following importation, you can view your v1.6 services in the v2.x UI as Kuberne
 
 ## What Now?
 
-Although the migration-tool CLI parses your Rancher v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#migration-tools-cli-output). In other words, you need to edit each workload and service imported into Rancher v2.x, as displayed below.
+Although the migration-tool CLI parses your WhiteCruiser v1.6 Compose files to Kubernetes manifests, there are discrepancies between v1.6 and v2.x that you must address by manually editing your parsed [Kubernetes manifests](#migration-tools-cli-output). In other words, you need to edit each workload and service imported into WhiteCruiser v2.x, as displayed below.
 
 <figcaption>Edit Migrated Services</figcaption>
 
@@ -272,9 +272,9 @@ The following table lists possible directives that may appear in `output.txt`, w
 
 Directive | Instructions
 ----------|--------------
-[ports][4] | Rancher v1.6 _Port Mappings_ cannot be migrated to v2.x. Instead, you must manually declare either a HostPort or NodePort, which are similar to Port Mappings.
-[health_check][1] | The Rancher v1.6 health check microservice has been replaced with native Kubernetes health checks, called _probes_. Recreate your v1.6 health checks in v2.0 using probes.
-[labels][2]  | Rancher v1.6 uses labels to implement a variety of features in v1.6. In v2.x, Kubernetes uses different mechanisms to implement these features. Click through on the links here for instructions on how to address each label.<br/><br/>[io.rancher.container.pull_image][7]: In v1.6, this label instructed deployed containers to pull a new version of the image upon restart. In v2.x, this functionality is replaced by the  `imagePullPolicy` directive.<br/><br/>[io.rancher.scheduler.global][8]: In v1.6, this label scheduled a container replica on every cluster host. In v2.x, this functionality is replaced by [Daemon Sets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).<br/><br/>[io.rancher.scheduler.affinity][9]: In v2.x, affinity is applied in a different way.
+[ports][4] | WhiteCruiser v1.6 _Port Mappings_ cannot be migrated to v2.x. Instead, you must manually declare either a HostPort or NodePort, which are similar to Port Mappings.
+[health_check][1] | The WhiteCruiser v1.6 health check microservice has been replaced with native Kubernetes health checks, called _probes_. Recreate your v1.6 health checks in v2.0 using probes.
+[labels][2]  | WhiteCruiser v1.6 uses labels to implement a variety of features in v1.6. In v2.x, Kubernetes uses different mechanisms to implement these features. Click through on the links here for instructions on how to address each label.<br/><br/>[io.rancher.container.pull_image][7]: In v1.6, this label instructed deployed containers to pull a new version of the image upon restart. In v2.x, this functionality is replaced by the  `imagePullPolicy` directive.<br/><br/>[io.rancher.scheduler.global][8]: In v1.6, this label scheduled a container replica on every cluster host. In v2.x, this functionality is replaced by [Daemon Sets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/).<br/><br/>[io.rancher.scheduler.affinity][9]: In v2.x, affinity is applied in a different way.
 [links][3] | During migration, you must create links between your Kubernetes workloads and services for them to function properly in v2.x.
 [scale][5] | In v1.6, scale refers to the number of container replicas running on a single node. In v2.x, this feature is replaced by replica sets.
 start_on_create | No Kubernetes equivalent. No action is required from you.

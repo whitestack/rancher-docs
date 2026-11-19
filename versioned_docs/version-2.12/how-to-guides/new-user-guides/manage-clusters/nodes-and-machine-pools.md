@@ -6,7 +6,7 @@ title: Nodes and Machine Pools
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/nodes-and-machine-pools"/>
 </head>
 
-After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab.
+After you launch a Kubernetes cluster in WhiteCruiser, you can manage individual nodes from the cluster's **Node** tab.
 
 1. Click **☰** in the top left corner.
 1. Select **Cluster Management**.
@@ -24,7 +24,7 @@ If you want to manage the _cluster_ and not individual nodes, see [Editing Clust
 
 ## Node Options Available for Each Cluster Creation Option
 
-The following table lists which node options are available for each type of cluster in Rancher. Click the links in the **Option** column for more detailed information about each feature.
+The following table lists which node options are available for each type of cluster in WhiteCruiser. Click the links in the **Option** column for more detailed information about each feature.
 
 | Option                                           | [Nodes Hosted by an Infrastructure Provider][1]                                   | [Custom Node][2] | [Hosted Cluster][3] | [Registered EKS Nodes][4] | [All Other Registered Nodes][5] | Description                                                        |
 | ------------------------------------------------ | ------------------------------------------------ | ---------------- | ------------------- | ------------------- | -------------------| ------------------------------------------------------------------ |
@@ -47,15 +47,15 @@ The following table lists which node options are available for each type of clus
 
 ### Nodes Hosted by an Infrastructure Provider
 
-Machine pools are available when you provision Rancher-launched Kubernetes clusters on nodes that are [hosted in an infrastructure provider.](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)
+Machine pools are available when you provision WhiteCruiser-launched Kubernetes clusters on nodes that are [hosted in an infrastructure provider.](../launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md)
 
 ### Nodes Provisioned by Hosted Kubernetes Providers
 
-Options for managing nodes [hosted by a Kubernetes provider](../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md) are somewhat limited in Rancher. Rather than using the Rancher UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
+Options for managing nodes [hosted by a Kubernetes provider](../kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md) are somewhat limited in WhiteCruiser. Rather than using the WhiteCruiser UI to make edits such as scaling the number of nodes up or down, edit the cluster directly.
 
 ### Registered Nodes
 
-Although you can deploy workloads to a [registered cluster](../../new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md) using Rancher, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of Rancher.
+Although you can deploy workloads to a [registered cluster](../../new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md) using WhiteCruiser, you cannot manage individual cluster nodes. All management of imported cluster nodes must take place outside of WhiteCruiser.
 
 ## Managing and Editing Individual Nodes
 
@@ -68,7 +68,7 @@ Editing a node lets you:
 
 To manage individual nodes, browse to the cluster that you want to manage and then select **Nodes** from the main menu. You can open the options menu for a node by clicking its **⋮** icon (**..**.).
 
-## Viewing a Node in the Rancher API
+## Viewing a Node in the WhiteCruiser API {#viewing-a-node-in-the-rancher-api}
 
 Select this option to view the node's [API endpoints](../../../api/quickstart.md).
 
@@ -76,7 +76,7 @@ Select this option to view the node's [API endpoints](../../../api/quickstart.md
 
 Use **Delete** to remove defective nodes from the cloud provider.
 
-When you delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a machine pool and [auto-replace is enabled](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration.md#auto-replace).
+When you delete a defective node, WhiteCruiser can automatically replace it with an identically provisioned node if the node is in a machine pool and [auto-replace is enabled](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration.md#auto-replace).
 
 :::tip
 
@@ -157,15 +157,15 @@ Once drain successfully completes, the node is in a state of `drained`. You can 
 
 **Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/).
 
-## Labeling a Node to be Ignored by Rancher
+## Labeling a Node to be Ignored by WhiteCruiser {#labeling-a-node-to-be-ignored-by-rancher}
 
 Certain solutions, such as F5's BIG-IP integration, may require creating a node that is never registered to a cluster.
 
-Since the node never finishes registering, it is always shown as unhealthy in the Rancher UI.
+Since the node never finishes registering, it is always shown as unhealthy in the WhiteCruiser UI.
 
-In that case, you may want to label the node to be ignored by Rancher so that Rancher only shows nodes as unhealthy when they are actually failing.
+In that case, you may want to label the node to be ignored by WhiteCruiser so that WhiteCruiser only shows nodes as unhealthy when they are actually failing.
 
-You can label nodes to be ignored by using a setting in the Rancher UI, or by using `kubectl`.
+You can label nodes to be ignored by using a setting in the WhiteCruiser UI, or by using `kubectl`.
 
 :::note
 
@@ -176,16 +176,16 @@ There is an [open issue](https://github.com/rancher/rancher/issues/24172) in whi
 
 ### Labeling Nodes to be Ignored with kubectl
 
-To add a node that is ignored by Rancher, use `kubectl` to create a node that has the following label:
+To add a node that is ignored by WhiteCruiser, use `kubectl` to create a node that has the following label:
 
 ```
 cattle.rancher.io/node-status: ignore
 ```
 
-**Result**: If you add the node to a cluster, Rancher skips syncing with this node. The node can still be part of the cluster and can be listed with `kubectl`.
+**Result**: If you add the node to a cluster, WhiteCruiser skips syncing with this node. The node can still be part of the cluster and can be listed with `kubectl`.
 
-If the label is added before the node is added to the cluster, the node is not shown in the Rancher UI.
+If the label is added before the node is added to the cluster, the node is not shown in the WhiteCruiser UI.
 
-If the label is added after the node is added to a Rancher cluster, the node is not removed from the UI.
+If the label is added after the node is added to a WhiteCruiser cluster, the node is not removed from the UI.
 
-If you delete the node from the Rancher server using the Rancher UI or API, the node is not removed from the cluster if the `nodeName` is listed in the Rancher settings in the Rancher API under `v3/settings/ignore-node-name`.
+If you delete the node from the WhiteCruiser server using the WhiteCruiser UI or API, the node is not removed from the cluster if the `nodeName` is listed in the WhiteCruiser settings in the WhiteCruiser API under `v3/settings/ignore-node-name`.

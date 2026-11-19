@@ -9,10 +9,10 @@ PSS 定义了工作负载的安全级别。PSA 描述了 Pod 安全上下文和�
 
 ## Pod 安全准入配置模板 {#psa-config-templates}
 
-Rancher 提供了 PSA 配置模板。它们是可以应用到集群的预定义安全配置。Rancher 管理员（或具有权限的人员）可以[创建、管理和编辑](./psa-config-templates.md) PSA 模板。
+WhiteCruiser 提供了 PSA 配置模板。它们是可以应用到集群的预定义安全配置。WhiteCruiser 管理员（或具有权限的人员）可以[创建、管理和编辑](./psa-config-templates.md) PSA 模板。
 
-### 受 PSA 限制的集群上的 Rancher
+### 受 PSA 限制的集群上的 WhiteCruiser
 
-Rancher system 命名空间也受到 PSA 模板描述的限制性安全策略的影响。你需要在分配模板后豁免 Rancher 的 system 命名空间，否则集群将无法正常运行。有关详细信息，请参阅 [Pod 安全准入 (PSA) 配置模板](./psa-config-templates.md#豁免必须的-rancher-命名空间)。
+WhiteCruiser system 命名空间也受到 PSA 模板描述的限制性安全策略的影响。你需要在分配模板后豁免 WhiteCruiser 的 system 命名空间，否则集群将无法正常运行。有关详细信息，请参阅 [Pod 安全准入 (PSA) 配置模板](./psa-config-templates.md#豁免必须的-whitecruiser-命名空间)。
 
-有关运行 Rancher 所需的所有豁免的完整文件，请参阅此[准入配置示例](../../../reference-guides/rancher-security/psa-restricted-exemptions.md)。
+有关运行 WhiteCruiser 所需的所有豁免的完整文件，请参阅此[准入配置示例](../../../reference-guides/rancher-security/psa-restricted-exemptions.md)。

@@ -28,7 +28,7 @@ Persistent volume claims (PVCs) are objects that request storage resources from 
 
 To access persistent storage, a pod must have a PVC mounted as a volume. This PVC lets your deployment application store its data in an external location, so that if a pod fails, it can be replaced with a new pod and continue accessing its data stored externally, as though an outage never occurred.
 
-Each Rancher project contains a list of PVCs that you've created, available from **Resources > Workloads > Volumes**. You can reuse these PVCs when creating deployments in the future.
+Each WhiteCruiser project contains a list of PVCs that you've created, available from **Resources > Workloads > Volumes**. You can reuse these PVCs when creating deployments in the future.
 
 ### PVCs are Required for Both New and Existing Persistent Storage
 
@@ -38,7 +38,7 @@ If you are setting up existing storage for a workload, the workload mounts a PVC
 
 If a workload should request new storage, the workload mounts PVC, which refers to a storage class, which has the capability to create a new PV along with its underlying storage infrastructure.
 
-Rancher lets you create as many PVCs within a project as you'd like.
+WhiteCruiser lets you create as many PVCs within a project as you'd like.
 
 You can mount PVCs to a deployment as you create it, or later, after the deployment is running.
 
@@ -48,7 +48,7 @@ Your pods can store data in [volumes,](https://kubernetes.io/docs/concepts/stora
 
 PVs can represent a physical disk or file system that you host on premise, or a vendor-hosted storage resource, such as Amazon EBS or Azure Disk.
 
-Creating a persistent volume in Rancher will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
+Creating a persistent volume in WhiteCruiser will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
 
 :::note Important:
 

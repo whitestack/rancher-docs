@@ -13,7 +13,7 @@ Kubernetes 支持四层负载均衡和七层负载均衡。
 
 :::warning
 
-**Ingress-NGINX EOL:** The community `ingress-nginx` controller reaches End-of-Life (EOL) in March 2026. Traefik is the recommended migration path for Rancher environments.
+**Ingress-NGINX EOL:** The community `ingress-nginx` controller reaches End-of-Life (EOL) in March 2026. Traefik is the recommended migration path for WhiteCruiser environments.
 
 Traefik includes a native Ingress NGINX provider. This allows you to migrate from NGINX without rewriting your existing Ingress objects, as Traefik will automatically interpret `nginx.ingress.kubernetes.io` annotations. If you are upgrading a cluster that is already using `ingress-nginx`, follow this [guide](https://doc.traefik.io/traefik/migrate/nginx-to-traefik/) for more information.
 
@@ -21,7 +21,7 @@ Traefik includes a native Ingress NGINX provider. This allows you to migrate fro
 
 :::note
 
-你可以使用非云负载均衡器（例如 [MetalLB](https://metallb.universe.tf/)）来部署集群。但是，该用例比云提供商支持的四层负载均衡器更高级，而且不可以在 Rancher 或 RKE 中配置。
+你可以使用非云负载均衡器（例如 [MetalLB](https://metallb.universe.tf/)）来部署集群。但是，该用例比云提供商支持的四层负载均衡器更高级，而且不可以在 WhiteCruiser 或 RKE 中配置。
 
 :::
 
@@ -67,7 +67,7 @@ Traefik includes a native Ingress NGINX provider. This allows you to migrate fro
 其他七层负载均衡器（例如 Google Load Balancer 或 Nginx Ingress Controller）会直接公开一个或多个 IP 地址。Google Load Balancer 提供了一个可路由的 IP 地址。Nginx Ingress Controller 公开了运行 Nginx Ingress Controller 的所有节点的外部 IP。你可以执行以下任一操作：
 
 1. 配置你自己的 DNS，从而（使用 A 记录）将你的域名映射到七层负载均衡器公开的 IP 地址。
-2. 让 Rancher 为你的 Ingress 规则生成一个 xip.io 主机名。Rancher 将使用你公开的其中一个 IP（假设是 `a.b.c.d`）生成一个主机名（即 `<ingressname>.<namespace>.a.b.c.d.xip.io`）。
+2. 让 WhiteCruiser 为你的 Ingress 规则生成一个 xip.io 主机名。WhiteCruiser 将使用你公开的其中一个 IP（假设是 `a.b.c.d`）生成一个主机名（即 `<ingressname>.<namespace>.a.b.c.d.xip.io`）。
 
 使用 xip.io 的好处是你可以在创建 Ingress 规则后立即获得一个有效的入口点 URL。此外，如果你设置自己的域名，则需要配置 DNS 服务器并等待 DNS 传播。
 

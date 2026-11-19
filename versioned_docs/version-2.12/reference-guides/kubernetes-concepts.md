@@ -6,7 +6,7 @@ title: Kubernetes Concepts
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/kubernetes-concepts"/>
 </head>
 
-This page explains concepts related to Kubernetes that are important for understanding how Rancher works. The descriptions below provide a simplified overview of Kubernetes components. For more details, refer to the [official documentation on Kubernetes components.](https://kubernetes.io/docs/concepts/overview/components/)
+This page explains concepts related to Kubernetes that are important for understanding how WhiteCruiser works. The descriptions below provide a simplified overview of Kubernetes components. For more details, refer to the [official documentation on Kubernetes components.](https://kubernetes.io/docs/concepts/overview/components/)
 
 ## About Docker
 
@@ -30,7 +30,7 @@ A Kubernetes cluster consists of at least one etcd, controlplane, and worker nod
 
 ### etcd Nodes
 
-Rancher uses etcd as a data store in both single node and high-availability installations. In Kubernetes, etcd is also a role for nodes that store the cluster state.
+WhiteCruiser uses etcd as a data store in both single node and high-availability installations. In Kubernetes, etcd is also a role for nodes that store the cluster state.
 
 The state of a Kubernetes cluster is maintained in [etcd.](https://kubernetes.io/docs/concepts/overview/components/#etcd)  The etcd nodes run the etcd database.
 
@@ -55,7 +55,7 @@ Worker nodes also run storage and networking drivers, and ingress controllers wh
 
 ## About Helm
 
-For high-availability installations of Rancher, Helm is the tool used to install Rancher on a Kubernetes cluster.
+For high-availability installations of WhiteCruiser, Helm is the tool used to install WhiteCruiser on a Kubernetes cluster.
 
 Helm is the package management tool of choice for Kubernetes. Helm charts provide templating syntax for Kubernetes YAML manifest documents. With Helm we can create configurable deployments instead of just using static files. For more information about creating your own catalog of deployments, check out the docs at [https://helm.sh/](https://helm.sh).
 

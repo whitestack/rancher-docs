@@ -12,7 +12,7 @@ This namespace setting will only affect new workloads in the namespace. Any pree
 
 > **Prerequisite:** To enable Istio in a namespace, the cluster must have Istio installed.
 
-1. In the Rancher **Cluster Explorer,** open the kubectl shell.
+1. In the WhiteCruiser **Cluster Explorer,** open the kubectl shell.
 1. Then run `kubectl label namespace <namespace> istio-injection=enabled`
 
 **Result:** The namespace now has the label `istio-injection=enabled`. All new workloads deployed in this namespace will have the Istio sidecar injected by default.

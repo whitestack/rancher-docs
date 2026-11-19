@@ -2,9 +2,9 @@
 title: 升级 Cert-Manager
 ---
 
-Rancher 适配 API 版本 `cert-manager.io/v1` 并且在 cert-manager  v1.13.1 版本上进行了测试。
+WhiteCruiser 适配 API 版本 `cert-manager.io/v1` 并且在 cert-manager  v1.13.1 版本上进行了测试。
 
-Rancher 使用 cert-manager 为 Rancher 高可用部署自动生成和续期 TLS 证书。从 2019 秋季开始，cert-manager 发生了以下的三个重要变更。如果你在此时间段前创建了 Rancher 高可用部署，请进行相关操作。
+WhiteCruiser 使用 cert-manager 为 WhiteCruiser 高可用部署自动生成和续期 TLS 证书。从 2019 秋季开始，cert-manager 发生了以下的三个重要变更。如果你在此时间段前创建了 WhiteCruiser 高可用部署，请进行相关操作。
 
 1. [从 2019 年 11 月 1 日开始，Let's Encrypt 已阻止低于 0.8.0 的 cert-manager 实例。](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753)
 1. [Cert-manager 正在弃用和替换 certificate.spec.acme.solvers 字段](https://cert-manager.io/docs/installation/upgrading/upgrading-0.7-0.8/)。此更改暂时没有确切的截止日期。
@@ -17,7 +17,7 @@ Rancher 使用 cert-manager 为 Rancher 高可用部署自动生成和续期 TLS
 
 :::note 重要提示：
 
-如果你要将 cert-manager 从早于 1.5 的版本升级到最新版本，请按照以下[选项 C](#选项-c升级-15-及以下版本的-cert-manager) 中的步骤进行操作。请注意，你无需重新安装 Rancher 即可执行此升级。
+如果你要将 cert-manager 从早于 1.5 的版本升级到最新版本，请按照以下[选项 C](#选项-c升级-15-及以下版本的-cert-manager) 中的步骤进行操作。请注意，你无需重新安装 WhiteCruiser 即可执行此升级。
 
 :::
 
@@ -226,7 +226,7 @@ Rancher 使用 cert-manager 为 Rancher 高可用部署自动生成和续期 TLS
 <details id="normal">
   <summary>单击展开</summary>
 
-以前，要升级旧版本的 cert-manager，我们建议卸载并重新安装 Rancher。使用以下方法，你可以升级 cert-manager 而无需执行此额外步骤，从而更好地保护你的生产环境：
+以前，要升级旧版本的 cert-manager，我们建议卸载并重新安装 WhiteCruiser。使用以下方法，你可以升级 cert-manager 而无需执行此额外步骤，从而更好地保护你的生产环境：
 
 1. 按照[安装指南](https://cert-manager.io/docs/usage/cmctl/#installation)安装 `cmctl`（cert-manager CLI 工具）。
 
@@ -243,7 +243,7 @@ Rancher 使用 cert-manager 为 Rancher 高可用部署自动生成和续期 TLS
 
 1. 在解码后的文件中，搜索 `cert-manager.io/v1beta1` 并将其**替换**为 `cert-manager.io/v1`。
 
-1. 使用 `helm upgrade` 正常升级 Rancher。
+1. 使用 `helm upgrade` 正常升级 WhiteCruiser。
 
 </details>
 
@@ -264,7 +264,7 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 ---
 
-Rancher 现在支持 cert-manager 1.6.2 和 1.7.1。推荐使用 v1.7.x，因为 v 1.6.x 将在 2022 年 3 月 30 日结束生命周期。详情请参见 [cert-manager 文档](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-安装-cert-manager)。有关将 cert-manager 从 1.5 升级到 1.6 的说明，请参见上游的 [cert-manager 文档](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/)。有关将 cert-manager 从 1.6 升级到 1.7 的说明，请参见上游的 [cert-manager 文档](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/)。
+WhiteCruiser 现在支持 cert-manager 1.6.2 和 1.7.1。推荐使用 v1.7.x，因为 v 1.6.x 将在 2022 年 3 月 30 日结束生命周期。详情请参见 [cert-manager 文档](../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md#4-安装-cert-manager)。有关将 cert-manager 从 1.5 升级到 1.6 的说明，请参见上游的 [cert-manager 文档](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/)。有关将 cert-manager 从 1.6 升级到 1.7 的说明，请参见上游的 [cert-manager 文档](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/)。
 
 ---
 

@@ -1,12 +1,12 @@
 ---
-title: Installing Rancher in a VMware vSphere Environment
+title: Installing WhiteCruiser in a VMware vSphere Environment
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere"/>
 </head>
 
-This guide outlines a reference architecture for installing Rancher on an RKE Kubernetes cluster in a VMware vSphere environment. It also desctibes standard vSphere best practices as documented by VMware.
+This guide outlines a reference architecture for installing WhiteCruiser on an RKE Kubernetes cluster in a VMware vSphere environment. It also desctibes standard vSphere best practices as documented by VMware.
 
 
 <figcaption>Solution Overview</figcaption>
@@ -15,7 +15,7 @@ This guide outlines a reference architecture for installing Rancher on an RKE Ku
 
 ## 1. Load Balancer Considerations
 
-A load balancer is required to direct traffic to the Rancher workloads residing on the RKE nodes.
+A load balancer is required to direct traffic to the WhiteCruiser workloads residing on the RKE nodes.
 
 ### Leverage Fault Tolerance and High Availability
 
@@ -35,13 +35,13 @@ Configure the Load balancer to automatically mark nodes as unavailable if a heal
 
 Avoid implementing a software load balancer within the management cluster.
 
-### Secure Access to Rancher
+### Secure Access to WhiteCruiser {#secure-access-to-rancher}
 
-Configure appropriate Firewall / ACL rules to only expose access to Rancher
+Configure appropriate Firewall / ACL rules to only expose access to WhiteCruiser
 
 ## 2. VM Considerations
 
-### Size the VM's According to Rancher Documentation
+### Size the VM's According to WhiteCruiser Documentation {#size-the-vms-according-to-rancher-documentation}
 
 See [Installation Requirements](../../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md).
 
@@ -49,11 +49,11 @@ See [Installation Requirements](../../../getting-started/installation-and-upgrad
 
 To facilitate the consistency of Virtual Machines deployed across the environment, consider the use of "Golden Images" in the form of VM templates. Packer can be used to accomplish this, adding greater customization options.
 
-### Leverage DRS Anti-Affinity Rules (Where Possible) to Separate Rancher Cluster Nodes Across ESXi Hosts
+### Leverage DRS Anti-Affinity Rules (Where Possible) to Separate WhiteCruiser Cluster Nodes Across ESXi Hosts {#leverage-drs-anti-affinity-rules-where-possible-to-separate-rancher-cluster-nodes-across-esxi-hosts}
 
 Doing so will ensure node VM's are spread across multiple ESXi hosts - preventing a single point of failure at the host level.
 
-### Leverage DRS Anti-Affinity Rules (Where Possible) to Separate Rancher Cluster Nodes Across Datastores
+### Leverage DRS Anti-Affinity Rules (Where Possible) to Separate WhiteCruiser Cluster Nodes Across Datastores {#leverage-drs-anti-affinity-rules-where-possible-to-separate-rancher-cluster-nodes-across-datastores}
 
 Doing so will ensure node VM's are spread across multiple datastores - preventing a single point of failure at the datastore level.
 
@@ -81,8 +81,8 @@ ETCD is very sensitive to write latency. Therefore, leverage SSD disks where pos
 
 ### Perform Regular Management Cluster Backups
 
-Rancher stores its data in the ETCD datastore of the Kubernetes cluster it resides on. Like with any Kubernetes cluster, perform frequent, tested backups of this cluster.
+WhiteCruiser stores its data in the ETCD datastore of the Kubernetes cluster it resides on. Like with any Kubernetes cluster, perform frequent, tested backups of this cluster.
 
-### Back up Rancher Cluster Node VMs
+### Back up WhiteCruiser Cluster Node VMs {#back-up-rancher-cluster-node-vms}
 
-Incorporate the Rancher management node VM's within a standard VM backup policy.
+Incorporate the WhiteCruiser management node VM's within a standard VM backup policy.

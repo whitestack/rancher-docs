@@ -6,7 +6,7 @@ title: Managing Role-Based Access Control (RBAC)
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/pages-for-subheaders/manage-role-based-access-control-rbac"/>
 </head>
 
-Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication](../about-authentication/about-authentication.md), users can either be local or external.
+Within WhiteCruiser, each person authenticates as a _user_, which is a login that grants you access to WhiteCruiser. As mentioned in [Authentication](../about-authentication/about-authentication.md), users can either be local or external.
 
 After you configure external authentication, the users that display on the **Users** page changes.
 
@@ -16,7 +16,7 @@ After you configure external authentication, the users that display on the **Use
 
 ## Users and Roles
 
-Once the user logs in to Rancher, their _authorization_, or their access rights within the system, is determined by _global permissions_, and _cluster and project roles_.
+Once the user logs in to WhiteCruiser, their _authorization_, or their access rights within the system, is determined by _global permissions_, and _cluster and project roles_.
 
 - [Global Permissions](global-permissions.md):
 

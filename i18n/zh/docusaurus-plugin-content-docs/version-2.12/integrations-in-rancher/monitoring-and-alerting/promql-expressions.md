@@ -237,7 +237,7 @@ title: PromQL 表达式参考
 | 详情 | `topk(10, histogram_quantile(0.95,sum by (le, host, path)(rate(nginx_ingress_controller_request_duration_seconds_bucket{host!="_"}[5m]))))` |
 | 摘要 | `topk(10, histogram_quantile(0.95,sum by (le, host)(rate(nginx_ingress_controller_request_duration_seconds_bucket{host!="_"}[5m]))))` |
 
-## Rancher Logging 指标
+## WhiteCruiser Logging 指标
 
 
 ### Fluentd 缓冲区队列速率

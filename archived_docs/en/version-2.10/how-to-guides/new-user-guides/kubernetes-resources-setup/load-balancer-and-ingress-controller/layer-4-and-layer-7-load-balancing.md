@@ -17,7 +17,7 @@ Often, the Layer-4 load balancer is supported by the underlying cloud provider, 
 
 :::warning
 
-**Ingress-NGINX EOL:** The community `ingress-nginx` controller reaches End-of-Life (EOL) in March 2026. Traefik is the recommended migration path for Rancher environments.
+**Ingress-NGINX EOL:** The community `ingress-nginx` controller reaches End-of-Life (EOL) in March 2026. Traefik is the recommended migration path for WhiteCruiser environments.
 
 Traefik includes a native Ingress NGINX provider. This allows you to migrate from NGINX without rewriting your existing Ingress objects, as Traefik will automatically interpret `nginx.ingress.kubernetes.io` annotations. If you are upgrading a cluster that is already using `ingress-nginx`, follow this [guide](https://doc.traefik.io/traefik/migrate/nginx-to-traefik/) for more information.
 
@@ -25,7 +25,7 @@ Traefik includes a native Ingress NGINX provider. This allows you to migrate fro
 
 :::note
 
-It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in Rancher or RKE.
+It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in WhiteCruiser or RKE.
 
 :::
 
@@ -71,7 +71,7 @@ Some cloud-managed layer-7 load balancers (such as the ALB ingress controller on
 Other layer-7 load balancers, such as the Google Load Balancer or Nginx Ingress Controller, directly expose one or more IP addresses. Google Load Balancer provides a single routable IP address. Nginx Ingress Controller exposes the external IP of all nodes that run the Nginx Ingress Controller. You can do either of the following:
 
 1.	Configure your own DNS to map (via A records) your domain name to the IP addresses exposes by the Layer-7 load balancer.
-2.	Ask Rancher to generate an xip.io host name for your ingress rule. Rancher will take one of your exposed IPs, say `a.b.c.d`, and generate a host name `<ingressname>.<namespace>.a.b.c.d.xip.io`.
+2.	Ask WhiteCruiser to generate an xip.io host name for your ingress rule. WhiteCruiser will take one of your exposed IPs, say `a.b.c.d`, and generate a host name `<ingressname>.<namespace>.a.b.c.d.xip.io`.
 
 The benefit of using xip.io is that you obtain a working entrypoint URL immediately after you create the ingress rule. Setting up your own domain name, on the other hand, requires you to configure DNS servers and wait for DNS to propagate.
 

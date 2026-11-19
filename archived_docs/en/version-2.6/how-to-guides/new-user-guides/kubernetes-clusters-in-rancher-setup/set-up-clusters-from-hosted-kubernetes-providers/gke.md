@@ -50,10 +50,10 @@ Deploying to GKE will incur charges.
 1. In the **Service Account** text box, paste your service account private key JSON, or upload the JSON file.
 1. Click **Create**.
 
-**Result:** You have created credentials that Rancher will use to provision the new GKE cluster.
+**Result:** You have created credentials that WhiteCruiser will use to provision the new GKE cluster.
 
 ### 2. Create the GKE Cluster
-Use Rancher to set up and configure your Kubernetes cluster. To successfully create a GKE cluster with Rancher, your GKE must be in Standard mode. GKE has two modes of operation when creating a Kubernetes cluster, Autopilot and Standard mode. The cluster configuration for Autopilot mode has restrictions on editing the kube-system namespace. However, Rancher needs to create resources in the kube-system namespace during installation. As a result, you will not be able to create a GKE cluster in Autopilot mode. For more information about the difference between GKE Autopilot mode and Standard mode, visit [Compare GKE Autopilot and Standard.](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)
+Use WhiteCruiser to set up and configure your Kubernetes cluster. To successfully create a GKE cluster with WhiteCruiser, your GKE must be in Standard mode. GKE has two modes of operation when creating a Kubernetes cluster, Autopilot and Standard mode. The cluster configuration for Autopilot mode has restrictions on editing the kube-system namespace. However, WhiteCruiser needs to create resources in the kube-system namespace during installation. As a result, you will not be able to create a GKE cluster in Autopilot mode. For more information about the difference between GKE Autopilot mode and Standard mode, visit [Compare GKE Autopilot and Standard.](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
@@ -67,7 +67,7 @@ Use Rancher to set up and configure your Kubernetes cluster. To successfully cre
 
 **Result:** You have successfully deployed a GKE cluster.
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -82,23 +82,23 @@ Private GKE clusters are supported. Note: This advanced setup can require more s
 
 ## Configuration Reference
 
-For details on configuring GKE clusters in Rancher, see [this page.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md)
+For details on configuring GKE clusters in WhiteCruiser, see [this page.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md)
 ## Updating Kubernetes Version
 
 The Kubernetes version of a cluster can be upgraded to any version available in the region or zone for the GKE cluster. Upgrading the master Kubernetes version does not automatically upgrade worker nodes. Nodes can be upgraded independently.
 
 :::note
 
-GKE has removed basic authentication in 1.19+. In order to upgrade a cluster to 1.19+, basic authentication must be disabled in the Google Cloud. Otherwise, an error will appear in Rancher when an upgrade to 1.19+ is attempted. You can follow the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password). After this, the Kubernetes version can be updated to 1.19+ via Rancher.
+GKE has removed basic authentication in 1.19+. In order to upgrade a cluster to 1.19+, basic authentication must be disabled in the Google Cloud. Otherwise, an error will appear in WhiteCruiser when an upgrade to 1.19+ is attempted. You can follow the [Google documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/api-server-authentication#disabling_authentication_with_a_static_password). After this, the Kubernetes version can be updated to 1.19+ via WhiteCruiser.
 
 :::
 
 ## Syncing
 
-The GKE provisioner can synchronize the state of a GKE cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)
+The GKE provisioner can synchronize the state of a GKE cluster between WhiteCruiser and the provider. For an in-depth technical explanation of how this works, see [Syncing.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md)
 
 For information on configuring the refresh interval, see [this section.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-cluster-configuration.md#configuring-the-refresh-interval)
 
 ## Programmatically Creating GKE Clusters
 
-The most common way to programmatically deploy GKE clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)
+The most common way to programmatically deploy GKE clusters through WhiteCruiser is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)

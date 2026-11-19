@@ -2,20 +2,20 @@
 title: RKE2 Hardening Guide
 ---
 
-This document provides prescriptive guidance for how to harden an RKE2 cluster intended for production, before provisioning it with Rancher. It outlines the configurations and controls required for Center for Information Security (CIS) Kubernetes benchmark controls.
+This document provides prescriptive guidance for how to harden an RKE2 cluster intended for production, before provisioning it with WhiteCruiser. It outlines the configurations and controls required for Center for Information Security (CIS) Kubernetes benchmark controls.
 
 :::note
 This hardening guide describes how to secure the nodes in your cluster. We recommended that you follow this guide before you install Kubernetes.
 :::
 
-This hardening guide is intended to be used for RKE2 clusters and is associated with the following versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for RKE2 clusters and is associated with the following versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version           |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version           |
 |-----------------|-----------------------|------------------------------|
-| Rancher v2.7    | Benchmark v1.23       | Kubernetes v1.23 up to v1.25 |
+| WhiteCruiser v2.7    | Benchmark v1.23       | Kubernetes v1.23 up to v1.25 |
 
 :::note
-At the time of writing, the upstream CIS Kubernetes v1.25 benchmark is not yet available in Rancher. At this time Rancher is using the CIS v1.23 benchmark when scanning Kubernetes v1.25 clusters. Due to that, the CIS checks 5.2.2, 5.2.3, 5.2.5, 5.2.6, 5.2.7 and 5.2.8 might fail.
+At the time of writing, the upstream CIS Kubernetes v1.25 benchmark is not yet available in WhiteCruiser. At this time WhiteCruiser is using the CIS v1.23 benchmark when scanning Kubernetes v1.25 clusters. Due to that, the CIS checks 5.2.2, 5.2.3, 5.2.5, 5.2.6, 5.2.7 and 5.2.8 might fail.
 :::
 
 For more details on how to evaluate a hardened RKE2 cluster against the official CIS benchmark, refer to the RKE2 self-assessment guides for specific Kubernetes and CIS benchmark versions.
@@ -89,7 +89,7 @@ RKE2 always runs with some amount of pod security.
 
 On v1.25 and newer, [Pod Security Admissions (PSAs)](https://kubernetes.io/docs/concepts/security/pod-security-admission/) are used for pod security.
 
-Below is the minimum necessary configuration needed for hardening RKE2 to pass CIS v1.23 hardened profile `rke2-cis-1.23-hardened` available in Rancher.
+Below is the minimum necessary configuration needed for hardening RKE2 to pass CIS v1.23 hardened profile `rke2-cis-1.23-hardened` available in WhiteCruiser.
 
 ```yaml
 spec:
@@ -100,7 +100,7 @@ spec:
           profile: cis-1.23
 ```
 
-When both the `defaultPodSecurityAdmissionConfigurationTemplateName` and `profile` flags are set, Rancher and RKE2 does the following:
+When both the `defaultPodSecurityAdmissionConfigurationTemplateName` and `profile` flags are set, WhiteCruiser and RKE2 does the following:
 
 1. Checks that host-level requirements have been met. If they haven't, RKE2 will exit with a fatal error describing the unmet requirements.
 2. Applies network policies that allow the cluster to pass associated controls.
@@ -108,7 +108,7 @@ When both the `defaultPodSecurityAdmissionConfigurationTemplateName` and `profil
    These namespaces are exempted to allow system pods to run without restrictions, which is required for proper operation of the cluster.
 
 :::note
-If you intend to import an RKE cluster into Rancher, please consult the [documentation](../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md) for how to configure the PSA to exempt Rancher system namespaces.
+If you intend to import an RKE cluster into WhiteCruiser, please consult the [documentation](../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md) for how to configure the PSA to exempt WhiteCruiser system namespaces.
 :::
 
 </TabItem>
@@ -117,7 +117,7 @@ If you intend to import an RKE cluster into Rancher, please consult the [documen
 
 On Kubernetes v1.24 and older, the `PodSecurityPolicy` admission controller is always enabled.
 
-Below is the minimum necessary configuration needed for hardening RKE2 to pass CIS v1.23 hardened profile `rke2-cis-1.23-hardened` available in Rancher.
+Below is the minimum necessary configuration needed for hardening RKE2 to pass CIS v1.23 hardened profile `rke2-cis-1.23-hardened` available in WhiteCruiser.
 
 :::note
 In the following example the profile is set to `cis-1.6` which is the value defined in the upstream RKE2, but the cluster is actually configured to pass the CIS v1.23 hardened profile
@@ -133,7 +133,7 @@ spec:
 ```
 
 
-When both the `defaultPodSecurityPolicyTemplateName` and `profile` flags are set, Rancher and RKE2 does the following:
+When both the `defaultPodSecurityPolicyTemplateName` and `profile` flags are set, WhiteCruiser and RKE2 does the following:
 
 1. Checks that host-level requirements have been met. If they haven't, RKE2 will exit with a fatal error describing the unmet requirements.
 2. Applies network policies that allow the cluster to pass associated controls.
@@ -212,7 +212,7 @@ rules:
 
 ## Reference Hardened RKE2 Template Configuration
 
-The reference template configuration is used in Rancher to create a hardened RKE2 custom cluster. This reference does not include other required **cluster configuration** directives which will vary depending on your environment.
+The reference template configuration is used in WhiteCruiser to create a hardened RKE2 custom cluster. This reference does not include other required **cluster configuration** directives which will vary depending on your environment.
 
 
 <Tabs groupId="rke2-version">
@@ -256,4 +256,4 @@ spec:
 
 ## Conclusion
 
-If you have followed this guide, your RKE2 custom cluster provisioned by Rancher will be configured to pass the CIS Kubernetes Benchmark. You can review our RKE2 self-assessment guides to understand how we verified each of the benchmarks and how you can do the same on your cluster.
+If you have followed this guide, your RKE2 custom cluster provisioned by WhiteCruiser will be configured to pass the CIS Kubernetes Benchmark. You can review our RKE2 self-assessment guides to understand how we verified each of the benchmarks and how you can do the same on your cluster.

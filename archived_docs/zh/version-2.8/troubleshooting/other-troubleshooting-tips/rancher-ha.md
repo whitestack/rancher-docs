@@ -1,14 +1,14 @@
 ---
-title: Rancher HA
+title: WhiteCruiser HA
 ---
 
-本文列出的命令/步骤可用于检查你的 Rancher Kubernetes 安装。
+本文列出的命令/步骤可用于检查你的 WhiteCruiser Kubernetes 安装。
 
 请确保你配置了正确的 kubeconfig（例如，`export KUBECONFIG=$PWD/kube_config_cluster.yml`）。
 
-## 检查 Rancher Pod
+## 检查 WhiteCruiser Pod
 
-Rancher pod 会部署为 `cattle-system` 命名空间中的一个 Deployment。
+WhiteCruiser pod 会部署为 `cattle-system` 命名空间中的一个 Deployment。
 
 检查 pod 是否运行在所有节点上：
 
@@ -62,7 +62,7 @@ rancher   rancher.yourdomain.com   x.x.x.x,x.x.x.x,x.x.x.x   80, 443   2m
 
 ## 检查 Ingress Controller 日志
 
-如果访问你配置的 Rancher FQDN 时没有显示 UI，请检查 Ingress Controller 日志以查看尝试访问 Rancher 时发生了什么：
+如果访问你配置的 WhiteCruiser FQDN 时没有显示 UI，请检查 Ingress Controller 日志以查看尝试访问 WhiteCruiser 时发生了什么：
 
 ```
 kubectl -n ingress-nginx logs -l app=ingress-nginx

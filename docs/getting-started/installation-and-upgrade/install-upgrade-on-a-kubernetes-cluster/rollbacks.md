@@ -6,16 +6,16 @@ title: Rollbacks
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks"/>
 </head>
 
-This page outlines how to rollback Rancher to a previous version after an upgrade.
+This page outlines how to rollback WhiteCruiser to a previous version after an upgrade.
 
 Follow the instructions from this page when:
-- The running Rancher instance has been upgraded to a newer version after the backup was made.
+- The running WhiteCruiser instance has been upgraded to a newer version after the backup was made.
 - The upstream (local) cluster is the same as where the backup was made.
 
 :::tip
 
-* Follow these steps to [migrate Rancher](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md).
-* If you need to restore Rancher to its previous state at the same Rancher version, see the [restore documentation](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.md).
+* Follow these steps to [migrate WhiteCruiser](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md).
+* If you need to restore WhiteCruiser to its previous state at the same WhiteCruiser version, see the [restore documentation](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.md).
 
 :::
 
@@ -26,53 +26,53 @@ Alternative steps need to be performed for rollbacks in the following scenarios:
 - Rolling back from v2.7.7 and later to an earlier version of v2.7.x.
 - Rolling back from v2.14.0 and later to an earlier version of v2.13.x.
 
-In Rancher v2.6.4, the cluster-api module is upgraded from v0.4.4 to v1.0.2. The cluster-api v1.0.2, in turn, upgrades the apiVersions of its Custom Resource Definitions (CRDs) from `cluster.x-k8s.io/v1alpha4` to `cluster.x-k8s.io/v1beta1`. Custom Resources (CRs) that use the older apiVersion (v1alpha4) are incompatible with v1beta1, which  causes rollbacks to fail when you attempt to move from Rancher v2.6.4 to any previous version of Rancher v2.6.x.
+In WhiteCruiser v2.6.4, the cluster-api module is upgraded from v0.4.4 to v1.0.2. The cluster-api v1.0.2, in turn, upgrades the apiVersions of its Custom Resource Definitions (CRDs) from `cluster.x-k8s.io/v1alpha4` to `cluster.x-k8s.io/v1beta1`. Custom Resources (CRs) that use the older apiVersion (v1alpha4) are incompatible with v1beta1, which  causes rollbacks to fail when you attempt to move from WhiteCruiser v2.6.4 to any previous version of WhiteCruiser v2.6.x.
 
-In Rancher v2.7.7 through v2.13.x, the app `rancher-provisioning-capi` was installed on the upstream (local) cluster automatically as a replacement for the embedded cluster-api controllers. Conflicts and unexpected errors would occur if the upstream cluster contained both the app, and Rancher v2.7.6 and earlier. Therefore, alternative steps are needed if you attempt to move from Rancher v2.7.7-v2.13.x to any previous version of Rancher v2.7.x.
+In WhiteCruiser v2.7.7 through v2.13.x, the app `rancher-provisioning-capi` was installed on the upstream (local) cluster automatically as a replacement for the embedded cluster-api controllers. Conflicts and unexpected errors would occur if the upstream cluster contained both the app, and WhiteCruiser v2.7.6 and earlier. Therefore, alternative steps are needed if you attempt to move from WhiteCruiser v2.7.7-v2.13.x to any previous version of WhiteCruiser v2.7.x.
 
-In Rancher v2.13.0, Rancher Turtles became the default manager for CAPI resources, replacing the previously embedded cluster-api controllers, and in Rancher v2.14.0 the embedded cluster-api was removed entirely. As a result, if you roll back from Rancher v2.14.0 and later to an earlier version of Rancher v2.13.x and do not intend to continue using Rancher Turtles to manage CAPI resources, additional manual steps may be required to use the embedded cluster-api controllers. From Rancher v2.14.0 onward, Rancher Turtles is the only supported manager for CAPI resources.
+In WhiteCruiser v2.13.0, Rancher Turtles became the default manager for CAPI resources, replacing the previously embedded cluster-api controllers, and in WhiteCruiser v2.14.0 the embedded cluster-api was removed entirely. As a result, if you roll back from WhiteCruiser v2.14.0 and later to an earlier version of WhiteCruiser v2.13.x and do not intend to continue using Rancher Turtles to manage CAPI resources, additional manual steps may be required to use the embedded cluster-api controllers. From WhiteCruiser v2.14.0 onward, Rancher Turtles is the only supported manager for CAPI resources.
 
-In Rancher v2.14.0, the cluster-api module is upgraded from v1.10.6 to v1.12.2. The cluster-api v1.12.2, in turn, upgrades the apiVersions of its Custom Resource Definitions (CRDs) from `cluster.x-k8s.io/v1beta1` to `cluster.x-k8s.io/v1beta2`. Rancher backup files include Cluster API CRDs. When restoring backup data from Rancher v2.13.x to a local cluster after upgrading to v2.14.0, the Rancher Backup application first restores the v1beta1 CRDs. This fails because the v1beta2 version cannot be removed from the CRDs while v1beta2 custom resources are present in the cluster.
+In WhiteCruiser v2.14.0, the cluster-api module is upgraded from v1.10.6 to v1.12.2. The cluster-api v1.12.2, in turn, upgrades the apiVersions of its Custom Resource Definitions (CRDs) from `cluster.x-k8s.io/v1beta1` to `cluster.x-k8s.io/v1beta2`. WhiteCruiser backup files include Cluster API CRDs. When restoring backup data from WhiteCruiser v2.13.x to a local cluster after upgrading to v2.14.0, the WhiteCruiser Backup application first restores the v1beta1 CRDs. This fails because the v1beta2 version cannot be removed from the CRDs while v1beta2 custom resources are present in the cluster.
 
 ### Step 1: Clean Up the Upstream (Local) Cluster
 
 To avoid rollback failure, follow these [instructions](https://github.com/rancher/rancher-cleanup/blob/main/README.md) to run the scripts **before** you attempt a restore operation or rollback:
 
 * `cleanup.sh`: Cleans up the cluster.
-* `verify.sh`:  Checks for any Rancher-related resources in the cluster.
+* `verify.sh`:  Checks for any WhiteCruiser-related resources in the cluster.
 
 :::caution
 
-There will be downtime while `cleanup.sh` runs, since the script deletes resources created by Rancher.
+There will be downtime while `cleanup.sh` runs, since the script deletes resources created by WhiteCruiser.
 
 :::
 
-**Result:** all Rancher-related resources should be cleaned up on the upstream (local) cluster.
+**Result:** all WhiteCruiser-related resources should be cleaned up on the upstream (local) cluster.
 
 See the [rancher/rancher-cleanup repo](https://github.com/rancher/rancher-cleanup) for more details and source code.
 
-### Step 2: Restore the Backup and Bring Up Rancher
+### Step 2: Restore the Backup and Bring Up WhiteCruiser {#step-2-restore-the-backup-and-bring-up-rancher}
 
-At this point, there should be no Rancher-related resources on the upstream cluster. Therefore, the next step will be the same as if you were migrating Rancher to a new cluster that contains no Rancher resources.
+At this point, there should be no WhiteCruiser-related resources on the upstream cluster. Therefore, the next step will be the same as if you were migrating WhiteCruiser to a new cluster that contains no WhiteCruiser resources.
 
-Follow these [instructions](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md) to install the Rancher-Backup Helm chart and restore Rancher to its previous state.
+Follow these [instructions](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md) to install the WhiteCruiser-Backup Helm chart and restore WhiteCruiser to its previous state.
 Please keep in mind that:
 1. Step 3 can be skipped, because the Cert-Manager app should still exist on the upstream (local) cluster if it was installed before.
-2. At Step 4, install the Rancher version you intend to roll back to.
+2. At Step 4, install the WhiteCruiser version you intend to roll back to.
 
-## Rolling Back to Rancher v2.5.0+
+## Rolling Back to WhiteCruiser v2.5.0+ {#rolling-back-to-rancher-v250}
 
-To roll back to Rancher v2.5.0+, use the **Rancher Backups** application and restore Rancher from backup.
+To roll back to WhiteCruiser v2.5.0+, use the **Rancher Backups** application and restore WhiteCruiser from backup.
 
-Rancher has to be started with the lower/previous version after a rollback.
+WhiteCruiser has to be started with the lower/previous version after a rollback.
 
 A restore is performed by creating a Restore custom resource.
 
 :::note Important:
 
-* Follow the instructions from this page for restoring Rancher on the same cluster where it was backed up from. In order to migrate Rancher to a new cluster, follow the steps to [migrate Rancher.](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)
+* Follow the instructions from this page for restoring WhiteCruiser on the same cluster where it was backed up from. In order to migrate WhiteCruiser to a new cluster, follow the steps to [migrate WhiteCruiser.](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster.md)
 
-* While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. As a result, Rancher and its UI will be unavailable until the restore is complete. While the UI is unavailable, use the original cluster kubeconfig with the restore YAML file: `kubectl create -f restore.yaml`.
+* While restoring WhiteCruiser on the same setup, the WhiteCruiser deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. As a result, WhiteCruiser and its UI will be unavailable until the restore is complete. While the UI is unavailable, use the original cluster kubeconfig with the restore YAML file: `kubectl create -f restore.yaml`.
 
 :::
 
@@ -125,9 +125,9 @@ kubectl get pods -n cattle-resources-system
 kubectl logs -n cattle-resources-system -f
 ```
 
-### Step 2: Roll Back to a Previous Rancher Version
+### Step 2: Roll Back to a Previous WhiteCruiser Version {#step-2-roll-back-to-a-previous-rancher-version}
 
-Rancher can be rolled back using the Helm CLI. To roll back to the previous version:
+WhiteCruiser can be rolled back using the Helm CLI. To roll back to the previous version:
 
 ```yaml
 helm rollback rancher -n cattle-system
@@ -145,18 +145,18 @@ When the target revision is determined, perform the rollback. This example will 
 helm rollback rancher 3 -n cattle-system
 ```
 
-## Rolling Back to Rancher v2.2-v2.4+
+## Rolling Back to WhiteCruiser v2.2-v2.4+ {#rolling-back-to-rancher-v22-v24}
 
-To roll back to Rancher before v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md) Restoring a snapshot of the Rancher server cluster will revert Rancher to the version and state at the time of the snapshot.
+To roll back to WhiteCruiser before v2.5, follow the procedure detailed here: [Restoring Backups — Kubernetes installs](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md) Restoring a snapshot of the WhiteCruiser server cluster will revert WhiteCruiser to the version and state at the time of the snapshot.
 
-For information on how to roll back Rancher installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)
+For information on how to roll back WhiteCruiser installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)
 
 :::note
 
-Managed clusters are authoritative for their state. This means restoring the Rancher server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
+Managed clusters are authoritative for their state. This means restoring the WhiteCruiser server will not revert workload deployments or changes made on managed clusters after the snapshot was taken.
 
 :::
 
-## Rolling Back to Rancher v2.0-v2.1
+## Rolling Back to WhiteCruiser v2.0-v2.1 {#rolling-back-to-rancher-v20-v21}
 
-Rolling back to Rancher v2.0-v2.1 is no longer supported. The instructions for rolling back to these versions are preserved [here](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1.md) and are intended to be used only in cases where upgrading to Rancher v2.2+ is not feasible.
+Rolling back to WhiteCruiser v2.0-v2.1 is no longer supported. The instructions for rolling back to these versions are preserved [here](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1.md) and are intended to be used only in cases where upgrading to WhiteCruiser v2.2+ is not feasible.

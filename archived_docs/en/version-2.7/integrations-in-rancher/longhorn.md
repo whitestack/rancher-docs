@@ -8,7 +8,7 @@ title: Cloud Native Storage with Longhorn
 
 [Longhorn](https://longhorn.io/) is a lightweight, reliable, and easy-to-use distributed block storage system for Kubernetes.
 
-Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the Rancher UI. You can learn more about its architecture [here.](https://longhorn.io/docs/latest/concepts/)
+Longhorn is free, open source software. Originally developed by Rancher Labs, it is now being developed as a sandbox project of the Cloud Native Computing Foundation. It can be installed on any Kubernetes cluster with Helm, with kubectl, or with the WhiteCruiser UI. You can learn more about its architecture [here.](https://longhorn.io/docs/latest/concepts/)
 
 With Longhorn, you can:
 
@@ -25,7 +25,7 @@ With Longhorn, you can:
 
 ![Longhorn Dashboard](/img/longhorn-screenshot.png)
 
-### Installing Longhorn with Rancher
+### Installing Longhorn with WhiteCruiser {#installing-longhorn-with-rancher}
 
 1. Fulfill all [Installation Requirements.](https://longhorn.io/docs/latest/deploy/install/#installation-requirements)
 1. Go to the cluster where you want to install Longhorn.
@@ -37,14 +37,14 @@ With Longhorn, you can:
 
 **Result:** Longhorn is deployed in the Kubernetes cluster.
 
-### Accessing Longhorn from the Rancher UI
+### Accessing Longhorn from the WhiteCruiser UI {#accessing-longhorn-from-the-rancher-ui}
 
 1. Go to the cluster where Longhorn is installed. In the left navigation menu, click **Longhorn**.
 1. On this page, you can edit Kubernetes resources managed by Longhorn. To view the Longhorn UI, click the **Longhorn** button in the **Overview** section.
 
 **Result:** You will be taken to the Longhorn UI, where you can manage your Longhorn volumes and their replicas in the Kubernetes cluster, as well as secondary backups of your Longhorn storage that may exist in another Kubernetes cluster or in S3.
 
-### Uninstalling Longhorn from the Rancher UI
+### Uninstalling Longhorn from the WhiteCruiser UI {#uninstalling-longhorn-from-the-rancher-ui}
 
 1. Go to the cluster where Longhorn is installed and click **Apps**.
 1. Click **Installed Apps**.

@@ -10,7 +10,7 @@ title: Encryption Key Rotation
 
 1. Enable encryption key rotation with either of the following two options:
 
-    - Select the `Enabled` radio button in the Rancher UI under **Cluster Options > Advanced Options > Secrets Encryption**:
+    - Select the `Enabled` radio button in the WhiteCruiser UI under **Cluster Options > Advanced Options > Secrets Encryption**:
 
     ![Enable Encryption Key Rotation](/img/rke1-enable-secrets-encryption.png)
 
@@ -24,7 +24,7 @@ title: Encryption Key Rotation
             enabled: true
     ```
 
-2. Rotate keys in the Rancher UI:
+2. Rotate keys in the WhiteCruiser UI:
 
     2.1. Click **☰ > Cluster Management**.
 
@@ -40,7 +40,7 @@ _**New in v2.6.7**_
 
 >**Important:** Encryption key rotation is enabled by default and cannot be disabled.
 
-To rotate keys in the Rancher UI:
+To rotate keys in the WhiteCruiser UI:
 
 1. Click **☰ > Cluster Management**.
 

@@ -2,19 +2,19 @@
 title: Hardening Guide v2.3
 ---
 
-This document provides prescriptive guidance for hardening a production installation of Rancher v2.3.0-v2.3.2. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of WhiteCruiser v2.3.0-v2.3.2. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 > This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
 
-This hardening guide is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
-Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
+Hardening Guide Version | WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version
 ------------------------|----------------|-----------------------|------------------
-Hardening Guide v2.3 | Rancher v2.3.0-v2.3.2 | Benchmark v1.4.1 | Kubernetes 1.15
+Hardening Guide v2.3 | WhiteCruiser v2.3.0-v2.3.2 | Benchmark v1.4.1 | Kubernetes 1.15
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Hardening_Guide.pdf)
 
-For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.x](./rancher-v2.3.0-self-assessment-guide-with-cis-v1.4.1-benchmark.md).
+For more detail about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS Benchmark WhiteCruiser Self-Assessment Guide - WhiteCruiser v2.3.x](./rancher-v2.3.0-self-assessment-guide-with-cis-v1.4.1-benchmark.md).
 
 ### Profile Definitions
 
@@ -40,7 +40,7 @@ Items in this profile extend the “Level 1” profile and exhibit one or more o
 
 ---
 
-## 1.1 - Rancher HA Kubernetes cluster host configuration
+## 1.1 - WhiteCruiser HA Kubernetes cluster host configuration {#11---rancher-ha-kubernetes-cluster-host-configuration}
 
 (See Appendix A. for full ubuntu `cloud-config` example)
 
@@ -129,7 +129,7 @@ Create a Kubernetes encryption configuration file on each of the RKE nodes that 
 
 **Rationale**
 
-This configuration file will ensure that the Rancher RKE cluster encrypts secrets at rest, which Kubernetes does not do by default.
+This configuration file will ensure that the WhiteCruiser RKE cluster encrypts secrets at rest, which Kubernetes does not do by default.
 
 This supports the following controls:
 
@@ -138,7 +138,7 @@ This supports the following controls:
 
 **Audit**
 
-On the control plane hosts for the Rancher HA cluster run:
+On the control plane hosts for the WhiteCruiser HA cluster run:
 
 ``` bash
 stat /opt/kubernetes/encryption.yaml
@@ -466,7 +466,7 @@ services:
     gid: <etcd user gid recorded previously>
 ```
 
-## 2.1 - Rancher HA Kubernetes Cluster Configuration via RKE
+## 2.1 - WhiteCruiser HA Kubernetes Cluster Configuration via RKE {#21---rancher-ha-kubernetes-cluster-configuration-via-rke}
 
 (See Appendix B. for full RKE `cluster.yml` example)
 
@@ -645,7 +645,7 @@ Files that are placed in `/opt/kubernetes` need to be mounted in using the `extr
 
 Set the appropriate options for the Kubernetes scheduling service.
 
-**NOTE:** Setting `--address` to `127.0.0.1` will prevent Rancher cluster monitoring from scraping this endpoint.
+**NOTE:** Setting `--address` to `127.0.0.1` will prevent WhiteCruiser cluster monitoring from scraping this endpoint.
 
 **Rationale**
 
@@ -698,7 +698,7 @@ rke up --config cluster.yml
 
 Set the appropriate arguments on the Kubernetes controller manager.
 
-5*NOTE:** Setting `--address` to `127.0.0.1` will prevent Rancher cluster monitoring from scraping this endpoint.
+5*NOTE:** Setting `--address` to `127.0.0.1` will prevent WhiteCruiser cluster monitoring from scraping this endpoint.
 
 **Rationale**
 
@@ -936,7 +936,7 @@ addons: |
 rke up --config cluster.yml
 ```
 
-## 3.1 - Rancher Management Control Plane Installation
+## 3.1 - WhiteCruiser Management Control Plane Installation {#31---rancher-management-control-plane-installation}
 
 ### 3.1.1 - Disable the local cluster option
 
@@ -946,33 +946,33 @@ rke up --config cluster.yml
 
 **Description**
 
-When deploying Rancher, disable the local cluster option on the Rancher Server.
+When deploying WhiteCruiser, disable the local cluster option on the WhiteCruiser Server.
 
-**NOTE:** This requires Rancher v2.1.2 or above.
+**NOTE:** This requires WhiteCruiser v2.1.2 or above.
 
 **Rationale**
 
-Having access to the local cluster from the Rancher UI is convenient for troubleshooting and debugging; however, if the local cluster is enabled in the Rancher UI, a user has access to all elements of the system, including the Rancher management server itself. Disabling the local cluster is a defense in depth measure and removes the possible attack vector from the Rancher UI and API.
+Having access to the local cluster from the WhiteCruiser UI is convenient for troubleshooting and debugging; however, if the local cluster is enabled in the WhiteCruiser UI, a user has access to all elements of the system, including the WhiteCruiser management server itself. Disabling the local cluster is a defense in depth measure and removes the possible attack vector from the WhiteCruiser UI and API.
 
 **Audit**
 
-- Verify the Rancher deployment has the `--add-local=false` option set.
+- Verify the WhiteCruiser deployment has the `--add-local=false` option set.
 
 ``` bash
 kubectl get deployment rancher -n cattle-system -o yaml |grep 'add-local'
 ```
 
-- In the Rancher UI go to _Clusters_ in the _Global_ view and verify that no `local` cluster is present.
+- In the WhiteCruiser UI go to _Clusters_ in the _Global_ view and verify that no `local` cluster is present.
 
 **Remediation**
 
-- While upgrading or installing Rancher 2.3.x, provide the following flag:
+- While upgrading or installing WhiteCruiser 2.3.x, provide the following flag:
 
 ``` text
 --set addLocal="false"
 ```
 
-### 3.1.2 - Enable Rancher Audit logging
+### 3.1.2 - Enable WhiteCruiser Audit logging {#312---enable-rancher-audit-logging}
 
 **Profile Applicability**
 
@@ -980,15 +980,15 @@ kubectl get deployment rancher -n cattle-system -o yaml |grep 'add-local'
 
 **Description**
 
-Enable Rancher’s built-in audit logging capability.
+Enable WhiteCruiser’s built-in audit logging capability.
 
 **Rationale**
 
-Tracking down what actions were performed by users in Rancher can provide insight during post mortems, and if monitored proactively can be used to quickly detect malicious actions.
+Tracking down what actions were performed by users in WhiteCruiser can provide insight during post mortems, and if monitored proactively can be used to quickly detect malicious actions.
 
 **Audit**
 
-- Verify that the audit log parameters were passed into the Rancher deployment.
+- Verify that the audit log parameters were passed into the WhiteCruiser deployment.
 
 ```
 kubectl get deployment rancher -n cattle-system -o yaml | grep auditLog
@@ -1013,17 +1013,17 @@ kubectl get deployment rancher -n cattle-system -o yaml | grep auditLog
 
   - `hostPath`
 
-    1. On the worker nodes running the Rancher pods, verify that the log files are being written to the destination indicated in `auditlog.hostPath`.
+    1. On the worker nodes running the WhiteCruiser pods, verify that the log files are being written to the destination indicated in `auditlog.hostPath`.
 
 **Remediation**
 
-Upgrade the Rancher server installation using Helm, and configure the audit log settings. The instructions for doing so can be found in the reference section below.
+Upgrade the WhiteCruiser server installation using Helm, and configure the audit log settings. The instructions for doing so can be found in the reference section below.
 
 #### Reference
 
 - <https://rancher.com/docs/rancher/v2.0-v2.4/en/installation/resources/chart-options/>
 
-## 3.2 - Rancher Management Control Plane Authentication
+## 3.2 - WhiteCruiser Management Control Plane Authentication {#32---rancher-management-control-plane-authentication}
 
 ### 3.2.1 - Change the local administrator password from the default value
 
@@ -1037,7 +1037,7 @@ The local administrator password should be changed from the default.
 
 **Rationale**
 
-The default administrator password is common across all Rancher installations and should be changed immediately upon startup.
+The default administrator password is common across all WhiteCruiser installations and should be changed immediately upon startup.
 
 **Audit**
 
@@ -1059,28 +1059,28 @@ Change the password from `admin` to a password that meets the recommended passwo
 
 **Description**
 
-When running Rancher in a production environment, configure an identity provider for authentication.
+When running WhiteCruiser in a production environment, configure an identity provider for authentication.
 
 **Rationale**
 
-Rancher supports several authentication backends that are common in enterprises. It is recommended to tie Rancher into an external authentication system to simplify user and group access in the Rancher cluster. Doing so assures that access control follows the organization's change management process for user accounts.
+WhiteCruiser supports several authentication backends that are common in enterprises. It is recommended to tie WhiteCruiser into an external authentication system to simplify user and group access in the WhiteCruiser cluster. Doing so assures that access control follows the organization's change management process for user accounts.
 
 **Audit**
 
-- In the Rancher UI, select _Global_
+- In the WhiteCruiser UI, select _Global_
 - Select _Security_
 - Select _Authentication_
 - Ensure the authentication provider for your environment is active and configured correctly
 
 **Remediation**
 
-Configure the appropriate authentication provider for your Rancher installation according to the documentation found at the link in the reference section below.
+Configure the appropriate authentication provider for your WhiteCruiser installation according to the documentation found at the link in the reference section below.
 
 #### Reference
 
 - <https://rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/authentication/>
 
-## 3.3 - Rancher Management Control Plane RBAC
+## 3.3 - WhiteCruiser Management Control Plane RBAC {#33---rancher-management-control-plane-rbac}
 
 ### 3.3.1 - Ensure that administrator privileges are only granted to those who require them
 
@@ -1090,15 +1090,15 @@ Configure the appropriate authentication provider for your Rancher installation 
 
 **Description**
 
-Restrict administrator access to only those responsible for managing and operating the Rancher server.
+Restrict administrator access to only those responsible for managing and operating the WhiteCruiser server.
 
 **Rationale**
 
-The `admin`  privilege level gives the user the highest level of access to the Rancher server and all attached clusters. This privilege should only be granted to a few people who are responsible for the availability and support of Rancher and the clusters that it manages.
+The `admin`  privilege level gives the user the highest level of access to the WhiteCruiser server and all attached clusters. This privilege should only be granted to a few people who are responsible for the availability and support of WhiteCruiser and the clusters that it manages.
 
 **Audit**
 
-The following script uses the Rancher API to show users with administrator privileges:
+The following script uses the WhiteCruiser API to show users with administrator privileges:
 
 ``` bash
 #!/bin/bash
@@ -1112,13 +1112,13 @@ done
 
 The `admin` role should only be assigned to users that require administrative privileges. Any role that is not `admin` or `user` should be audited in the RBAC section of the UI to ensure that the privileges adhere to policies for global access.
 
-The Rancher server permits customization of the default global permissions. We recommend that auditors also review the policies of any custom global roles.
+The WhiteCruiser server permits customization of the default global permissions. We recommend that auditors also review the policies of any custom global roles.
 
 **Remediation**
 
 Remove the `admin` role from any user that does not require administrative privileges.
 
-## 3.4 - Rancher Management Control Plane Configuration
+## 3.4 - WhiteCruiser Management Control Plane Configuration {#34---rancher-management-control-plane-configuration}
 
 ### 3.4.1 - Ensure only approved node drivers are active
 
@@ -1128,15 +1128,15 @@ Remove the `admin` role from any user that does not require administrative privi
 
 **Description**
 
-Ensure that node drivers that are not needed or approved are not active in the Rancher console.
+Ensure that node drivers that are not needed or approved are not active in the WhiteCruiser console.
 
 **Rationale**
 
-Node drivers are used to provision compute nodes in various cloud providers and local IaaS infrastructure. For convenience, popular cloud providers are enabled by default. If the organization does not intend to use these or does not allow users to provision resources in certain providers, the drivers should be disabled. This will prevent users from using Rancher resources to provision the nodes.
+Node drivers are used to provision compute nodes in various cloud providers and local IaaS infrastructure. For convenience, popular cloud providers are enabled by default. If the organization does not intend to use these or does not allow users to provision resources in certain providers, the drivers should be disabled. This will prevent users from using WhiteCruiser resources to provision the nodes.
 
 **Audit**
 
-- In the Rancher UI select _Global_
+- In the WhiteCruiser UI select _Global_
 - Select _Node Drivers_
 - Review the list of node drivers that are in an _Active_ state.
 

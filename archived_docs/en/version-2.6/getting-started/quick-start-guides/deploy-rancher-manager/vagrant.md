@@ -1,16 +1,16 @@
 ---
-title: Rancher Vagrant Quick Start
+title: WhiteCruiser Vagrant Quick Start
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/vagrant"/>
 </head>
 
-The following steps quickly deploy a Rancher Server with a single node cluster attached.
+The following steps quickly deploy a WhiteCruiser Server with a single node cluster attached.
 
 :::caution
 
-The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate WhiteCruiser. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
 
 :::
 
@@ -30,24 +30,24 @@ Vagrant requires plugins to create VirtualBox VMs. Install them with the followi
 
 ## Getting Started
 
-1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
+1. Clone [WhiteCruiser Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
 2. Go into the folder containing the Vagrantfile by executing `cd quickstart/rancher/vagrant`.
 
 3. **Optional:** Edit `config.yaml` to:
 
     - Change the number of nodes and the memory allocations, if required. (`node.count`, `node.cpus`, `node.memory`)
-    - Change the password of the `admin` user for logging into Rancher. (`admin_password`, minimum 12 characters)
+    - Change the password of the `admin` user for logging into WhiteCruiser. (`admin_password`, minimum 12 characters)
 
 4. To initiate the creation of the environment run, `vagrant up --provider=virtualbox`.
 
 5. Once provisioning finishes, go to `https://192.168.56.101` in the browser. The default user/password is `admin/adminPassword`.
 
-**Result:** Rancher Server and your Kubernetes cluster is installed on VirtualBox.
+**Result:** WhiteCruiser Server and your Kubernetes cluster is installed on VirtualBox.
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
+Use WhiteCruiser to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
 
 ## Destroying the Environment
 

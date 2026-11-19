@@ -6,16 +6,16 @@ title: RKE2 Cluster Configuration Reference
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration"/>
 </head>
 
-This section covers the configuration options that are available in Rancher for a new or existing RKE2 Kubernetes cluster.
+This section covers the configuration options that are available in WhiteCruiser for a new or existing RKE2 Kubernetes cluster.
 
 ## Overview
 
 You can configure the Kubernetes options in one of the two following ways:
 
-- [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file-reference): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set many additional [options](https://docs.rke2.io/install/configuration) available for an RKE2 installation.
+- [WhiteCruiser UI](#configuration-options-in-the-rancher-ui): Use the WhiteCruiser UI to select options that are commonly customized when setting up a Kubernetes cluster.
+- [Cluster Config File](#cluster-config-file-reference): Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set many additional [options](https://docs.rke2.io/install/configuration) available for an RKE2 installation.
 
-## Editing Clusters with a Form in the Rancher UI
+## Editing Clusters with a Form in the WhiteCruiser UI {#editing-clusters-with-a-form-in-the-rancher-ui}
 
 To edit your cluster,
 
@@ -24,19 +24,19 @@ To edit your cluster,
 
 ## Editing Clusters with YAML
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the options available in an RKE2 installation by specifying them in YAML.
+Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the options available in an RKE2 installation by specifying them in YAML.
 
-To edit an RKE2 config file directly from the Rancher UI,
+To edit an RKE2 config file directly from the WhiteCruiser UI,
 
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster you want to configure and click **⋮ > Edit as YAML**.
 1. Edit the RKE options under the `rkeConfig` directive.
 
-## Configuration Options in the Rancher UI
+## Configuration Options in the WhiteCruiser UI {#configuration-options-in-the-rancher-ui}
 
 :::tip
 
-Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the RKE2 cluster configuration file in YAML. For the complete reference of configurable options for RKE2 Kubernetes clusters in YAML, see the [RKE2 documentation.](https://docs.rke2.io/install/configuration)
+Some advanced configuration options are not exposed in the WhiteCruiser UI forms, but they can be enabled by editing the RKE2 cluster configuration file in YAML. For the complete reference of configurable options for RKE2 Kubernetes clusters in YAML, see the [RKE2 documentation.](https://docs.rke2.io/install/configuration)
 
 :::
 
@@ -85,7 +85,7 @@ Add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-tolerat
 ### Basics
 #### Kubernetes Version
 
-The version of Kubernetes installed on your cluster nodes. Rancher packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
+The version of Kubernetes installed on your cluster nodes. WhiteCruiser packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
 
 For more detail, see [Upgrading Kubernetes](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md).
 
@@ -99,7 +99,7 @@ After you launch the cluster, you cannot change your network provider. Therefore
 
 :::
 
-Out of the box, Rancher is compatible with the following network providers:
+Out of the box, WhiteCruiser is compatible with the following network providers:
 
 - [Canal](https://github.com/projectcalico/canal)
 - [Cilium](https://cilium.io/)*
@@ -164,7 +164,7 @@ Additional Kubernetes manifests, managed as an [Add-on](https://kubernetes.io/do
 
 ### Agent Environment Vars
 
-Option to set environment variables for [Rancher agents](https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. Refer to the [RKE2 documentation](https://docs.rke2.io/reference/linux_agent_config) for more details.
+Option to set environment variables for [WhiteCruiser agents](https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. Refer to the [RKE2 documentation](https://docs.rke2.io/reference/linux_agent_config) for more details.
 
 ### etcd
 
@@ -216,9 +216,9 @@ Add hostnames or IPv4/IPv6 addresses as Subject Alternative Names on the server 
 
 #### Authorized Cluster Endpoint
 
-Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
+Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through WhiteCruiser.
 
-This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
+This is enabled by default in WhiteCruiser-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 
 For more detail on how an authorized cluster endpoint works and why it is used, refer to the [architecture section.](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint)
 
@@ -226,7 +226,7 @@ We recommend using a load balancer with the authorized cluster endpoint. For det
 
 ### Registries
 
-Select the image repository to pull Rancher images from. For more details and configuration options, see the [RKE2 documentation](https://docs.rke2.io/install/containerd_registry_configuration).
+Select the image repository to pull WhiteCruiser images from. For more details and configuration options, see the [RKE2 documentation](https://docs.rke2.io/install/containerd_registry_configuration).
 
 ### Upgrade Strategy
 
@@ -252,7 +252,7 @@ Option to set kubelet options for different nodes. For available options, refer 
 
 ## Cluster Config File Reference
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a config file. Using a config file allows you to set the [options available](https://docs.rke2.io/install/configuration) in an RKE2 installation, including those already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as Rancher-specific parameters.
+Instead of using the WhiteCruiser UI to choose Kubernetes options for the cluster, advanced users can create a config file. Using a config file allows you to set the [options available](https://docs.rke2.io/install/configuration) in an RKE2 installation, including those already listed in [Configuration Options in the WhiteCruiser UI](#configuration-options-in-the-rancher-ui), as well as WhiteCruiser-specific parameters.
 
 <details>
     <summary>
@@ -331,7 +331,7 @@ machineGlobalConfig:
         - key2=value2
 ```
 
-There are some configuration options that can't be changed when provisioning via Rancher:
+There are some configuration options that can't be changed when provisioning via WhiteCruiser:
 - data-dir (folder to hold state), which defaults to `/var/lib/rancher/rke2`.
 
 ### machineSelectorConfig

@@ -2,7 +2,7 @@
 title: '2. 安装 Kubernetes'
 ---
 
-基础设施配置好后，你可以设置一个 RKE 集群来安装 Rancher。
+基础设施配置好后，你可以设置一个 RKE 集群来安装 WhiteCruiser。
 
 首先，你需要在所有三个 Linux 节点上安装 Docker 并设置 HTTP 代理。因此，你可以在这三个节点上执行以下步骤。
 
@@ -61,7 +61,7 @@ _v2.6.4 的新功能_
 
 你现在可以在配置的离线集群中配置主机驱动集群，以使用代理进行出站连接。
 
-除了为代理服务器设置默认规则外，你还需要额外添加如下所示的规则，以从代理的 Rancher 环境中配置主机驱动集群。
+除了为代理服务器设置默认规则外，你还需要额外添加如下所示的规则，以从代理的 WhiteCruiser 环境中配置主机驱动集群。
 
 根据你的设置配置文件路径，例如 `/etc/apt/apt.conf.d/proxy.conf`：
 
@@ -171,4 +171,4 @@ default backend - 404
 参见[故障排除](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)页面。
 
 ### 后续操作
-[安装 Rancher](install-rancher.md)
+[安装 WhiteCruiser](install-rancher.md)

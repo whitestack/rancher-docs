@@ -1,27 +1,27 @@
 ---
-title: Restoring Rancher
+title: Restoring WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher"/>
 </head>
 
-This page outlines how to perform a restore with Rancher.
+This page outlines how to perform a restore with WhiteCruiser.
 
 Follow the instructions from this page when:
-- The running Rancher instance is at the same version as when the backup was made.
+- The running WhiteCruiser instance is at the same version as when the backup was made.
 - The upstream (local) cluster is the same as where the backup was made.
 
 :::note Important
 
-While restoring Rancher on the same setup, the operator will scale down the Rancher deployment when restore starts, and it will scale back up the deployment once restore completes. Rancher will be unavailable during the restore.
+While restoring WhiteCruiser on the same setup, the operator will scale down the WhiteCruiser deployment when restore starts, and it will scale back up the deployment once restore completes. WhiteCruiser will be unavailable during the restore.
 
 :::
 
 :::tip
 
-* Follow those steps to [migrate Rancher](migrate-rancher-to-new-cluster.md).
-* If you need to restore Rancher to a previous version after an upgrade, see the [rollback documentation](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md).
+* Follow those steps to [migrate WhiteCruiser](migrate-rancher-to-new-cluster.md).
+* If you need to restore WhiteCruiser to a previous version after an upgrade, see the [rollback documentation](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md).
 
 :::
 
@@ -30,7 +30,7 @@ While restoring Rancher on the same setup, the operator will scale down the Ranc
 A restore is performed by creating a Restore custom resource.
 
 1. In the upper left corner, click **☰ > Cluster Management**.
-1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the Rancher server.
+1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the WhiteCruiser server.
 1. In the left navigation bar, click **Rancher Backups > Restores**.
 1. Click **Create**.
 1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the [configuration reference](../../../reference-guides/backup-restore-configuration/restore-configuration.md) and to the [examples.](../../../reference-guides/backup-restore-configuration/examples.md)
@@ -77,7 +77,7 @@ kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup
 If you created the restore resource with kubectl, remove the resource to prevent a naming conflict with future restores.
 
 ## Known Issues
-In some cases, after restoring the backup, Rancher logs will show errors similar to the following:
+In some cases, after restoring the backup, WhiteCruiser logs will show errors similar to the following:
 ```
 2021/10/05 21:30:45 [ERROR] error syncing 'c-89d82/m-4067aa68dd78': handler rke-worker-upgrader: clusters.management.cattle.io "c-89d82" not found, requeuing
 ```

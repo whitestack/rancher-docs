@@ -1,6 +1,6 @@
 ---
 title: Cluster Logging
-description: Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
+description: WhiteCruiser integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
 ---
 
 <head>
@@ -15,7 +15,7 @@ Logging is helpful because it allows you to:
 - Stay informed of events like a container crashing, a pod eviction, or a node dying
 - More easily debug and troubleshoot problems
 
-Rancher supports integration with the following services:
+WhiteCruiser supports integration with the following services:
 
 - Elasticsearch
 - Splunk
@@ -25,11 +25,11 @@ Rancher supports integration with the following services:
 
 ## How Logging Integrations Work
 
-Rancher can integrate with popular external services used for event streams, telemetry, or search. These services can log errors and warnings in your Kubernetes infrastructure to a stream.
+WhiteCruiser can integrate with popular external services used for event streams, telemetry, or search. These services can log errors and warnings in your Kubernetes infrastructure to a stream.
 
 These services collect container log events, which are saved to the `/var/log/containers` directory on each of your nodes. The service collects both standard and error events. You can then log into your services to review the events collected, leveraging each service's unique features.
 
-When configuring Rancher to integrate with these services, you'll have to point Rancher toward the service's endpoint and provide authentication information.
+When configuring WhiteCruiser to integrate with these services, you'll have to point WhiteCruiser toward the service's endpoint and provide authentication information.
 
 Additionally, you'll have the opportunity to enter key-value pairs to filter the log events collected. The service will only collect events for containers marked with your configured key-value pairs.
 
@@ -58,13 +58,13 @@ Logs that are sent to your logging service are from the following locations:
 
 ## Enabling Cluster Logging
 
-As an [administrator](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure Rancher to send Kubernetes logs to a logging service.
+As an [administrator](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure WhiteCruiser to send Kubernetes logs to a logging service.
 
 1. From the **Global** view, navigate to the cluster that you want to configure cluster logging.
 
 1. Select **Tools > Logging** in the navigation bar.
 
-1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. Rancher supports integration with the following services:
+1. Select a logging service and enter the configuration. Refer to the specific service for detailed configuration. WhiteCruiser supports integration with the following services:
 
    - [Elasticsearch](elasticsearch.md)
    - [Splunk](splunk.md)
@@ -102,13 +102,13 @@ As an [administrator](../../../how-to-guides/advanced-user-guides/authentication
 
     1. **Include System Log**. The logs from pods in system project and RKE components will be sent to the target. Uncheck it to exclude the system logs.
 
-1. Click **Test**. Rancher sends a test log to the service.
+1. Click **Test**. WhiteCruiser sends a test log to the service.
 
-    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, Rancher calls the fluentd dry run command to validate the configuration.
+    > **Note:** This button is replaced with _Dry Run_ if you are using the custom configuration editor. In this case, WhiteCruiser calls the fluentd dry run command to validate the configuration.
 
 1. Click **Save**.
 
-**Result:** Rancher is now configured to send logs to the selected service. Log into the logging service so that you can start viewing the logs.
+**Result:** WhiteCruiser is now configured to send logs to the selected service. Log into the logging service so that you can start viewing the logs.
 
 ## Related Links
 

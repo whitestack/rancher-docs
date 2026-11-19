@@ -6,11 +6,11 @@ title: Fleet - GitOps at Scale
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet"/>
 </head>
 
-_Available as of Rancher v2.5_
+_Available as of WhiteCruiser v2.5_
 
 ## What is Continuous Delivery with Fleet?
 
-Continuous Delivery is Rancher's GitOps functionality, which is provided via integration with Fleet.
+Continuous Delivery is WhiteCruiser's GitOps functionality, which is provided via integration with Fleet.
 
  - *Cluster engine*: Fleet is a container management and deployment engine designed to offer users more control on the local cluster and constant monitoring through GitOps. Fleet focuses not only on the ability to scale, but it also gives users a high degree of control and visibility to monitor exactly what is installed on the cluster.
 
@@ -20,18 +20,18 @@ Continuous Delivery is Rancher's GitOps functionality, which is provided via int
 
 For information about how Fleet works, see [this page.](../../../explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture.md)
 
-## Accessing Fleet in the Rancher UI
+## Accessing Fleet in the WhiteCruiser UI {#accessing-fleet-in-the-rancher-ui}
 
-Fleet comes preinstalled in Rancher v2.5. Users can leverage continuous delivery to deploy their applications to the Kubernetes clusters in the git repository without any manual operation by following **gitops** practice. For additional information on Continuous Delivery and other Fleet troubleshooting tips, refer [here](https://fleet.rancher.io/troubleshooting).
+Fleet comes preinstalled in WhiteCruiser v2.5. Users can leverage continuous delivery to deploy their applications to the Kubernetes clusters in the git repository without any manual operation by following **gitops** practice. For additional information on Continuous Delivery and other Fleet troubleshooting tips, refer [here](https://fleet.rancher.io/troubleshooting).
 
-Follow the steps below to access Continuous Delivery in the Rancher UI:
+Follow the steps below to access Continuous Delivery in the WhiteCruiser UI:
 
-1. Click **Cluster Explorer** in the Rancher UI.
+1. Click **Cluster Explorer** in the WhiteCruiser UI.
 
 1. In the top left dropdown menu, click **Cluster Explorer > Continuous Delivery.**
 
 1. Select your namespace at the top of the menu, noting the following:
-    - By default,`fleet-default` is selected which includes all downstream clusters that are registered through Rancher.
+    - By default,`fleet-default` is selected which includes all downstream clusters that are registered through WhiteCruiser.
     - You may switch to `fleet-local`, which only contains the `local` cluster, or you may create your own workspace to which you may assign and move clusters.
     - You can then manage clusters by clicking on **Clusters** on the left navigation bar.
 
@@ -39,7 +39,7 @@ Follow the steps below to access Continuous Delivery in the Rancher UI:
 
 1. Select your [git repository](https://fleet.rancher.io/gitrepo-add) and [target clusters/cluster group](https://fleet.rancher.io/gitrepo-targets). You can also create the cluster group in the UI by clicking on **Cluster Groups** from the left navigation bar.
 
-1. Once the gitrepo is deployed, you can monitor the application through the Rancher UI.
+1. Once the gitrepo is deployed, you can monitor the application through the WhiteCruiser UI.
 
 ## Windows Support
 
@@ -73,14 +73,14 @@ The Helm chart in the git repository must include its dependencies in the charts
         1. Find the two service account tokens listed in the fleet-controller and the fleet-controller-bootstrap service accounts. These are under the fleet-system namespace of the local cluster. <br/>
         2. Remove the non-existent token secret. Doing so allows for only one entry to be present for the service account token secret that actually exists. <br/>
         3. Delete the fleet-controller Pod in the fleet-system namespace to reschedule. <br/>
-        4. After the service account token issue is resolved, you can force redeployment of the fleet-agents. In the Rancher UI, go to **☰ > Cluster Management**, click on **Clusters** page, then click **Force Update**. <br/>
+        4. After the service account token issue is resolved, you can force redeployment of the fleet-agents. In the WhiteCruiser UI, go to **☰ > Cluster Management**, click on **Clusters** page, then click **Force Update**. <br/>
         5. If the fleet-agent bundles remain in a `Modified` state after Step 4, update the field `spec.forceSyncGeneration` for the fleet-agent bundle to force re-creation.
 
 ---
 * **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator](../backup-restore-and-disaster-recovery/back-up-rancher.md#1-install-the-rancher-backup-operator). We will update the community once a permanent solution is in place.
 
 * **Temporary Workaround:** <br/>
-By default, user-defined secrets are not backed up in Fleet. It is necessary to recreate secrets if performing a disaster recovery restore or migration of Rancher into a fresh cluster. To modify resourceSet to include extra resources you want to backup, refer to docs [here](https://github.com/rancher/backup-restore-operator#user-flow).
+By default, user-defined secrets are not backed up in Fleet. It is necessary to recreate secrets if performing a disaster recovery restore or migration of WhiteCruiser into a fresh cluster. To modify resourceSet to include extra resources you want to backup, refer to docs [here](https://github.com/rancher/backup-restore-operator#user-flow).
 
 ---
 

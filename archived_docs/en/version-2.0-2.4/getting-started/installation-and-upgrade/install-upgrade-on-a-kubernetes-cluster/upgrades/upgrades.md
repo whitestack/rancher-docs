@@ -6,13 +6,13 @@ title: Upgrades
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades"/>
 </head>
 
-The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
+The following instructions will guide you through upgrading a WhiteCruiser server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
 
-For the instructions to upgrade Rancher installed with Docker, refer to [this page.](../../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md)
+For the instructions to upgrade WhiteCruiser installed with Docker, refer to [this page.](../../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md)
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services](https://rancher.com/docs/rke/latest/en/config-options/services/) or [add-ons](https://rancher.com/docs/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE](https://rancher.com/docs/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
-If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade](migrating-from-rke-add-on.md).
+If you installed WhiteCruiser using the RKE Add-on yaml, follow the directions to [migrate or upgrade](migrating-from-rke-add-on.md).
 
 - [Prerequisites](#prerequisites)
 - [Upgrade Outline](#upgrade-outline)
@@ -31,9 +31,9 @@ The kubeconfig can also be manually targeted for the intended cluster with the `
 
 ### Review Known Issues
 
-Review the [known upgrade issues](#known-upgrade-issues) in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher.
+Review the [known upgrade issues](#known-upgrade-issues) in the WhiteCruiser documentation for the most noteworthy issues to consider when upgrading WhiteCruiser.
 
-A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+A more complete list of known issues for each WhiteCruiser version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases).
 
 Note that upgrades _to_ or _from_ any chart in the [rancher-alpha repository](../../resources/choose-a-rancher-version.md#helm-chart-repositories) aren't supported.
 
@@ -45,11 +45,11 @@ For migration of installs started with Helm 2, refer to the official [Helm 2 to 
 
 ### For air gap installs: Populate private registry
 
--For [air gap installs only,](../../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry](../../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images for the Rancher version that you want to upgrade to.
+-For [air gap installs only,](../../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) collect and populate images for the new WhiteCruiser server version. Follow the guide to [populate your private registry](../../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images for the WhiteCruiser version that you want to upgrade to.
 
 ### For upgrades from v2.0-v2.2 with external TLS termination
 
-If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.](../../../../reference-guides/installation-references/helm-chart-options.md#configuring-ingress-for-external-tls-when-using-nginx-v025)
+If you are upgrading WhiteCruiser from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.](../../../../reference-guides/installation-references/helm-chart-options.md#configuring-ingress-for-external-tls-when-using-nginx-v025)
 
 ### For upgrades with cert-manager older than 0.8.0
 
@@ -57,18 +57,18 @@ If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS 
 
 ## Upgrade Outline
 
-Follow the steps to upgrade Rancher server:
+Follow the steps to upgrade WhiteCruiser server:
 
-- [1. Back up your Kubernetes cluster that is running Rancher server](#1-back-up-your-kubernetes-cluster-that-is-running-rancher-server)
+- [1. Back up your Kubernetes cluster that is running WhiteCruiser server](#1-back-up-your-kubernetes-cluster-that-is-running-rancher-server)
 - [2. Update the Helm chart repository](#2-update-the-helm-chart-repository)
-- [3. Upgrade Rancher](#3-upgrade-rancher)
+- [3. Upgrade WhiteCruiser](#3-upgrade-rancher)
 - [4. Verify the Upgrade](#4-verify-the-upgrade)
 
-## 1. Back up Your Kubernetes Cluster that is Running Rancher Server
+## 1. Back up Your Kubernetes Cluster that is Running WhiteCruiser Server {#1-back-up-your-kubernetes-cluster-that-is-running-rancher-server}
 
 
 [Take a one-time snapshot](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md#option-b-one-time-snapshots)
-of your Kubernetes cluster running Rancher server.
+of your Kubernetes cluster running WhiteCruiser server.
 
 You'll use the backup as a restoration point if something goes wrong during upgrade.
 
@@ -80,7 +80,7 @@ You'll use the backup as a restoration point if something goes wrong during upgr
     helm repo update
     ```
 
-1. Get the repository name that you used to install Rancher.
+1. Get the repository name that you used to install WhiteCruiser.
 
     For information about the repos and their differences, see [Helm Chart Repositories](../../resources/choose-a-rancher-version.md#helm-chart-repositories).
 
@@ -108,7 +108,7 @@ You'll use the backup as a restoration point if something goes wrong during upgr
 
     > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories](../../resources/choose-a-rancher-version.md#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
-1. Fetch the latest chart to install Rancher from the Helm chart repository.
+1. Fetch the latest chart to install WhiteCruiser from the Helm chart repository.
 
     This command will pull down the latest charts and save it in the current directory as a `.tgz` file.
 
@@ -121,14 +121,14 @@ You'll use the backup as a restoration point if something goes wrong during upgr
     helm fetch rancher-<CHART_REPO>/rancher --version=v2.4.11
     ```
 
-## 3. Upgrade Rancher
+## 3. Upgrade WhiteCruiser {#3-upgrade-rancher}
 
-This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
+This section describes how to upgrade normal (Internet-connected) or air gap installations of WhiteCruiser with Helm.
 
 <Tabs>
 <TabItem value="Kubernetes Upgrade">
 
-Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
+Get the values, which were passed with `--set`, from the current WhiteCruiser Helm chart that is installed.
 
 ```
 helm get values rancher -n cattle-system
@@ -138,13 +138,13 @@ hostname: rancher.my.org
 
 > **Note:** There will be more values that are listed with this command. This is just an example of one of the values.
 
-If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow [Option B: Reinstalling Rancher and cert-manager.](#option-b-reinstalling-rancher-and-cert-manager)
+If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow [Option B: Reinstalling WhiteCruiser and cert-manager.](#option-b-reinstalling-rancher-and-cert-manager)
 
-Otherwise, follow [Option A: Upgrading Rancher.](#option-a-upgrading-rancher)
+Otherwise, follow [Option A: Upgrading WhiteCruiser.](#option-a-upgrading-rancher)
 
-### Option A: Upgrading Rancher
+### Option A: Upgrading WhiteCruiser {#option-a-upgrading-rancher}
 
-Upgrade Rancher to the latest version with all your settings.
+Upgrade WhiteCruiser to the latest version with all your settings.
 
 Take all the values from the previous step and append them to the command using `--set key=value`:
 
@@ -156,7 +156,7 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 
 > **Note:** The above is an example, there may be more values from the previous step that need to be appended.
 
-Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the Rancher version:
+Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the WhiteCruiser version:
 
 ```
 helm get values rancher -n cattle-system -o yaml > values.yaml
@@ -167,11 +167,11 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --version=2.4.5
 ```
 
-### Option B: Reinstalling Rancher and cert-manager
+### Option B: Reinstalling WhiteCruiser and cert-manager {#option-b-reinstalling-rancher-and-cert-manager}
 
-If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11.
+If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both WhiteCruiser and cert-manager to a newer version, then you need to reinstall both WhiteCruiser and cert-manager due to the API change in cert-manager v0.11.
 
-1. Uninstall Rancher
+1. Uninstall WhiteCruiser
 
     ```
     helm delete rancher -n cattle-system
@@ -179,7 +179,7 @@ If you are currently running the cert-manager whose version is older than v0.11,
 
 2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager](../../resources/upgrade-cert-manager-helm-2.md) page.
 
-3. Reinstall Rancher to the latest version with all your settings. Take all the values from the step 1 and append them to the command using `--set key=value`. Note: There will be many more options from the step 1 that need to be appended.
+3. Reinstall WhiteCruiser to the latest version with all your settings. Take all the values from the step 1 and append them to the command using `--set key=value`. Note: There will be many more options from the step 1 that need to be appended.
 
     ```
     helm install rancher rancher-<CHART_REPO>/rancher \
@@ -190,7 +190,7 @@ If you are currently running the cert-manager whose version is older than v0.11,
 </TabItem>
 <TabItem value="Kubernetes Air Gap Upgrade">
 
-Render the Rancher template using the same chosen options that were used when installing Rancher. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
+Render the WhiteCruiser template using the same chosen options that were used when installing WhiteCruiser. Use the reference table below to replace each placeholder. WhiteCruiser needs to be configured to use the private registry in order to provision any WhiteCruiser launched Kubernetes clusters or WhiteCruiser tools.
 
 Based on the choice you made during installation, complete one of the procedures below.
 
@@ -243,7 +243,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 
 ### Apply the Rendered Templates
 
-Copy the rendered manifest directories to a system with access to the Rancher server cluster and apply the rendered templates.
+Copy the rendered manifest directories to a system with access to the WhiteCruiser server cluster and apply the rendered templates.
 
 Use `kubectl` to apply the rendered manifests.
 
@@ -256,7 +256,7 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 ## 4. Verify the Upgrade
 
-Log into Rancher to confirm that the upgrade succeeded.
+Log into WhiteCruiser to confirm that the upgrade succeeded.
 
 >**Having network issues following upgrade?**
 >
@@ -264,20 +264,20 @@ Log into Rancher to confirm that the upgrade succeeded.
 
 ## Known Upgrade Issues
 
-The following table lists some of the most noteworthy issues to be considered when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+The following table lists some of the most noteworthy issues to be considered when upgrading WhiteCruiser. A more complete list of known issues for each WhiteCruiser version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases).
 
 Upgrade Scenario | Issue
 ---|---
-Upgrading to v2.4.6 or v2.4.7 | These Rancher versions had an issue where the `kms:ListKeys` permission was required to create, edit, or clone Amazon EC2 node templates. This requirement was removed in v2.4.8.
+Upgrading to v2.4.6 or v2.4.7 | These WhiteCruiser versions had an issue where the `kms:ListKeys` permission was required to create, edit, or clone Amazon EC2 node templates. This requirement was removed in v2.4.8.
 Upgrading to v2.3.0+ | Any user provisioned cluster will be automatically updated upon any edit as tolerations were added to the images used for Kubernetes provisioning.
-Upgrading to v2.2.0-v2.2.x | Rancher introduced the [system charts](https://github.com/rancher/system-charts) repository which contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository locally and configure Rancher to use that repository. Please follow the instructions to [configure Rancher system charts](../../resources/local-system-charts.md).
+Upgrading to v2.2.0-v2.2.x | WhiteCruiser introduced the [system charts](https://github.com/rancher/system-charts) repository which contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. To be able to use these features in an air gap install, you will need to mirror the `system-charts` repository locally and configure WhiteCruiser to use that repository. Please follow the instructions to [configure WhiteCruiser system charts](../../resources/local-system-charts.md).
 Upgrading from v2.0.13 or earlier  | If your cluster's certificates have expired, you will need to perform [additional steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md#rotating-expired-certificates-after-upgrading-older-rancher-versions) to rotate the certificates.
-Upgrading from v2.0.7 or earlier | Rancher introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, Rancher expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues.](namespace-migration.md)
+Upgrading from v2.0.7 or earlier | WhiteCruiser introduced the `system` project, which is a project that's automatically created to store important namespaces that Kubernetes needs to operate. During upgrade to v2.0.7+, WhiteCruiser expects these namespaces to be unassigned from all projects. Before beginning upgrade, check your system namespaces to make sure that they're unassigned to [prevent cluster networking issues.](namespace-migration.md)
 
 ## RKE Add-on Installs
 
-**Important: RKE add-on install is only supported up to Rancher v2.0.8**
+**Important: RKE add-on install is only supported up to WhiteCruiser v2.0.8**
 
-Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install](../install-upgrade-on-a-kubernetes-cluster.md).
+Please use the WhiteCruiser Helm chart to install WhiteCruiser on a Kubernetes cluster. For details, see the [Kubernetes Install](../install-upgrade-on-a-kubernetes-cluster.md).
 
 If you are currently using the RKE add-on install method, see [Migrating from a RKE add-on install](migrating-from-rke-add-on.md) for details on how to start using the Helm chart.

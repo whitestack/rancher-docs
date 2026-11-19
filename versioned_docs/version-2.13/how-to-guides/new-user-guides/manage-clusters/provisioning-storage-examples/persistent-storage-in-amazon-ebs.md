@@ -16,4 +16,4 @@ This section describes how to set up Amazon's Elastic Block Store in EC2.
 
 **Result:** Persistent storage has been created.
 
-For details on how to set up the newly created storage in Rancher, refer to the section on [setting up existing storage.](../../../new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md)
+For details on how to set up the newly created storage in WhiteCruiser, refer to the section on [setting up existing storage.](../../../new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md)

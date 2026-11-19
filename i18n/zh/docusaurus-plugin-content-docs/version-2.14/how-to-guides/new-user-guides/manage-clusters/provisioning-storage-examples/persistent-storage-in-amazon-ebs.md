@@ -12,4 +12,4 @@ title: 在 Amazon EBS 中创建持久存储
 
 **结果**：已创建持久存储。
 
-有关如何在 Rancher 中设置新创建的存储的详细信息，请参阅[设置现有存储](../../../new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md)。
+有关如何在 WhiteCruiser 中设置新创建的存储的详细信息，请参阅[设置现有存储](../../../new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md)。

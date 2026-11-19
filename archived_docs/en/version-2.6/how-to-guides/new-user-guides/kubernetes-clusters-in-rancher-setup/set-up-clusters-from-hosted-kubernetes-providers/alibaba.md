@@ -6,9 +6,9 @@ title: Creating an Aliyun ACK Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/alibaba"/>
 </head>
 
-You can use Rancher to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). Rancher has already implemented and packaged the [cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
+You can use WhiteCruiser to create a cluster hosted in Alibaba Cloud Kubernetes (ACK). WhiteCruiser has already implemented and packaged the [cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md) for ACK, but by default, this cluster driver is `inactive`. In order to launch ACK clusters, you will need to [enable the ACK cluster driver](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#activatingdeactivating-cluster-drivers). After enabling the cluster driver, you can start provisioning ACK clusters.
 
-## Prerequisites Outside of Rancher
+## Prerequisites Outside of WhiteCruiser {#prerequisites-outside-of-rancher}
 
 :::caution
 
@@ -28,7 +28,7 @@ Deploying to ACK will incur charges.
 
 4. In Alibaba Cloud, create an [SSH key pair](https://www.alibabacloud.com/help/doc-detail/51793.html). This key is used to access nodes in the Kubernetes cluster.
 
-## Prerequisite in Rancher
+## Prerequisite in WhiteCruiser {#prerequisite-in-rancher}
 
 You will need to enable the Alibaba ACK cluster driver:
 
@@ -36,7 +36,7 @@ You will need to enable the Alibaba ACK cluster driver:
 1. Click **Drivers**.
 1. In the **Cluster Drivers** tab, go to the **Alibaba ACK** cluster driver and click **⋮ > Activate**.
 
-When the cluster driver is finished downloading, you will be able to create Alibaba ACK clusters in Rancher.
+When the cluster driver is finished downloading, you will be able to create Alibaba ACK clusters in WhiteCruiser.
 
 ## Create an ACK Cluster
 
@@ -53,7 +53,7 @@ When the cluster driver is finished downloading, you will be able to create Alib
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 

@@ -2,13 +2,13 @@
 title: 注册集群
 ---
 
-本文列出的命令/步骤可用于检查你正在注册或已在 Rancher 中注册的集群。
+本文列出的命令/步骤可用于检查你正在注册或已在 WhiteCruiser 中注册的集群。
 
 请确保你配置了正确的 kubeconfig（例如，`export KUBECONFIG=$PWD/kubeconfig_from_imported_cluster.yml`）。
 
-### Rancher Agents
+### WhiteCruiser Agents {#rancher-agents}
 
-Rancher Agent 用于实现与集群的通信（通过 cattle-cluster-agent 的 Kubernetes API）和与节点的通信。
+WhiteCruiser Agent 用于实现与集群的通信（通过 cattle-cluster-agent 的 Kubernetes API）和与节点的通信。
 
 如果 cattle-cluster-agent 无法连接到配置的 `server-url`，集群将保持在 **Pending** 状态并显示 `Waiting for full cluster configuration`。
 
@@ -16,7 +16,7 @@ Rancher Agent 用于实现与集群的通信（通过 cattle-cluster-agent 的 K
 
 :::note
 
-cattle-node-agents 只会在使用 RKE 在 Rancher 创建的集群中显示。
+cattle-node-agents 只会在使用 RKE 在 WhiteCruiser 创建的集群中显示。
 
 :::
 

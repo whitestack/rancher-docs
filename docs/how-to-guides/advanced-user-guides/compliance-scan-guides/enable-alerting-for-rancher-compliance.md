@@ -1,5 +1,5 @@
 ---
-title: Enable Alerting for Rancher Compliance
+title: Enable Alerting for WhiteCruiser Compliance
 ---
 
 <head>

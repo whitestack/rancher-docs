@@ -75,7 +75,7 @@ A comma separated list of custom labels to be attached to all VMs within a given
 
 ## Advanced Options
 
-When creating clusters via the Rancher UI some options are automatically configured for you. However, when creating machine config objects manually, you must ensure you properly configure the below fields.
+When creating clusters via the WhiteCruiser UI some options are automatically configured for you. However, when creating machine config objects manually, you must ensure you properly configure the below fields.
 
 ### external-firewall-rule-prefix
 

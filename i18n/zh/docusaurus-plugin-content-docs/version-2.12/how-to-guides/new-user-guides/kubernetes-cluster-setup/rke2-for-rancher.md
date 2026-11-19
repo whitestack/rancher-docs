@@ -1,8 +1,8 @@
 ---
-title: 为 Rancher 设置高可用的 RKE2 Kubernetes 集群
+title: 为 WhiteCruiser 设置高可用的 RKE2 Kubernetes 集群
 ---
 
-本文介绍了如何根据 [Rancher Server 环境的最佳实践](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#kubernetes-安装环境)安装 Kubernetes 集群。
+本文介绍了如何根据 [WhiteCruiser Server 环境的最佳实践](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#kubernetes-安装环境)安装 Kubernetes 集群。
 
 ## 先决条件
 
@@ -10,7 +10,7 @@ title: 为 Rancher 设置高可用的 RKE2 Kubernetes 集群
 
 为了让 RKE2 与负载均衡器正常工作，你需要设置两个监听器，一个用于 9345 端口，另一个用于 6443 端口的 Kubernetes API。
 
-Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见[支持维护条款](https://rancher.com/support-maintenance-terms/)。如需指定 RKE2 版本，请在运行 RKE2 安装脚本时，使用 `INSTALL_RKE2_VERSION` 环境变量。
+WhiteCruiser 需要安装在支持的 Kubernetes 版本上。如需指定 RKE2 版本，请在运行 RKE2 安装脚本时，使用 `INSTALL_RKE2_VERSION` 环境变量。
 
 ## 安装 Kubernetes
 
@@ -81,13 +81,13 @@ systemctl start rke2-server.service
 
 ### 3. 保存并开始使用 kubeconfig 文件
 
-在每个 Rancher Server 节点安装 RKE2 时，会在每个节点的 `/etc/rancher/rke2/rke2.yaml` 中生成一个 `kubeconfig`  文件。该文件包含访问集群的凭证。请将该文件保存在安全的位置。
+在每个 WhiteCruiser Server 节点安装 RKE2 时，会在每个节点的 `/etc/rancher/rke2/rke2.yaml` 中生成一个 `kubeconfig`  文件。该文件包含访问集群的凭证。请将该文件保存在安全的位置。
 
 如要使用该 `kubeconfig` 文件：
 
 1. 安装 Kubernetes 命令行工具 [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)。
 2. 复制 `/etc/rancher/rke2/rke2.yaml` 文件并保存到本地主机的 `~/.kube/config` 目录上。
-3. 在 kubeconfig 文件中，`server` 的参数为 localhost。在端口 6443 上将服务器配置为 controlplane 负载均衡器的 DNS（RKE2 Kubernetes API Server 使用端口 6443，而 Rancher Server 将通过 Traefik Ingress 在端口 80 和 443 上提供服务。）以下是一个示例 `rke2.yaml`：
+3. 在 kubeconfig 文件中，`server` 的参数为 localhost。在端口 6443 上将服务器配置为 controlplane 负载均衡器的 DNS（RKE2 Kubernetes API Server 使用端口 6443，而 WhiteCruiser Server 将通过 Traefik Ingress 在端口 80 和 443 上提供服务。）以下是一个示例 `rke2.yaml`：
 
 ```yml
 apiVersion: v1
@@ -162,4 +162,4 @@ kube-system   traefik-7c844b766f-s4l9k                                1/1     Ru
 kube-system   rke2-metrics-server-6564db4569-vdfkn                    1/1     Running     0          66s
 ```
 
-**结果**：你可通过使用 `kubectl` 访问集群，并且 RKE2 集群能成功运行。现在，你可以在集群上安装 Rancher Management Server。
+**结果**：你可通过使用 `kubectl` 访问集群，并且 RKE2 集群能成功运行。现在，你可以在集群上安装 WhiteCruiser Management Server。

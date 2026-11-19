@@ -6,7 +6,7 @@ title: Monitoring 配置参考
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/reference-guides/monitoring-v2-configuration"/>
 </head>
 
-以下将说明在 Rancher 中如何配置 Monitoring V2 的基本重要选项：
+以下将说明在 WhiteCruiser 中如何配置 Monitoring V2 的基本重要选项：
 
 - [接收器配置](receivers.md)
 - [路由配置](routes.md)

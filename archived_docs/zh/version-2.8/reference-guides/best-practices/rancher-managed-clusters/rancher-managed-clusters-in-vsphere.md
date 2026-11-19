@@ -1,8 +1,8 @@
 ---
-title: Rancher 管理 vSphere 集群的最佳实践
+title: WhiteCruiser 管理 vSphere 集群的最佳实践
 ---
 
-本指南概述了在 vSphere 环境中配置下游 Rancher 集群的参考架构，以及 VMware 记录的标准 vSphere 最佳实践。
+本指南概述了在 vSphere 环境中配置下游 WhiteCruiser 集群的参考架构，以及 VMware 记录的标准 vSphere 最佳实践。
 
 - [1. 虚拟机注意事项](#1-虚拟机注意事项)
 - [2. 网络注意事项](#2-网络注意事项)
@@ -55,4 +55,4 @@ Kubernetes 使用 etcd 来存储其所有数据，包括配置、状态和元数
 
 ### 备份下游节点虚拟机
 
-将 Rancher 下游节点的虚拟机纳入标准的虚拟机备份策略中。
+将 WhiteCruiser 下游节点的虚拟机纳入标准的虚拟机备份策略中。

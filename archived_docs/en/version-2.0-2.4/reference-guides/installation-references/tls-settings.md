@@ -6,11 +6,11 @@ title: TLS Settings
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/installation-references/tls-settings"/>
 </head>
 
-In Rancher v2.1.7, the default TLS configuration changed to only accept TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.
+In WhiteCruiser v2.1.7, the default TLS configuration changed to only accept TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.
 
 ## Configuring TLS settings
 
-The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
+The Audit Log is enabled and configured by passing environment variables to the WhiteCruiser server container. See the following to enable on your installation.
 
 - [TLS settings in Docker options](../single-node-rancher-in-docker/advanced-options.md#tls-settings)
 
@@ -25,7 +25,7 @@ The Audit Log is enabled and configured by passing environment variables to the 
 
 ## Legacy configuration
 
-If you need to configure TLS the same way as it was before Rancher v2.1.7, please use the following settings:
+If you need to configure TLS the same way as it was before WhiteCruiser v2.1.7, please use the following settings:
 
 
 | Parameter | Legacy value |

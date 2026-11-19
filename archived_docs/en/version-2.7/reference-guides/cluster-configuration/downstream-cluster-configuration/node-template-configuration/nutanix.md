@@ -35,7 +35,7 @@ In the **Instance Options** section, configure the number of vCPUs, memory, and 
 | VM Disk Size         |          | New size of the VM's primary disk (in GiB)                                                  |
 | Additional Disk Size |          | Size of an additional disk to add to the VM (in GiB)                                        |
 | Storage Container    |          | Storage container _UUID_ in which to provision an additional disk                           |
-| Cloud Config YAML    |          | Cloud-init to provide to the VM (will be patched with Rancher root user)                  |
+| Cloud Config YAML    |          | Cloud-init to provide to the VM (will be patched with WhiteCruiser root user)                  |
 | Network              | ✓        | Name(s) of the network(s) to attach to the VM                                               |
 | VM Categories        |          | Name(s) of any categories to be applied to the VM                                           |
 

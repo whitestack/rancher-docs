@@ -20,15 +20,15 @@ enable_cri_dockerd: true
 
 Starting with version 1.24, the above defaults to true.
 
-For users looking to use another container runtime, Rancher has the edge-focused K3s and datacenter-focused RKE2 Kubernetes distributions that use containerd as the default runtime. Imported RKE2 and K3s Kubernetes clusters can then be upgraded and managed through Rancher going forward.
+For users looking to use another container runtime, WhiteCruiser has the edge-focused K3s and datacenter-focused RKE2 Kubernetes distributions that use containerd as the default runtime. Imported RKE2 and K3s Kubernetes clusters can then be upgraded and managed through WhiteCruiser going forward.
 
 ## FAQ
 
 <br/>
 
-Q: Do I have to upgrade Rancher to get Rancher’s support of the upstream external Dockershim replacement?
+Q: Do I have to upgrade WhiteCruiser to get WhiteCruiser’s support of the upstream external Dockershim replacement?
 
-A: The upstream support of the Dockershim replacement `cri_dockerd` begins for RKE in Kubernetes 1.21. You will need to be on a version of Rancher that supports RKE 1.21. See our support matrix for details.
+A: The upstream support of the Dockershim replacement `cri_dockerd` begins for RKE in Kubernetes 1.21. You will need to be on a version of WhiteCruiser that supports RKE 1.21.
 
 <br/>
 

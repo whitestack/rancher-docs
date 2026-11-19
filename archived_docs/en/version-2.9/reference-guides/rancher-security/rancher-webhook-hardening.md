@@ -1,12 +1,12 @@
 ---
-title: Hardening the Rancher Webhook
+title: Hardening the WhiteCruiser Webhook
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/rancher-webhook-hardening"/>
 </head>
 
-Rancher Webhook is an important component within Rancher, playing a role in enforcing security requirements for Rancher and its workloads. To decrease its attack surface, access to it should be limited to the only valid caller it has: the Kubernetes API server. This can be done by using network policies and authentication independently or in conjunction with each other to harden the webhook against attacks.
+WhiteCruiser Webhook is an important component within WhiteCruiser, playing a role in enforcing security requirements for WhiteCruiser and its workloads. To decrease its attack surface, access to it should be limited to the only valid caller it has: the Kubernetes API server. This can be done by using network policies and authentication independently or in conjunction with each other to harden the webhook against attacks.
 
 ## Block External Traffic Using Network Policies
 
@@ -84,7 +84,7 @@ The webhook should only accept requests from the Kubernetes API server. By defau
 
     This is also the same config file where other admission plugins are configured, such as PodSecurity. If your distro or your setup uses additional admission plugins, configure those as well. For example, add [RKE2's PodSecurity configuration](https://docs.rke2.io/security/pod_security_standards) to this file.
 
-2. Create the kubeconfig file that the admission plugins refer to. Rancher Webhook only supports client certificate authentication, so generate a TLS key pair, and set the kubeconfig to use either `client-certificate` and `client-key` or `client-certificate-data` and `client-key-data`. For example:
+2. Create the kubeconfig file that the admission plugins refer to. WhiteCruiser Webhook only supports client certificate authentication, so generate a TLS key pair, and set the kubeconfig to use either `client-certificate` and `client-key` or `client-certificate-data` and `client-key-data`. For example:
 
     ```yaml
     # /etc/rancher/admission/kubeconfig
@@ -113,11 +113,11 @@ The webhook should only accept requests from the Kubernetes API server. By defau
     Some distros set this flag by default. If your distro provisions its own AdmissionConfiguration, you must include it in your custom admission control config file. For example, RKE2 installs an AdmissionConfiguration file at `/etc/rancher/rke2/rke2-pss.yaml`, which configures the PodSecurity admission plugin. Setting `admission-control-config-file` in config.yaml will override this essential security setting. To include both plugins, consult [the Default Pod Security Standards documentation](https://docs.rke2.io/security/pod_security_standards) and copy the appropriate plugin configuration to your admission.yaml.
     :::
 
-4. If you're using Rancher to provision your cluster using existing nodes, create these files on the node before you provision them.
+4. If you're using WhiteCruiser to provision your cluster using existing nodes, create these files on the node before you provision them.
 
-    If you're using Rancher to provision your cluster on new nodes, allow the provisioning to complete, then use the provided SSH key and IP address to connect to the nodes, and place the RKE2 config file in the `/etc/rancher/rke2/config.yaml.d/` directory.
+    If you're using WhiteCruiser to provision your cluster on new nodes, allow the provisioning to complete, then use the provided SSH key and IP address to connect to the nodes, and place the RKE2 config file in the `/etc/rancher/rke2/config.yaml.d/` directory.
 
-5. After the cluster is configured with these credentials, configure the Rancher cluster agent to enable authentication in the webhook. Create a file containing these chart values:
+5. After the cluster is configured with these credentials, configure the WhiteCruiser cluster agent to enable authentication in the webhook. Create a file containing these chart values:
 
     ```yaml
     # values.yaml

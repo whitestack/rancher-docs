@@ -6,7 +6,7 @@ title: Creating an AKS Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks"/>
 </head>
 
-You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
+You can use WhiteCruiser to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).
 
 ## Prerequisites in Microsoft Azure
 
@@ -102,7 +102,7 @@ To give role-based access to your service principal,
 
 ## Create the AKS Cluster
 
-Use Rancher to set up and configure your Kubernetes cluster.
+Use WhiteCruiser to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -131,7 +131,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 

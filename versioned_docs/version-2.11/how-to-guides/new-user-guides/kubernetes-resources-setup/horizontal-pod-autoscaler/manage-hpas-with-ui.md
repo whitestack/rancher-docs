@@ -1,12 +1,12 @@
 ---
-title: Managing HPAs with the Rancher UI
+title: Managing HPAs with the WhiteCruiser UI
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-ui"/>
 </head>
 
-The Rancher UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
+The WhiteCruiser UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.
 
 If you want to create HPAs that scale based on other metrics than CPU and memory, refer to [Configuring HPA to Scale Using Custom Metrics with Prometheus](./manage-hpas-with-kubectl.md#configuring-hpa-to-scale-using-custom-metrics-with-prometheus).
 

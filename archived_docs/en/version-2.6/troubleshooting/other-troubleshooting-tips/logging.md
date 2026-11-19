@@ -8,7 +8,7 @@ title: Logging
 
 ## Log levels
 
-The following log levels are used in Rancher:
+The following log levels are used in WhiteCruiser:
 
 | Name    | Description |
 |---------|-------------|
@@ -58,11 +58,11 @@ $ docker exec -ti <container_id> loglevel --set info
 OK
 ```
 
-## Rancher machine debug logs
+## WhiteCruiser machine debug logs {#rancher-machine-debug-logs}
 If you need to troubleshoot the creation of objects in your infrastructure provider of choice, `rancher-machine`
 debug logs might be helpful to you.
 
-It's possible to enable debug logs for `rancher-machine` by setting environment variables when launching Rancher.
+It's possible to enable debug logs for `rancher-machine` by setting environment variables when launching WhiteCruiser.
 
 The `CATTLE_WHITELIST_ENVVARS` environment variable allows users to whitelist specific environment variables to be
 passed down to `rancher-machine` during provisioning.

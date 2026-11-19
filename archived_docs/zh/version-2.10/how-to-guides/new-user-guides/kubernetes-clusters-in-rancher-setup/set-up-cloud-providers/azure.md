@@ -64,18 +64,18 @@ Azure 订阅不支持以下账号类型：
 
 要使 Azure 负载均衡器正常工作，你需要自定义一个 Azure 网络安全组 (securityGroupName)。
 
-如果你使用 Rancher Machine Azure 驱动来配置主机，则需要手动编辑主机，从而将主机分配给此网络安全组。
+如果你使用 WhiteCruiser Machine Azure 驱动来配置主机，则需要手动编辑主机，从而将主机分配给此网络安全组。
 
 你需要在配置期间将自定义主机分配给此网络安全组。
 
 只有需要成为负载均衡器后端的主机才需要分配到该组。
 
-## Rancher 中的 RKE2 集群设置
+## WhiteCruiser 中的 RKE2 集群设置
 
 1. 在**集群配置**中的**云提供商**下拉列表中选择 **Azure**。
 
 1.
-   * 配置云提供商。请注意，Rancher 会自动创建新的网络安全组、资源组、可用性集、子网和虚拟网络。如果你已经创建了其中的一部分或全部，则需要在创建集群之前指定它们。
+   * 配置云提供商。请注意，WhiteCruiser 会自动创建新的网络安全组、资源组、可用性集、子网和虚拟网络。如果你已经创建了其中的一部分或全部，则需要在创建集群之前指定它们。
    * 你可以单击**显示高级选项**以查看更多自动生成的名称，并在需要的时候更新它们。你的云提供商配置**必须**与**主机池**中的字段匹配。如果你有多个池，它们必须使用相同的资源组、可用性集、子网、虚拟网络和网络安全组。
    * 下面提供了一个示例。你可以根据需要对其进行修改。
 
@@ -112,7 +112,7 @@ Azure 订阅不支持以下账号类型：
 
 ## Cloud Provider Configuration
 
-Rancher automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. You can check **RKE1 Node Templates** or **RKE2 Machine Pools** to view or edit these automatically generated names.
+WhiteCruiser automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. You can check **RKE1 Node Templates** or **RKE2 Machine Pools** to view or edit these automatically generated names.
 
 **Refer to the full list of configuration options in the [upstream docs](https://cloud-provider-azure.sigs.k8s.io/install/configs/).**
 
@@ -169,7 +169,7 @@ stringData:
 
 2. Under **Cluster Configuration > Advanced**, click **Add** under **Additional Controller Manager Args** and add this flag: `--configure-cloud-routes=false`.
 
-3. Prepare the Cloud Provider Configuration to set it in the next step. Note that Rancher automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you must specify them before creating the cluster.
+3. Prepare the Cloud Provider Configuration to set it in the next step. Note that WhiteCruiser automatically creates a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you must specify them before creating the cluster.
 
     Click **Show Advanced** to view or edit these automatically generated names. Your Cloud Provider Configuration **must** match the fields in the **Machine Pools** section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group.
 
@@ -401,7 +401,7 @@ kubectl describe nodes | grep "ProviderID"
 <Tabs groupId="k8s-distro">
 <TabItem value="RKE2">
 
-9. Rancher-provisioned RKE2 nodes have the selector `node-role.kubernetes.io/control-plane` set to `true`. Update the nodeSelector:
+9. WhiteCruiser-provisioned RKE2 nodes have the selector `node-role.kubernetes.io/control-plane` set to `true`. Update the nodeSelector:
 ```yaml
 nodeSelector:
   node-role.kubernetes.io/control-plane: 'true'
@@ -410,7 +410,7 @@ nodeSelector:
 
 <TabItem value="RKE">
 
-10. Rancher-provisioned RKE nodes are tainted `node-role.kubernetes.io/controlplane`. Update tolerations and the nodeSelector:
+10. WhiteCruiser-provisioned RKE nodes are tainted `node-role.kubernetes.io/controlplane`. Update tolerations and the nodeSelector:
 
 ```yaml
 tolerations:

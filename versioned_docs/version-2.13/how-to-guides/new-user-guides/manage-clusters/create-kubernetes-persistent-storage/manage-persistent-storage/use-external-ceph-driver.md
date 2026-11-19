@@ -21,7 +21,7 @@ On RKE clusters, the kubelet component is running in a Docker container and does
 
 To solve this limitation, you can either run `modprobe rbd` on worker nodes, or configure the kubelet containers to automatically mount the `/lib/modules` directory from the host into the container.
 
-For the kubelet configuration, put the following lines into the `cluster.yml` file prior to RKE cluster provisioning. You can also modify the `cluster.yml` later in the Rancher UI by clicking on **Edit Cluster > Edit as YAML** and restarting the worker nodes.
+For the kubelet configuration, put the following lines into the `cluster.yml` file prior to RKE cluster provisioning. You can also modify the `cluster.yml` later in the WhiteCruiser UI by clicking on **Edit Cluster > Edit as YAML** and restarting the worker nodes.
 
 ```yaml
 services:
@@ -371,7 +371,7 @@ curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE="agent" sh -
 systemctl enable --now rke2-agent.service
 ```
 
-To import the cluster into Rancher, click **☰ > Cluster Management**. Then on the **Clusters** page, click **Import Existing**. Then run the provided kubectl command on the server/master node.
+To import the cluster into WhiteCruiser, click **☰ > Cluster Management**. Then on the **Clusters** page, click **Import Existing**. Then run the provided kubectl command on the server/master node.
 
 ## Tested Versions
 
@@ -390,7 +390,7 @@ Kubernetes version on RKE2 cluster: v1.19.7+rke2r1
 
 ## Troubleshooting
 
-In case you are using SUSE's ceph-rook based on SES7, it might be useful to expose the monitors on hostNetwork by editing `rook-1.4.5/ceph/cluster.yaml` and setting `spec.network.hostNetwork=true`.
+In case you are using ceph-rook, it might be useful to expose the monitors on hostNetwork by editing `rook-1.4.5/ceph/cluster.yaml` and setting `spec.network.hostNetwork=true`.
 
 Also for operating the ceph-rook cluster, it is useful to deploy a toolbox on the Kubernetes cluster where ceph-rook is provisioned by `kubectl apply -f rook-1.4.5/ceph/toolbox.yaml` Then all the ceph related commands can be executed in the toolbox pod, for example, by running `kubectl exec -it -n rook-ceph rook-ceph-tools-686d8b8bfb-2nvqp -- bash`
 

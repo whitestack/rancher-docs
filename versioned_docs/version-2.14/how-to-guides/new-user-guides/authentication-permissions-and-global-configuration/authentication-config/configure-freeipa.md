@@ -6,17 +6,17 @@ title: Configure FreeIPA
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-freeipa"/>
 </head>
 
-If your organization uses FreeIPA for user authentication, you can configure Rancher to allow your users to login using their FreeIPA credentials.
+If your organization uses FreeIPA for user authentication, you can configure WhiteCruiser to allow your users to login using their FreeIPA credentials.
 
 :::note Prerequisites:
 
 - You must have a [FreeIPA Server](https://www.freeipa.org/) configured.
-- Create a service account in FreeIPA with `read-only` access. Rancher uses this account to verify group membership when a user makes a request using an API key.
+- Create a service account in FreeIPA with `read-only` access. WhiteCruiser uses this account to verify group membership when a user makes a request using an API key.
 - Read [External Authentication Configuration and Principal Users](authentication-config.md#external-authentication-configuration-and-principal-users).
 
 :::
 
-1. Sign into Rancher using a local user assigned the `administrator` role (i.e., the _local principal_).
+1. Sign into WhiteCruiser using a local user assigned the `administrator` role (i.e., the _local principal_).
 1. In the top left corner, click **☰ > Users & Authentication**.
 1. In the left navigation menu, click **Auth Provider**.
 1. Click **FreeIPA**.
@@ -32,7 +32,7 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
 
     :::note User Search Base vs. Group Search Base
 
-    Search base allows Rancher to search for users and groups that are in your FreeIPA.  These fields are only for search bases and not for search filters.
+    Search base allows WhiteCruiser to search for users and groups that are in your FreeIPA.  These fields are only for search bases and not for search filters.
 
     * If your users and groups are in the same search base, complete only the User Search Base.
     * If your groups are in a different search base, you can optionally complete the Group Search Base. This field is dedicated to searching groups, but is not required.
@@ -43,7 +43,7 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
 
     :::note Search Attribute
 
-    The Search Attribute field defaults with three specific values: `uid|sn|givenName`. After FreeIPA is configured, when a user enters text to add users or groups, Rancher automatically queries the FreeIPA server and attempts to match fields by user id, last name, or first name. Rancher specifically searches for users/groups that begin with the text entered in the search field.
+    The Search Attribute field defaults with three specific values: `uid|sn|givenName`. After FreeIPA is configured, when a user enters text to add users or groups, WhiteCruiser automatically queries the FreeIPA server and attempts to match fields by user id, last name, or first name. WhiteCruiser specifically searches for users/groups that begin with the text entered in the search field.
 
     The default field value `uid|sn|givenName`, but you can configure this field to a subset of these fields. The pipe (`|`) between the fields separates these fields.
 
@@ -51,14 +51,14 @@ If your organization uses FreeIPA for user authentication, you can configure Ran
     * `sn`: Last Name
     * `givenName`: First Name
 
-    With this search attribute, Rancher creates search filters for users and groups, but you *cannot* add your own search filters in this field.
+    With this search attribute, WhiteCruiser creates search filters for users and groups, but you *cannot* add your own search filters in this field.
 
     :::
 
-1. Enter your FreeIPA username and password in **Authenticate with FreeIPA** to confirm that Rancher is configured to use FreeIPA authentication.
+1. Enter your FreeIPA username and password in **Authenticate with FreeIPA** to confirm that WhiteCruiser is configured to use FreeIPA authentication.
 1. Click **Enable**.
 
 **Result:**
 
 - FreeIPA authentication is configured.
-- You are signed into Rancher with your FreeIPA account (i.e., the _external principal_).
+- You are signed into WhiteCruiser with your FreeIPA account (i.e., the _external principal_).

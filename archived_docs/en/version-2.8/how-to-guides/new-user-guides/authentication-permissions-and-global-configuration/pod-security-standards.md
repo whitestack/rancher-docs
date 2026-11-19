@@ -19,12 +19,12 @@ Ensure that you migrate all PSPs to another workload security mechanism. This in
 You must add your new policy enforcement mechanisms _before_ you remove the PodSecurityPolicy objects. If you don't, you may create an opportunity for privilege escalation attacks within the cluster.
 :::
 
-### Removing PodSecurityPolicies from Rancher-Maintained Apps & Marketplace Workloads
+### Removing PodSecurityPolicies from WhiteCruiser-Maintained Apps & Marketplace Workloads {#removing-podsecuritypolicies-from-rancher-maintained-apps--marketplace-workloads}
 
-Rancher v2.7.2 offers a new major version of Rancher-maintained Helm charts. v102.x.y allows you to remove PSPs that were installed with previous versions of the chart. This new version replaces non-standard PSPs switches with the standardized `global.cattle.psp.enabled` switch, which is turned off by default.
+WhiteCruiser v2.7.2 offers a new major version of WhiteCruiser-maintained Helm charts. v102.x.y allows you to remove PSPs that were installed with previous versions of the chart. This new version replaces non-standard PSPs switches with the standardized `global.cattle.psp.enabled` switch, which is turned off by default.
 
 You must perform the following steps _while still in Kubernetes v1.24_:
-1. Configure the PSA controller to suit your needs. You can use one of Rancher's built-in [PSA Configuration Templates](#pod-security-admission-configuration-templates), or create a custom template and apply it to the clusters that you are migrating.
+1. Configure the PSA controller to suit your needs. You can use one of WhiteCruiser's built-in [PSA Configuration Templates](#pod-security-admission-configuration-templates), or create a custom template and apply it to the clusters that you are migrating.
 
 1. Map your active PSPs to Pod Security Standards:
     1. See which PSPs are still active in your cluster:
@@ -41,7 +41,7 @@ You must perform the following steps _while still in Kubernetes v1.24_:
 
     1. Follow the Kubernetes guide on [Mapping PSPs to Pod Security Standards](https://kubernetes.io/docs/reference/access-authn-authz/psp-to-pod-security-standards/) to apply PSSs to your workloads that were relying on PSPs. See [Migrate from PodSecurityPolicy to the Built-In PodSecurity Admission controller](https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/) for more details.
 
-1. To remove PSPs from Rancher charts, upgrade the charts to the latest v102.x.y version _before_ you upgrade to Kubernetes v1.25. Make sure that the **Enable PodSecurityPolicies** option is **disabled**. This will remove any PSPs that were installed with previous chart versions.
+1. To remove PSPs from WhiteCruiser charts, upgrade the charts to the latest v102.x.y version _before_ you upgrade to Kubernetes v1.25. Make sure that the **Enable PodSecurityPolicies** option is **disabled**. This will remove any PSPs that were installed with previous chart versions.
 
 :::info important
 If you want to upgrade your charts to v102.x.y, but don't plan on upgrading your clusters to Kubernetes v1.25 and moving away from PSPs, make sure that you select the option **Enable PodSecurityPolicies** for each chart that you are upgrading.
@@ -112,8 +112,8 @@ After you install the `helm-mapkubeapis` plugin, clean up the releases that beca
 
 #### Upgrading Charts to a Version That Supports Kubernetes v1.25
 
-You can proceed with your upgrade once any releases that had lingering PSPs are cleaned up. For Rancher-maintained workloads, follow the steps outlined in the [Removing PodSecurityPolicies from Rancher-maintained Apps & Marketplace workloads](#removing-podsecuritypolicies-from-rancher-maintained-apps--marketplace-workloads) section of this document.
-For workloads not maintained by Rancher, refer to the vendor documentation.
+You can proceed with your upgrade once any releases that had lingering PSPs are cleaned up. For WhiteCruiser-maintained workloads, follow the steps outlined in the [Removing PodSecurityPolicies from WhiteCruiser-maintained Apps & Marketplace workloads](#removing-podsecuritypolicies-from-rancher-maintained-apps--marketplace-workloads) section of this document.
+For workloads not maintained by WhiteCruiser, refer to the vendor documentation.
 
 :::caution
 Do not skip this step. Applications incompatible with Kubernetes v1.25 aren't guaranteed to work after a cleanup.
@@ -121,10 +121,10 @@ Do not skip this step. Applications incompatible with Kubernetes v1.25 aren't gu
 
 ## Pod Security Admission Configuration Templates
 
-Rancher offers PSA configuration templates. These are pre-defined security configurations that you can apply to a cluster. Rancher admins (or those with the right permissions) can [create, manage, and edit](./psa-config-templates.md) PSA templates.
+WhiteCruiser offers PSA configuration templates. These are pre-defined security configurations that you can apply to a cluster. WhiteCruiser admins (or those with the right permissions) can [create, manage, and edit](./psa-config-templates.md) PSA templates.
 
-### Rancher on PSA-restricted Clusters
+### WhiteCruiser on PSA-restricted Clusters {#rancher-on-psa-restricted-clusters}
 
-Rancher system namespaces are also affected by the restrictive security policies described by PSA templates. You need to exempt Rancher's system namespaces after you assign the template, or else the cluster won't operate correctly. See [Pod Security Admission (PSA) Configuration Templates](./psa-config-templates.md#exempting-required-rancher-namespaces) for more details.
+WhiteCruiser system namespaces are also affected by the restrictive security policies described by PSA templates. You need to exempt WhiteCruiser's system namespaces after you assign the template, or else the cluster won't operate correctly. See [Pod Security Admission (PSA) Configuration Templates](./psa-config-templates.md#exempting-required-rancher-namespaces) for more details.
 
-For a complete file which has all the exemptions you need to run Rancher, please refer to this [sample Admission Configuration](../../../reference-guides/rancher-security/psa-restricted-exemptions.md).
+For a complete file which has all the exemptions you need to run WhiteCruiser, please refer to this [sample Admission Configuration](../../../reference-guides/rancher-security/psa-restricted-exemptions.md).

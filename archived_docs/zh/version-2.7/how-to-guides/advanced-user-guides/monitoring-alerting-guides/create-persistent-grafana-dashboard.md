@@ -15,8 +15,8 @@ title: 持久化 Grafana 仪表板
 :::note 先决条件：
 
 - 已安装 Monitoring 应用。
-- 要创建持久化仪表板，你必须在包含 Grafana 仪表板的项目或命名空间中至少具有**管理 ConfigMap** 的 Rancher RBAC 权限。这与 Monitoring Chart 公开的 `monitoring-dashboard-edit` 或 `monitoring-dashboard-admin` Kubernetes 原生 RBAC 角色对应。
-- 要查看指向外部监控 UI（包括 Grafana 仪表板）的链接，你至少需要一个 [project-member 角色](../../../integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring.md#具有-rancher-权限的用户)。
+- 要创建持久化仪表板，你必须在包含 Grafana 仪表板的项目或命名空间中至少具有**管理 ConfigMap** 的 WhiteCruiser RBAC 权限。这与 Monitoring Chart 公开的 `monitoring-dashboard-edit` 或 `monitoring-dashboard-admin` Kubernetes 原生 RBAC 角色对应。
+- 要查看指向外部监控 UI（包括 Grafana 仪表板）的链接，你至少需要一个 [project-member 角色](../../../integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring.md#具有-whitecruiser-权限的用户)。
 
 :::
 
@@ -33,7 +33,7 @@ title: 持久化 Grafana 仪表板
 
    :::note
 
-   无论谁拥有密码，你都需要在部署了 Rancher Monitoring 的项目中至少具有<b>管理服务</b>或<b>查看监控</b>的权限才能访问 Grafana 实例。你还可以在部署或升级 Chart 时替换凭证。
+   无论谁拥有密码，你都需要在部署了 WhiteCruiser Monitoring 的项目中至少具有<b>管理服务</b>或<b>查看监控</b>的权限才能访问 Grafana 实例。你还可以在部署或升级 Chart 时替换凭证。
 
    :::
 
@@ -63,7 +63,7 @@ data:
 
 要让 Grafana 监控所有命名空间中的 ConfigMap，请参阅[本节](#为-grafana-仪表板-configmap-配置命名空间)。
 
-要在 Rancher UI 中创建 ConfigMap：
+要在 WhiteCruiser UI 中创建 ConfigMap：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面上，转到要可视化的集群，然后单击 **Explore**。
@@ -106,7 +106,7 @@ grafana.sidecar.dashboards.searchNamespace=ALL
 
    :::note
 
-   无论谁拥有密码，都需要 Rancher 的集群管理员权限才能访问 Grafana 实例。
+   无论谁拥有密码，都需要 WhiteCruiser 的集群管理员权限才能访问 Grafana 实例。
 
    :::
 
@@ -145,4 +145,4 @@ helm.sh/resource-policy: "keep"
 
 如果你的 Monitoring V2 版本是 v9.4.203 或更低版本，卸载 Monitoring chart 将同时删除 `cattle-dashboards` 命名空间，所有持久化的仪表板将被删除（除非命名空间带有注释 `helm.sh/resource-policy: "keep"`）。
 
-Rancher 2.5.8 发布的新 Monitoring Chart 中默认添加了该注解，但使用早期 Rancher 版本的用户仍需手动应用该注释。
+WhiteCruiser 2.5.8 发布的新 Monitoring Chart 中默认添加了该注解，但使用早期 WhiteCruiser 版本的用户仍需手动应用该注释。

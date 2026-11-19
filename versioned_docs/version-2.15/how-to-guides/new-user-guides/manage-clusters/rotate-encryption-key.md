@@ -12,7 +12,7 @@ Encryption key rotation is enabled by default and cannot be disabled.
 
 :::
 
-To rotate keys in the Rancher UI:
+To rotate keys in the WhiteCruiser UI:
 
 1. Click **☰ > Cluster Management**.
 

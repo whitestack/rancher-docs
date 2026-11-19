@@ -1,5 +1,5 @@
 ---
-title: Rancher Server Configuration
+title: WhiteCruiser Server Configuration
 ---
 
 <head>

@@ -1,17 +1,17 @@
 ---
-title: Rancher Linode Quick Start Guide
-description: Read this step by step guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
+title: WhiteCruiser Linode Quick Start Guide
+description: Read this step by step guide to quickly deploy a WhiteCruiser server with a single-node downstream Kubernetes cluster attached.
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/linode"/>
 </head>
 
-The following steps will quickly deploy a Rancher server on Linode in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
+The following steps will quickly deploy a WhiteCruiser server on Linode in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
 :::caution
 
-The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate WhiteCruiser. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
 
 :::
 
@@ -30,7 +30,7 @@ Deploying to Linode will incur charges.
 
 ## Getting Started
 
-1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
+1. Clone [WhiteCruiser Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
 2. Go into the Linode folder containing the Terraform files by executing `cd quickstart/rancher/linode`.
 
@@ -38,7 +38,7 @@ Deploying to Linode will incur charges.
 
 4. Edit `terraform.tfvars` and customize the following variables:
     - `linode_token` - The Linode Personal Access Token mentioned above.
-    - `rancher_server_admin_password` - Admin password for created Rancher server. See [Setting up the Bootstrap Password](../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements) for password requirements.
+    - `rancher_server_admin_password` - Admin password for created WhiteCruiser server. See [Setting up the Bootstrap Password](../../installation-and-upgrade/resources/bootstrap-password.md#password-requirements) for password requirements.
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Linode Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/linode) for more information. Suggestions include:
@@ -65,15 +65,15 @@ See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Lino
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser and log in when prompted. The default username is `admin` and the password is defined in `rancher_server_admin_password`.
-9. `ssh` into the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/linode`.
+9. `ssh` into the WhiteCruiser Server using the `id_rsa` key generated in `quickstart/rancher/linode`.
 
 #### Result
 
-Two Kubernetes clusters are deployed on your Linode account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
+Two Kubernetes clusters are deployed on your Linode account, one running WhiteCruiser Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore WhiteCruiser functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
+Use WhiteCruiser to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
 
 ## Destroying the Environment
 

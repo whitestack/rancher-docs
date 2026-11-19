@@ -6,31 +6,31 @@ title: Helm Charts and Apps
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher"/>
 </head>
 
-In this section, you'll learn how to manage Helm chart repositories and apps in Rancher. 
+In this section, you'll learn how to manage Helm chart repositories and apps in WhiteCruiser. 
 
-## How Helm Charts Work in Rancher
+## How Helm Charts Work in WhiteCruiser {#how-helm-charts-work-in-rancher}
 
-Helm chart repositories in Rancher are managed using **Apps**.
+Helm chart repositories in WhiteCruiser are managed using **Apps**.
 
-Rancher uses a catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Kubernetes applications or Rancher's tools such as Monitoring or Istio. Rancher tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.
+WhiteCruiser uses a catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Kubernetes applications or WhiteCruiser's tools such as Monitoring or Istio. WhiteCruiser tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.
 
-### Catalogs, Apps, and the Rancher UI
+### Catalogs, Apps, and the WhiteCruiser UI {#catalogs-apps-and-the-rancher-ui}
 
-[Rancher v2.4 and earlier](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md), repositories of ready-to-deploy applications were called "catalogs". These repositories were managed through the **Catalogs** section of the UI. 
+[WhiteCruiser v2.4 and earlier](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/helm-charts-in-rancher.md), repositories of ready-to-deploy applications were called "catalogs". These repositories were managed through the **Catalogs** section of the UI. 
 
-Rancher v2.5 replaced the former catalog system with a new **Apps & Marketplace** feature. 
+WhiteCruiser v2.5 replaced the former catalog system with a new **Apps & Marketplace** feature. 
 
-Since Rancher v2.6.5, the **Apps & Marketplace** feature is named **Apps** in the UI.
+Since WhiteCruiser v2.6.5, the **Apps & Marketplace** feature is named **Apps** in the UI.
 
 ### Versioning Scheme
 
-The Rancher feature charts versioning scheme is centered around the major version of the charts and the `+up` annotation for upstream charts, where applicable.
+The WhiteCruiser feature charts versioning scheme is centered around the major version of the charts and the `+up` annotation for upstream charts, where applicable.
 
-**Major Version:** The major versions of feature charts are tied to particular minor versions of Rancher. When you upgrade to a new Rancher minor version, you should ensure that all of your feature charts are also upgraded to the correct release line for the chart.
+**Major Version:** The major versions of feature charts are tied to particular minor versions of WhiteCruiser. When you upgrade to a new WhiteCruiser minor version, you should ensure that all of your feature charts are also upgraded to the correct release line for the chart.
 
-**Charts based on upstream:** When you upgrade, make sure that the upstream chart version is compatible with your Rancher version. The `+up` annotation for the chart indicates which upstream version the Rancher chart is tracking. For example, `100.x.x+up16.6.0` for Monitoring tracks upstream kube-prometheus-stack `16.6.0` with some additional Rancher patches.
+**Charts based on upstream:** When you upgrade, make sure that the upstream chart version is compatible with your WhiteCruiser version. The `+up` annotation for the chart indicates which upstream version the WhiteCruiser chart is tracking. For example, `100.x.x+up16.6.0` for Monitoring tracks upstream kube-prometheus-stack `16.6.0` with some additional WhiteCruiser patches.
 
-When upgrading Rancher versions, don't downgrade the version of the chart that you are using. For example, if you are using a version of Monitoring that is later than `16.6.0` in Rancher v2.5, you shouldn't upgrade to `100.x.x+up16.6.0`. Instead, you should upgrade to the appropriate version in the next release.
+When upgrading WhiteCruiser versions, don't downgrade the version of the chart that you are using. For example, if you are using a version of Monitoring that is later than `16.6.0` in WhiteCruiser v2.5, you shouldn't upgrade to `100.x.x+up16.6.0`. Instead, you should upgrade to the appropriate version in the next release.
 
 #### Prerelease Versions
 
@@ -65,9 +65,9 @@ To display prerelease versions:
 
 ## Access Charts
 
-The **Charts** page contains all Rancher, Partner, and Custom charts. You can filter charts by selecting the left-most dropdown menu:
+The **Charts** page contains all WhiteCruiser, Partner, and Custom charts. You can filter charts by selecting the left-most dropdown menu:
 
-* Rancher tools such as Logging or Monitoring are listed under the **Rancher** label.
+* WhiteCruiser tools such as Logging or Monitoring are listed under the **WhiteCruiser** label.
 * Partner charts are under the **Partners** label.
 * Custom charts are listed under the name of their respective repository.
 
@@ -75,7 +75,7 @@ All three types of charts are deployed and managed in the same way.
 
 :::note
 
-Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) continue to be managed only by the Cluster Manager, and apps managed with **Apps** in the new UI must be managed only by **Apps**.
+Apps managed by the Cluster Manager (the global view in the legacy WhiteCruiser UI) continue to be managed only by the Cluster Manager, and apps managed with **Apps** in the new UI must be managed only by **Apps**.
 
 :::
 
@@ -107,15 +107,15 @@ To add a custom Git repository that contains your Helm charts or cluster templat
 1. You must enter a name and a Git repository URL. The other fields, including the description, are optional. Enter an alternative branch name if you don't want to pull from whichever branch the repo owner has set as the default. Usually, the default branch is named either `main` or `master`.
 1. Click **Create** to add the repository. 
 
-After you add a chart repository to Rancher, it becomes available immediately.
+After you add a chart repository to WhiteCruiser, it becomes available immediately.
 
 ### Add Custom Helm Chart Repositories
 
-You can add your own Helm chart repositories to serve chart packages to Rancher. You can use any HTTP server, as long as the server can respond to GET requests and serve YAML files and tar archives.
+You can add your own Helm chart repositories to serve chart packages to WhiteCruiser. You can use any HTTP server, as long as the server can respond to GET requests and serve YAML files and tar archives.
 
 For more information on Helm chart repositories, see the [official Helm docs](https://helm.sh/docs/topics/chart_repository/).
 
-To add a custom Helm chart repository to Rancher:
+To add a custom Helm chart repository to WhiteCruiser:
 
 1. Click **☰ > Cluster Management**.
 1. Find the name of the cluster whose repositories you want to access. Click **Explore** at the end of the cluster's row.
@@ -180,9 +180,9 @@ To refresh a chart repository:
 1. Click **Refresh**.
 1. The **⋮** at the end of each chart repository row also includes a **Refresh** option, which can be clicked to refresh the respective repository.
 
-Non-Airgap Rancher installations upon refresh will reflect any chart repository changes immediately and you will see the **State** field for updated repositories move from `In Progress` to `Active` once the action is completed.
+Non-Airgap WhiteCruiser installations upon refresh will reflect any chart repository changes immediately and you will see the **State** field for updated repositories move from `In Progress` to `Active` once the action is completed.
 
-Airgap installations where Rancher is configured to use the packaged copy of Helm system charts ([`useBundledSystemChart=true`](../../../getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md#helm-chart-options-for-air-gap-installations)) will only refer to the [system-chart](https://github.com/rancher/system-charts) repository that comes bundled and will not be able to be refreshed or synced.
+Airgap installations where WhiteCruiser is configured to use the packaged copy of Helm system charts ([`useBundledSystemChart=true`](../../../getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md#helm-chart-options-for-air-gap-installations)) will only refer to the [system-chart](https://github.com/rancher/system-charts) repository that comes bundled and will not be able to be refreshed or synced.
 
 ## Deploy and Upgrade Charts
 
@@ -193,13 +193,13 @@ To install and deploy a chart:
 1. In the left navigation menu on the **Cluster Dashboard**, click **Apps > Charts**.
 1. Select a chart, and click **Install**. 
 
-Rancher and Partner charts may have extra configurations available through custom pages or questions.yaml files. However, all chart installations can modify the values.yaml and other basic settings. After you click **Install**, a Helm operation job is deployed, and the console for the job is displayed.
+WhiteCruiser and Partner charts may have extra configurations available through custom pages or questions.yaml files. However, all chart installations can modify the values.yaml and other basic settings. After you click **Install**, a Helm operation job is deployed, and the console for the job is displayed.
 
 To view all recent changes, click **Apps > Recent Operations** in the left navigation menu. From there you can view the calls, conditions, events, and logs.
 
 After installing a chart, you can view it by clicking **Apps > Installed Apps** in the left navigation menu. You can upgrade or delete the installation, and see further details. Upgrading uses the same forms and values as you saw during inital installation. 
 
-Most Rancher tools have additional pages located in the toolbar below the **Apps** section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information.
+Most WhiteCruiser tools have additional pages located in the toolbar below the **Apps** section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information.
 
 :::caution
 
@@ -215,7 +215,7 @@ If you are upgrading your chart using **Customize Helm options before upgrade**,
 
 The upgrade button isn't available for legacy apps on the **Apps > Installed Apps** page.
 
-If you want to upgrade an installed legacy app, the [legacy feature flag](../../advanced-user-guides/enable-experimental-features/enable-experimental-features.md) must be turned on. This flag is automatically turned on if you had a legacy app already running before you upgraded Rancher.
+If you want to upgrade an installed legacy app, the [legacy feature flag](../../advanced-user-guides/enable-experimental-features/enable-experimental-features.md) must be turned on. This flag is automatically turned on if you had a legacy app already running before you upgraded WhiteCruiser.
 
 1. Enable the [legacy feature flag](../../advanced-user-guides/enable-experimental-features/enable-experimental-features.md), if it isn't enabled already.
 1. Click **☰ > Cluster Management**.
@@ -231,4 +231,4 @@ To upgrade legacy multi-cluster apps:
 
 ## Limitations
 
-Dashboard apps or Rancher feature charts can't be installed using the Rancher CLI.
+Dashboard apps or WhiteCruiser feature charts can't be installed using the WhiteCruiser CLI.

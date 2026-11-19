@@ -4,17 +4,17 @@ title: RKE 集群配置参考
 
 <EOLRKE1Warning />
 
-Rancher 安装 Kubernetes 时，它使用 [RKE](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md) 或 [RKE2](https://docs.rke2.io/) 作为 Kubernetes 发行版。
+WhiteCruiser 安装 Kubernetes 时，它使用 [RKE](../../../pages-for-subheaders/launch-kubernetes-with-rancher.md) 或 [RKE2](https://docs.rke2.io/) 作为 Kubernetes 发行版。
 
-本文介绍 Rancher 中可用于新的或现有的 RKE Kubernetes 集群的配置选项。
+本文介绍 WhiteCruiser 中可用于新的或现有的 RKE Kubernetes 集群的配置选项。
 
 
 ## 概述
 
 你可以通过以下两种方式之一来配置 Kubernetes 选项：
 
-- [Rancher UI](#rancher-ui-中的配置选项)：使用 Rancher UI 来选择设置 Kubernetes 集群时常用的自定义选项。
-- [集群配置文件](#rke-集群配置文件参考)：高级用户可以创建一个 RKE 配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件可以让你使用 YAML 来指定 RKE 安装中可用的任何选项（除了 system_images 配置）。
+- [WhiteCruiser UI](#whitecruiser-ui-中的配置选项)：使用 WhiteCruiser UI 来选择设置 Kubernetes 集群时常用的自定义选项。
+- [集群配置文件](#rke-集群配置文件参考)：高级用户可以创建一个 RKE 配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件可以让你使用 YAML 来指定 RKE 安装中可用的任何选项（除了 system_images 配置）。
 
 RKE 集群配置选项嵌套在 `rancher_kubernetes_engine_config` 参数下。有关详细信息，请参阅[集群配置文件](#rke-集群配置文件参考)。
 
@@ -22,9 +22,9 @@ RKE 集群配置选项嵌套在 `rancher_kubernetes_engine_config` 参数下。�
 
 有关 RKE 配置文件语法的示例，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/example-yamls/)。
 
-Rancher UI 中的表单不包括配置 RKE 的所有高级选项。有关 YAML 中 RKE Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/)。
+WhiteCruiser UI 中的表单不包括配置 RKE 的所有高级选项。有关 YAML 中 RKE Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/)。
 
-## 在 Rancher UI 中使用表单编辑集群
+## 在 WhiteCruiser UI 中使用表单编辑集群
 
 要编辑你的集群：
 
@@ -34,28 +34,28 @@ Rancher UI 中的表单不包括配置 RKE 的所有高级选项。有关 YAML �
 
 ## 使用 YAML 编辑集群
 
-高级用户可以创建一个 RKE 配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件可以让你使用 YAML 来指定 RKE 安装中可用的任何选项（除了 system_images 配置）。
+高级用户可以创建一个 RKE 配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件可以让你使用 YAML 来指定 RKE 安装中可用的任何选项（除了 system_images 配置）。
 
 RKE 集群（也称为 RKE1 集群）的编辑方式与 RKE2 和 K3s 集群不同。
 
-要直接从 Rancher UI 编辑 RKE 配置文件：
+要直接从 WhiteCruiser UI 编辑 RKE 配置文件：
 
 1. 点击 **☰ > 集群管理**。
-1. 转到要配置的 RKE 集群。单击并单击 **⋮ > 编辑配置**。你将会转到 RKE 配置表单。请注意，由于集群配置在 Rancher 2.6 中发生了变更，**⋮ > 以 YAML 文件编辑**可用于配置 RKE2 集群，但不能用于编辑 RKE1 配置。
+1. 转到要配置的 RKE 集群。单击并单击 **⋮ > 编辑配置**。你将会转到 RKE 配置表单。请注意，由于集群配置在 WhiteCruiser 2.6 中发生了变更，**⋮ > 以 YAML 文件编辑**可用于配置 RKE2 集群，但不能用于编辑 RKE1 配置。
 1. 在配置表单中，向下滚动并单击**以 YAML 文件编辑**。
 1. 编辑 `rancher_kubernetes_engine_config` 参数下的 RKE 选项。
 
-## Rancher UI 中的配置选项
+## WhiteCruiser UI 中的配置选项
 
 :::tip
 
-一些高级配置选项没有在 Rancher UI 表单中开放，但你可以通过在 YAML 中编辑 RKE 集群配置文件来启用这些选项。有关 YAML 中 RKE Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/)。
+一些高级配置选项没有在 WhiteCruiser UI 表单中开放，但你可以通过在 YAML 中编辑 RKE 集群配置文件来启用这些选项。有关 YAML 中 RKE Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/)。
 
 :::
 
 ### Kubernetes 版本
 
-这指的是集群节点上安装的 Kubernetes 版本。Rancher 基于 [hyperkube](https://github.com/rancher/hyperkube) 打包了自己的 Kubernetes 版本。
+这指的是集群节点上安装的 Kubernetes 版本。WhiteCruiser 基于 [hyperkube](https://github.com/rancher/hyperkube) 打包了自己的 Kubernetes 版本。
 
 有关更多详细信息，请参阅[升级 Kubernetes](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md)。
 
@@ -69,7 +69,7 @@ RKE 集群（也称为 RKE1 集群）的编辑方式与 RKE2 和 K3s 集群不�
 
 :::
 
-Rancher 与以下开箱即用的网络提供商兼容：
+WhiteCruiser 与以下开箱即用的网络提供商兼容：
 
 - [Canal](https://github.com/projectcalico/canal)
 - [Flannel](https://github.com/coreos/flannel#flannel)
@@ -78,7 +78,7 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 :::note Weave 注意事项：
 
-选择 Weave 作为网络提供商时，Rancher 将通过生成随机密码来自动启用加密。如果你想手动指定密码，请参阅使用[配置文件](#rke-集群配置文件参考)和 [Weave 网络插件选项](https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options)来配置集群。
+选择 Weave 作为网络提供商时，WhiteCruiser 将通过生成随机密码来自动启用加密。如果你想手动指定密码，请参阅使用[配置文件](#rke-集群配置文件参考)和 [Weave 网络插件选项](https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options)来配置集群。
 
 :::
 
@@ -102,30 +102,30 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 集群级别的私有镜像仓库配置仅能用于配置集群。
 
-在 Rancher 中设置私有镜像仓库的主要方法有两种：通过[全局默认镜像仓库](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry.md)中的**设置**选项卡设置全局默认镜像仓库，以及在集群级别设置的高级选项中设置私有镜像仓库。全局默认镜像仓库可以用于离线设置，不需要凭证的镜像仓库。而集群级私有镜像仓库用于所有需要凭证的私有镜像仓库。
+在 WhiteCruiser 中设置私有镜像仓库的主要方法有两种：通过[全局默认镜像仓库](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry.md)中的**设置**选项卡设置全局默认镜像仓库，以及在集群级别设置的高级选项中设置私有镜像仓库。全局默认镜像仓库可以用于离线设置，不需要凭证的镜像仓库。而集群级私有镜像仓库用于所有需要凭证的私有镜像仓库。
 
-如果你的私有镜像仓库需要凭证，为了将凭证传递给 Rancher，你需要编辑每个需要从仓库中拉取镜像的集群的集群选项。
+如果你的私有镜像仓库需要凭证，为了将凭证传递给 WhiteCruiser，你需要编辑每个需要从仓库中拉取镜像的集群的集群选项。
 
-私有镜像仓库的配置选项能让 Rancher 知道要从哪里拉取用于集群的[系统镜像](https://rancher.com/docs/rke/latest/en/config-options/system-images/)或[附加组件镜像](https://rancher.com/docs/rke/latest/en/config-options/add-ons/)。
+私有镜像仓库的配置选项能让 WhiteCruiser 知道要从哪里拉取用于集群的[系统镜像](https://rancher.com/docs/rke/latest/en/config-options/system-images/)或[附加组件镜像](https://rancher.com/docs/rke/latest/en/config-options/add-ons/)。
 
 - **系统镜像**是维护 Kubernetes 集群所需的组件。
 - **附加组件**用于部署多个集群组件，包括网络插件、ingress controller、DNS 提供商或 metrics server。
 
 有关为集群配置期间应用的组件设置私有镜像仓库的更多信息，请参阅[私有镜像仓库的 RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/private-registries/)。
 
-Rancher v2.6 引入了[为 RKE 集群配置 ECR 镜像仓库](https://rancher.com/docs/rke/latest/en/config-options/private-registries/#amazon-elastic-container-registry-ecr-private-registry-setup)的功能。
+WhiteCruiser v2.6 引入了[为 RKE 集群配置 ECR 镜像仓库](https://rancher.com/docs/rke/latest/en/config-options/private-registries/#amazon-elastic-container-registry-ecr-private-registry-setup)的功能。
 
 ### 授权集群端点
 
-授权集群端点（ACE）可用于直接访问 Kubernetes API server，而无需通过 Rancher 进行通信。
+授权集群端点（ACE）可用于直接访问 Kubernetes API server，而无需通过 WhiteCruiser 进行通信。
 
 :::note
 
-授权集群端点仅适用于 Rancher 启动的 Kubernetes 集群，即只适用于 Rancher [使用 RKE](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#配置-kubernetes-集群的工具) 来配置的集群。它不适用于托管在 Kubernetes 提供商中的集群，例如 Amazon 的 EKS。
+授权集群端点仅适用于 WhiteCruiser 启动的 Kubernetes 集群，即只适用于 WhiteCruiser [使用 RKE](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#配置-kubernetes-集群的工具) 来配置的集群。它不适用于托管在 Kubernetes 提供商中的集群，例如 Amazon 的 EKS。
 
 :::
 
-在 Rancher 启动的 Kubernetes 集群中，它默认启用，使用具有 `controlplane` 角色的节点的 IP 和默认的 Kubernetes 自签名证书。
+在 WhiteCruiser 启动的 Kubernetes 集群中，它默认启用，使用具有 `controlplane` 角色的节点的 IP 和默认的 Kubernetes 自签名证书。
 
 有关授权集群端点的工作原理以及使用的原因，请参阅[架构介绍](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-授权集群端点)。
 
@@ -133,7 +133,7 @@ Rancher v2.6 引入了[为 RKE 集群配置 ECR 镜像仓库](https://rancher.co
 
 ### 节点池
 
-有关使用 Rancher UI 在 RKE 集群中设置节点池的信息，请参阅[此页面](../../../pages-for-subheaders/use-new-nodes-in-an-infra-provider.md)。
+有关使用 WhiteCruiser UI 在 RKE 集群中设置节点池的信息，请参阅[此页面](../../../pages-for-subheaders/use-new-nodes-in-an-infra-provider.md)。
 
 ### NGINX Ingress
 
@@ -153,11 +153,9 @@ Rancher v2.6 引入了[为 RKE 集群配置 ECR 镜像仓库](https://rancher.co
 
 ### 节点上的 Docker 版本
 
-表示是否允许节点运行 Rancher 不正式支持的 Docker 版本。
+表示是否允许节点运行 WhiteCruiser 不正式支持的 Docker 版本。
 
-如果你选择使用支持的 Docker 版本，Rancher 会禁止 pod 运行在安装了不支持的 Docker 版本的节点上。
-
-如需了解各个 Rancher 版本通过了哪些 Docker 版本测试，请参见[支持和维护条款](https://rancher.com/support-maintenance-terms/)。
+如果你选择使用支持的 Docker 版本，WhiteCruiser 会禁止 pod 运行在安装了不支持的 Docker 版本的节点上。
 
 ### Docker 根目录
 
@@ -177,7 +175,7 @@ Rancher v2.6 引入了[为 RKE 集群配置 ECR 镜像仓库](https://rancher.co
 
 ### Agent 环境变量
 
-为 [rancher agent](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents.md) 设置环境变量的选项。你可以使用键值对设置环境变量。如果 Rancher Agent 需要使用代理与 Rancher Server 通信，则可以使用 Agent 环境变量设置 `HTTP_PROXY`，`HTTPS_PROXY` 和 `NO_PROXY` 环境变量。
+为 [rancher agent](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents.md) 设置环境变量的选项。你可以使用键值对设置环境变量。如果 WhiteCruiser Agent 需要使用代理与 WhiteCruiser Server 通信，则可以使用 Agent 环境变量设置 `HTTP_PROXY`，`HTTPS_PROXY` 和 `NO_PROXY` 环境变量。
 
 ### 更新 ingress-nginx
 
@@ -187,13 +185,13 @@ Rancher v2.6 引入了[为 RKE 集群配置 ECR 镜像仓库](https://rancher.co
 
 ## RKE 集群配置文件参考
 
-高级用户可以创建一个 RKE 配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件可以让你在 RKE 安装中设置任何[可用选项](https://rancher.com/docs/rke/latest/en/config-options/)（`system_images` 配置除外）。使用 Rancher UI 或 API 创建集群时，不支持 `system_images` 选项。
+高级用户可以创建一个 RKE 配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件可以让你在 RKE 安装中设置任何[可用选项](https://rancher.com/docs/rke/latest/en/config-options/)（`system_images` 配置除外）。使用 WhiteCruiser UI 或 API 创建集群时，不支持 `system_images` 选项。
 
 有关 YAML 中 RKE Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/)。
 
-### Rancher 中的配置文件结构
+### WhiteCruiser 中的配置文件结构
 
-RKE（Rancher Kubernetes Engine）是 Rancher 用来配置 Kubernetes 集群的工具。过去，Rancher 的集群配置文件与 [RKE 配置文件](https://rancher.com/docs/rke/latest/en/example-yamls/)的结构是一致的。但由于 Rancher 文件结构发生了变化，因此在 Rancher 中，RKE 集群配置项与非 RKE 配置项是分开的。所以，你的集群配置需要嵌套在集群配置文件中的 `rancher_kubernetes_engine_config` 参数下。使用早期版本的 Rancher 创建的集群配置文件需要针对这种格式进行更新。以下是一个集群配置文件示例：
+RKE（Rancher Kubernetes Engine）是 WhiteCruiser 用来配置 Kubernetes 集群的工具。过去，WhiteCruiser 的集群配置文件与 [RKE 配置文件](https://rancher.com/docs/rke/latest/en/example-yamls/)的结构是一致的。但由于 WhiteCruiser 文件结构发生了变化，因此在 WhiteCruiser 中，RKE 集群配置项与非 RKE 配置项是分开的。所以，你的集群配置需要嵌套在集群配置文件中的 `rancher_kubernetes_engine_config` 参数下。使用早期版本的 WhiteCruiser 创建的集群配置文件需要针对这种格式进行更新。以下是一个集群配置文件示例：
 
 <details id="v2.3.0-cluster-config-file">
   <summary>集群配置文件示例</summary>
@@ -294,15 +292,15 @@ windows_prefered_cluster: false
 
 下表显示了默认部署的 DNS 提供商。有关如何配置不同 DNS 提供商的更多信息，请参阅 [DNS 提供商相关的 RKE 文档](https://rancher.com/docs/rke/latest/en/config-options/add-ons/dns/)。CoreDNS 只能在 Kubernetes v1.12.0 及更高版本上使用。
 
-| Rancher 版本 | Kubernetes 版本 | 默认 DNS 提供商 |
+| WhiteCruiser 版本 | Kubernetes 版本 | 默认 DNS 提供商 |
 |-------------|--------------------|----------------------|
 | v2.2.5 及更高版本 | v1.14.0 及更高版本 | CoreDNS |
 | v2.2.5 及更高版本 | v1.13.x 及更低版本 | kube-dns |
 | v2.2.4 及更低版本 | 任意 | kube-dns |
 
-## YAML 中的 Rancher 特定参数
+## YAML 中的 WhiteCruiser 特定参数
 
-除了 RKE 配置文件选项外，还有可以在配置文件 (YAML) 中配置的 Rancher 特定设置如下。
+除了 RKE 配置文件选项外，还有可以在配置文件 (YAML) 中配置的 WhiteCruiser 特定设置如下。
 
 ### docker_root_dir
 

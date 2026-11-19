@@ -6,7 +6,7 @@ title: Creating an EKS Cluster
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/eks"/>
 </head>
 
-Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
+Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. WhiteCruiser provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use WhiteCruiser to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html).
 
 
 ## Prerequisites in Amazon Web Services
@@ -22,7 +22,7 @@ You need to set up an Amazon VPC to launch the EKS cluster. The VPC enables you 
 
 ### IAM Policies
 
-Rancher needs access to your AWS account in order to provision and administer your Kubernetes clusters in Amazon EKS. You'll need to create a user for Rancher in your AWS account and define what that user can access.
+WhiteCruiser needs access to your AWS account in order to provision and administer your Kubernetes clusters in Amazon EKS. You'll need to create a user for WhiteCruiser in your AWS account and define what that user can access.
 
 1. Create a user with programmatic access by following the steps [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
 
@@ -36,15 +36,15 @@ For more detailed information on IAM policies for EKS, refer to the official [do
 
 ## Architecture
 
-The figure below illustrates the high-level architecture of Rancher 2.x. The figure depicts a Rancher Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
+The figure below illustrates the high-level architecture of WhiteCruiser 2.x. The figure depicts a WhiteCruiser Server installation that manages two Kubernetes clusters: one created by RKE and another created by EKS.
 
-<figcaption>Managing Kubernetes Clusters through Rancher's Authentication Proxy</figcaption>
+<figcaption>Managing Kubernetes Clusters through WhiteCruiser's Authentication Proxy</figcaption>
 
 ![Architecture](/img/rancher-architecture-rancher-api-server.svg)
 
 ## Create the EKS Cluster
 
-Use Rancher to set up and configure your Kubernetes cluster.
+Use WhiteCruiser to set up and configure your Kubernetes cluster.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
@@ -60,7 +60,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
@@ -92,8 +92,8 @@ Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-s
 
 Service Role | Description
 -------------|---------------------------
-Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
-Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
+Standard: WhiteCruiser generated service role | If you choose this role, WhiteCruiser automatically adds a service role for use with the cluster.
+Custom: Choose from your existing service roles | If you choose this role, WhiteCruiser lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
 
 ### Public IP for Worker Nodes
 
@@ -114,8 +114,8 @@ The available options depend on the [public IP for worker nodes.](#public-ip-for
 
 Option | Description
     -------|------------
-    Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC and Subnet.
-    Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, Rancher configures your nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html). If you choose this option, complete the remaining steps below.
+    Standard: WhiteCruiser generated VPC and Subnet | While provisioning your cluster, WhiteCruiser generates a new VPC and Subnet.
+    Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, WhiteCruiser configures your nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html). If you choose this option, complete the remaining steps below.
 
  For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
 
@@ -123,7 +123,7 @@ Option | Description
 - [VPCs and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
 
 
-If you choose to assign a public IP address to your cluster's worker nodes, you have the option of choosing between a VPC that's automatically generated by Rancher (i.e., **Standard: Rancher generated VPC and Subnet**), or a VPC that you've already created with AWS (i.e., **Custom: Choose from your existing VPC and Subnets**). Choose the option that best fits your use case.
+If you choose to assign a public IP address to your cluster's worker nodes, you have the option of choosing between a VPC that's automatically generated by WhiteCruiser (i.e., **Standard: WhiteCruiser generated VPC and Subnet**), or a VPC that you've already created with AWS (i.e., **Custom: Choose from your existing VPC and Subnets**). Choose the option that best fits your use case.
 
 <details id="yes">
   <summary>Click to expand</summary>
@@ -174,7 +174,7 @@ Instance type and size of your worker nodes affects how many IP addresses each w
 Option | Description
 -------|------------
 Instance Type | Choose the [hardware specs](https://aws.amazon.com/ec2/instance-types/) for the instance you're provisioning.
-Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here. By default, Rancher will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the EKS version that you chose.
+Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here. By default, WhiteCruiser will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the EKS version that you chose.
 Desired ASG Size | The number of instances that your cluster will provision.
 User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.** _Note: Available as of v2.2.0_
 
@@ -190,25 +190,25 @@ To find information on any AWS Service events, please see [this page](https://st
 
 ## Security and Compliance
 
-By default only the IAM user or role that created a cluster has access to it. Attempting to access the cluster with any other user or role without additional configuration will lead to an error. In Rancher, this means using a credential that maps to a user or role that was not used to create the cluster will cause an unauthorized error. For example, an EKSCtl cluster will not be imported in Rancher unless the credentials used to import the cluster match the role or user used by EKSCtl. Additional users and roles can be authorized to access a cluster by being added to the aws-auth configmap in the kube-system namespace. For a more in-depth explanation and detailed instructions, please see this [documentation](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/).
+By default only the IAM user or role that created a cluster has access to it. Attempting to access the cluster with any other user or role without additional configuration will lead to an error. In WhiteCruiser, this means using a credential that maps to a user or role that was not used to create the cluster will cause an unauthorized error. For example, an EKSCtl cluster will not be imported in WhiteCruiser unless the credentials used to import the cluster match the role or user used by EKSCtl. Additional users and roles can be authorized to access a cluster by being added to the aws-auth configmap in the kube-system namespace. For a more in-depth explanation and detailed instructions, please see this [documentation](https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/).
 
 For more information on security and compliance with your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/shared-responsibilty.html).
 
 ## Tutorial
 
-This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/) on the AWS Open Source Blog will walk you through how to set up an EKS cluster with Rancher, deploy a publicly accessible app to test the cluster, and deploy a sample project to track real-time geospatial data using a combination of other open-source software such as Grafana and InfluxDB.
+This [tutorial](https://aws.amazon.com/blogs/opensource/managing-eks-clusters-rancher/) on the AWS Open Source Blog will walk you through how to set up an EKS cluster with WhiteCruiser, deploy a publicly accessible app to test the cluster, and deploy a sample project to track real-time geospatial data using a combination of other open-source software such as Grafana and InfluxDB.
 
 ## Minimum EKS Permissions
 
-Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher. Additional permissions are required for Rancher to provision the `Service Role` and `VPC` resources. Optionally these resources can be created **before** the cluster creation and will be selectable when defining the cluster configuration.
+Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in WhiteCruiser. Additional permissions are required for WhiteCruiser to provision the `Service Role` and `VPC` resources. Optionally these resources can be created **before** the cluster creation and will be selectable when defining the cluster configuration.
 
 Resource | Description
 ---------|------------
-Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. Rancher can create the service role with the following [Service Role Permissions](amazon-eks-permissions.md#service-role-permissions).
-VPC | Provides isolated network resources utilised by EKS and worker nodes. Rancher can create the VPC resources with the following [VPC Permissions](amazon-eks-permissions.md#vpc-permissions).
+Service Role | The service role provides Kubernetes the permissions it requires to manage resources on your behalf. WhiteCruiser can create the service role with the following [Service Role Permissions](amazon-eks-permissions.md#service-role-permissions).
+VPC | Provides isolated network resources utilised by EKS and worker nodes. WhiteCruiser can create the VPC resources with the following [VPC Permissions](amazon-eks-permissions.md#vpc-permissions).
 
 
-Resource targeting uses `*` as the ARN of many of the resources created cannot be known before creating the EKS cluster in Rancher.
+Resource targeting uses `*` as the ARN of many of the resources created cannot be known before creating the EKS cluster in WhiteCruiser.
 
 ```json
 {
@@ -321,7 +321,7 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
 
 ### Service Role Permissions
 
-Rancher will create a service role with the following trust policy:
+WhiteCruiser will create a service role with the following trust policy:
 
 ```json
 {
@@ -346,7 +346,7 @@ arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
 arn:aws:iam::aws:policy/AmazonEKSServicePolicy
 ```
 
-Permissions required for Rancher to create service role on users behalf during the EKS cluster creation process.
+Permissions required for WhiteCruiser to create service role on users behalf during the EKS cluster creation process.
 
 ```json
 {
@@ -382,7 +382,7 @@ Permissions required for Rancher to create service role on users behalf during t
 
 ### VPC Permissions
 
-Permissions required for Rancher to create VPC and associated resources.
+Permissions required for WhiteCruiser to create VPC and associated resources.
 
 ```json
 {

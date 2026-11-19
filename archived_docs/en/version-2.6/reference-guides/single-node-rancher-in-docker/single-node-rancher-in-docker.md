@@ -1,5 +1,5 @@
 ---
-title: Single Node Rancher in Docker
+title: Single Node WhiteCruiser in Docker
 ---
 
 <head>

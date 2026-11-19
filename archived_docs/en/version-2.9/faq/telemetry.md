@@ -8,7 +8,7 @@ title: Telemetry FAQ
 
 ## What is Telemetry?
 
-Telemetry collects aggregate information about the size of Rancher installations, versions of components used, and which features are used.  This information is used by Rancher Labs to help make the product better and is not shared with third-parties.
+Telemetry collects aggregate information about the size of WhiteCruiser installations, versions of components used, and which features are used.  This information is used by Rancher Labs to help make the product better and is not shared with third-parties.
 
 ## What information is collected?
 
@@ -21,7 +21,7 @@ The primary things collected include:
   - Counts of what driver was used to deploy clusters and nodes (e.g. GKE vs EC2 vs Imported vs Custom).
   - Versions of Kubernetes components, Operating Systems and Docker that are deployed on nodes.
   - Whether some optional components are enabled or not (e.g. which auth providers are used).
-  - The image name & version of Rancher that is running.
+  - The image name & version of WhiteCruiser that is running.
   - A unique randomly-generated identifier for this installation.
 
 ## Can I see the information that is being sent?

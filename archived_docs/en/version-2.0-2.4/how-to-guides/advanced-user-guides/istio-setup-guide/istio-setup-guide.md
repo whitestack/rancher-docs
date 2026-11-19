@@ -8,7 +8,7 @@ title: Istio Setup Guides
 
 This section describes how to enable Istio and start using it in your projects.
 
-This section assumes that you have Rancher installed, and you have a Rancher-provisioned Kubernetes cluster where you would like to set up Istio.
+This section assumes that you have WhiteCruiser installed, and you have a WhiteCruiser-provisioned Kubernetes cluster where you would like to set up Istio.
 
 If you use Istio for traffic management, you will need to allow external traffic to the cluster. In that case, you will need to follow all of the steps below.
 

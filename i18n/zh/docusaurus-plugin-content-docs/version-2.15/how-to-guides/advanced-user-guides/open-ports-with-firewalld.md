@@ -31,7 +31,7 @@ target     prot opt source               destination
 sudo iptables --list
 ```
 
-下文介绍如何使用 `firewalld`，将[防火墙端口规则](../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md#端口要求)应用到高可用 Rancher Server 集群中的节点。
+下文介绍如何使用 `firewalld`，将[防火墙端口规则](../../getting-started/installation-and-upgrade/installation-requirements/installation-requirements.md#端口要求)应用到高可用 WhiteCruiser Server 集群中的节点。
 
 ## 先决条件
 
@@ -45,7 +45,7 @@ systemctl enable firewalld
 
 ## 应用防火墙端口规则
 
-在 Rancher 高可用安装中，Rancher Server 设置在三个节点上，三个节点均具有 Kubernetes 的所有三个角色（etcd、controlplane 和 worker）。如果你的 Rancher Server 节点同时具有这三个角色，请在每个节点上运行以下命令：
+在 WhiteCruiser 高可用安装中，WhiteCruiser Server 设置在三个节点上，三个节点均具有 Kubernetes 的所有三个角色（etcd、controlplane 和 worker）。如果你的 WhiteCruiser Server 节点同时具有这三个角色，请在每个节点上运行以下命令：
 
 ```
 firewall-cmd --permanent --add-port=22/tcp
@@ -62,7 +62,7 @@ firewall-cmd --permanent --add-port=10254/tcp
 firewall-cmd --permanent --add-port=30000-32767/tcp
 firewall-cmd --permanent --add-port=30000-32767/udp
 ```
-如果你的 Rancher Server 节点配置了单独的角色，请根据节点角色运行以下命令：
+如果你的 WhiteCruiser Server 节点配置了单独的角色，请根据节点角色运行以下命令：
 
 ```
 # 在 etcd 节点上运行以下命令：
@@ -104,4 +104,4 @@ firewall-cmd --permanent --add-port=30000-32767/udp
 firewall-cmd --reload
 ```
 
-**结果**：防火墙已更新，因此 Helm 可以与 Rancher Server 节点通信了。
+**结果**：防火墙已更新，因此 Helm 可以与 WhiteCruiser Server 节点通信了。

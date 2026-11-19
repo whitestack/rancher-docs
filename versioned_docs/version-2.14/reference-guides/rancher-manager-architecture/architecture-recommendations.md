@@ -6,60 +6,60 @@ title: Architecture Recommendations
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-manager-architecture/architecture-recommendations"/>
 </head>
 
-If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
+If you are installing WhiteCruiser on a single node, the main architecture recommendation that applies to your installation is that the node running WhiteCruiser should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
 
-## Separation of Rancher and User Clusters
+## Separation of WhiteCruiser and User Clusters {#separation-of-rancher-and-user-clusters}
 
 A user cluster is a downstream Kubernetes cluster that runs your apps and services.
 
-If you have a Docker installation of Rancher, the node running the Rancher server should be separate from your downstream clusters.
+If you have a Docker installation of WhiteCruiser, the node running the WhiteCruiser server should be separate from your downstream clusters.
 
-If Rancher is intended to manage downstream Kubernetes clusters, the Kubernetes cluster that the Rancher server runs on should also be separate from the downstream user clusters.
+If WhiteCruiser is intended to manage downstream Kubernetes clusters, the Kubernetes cluster that the WhiteCruiser server runs on should also be separate from the downstream user clusters.
 
-![Separation of Rancher Server from User Clusters](/img/rancher-architecture-separation-of-rancher-server.svg)
+![Separation of WhiteCruiser Server from User Clusters](/img/rancher-architecture-separation-of-rancher-server.svg)
 
-## Why HA is Better for Rancher in Production
+## Why HA is Better for WhiteCruiser in Production {#why-ha-is-better-for-rancher-in-production}
 
-We recommend installing the Rancher server on a high-availability Kubernetes cluster, primarily because it protects the Rancher server data. In a high-availability installation, a load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure.
+We recommend installing the WhiteCruiser server on a high-availability Kubernetes cluster, primarily because it protects the WhiteCruiser server data. In a high-availability installation, a load balancer serves as the single point of contact for clients, distributing network traffic across multiple servers in the cluster and helping to prevent any one server from becoming a point of failure.
 
-We don't recommend installing Rancher in a single Docker container, because if the node goes down, there is no copy of the cluster data available on other nodes and you could lose the data on your Rancher server.
+We don't recommend installing WhiteCruiser in a single Docker container, because if the node goes down, there is no copy of the cluster data available on other nodes and you could lose the data on your WhiteCruiser server.
 
 ### K3s Kubernetes Cluster Installations
 
-One option for the underlying Kubernetes cluster is to use K3s Kubernetes. K3s is Rancher's CNCF certified Kubernetes distribution. It is easy to install and uses half the memory of Kubernetes, all in a binary of less than 100 MB. Another advantage of K3s is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
+One option for the underlying Kubernetes cluster is to use K3s Kubernetes. K3s is WhiteCruiser's CNCF certified Kubernetes distribution. It is easy to install and uses half the memory of Kubernetes, all in a binary of less than 100 MB. Another advantage of K3s is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
 
-<figcaption>Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server</figcaption>
+<figcaption>Architecture of a K3s Kubernetes Cluster Running the WhiteCruiser Management Server</figcaption>
 
-![Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server](/img/k3s-server-storage.svg)
+![Architecture of a K3s Kubernetes Cluster Running the WhiteCruiser Management Server](/img/k3s-server-storage.svg)
 
 ## Recommended Load Balancer Configuration for Kubernetes Installations
 
 We recommend the following configurations for the load balancer and Ingress controllers:
 
-* The DNS for Rancher should resolve to a Layer 4 load balancer (TCP).
+* The DNS for WhiteCruiser should resolve to a Layer 4 load balancer (TCP).
 * The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
 * The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
-* The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
+* The Ingress controller will forward traffic to port TCP/80 on the pod in the WhiteCruiser deployment.
 
-<figcaption>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at Ingress controllers</figcaption>
+<figcaption>WhiteCruiser installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at Ingress controllers</figcaption>
 
-![Rancher HA](/img/ha/rancher2ha.svg)
+![WhiteCruiser HA](/img/ha/rancher2ha.svg)
 
 ## Environment for Kubernetes Installations
 
-It is strongly recommended to install Rancher on a Kubernetes cluster on hosted infrastructure such as Amazon's EC2 or Google Compute Engine.
+It is strongly recommended to install WhiteCruiser on a Kubernetes cluster on hosted infrastructure such as Amazon's EC2 or Google Compute Engine.
 
-For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the Rancher management server. Running user workloads on this cluster is not advised. After deploying Rancher, you can [create or import clusters](../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) for running your workloads.
+For the best performance and greater security, we recommend a dedicated Kubernetes cluster for the WhiteCruiser management server. Running user workloads on this cluster is not advised. After deploying WhiteCruiser, you can [create or import clusters](../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md) for running your workloads.
 
 ## Recommended Node Roles for Kubernetes Installations
 
-The below recommendations apply when Rancher is installed on a K3s Kubernetes cluster.
+The below recommendations apply when WhiteCruiser is installed on a K3s Kubernetes cluster.
 
 ### K3s Cluster Roles
 
 In K3s clusters, there are two types of nodes: server nodes and agent nodes. Both servers and agents can have workloads scheduled on them. Server nodes run the Kubernetes master.
 
-For the cluster running the Rancher management server, we recommend using two server nodes. Agent nodes are not required.
+For the cluster running the WhiteCruiser management server, we recommend using two server nodes. Agent nodes are not required.
 
 ## Architecture for an Authorized Cluster Endpoint (ACE)
 

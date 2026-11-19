@@ -1,29 +1,29 @@
 ---
-title: Rancher AWS Quick Start Guide
-description: Read this step by step Rancher AWS guide to quickly deploy a Rancher Server with a single node cluster attached.
+title: WhiteCruiser AWS Quick Start Guide
+description: Read this step by step WhiteCruiser AWS guide to quickly deploy a WhiteCruiser Server with a single node cluster attached.
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/quick-start-guides/deploy-rancher-manager/aws"/>
 </head>
 
-The following steps will quickly deploy a Rancher Server on AWS with a single node cluster attached.
+The following steps will quickly deploy a WhiteCruiser Server on AWS with a single node cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate WhiteCruiser. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
 
 ## Prerequisites
 
 >**Note**
 >Deploying to Amazon AWS will incur charges.
 
-- [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
+- [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying WhiteCruiser and Kubernetes.
 - [Amazon AWS Access Key](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html): Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
 - Install [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster in Amazon AWS.
 
 
 ## Getting Started
 
-1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
+1. Clone [WhiteCruiser Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
 1. Go into the AWS folder containing the Terraform files by executing `cd quickstart/aws`.
 
@@ -32,7 +32,7 @@ The following steps will quickly deploy a Rancher Server on AWS with a single no
 1. Edit `terraform.tfvars` and customize the following variables:
     - `aws_access_key` - Amazon AWS Access Key
     - `aws_secret_key` - Amazon AWS Secret Key
-    - `rancher_server_admin_password` - Admin password for created Rancher server
+    - `rancher_server_admin_password` - Admin password for created WhiteCruiser server
 
 1. **Optional:** Modify optional variables within `terraform.tfvars`.
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [AWS Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/aws#readme) for more information.
@@ -59,11 +59,11 @@ Suggestions include:
 
 #### Result
 
-Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines.
+Two Kubernetes clusters are deployed into your AWS account, one running WhiteCruiser Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore WhiteCruiser functionality, a production setup should follow our high availability setup guidelines.
 
 ### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
+Use WhiteCruiser to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
 
 ## Destroying the Environment
 

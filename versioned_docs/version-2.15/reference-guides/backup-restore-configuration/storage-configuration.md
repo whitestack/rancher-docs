@@ -21,7 +21,7 @@ You can choose to not have any operator-level storage location configured. If yo
 
 | Parameter | Description |
 | -------------- | -------------- |
-| Credential Secret | Choose the credentials for S3 from your secrets in Rancher. [Example](backup-configuration.md#example-credentialsecret). |
+| Credential Secret | Choose the credentials for S3 from your secrets in WhiteCruiser. [Example](backup-configuration.md#example-credentialsecret). |
 | Bucket Name | Enter the name of the [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html) where the backups will be stored. Default: `rancherbackups`. |
 | Region | The [AWS region](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) where the S3 bucket is located. |
 | Folder | The [folder in the S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html) where the backups will be stored. If this field is left empty, the default behavior is to store the backup files in the root folder of the S3 bucket. |
@@ -44,7 +44,7 @@ If no such StorageClass is available, after the PV is provisioned, make sure to 
 
 ### Existing Persistent Volume
 
-Select an existing Persistent Volume (PV) that will be used to store your backups. For information about creating PersistentVolumes in Rancher, refer to [this section.](../../how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md#2-add-a-persistentvolume-that-refers-to-the-persistent-storage)
+Select an existing Persistent Volume (PV) that will be used to store your backups. For information about creating PersistentVolumes in WhiteCruiser, refer to [this section.](../../how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md#2-add-a-persistentvolume-that-refers-to-the-persistent-storage)
 
 :::note Important:
 
@@ -52,7 +52,7 @@ It is highly recommended to use a Persistent Volume with a reclaim policy of "Re
 
 :::
 
-## Example YAML File: Rancher Backup Helm Chart
+## Example YAML File: WhiteCruiser Backup Helm Chart {#example-yaml-file-rancher-backup-helm-chart}
 
 The documented `values.yaml` file that can be used to configure the `backup-restore-operator` when the Helm CLI is used can be found in the [backup-restore-operator repository.](https://github.com/rancher/backup-restore-operator/blob/master/charts/rancher-backup/values.yaml)
 

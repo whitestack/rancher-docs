@@ -1,6 +1,6 @@
 ---
 title: Kubernetes 镜像仓库和 Docker 镜像仓库
-description: 了解 Docker 镜像仓库和 Kubernetes 镜像仓库、它们的用例以及如何在 Rancher UI 中使用私有镜像仓库
+description: 了解 Docker 镜像仓库和 Kubernetes 镜像仓库、它们的用例以及如何在 WhiteCruiser UI 中使用私有镜像仓库
 ---
 
 镜像仓库是 Kubernetes 密文（Secret），包含用于向[私有 Docker 镜像仓库](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)进行身份验证的凭证。
@@ -12,7 +12,7 @@ description: 了解 Docker 镜像仓库和 Kubernetes 镜像仓库、它们的�
 
 Deployment 使用 Kubernetes 镜像仓库密文向私有 Docker 镜像仓库进行身份验证，然后拉取托管在仓库上的 Docker 镜像。
 
-目前，只有在 Rancher UI 中创建工作负载时（通过 kubectl 创建的工作负载不可以），Deployment 才会自动拉取私有镜像仓库凭证。
+目前，只有在 WhiteCruiser UI 中创建工作负载时（通过 kubectl 创建的工作负载不可以），Deployment 才会自动拉取私有镜像仓库凭证。
 
 ## 在命名空间中创建镜像仓库
 
@@ -42,8 +42,8 @@ Deployment 使用 Kubernetes 镜像仓库密文向私有 Docker 镜像仓库进�
 **结果**：
 
 - 已将你的密文添加到命名空间中。
-- 你可以通过单击**存储 > 密文**或**更多资源 > 核心 > 密文**在 Rancher UI 中查看密文。
-- 如果工作负载在镜像仓库的范围内，你在 Rancher UI 中创建的任何工作负载都将具有访问镜像仓库的凭证。
+- 你可以通过单击**存储 > 密文**或**更多资源 > 核心 > 密文**在 WhiteCruiser UI 中查看密文。
+- 如果工作负载在镜像仓库的范围内，你在 WhiteCruiser UI 中创建的任何工作负载都将具有访问镜像仓库的凭证。
 
 ## 在项目中创建镜像仓库
 
@@ -53,7 +53,7 @@ Deployment 使用 Kubernetes 镜像仓库密文向私有 Docker 镜像仓库进�
 
 :::
 
-在 Rancher 2.6 之前，密文必须创建在项目级别。现在不再需要项目级别，你可以采用命名空间级别。因此，Rancher UI 进行了更新以反映这一新功能。但是，你仍然可以按照需要创建项目级别的镜像仓库。执行以下步骤进行操作：
+在 WhiteCruiser 2.6 之前，密文必须创建在项目级别。现在不再需要项目级别，你可以采用命名空间级别。因此，WhiteCruiser UI 进行了更新以反映这一新功能。但是，你仍然可以按照需要创建项目级别的镜像仓库。执行以下步骤进行操作：
 
 1. 在左上角，单击下拉菜单中的 **☰ > 全局设置**。
 1. 单击**功能开关**。
@@ -79,8 +79,8 @@ Deployment 使用 Kubernetes 镜像仓库密文向私有 Docker 镜像仓库进�
 **结果**：
 
 - 密文已添加到你选择的项目中。
-- 你可以通过单击**存储 > 密文**或**更多资源 > 核心 > 密文**在 Rancher UI 中查看密文。
-- 如果工作负载在镜像仓库的范围内，你在 Rancher UI 中创建的任何工作负载都将具有访问镜像仓库的凭证。
+- 你可以通过单击**存储 > 密文**或**更多资源 > 核心 > 密文**在 WhiteCruiser UI 中查看密文。
+- 如果工作负载在镜像仓库的范围内，你在 WhiteCruiser UI 中创建的任何工作负载都将具有访问镜像仓库的凭证。
 
 :::note
 
@@ -90,9 +90,9 @@ local 集群上的项目级别镜像仓库仅在选择单个项目时可见。
 
 ## 使用私有镜像仓库
 
-你可以通过 Rancher UI 或 `kubectl` 使用私有镜像仓库的镜像来部署工作负载。
+你可以通过 WhiteCruiser UI 或 `kubectl` 使用私有镜像仓库的镜像来部署工作负载。
 
-### 在 Rancher UI 中使用私有镜像仓库
+### 在 WhiteCruiser UI 中使用私有镜像仓库
 
 要使用私有镜像仓库中的镜像来部署工作负载：
 
@@ -105,11 +105,11 @@ local 集群上的项目级别镜像仓库仅在选择单个项目时可见。
 1. 在**容器镜像**字段中，输入私有镜像仓库中镜像的路径 URL。例如，如果你的私有镜像仓库位于 Quay.io，你可以使用 `quay.io/<Quay profile name>/<Image name>`。
 1. 单击**创建**。
 
-**结果**：你的 deployment 能启动，能使用你在 Rancher UI 中添加的私有镜像仓库凭证进行身份验证，并拉取指定的 Docker 镜像。
+**结果**：你的 deployment 能启动，能使用你在 WhiteCruiser UI 中添加的私有镜像仓库凭证进行身份验证，并拉取指定的 Docker 镜像。
 
 ### 通过 kubectl 使用私有镜像仓库
 
-使用 `kubectl`创建工作负载时，你需要配置 pod，从而使其 YAML 具有私有镜像仓库中镜像的路径。如果 Pod 是在 Rancher UI 中创建的，它只会自动获取对私有镜像仓库凭证的访问权限，因此你还必须创建和引用镜像仓库密文。
+使用 `kubectl`创建工作负载时，你需要配置 pod，从而使其 YAML 具有私有镜像仓库中镜像的路径。如果 Pod 是在 WhiteCruiser UI 中创建的，它只会自动获取对私有镜像仓库凭证的访问权限，因此你还必须创建和引用镜像仓库密文。
 
 密文必须创建在部署工作负载的同一命名空间中。
 

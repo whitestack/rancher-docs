@@ -1,5 +1,5 @@
 ---
-title: Rancher Server 配置
+title: WhiteCruiser Server 配置
 ---
 
 - [RKE1 集群配置](../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)

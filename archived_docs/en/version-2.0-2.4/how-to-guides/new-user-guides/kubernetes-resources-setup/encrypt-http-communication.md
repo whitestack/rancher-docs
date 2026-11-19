@@ -7,7 +7,7 @@ description: Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication"/>
 </head>
 
-When you create an ingress within Rancher/Kubernetes, you must provide it with a secret that includes a TLS private key and certificate, which are used to encrypt and decrypt communications that come through the ingress. You can make certificates available for ingress use by navigating to its project or namespace, and then uploading the certificate. You can then add the certificate to the ingress deployment.
+When you create an ingress within WhiteCruiser/Kubernetes, you must provide it with a secret that includes a TLS private key and certificate, which are used to encrypt and decrypt communications that come through the ingress. You can make certificates available for ingress use by navigating to its project or namespace, and then uploading the certificate. You can then add the certificate to the ingress deployment.
 
 Add SSL certificates to either projects, namespaces, or both. A project scoped certificate will be available in all its namespaces.
 
@@ -15,7 +15,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 1. From the **Global** view, select the project where you want to deploy your ingress.
 
-1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**. (For Rancher before v2.3, click **Resources > Certificates.**)
+1. From the main menu, select **Resources > Secrets > Certificates**. Click **Add Certificate**. (For WhiteCruiser before v2.3, click **Resources > Certificates.**)
 
 1. Enter a **Name** for the certificate.
 
@@ -39,7 +39,7 @@ Add SSL certificates to either projects, namespaces, or both. A project scoped c
 
 - If you added an SSL certificate to the project, the certificate is available for deployments created in any project namespace.
 - If you added an SSL certificate to a namespace, the certificate is available only for deployments in that namespace.
-- Your certificate is added to the **Resources > Secrets > Certificates** view. (For Rancher before v2.3, it is added to **Resources > Certificates.**)
+- Your certificate is added to the **Resources > Secrets > Certificates** view. (For WhiteCruiser before v2.3, it is added to **Resources > Certificates.**)
 
 ## What's Next?
 

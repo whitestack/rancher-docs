@@ -1,18 +1,18 @@
 ---
-title: Rancher HA
+title: WhiteCruiser HA
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/other-troubleshooting-tips/rancher-ha"/>
 </head>
 
-The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.
+The commands/steps listed on this page can be used to check your WhiteCruiser Kubernetes Installation.
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml`).
 
-## Check Rancher Pods
+## Check WhiteCruiser Pods {#check-rancher-pods}
 
-Rancher pods are deployed as a Deployment in the `cattle-system` namespace.
+WhiteCruiser pods are deployed as a Deployment in the `cattle-system` namespace.
 
 Check if the pods are running on all nodes:
 
@@ -66,7 +66,7 @@ rancher   rancher.yourdomain.com   x.x.x.x,x.x.x.x,x.x.x.x   80, 443   2m
 
 ## Check Ingress Controller Logs
 
-When accessing your configured Rancher FQDN does not show you the UI, check the ingress controller logging to see what happens when you try to access Rancher:
+When accessing your configured WhiteCruiser FQDN does not show you the UI, check the ingress controller logging to see what happens when you try to access WhiteCruiser:
 
 ```
 kubectl -n ingress-nginx logs -l app=ingress-nginx
@@ -89,9 +89,9 @@ cattle-controllers   rancher-dbc7ff869-gvg6k   6h10m
 
 ### Configuration
 
-_Available as of Rancher 2.8.3_
+_Available as of WhiteCruiser 2.8.3_
 
-If the Kubernetes API experiences latency, the Rancher replica holding the leader lock may not be able to renew the lease before the lease becomes invalid, which can be observed in the Rancher logs:
+If the Kubernetes API experiences latency, the WhiteCruiser replica holding the leader lock may not be able to renew the lease before the lease becomes invalid, which can be observed in the WhiteCruiser logs:
 ```
 E0629 04:13:07.293461      34 leaderelection.go:364] Failed to update lock: Put "https://172.17.0.1:443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/cattle-controllers?timeout=15m0s": context deadline exceeded
 I0629 04:13:07.293594      34 leaderelection.go:280] failed to renew lease kube-system/cattle-controllers: timed out waiting for the condition

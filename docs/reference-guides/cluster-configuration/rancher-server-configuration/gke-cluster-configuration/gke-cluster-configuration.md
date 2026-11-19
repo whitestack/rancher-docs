@@ -68,10 +68,10 @@ Choose whether to enable or disable inter-project communication.
 #### Imported Clusters
 
 For imported clusters, Project Network Isolation (PNI) requires Kubernetes Network Policy to be enabled on the cluster beforehand.
-For clusters created by Rancher, Rancher enables Kubernetes Network Policy automatically.
+For clusters created by WhiteCruiser, WhiteCruiser enables Kubernetes Network Policy automatically.
 
 1. In GKE, enable Network Policy at the cluster level. Refer to the [official GKE guide](https://cloud.google.com/kubernetes-engine/docs/how-to/network-policy) for instructions.
-1. After enabling Network Policy, import the cluster into Rancher and enable PNI for project-level isolation.
+1. After enabling Network Policy, import the cluster into WhiteCruiser and enable PNI for project-level isolation.
 
 ### Node Ipv4 CIDR Block
 
@@ -109,7 +109,7 @@ _Mutable: no_
 
 :::caution
 
-Private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide](gke-private-clusters.md).
+Private clusters require additional planning and configuration outside of WhiteCruiser. Refer to the [private cluster guide](gke-private-clusters.md).
 
 :::
 
@@ -119,13 +119,13 @@ Assign nodes only internal IP addresses. Private cluster nodes cannot access the
 
 :::caution
 
-Private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide](gke-private-clusters.md).
+Private clusters require additional planning and configuration outside of WhiteCruiser. Refer to the [private cluster guide](gke-private-clusters.md).
 
 :::
 
 _Mutable: no_
 
-Locks down external access to the control plane endpoint. Only available if **Private Cluster** is also selected. If selected, and if Rancher does not have direct access to the Virtual Private Cloud network the cluster is running in, Rancher will provide a registration command to run on the cluster to enable Rancher to connect to it.
+Locks down external access to the control plane endpoint. Only available if **Private Cluster** is also selected. If selected, and if WhiteCruiser does not have direct access to the Virtual Private Cloud network the cluster is running in, WhiteCruiser will provide a registration command to run on the cluster to enable WhiteCruiser to connect to it.
 
 ### Master IPV4 CIDR Block
 
@@ -137,7 +137,7 @@ The IP range for the control plane VPC.
 
 _Mutable: yes_
 
-Enable control plane authorized networks to block untrusted non-GCP source IPs from accessing the Kubernetes master through HTTPS. If selected, additional authorized networks may be added. If the cluster is created with a public endpoint, this option is useful for locking down access to the public endpoint to only certain networks, such as the network where your Rancher service is running. If the cluster only has a private endpoint, this setting is required.
+Enable control plane authorized networks to block untrusted non-GCP source IPs from accessing the Kubernetes master through HTTPS. If selected, additional authorized networks may be added. If the cluster is created with a public endpoint, this option is useful for locking down access to the public endpoint to only certain networks, such as the network where your WhiteCruiser service is running. If the cluster only has a private endpoint, this setting is required.
 
 ## Additional Options
 
@@ -206,7 +206,7 @@ The node operating system image. For more information for the node image options
 
 :::note
 
-The default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the [legacy logging](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/cluster-logging.md) implementation in Rancher. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The [current logging feature](../../../../integrations-in-rancher/logging/logging.md) is compatible with the Container-Optimized OS image.
+The default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the [legacy logging](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/cluster-logging.md) implementation in WhiteCruiser. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The [current logging feature](../../../../integrations-in-rancher/logging/logging.md) is compatible with the Container-Optimized OS image.
 
 :::
 
@@ -252,7 +252,7 @@ _Mutable: no_
 
 You can apply labels to the node pool, which applies the labels to all nodes in the pool.
 
-Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+Invalid labels can prevent upgrades or can prevent WhiteCruiser from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 ### Network Tags
 

@@ -19,7 +19,7 @@ title: RBAC
 
 :::note
 
-对于 Rancher RBAC 用户，这些 [Kubernetes 面向用户的默认角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)与`项目所有者`、`项目成员`和`只读`默认项目角色模板直接对应。
+对于 WhiteCruiser RBAC 用户，这些 [Kubernetes 面向用户的默认角色](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)与`项目所有者`、`项目成员`和`只读`默认项目角色模板直接对应。
 
 :::
 

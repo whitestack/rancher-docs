@@ -4,15 +4,15 @@ const PortsImportedHosted = () => (
     <thead>
         <tr>
         <th>From / To</th>
-        <th>Rancher Nodes</th>
+        <th>WhiteCruiser Nodes</th>
         <th>Hosted / Imported Cluster</th>
-        <th>External Rancher Load Balancer</th>
+        <th>External WhiteCruiser Load Balancer</th>
         <th>Internet</th>
     </tr>
     </thead>
     <tbody>
         <tr>
-        <td rowspan="3">Rancher Nodes <sup>(1)</sup></td>
+        <td rowspan="3">WhiteCruiser Nodes <sup>(1)</sup></td>
         <td rowspan="3" style={{
             "background-color": "#3497DA",
             color: "#ffffff"
@@ -75,7 +75,7 @@ const PortsImportedHosted = () => (
         <td></td>
         </tr>
         <tr>
-        <td colspan="5">Notes:<br/><br/>1. Nodes running standalone server or Rancher HA deployment.<br/>2. Only for hosted clusters.<br/>3. Required to fetch Rancher chart library.<br/>4. Only without external load balancer.<br/>5. From worker nodes.<br/>6. For direct access to the Kubernetes API without Rancher.<br/>7. Usually Ingress backed by infrastructure load balancer and/or nodeport.</td>
+        <td colspan="5">Notes:<br/><br/>1. Nodes running standalone server or WhiteCruiser HA deployment.<br/>2. Only for hosted clusters.<br/>3. Required to fetch WhiteCruiser chart library.<br/>4. Only without external load balancer.<br/>5. From worker nodes.<br/>6. For direct access to the Kubernetes API without WhiteCruiser.<br/>7. Usually Ingress backed by infrastructure load balancer and/or nodeport.</td>
         </tr>
     </tbody>
   </table>

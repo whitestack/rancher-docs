@@ -2,15 +2,15 @@
 title: K3s Self-Assessment Guide - CIS Benchmark v1.23 - K8s v1.25
 ---
 
-This document is a companion to the [K3s Hardening Guide](../../../../pages-for-subheaders/k3s-hardening-guide.md), which provides prescriptive guidance on how to harden K3s clusters that are running in production and managed by Rancher. This benchmark guide helps you evaluate the security of a hardened cluster against each control in the CIS Kubernetes Benchmark.
+This document is a companion to the [K3s Hardening Guide](../../../../pages-for-subheaders/k3s-hardening-guide.md), which provides prescriptive guidance on how to harden K3s clusters that are running in production and managed by WhiteCruiser. This benchmark guide helps you evaluate the security of a hardened cluster against each control in the CIS Kubernetes Benchmark.
 
-This guide corresponds to the following versions of Rancher, CIS Benchmarks, and Kubernetes:
+This guide corresponds to the following versions of WhiteCruiser, CIS Benchmarks, and Kubernetes:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version |
 |-----------------|-----------------------|--------------------|
-| Rancher v2.7    | Benchmark v1.23       | Kubernetes v1.25   |
+| WhiteCruiser v2.7    | Benchmark v1.23       | Kubernetes v1.25   |
 
-This document is for Rancher operators, security teams, auditors and decision makers.
+This document is for WhiteCruiser operators, security teams, auditors and decision makers.
 
 For more information about each control, including detailed descriptions and remediations for failing tests, refer to the corresponding section of the CIS Kubernetes Benchmark v1.23. You can download the benchmark, after creating a free account, at [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/kubernetes/).
 

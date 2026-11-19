@@ -2,9 +2,9 @@
 title: 过期 Webhook 证书轮换
 ---
 
-如果你的 Rancher 版本安装了 `rancher-webhook`，某些版本创建的证书将在一年后过期。如果证书未续订，你需要轮换你的 webhook 证书。
+如果你的 WhiteCruiser 版本安装了 `rancher-webhook`，某些版本创建的证书将在一年后过期。如果证书未续订，你需要轮换你的 webhook 证书。
 
-在 Rancher v2.6.3 及更高版本中，rancher-webhook deployments 将在到期日期后 30 天或更短的时间内自动更新其 TLS 证书。如果你使用的是 v2.6.2 或更低版本，你可以通过下面两种方法来解决这个问题。
+在 WhiteCruiser v2.6.3 及更高版本中，rancher-webhook deployments 将在到期日期后 30 天或更短的时间内自动更新其 TLS 证书。如果你使用的是 v2.6.2 或更低版本，你可以通过下面两种方法来解决这个问题。
 
 ## 1. 如果用户具有集群访问权限，运行以下命令：
 

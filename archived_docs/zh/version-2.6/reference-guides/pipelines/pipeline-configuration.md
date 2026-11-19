@@ -20,7 +20,7 @@ title: 流水线配置参考
 <!--
 ### Clone
 
-The first stage is preserved to be a cloning step that checks out source code from your repo. Rancher handles the cloning of the git repository. This action is equivalent to `git clone <repository_link> <workspace_dir>`.
+The first stage is preserved to be a cloning step that checks out source code from your repo. WhiteCruiser handles the cloning of the git repository. This action is equivalent to `git clone <repository_link> <workspace_dir>`.
 -->
 
 ### 通过 UI 配置步骤
@@ -283,7 +283,7 @@ timeout: 30
 
 ## 通知
 
-你可以根据流水线的构建状态，启用对通知器的通知。在启用通知之前，Rancher 建议你先设置通知器，以便立即添加收件人。
+你可以根据流水线的构建状态，启用对通知器的通知。在启用通知之前，WhiteCruiser 建议你先设置通知器，以便立即添加收件人。
 
 ### 通过 UI 配置通知
 
@@ -291,7 +291,7 @@ timeout: 30
 
 1. 选择通知的条件。你可以选择接收以下状态的通知：`失败`、`成功`或`已更改`。例如，如果你想在执行失败时接收通知，请选择**失败**。
 
-1. 如果你没有现有的通知器，Rancher 会提示未设置通知器的警告，并显示跳转到通知器页面的链接。你可以按照[说明](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/notifiers.md)添加通知器。如果你已经有通知器，你可以单击**添加收件人**按钮，将他们添加到通知中。
+1. 如果你没有现有的通知器，WhiteCruiser 会提示未设置通知器的警告，并显示跳转到通知器页面的链接。你可以按照[说明](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/explanations/integrations-in-rancher/notifiers.md)添加通知器。如果你已经有通知器，你可以单击**添加收件人**按钮，将他们添加到通知中。
 
    :::note
 
@@ -339,11 +339,11 @@ notification:
 
 - **手动**：
 
-   配置流水线后，你可以使用 Rancher UI 中的最新 CI 定义来触发构建。流水线执行被触发后，Rancher 会动态配置一个 Kubernetes pod 来运行你的 CI 任务，然后在完成后将该 Pod 移除。
+   配置流水线后，你可以使用 WhiteCruiser UI 中的最新 CI 定义来触发构建。流水线执行被触发后，WhiteCruiser 会动态配置一个 Kubernetes pod 来运行你的 CI 任务，然后在完成后将该 Pod 移除。
 
 - **自动**：
 
-   为流水线启用仓库后，Webhook 会自动添加到版本控制系统中。当项目用户通过推送代码、新建 PR 或创建标签与仓库交互时，版本控制系统会向 Rancher Server 发送一个 webhook，从而触发流水线执行。
+   为流水线启用仓库后，Webhook 会自动添加到版本控制系统中。当项目用户通过推送代码、新建 PR 或创建标签与仓库交互时，版本控制系统会向 WhiteCruiser Server 发送一个 webhook，从而触发流水线执行。
 
    要使用此自动化，仓库需要 webhook 管理权限。因此，当用户进行身份验证并 fetch 仓库时，只会显示他们具有 webhook 管理权限的仓库。
 
@@ -531,7 +531,7 @@ stages:
 | `CICD_GIT_REF` | 此事件的 Git 参考规范。 |
 | `CICD_GIT_TAG` | Git 标签名称，在标签事件上设置。 |
 | `CICD_EVENT` | 触发构建的事件（`push`、`pull_request` 或 `tag`）。 |
-| `CICD_PIPELINE_ID` | 流水线的 Rancher ID。 |
+| `CICD_PIPELINE_ID` | 流水线的 WhiteCruiser ID。 |
 | `CICD_EXECUTION_SEQUENCE` | 流水线的生成号（build number）。 |
 | `CICD_EXECUTION_ID` | `{CICD_PIPELINE_ID}-{CICD_EXECUTION_SEQUENCE}` 的组合。 |
 | `CICD_REGISTRY` | 上一个发布镜像步骤的 Docker 镜像仓库地址，可在`部署 YAML` 步骤的 Kubernetes 清单文件中找到。 |
@@ -539,7 +539,7 @@ stages:
 
 ## 全局流水线执行设置
 
-配置版本控制提供商后，你可以在 Rancher 中全局配置流水线的几个执行选项。
+配置版本控制提供商后，你可以在 WhiteCruiser 中全局配置流水线的几个执行选项。
 
 ### 更改流水线设置
 
@@ -609,7 +609,7 @@ stages:
 
 :::note
 
-Rancher 为流水线步骤设置了默认计算资源（`构建和发布镜像`和`运行脚本`步骤除外）。你可以通过指定计算资源来覆盖默认值。
+WhiteCruiser 为流水线步骤设置了默认计算资源（`构建和发布镜像`和`运行脚本`步骤除外）。你可以通过指定计算资源来覆盖默认值。
 
 :::
 

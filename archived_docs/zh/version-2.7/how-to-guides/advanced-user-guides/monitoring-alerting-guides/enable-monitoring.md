@@ -2,7 +2,7 @@
 title: 启用 Monitoring
 ---
 
-[管理员](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)或[集群所有者](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)可以通过配置 Rancher 来部署 Prometheus，从而监控 Kubernetes 集群。
+[管理员](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md)或[集群所有者](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#集群角色)可以通过配置 WhiteCruiser 来部署 Prometheus，从而监控 Kubernetes 集群。
 
 本文介绍如何使用新的 monitoring 应用在集群内启用监控和告警。
 
@@ -11,7 +11,7 @@ title: 启用 Monitoring
 ## 要求
 
 - 在每个节点上允许端口 9796 上的流量。Prometheus 将从这些端口抓取指标。
-   - 如果 [PushProx](../../../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#pushprox) 被禁用（`ingressNginx.enabled` 设置为 `false`），或者你已经升级了安装了 Monitoring V1 的 Rancher 版本，你可能还需要为每个节点允许端口 10254 上的流量。
+   - 如果 [PushProx](../../../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#pushprox) 被禁用（`ingressNginx.enabled` 设置为 `false`），或者你已经升级了安装了 Monitoring V1 的 WhiteCruiser 版本，你可能还需要为每个节点允许端口 10254 上的流量。
 - 确保你的集群满足资源要求。集群应至少有 1950Mi 可用内存、2700m CPU 和 50Gi 存储。有关资源限制和请求的详细信息，请参阅[配置资源限制和请求](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#配置资源限制和请求)。
 - 在使用 RancherOS 或 Flatcar Linux 节点的 RKE 集群上安装 Monitoring 时，请将 etcd 节点证书目录更改为 `/opt/rke/etc/kubernetes/ssl`。
 - 如果集群是使用 RKE CLI 配置的，而且地址设置为主机名而不是 IP 地址，请在安装的 Values 配置步骤中将 `rkeEtcd.clients.useLocalhost` 设置为 `true`。例如：
@@ -30,7 +30,7 @@ rkeEtcd:
 
 ## 设置资源限制和请求
 
-安装 `rancher-monitoring` 时可以配置资源请求和限制。要从 Rancher UI 配置 Prometheus 资源，请单击左上角的 **Apps > Monitoring**。
+安装 `rancher-monitoring` 时可以配置资源请求和限制。要从 WhiteCruiser UI 配置 Prometheus 资源，请单击左上角的 **Apps > Monitoring**。
 
 有关默认限制的更多信息，请参阅[此页面](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#配置资源限制和请求)。
 
@@ -62,7 +62,7 @@ rkeEtcd:
 
 **结果**：Monitoring 应用已部署到 `cattle-monitoring-system` 命名空间中。
 
-[创建接收器](../../../reference-guides/monitoring-v2-configuration/receivers.md#在-rancher-ui-中创建接收器)时，启用 SSL 的接收器（例如电子邮件或 webhook）将具有 **SSL**，其中包含 **CA 文件路径**、**证书文件路径**和**密钥文件路径**字段。使用 `ca`、`cert` 和 `key` 的路径填写这些字段。路径的格式为 `/etc/alertmanager/secrets/name-of-file-in-secret`。
+[创建接收器](../../../reference-guides/monitoring-v2-configuration/receivers.md#在-whitecruiser-ui-中创建接收器)时，启用 SSL 的接收器（例如电子邮件或 webhook）将具有 **SSL**，其中包含 **CA 文件路径**、**证书文件路径**和**密钥文件路径**字段。使用 `ca`、`cert` 和 `key` 的路径填写这些字段。路径的格式为 `/etc/alertmanager/secrets/name-of-file-in-secret`。
 
 例如，如果你使用以下键值对创建了一个密文：
 

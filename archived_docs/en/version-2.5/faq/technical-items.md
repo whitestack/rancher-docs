@@ -61,18 +61,18 @@ Node Templates can be accessed by opening your account menu (top right) and sele
 
 The Layer-4 Load Balancer is created as `type: LoadBalancer`. In Kubernetes, this needs a cloud provider or controller that can satisfy these requests, otherwise these will be in `Pending` state forever. More information can be found on [Cloud Providers](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/set-up-cloud-providers.md) or [Create External Load Balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 
-## Where is the state of Rancher stored?
+## Where is the state of WhiteCruiser stored? {#where-is-the-state-of-rancher-stored}
 
 - Docker Install: in the embedded etcd of the `rancher/rancher` container, located at `/var/lib/rancher`.
-- Kubernetes install: in the etcd of the RKE cluster created to run Rancher.
+- Kubernetes install: in the etcd of the RKE cluster created to run WhiteCruiser.
 
 ## How are the supported Docker versions determined?
 
 We follow the validated Docker versions for upstream Kubernetes releases. The validated versions can be found under [External Dependencies](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.10.md#external-dependencies) in the Kubernetes release CHANGELOG.md.
 
-## How can I access nodes created by Rancher?
+## How can I access nodes created by WhiteCruiser? {#how-can-i-access-nodes-created-by-rancher}
 
-SSH keys to access the nodes created by Rancher can be downloaded via the **Nodes** view. Choose the node which you want to access and click on the vertical &#8942; button at the end of the row, and choose **Download Keys** as shown in the picture below.
+SSH keys to access the nodes created by WhiteCruiser can be downloaded via the **Nodes** view. Choose the node which you want to access and click on the vertical &#8942; button at the end of the row, and choose **Download Keys** as shown in the picture below.
 
 ![Download Keys](/img/downloadsshkeys.png)
 
@@ -82,7 +82,7 @@ Unzip the downloaded zip file, and use the file `id_rsa` to connect to you host.
 $ ssh -i id_rsa user@ip_of_node
 ```
 
-## How can I automate task X in Rancher?
+## How can I automate task X in WhiteCruiser? {#how-can-i-automate-task-x-in-rancher}
 
 The UI consists of static files, and works based on responses of the API. That means every action/task that you can execute in the UI, can be automated via the API. There are 2 ways to do this:
 
@@ -91,13 +91,13 @@ The UI consists of static files, and works based on responses of the API. That m
 
 ## The IP address of a node changed, how can I recover?
 
-A node is required to have a static IP configured (or a reserved IP via DHCP). If the IP of a node has changed, you will have to remove it from the cluster and readd it. After it is removed, Rancher will update the cluster to the correct state. If the cluster is no longer in `Provisioning` state, the node is removed from the cluster.
+A node is required to have a static IP configured (or a reserved IP via DHCP). If the IP of a node has changed, you will have to remove it from the cluster and readd it. After it is removed, WhiteCruiser will update the cluster to the correct state. If the cluster is no longer in `Provisioning` state, the node is removed from the cluster.
 
-When the IP address of the node changed, Rancher lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes](../how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes.md) to clean the node.
+When the IP address of the node changed, WhiteCruiser lost connection to the node, so it will be unable to clean the node properly. See [Cleaning cluster nodes](../how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes.md) to clean the node.
 
 When the node is removed from the cluster, and the node is cleaned, you can readd the node to the cluster.
 
-## How can I add more arguments/binds/environment variables to Kubernetes components in a Rancher Launched Kubernetes cluster?
+## How can I add more arguments/binds/environment variables to Kubernetes components in a WhiteCruiser Launched Kubernetes cluster? {#how-can-i-add-more-argumentsbindsenvironment-variables-to-kubernetes-components-in-a-rancher-launched-kubernetes-cluster}
 
 You can add more arguments/binds/environment variables via the [Config File](../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#editing-clusters-with-yaml) option in Cluster Options. For more information, see the [Extra Args, Extra Binds, and Extra Environment Variables](https://rancher.com/docs/rke/latest/en/config-options/services/services-extras/) in the RKE documentation or browse the [Example Cluster.ymls](https://rancher.com/docs/rke/latest/en/example-yamls/).
 
@@ -121,7 +121,7 @@ SSL_CERT_DIR=/dummy SSL_CERT_FILE=/dummy openssl verify -CAfile ca.pem -untruste
 rancher.yourdomain.com.pem: OK
 ```
 
-If you have successfully verified your certificate chain, you should include needed intermediate CA certificates in the server certificate to complete the certificate chain for any connection made to Rancher (for example, by the Rancher agent). The order of the certificates in the server certificate file should be first the server certificate itself (contents of `rancher.yourdomain.com.pem`), followed by intermediate CA certificate(s) (contents of `intermediate.pem`).
+If you have successfully verified your certificate chain, you should include needed intermediate CA certificates in the server certificate to complete the certificate chain for any connection made to WhiteCruiser (for example, by the WhiteCruiser agent). The order of the certificates in the server certificate file should be first the server certificate itself (contents of `rancher.yourdomain.com.pem`), followed by intermediate CA certificate(s) (contents of `intermediate.pem`).
 
 ```
 -----BEGIN CERTIFICATE-----

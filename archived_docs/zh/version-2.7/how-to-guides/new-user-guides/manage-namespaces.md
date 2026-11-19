@@ -2,7 +2,7 @@
 title: 命名空间
 ---
 
-在 Rancher 中，你可以将项目进一步划分为多个[命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)，项目是由物理集群支持的，而命名空间是项目中的虚拟集群。当项目和 `default` 命名空间不能满足你的需求时，你可以在项目中创建多个命名空间来隔离应用和资源。
+在 WhiteCruiser 中，你可以将项目进一步划分为多个[命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)，项目是由物理集群支持的，而命名空间是项目中的虚拟集群。当项目和 `default` 命名空间不能满足你的需求时，你可以在项目中创建多个命名空间来隔离应用和资源。
 
 你可以在项目层级分配资源，从而使项目中的每个命名空间可以使用这些资源，也可以单独给某个命名空间显式分配资源。
 
@@ -17,11 +17,11 @@ title: 命名空间
 - [镜像仓库](kubernetes-resources-setup/kubernetes-and-docker-registries.md)
 - [密文](kubernetes-resources-setup/secrets.md)
 
-为了在 vanilla Kubernetes 集群中管理权限，集群管理员要为每个命名空间配置基于角色的访问策略。Rancher 在项目级别上分配用户权限，项目中的命名空间会自动继承项目的权限。
+为了在 vanilla Kubernetes 集群中管理权限，集群管理员要为每个命名空间配置基于角色的访问策略。WhiteCruiser 在项目级别上分配用户权限，项目中的命名空间会自动继承项目的权限。
 
 :::note
 
-如果你使用 `kubectl`创建命名空间，由于 `kubectl` 不要求将新命名空间限定在你可以访问的项目内，因此你可能无法使用该命名空间。如果你的权限仅限于项目级别，则最好[通过 Rancher 创建命名空间](#创建命名空间)，以确保你有权访问该命名空间。
+如果你使用 `kubectl`创建命名空间，由于 `kubectl` 不要求将新命名空间限定在你可以访问的项目内，因此你可能无法使用该命名空间。如果你的权限仅限于项目级别，则最好[通过 WhiteCruiser 创建命名空间](#创建命名空间)，以确保你有权访问该命名空间。
 
 :::
 

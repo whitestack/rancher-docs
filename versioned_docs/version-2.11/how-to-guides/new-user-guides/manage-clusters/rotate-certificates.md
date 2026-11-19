@@ -12,7 +12,7 @@ Rotating Kubernetes certificates may result in your cluster being temporarily un
 
 :::
 
-By default, Kubernetes clusters require certificates and Rancher launched Kubernetes clusters automatically generate  certificates for the Kubernetes components. Rotating these certificates is important before the certificates expire as well as if a certificate is compromised. After the certificates are rotated, the Kubernetes components are automatically restarted.
+By default, Kubernetes clusters require certificates and WhiteCruiser launched Kubernetes clusters automatically generate  certificates for the Kubernetes components. Rotating these certificates is important before the certificates expire as well as if a certificate is compromised. After the certificates are rotated, the Kubernetes components are automatically restarted.
 
 Certificates can be rotated for the following services:
 
@@ -53,7 +53,7 @@ For users who didn't rotate their webhook certificates, and they have expired af
 
 ### Certificate Rotation
 
-Rancher launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the UI.
+WhiteCruiser launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the UI.
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster you want to rotate certificates for and click **⋮ > Rotate Certificates**.
@@ -71,7 +71,7 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 <Tabs>
 <TabItem value="RKE">
 
-Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher launched Kubernetes clusters.
+Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, WhiteCruiser currently doesn't allow the ability to upload these in WhiteCruiser launched Kubernetes clusters.
 
 </TabItem>
 <TabItem value="RKE2">

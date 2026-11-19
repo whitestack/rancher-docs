@@ -1,6 +1,6 @@
 ---
 title: Configure Keycloak (SAML)
-description: Create a Keycloak SAML client and configure Rancher to work with Keycloak. By the end your users will be able to sign into Rancher using their Keycloak logins
+description: Create a Keycloak SAML client and configure WhiteCruiser to work with Keycloak. By the end your users will be able to sign into WhiteCruiser using their Keycloak logins
 ---
 
 <head> 
@@ -9,7 +9,7 @@ description: Create a Keycloak SAML client and configure Rancher to work with Ke
 
 _Available as of v2.1.0_
 
-If your organization uses Keycloak Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
+If your organization uses Keycloak Identity Provider (IdP) for user authentication, you can configure WhiteCruiser to allow your users to log in using their IdP credentials.
 
 ## Prerequisites
 
@@ -21,13 +21,13 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
       `Sign Documents` | `ON` <sup>1</sup>
       `Sign Assertions` | `ON` <sup>1</sup>
       All other `ON/OFF` Settings | `OFF`
-      `Client ID` | Either `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` or the value configured in the `Entry ID Field` of the Rancher Keycloak configuration<sup>2</sup>
+      `Client ID` | Either `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` or the value configured in the `Entry ID Field` of the WhiteCruiser Keycloak configuration<sup>2</sup>
       `Client Name` | <CLIENT_NAME> (e.g. `rancher`)
       `Client Protocol` | `SAML`
       `Valid Redirect URI` | `https://yourRancherHostURL/v1-saml/keycloak/saml/acs`
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
-      ><sup>2</sup>: Rancher SAML metadata won't be generated until a SAML provider is configured and saved.
+      ><sup>2</sup>: WhiteCruiser SAML metadata won't be generated until a SAML provider is configured and saved.
 
   ![](/img/keycloak/keycloak-saml-client-configuration.png)
 
@@ -45,7 +45,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
   >
   > `https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
   >
-  > The XML obtained from this URL contains `EntitiesDescriptor` as the root element. Rancher expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to Rancher, follow these steps to adjust it:
+  > The XML obtained from this URL contains `EntitiesDescriptor` as the root element. WhiteCruiser expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to WhiteCruiser, follow these steps to adjust it:
   >
   >    * Copy all the attributes from `EntitiesDescriptor` to the `EntityDescriptor` that are not present.
   >    * Remove the `<EntitiesDescriptor>` tag from the beginning.
@@ -59,7 +59,7 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
   > </EntityDescriptor>
   > ```
 
-## Configuring Keycloak in Rancher
+## Configuring Keycloak in WhiteCruiser {#configuring-keycloak-in-rancher}
 
 
 1.	From the **Global** view, select **Security > Authentication** from the main menu.
@@ -76,8 +76,8 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
     | UID Field                 | An attribute that is unique to every user. <br/><br/>Example: `email`                                                                                    |
     | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `member`                                                                                 |
     | Entity ID Field           | The ID that needs to be configured as a client ID in the Keycloak client. <br/><br/>Default: `https://yourRancherHostURL/v1-saml/keycloak/saml/metadata` |
-    | Rancher API Host          | The URL for your Rancher Server.                                                                                                                         |
-    | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.                                                                            |
+    | Rancher API Host          | The URL for your WhiteCruiser Server.                                                                                                                         |
+    | Private Key / Certificate | A key/certificate pair to create a secure shell between WhiteCruiser and your IdP.                                                                            |
     | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                                                                                          |
 
     >**Tip:** You can generate a key/certificate pair using an openssl command. For example:
@@ -87,24 +87,24 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 1. After you complete the **Configure Keycloak Account** form, click **Authenticate with Keycloak**, which is at the bottom of the page.
 
-    Rancher redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your Rancher Keycloak configuration.
+    WhiteCruiser redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your WhiteCruiser Keycloak configuration.
 
     >**Note:** You may have to disable your popup blocker to see the IdP login page.
 
-**Result:** Rancher is configured to work with Keycloak. Your users can now sign into Rancher using their Keycloak logins.
+**Result:** WhiteCruiser is configured to work with Keycloak. Your users can now sign into WhiteCruiser using their Keycloak logins.
 
 :::note SAML Provider Caveats:
 
-- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to Rancher.
+- SAML Protocol does not support search or lookup for users or groups. Therefore, there is no validation on users or groups when adding them to WhiteCruiser.
 - When adding users, the exact user IDs (i.e. `UID Field`) must be entered correctly. As you type the user ID, there will be no search for other  user IDs that may match.
-- When adding groups, you must select the group from the drop-down that is next to the text box. Rancher assumes that any input from the text box is a user.
+- When adding groups, you must select the group from the drop-down that is next to the text box. WhiteCruiser assumes that any input from the text box is a user.
 - The group drop-down shows only the groups that you are a member of. You will not be able to add groups that you are not a member of.
 
 :::
 
 ## Annex: Troubleshooting
 
-If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the Rancher logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
+If you are experiencing issues while testing the connection to the Keycloak server, first double-check the configuration option of your SAML client. You may also inspect the WhiteCruiser logs to help pinpointing the problem cause. Debug logs may contain more detailed information about the error. Please refer to [How can I enable debug logging](../../../../../faq/technical-items.md#how-can-i-enable-debug-logging) in this documentation.
 
 ### You are not redirected to Keycloak
 
@@ -118,7 +118,7 @@ When you click on **Authenticate with Keycloak**, your are not redirected to you
 
 You are correctly redirected to your IdP login page and you are able to enter your credentials, however you get a `Forbidden` message afterwards.
 
-  * Check the Rancher debug log.
+  * Check the WhiteCruiser debug log.
   * If the log displays `ERROR: either the Response or Assertion must be signed`, make sure either `Sign Documents` or `Sign assertions` is set to `ON` in your Keycloak client.
 
 ### HTTP 502 when trying to access /v1-saml/keycloak/saml/metadata

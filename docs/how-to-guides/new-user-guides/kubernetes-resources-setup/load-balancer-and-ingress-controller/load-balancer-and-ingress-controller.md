@@ -1,13 +1,13 @@
 ---
-title: Load Balancer and Ingress Controller Setup within Rancher
-description: Learn how you can set up load balancers and ingress controllers to redirect service requests within Rancher, and learn about the limitations of load balancers
+title: Load Balancer and Ingress Controller Setup within WhiteCruiser
+description: Learn how you can set up load balancers and ingress controllers to redirect service requests within WhiteCruiser, and learn about the limitations of load balancers
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller"/>
 </head>
 
-Within Rancher, you can set up load balancers and ingress controllers to redirect service requests.
+Within WhiteCruiser, you can set up load balancers and ingress controllers to redirect service requests.
 
 ## Load Balancers
 
@@ -15,7 +15,7 @@ After you launch an application, the app is only available within the cluster. I
 
 If you want your applications to be externally accessible, you must add a load balancer or ingress to your cluster. Load balancers create a gateway for external connections to access your cluster, provided that the user knows the load balancer's IP address and the application's port number.
 
-Rancher supports two types of load balancers:
+WhiteCruiser supports two types of load balancers:
 
 - [Layer-4 Load Balancers](layer-4-and-layer-7-load-balancing.md#layer-4-load-balancer)
 - [Layer-7 Load Balancers](layer-4-and-layer-7-load-balancing.md#layer-7-load-balancer)
@@ -52,6 +52,6 @@ Your ingress, which creates a port of entry to your cluster similar to a load ba
 
 Ingress can provide other functionality as well, such as SSL termination, name-based virtual hosting, and more.
 
-- For more information on how to set up ingress in Rancher, see [Ingress](add-ingresses.md).
+- For more information on how to set up ingress in WhiteCruiser, see [Ingress](add-ingresses.md).
 - For complete information about ingress and ingress controllers, see the [Kubernetes Ingress Documentation](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 - When using ingresses in a project, you can program the ingress hostname to an external DNS by setting up a Global DNS entry.

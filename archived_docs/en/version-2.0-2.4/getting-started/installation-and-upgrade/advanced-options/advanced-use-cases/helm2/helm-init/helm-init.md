@@ -7,7 +7,7 @@ Helm is the package management tool of choice for Kubernetes. Helm "charts" prov
 
 For systems without direct internet access, see [Helm - Air Gap](../../../../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md) for install details.
 
-Refer to the [Helm version requirements](../../../../resources/helm-version-requirements.md) to choose a version of Helm to install Rancher.
+Refer to the [Helm version requirements](../../../../resources/helm-version-requirements.md) to choose a version of Helm to install WhiteCruiser.
 
 > **Note:** The installation instructions assume you are using Helm 2. The instructions will be updated for Helm 3 soon. In the meantime, if you want to use Helm 3, refer to [these instructions.](https://github.com/ibrokethecloud/rancher-helm3)
 
@@ -38,7 +38,7 @@ helm init --service-account tiller \
 --tiller-image registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:<tag>
 ```
 
-> **Note:** This`tiller`install has full cluster access, which should be acceptable if the cluster is dedicated to Rancher server. See the [Helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for instructions on restricting `tiller` access to suit your security requirements.
+> **Note:** This`tiller`install has full cluster access, which should be acceptable if the cluster is dedicated to WhiteCruiser server. See the [Helm docs](https://docs.helm.sh/using_helm/#role-based-access-control) for instructions on restricting `tiller` access to suit your security requirements.
 
 ### Test your Tiller installation
 
@@ -62,4 +62,4 @@ Server: &version.Version{SemVer:"v2.12.1", GitCommit:"02a47c7249b1fc6d8fd3b94e6b
 
 See the [Troubleshooting](troubleshooting.md) page.
 
-### [Next: Install Rancher](../helm-rancher/helm-rancher.md)
+### [Next: Install WhiteCruiser](../helm-rancher/helm-rancher.md) {#next-install-rancher}

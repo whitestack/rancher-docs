@@ -14,7 +14,7 @@ When you create a new cluster with RKE, you can configure it to apply a PSP imme
 
 :::note Prerequisite:
 
-Create a Pod Security Policy within Rancher. Before you can assign a default PSP to a new cluster, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies](../authentication-permissions-and-global-configuration/create-pod-security-policies.md).
+Create a Pod Security Policy within WhiteCruiser. Before you can assign a default PSP to a new cluster, you must have a PSP available for assignment. For instruction, see [Creating Pod Security Policies](../authentication-permissions-and-global-configuration/create-pod-security-policies.md).
 
 :::
 

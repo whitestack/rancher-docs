@@ -1,12 +1,12 @@
 ---
-title: 1. Configuring Microsoft AD FS for Rancher
+title: 1. Configuring Microsoft AD FS for WhiteCruiser
 ---
 
 <head> 
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher"/>
 </head>
 
-Before you configure Rancher to support Active Directory Federation Service (AD FS), you must add Rancher as a [relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts) in AD FS.
+Before you configure WhiteCruiser to support Active Directory Federation Service (AD FS), you must add WhiteCruiser as a [relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts) in AD FS.
 
 1. Log into your AD server as an administrative user.
 
@@ -26,7 +26,7 @@ Before you configure Rancher to support Active Directory Federation Service (AD 
 
     ![](/img/adfs/adfs-add-rpt-4.png)
 
-1. Leave the **optional token encryption certificate** empty, as Rancher AD FS will not be using one.
+1. Leave the **optional token encryption certificate** empty, as WhiteCruiser AD FS will not be using one.
 
     ![](/img/adfs/adfs-add-rpt-5.png)
 
@@ -81,6 +81,6 @@ Before you configure Rancher to support Active Directory Federation Service (AD 
 https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml
 ```
 
-**Result:** You've added Rancher as a relying trust party. Now you can configure Rancher to leverage AD.
+**Result:** You've added WhiteCruiser as a relying trust party. Now you can configure WhiteCruiser to leverage AD.
 
-### [Next: Configuring Rancher for Microsoft AD FS](configure-rancher-for-ms-adfs.md)
+### [Next: Configuring WhiteCruiser for Microsoft AD FS](configure-rancher-for-ms-adfs.md) {#next-configuring-rancher-for-microsoft-ad-fs}

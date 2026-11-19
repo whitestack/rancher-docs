@@ -1,23 +1,23 @@
 ---
-title: 还原 Rancher
+title: 还原 WhiteCruiser
 ---
 
-本页概述了如何使用 Rancher 执行恢复。
+本页概述了如何使用 WhiteCruiser 执行恢复。
 
 在以下情况下，请按照本页中的说明进行操作：
-- 正在运行的 Rancher 实例与备份时的版本相同。
+- 正在运行的 WhiteCruiser 实例与备份时的版本相同。
 - 上游（本地）集群与备份的位置相同。
 
 :::note 重要提示
 
-在使用相同设置还原 Rancher 时，operator 将在还原开始时缩减 Rancher deployment，还原完成后又会扩展 deployment。因此，Rancher 在还原期间将不可用。
+在使用相同设置还原 WhiteCruiser 时，operator 将在还原开始时缩减 WhiteCruiser deployment，还原完成后又会扩展 deployment。因此，WhiteCruiser 在还原期间将不可用。
 
 :::
 
 :::tip
 
-* 按照以下步骤[迁移 Rancher](migrate-rancher-to-new-cluster.md)。
-* 如果你需要在升级后将 Rancher 还原到先前版本，请参见[回滚](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md)。
+* 按照以下步骤[迁移 WhiteCruiser](migrate-rancher-to-new-cluster.md)。
+* 如果你需要在升级后将 WhiteCruiser 还原到先前版本，请参见[回滚](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md)。
 
 :::
 
@@ -26,8 +26,8 @@ title: 还原 Rancher
 还原是通过创建 Restore 自定义资源实现的。
 
 1. 在左上角，单击 **☰ > 集群管理**。
-1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。Rancher Server 运行在 `local` 集群中。
-1. 在左侧导航栏中，单击 **Rancher 备份 > 还原**。
+1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。WhiteCruiser Server 运行在 `local` 集群中。
+1. 在左侧导航栏中，单击 **WhiteCruiser 备份 > 还原**。
 1. 单击**创建**。
 1. 使用表单或 YAML 创建 Restore。如需获取使用表单创建 Restore 资源的更多信息，请参见[配置参考](../../../reference-guides/backup-restore-configuration/restore-configuration.md)和[示例](../../../reference-guides/backup-restore-configuration/examples.md)。
 1. 要使用 YAML 编辑器，单击**创建 > 使用 YAML 文件创建**。输入 Restore YAML。
@@ -54,7 +54,7 @@ title: 还原 Rancher
 
 1. 单击**创建**。
 
-**结果**：rancher-operator 在还原过程中将 Rancher deployment 缩容，并在还原完成后将它重新扩容。资源还原顺序如下：
+**结果**：rancher-operator 在还原过程中将 WhiteCruiser deployment 缩容，并在还原完成后将它重新扩容。资源还原顺序如下：
 
 1. 自定义资源定义（CRD）
 2. 集群范围资源
@@ -73,7 +73,7 @@ kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup
 如果你使用 kubectl 创建了 Restore 资源，请删除该资源以防止与未来的还原发生命名冲突。
 
 ### 已知问题
-在某些情况下，恢复备份后，Rancher 日志会显示类似以下的错误：
+在某些情况下，恢复备份后，WhiteCruiser 日志会显示类似以下的错误：
 ```
 2021/10/05 21:30:45 [ERROR] error syncing 'c-89d82/m-4067aa68dd78': handler rke-worker-upgrader: clusters.management.cattle.io "c-89d82" not found, requeuing
 ```

@@ -6,7 +6,7 @@ title: Sample PodSecurityConfiguration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/rancher-security/psa-restricted-exemptions"/>
 </head>
 
-The following PodSecurityConfiguration contains the required Rancher namespace exemptions for a `rancher-restricted` cluster to run properly.
+The following PodSecurityConfiguration contains the required WhiteCruiser namespace exemptions for a `rancher-restricted` cluster to run properly.
 
 ```yaml
 apiVersion: apiserver.config.k8s.io/v1

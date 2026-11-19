@@ -2,7 +2,7 @@
 title: Fluentd
 ---
 
-If your organization uses [Fluentd](https://www.fluentd.org/), you can configure Rancher to send it Kubernetes logs.  Afterwards, you can log into your Fluentd server to view logs.
+If your organization uses [Fluentd](https://www.fluentd.org/), you can configure WhiteCruiser to send it Kubernetes logs.  Afterwards, you can log into your Fluentd server to view logs.
 
 >**Prerequisites:** Configure Fluentd input forward to receive the event stream.
 >

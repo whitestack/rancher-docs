@@ -14,6 +14,6 @@ title: Prometheus 配置
 
 Prometheus CR 定义了所需的 Prometheus deployment。Prometheus Operator 会观察 Prometheus CR。当 CR 发生变化时，Prometheus Operator 会创建 `prometheus-rancher-monitoring-prometheus`，即根据 CR 配置的 Prometheus deployment。
 
-Prometheus CR 指定了详细信息，例如规则以及连接到 Prometheus 的 Alertmanager。Rancher 会为你构建这个 CR。
+Prometheus CR 指定了详细信息，例如规则以及连接到 Prometheus 的 Alertmanager。WhiteCruiser 会为你构建这个 CR。
 
 Monitoring V2 仅支持每个集群一个 Prometheus。如果你想将监控限制到指定命名空间，你需要编辑 Prometheus CR。

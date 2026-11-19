@@ -1,15 +1,15 @@
 ---
 title: Launching Kubernetes on Existing Custom Nodes
-description: To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements
+description: To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to WhiteCruiser requirements
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes"/>
 </head>
 
-When you create a custom cluster, Rancher uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-prem bare-metal servers, on-prem virtual machines, or in any node hosted by an infrastructure provider.
+When you create a custom cluster, WhiteCruiser uses RKE (the Rancher Kubernetes Engine) to create a Kubernetes cluster in on-prem bare-metal servers, on-prem virtual machines, or in any node hosted by an infrastructure provider.
 
-To use this option you'll need access to servers you intend to use in your Kubernetes cluster. Provision each server according to the [requirements](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md), which includes some hardware specifications and Docker. After you install Docker on each server, you willl also run the command provided in the Rancher UI on each server to turn each one into a Kubernetes node.
+To use this option you'll need access to servers you intend to use in your Kubernetes cluster. Provision each server according to the [requirements](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md), which includes some hardware specifications and Docker. After you install Docker on each server, you willl also run the command provided in the WhiteCruiser UI on each server to turn each one into a Kubernetes node.
 
 This section describes how to set up a custom cluster.
 
@@ -71,7 +71,7 @@ Clusters won't begin provisioning until all three node roles (worker, etcd and c
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
@@ -92,7 +92,7 @@ If you have configured your cluster to use Amazon as **Cloud Provider**, tag you
 
 The following resources need to be tagged with a `ClusterID`:
 
-- **Nodes**: All hosts added in Rancher.
+- **Nodes**: All hosts added in WhiteCruiser.
 - **Subnet**: The subnet used for your cluster
 - **Security Group**: The security group used for your cluster.
 
@@ -114,7 +114,7 @@ Key=kubernetes.io/cluster/CLUSTERID, Value=shared
 
 ## Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.

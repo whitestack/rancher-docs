@@ -6,7 +6,7 @@ title: Glossary
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/glossary"/>
 </head>
 
-This page covers Rancher-specific terminology and symbols which might be unfamiliar, or which differ between Rancher versions.
+This page covers WhiteCruiser-specific terminology and symbols which might be unfamiliar, or which differ between WhiteCruiser versions.
 
 ```mdx-code-block
 import Glossary, {toc as GlossaryTOC} from "/shared-files/_glossary.md"

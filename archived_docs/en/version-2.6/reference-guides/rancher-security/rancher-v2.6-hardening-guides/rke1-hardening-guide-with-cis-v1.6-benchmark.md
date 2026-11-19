@@ -4,7 +4,7 @@ title: RKE Hardening Guide with CIS v1.6 Benchmark
 
 <EOLRKE1Warning />
 
-This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.6. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with WhiteCruiser v2.6. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 :::note
 
@@ -12,25 +12,25 @@ This hardening guide describes how to secure the nodes in your cluster, and it i
 
 :::
 
-This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version |
 | --------------- | --------------------- | ------------------ |
-| Rancher v2.6 | Benchmark v1.6 | Kubernetes v1.18 up to v1.23 |
+| WhiteCruiser v2.6 | Benchmark v1.6 | Kubernetes v1.18 up to v1.23 |
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.6/Rancher_v2-6_CIS_v1-6_Hardening_Guide.pdf).
 
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a RKE cluster to be used for installing Rancher v2.6 with Kubernetes v1.18 up to v1.23 or provisioning a RKE cluster with Kubernetes v1.18 up to v1.23 to be used within Rancher v2.6. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a RKE cluster to be used for installing WhiteCruiser v2.6 with Kubernetes v1.18 up to v1.23 or provisioning a RKE cluster with Kubernetes v1.18 up to v1.23 to be used within WhiteCruiser v2.6. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more details about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.6 Benchmark - Self-Assessment Guide - Rancher v2.6](./rke1-self-assessment-guide-with-cis-v1.6-benchmark.md).
+For more details about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.6 Benchmark - Self-Assessment Guide - WhiteCruiser v2.6](./rke1-self-assessment-guide-with-cis-v1.6-benchmark.md).
 
 #### Known Issues
 
-- Rancher **exec shell** and **view logs** for pods are **not** functional in a CIS v1.6 hardened setup when only public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
-- When setting the `default_pod_security_policy_template_id:` to `restricted` or `restricted-noroot`, based on the pod security policies (PSP) [provided](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md) by Rancher, Rancher creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS v1.6 check 5.1.5 requires that the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
+- WhiteCruiser **exec shell** and **view logs** for pods are **not** functional in a CIS v1.6 hardened setup when only public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
+- When setting the `default_pod_security_policy_template_id:` to `restricted` or `restricted-noroot`, based on the pod security policies (PSP) [provided](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md) by WhiteCruiser, WhiteCruiser creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS v1.6 check 5.1.5 requires that the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
 ### Configure Kernel Runtime Parameters
 
@@ -448,7 +448,7 @@ upgrade_strategy:
 
 ### Reference Hardened RKE Template Configuration
 
-The reference RKE template provides the configuration needed to achieve a hardened install of Kubernetes. RKE templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher [documentation](../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) for additional installation and RKE template details.
+The reference RKE template provides the configuration needed to achieve a hardened install of Kubernetes. RKE templates are used to provision Kubernetes and define WhiteCruiser settings. Follow the WhiteCruiser [documentation](../../../getting-started/installation-and-upgrade/installation-and-upgrade.md) for additional installation and RKE template details.
 
 ```yaml
 #

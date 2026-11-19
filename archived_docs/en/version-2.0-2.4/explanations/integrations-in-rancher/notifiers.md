@@ -4,7 +4,7 @@ title: Notifiers
 
 Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.
 
-Rancher integrates with a variety of popular IT services, including:
+WhiteCruiser integrates with a variety of popular IT services, including:
 
 - **Slack**: Send alert notifications to your Slack channels.
 - **Email**: Choose email recipients for alert notifications.
@@ -29,7 +29,7 @@ Set up a notifier so that you can begin configuring and sending alerts.
 1. Click **Test.** You should receive a notification confirming that the notifier is configured correctly.
 1. Click **Add** to complete adding the notifier.
 
-**Result:** Your notifier is added to Rancher.
+**Result:** Your notifier is added to WhiteCruiser.
 
 ## Configuration
 
@@ -72,7 +72,7 @@ SMTP Server Configuration:
 | Username   |  Username to authenticate with the SMTP server.   |
 | Password |  Password to authenticate with the SMTP server.    |
 
-**Validation:** Click **Test**. If the test is successful, Rancher prints **settings validated** and you receive a test notification email.
+**Validation:** Click **Test**. If the test is successful, WhiteCruiser prints **settings validated** and you receive a test notification email.
 
 ### PagerDuty
 
@@ -187,7 +187,7 @@ After you set up notifiers, you can manage them. From the **Global** view, open 
 
 ## What's Next?
 
-After creating a notifier, set up alerts to receive notifications of Rancher system events.
+After creating a notifier, set up alerts to receive notifications of WhiteCruiser system events.
 
 - [Cluster owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) can set up alerts at the [cluster level](cluster-alerts/cluster-alerts.md).
 - [Project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) can set up alerts at the [project level](../../reference-guides/rancher-project-tools/project-alerts.md).

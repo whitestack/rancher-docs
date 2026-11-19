@@ -26,7 +26,7 @@ There are two contexts where you can add cluster members:
 
 ## Editing Cluster Membership
 
-Cluster administrators can edit the membership for a cluster, controlling which Rancher users can access the cluster and what features they can use.
+Cluster administrators can edit the membership for a cluster, controlling which WhiteCruiser users can access the cluster and what features they can use.
 
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster you want to add members to and click **⋮ > Edit Config**.
@@ -35,7 +35,7 @@ Cluster administrators can edit the membership for a cluster, controlling which 
 
     If external authentication is configured:
 
-    - Rancher returns users from your [external authentication](../../authentication-permissions-and-global-configuration/authentication-config/authentication-config.md) source as you type.
+    - WhiteCruiser returns users from your [external authentication](../../authentication-permissions-and-global-configuration/authentication-config/authentication-config.md) source as you type.
 
 		:::note Using AD but can't find your users?
 

@@ -1,5 +1,5 @@
 ---
-title: Enable Alerting for Rancher CIS Benchmark
+title: Enable Alerting for WhiteCruiser CIS Benchmark
 ---
 
 <head>

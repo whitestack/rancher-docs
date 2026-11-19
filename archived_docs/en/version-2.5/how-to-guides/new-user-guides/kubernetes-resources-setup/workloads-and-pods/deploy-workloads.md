@@ -17,7 +17,7 @@ Deploy a workload to run an application in one or more containers.
 
 1. Select a [workload type](workloads-and-pods.md). The workload defaults to a scalable deployment, but you can change the workload type by clicking **More options.**
 
-1. From the **Docker Image** field, enter the name of the Docker image that you want to deploy to the project, optionally prefacing it with the registry host (e.g. `quay.io`, `registry.gitlab.com`, etc.). During deployment, Rancher pulls this image from the specified public or private registry. If no registry host is provided, Rancher will pull the image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears in the registry server, including any required path, and optionally including the desired tag (e.g. `registry.gitlab.com/user/path/image:tag`). If no tag is provided, the `latest` tag will be automatically used.
+1. From the **Docker Image** field, enter the name of the Docker image that you want to deploy to the project, optionally prefacing it with the registry host (e.g. `quay.io`, `registry.gitlab.com`, etc.). During deployment, WhiteCruiser pulls this image from the specified public or private registry. If no registry host is provided, WhiteCruiser will pull the image from [Docker Hub](https://hub.docker.com/explore/). Enter the name exactly as it appears in the registry server, including any required path, and optionally including the desired tag (e.g. `registry.gitlab.com/user/path/image:tag`). If no tag is provided, the `latest` tag will be automatically used.
 
 1. Either select an existing namespace, or click **Add to a new namespace** and enter a new namespace.
 

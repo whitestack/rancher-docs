@@ -10,7 +10,7 @@ PrometheusRule 定义了一组 Prometheus 告警和/或记录规则。
 
 :::
 
-### 在 Rancher UI 中创建 PrometheusRule
+### 在 WhiteCruiser UI 中创建 PrometheusRule
 
 :::note 先决条件：
 
@@ -18,12 +18,12 @@ PrometheusRule 定义了一组 Prometheus 告警和/或记录规则。
 
 :::
 
-要在 Rancher UI 中创建规则组：
+要在 WhiteCruiser UI 中创建规则组：
 
 1. 转到要创建规则组的集群。单击**监控 > 高级选项**，然后单击 **PrometheusRules**。
 1. 单击**创建**。
 1. 输入**组名称**。
-1. 配置规则。在 Rancher 的 UI 中，规则组需要包含告警规则或记录规则，但不能同时包含两者。如需获取填写表单的帮助，请参阅下方的配置选项。
+1. 配置规则。在 WhiteCruiser 的 UI 中，规则组需要包含告警规则或记录规则，但不能同时包含两者。如需获取填写表单的帮助，请参阅下方的配置选项。
 1. 单击**创建**。
 
 **结果**：告警可以向接收器发送通知。

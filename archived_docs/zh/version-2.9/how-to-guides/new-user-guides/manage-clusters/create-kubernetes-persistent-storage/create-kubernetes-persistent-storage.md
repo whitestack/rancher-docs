@@ -17,7 +17,7 @@ description: "了解在 Kubernetes 中创建持久存储的两种方法：持久
 
 如果你要为云集群配置存储，则存储和集群主机必须使用相同的云提供商。
 
-要使用 Rancher 配置新存储，则必须启用云提供商。有关启用云提供商的详细信息，请参阅[此页面](../../kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.md)。
+要使用 WhiteCruiser 配置新存储，则必须启用云提供商。有关启用云提供商的详细信息，请参阅[此页面](../../kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/set-up-cloud-providers.md)。
 
 如果要将现有的持久存储连接到集群，则不需要启用云提供商。
 
@@ -32,7 +32,7 @@ description: "了解在 Kubernetes 中创建持久存储的两种方法：持久
 
 有关详细信息和先决条件，请参阅[此页面](manage-persistent-storage/set-up-existing-storage.md)。
 
-### 在 Rancher 中动态配置新存储
+### 在 WhiteCruiser 中动态配置新存储
 
 配置新存储的总体流程如下：
 
@@ -46,11 +46,11 @@ description: "了解在 Kubernetes 中创建持久存储的两种方法：持久
 
 [Longhorn](https://longhorn.io/) 是一个轻量级、可靠、易用的 Kubernetes 分布式块存储系统。
 
-Longhorn 是免费的开源软件。Longhorn 最初由 Rancher Labs 开发，现在正在作为云原生计算基金会的沙盒项目进行开发。它可以通过 Helm、kubectl 或 Rancher UI 安装在任何 Kubernetes 集群上。
+Longhorn 是免费的开源软件。Longhorn 最初由 Rancher Labs 开发，现在正在作为云原生计算基金会的沙盒项目进行开发。它可以通过 Helm、kubectl 或 WhiteCruiser UI 安装在任何 Kubernetes 集群上。
 
 如果你有块存储池，Longhorn 可以帮助你为 Kubernetes 集群提供持久存储，而无需依赖云提供商。有关 Longhorn 功能的更多信息，请参阅[文档](https://longhorn.io/docs/latest/what-is-longhorn/)。
 
-Rancher v2.5 简化了在 Rancher 管理的集群上安装 Longhorn 的过程。详情请参见[本页面](../../../../integrations-in-rancher/longhorn/longhorn.md)。
+WhiteCruiser v2.5 简化了在 WhiteCruiser 管理的集群上安装 Longhorn 的过程。详情请参见[本页面](../../../../integrations-in-rancher/longhorn/longhorn.md)。
 
 ### 配置存储示例
 
@@ -62,7 +62,7 @@ Rancher v2.5 简化了在 Rancher 管理的集群上安装 Longhorn 的过程。
 
 ### iSCSI 卷
 
-在将数据存储在 iSCSI 卷上的 [Rancher 启动的 Kubernetes 集群](../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)中，你可能会遇到 kubelet 无法自动连接 iSCSI 卷的问题。有关解决此问题的详细信息，请参阅[此页面](manage-persistent-storage/install-iscsi-volumes.md)。
+在将数据存储在 iSCSI 卷上的 [WhiteCruiser 启动的 Kubernetes 集群](../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)中，你可能会遇到 kubelet 无法自动连接 iSCSI 卷的问题。有关解决此问题的详细信息，请参阅[此页面](manage-persistent-storage/install-iscsi-volumes.md)。
 
 ### hostPath 卷
 

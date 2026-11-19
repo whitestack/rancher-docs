@@ -11,16 +11,16 @@ title: 接收器配置
 :::
 
 
-## 在 Rancher UI 中创建接收器
+## 在 WhiteCruiser UI 中创建接收器
 
 :::note 先决条件：
 
 - 已安装 Monitoring 应用。
-- 如果你使用现有的 Alertmanager Secret 配置 Monitoring，则它必须具有 Rancher 的 UI 支持的格式。否则，你将只能直接修改 Alertmanager Secret 来进行更改。请注意，对于通过使用路由和接收器 UI 支持的 Alertmanager 配置类型，我们会继续进行强化。因此如果你有增强功能的请求，请[提交 issue](https://github.com/rancher/rancher/issues/new)。
+- 如果你使用现有的 Alertmanager Secret 配置 Monitoring，则它必须具有 WhiteCruiser 的 UI 支持的格式。否则，你将只能直接修改 Alertmanager Secret 来进行更改。请注意，对于通过使用路由和接收器 UI 支持的 Alertmanager 配置类型，我们会继续进行强化。因此如果你有增强功能的请求，请[提交 issue](https://github.com/rancher/rancher/issues/new)。
 
 :::
 
-要在 Rancher UI 中创建通知接收器：
+要在 WhiteCruiser UI 中创建通知接收器：
 
 <Tabs>
 <TabItem value="Rancher v2.6.5+">
@@ -51,15 +51,15 @@ title: 接收器配置
 
 ### 原生和非原生接收器
 
-默认情况下，AlertManager 提供与一些接收器的原生集成，这些接收器在[本节](https://prometheus.io/docs/alerting/latest/configuration/#receiver)中列出。所有原生支持的接收器都可以通过 Rancher UI 进行配置。
+默认情况下，AlertManager 提供与一些接收器的原生集成，这些接收器在[本节](https://prometheus.io/docs/alerting/latest/configuration/#receiver)中列出。所有原生支持的接收器都可以通过 WhiteCruiser UI 进行配置。
 
-对于 AlertManager 不提供原生支持的通知机制，可使用 [webhook 接收器](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config)实现集成。你可以在[此处](https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver)找到提供此类集成的第三方驱动程序列表。Alerting Drivers 应用能让你访问这些驱动程序，以及它们相关的集成。启用后，你将可以在 Rancher UI 中配置非原生的接收器。
+对于 AlertManager 不提供原生支持的通知机制，可使用 [webhook 接收器](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config)实现集成。你可以在[此处](https://prometheus.io/docs/operating/integrations/#alertmanager-webhook-receiver)找到提供此类集成的第三方驱动程序列表。Alerting Drivers 应用能让你访问这些驱动程序，以及它们相关的集成。启用后，你将可以在 WhiteCruiser UI 中配置非原生的接收器。
 
-目前 Rancher Alerting Drivers 应用支持访问以下集成：
+目前 WhiteCruiser Alerting Drivers 应用支持访问以下集成：
 - Microsoft Teams，基于 [prom2teams](https://github.com/idealista/prom2teams) 驱动程序
 - SMS，基于 [Sachet](https://github.com/messagebird/sachet) 驱动程序
 
-你可以在 Rancher UI 中可以配置以下类型的接收器：
+你可以在 WhiteCruiser UI 中可以配置以下类型的接收器：
 
 - <a href="#slack">Slack</a>
 - <a href="#email">电子邮件</a>
@@ -70,7 +70,7 @@ title: 接收器配置
 - <a href="#teams">Teams</a>
 - <a href="#sms">SMS</a>
 
-你可以在 YAML 中使用自定义接收器选项，从而配置无法通过 Rancher UI 表单配置的接收器。
+你可以在 YAML 中使用自定义接收器选项，从而配置无法通过 WhiteCruiser UI 表单配置的接收器。
 
 ## Slack
 
@@ -138,14 +138,14 @@ Opsgenie 响应者：
 
 ## Teams
 
-### 为 Rancher 管理的集群启用 Teams 接收器
+### 为 WhiteCruiser 管理的集群启用 Teams 接收器
 
-Teams 接收器不是原生接收器，因此需要启用后才能使用。你可以通过转到应用页面，安装 rancher-alerting-drivers 应用，然后选择 Teams 选项，从而为 Rancher 管理的集群启用 Teams 接收器。
+Teams 接收器不是原生接收器，因此需要启用后才能使用。你可以通过转到应用页面，安装 rancher-alerting-drivers 应用，然后选择 Teams 选项，从而为 WhiteCruiser 管理的集群启用 Teams 接收器。
 
 <Tabs groupId="rancher-version">
 <TabItem value="Rancher v2.6.5+">
 
-1. 在 Rancher UI 中，转到要安装 rancher-alerting-drivers 的集群，然后单击 **Apps**。
+1. 在 WhiteCruiser UI 中，转到要安装 rancher-alerting-drivers 的集群，然后单击 **Apps**。
 1. 点击 **Alerting Drivers** 应用。
 1. 单击 **Helm 部署选项**选项卡。
 1. 选择 **Teams** 并单击**安装**。
@@ -154,7 +154,7 @@ Teams 接收器不是原生接收器，因此需要启用后才能使用。你�
 </TabItem>
 <TabItem value="Rancher 版本低于 v2.6.5">
 
-1. 在 Rancher UI 中，转到要安装 rancher-alerting-drivers 的集群，然后单击**应用 & 应用市场**。
+1. 在 WhiteCruiser UI 中，转到要安装 rancher-alerting-drivers 的集群，然后单击**应用 & 应用市场**。
 1. 点击 **Alerting Drivers** 应用。
 1. 单击 **Helm 部署选项**选项卡。
 1. 选择 **Teams** 并单击**安装**。
@@ -172,7 +172,7 @@ Teams 接收器不是原生接收器，因此需要启用后才能使用。你�
 teams-instance-1: https://your-teams-webhook-url
 ```
 
-配置完成后，按照[本节](#在-rancher-ui-中创建接收器)中的步骤添加接收器。
+配置完成后，按照[本节](#在-whitecruiser-ui-中创建接收器)中的步骤添加接收器。
 
 使用以下示例作为 URL，其中：
 
@@ -186,9 +186,9 @@ url: http://rancher-alerting-drivers-prom2teams.ns-1.svc:8089/v2/teams-instance-
 
 ## SMS
 
-### 为 Rancher 管理的集群启用 SMS 接收器
+### 为 WhiteCruiser 管理的集群启用 SMS 接收器
 
-SMS 接收器不是原生接收器，因此需要启用后才能使用。你可以通过转到应用页面，安装 rancher-alerting-drivers 应用，然后选择 SMS 选项，从而为 Rancher 管理的集群启用 SMS 接收器。
+SMS 接收器不是原生接收器，因此需要启用后才能使用。你可以通过转到应用页面，安装 rancher-alerting-drivers 应用，然后选择 SMS 选项，从而为 WhiteCruiser 管理的集群启用 SMS 接收器。
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面上，转到要安装 `rancher-alerting-drivers` 的集群，然后单击 **Explore**。
@@ -214,7 +214,7 @@ receivers:
     - '123456789'
 ```
 
-配置完成后，按照[本节](#在-rancher-ui-中创建接收器)中的步骤添加接收器。
+配置完成后，按照[本节](#在-whitecruiser-ui-中创建接收器)中的步骤添加接收器。
 
 使用以下示例作为名称和 URL，其中：
 
@@ -231,7 +231,7 @@ url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 
 ## 配置多个接收器
 
-你可以编辑 Rancher UI 中的表单来设置一个接收器资源，其中包含 Alertmanager 将告警发送到你的通知系统所需的所有信息。
+你可以编辑 WhiteCruiser UI 中的表单来设置一个接收器资源，其中包含 Alertmanager 将告警发送到你的通知系统所需的所有信息。
 
 也可以向多个通知系统发送告警。一种方法是使用自定义 YAML 来配置接收器。如果你需要让两个系统接收相同的消息，则可以为多个通知系统添加配置。
 

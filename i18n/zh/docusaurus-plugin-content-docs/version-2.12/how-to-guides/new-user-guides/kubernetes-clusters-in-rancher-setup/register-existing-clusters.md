@@ -4,20 +4,20 @@ title: 注册现有集群
 
 集群注册功能取代了导入集群的功能。
 
-Rancher 管理注册集群的范围取决于集群的类型。详情请参见[对注册集群的管理能力](#对注册集群的管理能力)。
+WhiteCruiser 管理注册集群的范围取决于集群的类型。详情请参见[对注册集群的管理能力](#对注册集群的管理能力)。
 
 
 ## 先决条件
 
 ### Kubernetes 节点角色
 
-已注册的 RKE Kubernetes 集群必须具有所有三个节点角色，分别是 etcd、controlplane 和 worker。只有 controlplane 组件的集群无法在 Rancher 中注册。
+已注册的 RKE Kubernetes 集群必须具有所有三个节点角色，分别是 etcd、controlplane 和 worker。只有 controlplane 组件的集群无法在 WhiteCruiser 中注册。
 
 有关 RKE 节点角色的更多信息，请参阅[最佳实践](./checklist-for-production-ready-clusters/checklist-for-production-ready-clusters.md#集群架构)。
 
 ### 权限
 
-要在 Rancher 中注册集群，你必须在该集群中拥有 `cluster-admin` 权限。如果没有，请运行以下命令将权限授予用户：
+要在 WhiteCruiser 中注册集群，你必须在该集群中拥有 `cluster-admin` 权限。如果没有，请运行以下命令将权限授予用户：
 
 ```plain
 kubectl create clusterrolebinding cluster-admin-binding \
@@ -29,7 +29,7 @@ kubectl create clusterrolebinding cluster-admin-binding \
 
 ### EKS、AKS 和 GKE 集群
 
-要成功将这些集群导入 Rancher 或从 Rancher 中配置它们，Elastic Kubernetes Service (EKS)、Azure Kubernetes Service (AKS) 和 Google Kubernetes Engine (GKE) 集群必须至少有一个托管节点组。此外，不支持 GKE Autopilot 集群。有关 GKE 模式之间差异，请参阅[比较 GKE Autopilot 和 Standard](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)。
+要成功将这些集群导入 WhiteCruiser 或从 WhiteCruiser 中配置它们，Elastic Kubernetes Service (EKS)、Azure Kubernetes Service (AKS) 和 Google Kubernetes Engine (GKE) 集群必须至少有一个托管节点组。此外，不支持 GKE Autopilot 集群。有关 GKE 模式之间差异，请参阅[比较 GKE Autopilot 和 Standard](https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison)。
 
 ## 注册集群
 
@@ -37,31 +37,31 @@ kubectl create clusterrolebinding cluster-admin-binding \
 2. 在**集群**页面上，单击**导入集群**。
 3. 选择集群类型。
 4. 使用**成员角色**为集群配置用户授权。点击**添加成员**添加可以访问集群的用户。使用**角色**下拉菜单为每个用户设置权限。
-5. 如果你在 Rancher 中导入一个通用 Kubernetes 集群，请执行以下步骤：<br/>
-   a. 点击**集群选项**下的 **Agent 环境变量**，为 [rancher cluster agent](../launch-kubernetes-with-rancher/about-rancher-agents.md) 设置环境变量。你可以使用键值对设置环境变量。如果 Rancher Agent 需要使用代理与 Rancher Server 通信，则可以使用 Agent 环境变量设置 `HTTP_PROXY`，`HTTPS_PROXY` 和 `NO_PROXY` 环境变量。<br/>
+5. 如果你在 WhiteCruiser 中导入一个通用 Kubernetes 集群，请执行以下步骤：<br/>
+   a. 点击**集群选项**下的 **Agent 环境变量**，为 [rancher cluster agent](../launch-kubernetes-with-rancher/about-rancher-agents.md) 设置环境变量。你可以使用键值对设置环境变量。如果 WhiteCruiser Agent 需要使用代理与 WhiteCruiser Server 通信，则可以使用 Agent 环境变量设置 `HTTP_PROXY`，`HTTPS_PROXY` 和 `NO_PROXY` 环境变量。<br/>
    b. 启用项目网络隔离，确保集群支持 Kubernetes `NetworkPolicy` 资源。用户可以通过**项目网络隔离**选项下的**高级选项**下拉菜单进行操作。
 6. 单击**创建**。
 7. 此处会显示 `cluster-admin` 权限的先决条件（参见上文的**先决条件**），其中包括满足先决条件的示例命令。
-8. 将 `kubectl` 命令复制到剪贴板，并在配置了 kubeconfig 的节点上运行该命令，从而指向要导入的集群。如果你不确定配置是否正确，请在运行 Rancher 显示的命令之前运行 `kubectl get nodes` 进行验证。
-9. 如果你使用自签名证书，你将收到 `certificate signed by unknown authority` 的消息。要解决此验证问题，请将 Rancher 中显示的以 `curl` 开头的命令复制到剪贴板。然后在配置了 kubeconfig 的节点上运行该命令，从而指向要导入的集群。
+8. 将 `kubectl` 命令复制到剪贴板，并在配置了 kubeconfig 的节点上运行该命令，从而指向要导入的集群。如果你不确定配置是否正确，请在运行 WhiteCruiser 显示的命令之前运行 `kubectl get nodes` 进行验证。
+9. 如果你使用自签名证书，你将收到 `certificate signed by unknown authority` 的消息。要解决此验证问题，请将 WhiteCruiser 中显示的以 `curl` 开头的命令复制到剪贴板。然后在配置了 kubeconfig 的节点上运行该命令，从而指向要导入的集群。
 10. 在节点上运行完命令后，单击**完成**。
 
 **结果**：
 
-- 集群已注册并分配了 **Pending** 状态。Rancher 正在部署资源来管理你的集群。
+- 集群已注册并分配了 **Pending** 状态。WhiteCruiser 正在部署资源来管理你的集群。
 - 当集群状态变为 **Active** 后，你可访问集群。
 - **Active** 集群分配了两个项目，分别是 `Default`（包含命名空间 `default`）和 `System`（包含命名空间 `cattle-system`、`ingress-nginx`、`kube-public` 和 `kube-system`）。
 
 
 :::note
 
-无法重新注册当前在 Rancher 中处于 Active 状态的集群。
+无法重新注册当前在 WhiteCruiser 中处于 Active 状态的集群。
 
 :::
 
 ### 使用 Terraform 配置导入的 EKS、AKS 或 GKE 集群
 
-你**仅**需要定义 Rancher 使用 Terraform 导入 EKS、AKS 或 GKE 集群所需的最少字段。请谨记这点，因为 Rancher 会使用用户提供的任何配置覆盖集群的配置。
+你**仅**需要定义 WhiteCruiser 使用 Terraform 导入 EKS、AKS 或 GKE 集群所需的最少字段。请谨记这点，因为 WhiteCruiser 会使用用户提供的任何配置覆盖集群的配置。
 
 :::caution
 
@@ -69,7 +69,7 @@ kubectl create clusterrolebinding cluster-admin-binding \
 
 :::
 
-Rancher 通过 `eks_config_v2` 使用 Terraform 导入 EKS 集群所需的最少配置字段如下：
+WhiteCruiser 通过 `eks_config_v2` 使用 Terraform 导入 EKS 集群所需的最少配置字段如下：
 
 - cloud_credential_id
 - name
@@ -95,7 +95,7 @@ resource "rancher2_cluster" "my-eks-to-import" {
 
 ## 对注册集群的管理能力
 
-Rancher 管理注册集群的范围取决于集群的类型。
+WhiteCruiser 管理注册集群的范围取决于集群的类型。
 
 - [所有已注册集群的功能](#所有已注册集群的功能)
 - [已注册 RKE2 和 K3s 集群的附加功能](#已注册-rke2-和-k3s-集群的附加功能)
@@ -114,14 +114,14 @@ Rancher 管理注册集群的范围取决于集群的类型。
 ### 已注册 RKE2 和 K3s 集群的附加功能
 
 [K3s](https://rancher.com/docs/k3s/latest/en/) 是用于边缘安装的轻量级、完全兼容的 Kubernetes 发行版。
-[RKE2](https://docs.rke2.io) 是 Rancher 用于数据中心和云安装的下一代 Kubernetes 发行版。
+[RKE2](https://docs.rke2.io) 是 WhiteCruiser 用于数据中心和云安装的下一代 Kubernetes 发行版。
 
-RKE2 或 K3s 集群注册到 Rancher 后，Rancher 会识别它。Rancher UI 将开放[所有已注册集群](#所有已注册集群的功能)的功能，以及以下用于编辑和升级集群的功能：
+RKE2 或 K3s 集群注册到 WhiteCruiser 后，WhiteCruiser 会识别它。WhiteCruiser UI 将开放[所有已注册集群](#所有已注册集群的功能)的功能，以及以下用于编辑和升级集群的功能：
 
 - [升级 Kubernetes 版本](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md)的能力
   :::danger
 
-  将集群导入 Rancher 后，你需要使用 Rancher 执行升级。**不**支持在 Rancher 之外升级导入的集群。
+  将集群导入 WhiteCruiser 后，你需要使用 WhiteCruiser 执行升级。**不**支持在 WhiteCruiser 之外升级导入的集群。
 
   :::
 - 配置能同时升级的最大节点数
@@ -129,9 +129,9 @@ RKE2 或 K3s 集群注册到 Rancher 后，Rancher 会识别它。Rancher UI 将
 
 ### 已注册 EKS，AKS 和 GKE 集群的附加功能
 
-Rancher 处理注册的 EKS、AKS 或 GKE 集群的方式与处理在 Rancher 中创建的集群的方式类似。但是，如果你通过 Rancher UI 删除已注册的集群，Rancher 不会销毁这些集群。
+WhiteCruiser 处理注册的 EKS、AKS 或 GKE 集群的方式与处理在 WhiteCruiser 中创建的集群的方式类似。但是，如果你通过 WhiteCruiser UI 删除已注册的集群，WhiteCruiser 不会销毁这些集群。
 
-如果你在 Rancher 中创建 EKS、AKS 或 GKE 集群，然后将其删除，Rancher 会销毁该集群。通过 Rancher 删除已注册的集群时，Rancher Server 会_断开_与集群的连接。该集群仍然存在，只是它不再在 Rancher 中。你仍然可以像注册前一样访问已注销的集群。
+如果你在 WhiteCruiser 中创建 EKS、AKS 或 GKE 集群，然后将其删除，WhiteCruiser 会销毁该集群。通过 WhiteCruiser 删除已注册的集群时，WhiteCruiser Server 会_断开_与集群的连接。该集群仍然存在，只是它不再在 WhiteCruiser 中。你仍然可以像注册前一样访问已注销的集群。
 
 有关可用于管理已注册集群的功能，请参阅[按集群类型划分的集群管理功能](./kubernetes-clusters-in-rancher-setup.md)。
 
@@ -154,7 +154,7 @@ Kubernetes 的最佳实践是在升级之前备份集群。使用外部数据库
 
 ## 已注册 RKE2 和 K3s 集群的 Logging 调试和故障排除
 
-节点由运行在下游集群中的 `system-upgrade-controller` 升级。基于集群配置，Rancher 部署了两个[计划](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan)来升级节点，分别用于升级 control plane 节点和 worker 节点。`system-upgrade-controller` 会按照计划对节点进行升级。
+节点由运行在下游集群中的 `system-upgrade-controller` 升级。基于集群配置，WhiteCruiser 部署了两个[计划](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan)来升级节点，分别用于升级 control plane 节点和 worker 节点。`system-upgrade-controller` 会按照计划对节点进行升级。
 
 要在 `system-upgrade-controller` deployment 上启用调试日志记录，请编辑 [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) 以将调试环境变量设置为 true。然后重启 `system-upgrade-controller` pod。
 
@@ -184,7 +184,7 @@ _从 v2.6.3 起可用_
 
 - 只需要在下游集群的 controlplane 节点上执行这些步骤。你必须单独配置每个 controlplane 节点。
 
-- 以下步骤适用于在 v2.6.x 中注册的 RKE2 和 K3s 集群，以及从先前的 Rancher 版本注册（或导入）并升级到 v2.6.x 的集群。
+- 以下步骤适用于在 v2.6.x 中注册的 RKE2 和 K3s 集群，以及从先前的 WhiteCruiser 版本注册（或导入）并升级到 v2.6.x 的集群。
 
 - 这些步骤将改变下游 RKE2 和 K3s 集群的配置并部署 `kube-api-authn-webhook`。如果 ACE 的未来实现需要更新 `kube-api-authn-webhook`，那么这也必须手动完成。有关此 webhook 的更多信息，请单击[此处](../manage-clusters/access-clusters/authorized-cluster-endpoint.md#关于-kube-api-auth-身份验证-webhook)。
 
@@ -224,7 +224,7 @@ _从 v2.6.3 起可用_
         sudo systemctl stop {rke2,k3s}-server
         sudo systemctl start {rke2,k3s}-server
 
-4. 最后，你**必须**返回 Rancher UI 并在那里编辑导入的集群，从而完成 ACE 启用。单击 **⋮ > 编辑配置**，然后单击**集群配置**下的**网络**选项卡。最后，单击**授权端点**的**启用**按钮。启用 ACE 后，你可以输入完全限定的域名 (FQDN) 和证书信息。
+4. 最后，你**必须**返回 WhiteCruiser UI 并在那里编辑导入的集群，从而完成 ACE 启用。单击 **⋮ > 编辑配置**，然后单击**集群配置**下的**网络**选项卡。最后，单击**授权端点**的**启用**按钮。启用 ACE 后，你可以输入完全限定的域名 (FQDN) 和证书信息。
 
 :::note
 
@@ -234,13 +234,13 @@ _从 v2.6.3 起可用_
 
 ## 注释已注册的集群
 
-Rancher 没有注册的 Kubernetes 集群（除了 RKE2 和 K3s Kubernetes 集群之外）如何预置或配置集群的任何信息。
+WhiteCruiser 没有注册的 Kubernetes 集群（除了 RKE2 和 K3s Kubernetes 集群之外）如何预置或配置集群的任何信息。
 
-因此，当 Rancher 注册集群时，它假设某些功能是默认禁用的。Rancher 这样做是为了避免向用户暴露 UI 选项（即使注册的集群没有启用这些功能）。
+因此，当 WhiteCruiser 注册集群时，它假设某些功能是默认禁用的。WhiteCruiser 这样做是为了避免向用户暴露 UI 选项（即使注册的集群没有启用这些功能）。
 
-但是，如果集群具有某种功能（例如使用 pod 安全策略），那么该集群的用户可能仍希望在 Rancher UI 中为集群选择 pod 安全策略。为此，用户需要手动让 Rancher 知道集群已启用 pod 安全策略。
+但是，如果集群具有某种功能（例如使用 pod 安全策略），那么该集群的用户可能仍希望在 WhiteCruiser UI 中为集群选择 pod 安全策略。为此，用户需要手动让 WhiteCruiser 知道集群已启用 pod 安全策略。
 
-通过对已注册的集群进行注释，你可以向 Rancher 表明集群在 Rancher 之外被赋予了 Ingress 功能或其他功能。以下注释表示 Ingress 功能。请注意，非原始对象的值需要进行 JSON 编码，并转义引号：
+通过对已注册的集群进行注释，你可以向 WhiteCruiser 表明集群在 WhiteCruiser 之外被赋予了 Ingress 功能或其他功能。以下注释表示 Ingress 功能。请注意，非原始对象的值需要进行 JSON 编码，并转义引号：
 
 ```json
 "capabilities.cattle.io/ingressCapabilities": "[
@@ -259,7 +259,7 @@ Rancher 没有注册的 Kubernetes 集群（除了 RKE2 和 K3s Kubernetes 集�
 - `nodePortRange`
 - `taintSupport`
 
-所有功能及其类型定义都可以在 Rancher API 视图中查看，地址是 `[Rancher Server URL]/v3/schemas/capabilities`。
+所有功能及其类型定义都可以在 WhiteCruiser API 视图中查看，地址是 `[Rancher Server URL]/v3/schemas/capabilities`。
 
 要注释已注册的集群：
 
@@ -267,7 +267,7 @@ Rancher 没有注册的 Kubernetes 集群（除了 RKE2 和 K3s Kubernetes 集�
 2. 在**集群**页面上，转到要注释的自定义集群，然后单击 **⋮ > 编辑配置**。
 3. 展开**标签 & 注释**。
 4. 单击**添加注释**。
-5. 使用 `capabilities/<capability>: <value>` 格式向集群添加注释，其中 `value` 是要使用注释覆盖的集群功能。在这种情况下，Rancher 在你添加注释之前都不知道集群的任何功能。
+5. 使用 `capabilities/<capability>: <value>` 格式向集群添加注释，其中 `value` 是要使用注释覆盖的集群功能。在这种情况下，WhiteCruiser 在你添加注释之前都不知道集群的任何功能。
 6. 单击**保存**。
 
-**结果**：注释并不是给集群提供功能，而是告知 Rancher 集群具有这些功能。
+**结果**：注释并不是给集群提供功能，而是告知 WhiteCruiser 集群具有这些功能。

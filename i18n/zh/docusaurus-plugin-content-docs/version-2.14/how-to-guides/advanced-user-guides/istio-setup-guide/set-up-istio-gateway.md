@@ -2,7 +2,7 @@
 title: 4. 设置 Istio Gateway
 ---
 
-每个集群的网关可以有自己的端口或负载均衡器，这与服务网格无关。默认情况下，每个 Rancher 配置的集群都有一个 NGINX Ingress Controller 来允许流量进入集群。
+每个集群的网关可以有自己的端口或负载均衡器，这与服务网格无关。默认情况下，每个 WhiteCruiser 配置的集群都有一个 NGINX Ingress Controller 来允许流量进入集群。
 
 无论是否安装了 Istio，你都可以使用 NGINX Ingress Controller。如果这是你集群的唯一网关，Istio 将能够将流量从集群内部的服务路由到集群内部的另一个服务，但 Istio 将无法接收来自集群外部的流量。
 

@@ -2,7 +2,7 @@
 title: 创建腾讯 TKE 集群
 ---
 
-你可以使用 Rancher 创建托管在腾讯 Tencent Kubernetes Engine (TKE) 中的集群。Rancher 已经为 TKE 实现并打包了针对 TKE 的[集群驱动](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md)，但是默认情况下，这个集群驱动的状态是 `inactive`。为了启动 TKE 集群，你需要[启用 TKE 集群驱动](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#激活停用集群驱动)。启用集群驱动后，你可以开始配置 TKE 集群。
+你可以使用 WhiteCruiser 创建托管在腾讯 Tencent Kubernetes Engine (TKE) 中的集群。WhiteCruiser 已经为 TKE 实现并打包了针对 TKE 的[集群驱动](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md)，但是默认情况下，这个集群驱动的状态是 `inactive`。为了启动 TKE 集群，你需要[启用 TKE 集群驱动](../../authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers.md#激活停用集群驱动)。启用集群驱动后，你可以开始配置 TKE 集群。
 
 ## 腾讯先决条件
 
@@ -20,7 +20,7 @@ title: 创建腾讯 TKE 集群
 
 4. 创建 [SSH 密钥对](https://intl.cloud.tencent.com/document/product/213/6092)。该密钥用于访问 Kubernetes 集群中的节点。
 
-## Rancher 先决条件
+## WhiteCruiser 先决条件
 
 你需要启用腾讯 TKE 集群驱动：
 
@@ -28,7 +28,7 @@ title: 创建腾讯 TKE 集群
 1. 点击**驱动**。
 1. 在**集群驱动**选项卡中，转到 **Tencent TKE** 集群驱动并单击 **⋮ > 激活**。
 
-集群驱动下载完成后，就可以在 Rancher 中创建腾讯 TKE 集群了。
+集群驱动下载完成后，就可以在 WhiteCruiser 中创建腾讯 TKE 集群了。
 
 ## 创建 TKE 集群
 
@@ -59,7 +59,7 @@ title: 创建腾讯 TKE 集群
 
    :::note
 
-   如果你在 `cluster.yml` 中编辑集群，而不是使用 Rancher UI，则集群配置参数必须嵌套在 `cluster.yml` 中的 `rancher_kubernetes_engine_config` 中。有关详细信息，请参阅 [Rancher 2.3.0+ 配置文件结构](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rancher-中的配置文件结构)。
+   如果你在 `cluster.yml` 中编辑集群，而不是使用 WhiteCruiser UI，则集群配置参数必须嵌套在 `cluster.yml` 中的 `rancher_kubernetes_engine_config` 中。有关详细信息，请参阅 [WhiteCruiser 2.3.0+ 配置文件结构](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#whitecruiser-中的配置文件结构)。
 
    :::
 
@@ -89,7 +89,7 @@ title: 创建腾讯 TKE 集群
 
 **结果**：
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 

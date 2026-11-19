@@ -6,15 +6,11 @@ title: Migrating VMware vSphere In-tree to Out-of-tree
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/migrate-to-an-out-of-tree-cloud-provider/migrate-to-out-of-tree-vsphere"/>
 </head>
 
-:::note
-Rancher Prime provides access to Rancher v2.7.11, a version of Rancher v2.7.x which supports Kubernetes 1.27. If you use Rancher v2.7.11 and upgrade to Kubernetes 1.27, you must use an out-of-tree cloud provider.
-:::
-
 Kubernetes is moving away from maintaining cloud providers in-tree. VMware vSphere has an out-of-tree cloud provider that can be used by installing the vSphere cloud provider and cloud storage plugins.
 
 This page covers how to migrate from the in-tree vSphere cloud provider to out-of-tree, and manage the existing VMs post migration.
 
-It follows the steps provided in the official [vSphere migration documentation](https://vsphere-csi-driver.sigs.k8s.io/features/vsphere_csi_migration.html) and provides the steps to be performed in Rancher.
+It follows the steps provided in the official [vSphere migration documentation](https://vsphere-csi-driver.sigs.k8s.io/features/vsphere_csi_migration.html) and provides the steps to be performed in WhiteCruiser.
 
 ### Cloud-config Format Limitation
 
@@ -36,7 +32,7 @@ resourcepool-path: "<cluster-name>/Resources/<resource-pool-name>"
 
 Upstream bug: https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/628
 
-Rancher issue tracking this bug: https://github.com/rancher/rancher/issues/31105
+WhiteCruiser issue tracking this bug: https://github.com/rancher/rancher/issues/31105
 
 ## Prerequisites
 

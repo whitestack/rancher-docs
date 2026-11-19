@@ -6,7 +6,7 @@ title: HTTP Proxy Configuration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/single-node-rancher-in-docker/http-proxy-configuration"/>
 </head>
 
-If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.
+If you operate WhiteCruiser behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide WhiteCruiser information about your proxy. As WhiteCruiser is written in Go, it uses the common proxy environment variables as shown below.
 
 Make sure `NO_PROXY` contains the network addresses, network address ranges and domains that should be excluded from using the proxy.
 
@@ -24,7 +24,7 @@ NO_PROXY must be in uppercase to use network range (CIDR) notation.
 
 ## Docker Installation
 
-Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) are:
+Passing environment variables to the WhiteCruiser container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation](../../getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) are:
 
 - `localhost`
 - `127.0.0.1`
@@ -54,7 +54,7 @@ _New in v2.6.4_
 
 You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections.
 
-In addition to setting the default rules for a proxy server as shown above, you must also add the following rules to provision node driver clusters from a proxied Rancher environment:
+In addition to setting the default rules for a proxy server as shown above, you must also add the following rules to provision node driver clusters from a proxied WhiteCruiser environment:
 
 You will configure your filepath according to your setup, e.g., `/etc/apt/apt.conf.d/proxy.conf`:
 

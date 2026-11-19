@@ -6,14 +6,14 @@ title: Upgrading and Rolling Back Kubernetes
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes"/>
 </head>
 
-Following an upgrade to the latest version of Rancher, downstream Kubernetes clusters can be upgraded to use the latest supported version of Kubernetes.
+Following an upgrade to the latest version of WhiteCruiser, downstream Kubernetes clusters can be upgraded to use the latest supported version of Kubernetes.
 
-Rancher calls RKE (Rancher Kubernetes Engine) as a library when provisioning and editing RKE clusters. For more information on configuring the upgrade strategy for RKE clusters, refer to the [RKE documentation](https://rancher.com/docs/rke/latest/en/).
+WhiteCruiser calls RKE (Rancher Kubernetes Engine) as a library when provisioning and editing RKE clusters. For more information on configuring the upgrade strategy for RKE clusters, refer to the [RKE documentation](https://rancher.com/docs/rke/latest/en/).
 
 
 ## Tested Kubernetes Versions
 
-Before a new version of Rancher is released, it's tested with the latest minor versions of Kubernetes to ensure compatibility. For details on which versions of Kubernetes were tested on each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.6.0/)
+Before a new version of WhiteCruiser is released, it's tested with the latest minor versions of Kubernetes to ensure compatibility.
 
 ## How Upgrades Work
 
@@ -36,8 +36,8 @@ The restore operation will work on a cluster that is not in a healthy or active 
 
 :::note Prerequisites:
 
-- The options below are available for [Rancher-launched Kubernetes clusters](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) and [Registered K3s Kubernetes clusters](../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md#additional-features-for-registered-rke2-and-k3s-clusters).
-- The following options also apply to imported RKE2 clusters that you have registered. If you import a cluster from an external cloud platform but don't register it, you won't be able to upgrade the Kubernetes version from Rancher.
+- The options below are available for [WhiteCruiser-launched Kubernetes clusters](../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md) and [Registered K3s Kubernetes clusters](../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md#additional-features-for-registered-rke2-and-k3s-clusters).
+- The following options also apply to imported RKE2 clusters that you have registered. If you import a cluster from an external cloud platform but don't register it, you won't be able to upgrade the Kubernetes version from WhiteCruiser.
 - Before upgrading Kubernetes, [back up your cluster.](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/backup-restore-and-disaster-recovery.md)
 
 :::
@@ -60,11 +60,11 @@ A cluster can be restored to a backup in which the previous Kubernetes version w
 
 As of RKE v1.1.0, additional upgrade options became available to give you more granular control over the upgrade process. These options can be used to maintain availability of your applications during a cluster upgrade if certain [conditions and requirements](https://rancher.com/docs/rke/latest/en/upgrades/maintaining-availability) are met.
 
-The upgrade strategy can be configured in the Rancher UI, or by editing the `cluster.yml`. More advanced options are available by editing the `cluster.yml`.
+The upgrade strategy can be configured in the WhiteCruiser UI, or by editing the `cluster.yml`. More advanced options are available by editing the `cluster.yml`.
 
-### Configuring the Maximum Unavailable Worker Nodes in the Rancher UI
+### Configuring the Maximum Unavailable Worker Nodes in the WhiteCruiser UI {#configuring-the-maximum-unavailable-worker-nodes-in-the-rancher-ui}
 
-From the Rancher UI, the maximum number of unavailable worker nodes can be configured. During a cluster upgrade, worker nodes will be upgraded in batches of this size.
+From the WhiteCruiser UI, the maximum number of unavailable worker nodes can be configured. During a cluster upgrade, worker nodes will be upgraded in batches of this size.
 
 By default, the maximum number of unavailable worker is defined as 10 percent of all worker nodes. This number can be configured as a percentage or as an integer. When defined as a percentage, the batch size is rounded down to the nearest node, with a minimum of one node.
 
@@ -77,7 +77,7 @@ To change the default number or percentage of worker nodes,
 
 **Result:** The cluster is updated to use the new upgrade strategy.
 
-### Enabling Draining Nodes During Upgrades from the Rancher UI
+### Enabling Draining Nodes During Upgrades from the WhiteCruiser UI {#enabling-draining-nodes-during-upgrades-from-the-rancher-ui}
 
 By default, RKE [cordons](https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration) each node before upgrading it. [Draining](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) is disabled during upgrades by default. If draining is enabled in the cluster configuration, RKE will both cordon and drain the node before it is upgraded.
 
@@ -96,7 +96,7 @@ To enable draining each node during a cluster upgrade,
 
 :::note
 
-There is a [known issue](https://github.com/rancher/rancher/issues/25478) in which the Rancher UI doesn't show the state of etcd and controlplane as drained, even though they are being drained.
+There is a [known issue](https://github.com/rancher/rancher/issues/25478) in which the WhiteCruiser UI doesn't show the state of etcd and controlplane as drained, even though they are being drained.
 
 :::
 
@@ -125,4 +125,4 @@ A failed node could be in many different states:
 - User drains a node while upgrade is in process, so there are no kubelets on the node
 - The upgrade itself failed
 
-If the max unavailable number of nodes is reached during an upgrade, Rancher user clusters will be stuck in updating state and not move forward with upgrading any other control plane nodes. It will continue to evaluate the set of unavailable nodes in case one of the nodes becomes available. If the node cannot be fixed, you must remove the node in order to continue the upgrade.
+If the max unavailable number of nodes is reached during an upgrade, WhiteCruiser user clusters will be stuck in updating state and not move forward with upgrading any other control plane nodes. It will continue to evaluate the set of unavailable nodes in case one of the nodes becomes available. If the node cannot be fixed, you must remove the node in order to continue the upgrade.

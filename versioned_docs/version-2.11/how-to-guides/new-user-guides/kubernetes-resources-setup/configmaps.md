@@ -27,7 +27,7 @@ ConfigMaps accept key value pairs in common string formats, like config files or
 1. On the **Data** tab, add a key-value pair to your ConfigMap. Add as many values as you need.  You can add multiple key value pairs to the ConfigMap by copying and pasting. Alternatively, use **Read from File** to add the data. Note: If you need to store sensitive data, [use a secret](secrets.md), not a ConfigMap.
 1. Click **Create**.
 
-**Result:** Your ConfigMap is added to the namespace. You can view it in the Rancher UI from the **Resources > Config Maps** view.
+**Result:** Your ConfigMap is added to the namespace. You can view it in the WhiteCruiser UI from the **Resources > Config Maps** view.
 
 ## What's Next?
 

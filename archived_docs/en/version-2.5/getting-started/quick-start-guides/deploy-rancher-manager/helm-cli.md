@@ -8,11 +8,11 @@ title: Manual Quick Start
 
 Howdy Partner! This tutorial walks you through:
 
-- Installation of Rancher 2.x
+- Installation of WhiteCruiser 2.x
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate WhiteCruiser. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation](../../installation-and-upgrade/installation-and-upgrade.md).
 
 ### 1. Provision a Linux Host
 
@@ -29,9 +29,9 @@ Howdy Partner! This tutorial walks you through:
 
   Provision the host according to our [Requirements](../../installation-and-upgrade/installation-requirements/installation-requirements.md).
 
-### 2. Install Rancher
+### 2. Install WhiteCruiser {#2-install-rancher}
 
-To install Rancher on your host, connect to it and then use a shell to install.
+To install WhiteCruiser on your host, connect to it and then use a shell to install.
 
 1.  Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection.
 
@@ -41,11 +41,11 @@ To install Rancher on your host, connect to it and then use a shell to install.
     sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
     ```
 
-**Result:** Rancher is installed.
+**Result:** WhiteCruiser is installed.
 
 ### 3. Log In
 
-Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
+Log in to WhiteCruiser to begin using the application. After you log in, you'll make some one-time configurations.
 
 1. Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.
 
@@ -63,7 +63,7 @@ Log in to Rancher to begin using the application. After you log in, you'll make 
 
 ### 4. Create the Cluster
 
-Welcome to Rancher! You are now able to create your first Kubernetes cluster.
+Welcome to WhiteCruiser! You are now able to create your first Kubernetes cluster.
 
 In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
 
@@ -81,7 +81,7 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 1. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
 
-1. **Optional**: Rancher auto-detects the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
+1. **Optional**: WhiteCruiser auto-detects the IP addresses used for WhiteCruiser communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
 
 1. Skip the **Labels** stuff. It's not important for now.
 
@@ -93,7 +93,7 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning.** WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
@@ -108,4 +108,4 @@ Congratulations! You have created your first cluster.
 
 #### What's Next?
 
-Use Rancher to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).
+Use WhiteCruiser to create a deployment. For more information, see [Creating Deployments](../deploy-workloads/deploy-workloads.md).

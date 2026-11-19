@@ -8,14 +8,14 @@ title: TLS Settings
 
 Changing the default TLS settings depends on the chosen installation method.
 
-## Running Rancher in a highly available Kubernetes cluster
+## Running WhiteCruiser in a highly available Kubernetes cluster {#running-rancher-in-a-highly-available-kubernetes-cluster}
 
-When you install Rancher inside of a Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. The possible TLS settings depend on the used ingress controller:
+When you install WhiteCruiser inside of a Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. The possible TLS settings depend on the used ingress controller:
 
 * nginx-ingress-controller (default for RKE1 and RKE2): [Default TLS Version and Ciphers](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#default-tls-version-and-ciphers).
 * traefik (default for K3s): [TLS Options](https://doc.traefik.io/traefik/https/tls/#tls-options).
 
-## Running Rancher in a single Docker container
+## Running WhiteCruiser in a single Docker container {#running-rancher-in-a-single-docker-container}
 
 The default TLS configuration only accepts TLS 1.2 and secure TLS cipher suites. You can change this by setting the following environment variables:
 

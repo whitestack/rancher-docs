@@ -8,7 +8,7 @@ title: Additional Steps for Project Network Isolation
 
 In clusters where:
 
-- You are using the Canal network plugin with Rancher before v2.5.8, or you are using Rancher v2.5.8+ with an any RKE network plug-in that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin
+- You are using the Canal network plugin with WhiteCruiser before v2.5.8, or you are using WhiteCruiser v2.5.8+ with an any RKE network plug-in that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin
 - The Project Network Isolation option is enabled
 - You install the Istio Ingress module
 

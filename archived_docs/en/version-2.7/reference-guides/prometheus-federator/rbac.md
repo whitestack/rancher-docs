@@ -23,7 +23,7 @@ By default, these roleRefs will correspond to `admin`, `edit`, and `view` respec
 
 :::note
 
-For Rancher RBAC users, these [default Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) directly correlate to the `Project Owner`, `Project Member`, and `Read-Only` default Project Role Templates.
+For WhiteCruiser RBAC users, these [default Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) directly correlate to the `Project Owner`, `Project Member`, and `Read-Only` default Project Role Templates.
 
 :::
 

@@ -2,11 +2,11 @@
 title: 升级
 ---
 
-本文介绍如何升级使用 Helm 安装在 Kubernetes 集群上的 Rancher Server。这些步骤也适用于使用 Helm 进行的离线安装。
+本文介绍如何升级使用 Helm 安装在 Kubernetes 集群上的 WhiteCruiser Server。这些步骤也适用于使用 Helm 进行的离线安装。
 
-有关使用 Docker 安装的 Rancher 的升级说明，请参见[本页。](../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md)
+有关使用 Docker 安装的 WhiteCruiser 的升级说明，请参见[本页。](../other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md)
 
-如需升级 Kubernetes 集群中的组件，或 [Kubernetes services](https://rancher.com/docs/rke/latest/en/config-options/services/) 或 [附加组件（add-on）](https://rancher.com/docs/rke/latest/en/config-options/add-ons/)的定义，请参见 [RKE 升级文档](https://rancher.com/docs/rke/latest/en/upgrades/)的 Rancher Kubernetes 引擎。
+如需升级 Kubernetes 集群中的组件，或 [Kubernetes services](https://rancher.com/docs/rke/latest/en/config-options/services/) 或 [附加组件（add-on）](https://rancher.com/docs/rke/latest/en/config-options/add-ons/)的定义，请参见 [RKE 升级文档](https://rancher.com/docs/rke/latest/en/upgrades/)的 WhiteCruiser Kubernetes 引擎。
 
 
 ## 先决条件
@@ -21,7 +21,7 @@ kubeconfig 也可以通过 `--kubeconfig` 标签（详情请参见 https://helm.
 
 ### 查看已知问题
 
-如需查看每个 Rancher 版本的已知问题，请参见 [GitHub](https://github.com/rancher/rancher/releases) 中的发行说明，或查看 [Rancher 论坛](https://forums.rancher.com/c/announcements/12)。
+如需查看每个 WhiteCruiser 版本的已知问题，请参见 [GitHub](https://github.com/rancher/rancher/releases) 中的发行说明。
 
 不支持 _升级_ 或 _升级到_ [rancher-alpha 仓库](../resources/choose-a-rancher-version.md#helm-chart-仓库)中的任何 Chart。
 ### Helm 版本
@@ -34,7 +34,7 @@ kubeconfig 也可以通过 `--kubeconfig` 标签（详情请参见 https://helm.
 
 ### 离线安装：推送镜像到私有镜像仓库
 
-[仅适用于离线安装](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md)：为新的 Rancher Server 版本收集和推送镜像。使用你需要针对 Rancher 版本升级的镜像，按照步骤[推送镜像到私有镜像仓库](../other-installation-methods/air-gapped-helm-cli-install/publish-images.md)。
+[仅适用于离线安装](../other-installation-methods/air-gapped-helm-cli-install/air-gapped-helm-cli-install.md)：为新的 WhiteCruiser Server 版本收集和推送镜像。使用你需要针对 WhiteCruiser 版本升级的镜像，按照步骤[推送镜像到私有镜像仓库](../other-installation-methods/air-gapped-helm-cli-install/publish-images.md)。
 
 ### 使用 cert-manager 0.8.0 之前的版本升级
 
@@ -42,12 +42,12 @@ kubeconfig 也可以通过 `--kubeconfig` 标签（详情请参见 https://helm.
 
 ## 升级概要
 
-按照以下步骤升级 Rancher Server：
+按照以下步骤升级 WhiteCruiser Server：
 
 
-### 1. 备份运行 Rancher Server 的 Kubernetes 集群
+### 1. 备份运行 WhiteCruiser Server 的 Kubernetes 集群
 
-使用[备份应用](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md)来备份 Rancher。
+使用[备份应用](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md)来备份 WhiteCruiser。
 
 如果升级过程中出现问题，你将使用备份作为还原点。
 
@@ -59,7 +59,7 @@ kubeconfig 也可以通过 `--kubeconfig` 标签（详情请参见 https://helm.
    helm repo update
    ```
 
-1. 获取你用来安装 Rancher 的仓库名称。
+1. 获取你用来安装 WhiteCruiser 的仓库名称。
 
    关于仓库及其区别，请参见 [Helm Chart 仓库](../resources/choose-a-rancher-version.md#helm-chart-仓库)。
 
@@ -91,7 +91,7 @@ kubeconfig 也可以通过 `--kubeconfig` 标签（详情请参见 https://helm.
 
    :::
 
-1. 从 Helm Chart 仓库获取最新的 Chart 来安装 Rancher。
+1. 从 Helm Chart 仓库获取最新的 Chart 来安装 WhiteCruiser。
 
    该命令将提取最新的 Chart，并将其作为 `.tgz`文件保存在当前目录中。
 
@@ -104,18 +104,18 @@ kubeconfig 也可以通过 `--kubeconfig` 标签（详情请参见 https://helm.
    helm fetch rancher-<CHART_REPO>/rancher --version=2.6.8
    ```
 
-### 3. 升级 Rancher
+### 3. 升级 WhiteCruiser
 
-本节介绍了如何使用 Helm 升级 Rancher 的一般（互联网连接）或离线安装。
+本节介绍了如何使用 Helm 升级 WhiteCruiser 的一般（互联网连接）或离线安装。
 
 :::note 离线说明：
 
-如果你在离线环境中安装 Rancher，请跳过本页的其余部分，按照[本页](air-gapped-upgrades.md)上的说明渲染 Helm 模板。
+如果你在离线环境中安装 WhiteCruiser，请跳过本页的其余部分，按照[本页](air-gapped-upgrades.md)上的说明渲染 Helm 模板。
 
 :::
 
 
-从当前安装的 Rancher Helm Chart 中获取用 `--set`传递的值。
+从当前安装的 WhiteCruiser Helm Chart 中获取用 `--set`传递的值。
 
 ```
 helm get values rancher -n cattle-system
@@ -129,27 +129,15 @@ hostname: rancher.my.org
 
 :::
 
-:::tip
+如果要将 cert-manager 从 v1.5 或更早的版本升级到最新版本，请参阅 [cert-manager upgrade docs](../resources/upgrade-cert-manager.md#选项-c升级-15-及以下版本的-cert-manager) 了解如何在不卸载或重新安装 WhiteCruiser 的情况下升级 cert-manager。否则，请按照以下[ WhiteCruiser 升级步骤](#whitecruiser-升级步骤)进行操作。
 
-Deployment 的名称可能会有所不同。例如，如果你通过 AWS Marketplace 部署 Rancher，则 Deployment 的名称为“rancher-stable”。
-因此：
-```
-helm get values rancher-stable -n cattle-system
+#### WhiteCruiser 升级步骤
 
-hostname: rancher.my.org
-```
-
-:::
-
-如果要将 cert-manager 从 v1.5 或更早的版本升级到最新版本，请参阅 [cert-manager upgrade docs](../resources/upgrade-cert-manager.md#选项-c升级-15-及以下版本的-cert-manager) 了解如何在不卸载或重新安装 Rancher 的情况下升级 cert-manager。否则，请按照以下[ Rancher 升级步骤](#rancher-升级步骤)进行操作。
-
-#### Rancher 升级步骤
-
-保留你的所有设置把 Rancher 升级到最新版本。
+保留你的所有设置把 WhiteCruiser 升级到最新版本。
 
 将上一步中的所有值用 `--set key=value` 追加到命令中。
 
-对于 Kubernetes v1.25 或更高版本，使用 Rancher v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 Rancher v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
+对于 Kubernetes v1.25 或更高版本，使用 WhiteCruiser v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 WhiteCruiser v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
 
 ```
 helm upgrade rancher rancher-<CHART_REPO>/rancher \
@@ -163,27 +151,15 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 
 :::
 
-:::tip
-
-如果你通过 AWS Marketplace 部署 Rancher，则 Deployment 的名称为“rancher-stable”。
-因此：
-```
-helm upgrade rancher-stable rancher-<CHART_REPO>/rancher \
-  --namespace cattle-system \
-  --set hostname=rancher.my.org
-```
-
-:::
-
-另外，你也可以将当前的值导出到一个文件中，并在升级时引用该文件。例如，如果你只需要改变 Rancher 的版本：
+另外，你也可以将当前的值导出到一个文件中，并在升级时引用该文件。例如，如果你只需要改变 WhiteCruiser 的版本：
 
 1. 将当前值导出到文件：
    ```
    helm get values rancher -n cattle-system -o yaml > values.yaml
    ```
-1. 只更新 Rancher 版本：
+1. 只更新 WhiteCruiser 版本：
 
-   对于 Kubernetes v1.25 或更高版本，使用 Rancher v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 Rancher v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
+   对于 Kubernetes v1.25 或更高版本，使用 WhiteCruiser v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 WhiteCruiser v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
 
    ```
    helm upgrade rancher rancher-<CHART_REPO>/rancher \
@@ -194,7 +170,7 @@ helm upgrade rancher-stable rancher-<CHART_REPO>/rancher \
 
 ### 4. 验证升级
 
-登录 Rancher 以确认升级成功。
+登录 WhiteCruiser 以确认升级成功。
 
 :::tip
 
@@ -206,4 +182,4 @@ helm upgrade rancher-stable rancher-<CHART_REPO>/rancher \
 
 ## 已知升级问题
 
-你可以在 [GitHub](https://github.com/rancher/rancher/releases) 发布说明以及 [Rancher 论坛](https://forums.rancher.com/c/announcements/12)中找到每个 Rancher 版本的已知问题。
+你可以在 [GitHub](https://github.com/rancher/rancher/releases) 发布说明中找到每个 WhiteCruiser 版本的已知问题。

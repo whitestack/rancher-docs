@@ -6,7 +6,7 @@ title: GKE 集群配置参考
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration"/>
 </head>
 
-## Rancher 2.6 变更
+## WhiteCruiser 2.6 变更
 
 - 支持额外的配置选项：
    - 项目网络隔离
@@ -107,7 +107,7 @@ _可变：否_
 
 :::caution
 
-私有集群需要在 Rancher 之外进行额外的规划和配置。请参阅[私有集群指南](gke-private-clusters.md)。
+私有集群需要在 WhiteCruiser 之外进行额外的规划和配置。请参阅[私有集群指南](gke-private-clusters.md)。
 
 :::
 
@@ -117,13 +117,13 @@ _可变：否_
 
 :::caution
 
-私有集群需要在 Rancher 之外进行额外的规划和配置。请参阅[私有集群指南](gke-private-clusters.md)。
+私有集群需要在 WhiteCruiser 之外进行额外的规划和配置。请参阅[私有集群指南](gke-private-clusters.md)。
 
 :::
 
 _可变：否_
 
-锁定对 controlplane 端点的外部访问。仅当**私有集群**也被选中时可用。如果选中，并且 Rancher 无法直接访问集群所在的虚拟私有云网络，Rancher 将提供在集群上运行的注册命令，以使 Rancher 能够连接到集群。
+锁定对 controlplane 端点的外部访问。仅当**私有集群**也被选中时可用。如果选中，并且 WhiteCruiser 无法直接访问集群所在的虚拟私有云网络，WhiteCruiser 将提供在集群上运行的注册命令，以使 WhiteCruiser 能够连接到集群。
 
 ### 主 IPV4 CIDR 块
 
@@ -135,7 +135,7 @@ controlplane VPC 的 IP 范围。
 
 _可变：是_
 
-启用 controlplane 授权网络，以阻止不受信任的非 GCP 源 IP 通过 HTTPS 访问 Kubernetes master。如果选择，则可以添加额外的授权网络。如果集群是使用公共端点创建的，则此选项可用于将公共端点的访问锁定到特定网络（例如运行 Rancher 服务的网络）。如果集群只有一个私有端点，则需要此设置。
+启用 controlplane 授权网络，以阻止不受信任的非 GCP 源 IP 通过 HTTPS 访问 Kubernetes master。如果选择，则可以添加额外的授权网络。如果集群是使用公共端点创建的，则此选项可用于将公共端点的访问锁定到特定网络（例如运行 WhiteCruiser 服务的网络）。如果集群只有一个私有端点，则需要此设置。
 
 ## 其他选项
 
@@ -204,7 +204,7 @@ _可变：是_
 
 :::note
 
-默认选项是 “Container-Optimized OS with Docker”。GCP Container-Optimized OS 上的只读文件系统与 Rancher 中的 [legacy logging](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/cluster-logging.md) 实现不兼容。如果你需要使用旧版日志管理功能，请选择 “Ubuntu with Docker” 或 “Ubuntu with Containerd”。[current logging feature](../../../../integrations-in-rancher/logging/logging.md) 与 Container-Optimized OS 镜像兼容。
+默认选项是 “Container-Optimized OS with Docker”。GCP Container-Optimized OS 上的只读文件系统与 WhiteCruiser 中的 [legacy logging](https://github.com/rancher/rancher-docs/tree/main/archived_docs/en/version-2.0-2.4/pages-for-subheaders/cluster-logging.md) 实现不兼容。如果你需要使用旧版日志管理功能，请选择 “Ubuntu with Docker” 或 “Ubuntu with Containerd”。[current logging feature](../../../../integrations-in-rancher/logging/logging.md) 与 Container-Optimized OS 镜像兼容。
 
 :::
 
@@ -250,7 +250,7 @@ _可变：否_
 
 你可以将标签应用到节点池，这会将标签应用到池中的所有节点。
 
-无效标签会阻止升级，或阻止 Rancher 启动。有关标签语法的详细信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
+无效标签会阻止升级，或阻止 WhiteCruiser 启动。有关标签语法的详细信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
 
 ### 网络标签
 

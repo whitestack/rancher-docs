@@ -2,7 +2,7 @@
 title: Logging 的 RBAC
 ---
 
-Rancher Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`。
+WhiteCruiser Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`。
 
 - `logging-admin` 允许用户完全访问命名空间的 `Flow` 和 `Output`。
 - `logging-view` 允许用户*查看*命名空间的 `Flow` 和 `Output`，以及 `ClusterFlow` 和 `ClusterOutput`。
@@ -13,7 +13,7 @@ Rancher Logging 有两个角色，分别是 `logging-admin` 和 `logging-view`�
 
 :::
 
-在 Rancher 中，集群管理员角色是唯一可以完全访问所有 `rancher-logging` 资源的角色。集群成员无法编辑或读取任何 Logging 资源。项目所有者和成员具有以下权限：
+在 WhiteCruiser 中，集群管理员角色是唯一可以完全访问所有 `rancher-logging` 资源的角色。集群成员无法编辑或读取任何 Logging 资源。项目所有者和成员具有以下权限：
 
 | 项目所有者 | 项目成员 |
 --- | ---

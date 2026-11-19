@@ -41,7 +41,7 @@ You can check the default firewall rules with this command:
 sudo iptables --list
 ```
 
-This section describes how to use `firewalld` to apply the [firewall port rules](../../installation-requirements/port-requirements.md) for nodes in a high-availability Rancher server cluster.
+This section describes how to use `firewalld` to apply the [firewall port rules](../../installation-requirements/port-requirements.md) for nodes in a high-availability WhiteCruiser server cluster.
 
 ## Prerequisite
 
@@ -55,7 +55,7 @@ systemctl enable firewalld
 
 ## Applying Firewall Port Rules
 
-In the Rancher high-availability installation instructions, the Rancher server is set up on three nodes that have all three Kubernetes roles: etcd, controlplane, and worker. If your Rancher server nodes have all three roles, run the following commands on each node:
+In the WhiteCruiser high-availability installation instructions, the WhiteCruiser server is set up on three nodes that have all three Kubernetes roles: etcd, controlplane, and worker. If your WhiteCruiser server nodes have all three roles, run the following commands on each node:
 
 ```
 firewall-cmd --permanent --add-port=22/tcp
@@ -72,7 +72,7 @@ firewall-cmd --permanent --add-port=10254/tcp
 firewall-cmd --permanent --add-port=30000-32767/tcp
 firewall-cmd --permanent --add-port=30000-32767/udp
 ```
-If your Rancher server nodes have separate roles, use the following commands based on the role of the node:
+If your WhiteCruiser server nodes have separate roles, use the following commands based on the role of the node:
 
 ```
 # For etcd nodes, run the following commands:
@@ -114,4 +114,4 @@ After the `firewall-cmd` commands have been run on a node, use the following com
 firewall-cmd --reload
 ```
 
-**Result:** The firewall is updated so that Helm can communicate with the Rancher server nodes.
+**Result:** The firewall is updated so that Helm can communicate with the WhiteCruiser server nodes.

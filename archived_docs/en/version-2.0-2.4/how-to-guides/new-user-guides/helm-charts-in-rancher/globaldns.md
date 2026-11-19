@@ -4,7 +4,7 @@ title: Global DNS
 
 _Available as of v2.2.0_
 
-Rancher's Global DNS feature provides a way to program an external DNS provider to route traffic to your Kubernetes applications. Since the DNS programming supports spanning applications across different Kubernetes clusters, Global DNS is configured at a global level. An application can become highly available as it allows you to have one application run on different Kubernetes clusters. If one of your Kubernetes clusters goes down, the application would still be accessible.
+WhiteCruiser's Global DNS feature provides a way to program an external DNS provider to route traffic to your Kubernetes applications. Since the DNS programming supports spanning applications across different Kubernetes clusters, Global DNS is configured at a global level. An application can become highly available as it allows you to have one application run on different Kubernetes clusters. If one of your Kubernetes clusters goes down, the application would still be accessible.
 
 > **Note:** Global DNS is only available in [Kubernetes installations](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md) with the `local` cluster enabled.
 
@@ -25,7 +25,7 @@ Rancher's Global DNS feature provides a way to program an external DNS provider 
 
 Before adding in Global DNS entries, you will need to configure access to an external provider.
 
-The following table lists the first version of Rancher each provider debuted.
+The following table lists the first version of WhiteCruiser each provider debuted.
 
 | DNS Provider | Available as of  |
 | --- | --- |
@@ -104,7 +104,7 @@ Permission checks are relaxed for removing target projects in order to support s
 | Field | Explanation |
 |---------|---------------------|
 | Name |  Enter a **Name** for the provider.   |
-| Root Domain |  (Optional) Enter the **Root Domain** of the hosted zone on AWS Route53. If this is not provided, Rancher's Global DNS Provider will work with all hosted zones that the AWS keys can access.   |
+| Root Domain |  (Optional) Enter the **Root Domain** of the hosted zone on AWS Route53. If this is not provided, WhiteCruiser's Global DNS Provider will work with all hosted zones that the AWS keys can access.   |
 | Credential Path |  The [AWS credential path.](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-where)   |
 | Role ARN |    An [Amazon Resource Name.](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)   |
 | Region |   An [AWS region.](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html#Concepts.RegionsAndAvailabilityZones.Regions)     |
@@ -118,7 +118,7 @@ Permission checks are relaxed for removing target projects in order to support s
 | Field | Explanation |
 |---------|---------------------|
 | Name |  Enter a **Name** for the provider.   |
-| Root Domain | Optional: Enter the **Root Domain**. In case this is not provided, Rancher's Global DNS Provider will work with all domains that the keys can access.     |
+| Root Domain | Optional: Enter the **Root Domain**. In case this is not provided, WhiteCruiser's Global DNS Provider will work with all domains that the keys can access.     |
 | Proxy Setting |  When set to yes, the global DNS entry that gets created for the provider has proxy settings on.    |
 | API Email |   Enter the CloudFlare **API Email**.     |
 | API Key |     Enter the CloudFlare **API Key**.    |
@@ -134,7 +134,7 @@ Permission checks are relaxed for removing target projects in order to support s
 | Field | Explanation |
 |---------|---------------------|
 | Name |  Enter a **Name** for the provider.   |
-| Root Domain | Optional: Enter the **Root Domain**. In case this is not provided, Rancher's Global DNS Provider will work with all domains that the keys can access. |
+| Root Domain | Optional: Enter the **Root Domain**. In case this is not provided, WhiteCruiser's Global DNS Provider will work with all domains that the keys can access. |
 | Access Key | Enter the **Access Key**. |
 | Secret Key | Enter the **Secret Key**. |
 | Member Access | Search for any users that you want to have the ability to use this provider. By adding this user, they will also be able to manage the Global DNS Provider entry. |

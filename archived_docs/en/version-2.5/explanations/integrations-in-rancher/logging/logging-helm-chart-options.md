@@ -49,9 +49,9 @@ Then, when installing the logging application, configure the chart to be SELinux
 
 ## Additional Logging Sources
 
-By default, Rancher collects logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) for all cluster types.
+By default, WhiteCruiser collects logs for [control plane components](https://kubernetes.io/docs/concepts/overview/components/#control-plane-components) and [node components](https://kubernetes.io/docs/concepts/overview/components/#node-components) for all cluster types.
 
-In some cases, Rancher may be able to collect additional logs.
+In some cases, WhiteCruiser may be able to collect additional logs.
 
 The following table summarizes the sources where additional logs may be collected for each node types:
 
@@ -66,6 +66,6 @@ The following table summarizes the sources where additional logs may be collecte
 
 To enable hosted Kubernetes providers as additional logging sources, go to **Cluster Explorer > Logging > Chart Options** and select the **Enable enhanced cloud provider logging** option.
 
-When enabled, Rancher collects all additional node and control plane logs the provider has made available, which may vary between providers
+When enabled, WhiteCruiser collects all additional node and control plane logs the provider has made available, which may vary between providers
 
 If you're already using a cloud provider's own logging solution such as AWS CloudWatch or Google Cloud operations suite (formerly Stackdriver), it is not necessary to enable this option as the native solution will have unrestricted access to all logs.

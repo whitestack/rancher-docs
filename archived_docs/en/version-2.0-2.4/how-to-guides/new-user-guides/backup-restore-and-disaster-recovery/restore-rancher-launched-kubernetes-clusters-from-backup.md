@@ -6,8 +6,8 @@ title: Restoring Backups—Kubernetes installs
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup"/>
 </head>
 
-This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster.
-This will restore the Kubernetes configuration and the Rancher database and state.
+This procedure describes how to use RKE to restore a snapshot of the WhiteCruiser Kubernetes cluster.
+This will restore the Kubernetes configuration and the WhiteCruiser database and state.
 
 > **Note:** This document covers clusters set up with RKE >= v0.2.x, for older RKE versions refer to the [RKE Documentation](https://rancher.com/docs/rke/latest/en/etcd-snapshots/restoring-from-backup).
 
@@ -16,9 +16,9 @@ This will restore the Kubernetes configuration and the Rancher database and stat
 
 It is advised that you run the restore from your local host or a jump box/bastion where your cluster yaml, rke statefile, and kubeconfig are stored.  You will need [RKE](https://rancher.com/docs/rke/latest/en/installation/) and [kubectl](../../../faq/install-and-configure-kubectl.md) CLI utilities installed locally.
 
-Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  We recommend that you start with fresh nodes and a clean state. For clarification on the requirements, review the [Installation Requirements](https://rancher.com/docs/rancher/v2.0-v2.4/en/installation/requirements/).
+Prepare by creating 3 new nodes to be the target for the restored WhiteCruiser instance.  We recommend that you start with fresh nodes and a clean state. For clarification on the requirements, review the [Installation Requirements](https://rancher.com/docs/rancher/v2.0-v2.4/en/installation/requirements/).
 
-Alternatively you can re-use the existing nodes after clearing Kubernetes and Rancher configurations. This will destroy the data on these nodes. See [Node Cleanup](../../advanced-user-guides/manage-clusters/clean-cluster-nodes.md) for the procedure.
+Alternatively you can re-use the existing nodes after clearing Kubernetes and WhiteCruiser configurations. This will destroy the data on these nodes. See [Node Cleanup](../../advanced-user-guides/manage-clusters/clean-cluster-nodes.md) for the procedure.
 
 You must restore each of your etcd nodes to the same snapshot. Copy the snapshot you're using from one of your nodes to the others before running the `etcd snapshot-restore` command.
 
@@ -100,7 +100,7 @@ Once RKE completes it will have created a credentials file in the local director
 
 Wait for the pods running in `kube-system`, `ingress-nginx` and the `rancher` pod in `cattle-system` to return to the `Running` state.
 
-> **Note:** `cattle-cluster-agent` and `cattle-node-agent` pods will be in an `Error` or `CrashLoopBackOff` state until Rancher server is up and the DNS/Load Balancer have been pointed at the new cluster.
+> **Note:** `cattle-cluster-agent` and `cattle-node-agent` pods will be in an `Error` or `CrashLoopBackOff` state until WhiteCruiser server is up and the DNS/Load Balancer have been pointed at the new cluster.
 
 ```
 kubectl get pods --all-namespaces
@@ -121,5 +121,5 @@ kube-system     tiller-deploy-56c4cf647b-j4whh          1/1       Running   1   
 
 #### Finishing Up
 
-Rancher should now be running and available to manage your Kubernetes clusters.
+WhiteCruiser should now be running and available to manage your Kubernetes clusters.
 > **IMPORTANT:** Remember to save your updated RKE config (`rancher-cluster.yml`) state file (`rancher-cluster.rkestate`) and `kubectl` credentials (`kube_config_rancher-cluster.yml`) files in a safe place for future maintenance for example in a version control system.

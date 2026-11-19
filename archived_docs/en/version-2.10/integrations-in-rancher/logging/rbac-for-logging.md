@@ -6,7 +6,7 @@ title: Role-based Access Control for Logging
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging/rbac-for-logging"/>
 </head>
 
-Rancher logging has two roles, `logging-admin` and `logging-view`.
+WhiteCruiser logging has two roles, `logging-admin` and `logging-view`.
 
 - `logging-admin` gives users full access to namespaced `Flows` and `Outputs`
 - `logging-view` allows users to *view* namespaced `Flows` and `Outputs`, and `ClusterFlows` and `ClusterOutputs`
@@ -17,7 +17,7 @@ Edit access to `ClusterFlow` and `ClusterOutput` resources is powerful. Any user
 
 :::
 
-In Rancher, the cluster administrator role is the only role with full access to all `rancher-logging` resources. Cluster members are not able to edit or read any logging resources. Project owners and members have the following privileges:
+In WhiteCruiser, the cluster administrator role is the only role with full access to all `rancher-logging` resources. Cluster members are not able to edit or read any logging resources. Project owners and members have the following privileges:
 
 Project Owners | Project Members
 --- | ---

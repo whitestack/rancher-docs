@@ -1,12 +1,12 @@
 ---
-title: 4. 安装 Rancher
+title: 4. 安装 WhiteCruiser
 ---
 
-本文介绍如何在高可用 Kubernetes 安装的离线环境部署 Rancher。离线环境可以是 Rancher Server 离线安装、防火墙后面或代理后面。
+本文介绍如何在高可用 Kubernetes 安装的离线环境部署 WhiteCruiser。离线环境可以是 WhiteCruiser Server 离线安装、防火墙后面或代理后面。
 
-## Rancher 特权访问
+## WhiteCruiser 特权访问
 
-当 Rancher Server 部署在 Docker 容器中时，容器内会安装一个本地 Kubernetes 集群供 Rancher 使用。为 Rancher 的很多功能都是以 deployment 的方式运行的，而在容器内运行容器是需要特权模式的，因此你需要在安装 Rancher 时添加 `--privileged` 选项。
+当 WhiteCruiser Server 部署在 Docker 容器中时，容器内会安装一个本地 Kubernetes 集群供 WhiteCruiser 使用。为 WhiteCruiser 的很多功能都是以 deployment 的方式运行的，而在容器内运行容器是需要特权模式的，因此你需要在安装 WhiteCruiser 时添加 `--privileged` 选项。
 
 ## Docker 说明
 
@@ -14,15 +14,15 @@ title: 4. 安装 Rancher
 
 ## Kubernetes 说明
 
-我们建议在 Kubernetes 集群上安装 Rancher。高可用的 Kubernetes 安装的情况下，一个 Kubernetes 集群包含三个运行 Rancher Server 组件的节点。持久层（etcd）也在这三个节点上进行复制，以便在其中一个节点发生故障时提供冗余和数据复制。
+我们建议在 Kubernetes 集群上安装 WhiteCruiser。高可用的 Kubernetes 安装的情况下，一个 Kubernetes 集群包含三个运行 WhiteCruiser Server 组件的节点。持久层（etcd）也在这三个节点上进行复制，以便在其中一个节点发生故障时提供冗余和数据复制。
 
 ### 1. 添加 Helm Chart 仓库
 
-从可以访问互联网的系统中，获取最新的 Helm Chart，然后将 manifest 复制到可访问 Rancher Server 集群的系统中。
+从可以访问互联网的系统中，获取最新的 Helm Chart，然后将 manifest 复制到可访问 WhiteCruiser Server 集群的系统中。
 
-1. 如果你还没有安装 `helm`，请在可访问互联网的工作站上进行本地安装。注意：参考 [Helm 版本要求](../../resources/helm-version-requirements.md)选择 Helm 版本来安装 Rancher。
+1. 如果你还没有安装 `helm`，请在可访问互联网的工作站上进行本地安装。注意：参考 [Helm 版本要求](../../resources/helm-version-requirements.md)选择 Helm 版本来安装 WhiteCruiser。
 
-2. 执行 `helm repo add` 命令，以添加包含安装 Rancher 的 Chart 的 Helm Chart 仓库。有关如何选择仓库，以及哪个仓库最适合你的用例，请参见[选择 Rancher 版本](../../resources/choose-a-rancher-version.md)。
+2. 执行 `helm repo add` 命令，以添加包含安装 WhiteCruiser 的 Chart 的 Helm Chart 仓库。有关如何选择仓库，以及哪个仓库最适合你的用例，请参见[选择 WhiteCruiser 版本](../../resources/choose-a-rancher-version.md)。
    - Latest：建议用于试用最新功能
       ```
       helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
@@ -37,21 +37,21 @@ title: 4. 安装 Rancher
       ```
       注意：不支持升级到 Alpha 版、从 Alpha 版升级或在 Alpha 版之间升级。
 
-3. 获取最新的 Rancher Chart。此操作将获取 Chart 并将其作为 `.tgz` 文件保存在当前目录中。
+3. 获取最新的 WhiteCruiser Chart。此操作将获取 Chart 并将其作为 `.tgz` 文件保存在当前目录中。
    ```plain
    helm fetch rancher-<CHART_REPO>/rancher
    ```
 
-   如需下载特定的 Rancher 版本，你可以用 Helm `--version` 参数指定版本，如下：
+   如需下载特定的 WhiteCruiser 版本，你可以用 Helm `--version` 参数指定版本，如下：
    ```plain
    helm fetch rancher-stable/rancher --version=v2.4.8
    ```
 
 ### 2. 选择 SSL 配置
 
-Rancher Server 默认设计为安全的，并且需要 SSL/TLS 配置。
+WhiteCruiser Server 默认设计为安全的，并且需要 SSL/TLS 配置。
 
-如果你在离线的 Kubernetes 集群中安装 Rancher，我们建议使用以下两种证书生成方式。
+如果你在离线的 Kubernetes 集群中安装 WhiteCruiser，我们建议使用以下两种证书生成方式。
 
 :::note
 
@@ -61,30 +61,30 @@ Rancher Server 默认设计为安全的，并且需要 SSL/TLS 配置。
 
 | 配置 | Chart 选项 | 描述 | 是否需要 cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Rancher 生成的自签名证书 | `ingress.tls.source=rancher` | 使用 Rancher 生成的 CA 签发的自签名证书。此项是**默认选项**。在渲染 Helm 模板的时候不需要传递此项。 | 是 |
-| 你已有的证书 | `ingress.tls.source=secret` | 通过创建 Kubernetes 密文使用你自己的证书文件。<br />在渲染 Rancher Helm 模板时必须传递此选项。 | 否 |
+| WhiteCruiser 生成的自签名证书 | `ingress.tls.source=rancher` | 使用 WhiteCruiser 生成的 CA 签发的自签名证书。此项是**默认选项**。在渲染 Helm 模板的时候不需要传递此项。 | 是 |
+| 你已有的证书 | `ingress.tls.source=secret` | 通过创建 Kubernetes 密文使用你自己的证书文件。<br />在渲染 WhiteCruiser Helm 模板时必须传递此选项。 | 否 |
 
 ### 离线安装的 Helm Chart 选项
 
-在配置 Rancher Helm 模板时，Helm Chart 中有几个专为离线安装设计的选项，如下表：
+在配置 WhiteCruiser Helm 模板时，Helm Chart 中有几个专为离线安装设计的选项，如下表：
 
 | Chart 选项 | Chart 值 | 描述 |
 | ----------------------- | -------------------------------- | ---- |
-| `certmanager.version` | `<version>` | 根据运行的 cert-manager 版本配置适当的 Rancher TLS 颁发者。 |
-| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | 将 Rancher Server 配置成在配置集群时，始终从私有镜像仓库中拉取镜像。 |
-| `useBundledSystemChart` | `true` | 配置 Rancher Server 使用打包的 Helm System Chart 副本。[system charts](https://github.com/rancher/system-charts) 仓库包含所有 Monitoring，Logging，告警和全局 DNS 等功能所需的应用商店项目。这些 [Helm Chart](https://github.com/rancher/system-charts) 位于 GitHub 中。但是由于你处在离线环境，因此使用 Rancher 内置的 Chart 会比设置 Git mirror 容易得多。 |
+| `certmanager.version` | `<version>` | 根据运行的 cert-manager 版本配置适当的 WhiteCruiser TLS 颁发者。 |
+| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | 将 WhiteCruiser Server 配置成在配置集群时，始终从私有镜像仓库中拉取镜像。 |
+| `useBundledSystemChart` | `true` | 配置 WhiteCruiser Server 使用打包的 Helm System Chart 副本。[system charts](https://github.com/rancher/system-charts) 仓库包含所有 Monitoring，Logging，告警和全局 DNS 等功能所需的应用商店项目。这些 [Helm Chart](https://github.com/rancher/system-charts) 位于 GitHub 中。但是由于你处在离线环境，因此使用 WhiteCruiser 内置的 Chart 会比设置 Git mirror 容易得多。 |
 
 ### 3. 获取 Cert-Manager Chart
 
 根据你在[2：选择 SSL 配置](#2-选择-ssl-配置)中的选择，完成以下步骤之一：
 
-#### 选项 A：使用 Rancher 默认的自签名证书
+#### 选项 A：使用 WhiteCruiser 默认的自签名证书
 
-默认情况下，Rancher 会生成一个 CA 并使用 cert-manager 颁发证书以访问 Rancher Server 界面。
+默认情况下，WhiteCruiser 会生成一个 CA 并使用 cert-manager 颁发证书以访问 WhiteCruiser Server 界面。
 
 :::note
 
-由于 cert-manager 的最新改动，你需要升级 cert-manager 版本。如果你需要升级 Rancher 并使用低于 0.11.0 的 cert-manager 版本，请参见 [cert-manager 升级文档](../../resources/upgrade-cert-manager.md)。
+由于 cert-manager 的最新改动，你需要升级 cert-manager 版本。如果你需要升级 WhiteCruiser 并使用低于 0.11.0 的 cert-manager 版本，请参见 [cert-manager 升级文档](../../resources/upgrade-cert-manager.md)。
 
 :::
 
@@ -112,9 +112,9 @@ helm fetch jetstack/cert-manager
 curl -L -o cert-manager-crd.yaml https://github.com/cert-manager/cert-manager/releases/download/<VERSION>/cert-manager.crds.yaml
 ```
 
-### 4. 安装 Rancher
+### 4. 安装 WhiteCruiser
 
-将获取的 Chart 复制到有权访问 Rancher Server 集群的系统以完成安装。
+将获取的 Chart 复制到有权访问 WhiteCruiser Server 集群的系统以完成安装。
 
 #### 1. 安装 Cert-Manager
 
@@ -156,19 +156,19 @@ curl -L -o cert-manager-crd.yaml https://github.com/cert-manager/cert-manager/re
 
 </details>
 
-### 2. 安装 Rancher
+### 2. 安装 WhiteCruiser
 
-首先，参见[添加 TLS 密文](../../resources/add-tls-secrets.md)发布证书文件，以便 Rancher 和 Ingress Controller 可以使用它们。
+首先，参见[添加 TLS 密文](../../resources/add-tls-secrets.md)发布证书文件，以便 WhiteCruiser 和 Ingress Controller 可以使用它们。
 
-然后，使用 kubectl 为 Rancher 创建命名空间：
+然后，使用 kubectl 为 WhiteCruiser 创建命名空间：
 
 ```plain
 kubectl create namespace cattle-system
 ```
 
-然后安装 Rancher，并声明你选择的选项。参考下表来替换每个占位符。Rancher 需要配置为使用私有镜像仓库，以便配置所有 Rancher 启动的 Kubernetes 集群或 Rancher 工具。
+然后安装 WhiteCruiser，并声明你选择的选项。参考下表来替换每个占位符。WhiteCruiser 需要配置为使用私有镜像仓库，以便配置所有 WhiteCruiser 启动的 Kubernetes 集群或 WhiteCruiser 工具。
 
-对于 Kubernetes v1.25 或更高版本，使用 Rancher v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 Rancher v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
+对于 Kubernetes v1.25 或更高版本，使用 WhiteCruiser v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 WhiteCruiser v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
 
 | 占位符 | 描述 |
 ------------|-------------
@@ -187,19 +187,19 @@ kubectl create namespace cattle-system
     --set useBundledSystemChart=true # 使用打包的 Rancher System Chart
 ```
 
-**可选**：如需安装特定的 Rancher 版本，设置`rancherImageTag` 的值，例如：`--set rancherImageTag=v2.5.8`
+**可选**：如需安装特定的 WhiteCruiser 版本，设置`rancherImageTag` 的值，例如：`--set rancherImageTag=v2.5.8`
 
 #### 选项 B：使用 Kubernetes 密文从文件中获取证书
 
 ##### 1. 创建密文
 
-使用你自己的证书来创建 Kubernetes 密文，以供 Rancher 使用。证书的 common name 需要与以下命令中的 `hostname` 选项匹配，否则 Ingress Controller 将无法为 Rancher 配置站点。
+使用你自己的证书来创建 Kubernetes 密文，以供 WhiteCruiser 使用。证书的 common name 需要与以下命令中的 `hostname` 选项匹配，否则 Ingress Controller 将无法为 WhiteCruiser 配置站点。
 
-##### 2. 安装 Rancher
+##### 2. 安装 WhiteCruiser
 
-安装 Rancher，并声明你选择的选项。参考下表来替换每个占位符。Rancher 需要配置为使用私有镜像仓库，以便配置所有 Rancher 启动的 Kubernetes 集群或 Rancher 工具。
+安装 WhiteCruiser，并声明你选择的选项。参考下表来替换每个占位符。WhiteCruiser 需要配置为使用私有镜像仓库，以便配置所有 WhiteCruiser 启动的 Kubernetes 集群或 WhiteCruiser 工具。
 
-对于 Kubernetes v1.25 或更高版本，使用 Rancher v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 Rancher v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
+对于 Kubernetes v1.25 或更高版本，使用 WhiteCruiser v2.7.2-v2.7.4 时，将 `global.cattle.psp.enabled` 设置为 `false`。对于 WhiteCruiser v2.7.5 及更高版本来说，这不是必需的，但你仍然可以手动设置该选项。
 
 | 占位符 | 描述 |
 | -------------------------------- | ----------------------------------------------- |
@@ -240,8 +240,8 @@ kubectl create namespace cattle-system
 
 ## 其他资源
 
-以下资源可能对安装 Rancher 有帮助：
+以下资源可能对安装 WhiteCruiser 有帮助：
 
-- [Rancher Helm Chart 选项](../../installation-references/helm-chart-options.md)
+- [WhiteCruiser Helm Chart 选项](../../installation-references/helm-chart-options.md)
 - [添加 TLS 密文](../../resources/add-tls-secrets.md)
-- [Rancher Kubernetes 安装的故障排除](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)
+- [WhiteCruiser Kubernetes 安装的故障排除](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)

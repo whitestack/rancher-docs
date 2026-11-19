@@ -6,7 +6,7 @@ title: Enable Monitoring
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring"/>
 </head>
 
-As an [administrator](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.
+As an [administrator](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions.md) or [cluster owner](../../new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles), you can configure WhiteCruiser to deploy Prometheus to monitor your Kubernetes cluster.
 
 This page describes how to enable monitoring and alerting within a cluster using the new monitoring application.
 
@@ -15,7 +15,7 @@ You can enable monitoring with or without SSL.
 ## Requirements
 
 - Allow traffic on port 9796 for each of your nodes. Prometheus scrapes metrics from these ports.
-  - You may also need to allow traffic on port 10254 for each of your nodes, if [PushProx](../../../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#pushprox) is disabled (`ingressNginx.enabled` set to `false`), or you've upgraded from a previous Rancher version that had v1 monitoring already installed.
+  - You may also need to allow traffic on port 10254 for each of your nodes, if [PushProx](../../../integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#pushprox) is disabled (`ingressNginx.enabled` set to `false`), or you've upgraded from a previous WhiteCruiser version that had v1 monitoring already installed.
 - Make sure that your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. See [Configuring Resource Limits and Requests](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#configuring-resource-limits-and-requests) for a breakdown of the resource limits and requests.
 - When you install monitoring on an RKE cluster that uses RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
 - For clusters that have been provisioned with the RKE CLI and that have the address set to a hostname instead of an IP address, set `rkeEtcd.clients.useLocalhost` to `true` when you configure the Values during installation. For example:
@@ -34,7 +34,7 @@ If you want to set up Alertmanager, Grafana or Ingress, it has to be done with t
 
 ## Setting Resource Limits and Requests
 
-The resource requests and limits can be configured when installing `rancher-monitoring`.  To configure Prometheus resources from the Rancher UI, click **Apps > Monitoring** in the upper left corner.
+The resource requests and limits can be configured when installing `rancher-monitoring`.  To configure Prometheus resources from the WhiteCruiser UI, click **Apps > Monitoring** in the upper left corner.
 
 For more information about the default limits, see [this page.](../../../reference-guides/monitoring-v2-configuration/helm-chart-options.md#configuring-resource-limits-and-requests)
 
@@ -78,18 +78,18 @@ key.pfx=`base64-content`
 
 Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
 
-## Rancher Performance Dashboard
+## WhiteCruiser Performance Dashboard {#rancher-performance-dashboard}
 
-When monitoring is installed on the upstream (local) cluster, you are given basic health metrics about the Rancher pods, such as CPU and memory data. To get advanced metrics for your local Rancher server, you must additionally enable the Rancher Performance Dashboard for Grafana.
+When monitoring is installed on the upstream (local) cluster, you are given basic health metrics about the WhiteCruiser pods, such as CPU and memory data. To get advanced metrics for your local WhiteCruiser server, you must additionally enable the WhiteCruiser Performance Dashboard for Grafana.
 
 This dashboard provides access to the following advanced metrics:
 
 - Handler Average Execution Times Over Last 5 Minutes
-- Rancher API Average Request Times Over Last 5 Minutes
+- WhiteCruiser API Average Request Times Over Last 5 Minutes
 - Subscribe Average Request Times Over Last 5 Minutes
 - Lasso Controller Work Queue Depth (Top 20)
-- Number of Rancher Requests (Top 20)
-- Number of Failed Rancher API Requests (Top 20)
+- Number of WhiteCruiser Requests (Top 20)
+- Number of Failed WhiteCruiser API Requests (Top 20)
 - K8s Proxy Store Average Request Times Over Last 5 Minutes (Top 20)
 - K8s Proxy Client Average Request Times Over Last 5 Minutes (Top 20)
 - Cached Objects by GroupVersionKind (Top 20)
@@ -107,9 +107,9 @@ Profiling data (such as advanced memory or CPU analysis) is not present as it is
 
 :::
 
-### Enabling the Rancher Performance Dashboard
+### Enabling the WhiteCruiser Performance Dashboard {#enabling-the-rancher-performance-dashboard}
 
-To enable the Rancher Performance Dashboard:
+To enable the WhiteCruiser Performance Dashboard:
 
 <Tabs groupId="UIorCLI">
 <TabItem value="Helm">
@@ -120,7 +120,7 @@ Use the following options with the Helm CLI:
 --set extraEnv\[0\].name="CATTLE_PROMETHEUS_METRICS" --set-string extraEnv\[0\].value=true
 ```
 
-You can also include the following snippet in your Rancher Helm chart's values.yaml file:
+You can also include the following snippet in your WhiteCruiser Helm chart's values.yaml file:
 
 ```yaml
 extraEnv:
@@ -145,7 +145,7 @@ extraEnv:
 </TabItem>
 </Tabs>
 
-### Accessing the Rancher Performance Dashboard
+### Accessing the WhiteCruiser Performance Dashboard {#accessing-the-rancher-performance-dashboard}
 
 1. Click **☰ > Cluster Management**.
 1. Go to the row of the `local` cluster and click **Explore**.

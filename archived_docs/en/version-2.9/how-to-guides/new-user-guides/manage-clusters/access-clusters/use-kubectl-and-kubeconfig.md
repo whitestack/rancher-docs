@@ -1,19 +1,19 @@
 ---
 title: "Access a Cluster with Kubectl and kubeconfig"
-description: "Learn how you can access and manage your Kubernetes clusters using kubectl with kubectl Shell or with kubectl CLI and kubeconfig file. A kubeconfig file is used to configure access to Kubernetes. When you create a cluster with Rancher, it automatically creates a kubeconfig for your cluster."
+description: "Learn how you can access and manage your Kubernetes clusters using kubectl with kubectl Shell or with kubectl CLI and kubeconfig file. A kubeconfig file is used to configure access to Kubernetes. When you create a cluster with WhiteCruiser, it automatically creates a kubeconfig for your cluster."
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig"/>
 </head>
 
-This section describes how to manipulate your downstream Kubernetes cluster with kubectl from the Rancher UI or from your workstation.
+This section describes how to manipulate your downstream Kubernetes cluster with kubectl from the WhiteCruiser UI or from your workstation.
 
 For more information on using kubectl, see [Kubernetes Documentation: Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
 
-### Accessing Clusters with kubectl Shell in the Rancher UI
+### Accessing Clusters with kubectl Shell in the WhiteCruiser UI {#accessing-clusters-with-kubectl-shell-in-the-rancher-ui}
 
-You can access and manage your clusters by logging into Rancher and opening the kubectl shell in the UI. No further configuration necessary.
+You can access and manage your clusters by logging into WhiteCruiser and opening the kubectl shell in the UI. No further configuration necessary.
 
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster you want to access with kubectl and click **Explore**.
@@ -23,7 +23,7 @@ You can access and manage your clusters by logging into Rancher and opening the 
 
 This section describes how to download your cluster's kubeconfig file, launch kubectl from your workstation, and access your downstream cluster.
 
-This alternative method of accessing the cluster allows you to authenticate with Rancher and manage your cluster without using the Rancher UI.
+This alternative method of accessing the cluster allows you to authenticate with WhiteCruiser and manage your cluster without using the WhiteCruiser UI.
 
 :::note Prerequisites:
 
@@ -44,17 +44,17 @@ These instructions assume that you have already created a Kubernetes cluster, an
 
 ### Note on Resources Created Using kubectl
 
-Rancher will discover and show resources created by `kubectl`. However, these resources might not have all the necessary annotations on discovery. If an operation (for instance, scaling the workload) is done to the resource using the Rancher UI/API, this may trigger recreation of the resources due to the missing annotations. This should only happen the first time an operation is done to the discovered resource.
+WhiteCruiser will discover and show resources created by `kubectl`. However, these resources might not have all the necessary annotations on discovery. If an operation (for instance, scaling the workload) is done to the resource using the WhiteCruiser UI/API, this may trigger recreation of the resources due to the missing annotations. This should only happen the first time an operation is done to the discovered resource.
 
 ## Authenticating Directly with a Downstream Cluster
 
 This section intended to help you set up an alternative method to access an [RKE cluster.](../../launch-kubernetes-with-rancher/launch-kubernetes-with-rancher.md)
 
-This method is only available for RKE, RKE2, and K3s clusters that have the [authorized cluster endpoint](../../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint) enabled. When Rancher creates the cluster, it generates a kubeconfig file that includes additional kubectl context(s) for accessing your cluster. This additional context allows you to use kubectl to authenticate with the downstream cluster without authenticating through Rancher. For a longer explanation of how the authorized cluster endpoint works, refer to [this page](authorized-cluster-endpoint.md).
+This method is only available for RKE, RKE2, and K3s clusters that have the [authorized cluster endpoint](../../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-authorized-cluster-endpoint) enabled. When WhiteCruiser creates the cluster, it generates a kubeconfig file that includes additional kubectl context(s) for accessing your cluster. This additional context allows you to use kubectl to authenticate with the downstream cluster without authenticating through WhiteCruiser. For a longer explanation of how the authorized cluster endpoint works, refer to [this page](authorized-cluster-endpoint.md).
 
 On RKE2 and K3s clusters, you need to [manually enable](../../kubernetes-clusters-in-rancher-setup/register-existing-clusters.md#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters) authorized cluster endpoints.
 
-We recommend that as a best practice, you should set up this method to access your RKE, RKE2, and K3s clusters, so that just in case you can’t connect to Rancher, you can still access the cluster.
+We recommend that as a best practice, you should set up this method to access your RKE, RKE2, and K3s clusters, so that just in case you can’t connect to WhiteCruiser, you can still access the cluster.
 
 
 :::note Prerequisites:
@@ -72,7 +72,7 @@ CURRENT   NAME                        CLUSTER                     AUTHINFO     N
           my-cluster-controlplane-1   my-cluster-controlplane-1   user-46tmn
 ```
 
-In this example, when you use `kubectl` with the first context, `my-cluster`, you will be authenticated through the Rancher server.
+In this example, when you use `kubectl` with the first context, `my-cluster`, you will be authenticated through the WhiteCruiser server.
 
 With the second context, `my-cluster-controlplane-1`, you would authenticate with the authorized cluster endpoint, communicating with an downstream RKE cluster directly.
 
@@ -80,11 +80,11 @@ We recommend using a load balancer with the authorized cluster endpoint. For det
 
 Now that you have the name of the context needed to authenticate directly with the cluster, you can pass the name of the context in as an option when running kubectl commands. The commands will differ depending on whether your cluster has an FQDN defined. Examples are provided in the sections below.
 
-When `kubectl` works normally, it confirms that you can access your cluster while bypassing Rancher's authentication proxy.
+When `kubectl` works normally, it confirms that you can access your cluster while bypassing WhiteCruiser's authentication proxy.
 
 ### Connecting Directly to Clusters with FQDN Defined
 
-If an FQDN is defined for the cluster, a single context referencing the FQDN will be created. The context will be named `<CLUSTER_NAME>-fqdn`. When you want to use `kubectl` to access this cluster without Rancher, you will need to use this context.
+If an FQDN is defined for the cluster, a single context referencing the FQDN will be created. The context will be named `<CLUSTER_NAME>-fqdn`. When you want to use `kubectl` to access this cluster without WhiteCruiser, you will need to use this context.
 
 Assuming the kubeconfig file is located at `~/.kube/config`:
 
@@ -98,7 +98,7 @@ kubectl --kubeconfig /custom/path/kube.config --context <CLUSTER_NAME>-fqdn get 
 
 ### Connecting Directly to Clusters without FQDN Defined
 
-If there is no FQDN defined for the cluster, extra contexts will be created referencing the IP address of each node in the control plane. Each context will be named `<CLUSTER_NAME>-<NODE_NAME>`. When you want to use `kubectl` to access this cluster without Rancher, you will need to use this context.
+If there is no FQDN defined for the cluster, extra contexts will be created referencing the IP address of each node in the control plane. Each context will be named `<CLUSTER_NAME>-<NODE_NAME>`. When you want to use `kubectl` to access this cluster without WhiteCruiser, you will need to use this context.
 
 Assuming the kubeconfig file is located at `~/.kube/config`:
 ```

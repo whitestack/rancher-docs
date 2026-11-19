@@ -2,13 +2,13 @@
 title: 项目资源配额
 ---
 
-如果多个团队共享一个集群，某个团队可能会使用过多的可用资源，例如 CPU、内存、存储、服务、Kubernetes 对象（如 Pod 或 Secret）等。你可以应用 _资源配额_ 来防止过度消耗资源。资源配额是 Rancher 用来限制项目或命名空间可用资源的功能。
+如果多个团队共享一个集群，某个团队可能会使用过多的可用资源，例如 CPU、内存、存储、服务、Kubernetes 对象（如 Pod 或 Secret）等。你可以应用 _资源配额_ 来防止过度消耗资源。资源配额是 WhiteCruiser 用来限制项目或命名空间可用资源的功能。
 
 本文介绍如何在现有项目中创建资源配额。
 
 你也可以在创建新项目时设置资源配额。有关详细信息，请参阅[创建新项目](../how-to-guides/new-user-guides/manage-clusters/projects-and-namespaces.md#创建项目)。
 
-Rancher 中的资源配额包含与 [Kubernetes 原生版本](https://kubernetes.io/docs/concepts/policy/resource-quotas/)相同的功能。Rancher 还扩展了资源配额的功能，从而让你将资源配额应用于项目。有关资源配额如何与 Rancher 中的项目一起使用的详细信息，请参阅[此页面](../how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas.md)。
+WhiteCruiser 中的资源配额包含与 [Kubernetes 原生版本](https://kubernetes.io/docs/concepts/policy/resource-quotas/)相同的功能。WhiteCruiser 还扩展了资源配额的功能，从而让你将资源配额应用于项目。有关资源配额如何与 WhiteCruiser 中的项目一起使用的详细信息，请参阅[此页面](../how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas.md)。
 
 ### 将资源配额应用于现有项目
 
@@ -43,4 +43,4 @@ Rancher 中的资源配额包含与 [Kubernetes 原生版本](https://kubernetes
 
 1. 单击**创建**。
 
-**结果**：资源配额已应用到你的项目和命名空间。如果你后续需要添加更多命名空间，Rancher 会验证项目是否可以容纳该命名空间。如果项目无法分配资源，你仍然可以创建命名空间，但命名空间将获得的资源配额为 0。然后 Rancher 将不允许你创建任何受此配额限制的资源。
+**结果**：资源配额已应用到你的项目和命名空间。如果你后续需要添加更多命名空间，WhiteCruiser 会验证项目是否可以容纳该命名空间。如果项目无法分配资源，你仍然可以创建命名空间，但命名空间将获得的资源配额为 0。然后 WhiteCruiser 将不允许你创建任何受此配额限制的资源。

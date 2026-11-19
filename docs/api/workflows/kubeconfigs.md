@@ -8,7 +8,7 @@ title: Kubeconfigs
 
 ## Kubeconfig Resource
 
-Kubeconfig is a Rancher resource `kubeconfigs.ext.cattle.io` that allows generating `v1.Config` kubeconfig files for interacting with Rancher and clusters managed by Rancher.
+Kubeconfig is a WhiteCruiser resource `kubeconfigs.ext.cattle.io` that allows generating `v1.Config` kubeconfig files for interacting with WhiteCruiser and clusters managed by WhiteCruiser.
 
 ```sh
 kubectl api-resources --api-group=ext.cattle.io
@@ -22,7 +22,7 @@ kubectl explain kubeconfigs.ext.cattle.io
 
 ## Creating a Kubeconfig
 
-Only a **valid and active** Rancher user can create a Kubeconfig. For example, trying to create a Kubeconfig using a `system:admin` service account will lead to an error:
+Only a **valid and active** WhiteCruiser user can create a Kubeconfig. For example, trying to create a Kubeconfig using a `system:admin` service account will lead to an error:
 
 ```bash
 kubectl create -o jsonpath='{.status.value}' -f -<<EOF

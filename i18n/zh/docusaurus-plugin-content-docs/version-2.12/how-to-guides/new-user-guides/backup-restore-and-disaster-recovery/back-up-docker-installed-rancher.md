@@ -1,8 +1,8 @@
 ---
-title: 备份 Docker 安装的 Rancher
+title: 备份 Docker 安装的 WhiteCruiser
 ---
 
-成功使用 Docker 安装 Rancher 后，我们建议你定期创建备份。最近创建的备份能让你在意外灾难发生后快速进行恢复。
+成功使用 Docker 安装 WhiteCruiser 后，我们建议你定期创建备份。最近创建的备份能让你在意外灾难发生后快速进行恢复。
 
 ## 在你开始前
 
@@ -23,26 +23,26 @@ docker run --name busybox-backup-<DATE> --volumes-from rancher-data-<DATE> -v $P
 | 占位符 | 示例 | 描述 |
 | -------------------------- | -------------------------- | --------------------------------------------------------- |
 | `<RANCHER_CONTAINER_TAG>` | `v2.0.5` | 首次安装拉取的 rancher/rancher 镜像。 |
-| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf` | 你的 Rancher 容器的名称。 |
-| `<RANCHER_VERSION>` | `v2.0.5` | 你为其创建备份的 Rancher 版本。 |
+| `<RANCHER_CONTAINER_NAME>` | `festive_mestorf` | 你的 WhiteCruiser 容器的名称。 |
+| `<RANCHER_VERSION>` | `v2.0.5` | 你为其创建备份的 WhiteCruiser 版本。 |
 | `<DATE>` | `9-27-18` | 数据容器或备份的创建日期。 |
 <br/>
 
-可以通过远程连接登录到 Rancher Server 所在的主机并输入命令 `docker ps` 以查看正在运行的容器，从而获得 `<RANCHER_CONTAINER_TAG>` 和 `<RANCHER_CONTAINER_NAME>`。你还可以运行 `docker ps -a` 命令查看停止了的容器。在创建备份期间，你随时可以运行这些命令来获得帮助。
+可以通过远程连接登录到 WhiteCruiser Server 所在的主机并输入命令 `docker ps` 以查看正在运行的容器，从而获得 `<RANCHER_CONTAINER_TAG>` 和 `<RANCHER_CONTAINER_NAME>`。你还可以运行 `docker ps -a` 命令查看停止了的容器。在创建备份期间，你随时可以运行这些命令来获得帮助。
 
 ## 创建备份
 
-此步骤将创建一个备份文件。如果 Rancher 遇到灾难情况，你可以使用该备份文件进行还原。
+此步骤将创建一个备份文件。如果 WhiteCruiser 遇到灾难情况，你可以使用该备份文件进行还原。
 
 
-1. 使用远程终端连接，登录到运行 Rancher Server 的节点。
+1. 使用远程终端连接，登录到运行 WhiteCruiser Server 的节点。
 
-1. 停止当前运行 Rancher Server 的容器。将 `<RANCHER_CONTAINER_NAME>` 替换为你的 Rancher 容器的名称：
+1. 停止当前运行 WhiteCruiser Server 的容器。将 `<RANCHER_CONTAINER_NAME>` 替换为你的 WhiteCruiser 容器的名称：
 
    ```
    docker stop <RANCHER_CONTAINER_NAME>
    ```
-1. <a id="backup"></a>运行以下命令，从刚才停止的 Rancher 容器创建一个数据容器。请替换命令中的占位符：
+1. <a id="backup"></a>运行以下命令，从刚才停止的 WhiteCruiser 容器创建一个数据容器。请替换命令中的占位符：
 
    ```
    docker create --volumes-from <RANCHER_CONTAINER_NAME> --name rancher-data-<DATE> rancher/rancher:<RANCHER_CONTAINER_TAG>
@@ -58,17 +58,17 @@ docker run --name busybox-backup-<DATE> --volumes-from rancher-data-<DATE> -v $P
 
 1. 输入 `ls` 命令，确认备份压缩包已创建成功。压缩包的名称格式类似 `rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`。
 
-1. 将备份压缩包移动到 Rancher Server 外的安全位置。然后从 Rancher Server 中删除 `rancher-data-<DATE>` 和 `busybox-backup-<DATE>` 容器。
+1. 将备份压缩包移动到 WhiteCruiser Server 外的安全位置。然后从 WhiteCruiser Server 中删除 `rancher-data-<DATE>` 和 `busybox-backup-<DATE>` 容器。
 
    ```
    docker rm rancher-data-<DATE>
    docker rm busybox-backup-<DATE>
    ```
 
-1. 重启 Rancher Server。将 `<RANCHER_CONTAINER_NAME>` 替换为 Rancher 容器的名称：
+1. 重启 WhiteCruiser Server。将 `<RANCHER_CONTAINER_NAME>` 替换为 WhiteCruiser 容器的名称：
 
    ```
    docker start <RANCHER_CONTAINER_NAME>
    ```
 
-**结果**：创建了 Rancher Server 数据的备份压缩包。如果你需要恢复备份数据，请参见[恢复备份：Docker 安装](restore-docker-installed-rancher.md)。
+**结果**：创建了 WhiteCruiser Server 数据的备份压缩包。如果你需要恢复备份数据，请参见[恢复备份：Docker 安装](restore-docker-installed-rancher.md)。

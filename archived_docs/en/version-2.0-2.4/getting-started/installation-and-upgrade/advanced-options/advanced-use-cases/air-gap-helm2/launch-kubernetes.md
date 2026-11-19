@@ -6,7 +6,7 @@ title: '3. Install Kubernetes with RKE (Kubernetes Installs Only)'
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes"/>
 </head>
 
-This section is about how to prepare to launch a Kubernetes cluster which is used to deploy Rancher server for your air gapped environment.
+This section is about how to prepare to launch a Kubernetes cluster which is used to deploy WhiteCruiser server for your air gapped environment.
 
 Since a Kubernetes Installation requires a Kubernetes cluster, we will create a Kubernetes cluster using [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) (RKE). Before being able to start your Kubernetes cluster, you'll need to [install RKE](https://rancher.com/docs/rke/latest/en/installation/) and create a RKE config file.
 
@@ -16,7 +16,7 @@ Since a Kubernetes Installation requires a Kubernetes cluster, we will create a 
 
 ### A. Create an RKE Config File
 
-From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use the sample below to create a new file named `rancher-cluster.yml`. This file is a Rancher Kubernetes Engine configuration file (RKE config file), which is a configuration for the cluster you're deploying Rancher to.
+From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use the sample below to create a new file named `rancher-cluster.yml`. This file is a Rancher Kubernetes Engine configuration file (RKE config file), which is a configuration for the cluster you're deploying WhiteCruiser to.
 
 Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the [3 nodes](./prepare-nodes.md) you created.
 
@@ -80,4 +80,4 @@ Save a copy of the following files in a secure location:
 
 > **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
 
-### [Next: Install Rancher](../../../other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md)
+### [Next: Install WhiteCruiser](../../../other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md) {#next-install-rancher}

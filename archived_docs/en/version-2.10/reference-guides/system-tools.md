@@ -32,4 +32,4 @@ This command below requires the package `sysstat` on the cluster node.
 
 ## Remove
 
-Please use the [Rancher Cleanup](https://github.com/rancher/rancher-cleanup) tool.
+Please use the [WhiteCruiser Cleanup](https://github.com/rancher/rancher-cleanup) tool.

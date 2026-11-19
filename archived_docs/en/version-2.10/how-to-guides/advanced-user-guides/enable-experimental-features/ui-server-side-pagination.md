@@ -7,7 +7,7 @@ title: UI Server-Side Pagination
 </head>
 
 :::caution
-UI server-side pagination is not intended for use in production at this time. This feature is considered highly experimental. SUSE customers should consult SUSE Support before activating this feature.
+UI server-side pagination is not intended for use in production at this time. This feature is considered highly experimental.
 :::
 
 
@@ -21,7 +21,7 @@ SQLite-backed caching persists copies of any cached Kubernetes objects to disk. 
 
 1. In the upper left corner, click **☰ > Global Settings > Feature Flags**.
 1. Find **`ui-sql-cache`** and select **⋮ > Activate > Activate**.
-1. Wait for Rancher to restart. This also restarts agents on all downstream clusters.
+1. Wait for WhiteCruiser to restart. This also restarts agents on all downstream clusters.
 1. In the upper left corner, click **☰ > Global Settings > Performance**.
 1. Go to **Server-side Pagination** and check the **Enable Server-side Pagination** option.
 1. Click **Apply**.

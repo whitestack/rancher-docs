@@ -1,24 +1,24 @@
 ---
-title: 备份 Rancher
+title: 备份 WhiteCruiser
 ---
 
-在本节中，你将学习如何备份运行在任何 Kubernetes 集群上的 Rancher。要备份通过 Docker 安装的 Rancher，请参见[单节点备份](back-up-docker-installed-rancher.md)。
+在本节中，你将学习如何备份运行在任何 Kubernetes 集群上的 WhiteCruiser。要备份通过 Docker 安装的 WhiteCruiser，请参见[单节点备份](back-up-docker-installed-rancher.md)。
 
-`backup-restore` operator 需要安装在 local 集群上，并且只对 Rancher 应用进行备份。备份和恢复操作仅在本地 Kubernetes 集群中执行。
+`backup-restore` operator 需要安装在 local 集群上，并且只对 WhiteCruiser 应用进行备份。备份和恢复操作仅在本地 Kubernetes 集群中执行。
 
-请知悉，`rancher-backup` operator 的 2.x.x 版本用于 Rancher v2.6.x。
+请知悉，`rancher-backup` operator 的 2.x.x 版本用于 WhiteCruiser v2.6.x。
 
 :::caution
 
-当把备份恢复到一个新的 Rancher 设置中时，新设置的版本应该与备份的版本相同。在恢复备份时还应考虑 Kubernetes 的版本，因为集群中支持的 apiVersion 和备份文件中的 apiVersion 可能不同。
+当把备份恢复到一个新的 WhiteCruiser 设置中时，新设置的版本应该与备份的版本相同。在恢复备份时还应考虑 Kubernetes 的版本，因为集群中支持的 apiVersion 和备份文件中的 apiVersion 可能不同。
 
 :::
 
 ### 先决条件
 
-Rancher 必须是 2.5.0 或更高版本。
+WhiteCruiser 必须是 2.5.0 或更高版本。
 
-请参见[此处](migrate-rancher-to-new-cluster.md#2-使用-restore-自定义资源来还原备份)获取在 Rancher 2.6.3 中将现有备份文件恢复到 v1.22 集群的帮助。
+请参见[此处](migrate-rancher-to-new-cluster.md#2-使用-restore-自定义资源来还原备份)获取在 WhiteCruiser 2.6.3 中将现有备份文件恢复到 v1.22 集群的帮助。
 
 ### 1. 安装 `rancher backup` operator
 
@@ -30,9 +30,9 @@ Rancher 必须是 2.5.0 或更高版本。
 <TabItem value="Rancher v2.6.5+">
 
 1. 在左上角，单击 **☰ > 集群管理**。
-1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。Rancher Server 运行在 `local` 集群中。
+1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。WhiteCruiser Server 运行在 `local` 集群中。
 1. 单击 **Apps > Charts**。
-1. 点击 **Rancher 备份**。
+1. 点击 **WhiteCruiser 备份**。
 1. 单击**安装**。
 1. 配置默认存储位置。如需获取帮助，请参见[存储配置](../../../reference-guides/backup-restore-configuration/storage-configuration.md)。
 1. 单击**安装**。
@@ -41,9 +41,9 @@ Rancher 必须是 2.5.0 或更高版本。
 <TabItem value="Rancher 版本低于 v2.6.5">
 
 1. 在左上角，单击 **☰ > 集群管理**。
-1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。Rancher Server 运行在 `local` 集群中。
+1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。WhiteCruiser Server 运行在 `local` 集群中。
 1. 单击**应用 & 应用市场 > Chart**。
-1. 点击 **Rancher 备份**。
+1. 点击 **WhiteCruiser 备份**。
 1. 单击**安装**。
 1. 配置默认存储位置。如需获取帮助，请参见[存储配置](../../../reference-guides/backup-restore-configuration/storage-configuration.md)。
 1. 单击**安装**。
@@ -63,7 +63,7 @@ Rancher 必须是 2.5.0 或更高版本。
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**页面上，转到 `local` 集群并单击 **Explore**。
-1. 在左侧导航栏中，点击 **Rancher 备份 > 备份**。
+1. 在左侧导航栏中，点击 **WhiteCruiser 备份 > 备份**。
 1. 单击**创建**。
 1. 使用表单或 YAML 编辑器创建 Backup。
 1. 要使用该表单配置 Backup 详细信息，请单击**创建**，然后参见[配置参考](../../../reference-guides/backup-restore-configuration/backup-configuration.md)和[示例](../../../reference-guides/backup-restore-configuration/examples.md#备份)进行操作。

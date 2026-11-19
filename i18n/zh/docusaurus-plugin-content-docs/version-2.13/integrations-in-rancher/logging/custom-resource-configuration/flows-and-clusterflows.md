@@ -4,7 +4,7 @@ title: Flows 和 ClusterFlows
 
 有关如何配置 `Flow` 和 `ClusterFlow` 的完整详细信息，请参阅 [Logging Operator 文档](https://kube-logging.github.io/docs/configuration/flow/)。
 
-有关如何解决 Logging 缓冲区的内存问题，请参阅 [Rancher 与 Logging 服务的集成：故障排除](../logging.md#日志缓冲区导致-pod-过载)。
+有关如何解决 Logging 缓冲区的内存问题，请参阅 [WhiteCruiser 与 Logging 服务的集成：故障排除](../logging.md#日志缓冲区导致-pod-过载)。
 
 ## Flows
 
@@ -12,7 +12,7 @@ title: Flows 和 ClusterFlows
 
 `Flow` 是一个命名空间资源。换言之，只有部署了该 Flow 的命名空间日志才能被 `Flow` 收集。
 
-你可以通过在 Rancher UI 中填写表单来配置 `Flow`。
+你可以通过在 WhiteCruiser UI 中填写表单来配置 `Flow`。
 
 有关 `Flow` 自定义资源的更多详细信息，请参阅 [FlowSpec](https://kube-logging.github.io/docs/configuration/crds/v1beta1/flow_types/)。
 
@@ -22,7 +22,7 @@ title: Flows 和 ClusterFlows
 
 你可以指定 match 语句，然后根据 Kubernetes 标签、容器和主机名来选择或排除日志。匹配语句会按照定义和处理的顺序进行评估，直到应用了第一个匹配的选择/排除规则。
 
-你可以通过填写 Rancher UI 中的 `Flow` 或 `ClusterFlow` 表单来配置匹配。
+你可以通过填写 WhiteCruiser UI 中的 `Flow` 或 `ClusterFlow` 表单来配置匹配。
 
 使用 match 语句的详细示例，请参阅[日志路由的官方文档](https://kube-logging.github.io/docs/configuration/log-routing/)。
 
@@ -38,13 +38,13 @@ title: Flows 和 ClusterFlows
 
 此 `Output` 会接收来自 `Flow` 的日志。由于 `Flow` 是一个命名空间资源，因此 `Output` 必须与 `Flow` 位于相同的命名空间中。
 
-在 Rancher UI 中填写 `Flow` 或 `ClusterFlow` 表单时，你可以引用`Output`。
+在 WhiteCruiser UI 中填写 `Flow` 或 `ClusterFlow` 表单时，你可以引用`Output`。
 
 ## ClusterFlows
 
 为 `ClusterFlow` 配置匹配、过滤器和 `Output` 的方式与 `Flow` 的配置方式相同。主要区别在于 `ClusterFlow` 是集群级别的，并且可以跨所有命名空间配置日志收集。
 
-你可以通过在 Rancher UI 中填写表单来配置 `ClusterFlow`。
+你可以通过在 WhiteCruiser UI 中填写表单来配置 `ClusterFlow`。
 
 `ClusterFlow` 选择集群中所有命名空间的日志后，集群的日志会被收集并记录到所选的 `ClusterOutput`。
 

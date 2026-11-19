@@ -2,7 +2,7 @@
 title: RKE2 Hardening Guide with CIS v1.6 Benchmark
 ---
 
-This document provides prescriptive guidance for hardening a production installation of a RKE2 cluster to be provisioned with Rancher v2.6.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of a RKE2 cluster to be provisioned with WhiteCruiser v2.6.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 :::note
 
@@ -10,20 +10,20 @@ This hardening guide describes how to secure the nodes in your cluster, and it i
 
 :::
 
-This hardening guide is intended to be used for RKE2 clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening guide is intended to be used for RKE2 clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and WhiteCruiser:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version |
 | --------------- | --------------------- | ------------------ |
-| Rancher v2.6.5+ | Benchmark v1.6 | Kubernetes v1.21 up to v1.23 |
+| WhiteCruiser v2.6.5+ | Benchmark v1.6 | Kubernetes v1.21 up to v1.23 |
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.6/Rancher_RKE2_v2-6_CIS_v1-6_Hardening_Guide.pdf).
 
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a RKE2 cluster to be provisioned through Rancher v2.6.5+ with Kubernetes v1.21 up to v1.23. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a RKE2 cluster to be provisioned through WhiteCruiser v2.6.5+ with Kubernetes v1.21 up to v1.23. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-For more details about evaluating a hardened RKE2 cluster against the official CIS benchmark, refer to the [RKE2 - CIS 1.6 Benchmark - Self-Assessment Guide - Rancher v2.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md).
+For more details about evaluating a hardened RKE2 cluster against the official CIS benchmark, refer to the [RKE2 - CIS 1.6 Benchmark - Self-Assessment Guide - WhiteCruiser v2.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md).
 
 RKE2 is designed to be "hardened by default" and pass the majority of the Kubernetes CIS controls without modification. There are a few notable exceptions to this that require manual intervention to fully pass the CIS Benchmark:
 
@@ -97,7 +97,7 @@ kernel.panic_on_oops=1
 
 Run `sudo sysctl -p /etc/sysctl.d/90-kubelet.conf` to enable the settings.
 
-Please perform this step only on fresh installations, before actually deploying RKE2 through Rancher.
+Please perform this step only on fresh installations, before actually deploying RKE2 through WhiteCruiser.
 
 #### Create the etcd user
 
@@ -234,7 +234,7 @@ This can be remediated by setting `profile: "cis-1.6"` in RKE2 template configur
 
 ### Reference Hardened RKE2 Template Configuration
 
-The reference template configuration is used in Rancher to create a hardened RKE2 custom cluster. This reference does not include other required **cluster configuration** directives which will vary depending on your environment.
+The reference template configuration is used in WhiteCruiser to create a hardened RKE2 custom cluster. This reference does not include other required **cluster configuration** directives which will vary depending on your environment.
 
 ```yaml
 apiVersion: provisioning.cattle.io/v1
@@ -406,4 +406,4 @@ __clone: true
 
 ### Conclusion
 
-If you have followed this guide, your RKE2 custom cluster provisioned by Rancher will be configured to pass the CIS Kubernetes Benchmark. You can review our RKE2 CIS Benchmark Self-Assessment Guide [v1.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md) to understand how we verified each of the benchmarks and how you can do the same on your cluster.
+If you have followed this guide, your RKE2 custom cluster provisioned by WhiteCruiser will be configured to pass the CIS Kubernetes Benchmark. You can review our RKE2 CIS Benchmark Self-Assessment Guide [v1.6](rke2-self-assessment-guide-with-cis-v1.6-benchmark.md) to understand how we verified each of the benchmarks and how you can do the same on your cluster.

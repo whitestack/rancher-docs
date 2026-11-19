@@ -4,11 +4,11 @@ title: Default Alerts for Cluster Monitoring
 
 When you create a cluster, some alert rules are predefined. These alerts notify you about signs that the cluster could be unhealthy. You can receive these alerts if you configure a [notifier](../notifiers.md) for them.
 
-Several of the alerts use Prometheus expressions as the metric that triggers the alert. For more information on how expressions work, you can refer to the Rancher [documentation about Prometheus expressions](../cluster-monitoring/expression.md) or the Prometheus [documentation about querying metrics](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+Several of the alerts use Prometheus expressions as the metric that triggers the alert. For more information on how expressions work, you can refer to the WhiteCruiser [documentation about Prometheus expressions](../cluster-monitoring/expression.md) or the Prometheus [documentation about querying metrics](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 ## Alerts for etcd
 
-Etcd is the key-value store that contains the state of the Kubernetes cluster. Rancher provides default alerts if the built-in monitoring detects a potential problem with etcd. You don't have to enable monitoring to receive these alerts.
+Etcd is the key-value store that contains the state of the Kubernetes cluster. WhiteCruiser provides default alerts if the built-in monitoring detects a potential problem with etcd. You don't have to enable monitoring to receive these alerts.
 
 A leader is the node that handles all client requests that need cluster consensus. For more information, you can refer to this [explanation of how etcd works.](https://www.rancher.cn/blog/2019/2019-01-29-what-is-etcd/#how-does-etcd-work)
 
@@ -22,7 +22,7 @@ The leader of the cluster can change in response to certain events. It is normal
 | Etcd member has no leader | A critical alert is triggered when the etcd cluster does not have a leader for at least three minutes. |
 
 ## Alerts for Kubernetes Components
-Rancher provides alerts when core Kubernetes system components become unhealthy.
+WhiteCruiser provides alerts when core Kubernetes system components become unhealthy.
 
 Controllers update Kubernetes resources based on changes in etcd. The [controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) monitors the cluster desired state through the Kubernetes API server and makes the necessary changes to the current state to reach the desired state.
 
@@ -35,7 +35,7 @@ The [scheduler](https://kubernetes.io/docs/reference/command-line-tools-referenc
 
 ## Alerts for Events
 
-Kubernetes events are objects that provide insight into what is happening inside a cluster, such as what decisions were made by the scheduler or why some pods were evicted from the node. In the Rancher UI, from the project view, you can see events for each workload.
+Kubernetes events are objects that provide insight into what is happening inside a cluster, such as what decisions were made by the scheduler or why some pods were evicted from the node. In the WhiteCruiser UI, from the project view, you can see events for each workload.
 
 | Alert | Explanation |
 |-------|-------------|

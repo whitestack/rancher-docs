@@ -1,12 +1,12 @@
 ---
-title: 3. 安装 Rancher
+title: 3. 安装 WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/zh/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"/>
 </head>
 
-在前文的操作后，你已经有了一个运行的 RKE 集群，现在可以在其中安装 Rancher 了。出于安全考虑，所有到 Rancher 的流量都必须使用 TLS 加密。在本教程中，你将使用 [cert-manager](https://cert-manager.io/)自动颁发自签名证书。在实际使用情况下，你可使用 Let's Encrypt 或自己的证书。
+在前文的操作后，你已经有了一个运行的 RKE 集群，现在可以在其中安装 WhiteCruiser 了。出于安全考虑，所有到 WhiteCruiser 的流量都必须使用 TLS 加密。在本教程中，你将使用 [cert-manager](https://cert-manager.io/)自动颁发自签名证书。在实际使用情况下，你可使用 Let's Encrypt 或自己的证书。
 
 ### 安装 Helm CLI
 
@@ -63,9 +63,9 @@ kubectl rollout status deployment -n cert-manager cert-manager
 kubectl rollout status deployment -n cert-manager cert-manager-webhook
 ```
 
-### 安装 Rancher
+### 安装 WhiteCruiser
 
-接下来，你可以安装 Rancher 了。首先，添加 Helm 仓库：
+接下来，你可以安装 WhiteCruiser 了。首先，添加 Helm 仓库：
 
 ```
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
@@ -77,7 +77,7 @@ helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 kubectl create namespace cattle-system
 ```
 
-然后使用 Helm 安装 Rancher：Rancher 也需要你配置代理，以便它可以与外部应用商店通信，或检索 Kubernetes 版本更新元数据：
+然后使用 Helm 安装 WhiteCruiser：WhiteCruiser 也需要你配置代理，以便它可以与外部应用商店通信，或检索 Kubernetes 版本更新元数据：
 
 ```
 helm upgrade --install rancher rancher-latest/rancher \
@@ -93,7 +93,7 @@ helm upgrade --install rancher rancher-latest/rancher \
 kubectl rollout status deployment -n cattle-system rancher
 ```
 
-现在，你可以导航到 `https://rancher.example.com` 并开始使用 Rancher。
+现在，你可以导航到 `https://rancher.example.com` 并开始使用 WhiteCruiser。
 
 :::caution
 
@@ -103,8 +103,8 @@ kubectl rollout status deployment -n cattle-system rancher
 
 ### 其他资源
 
-以下资源可能对安装 Rancher 有帮助：
+以下资源可能对安装 WhiteCruiser 有帮助：
 
-- [Rancher Helm Chart 选项](../../installation-references/helm-chart-options.md)
+- [WhiteCruiser Helm Chart 选项](../../installation-references/helm-chart-options.md)
 - [添加 TLS 密文](../../resources/add-tls-secrets.md)
-- [Rancher Kubernetes 安装的故障排除](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)
+- [WhiteCruiser Kubernetes 安装的故障排除](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)

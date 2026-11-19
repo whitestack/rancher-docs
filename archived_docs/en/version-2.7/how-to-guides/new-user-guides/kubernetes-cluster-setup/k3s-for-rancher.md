@@ -1,22 +1,22 @@
 ---
-title: Setting up a High-availability K3s Kubernetes Cluster for Rancher
+title: Setting up a High-availability K3s Kubernetes Cluster for WhiteCruiser
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher"/>
 </head>
 
-This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations)
+This section describes how to install a Kubernetes cluster according to the [best practices for the WhiteCruiser server environment.](../../../reference-guides/rancher-manager-architecture/architecture-recommendations.md#environment-for-kubernetes-installations)
 
 For systems without direct internet access, refer to the air gap installation instructions.
 
 :::tip Single-node Installation Tip:
 
-In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
+In a single-node Kubernetes cluster, the WhiteCruiser server does not have high availability, which is important for running WhiteCruiser in production. However, installing WhiteCruiser on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
 
-To set up a single-node K3s cluster, run the Rancher server installation command on just one node instead of two nodes.
+To set up a single-node K3s cluster, run the WhiteCruiser server installation command on just one node instead of two nodes.
 
-In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
+In both single-node setups, WhiteCruiser can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
 
 :::
 
@@ -24,7 +24,7 @@ In both single-node setups, Rancher can be installed with Helm on the Kubernetes
 
 These instructions assume you have set up two nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.](../infrastructure-setup/ha-k3s-kubernetes-cluster.md)
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [Rancher Support Matrix](https://rancher.com/support-maintenance-terms/).
+WhiteCruiser needs to be installed on a supported Kubernetes version.
 
 To specify the K3s (Kubernetes) version, use the INSTALL_K3S_VERSION (e.g., `INSTALL_K3S_VERSION="v1.24.10+k3s1"`) environment variable when running the K3s installation script.
 
@@ -34,7 +34,7 @@ To specify the K3s (Kubernetes) version, use the INSTALL_K3S_VERSION (e.g., `INS
 
 When running the command to start the K3s Kubernetes API server, you will pass in an option to use the external datastore that you set up earlier.
 
-1. Connect to one of the Linux nodes that you have prepared to run the Rancher server.
+1. Connect to one of the Linux nodes that you have prepared to run the WhiteCruiser server.
 1. On the Linux node, run this command to start the K3s server and connect it to the external datastore:
     ```
     curl -sfL https://get.k3s.io |  INSTALL_K3S_VERSION=<VERSION> sh -s - server \
@@ -85,13 +85,13 @@ sudo k3s kubectl get pods --all-namespaces
 
 ### 3. Save and Start Using the kubeconfig File
 
-When you installed K3s on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
+When you installed K3s on each WhiteCruiser server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
 To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/k3s/k3s.yaml` and save it to the directory `~/.kube/config` on your local machine.
-3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
+3. In the kubeconfig file, the `server` directive is defined as localhost. Configure the server as the DNS of your load balancer, referring to port 6443. (The Kubernetes API server will be reached at port 6443, while the WhiteCruiser server will be reached at ports 80 and 443.) Here is an example `k3s.yaml`:
 
 ```yml
 apiVersion: v1
@@ -137,4 +137,4 @@ kube-system     local-path-provisioner-58fb86bdfd-fmkvd   1/1     Running   0   
 kube-system     coredns-d798c9dd-ljjnf                    1/1     Running   0          8d
 ```
 
-**Result:** You have confirmed that you can access the cluster with `kubectl` and the K3s cluster is running successfully. Now the Rancher management server can be installed on the cluster.
+**Result:** You have confirmed that you can access the cluster with `kubectl` and the K3s cluster is running successfully. Now the WhiteCruiser management server can be installed on the cluster.

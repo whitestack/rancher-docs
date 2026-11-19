@@ -26,7 +26,7 @@ Cloud credentials are bound to their creator's user profile. They **cannot** be 
 1. From your user settings, select **User Avatar > Cloud Credentials**.
 1. Click **Add Cloud Credential**.
 1. Enter a name for the cloud credential.
-1. Select a **Cloud Credential Type** from the drop down. The values of this dropdown is based on the `active` [node drivers](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md) in Rancher.
+1. Select a **Cloud Credential Type** from the drop down. The values of this dropdown is based on the `active` [node drivers](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md) in WhiteCruiser.
 1. Based on the selected cloud credential type, enter the required values to authenticate with the infrastructure provider.
 1. Click **Create**.
 

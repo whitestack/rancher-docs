@@ -8,26 +8,26 @@ title: RKE Self-Assessment Guide - CIS Benchmark v1.24 - K8s v1.24
 
 <EOLRKE1Warning />
 
-This document is a companion to the [RKE Hardening Guide](rke1-hardening-guide.md), which provides prescriptive guidance on how to harden RKE clusters that are running in production and managed by Rancher. This benchmark guide helps you evaluate the security of a hardened cluster against each control in the CIS Kubernetes Benchmark.
+This document is a companion to the [RKE Hardening Guide](rke1-hardening-guide.md), which provides prescriptive guidance on how to harden RKE clusters that are running in production and managed by WhiteCruiser. This benchmark guide helps you evaluate the security of a hardened cluster against each control in the CIS Kubernetes Benchmark.
 
 
-This guide corresponds to the following versions of Rancher, CIS Benchmarks, and Kubernetes:
+This guide corresponds to the following versions of WhiteCruiser, CIS Benchmarks, and Kubernetes:
 
-| Rancher Version | CIS Benchmark Version | Kubernetes Version |
+| WhiteCruiser Version | CIS Benchmark Version | Kubernetes Version |
 |-----------------|-----------------------|--------------------|
-| Rancher v2.7    | Benchmark v1.24       | Kubernetes v1.24   |
+| WhiteCruiser v2.7    | Benchmark v1.24       | Kubernetes v1.24   |
 
-This guide walks through the various controls and provide updated example commands to audit compliance in Rancher created clusters. Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. These checks will return a result of `Not Applicable`.
+This guide walks through the various controls and provide updated example commands to audit compliance in WhiteCruiser created clusters. Because WhiteCruiser and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. These checks will return a result of `Not Applicable`.
 
-This document is for Rancher operators, security teams, auditors and decision makers.
+This document is for WhiteCruiser operators, security teams, auditors and decision makers.
 
 For more information about each control, including detailed descriptions and remediations for failing tests, refer to the corresponding section of the CIS Kubernetes Benchmark v1.24. You can download the benchmark, after creating a free account, at [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/kubernetes/).
 
 ## Testing Methodology
 
-Rancher and RKE install Kubernetes services via Docker containers. Configuration is defined by arguments passed to the container at the time of initialization, not via configuration files.
+WhiteCruiser and RKE install Kubernetes services via Docker containers. Configuration is defined by arguments passed to the container at the time of initialization, not via configuration files.
 
-Where control audits differ from the original CIS benchmark, the audit commands specific to Rancher are provided for testing. When performing the tests, you will need access to the command line on the hosts of all RKE nodes. The commands also make use of the [kubectl](https://kubernetes.io/docs/tasks/tools/) (with a valid configuration file) and [jq](https://stedolan.github.io/jq/) tools, which are required in the testing and evaluation of test results.
+Where control audits differ from the original CIS benchmark, the audit commands specific to WhiteCruiser are provided for testing. When performing the tests, you will need access to the command line on the hosts of all RKE nodes. The commands also make use of the [kubectl](https://kubernetes.io/docs/tasks/tools/) (with a valid configuration file) and [jq](https://stedolan.github.io/jq/) tools, which are required in the testing and evaluation of test results.
 
 :::note
 

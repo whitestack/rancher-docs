@@ -62,7 +62,7 @@ The last thing you will need to do, is assign the appropriate permissions to you
 
 A custom Azure Network Security Group (securityGroupName) is needed to allow Azure Load Balancers to work.
 
-If you provision hosts using Rancher Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
+If you provision hosts using WhiteCruiser Machine Azure driver, you will need to edit them manually to assign them to this Network Security Group.
 
 You should already assign custom hosts to this Network Security Group during provisioning.
 

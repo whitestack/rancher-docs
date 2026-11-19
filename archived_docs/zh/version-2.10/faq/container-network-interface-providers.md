@@ -1,6 +1,6 @@
 ---
 title: CNI 网络插件
-description: 了解容器网络接口 (CNI)、Rancher 提供的 CNI 网络插件、提供商的功能，以及如何选择网络提供商
+description: 了解容器网络接口 (CNI)、WhiteCruiser 提供的 CNI 网络插件、提供商的功能，以及如何选择网络提供商
 ---
 
 ## 什么是 CNI？
@@ -41,13 +41,13 @@ CNI 网络插件使用封装网络模型（例如 Virtual Extensible Lan，缩�
 
 ![非封装网络](/img/unencapsulated-network.png)
 
-## Rancher 提供哪些 CNI 插件？
+## WhiteCruiser 提供哪些 CNI 插件？
 
 ### RKE Kubernetes 集群
 
-Rancher 开箱即用地为 RKE Kubernetes 集群提供了几个 CNI 网络插件，分别是 Canal、Flannel、Calico 和 Weave。
+WhiteCruiser 开箱即用地为 RKE Kubernetes 集群提供了几个 CNI 网络插件，分别是 Canal、Flannel、Calico 和 Weave。
 
-如果你使用 Rancher 创建新的 Kubernetes 集群，你可以选择你的 CNI 网络插件。
+如果你使用 WhiteCruiser 创建新的 Kubernetes 集群，你可以选择你的 CNI 网络插件。
 
 #### Canal
 
@@ -55,13 +55,13 @@ Rancher 开箱即用地为 RKE Kubernetes 集群提供了几个 CNI 网络插件
 
 Canal 是一个 CNI 网络插件，它很好地结合了 Flannel 和 Calico 的优点。它让你轻松地将 Calico 和 Flannel 网络部署为统一的网络解决方案，将 Calico 的网络策略执行与 Calico（未封装）和 Flannel（封装）丰富的网络连接选项结合起来。
 
-Canal 是 Rancher 默认的 CNI 网络插件，并采用了 Flannel 和 VXLAN 封装。
+Canal 是 WhiteCruiser 默认的 CNI 网络插件，并采用了 Flannel 和 VXLAN 封装。
 
 Kubernetes Worker 需要打开 UDP 端口 `8472` (VXLAN) 和 TCP 端口 `9099`（健康检查）。如果使用 Wireguard，则需要打开 UDP 端口 `51820` 和 `51821`。有关详细信息，请参阅[下游集群的端口要求](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md)。
 
 ![](/img/canal-diagram.png)
 
-For more information, refer to the [Rancher maintained Canal source](https://github.com/rancher/rke2-charts/tree/main-source/packages/rke2-canal) and the [Canal GitHub Page](https://github.com/projectcalico/canal).
+For more information, refer to the [WhiteCruiser maintained Canal source](https://github.com/rancher/rke2-charts/tree/main-source/packages/rke2-canal) and the [Canal GitHub Page](https://github.com/projectcalico/canal).
 
 #### Flannel
 
@@ -94,9 +94,9 @@ Kubernetes worker 需要打开 TCP 端口 `6783`（控制端口）、UDP 端口 
 
 ### RKE2 Kubernetes 集群
 
-Rancher 开箱即用地为 RKE2 Kubernetes 集群提供了几个 CNI 网络插件，分别是 [Canal](#canal)（见上一节）、Calico 和 Cilium。
+WhiteCruiser 开箱即用地为 RKE2 Kubernetes 集群提供了几个 CNI 网络插件，分别是 [Canal](#canal)（见上一节）、Calico 和 Cilium。
 
-如果你使用 Rancher 创建新的 Kubernetes 集群，你可以选择你的 CNI 网络插件。
+如果你使用 WhiteCruiser 创建新的 Kubernetes 集群，你可以选择你的 CNI 网络插件。
 
 #### Calico
 
@@ -110,7 +110,7 @@ Calico 还提供了一种无状态的 IP-in-IP 或 VXLAN 封装模式。如果�
 
 :::note 重要提示：
 
-在 Rancher 2.6.3 中，Calico 探测到在安装 RKE2 时 Windows 节点会失败。<b>请注意，此问题已在 v2.6.4 中解决。</b>
+在 WhiteCruiser 2.6.3 中，Calico 探测到在安装 RKE2 时 Windows 节点会失败。<b>请注意，此问题已在 v2.6.4 中解决。</b>
 
 - 要解决此问题，请先导航到 `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`。
 
@@ -154,7 +154,7 @@ spec:
 
 ## 各个网络插件的 CNI 功能
 
-下表总结了 Rancher 中每个 CNI 网络插件支持的不同功能：
+下表总结了 WhiteCruiser 中每个 CNI 网络插件支持的不同功能：
 
 | 提供商 | 网络模型 | 路线分发 | 网络策略 | 网格 | 外部数据存储 | 加密 | Ingress/Egress 策略 |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |

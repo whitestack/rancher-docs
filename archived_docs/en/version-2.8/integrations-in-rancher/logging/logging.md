@@ -1,17 +1,17 @@
 ---
-title: Rancher Integration with Logging Services
-description: Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
+title: WhiteCruiser Integration with Logging Services
+description: WhiteCruiser integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging"/>
 </head>
 
-The [Logging operator](https://kube-logging.github.io/docs/) now powers Rancher's logging solution in place of the former, in-house solution.
+The [Logging operator](https://kube-logging.github.io/docs/) now powers WhiteCruiser's logging solution in place of the former, in-house solution.
 
 ## Enabling Logging
 
-You can enable the logging for a Rancher managed cluster by going to the Apps page and installing the logging app.
+You can enable the logging for a WhiteCruiser managed cluster by going to the Apps page and installing the logging app.
 
 1. Go to the cluster where you want to install logging and click **Apps**.
 1. Click the **Logging** app.
@@ -37,7 +37,7 @@ For more information about how the logging application works, see [this section.
 
 ## Role-based Access Control
 
-Rancher logging has two roles, `logging-admin` and `logging-view`. For more information on how and when to use these roles, see [this page.](rbac-for-logging.md)
+WhiteCruiser logging has two roles, `logging-admin` and `logging-view`. For more information on how and when to use these roles, see [this page.](rbac-for-logging.md)
 
 ## Configuring Logging Custom Resources
 
@@ -80,7 +80,7 @@ For information on enabling the logging application for SELinux-enabled nodes, s
 
 ### Additional Logging Sources
 
-By default, Rancher collects logs for control plane components and node components for all cluster types. In some cases additional logs can be collected. For details, see [this section.](logging-helm-chart-options.md#additional-logging-sources)
+By default, WhiteCruiser collects logs for control plane components and node components for all cluster types. In some cases additional logs can be collected. For details, see [this section.](logging-helm-chart-options.md#additional-logging-sources)
 
 
 ## Troubleshooting
@@ -93,10 +93,10 @@ For a more complete description of how to configure the logging buffer to suit y
 
 ### The `cattle-logging` Namespace Being Recreated
 
-If your cluster previously deployed logging from the global view in the legacy Rancher UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
+If your cluster previously deployed logging from the global view in the legacy WhiteCruiser UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
 
 The solution is to delete all `clusterloggings.management.cattle.io` and `projectloggings.management.cattle.io` custom resources from the cluster specific namespace in the management cluster.
-The existence of these custom resources causes Rancher to create the `cattle-logging` namespace in the downstream cluster if it does not exist.
+The existence of these custom resources causes WhiteCruiser to create the `cattle-logging` namespace in the downstream cluster if it does not exist.
 
 The cluster namespace matches the cluster ID, so we need to find the cluster ID for each cluster.
 
@@ -113,7 +113,7 @@ https://<your-url>/dashboard/c/<cluster-id>/
 ```
 
 Now that we have the `<cluster-id>` namespace, we can delete the CRs that cause `cattle-logging` to be continually recreated.
-*Warning:* ensure that logging, the version installed from the global view in the legacy Rancher UI, is not currently in use.
+*Warning:* ensure that logging, the version installed from the global view in the legacy WhiteCruiser UI, is not currently in use.
 
 ```bash
 kubectl delete crd clusterloggings.management.cattle.io -n <cluster-id>

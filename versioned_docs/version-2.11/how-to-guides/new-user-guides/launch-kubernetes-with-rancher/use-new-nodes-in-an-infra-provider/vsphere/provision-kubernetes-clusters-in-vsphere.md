@@ -6,15 +6,15 @@ title: Provisioning Kubernetes Clusters in VMware vSphere
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/vsphere/provision-kubernetes-clusters-in-vsphere"/>
 </head>
 
-In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/)  Kubernetes cluster in VMware vSphere.
+In this section, you'll learn how to use WhiteCruiser to install an [RKE](https://rancher.com/docs/rke/latest/en/)  Kubernetes cluster in VMware vSphere.
 
-First, you will set up your vSphere cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision nodes in vSphere.
+First, you will set up your vSphere cloud credentials in WhiteCruiser. Then you will use your cloud credentials to create a node template, which WhiteCruiser will use to provision nodes in vSphere.
 
-Then you will create a vSphere cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+Then you will create a vSphere cluster in WhiteCruiser, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. WhiteCruiser will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
 For details on configuring the vSphere node template, refer to the [vSphere node template configuration reference.](../../../../../reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere.md)
 
-For details on configuring RKE Kubernetes clusters in Rancher, refer to the [cluster configuration reference.](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-cluster-config-file-reference)
+For details on configuring RKE Kubernetes clusters in WhiteCruiser, refer to the [cluster configuration reference.](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-cluster-config-file-reference)
 
 
 - [Preparation in vSphere](#preparation-in-vmware-vsphere)
@@ -22,7 +22,7 @@ For details on configuring RKE Kubernetes clusters in Rancher, refer to the [clu
 
 ## Preparation in VMware vSphere
 
-This section describes the requirements for setting up vSphere so that Rancher can provision VMs and clusters.
+This section describes the requirements for setting up vSphere so that WhiteCruiser can provision VMs and clusters.
 
 The node templates are documented and tested with the vSphere Web Services API version 6.5.
 
@@ -30,11 +30,11 @@ The node templates are documented and tested with the vSphere Web Services API v
 
 Before proceeding to create a cluster, you must ensure that you have a vSphere user with sufficient permissions. When you set up a node template, the template will need to use these vSphere credentials.
 
-Refer to this [how-to guide](create-credentials.md) for instructions on how to create a user in vSphere with the required permissions. These steps result in a username and password that you will need to provide to Rancher, which allows Rancher to provision resources in vSphere.
+Refer to this [how-to guide](create-credentials.md) for instructions on how to create a user in vSphere with the required permissions. These steps result in a username and password that you will need to provide to WhiteCruiser, which allows WhiteCruiser to provision resources in vSphere.
 
 ### Network Permissions
 
-It must be ensured that the hosts running the Rancher server are able to establish the following network connections:
+It must be ensured that the hosts running the WhiteCruiser server are able to establish the following network connections:
 
 - To the vSphere API on the vCenter server (usually port 443/TCP).
 - To the Host API (port 443/TCP) on all ESXi hosts used to instantiate virtual machines for the clusters (*only required when using the ISO creation method*).
@@ -75,7 +75,7 @@ User-data.iso files may have become orphaned upon node deletion due to a vSphere
 
 ### 2. Create a node template with your cloud credentials
 
-Creating a [node template](../use-new-nodes-in-an-infra-provider.md#node-templates) for vSphere will allow Rancher to provision new nodes in vSphere. Node templates can be reused for other clusters.
+Creating a [node template](../use-new-nodes-in-an-infra-provider.md#node-templates) for vSphere will allow WhiteCruiser to provision new nodes in vSphere. Node templates can be reused for other clusters.
 
 1. Click **☰ > Cluster Management**.
 1. Click **RKE1 Configuration > Node Templates**.
@@ -87,7 +87,7 @@ Creating a [node template](../use-new-nodes-in-an-infra-provider.md#node-templat
 
 ### 3. Create a cluster with node pools using the node template
 
-Use Rancher to create a Kubernetes cluster in vSphere.
+Use WhiteCruiser to create a Kubernetes cluster in vSphere.
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
@@ -101,7 +101,7 @@ Use Rancher to create a Kubernetes cluster in vSphere.
 
 **Result:**
 
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+Your cluster is created and assigned a state of **Provisioning**. WhiteCruiser is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -113,8 +113,8 @@ You can access your cluster after its state is updated to **Active**.
 
 ## Optional Next Steps
 
-After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
+After creating your cluster, you can access it through the WhiteCruiser UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
-- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
-- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
-- **Provision Storage:** For an example of how to provision storage in vSphere using Rancher, refer to [this section.](../../../manage-clusters/provisioning-storage-examples/provisioning-storage-examples.md) In order to dynamically provision storage in vSphere, the vSphere provider must be enabled. For details, refer to [in-tree vSphere cloud provider docs](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-in-tree-vsphere.md) and [out-of-tree vSphere cloud provider docs](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-out-of-tree-vsphere.md).
+- **Access your cluster with the kubectl CLI:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#accessing-clusters-with-kubectl-from-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the WhiteCruiser server’s authentication proxy, then WhiteCruiser will connect you to the downstream cluster. This method lets you manage the cluster without the WhiteCruiser UI.
+- **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps](../../../../new-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through WhiteCruiser. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to WhiteCruiser, you can still access the cluster.
+- **Provision Storage:** For an example of how to provision storage in vSphere using WhiteCruiser, refer to [this section.](../../../manage-clusters/provisioning-storage-examples/provisioning-storage-examples.md) In order to dynamically provision storage in vSphere, the vSphere provider must be enabled. For details, refer to [in-tree vSphere cloud provider docs](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-in-tree-vsphere.md) and [out-of-tree vSphere cloud provider docs](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-cloud-providers/configure-out-of-tree-vsphere.md).

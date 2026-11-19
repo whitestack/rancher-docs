@@ -8,7 +8,7 @@ Kubernetes v1.25 改变了集群描述和执行安全策略的方式。从这个
 
 :::note
 
-升级到 v1.25 后，添加必要的 Rancher 命名空间豁免。有关详细信息，请参阅 [Pod 安全准入 (PSA) 配置模板](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md#豁免必须的-rancher-命名空间)。
+升级到 v1.25 后，添加必要的 WhiteCruiser 命名空间豁免。有关详细信息，请参阅 [Pod 安全准入 (PSA) 配置模板](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/psa-config-templates.md#豁免必须的-whitecruiser-命名空间)。
 
 :::
 
@@ -28,11 +28,11 @@ Kubernetes v1.25 改变了集群描述和执行安全策略的方式。从这个
 
 在集群中的每个节点上执行以下操作：
 
-遵循 K3s [将加固集群从 v1.24.x 升级到 v1.25.x](https://docs.k3s.io/known-issues#hardened-125)的官方说明，但使用[自定义](./rancher-psact.yaml)Rancher PSA 配置模板，而不是 K3s 官方网站上提供的配置。
+遵循 K3s [将加固集群从 v1.24.x 升级到 v1.25.x](https://docs.k3s.io/known-issues#hardened-125)的官方说明，但使用[自定义](./rancher-psact.yaml)WhiteCruiser PSA 配置模板，而不是 K3s 官方网站上提供的配置。
 </TabItem>
 </Tabs>
 
-执行这些步骤后，你可以通过 Rancher UI 升级集群的 Kubernetes 版本：
+执行这些步骤后，你可以通过 WhiteCruiser UI 升级集群的 Kubernetes 版本：
 
 1. 在左上角，单击 **☰ > 集群管理**。
 1. 在**集群**表中找到要更新的集群，点击 **⋮**。

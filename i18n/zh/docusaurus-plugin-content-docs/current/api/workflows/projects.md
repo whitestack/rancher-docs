@@ -46,7 +46,7 @@ spec:
 EOF
 ```
 
-设置 `field.cattle.io/creatorId` 字段允许集群成员账户通过 `get` 命令查看项目资源，并可以在 Rancher UI 中查看项目。集群所有者和管理员账号不需要设置此注释。
+设置 `field.cattle.io/creatorId` 字段允许集群成员账户通过 `get` 命令查看项目资源，并可以在 WhiteCruiser UI 中查看项目。集群所有者和管理员账号不需要设置此注释。
 
 ### 创建一个具有 Resource Quota 的项目
 

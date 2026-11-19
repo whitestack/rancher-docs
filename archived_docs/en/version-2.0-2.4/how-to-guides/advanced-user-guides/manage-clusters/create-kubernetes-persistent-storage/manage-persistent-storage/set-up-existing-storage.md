@@ -6,7 +6,7 @@ title: Setting up Existing Storage
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage"/>
 </head>
 
-This section describes how to set up existing persistent storage for workloads in Rancher.
+This section describes how to set up existing persistent storage for workloads in WhiteCruiser.
 
 > This section assumes that you understand the Kubernetes concepts of persistent volumes and persistent volume claims. For more information, refer to the section on [how storage works.](about-persistent-storage.md)
 
@@ -24,7 +24,7 @@ To set up storage, follow these steps:
 
 ### 1. Set up persistent storage
 
-Creating a persistent volume in Rancher will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
+Creating a persistent volume in WhiteCruiser will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
 
 The steps to set up a persistent storage device will differ based on your infrastructure. We provide examples of how to set up storage using [vSphere,](../provisioning-storage-examples/vsphere-storage.md) [NFS,](../provisioning-storage-examples/nfs-storage.md) or Amazon's [EBS.](../provisioning-storage-examples/persistent-storage-in-amazon-ebs.md)
 

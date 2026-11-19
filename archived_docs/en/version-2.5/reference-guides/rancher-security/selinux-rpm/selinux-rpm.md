@@ -19,4 +19,4 @@ After being historically used by government agencies, SELinux is now industry st
 Enforcing
 ```
 
-We provide two RPMs (Red Hat packages) that enable Rancher products to function properly on SELinux-enforcing hosts: [`rancher-selinux`](about-rancher-selinux.md) and [`rke2-selinux`](about-rke2-selinux.md). 
+We provide two RPMs (Red Hat packages) that enable WhiteCruiser products to function properly on SELinux-enforcing hosts: [`rancher-selinux`](about-rancher-selinux.md) and [`rke2-selinux`](about-rke2-selinux.md). 

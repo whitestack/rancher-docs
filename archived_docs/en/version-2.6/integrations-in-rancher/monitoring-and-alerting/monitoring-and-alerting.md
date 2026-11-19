@@ -1,6 +1,6 @@
 ---
 title: Monitoring and Alerting
-description: Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
+description: Prometheus lets you view metrics from your different WhiteCruiser and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring
 ---
 
 <head>
@@ -11,11 +11,11 @@ Using the `rancher-monitoring` application, you can quickly deploy leading open-
 
 ## Features
 
-Prometheus lets you view metrics from your Rancher and Kubernetes objects. Using timestamps, Prometheus lets you query and view these metrics in easy-to-read graphs and visuals, either through the Rancher UI or Grafana, which is an analytics viewing platform deployed along with Prometheus.
+Prometheus lets you view metrics from your WhiteCruiser and Kubernetes objects. Using timestamps, Prometheus lets you query and view these metrics in easy-to-read graphs and visuals, either through the WhiteCruiser UI or Grafana, which is an analytics viewing platform deployed along with Prometheus.
 
 By viewing data that Prometheus scrapes from your cluster control plane, nodes, and deployments, you can stay on top of everything happening in your cluster. You can then use these analytics to better run your organization: stop system emergencies before they start, develop maintenance strategies, or restore crashed servers.
 
-The `rancher-monitoring` operator, introduced in Rancher v2.5, is powered by [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/grafana/),  [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/), the [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), and the [Prometheus adapter.](https://github.com/DirectXMan12/k8s-prometheus-adapter)
+The `rancher-monitoring` operator, introduced in WhiteCruiser v2.5, is powered by [Prometheus](https://prometheus.io/), [Grafana](https://grafana.com/grafana/),  [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/), the [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator), and the [Prometheus adapter.](https://github.com/DirectXMan12/k8s-prometheus-adapter)
 
 The monitoring application allows you to:
 
@@ -39,7 +39,7 @@ By default, the monitoring application deploys Grafana dashboards (curated by th
 It also deploys an Alertmanager UI and a Prometheus UI. For more information about these tools, see [Built-in Dashboards.](built-in-dashboards.md)
 ### Default Metrics Exporters
 
-By default, Rancher Monitoring deploys exporters (such as [node-exporter](https://github.com/prometheus/node_exporter) and [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)).
+By default, WhiteCruiser Monitoring deploys exporters (such as [node-exporter](https://github.com/prometheus/node_exporter) and [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)).
 
 These default exporters automatically scrape metrics for CPU and memory from all components of your Kubernetes cluster, including your workloads.
 
@@ -47,9 +47,9 @@ These default exporters automatically scrape metrics for CPU and memory from all
 
 The monitoring application deploys some alerts by default. To see the default alerts, go to the [Alertmanager UI](built-in-dashboards.md#alertmanager-ui) and click **Expand all groups.**
 
-### Components Exposed in the Rancher UI
+### Components Exposed in the WhiteCruiser UI {#components-exposed-in-the-rancher-ui}
 
-For a list of monitoring components exposed in the Rancher UI, along with common use cases for editing them, see [this section.](how-monitoring-works.md#components-exposed-in-the-rancher-ui)
+For a list of monitoring components exposed in the WhiteCruiser UI, along with common use cases for editing them, see [this section.](how-monitoring-works.md#components-exposed-in-the-rancher-ui)
 
 ## Role-based Access Control
 
@@ -67,7 +67,7 @@ For information on configuring access to monitoring, see [this page.](rbac-for-m
 
 ## Configuration
 
-### Configuring Monitoring Resources in Rancher
+### Configuring Monitoring Resources in WhiteCruiser {#configuring-monitoring-resources-in-rancher}
 
 > The configuration reference assumes familiarity with how monitoring components work together. For more information, see [How Monitoring Works.](how-monitoring-works.md)
 

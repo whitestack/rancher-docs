@@ -8,13 +8,13 @@ title: Flows and ClusterFlows
 
 See the [Logging operator documentation](https://kube-logging.github.io/docs/configuration/flow/) for the full details on how to configure  `Flows` and `ClusterFlows`.
 
-See [Rancher Integration with Logging Services: Troubleshooting](../logging.md#The-Logging-Buffer-Overloads-Pods) for how to resolve memory problems with the logging buffer.
+See [WhiteCruiser Integration with Logging Services: Troubleshooting](../logging.md#The-Logging-Buffer-Overloads-Pods) for how to resolve memory problems with the logging buffer.
 
 ## Configuration
 
 ## Changes in v2.5.8
 
-The `Flows` and `ClusterFlows` can now be configured by filling out forms in the Rancher UI.
+The `Flows` and `ClusterFlows` can now be configured by filling out forms in the WhiteCruiser UI.
 
 ## Flows
 
@@ -46,7 +46,7 @@ Match statements are used to select which containers to pull logs from.
 
 You can specify match statements to select or exclude logs according to Kubernetes labels, container and host names. Match statements are evaluated in the order they are defined and processed only until the first matching select or exclude rule applies.
 
-Matches can be configured by filling out the `Flow` or `ClusterFlow` forms in the Rancher UI.
+Matches can be configured by filling out the `Flow` or `ClusterFlow` forms in the WhiteCruiser UI.
 
 For detailed examples on using the match statement, see the [official documentation on log routing.](https://kube-logging.github.io/docs/configuration/log-routing/)
 
@@ -92,7 +92,7 @@ For a list of filters supported by the Logging operator, see [the official docum
 
 This `Output` will receive logs from the `Flow`. Because the `Flow` is a namespaced resource, the `Output` must reside in same namespace as the `Flow`.
 
-`Outputs` can be referenced when filling out the `Flow` or `ClusterFlow` forms in the Rancher UI.
+`Outputs` can be referenced when filling out the `Flow` or `ClusterFlow` forms in the WhiteCruiser UI.
 
 </TabItem>
 <TabItem value="Rancher before v2.5.8">

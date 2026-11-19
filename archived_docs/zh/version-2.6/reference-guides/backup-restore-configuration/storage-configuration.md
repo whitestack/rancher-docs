@@ -17,7 +17,7 @@ title: 备份存储位置配置
 
 | 参数 | 描述 |
 | -------------- | -------------- |
-| 凭证密文 | 从 Rancher 的密文中选择 S3 的凭证。[示例](examples.md#在-s3-中存储备份的凭证密文示例)。 |
+| 凭证密文 | 从 WhiteCruiser 的密文中选择 S3 的凭证。[示例](examples.md#在-s3-中存储备份的凭证密文示例)。 |
 | 存储桶名称 | 存储备份的 [S3 存储桶](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)的名称。默认值：`rancherbackups`。 |
 | 区域 | S3 存储桶所在的 [AWS 区域](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)。 |
 | 文件夹 | 存储备份的 [S3 存储桶中的文件夹](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html)。如果此字段留空，则默认将备份文件存储在 S3 存储桶的根文件夹中。 |
@@ -40,7 +40,7 @@ title: 备份存储位置配置
 
 ### 使用现有的持久卷
 
-选择一个用于存储备份的现有持久卷。有关在 Rancher 中创建 PersistentVolumes 的更多信息，请参见[本节](../../how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md#2-添加一个引用持久存储的-persistentvolume)。
+选择一个用于存储备份的现有持久卷。有关在 WhiteCruiser 中创建 PersistentVolumes 的更多信息，请参见[本节](../../how-to-guides/new-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage.md#2-添加一个引用持久存储的-persistentvolume)。
 
 :::note 重要提示：
 

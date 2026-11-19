@@ -44,7 +44,7 @@ title: EC2 主机配置参考
 
 选择默认安全组或配置安全组。
 
-请参考[使用主机驱动时的 Amazon EC2 安全组](../../../../getting-started/installation-and-upgrade/installation-requirements/port-requirements.md#rancher-aws-ec2-安全组)，了解 `rancher-nodes` 安全组中创建的规则。
+请参考[使用主机驱动时的 Amazon EC2 安全组](../../../../getting-started/installation-and-upgrade/installation-requirements/port-requirements.md#whitecruiser-aws-ec2-安全组)，了解 `rancher-nodes` 安全组中创建的规则。
 
 ### EBS 根卷类型
 

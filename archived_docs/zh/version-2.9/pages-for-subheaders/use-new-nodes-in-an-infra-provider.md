@@ -2,30 +2,30 @@
 title: 在云厂商的新节点上启动 Kubernetes
 ---
 
-在 Rancher 中使用节点模板来创建 RKE 或 RKE2 集群时，每个生成的节点池都会显示在新的**主机池**选项卡中。你可以通过执行以下操作来查看主机池：
+在 WhiteCruiser 中使用节点模板来创建 RKE 或 RKE2 集群时，每个生成的节点池都会显示在新的**主机池**选项卡中。你可以通过执行以下操作来查看主机池：
 
 1. 点击**☰ > 集群管理**。
 1. 单击 RKE 或 RKE2 集群的名称。
 
 ## RKE 集群
 
-使用 Rancher，你可以基于[节点模板](use-new-nodes-in-an-infra-provider.md#节点模板)创建节点池。此节点模板定义了要用于在基础设施提供商或云厂商中启动节点的参数。
+使用 WhiteCruiser，你可以基于[节点模板](use-new-nodes-in-an-infra-provider.md#节点模板)创建节点池。此节点模板定义了要用于在基础设施提供商或云厂商中启动节点的参数。
 
-在托管在云厂商的节点池上安装 Kubernetes 的一个好处是，如果一个节点与集群断开连接，Rancher 可以自动创建另一个节点并将其加入集群，从而确保节点池的数量符合要求。
+在托管在云厂商的节点池上安装 Kubernetes 的一个好处是，如果一个节点与集群断开连接，WhiteCruiser 可以自动创建另一个节点并将其加入集群，从而确保节点池的数量符合要求。
 
 可用于创建节点模板的云提供商是由[主机驱动](use-new-nodes-in-an-infra-provider.md#主机驱动)决定的。
 
 ### 节点模板
 
-节点模板保存了用于在特定云提供商中配置节点时要使用的参数。这些节点可以从 UI 启动。Rancher 使用 [Docker Machine](https://github.com/docker/docs/blob/vnext-engine/machine/overview.md) 来配置这些节点。可用于创建节点模板的云提供商取决于 Rancher 中状态是 Active 的主机驱动。
+节点模板保存了用于在特定云提供商中配置节点时要使用的参数。这些节点可以从 UI 启动。WhiteCruiser 使用 [Docker Machine](https://github.com/docker/docs/blob/vnext-engine/machine/overview.md) 来配置这些节点。可用于创建节点模板的云提供商取决于 WhiteCruiser 中状态是 Active 的主机驱动。
 
-在 Rancher 中创建节点模板后，模板会被保存，以便你可以再次使用该模板来创建节点池。节点模板绑定到你的登录名。添加模板后，你可以将其从用户配置文件中删除。
+在 WhiteCruiser 中创建节点模板后，模板会被保存，以便你可以再次使用该模板来创建节点池。节点模板绑定到你的登录名。添加模板后，你可以将其从用户配置文件中删除。
 
 #### 节点标签
 
 你可以为每个节点模板添加[标签](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)，这样，使用节点模板创建的节点都会自动带有这些标签。
 
-无效标签会阻止升级，或阻止 Rancher 启动。有关标签语法的详细信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
+无效标签会阻止升级，或阻止 WhiteCruiser 启动。有关标签语法的详细信息，请参阅 [Kubernetes 文档](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)。
 
 #### 节点污点
 
@@ -35,7 +35,7 @@ title: 在云厂商的新节点上启动 Kubernetes
 
 #### 节点模板的管理员控制
 
-管理员可以控制所有节点模板。现在，管理员可以维护 Rancher 中的所有节点模板。当节点模板所有者不再使用 Rancher 时，他们创建的节点模板可以由管理员管理，以便继续更新和维护集群。
+管理员可以控制所有节点模板。现在，管理员可以维护 WhiteCruiser 中的所有节点模板。当节点模板所有者不再使用 WhiteCruiser 时，他们创建的节点模板可以由管理员管理，以便继续更新和维护集群。
 
 要访问所有节点模板，管理员需要执行以下操作：
 
@@ -46,7 +46,7 @@ title: 在云厂商的新节点上启动 Kubernetes
 
 ### 节点池
 
-使用 Rancher，你可以基于[节点模板](#节点模板)创建节点池。
+使用 WhiteCruiser，你可以基于[节点模板](#节点模板)创建节点池。
 
 节点模板定义了节点的配置，例如要使用的操作系统、CPU 数量和内存量。
 
@@ -64,7 +64,7 @@ title: 在云厂商的新节点上启动 Kubernetes
 
 **离线环境中的 RKE1 下游集群节点**：
 
-默认情况下，在配置 RKE1 下游集群节点时（例如在 vSphere 中），Rancher 会尝试运行 Docker 安装脚本。但是，Rancher Docker 安装脚本在离线环境中会运行失败。要解决此问题，如果 Docker 已预安装到 VM 镜像上，你可以选择在创建节点模板时跳过安装 Docker。为此，你可以在 Rancher UI **引擎选项**下的 `Docker 安装 URL` 下拉列表中选择 **无**。
+默认情况下，在配置 RKE1 下游集群节点时（例如在 vSphere 中），WhiteCruiser 会尝试运行 Docker 安装脚本。但是，WhiteCruiser Docker 安装脚本在离线环境中会运行失败。要解决此问题，如果 Docker 已预安装到 VM 镜像上，你可以选择在创建节点模板时跳过安装 Docker。为此，你可以在 WhiteCruiser UI **引擎选项**下的 `Docker 安装 URL` 下拉列表中选择 **无**。
 
 <figcaption>**引擎选项下拉列表**</figcaption>
 
@@ -80,7 +80,7 @@ title: 在云厂商的新节点上启动 Kubernetes
 
 #### 节点自动替换
 
-Rancher 可以自动替换节点池中无法访问的节点。如果节点在指定的时间中处于 Inactive 状态，Rancher 将使用该节点池的节点模板来重新创建节点。
+WhiteCruiser 可以自动替换节点池中无法访问的节点。如果节点在指定的时间中处于 Inactive 状态，WhiteCruiser 将使用该节点池的节点模板来重新创建节点。
 
 :::caution
 
@@ -88,21 +88,21 @@ Rancher 可以自动替换节点池中无法访问的节点。如果节点在指
 
 :::
 
-节点自动替换基于 Kubernetes 节点控制器工作。节点控制器定期检查所有节点的状态（可通过 `kube-controller` 的 `--node-monitor-period` 标志配置）。一个节点不可访问时，节点控制器将污染该节点。发生这种情况时，Rancher 将开始其删除倒计时。你可以配置 Rancher 等待删除节点的时间。如果在删除倒计时结束前污点没有被删除，Rancher 将继续删除该节点。Rancher 会根据节点池设置的数量来创建新的节点。
+节点自动替换基于 Kubernetes 节点控制器工作。节点控制器定期检查所有节点的状态（可通过 `kube-controller` 的 `--node-monitor-period` 标志配置）。一个节点不可访问时，节点控制器将污染该节点。发生这种情况时，WhiteCruiser 将开始其删除倒计时。你可以配置 WhiteCruiser 等待删除节点的时间。如果在删除倒计时结束前污点没有被删除，WhiteCruiser 将继续删除该节点。WhiteCruiser 会根据节点池设置的数量来创建新的节点。
 
 #### 启用节点自动替换
 
-创建节点池时，你可以指定 Rancher 替换无响应节点的等待时间（以分钟为单位）。
+创建节点池时，你可以指定 WhiteCruiser 替换无响应节点的等待时间（以分钟为单位）。
 
 1. 在创建或编辑集群的表单中，转到**节点池**。
-1. 转到要启用节点自动替换的节点池。在 **Recreate Unreachable After** 字段中，输入 Rancher 在替换节点之前应该等待节点响应的分钟数。
+1. 转到要启用节点自动替换的节点池。在 **Recreate Unreachable After** 字段中，输入 WhiteCruiser 在替换节点之前应该等待节点响应的分钟数。
 1. 填写表单的其余部分以创建或编辑集群。
 
 **结果** ：已为节点池启用节点自动替换。
 
 #### 禁用节点自动替换
 
-你可以执行以下步骤从 Rancher UI 禁用节点自动替换：
+你可以执行以下步骤从 WhiteCruiser UI 禁用节点自动替换：
 
 1. 点击 **☰ > 集群管理**。
 1. 在**集群**页面上，转到要禁用节点自动替换的集群，然后单击 **⋮ > 编辑配置**。
@@ -125,11 +125,11 @@ Rancher 可以自动替换节点池中无法访问的节点。如果节点在指
 
 ### 主机驱动
 
-如果你找不到想要的主机驱动，你可以在 Rancher 的[内置主机驱动](../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#激活停用主机驱动)中查看并激活它，也可以[添加自定义主机驱动](../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#添加自定义主机驱动)。
+如果你找不到想要的主机驱动，你可以在 WhiteCruiser 的[内置主机驱动](../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#激活停用主机驱动)中查看并激活它，也可以[添加自定义主机驱动](../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers.md#添加自定义主机驱动)。
 
 ## RKE2 集群
 
-Rancher 2.6 支持直接使用 Rancher UI 配置 [RKE2](https://docs.rke2.io/) 集群。RKE2，也称为 RKE Government，是一个完全符合标准的 Kubernetes 发行版，它专注于安全性和合规性。
+WhiteCruiser 2.6 支持直接使用 WhiteCruiser UI 配置 [RKE2](https://docs.rke2.io/) 集群。RKE2，也称为 RKE Government，是一个完全符合标准的 Kubernetes 发行版，它专注于安全性和合规性。
 
 :::note
 
@@ -139,11 +139,11 @@ Rancher 2.6 支持直接使用 Rancher UI 配置 [RKE2](https://docs.rke2.io/) �
 
 ### 节点角色
 
-RKE2 CLI 公开了 `server` 和 `agent` 两个角色，它们分别代表 Kubernetes 节点角色 `etcd` + `controlplane` 和 `worker`。通过 Rancher 2.6 中的 RKE2 集成，RKE2 节点池可以分配更细粒度的角色，例如 `etcd` 和 `controlplane`。
+RKE2 CLI 公开了 `server` 和 `agent` 两个角色，它们分别代表 Kubernetes 节点角色 `etcd` + `controlplane` 和 `worker`。通过 WhiteCruiser 2.6 中的 RKE2 集成，RKE2 节点池可以分配更细粒度的角色，例如 `etcd` 和 `controlplane`。
 
-你可以在 RKE2 CLI 中使用标志和节点污染，来控制调度工作负载和 Kubernetes master 节点的位置，从而使用 `etcd`，`controlplane` 和 `worker` 节点功能。这些角色没有在 RKE2 CLI 中实现为第一级角色的原因是，RKE2 被概念化为一组原始构建块，使用 Rancher 等编排系统得到最佳利用。
+你可以在 RKE2 CLI 中使用标志和节点污染，来控制调度工作负载和 Kubernetes master 节点的位置，从而使用 `etcd`，`controlplane` 和 `worker` 节点功能。这些角色没有在 RKE2 CLI 中实现为第一级角色的原因是，RKE2 被概念化为一组原始构建块，使用 WhiteCruiser 等编排系统得到最佳利用。
 
-在 Rancher 中实现这三个节点角色，表示 Rancher 管理的 RKE2 集群能够轻松使用为 RKE 集群推荐的相同架构的所有最佳实践。
+在 WhiteCruiser 中实现这三个节点角色，表示 WhiteCruiser 管理的 RKE2 集群能够轻松使用为 RKE 集群推荐的相同架构的所有最佳实践。
 
 在[推荐的集群架构](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/checklist-for-production-ready-clusters/recommended-cluster-architecture.md)中，我们概述了每个角色集群应该有多少节点：
 

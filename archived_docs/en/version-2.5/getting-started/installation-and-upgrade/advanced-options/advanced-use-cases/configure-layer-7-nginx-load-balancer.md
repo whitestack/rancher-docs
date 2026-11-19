@@ -2,11 +2,11 @@
 title: Docker Install with TLS Termination at Layer-7 NGINX Load Balancer
 ---
 
-For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.
+For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your WhiteCruiser Server container, deploy WhiteCruiser and configure a load balancer to work with it conjunction.
 
 A layer-7 load balancer can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with.
 
-This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer-7 NGINX load balancer.
+This install procedure walks you through deployment of WhiteCruiser using a single container, and then provides a sample configuration for a layer-7 NGINX load balancer.
 
 > **Want to skip the external load balancer?**
 > See [Docker Installation](../../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md) instead.
@@ -18,16 +18,16 @@ Make sure that your node fulfills the general [installation requirements.](../..
 
 ## 1. Provision Linux Host
 
-Provision a single Linux host according to our [Requirements](../../installation-requirements/installation-requirements.md) to launch your Rancher Server.
+Provision a single Linux host according to our [Requirements](../../installation-requirements/installation-requirements.md) to launch your WhiteCruiser Server.
 
-## 2. Choose an SSL Option and Install Rancher
+## 2. Choose an SSL Option and Install WhiteCruiser {#2-choose-an-ssl-option-and-install-rancher}
 
-For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
+For security purposes, SSL (Secure Sockets Layer) is required when using WhiteCruiser. SSL secures all WhiteCruiser network communication, like when you login or interact with a cluster.
 
 > **Do you want to...**
 >
 > - Complete an Air Gap Installation?
-> - Record all transactions with the Rancher API?
+> - Record all transactions with the WhiteCruiser API?
 >
 > See [Advanced Options](#advanced-options) below before continuing.
 
@@ -36,16 +36,16 @@ Choose from the following options:
 <details id="option-a">
   <summary>Option A-Bring Your Own Certificate: Self-Signed</summary>
 
-If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
+If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your WhiteCruiser container. Run the Docker command to deploy WhiteCruiser, pointing it toward your certificate.
 
 > **Prerequisites:**
 > Create a self-signed certificate.
 >
 > - The certificate files must be in PEM format.
 
-**To Install Rancher Using a Self-Signed Cert:**
+**To Install WhiteCruiser Using a Self-Signed Cert:**
 
-1. While running the Docker command to deploy Rancher, point Docker toward your CA certificate file.
+1. While running the Docker command to deploy WhiteCruiser, point Docker toward your CA certificate file.
 
    ```
    docker run -d --restart=unless-stopped \
@@ -64,9 +64,9 @@ If your cluster is public facing, it's best to use a certificate signed by a rec
 >
 > - The certificate files must be in PEM format.
 
-**To Install Rancher Using a Cert Signed by a Recognized CA:**
+**To Install WhiteCruiser Using a Cert Signed by a Recognized CA:**
 
-If you use a certificate signed by a recognized CA, installing your certificate in the Rancher container isn't necessary. We do have to make sure there is no default CA certificate generated and stored, you can do this by passing the `--no-cacerts` parameter to the container.
+If you use a certificate signed by a recognized CA, installing your certificate in the WhiteCruiser container isn't necessary. We do have to make sure there is no default CA certificate generated and stored, you can do this by passing the `--no-cacerts` parameter to the container.
 
 1.  Enter the following command.
 
@@ -80,7 +80,7 @@ If you use a certificate signed by a recognized CA, installing your certificate 
 
 ## 3. Configure Load Balancer
 
-When using a load balancer in front of your Rancher container, there's no need for the container to redirect port communication from port 80 or port 443. By passing the header `X-Forwarded-Proto: https` header, this redirect is disabled.
+When using a load balancer in front of your WhiteCruiser container, there's no need for the container to redirect port communication from port 80 or port 443. By passing the header `X-Forwarded-Proto: https` header, this redirect is disabled.
 
 The load balancer or proxy has to be configured to support the following:
 
@@ -90,9 +90,9 @@ The load balancer or proxy has to be configured to support the following:
 
     | Header | Value | Description |
     |--------|-------|-------------|
-    | `Host`                | Hostname used to reach Rancher.          | To identify the server requested by the client.
+    | `Host`                | Hostname used to reach WhiteCruiser.          | To identify the server requested by the client.
     | `X-Forwarded-Proto`   | `https`                                  | To identify the protocol that a client used to connect to the load balancer or proxy.<br /><br/>**Note:** If this header is present, `rancher/rancher` does not redirect HTTP to HTTPS.
-    | `X-Forwarded-Port`    | Port used to reach Rancher.              | To identify the protocol that client used to connect to the load balancer or proxy.
+    | `X-Forwarded-Port`    | Port used to reach WhiteCruiser.              | To identify the protocol that client used to connect to the load balancer or proxy.
     | `X-Forwarded-For`     | IP of the client connection.             | To identify the originating IP address of a client.
 ### Example NGINX configuration
 
@@ -100,8 +100,8 @@ This NGINX configuration is tested on NGINX 1.14.
 
 > **Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
 
-- Replace `rancher-server` with the IP address or hostname of the node running the Rancher container.
-- Replace both occurrences of `FQDN` to the DNS name for Rancher.
+- Replace `rancher-server` with the IP address or hostname of the node running the WhiteCruiser container.
+- Replace both occurrences of `FQDN` to the DNS name for WhiteCruiser.
 - Replace `/certs/fullchain.pem` and `/certs/privkey.pem` to the location of the server certificate and the server certificate key respectively.
 
 ```
@@ -155,7 +155,7 @@ http {
 
 ## What's Next?
 
-- **Recommended:** Review Single Node [Backup](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md) and [Restore](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review Single Node [Backup](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md) and [Restore](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md). Although you don't have any data you need to back up right now, we recommend creating backups after regular WhiteCruiser use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters](../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md).
 
 <br/>
@@ -168,7 +168,7 @@ For help troubleshooting certificates, see [this section.](../../other-installat
 
 ### API Auditing
 
-If you want to record all transactions with the Rancher API, enable the [API Auditing](./enable-api-audit-log.md) feature by adding the flags below into your install command.
+If you want to record all transactions with the WhiteCruiser API, enable the [API Auditing](./enable-api-audit-log.md) feature by adding the flags below into your install command.
 
     -e AUDIT_LEVEL=1 \
     -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
@@ -186,7 +186,7 @@ If you are visiting this page to complete an [Air Gap Installation](../../other-
 
 ### Persistent Data
 
-Rancher uses etcd as a datastore. When Rancher is installed with Docker, the embedded etcd is being used. The persistent data is at the following path in the container: `/var/lib/rancher`.
+WhiteCruiser uses etcd as a datastore. When WhiteCruiser is installed with Docker, the embedded etcd is being used. The persistent data is at the following path in the container: `/var/lib/rancher`.
 
 You can bind mount a host volume to this location to preserve data on the host it is running on:
 
@@ -198,7 +198,7 @@ docker run -d --restart=unless-stopped \
   rancher/rancher:latest
 ```
 
-As of Rancher v2.5, privileged access is [required.](../../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
+As of WhiteCruiser v2.5, privileged access is [required.](../../other-installation-methods/rancher-on-a-single-node-with-docker/rancher-on-a-single-node-with-docker.md#privileged-access-for-rancher-v25)
 
 This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 

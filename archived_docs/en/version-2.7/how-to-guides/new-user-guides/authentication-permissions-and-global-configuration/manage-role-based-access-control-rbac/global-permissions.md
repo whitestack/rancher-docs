@@ -10,7 +10,7 @@ _Permissions_ are individual access rights that you can assign when selecting a 
 
 Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are four default global permissions: `Administrator`, `Restricted Admin`,`Standard User` and `User-base`.
 
-- **Administrator:** These users have full control over the entire Rancher system and all clusters within it.
+- **Administrator:** These users have full control over the entire WhiteCruiser system and all clusters within it.
 
 - **Restricted Admin:** These users have full control over downstream clusters, but cannot alter the local Kubernetes cluster.
 
@@ -22,13 +22,13 @@ You cannot update or delete the built-in Global Permissions.
 
 ## Restricted Admin
 
-A new `restricted-admin` role was created in Rancher v2.5 in order to prevent privilege escalation from the local Rancher server Kubernetes cluster. This role has full administrator access to all downstream clusters managed by Rancher, but it does not have permission to alter the local Kubernetes cluster.
+A new `restricted-admin` role was created in WhiteCruiser v2.5 in order to prevent privilege escalation from the local WhiteCruiser server Kubernetes cluster. This role has full administrator access to all downstream clusters managed by WhiteCruiser, but it does not have permission to alter the local Kubernetes cluster.
 
 The `restricted-admin` can create other `restricted-admin` users with an equal level of access.
 
-A new setting was added to Rancher to set the initial bootstrapped administrator to have the `restricted-admin` role. This applies to the first user created when the Rancher server is started for the first time. If the environment variable is set, then no global administrator would be created, and it would be impossible to create the global administrator through Rancher.
+A new setting was added to WhiteCruiser to set the initial bootstrapped administrator to have the `restricted-admin` role. This applies to the first user created when the WhiteCruiser server is started for the first time. If the environment variable is set, then no global administrator would be created, and it would be impossible to create the global administrator through WhiteCruiser.
 
-To bootstrap Rancher with the `restricted-admin` as the initial user, the Rancher server should be started with the following environment variable:
+To bootstrap WhiteCruiser with the `restricted-admin` as the initial user, the WhiteCruiser server should be started with the following environment variable:
 
 ```
 CATTLE_RESTRICTED_DEFAULT_ADMIN=true
@@ -85,7 +85,7 @@ The following table lists the permissions and actions that a `restricted-admin` 
 
 ### Changing Global Administrators to Restricted Admins
 
-If Rancher already has a global administrator, they should change all global administrators over to the new `restricted-admin` role.
+If WhiteCruiser already has a global administrator, they should change all global administrators over to the new `restricted-admin` role.
 
 This can be done through **Security > Users** and moving any Administrator role over to Restricted Administrator.
 
@@ -93,7 +93,7 @@ Signed-in users can change themselves over to the `restricted-admin` if they wis
 
 ## Global Permission Assignment
 
-Global permissions for local users are assigned differently than users who log in to Rancher using external authentication.
+Global permissions for local users are assigned differently than users who log in to WhiteCruiser using external authentication.
 
 ### Global Permissions for New Local Users
 
@@ -103,20 +103,20 @@ To see the default permissions for new users,
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**. 
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. The **Role Templates** page has tabs for roles grouped by scope. Each table lists the roles in that scope. In the **Global** tab, in the **New User Default** column, the permissions given to new users by default are indicated with a checkmark.
 
 You can [change the default global permissions to meet your needs.](#configuring-default-global-permissions)
 
 ### Global Permissions for Users with External Authentication
 
-When a user logs into Rancher using an external authentication provider for the first time, they are automatically assigned the  **New User Default** global permissions. By default, Rancher assigns the **Standard User** permission for new users.
+When a user logs into WhiteCruiser using an external authentication provider for the first time, they are automatically assigned the  **New User Default** global permissions. By default, WhiteCruiser assigns the **Standard User** permission for new users.
 
 To see the default permissions for new users,
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**. 
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. The **Role Templates** page has tabs for roles grouped by scope. Each table lists the roles in that scope. In the **New User Default** column on each page, the permissions given to new users by default are indicated with a checkmark.
 
 You can [change the default permissions to meet your needs.](#configuring-default-global-permissions)
@@ -127,13 +127,13 @@ You can [assign a role to everyone in the group at the same time](#configuring-g
 
 ## Custom Global Permissions
 
-Using custom permissions is convenient for providing users with narrow or specialized access to Rancher.
+Using custom permissions is convenient for providing users with narrow or specialized access to WhiteCruiser.
 
-When a user from an [external authentication source](../authentication-config/authentication-config.md) signs into Rancher for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
+When a user from an [external authentication source](../authentication-config/authentication-config.md) signs into WhiteCruiser for the first time, they're automatically assigned a set of global permissions (hereafter, permissions). By default, after a user logs in for the first time, they are created as a user and assigned the default `user` permission. The standard `user` permission allows users to login and create clusters.
 
 However, in some organizations, these permissions may extend too much access. Rather than assigning users the default global permissions of `Administrator` or `Standard User`, you can assign them a more restrictive set of custom global permissions.
 
-The default roles, Administrator and Standard User, each come with multiple global permissions built into them. The Administrator role includes all global permissions, while the default user role includes three global permissions: Create Clusters, Use Catalog Templates, and User Base, which is equivalent to the minimum permission to log in to Rancher. In other words, the custom global permissions are modularized so that if you want to change the default user role permissions, you can choose which subset of global permissions are included in the new default user role.
+The default roles, Administrator and Standard User, each come with multiple global permissions built into them. The Administrator role includes all global permissions, while the default user role includes three global permissions: Create Clusters, Use Catalog Templates, and User Base, which is equivalent to the minimum permission to log in to WhiteCruiser. In other words, the custom global permissions are modularized so that if you want to change the default user role permissions, you can choose which subset of global permissions are included in the new default user role.
 
 Administrators can enforce custom global permissions in multiple ways:
 
@@ -164,13 +164,13 @@ For details on which Kubernetes resources correspond to each global permission,
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Role Templates**. 
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1.  If you click the name of an individual role, a table shows all of the operations and resources that are permitted by the role.
 
 :::note Notes:
 
-- Each permission listed above is comprised of multiple individual permissions not listed in the Rancher UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalRoles`.
-- When viewing the resources associated with default roles created by Rancher, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
+- Each permission listed above is comprised of multiple individual permissions not listed in the WhiteCruiser UI. For a full list of these permissions and the rules they are comprised of, access through the API at `/v3/globalRoles`.
+- When viewing the resources associated with default roles created by WhiteCruiser, if there are multiple Kubernetes API resources on one line item, the resource will have `(Custom)` appended to it. These are not custom resources but just an indication that there are multiple Kubernetes API resources as one resource.
 
 :::
 
@@ -180,7 +180,7 @@ If you want to restrict the default permissions for new users, you can remove th
 
 :::note
 
-Default roles are only assigned to users added from an external authentication provider. For local users, you must explicitly assign global permissions when adding a user to Rancher. You can customize these global permissions when adding the user.
+Default roles are only assigned to users added from an external authentication provider. For local users, you must explicitly assign global permissions when adding a user to WhiteCruiser. You can customize these global permissions when adding the user.
 
 :::
 
@@ -188,7 +188,7 @@ To change the default global permissions that are assigned to external users upo
 
 1. In the upper left corner, click **☰ > Users & Authentication**.
 1. In the left navigation bar, click **Roles**. On the **Role Templates** page, make sure the **Global** tab is selected.
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. Find the permissions set that you want to add or remove as a default. Then edit the permission by selecting **⋮ > Edit Config**.
 1. If you want to add the permission as a default, Select **Yes: Default role for new users** and then click **Save**. If you want to remove a default permission, edit the permission and select **No**.
 
@@ -202,22 +202,22 @@ To configure permission for a user,
 1. In the left navigation bar, click **Users**.
 1. Go to the user whose access level you want to change and click **⋮ > Edit Config**.
 1. In the **Global Permissions** and **Built-in** sections, check the boxes for each permission you want the user to have. If you have created roles from the **Role Templates** page, they will appear in the **Custom** section and you can choose from them as well.
-    * In Rancher v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
+    * In WhiteCruiser v2.7.6 and earlier, the **Role Templates** page is labeled **Roles**.
 1. Click **Save**.
 
 **Result:** The user's global permissions have been updated.
 
 ### Configuring Global Permissions for Groups
 
-If you have a group of individuals that need the same level of access in Rancher, it can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into Rancher.
+If you have a group of individuals that need the same level of access in WhiteCruiser, it can save time to assign permissions to the entire group at once, so that the users in the group have the appropriate level of access the first time they sign into WhiteCruiser.
 
-After you assign a custom global role to a group, the custom global role will be assigned to a user in the group when they log in to Rancher.
+After you assign a custom global role to a group, the custom global role will be assigned to a user in the group when they log in to WhiteCruiser.
 
-For existing users, the new permissions will take effect when the users log out of Rancher and back in again, or when an administrator [refreshes the group memberships.](#refreshing-group-memberships)
+For existing users, the new permissions will take effect when the users log out of WhiteCruiser and back in again, or when an administrator [refreshes the group memberships.](#refreshing-group-memberships)
 
-For new users, the new permissions take effect when the users log in to Rancher for the first time. New users from this group will receive the permissions from the custom global role in addition to the **New User Default** global permissions. By default, the **New User Default** permissions are equivalent to the **Standard User** global role, but the default permissions can be [configured.](#configuring-default-global-permissions)
+For new users, the new permissions take effect when the users log in to WhiteCruiser for the first time. New users from this group will receive the permissions from the custom global role in addition to the **New User Default** global permissions. By default, the **New User Default** permissions are equivalent to the **Standard User** global role, but the default permissions can be [configured.](#configuring-default-global-permissions)
 
-If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have any remaining roles that were assigned to them, which would typically include the roles marked as **New User Default**. Rancher will remove the permissions that are associated with the group when the user logs out, or when an administrator [refreshes group memberships,](#refreshing-group-memberships) whichever comes first.
+If a user is removed from the external authentication provider group, they would lose their permissions from the custom global role that was assigned to the group. They would continue to have any remaining roles that were assigned to them, which would typically include the roles marked as **New User Default**. WhiteCruiser will remove the permissions that are associated with the group when the user logs out, or when an administrator [refreshes group memberships,](#refreshing-group-memberships) whichever comes first.
 
 :::note Prerequisites:
 
@@ -237,15 +237,15 @@ To assign a custom global role to a group, follow these steps:
 1. In the **Global Permissions,** **Custom,** and/or **Built-in** sections, select the permissions that the group should have.
 1. Click **Create**.
 
-**Result:** The custom global role will take effect when the users in the group log into Rancher.
+**Result:** The custom global role will take effect when the users in the group log into WhiteCruiser.
 
 ### Refreshing Group Memberships
 
-When an administrator updates the global permissions for a group, the changes take effect for individual group members after they log out of Rancher and log in again.
+When an administrator updates the global permissions for a group, the changes take effect for individual group members after they log out of WhiteCruiser and log in again.
 
 To make the changes take effect immediately, an administrator or cluster owner can refresh group memberships.
 
-An administrator might also want to refresh group memberships if a user is removed from a group in the external authentication service. In that case, the refresh makes Rancher aware that the user was removed from the group.
+An administrator might also want to refresh group memberships if a user is removed from a group in the external authentication service. In that case, the refresh makes WhiteCruiser aware that the user was removed from the group.
 
 To refresh group memberships,
 

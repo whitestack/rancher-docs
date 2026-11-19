@@ -46,7 +46,7 @@ To prepare a custom benchmark version ConfigMap, suppose we want to add a custom
 
 ## 2. Add a Custom Benchmark Version to a Cluster
 
-1. Once the ConfigMap has been created in your cluster, navigate to the **Cluster Explorer** in the Rancher UI.
+1. Once the ConfigMap has been created in your cluster, navigate to the **Cluster Explorer** in the WhiteCruiser UI.
 1. In the top left dropdown menu, click **Cluster Explorer > CIS Benchmark.**
 1. In the **Benchmark Versions** section, click **Create.**
 1. Enter the **Name** and a description for your custom benchmark version.
@@ -59,7 +59,7 @@ To prepare a custom benchmark version ConfigMap, suppose we want to add a custom
 
 To run a scan using your custom benchmark version, you need to add a new Profile pointing to this benchmark version.
 
-1. Once the custom benchmark version has been created in your cluster, navigate to the **Cluster Explorer** in the Rancher UI.
+1. Once the custom benchmark version has been created in your cluster, navigate to the **Cluster Explorer** in the WhiteCruiser UI.
 1. In the top left dropdown menu, click **Cluster Explorer > CIS Benchmark.**
 1. In the **Profiles** section, click **Create.**
 1. Provide a **Name** and description. In this example, we name it `foo-profile`.
@@ -72,7 +72,7 @@ Once the Profile pointing to your custom benchmark version `foo` has been create
 
 To run a scan,
 
-1. Go to the **Cluster Explorer** in the Rancher UI. In the top left dropdown menu, click **Cluster Explorer > CIS Benchmark.**
+1. Go to the **Cluster Explorer** in the WhiteCruiser UI. In the top left dropdown menu, click **Cluster Explorer > CIS Benchmark.**
 1. In the **Scans** section, click **Create.**
 1. Choose the new cluster scan profile `foo-profile`.
 1. Click **Create.**

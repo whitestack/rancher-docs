@@ -1,5 +1,5 @@
 ---
-title: Uninstall Rancher Compliance
+title: Uninstall WhiteCruiser Compliance
 ---
 
 <head>

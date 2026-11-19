@@ -10,6 +10,6 @@ The following sections will explain how to manage persistent storage:
 
 - [How Persistent Storage Works](about-persistent-storage.md)
 - [Set Up Existing Storage](set-up-existing-storage.md)
-- [Dynamically Provision New Storage in Rancher](dynamically-provision-new-storage.md)
+- [Dynamically Provision New Storage in WhiteCruiser](dynamically-provision-new-storage.md)
 - [GlusterFS Volumes](about-glusterfs-volumes.md)
 - [iSCSI Volumes](install-iscsi-volumes.md)

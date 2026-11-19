@@ -6,7 +6,7 @@ title: Role-based Access Control
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring"/>
 </head>
 
-This section describes the expectations for RBAC for Rancher Monitoring.
+This section describes the expectations for RBAC for WhiteCruiser Monitoring.
 
 
 ## Cluster Admins
@@ -57,7 +57,7 @@ Only those with who have some Kubernetes `ClusterRole` should be able to:
 
 ### Additional Monitoring Roles
 
-Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a `RoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
+Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a `RoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through WhiteCruiser, click [here](#assigning-roles-and-clusterroles-with-kubectl).
 
 Admins should use these roles to provide more fine-grained access to users:
 
@@ -73,7 +73,7 @@ Admins should use these roles to provide more fine-grained access to users:
 
 ### Assigning Monitoring Roles through Custom Roles
 
-Admins may assign custom roles in the Rancher UI for admin, editing, and viewing monitoring. These "roles" are created by default when the monitoring app is installed. Additionally, these roles are also deployed to the corresponding Kubernetes roles: admin, edit, and view `ClusterRoles`.
+Admins may assign custom roles in the WhiteCruiser UI for admin, editing, and viewing monitoring. These "roles" are created by default when the monitoring app is installed. Additionally, these roles are also deployed to the corresponding Kubernetes roles: admin, edit, and view `ClusterRoles`.
 
 :::note Important
 
@@ -108,15 +108,15 @@ The UI won't offer `monitoring-admin`, `monitoring-edit`, and `monitoring-view` 
 
 ### Additional Monitoring ClusterRoles
 
-Monitoring also creates additional `ClusterRoles` that aren't assigned to users by default but are created within the cluster. They aren't aggregated by default but can be bound to a namespace by deploying a `RoleBinding` or `ClusterRoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
+Monitoring also creates additional `ClusterRoles` that aren't assigned to users by default but are created within the cluster. They aren't aggregated by default but can be bound to a namespace by deploying a `RoleBinding` or `ClusterRoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through WhiteCruiser, click [here](#assigning-roles-and-clusterroles-with-kubectl).
 
 | Role | Purpose  |
 | ------------------------------| ---------------------------|
-| monitoring-ui-view | This ClusterRole allows users with write access to the project to view metrics graphs for the specified cluster in the Rancher UI. This is done by granting Read-only access to external Monitoring UIs. Users with this role have permission to list the Prometheus, Alertmanager, and Grafana endpoints and make GET requests to Prometheus, Alertmanager, and Grafana UIs through the Rancher proxy. <br/> <br/> This role doesn't grant access to monitoring endpoints. As a result, users with this role won't be able to view cluster monitoring graphs and dashboards in the Rancher UI; however, they are able to access the monitoring Grafana, Prometheus, and Alertmanager UIs if provided those links. |
+| monitoring-ui-view | This ClusterRole allows users with write access to the project to view metrics graphs for the specified cluster in the WhiteCruiser UI. This is done by granting Read-only access to external Monitoring UIs. Users with this role have permission to list the Prometheus, Alertmanager, and Grafana endpoints and make GET requests to Prometheus, Alertmanager, and Grafana UIs through the WhiteCruiser proxy. <br/> <br/> This role doesn't grant access to monitoring endpoints. As a result, users with this role won't be able to view cluster monitoring graphs and dashboards in the WhiteCruiser UI; however, they are able to access the monitoring Grafana, Prometheus, and Alertmanager UIs if provided those links. |
 
 :::note
 
-A user bound to the **View Monitoring** Rancher role and read-only project permissions can't view links in the Monitoring UI. They can still access external monitoring UIs if provided links to those UIs. If you wish to grant access to users with the **View Monitoring** role and read-only project permissions, move the `cattle-monitoring-system` namespace into the project.
+A user bound to the **View Monitoring** WhiteCruiser role and read-only project permissions can't view links in the Monitoring UI. They can still access external monitoring UIs if provided links to those UIs. If you wish to grant access to users with the **View Monitoring** role and read-only project permissions, move the `cattle-monitoring-system` namespace into the project.
 
 :::
 
@@ -195,36 +195,36 @@ subjects:
   kubectl apply -f monitoring-config-view-role-binding.yaml
   ```
 
-## Users with Rancher Based Permissions
+## Users with WhiteCruiser Based Permissions {#users-with-rancher-based-permissions}
 
-The relationship between the default roles deployed by Rancher (i.e. cluster-owner, cluster-member, project-owner, project-member), the default Kubernetes roles, and the roles deployed by the rancher-monitoring chart are detailed in the table below:
+The relationship between the default roles deployed by WhiteCruiser (i.e. cluster-owner, cluster-member, project-owner, project-member), the default Kubernetes roles, and the roles deployed by the rancher-monitoring chart are detailed in the table below:
 
-<figcaption>Default Rancher Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
+<figcaption>Default WhiteCruiser Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
 
-| Rancher Role | Kubernetes Role | Monitoring ClusterRole / Role | ClusterRoleBinding or RoleBinding? |
+| WhiteCruiser Role | Kubernetes Role | Monitoring ClusterRole / Role | ClusterRoleBinding or RoleBinding? |
 | --------- | --------- | --------- | --------- |
 | cluster-owner | cluster-admin | N/A | ClusterRoleBinding |
 | cluster-member | admin | monitoring-admin | ClusterRoleBinding |
 | project-owner | admin | monitoring-admin | RoleBinding within Project namespace |
 | project-member | edit | monitoring-edit | RoleBinding within Project namespace |
 
-In addition to these default roles, the following Rancher project roles can be applied to members of your cluster to provide access to monitoring. These Rancher roles are tied to ClusterRoles deployed by the monitoring chart:
+In addition to these default roles, the following WhiteCruiser project roles can be applied to members of your cluster to provide access to monitoring. These WhiteCruiser roles are tied to ClusterRoles deployed by the monitoring chart:
 
-<figcaption>Non-default Rancher Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
+<figcaption>Non-default WhiteCruiser Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
 
-| Rancher Role  |  Kubernetes ClusterRole | Available In Rancher From | Available in Monitoring v2 From |
+| WhiteCruiser Role  |  Kubernetes ClusterRole | Available In WhiteCruiser From | Available in Monitoring v2 From |
 |--------------------------|-------------------------------|-------|------|
 | View Monitoring* | [monitoring-ui-view](#additional-monitoring-clusterroles)    |    2.4.8+    |  9.4.204+ |
 
 :::note
 
- A user bound to the **View Monitoring** Rancher role and read-only project permissions can't view links in the Monitoring UI. They can still access external monitoring UIs if provided links to those UIs. If you wish to grant access to users with the **View Monitoring** role and read-only project permissions, move the `cattle-monitoring-system` namespace into the project. 
+ A user bound to the **View Monitoring** WhiteCruiser role and read-only project permissions can't view links in the Monitoring UI. They can still access external monitoring UIs if provided links to those UIs. If you wish to grant access to users with the **View Monitoring** role and read-only project permissions, move the `cattle-monitoring-system` namespace into the project. 
 
 :::note
 
 ### Differences in 2.5.x
 
-Users with the project-member or project-owners roles assigned will not be given access to either Prometheus or Grafana in Rancher 2.5.x since we only create Grafana or Prometheus on a cluster-level.
+Users with the project-member or project-owners roles assigned will not be given access to either Prometheus or Grafana in WhiteCruiser 2.5.x since we only create Grafana or Prometheus on a cluster-level.
 
 In addition, while project owners will still be only able to add ServiceMonitors / PodMonitors that scrape resources within their project's namespace by default, PrometheusRules are not scoped to a single namespace / project. Therefore, any alert rules or recording rules created by project-owners within their project namespace will be applied across the entire cluster, although they will be unable to view / edit / delete any rules that were created outside the project's namespace.
 
@@ -246,7 +246,7 @@ If cluster-admins would like to provide additional admin/edit access to users ou
 
 ## Role-based Access Control for Grafana
 
-Rancher allows any users who are authenticated by Kubernetes and have access the Grafana service deployed by the Rancher Monitoring chart to access Grafana via the Rancher Dashboard UI. By default, all users who are able to access Grafana are given the [Viewer](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#viewer-role) role, which allows them to view any of the default dashboards deployed by Rancher.
+WhiteCruiser allows any users who are authenticated by Kubernetes and have access the Grafana service deployed by the WhiteCruiser Monitoring chart to access Grafana via the WhiteCruiser Dashboard UI. By default, all users who are able to access Grafana are given the [Viewer](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#viewer-role) role, which allows them to view any of the default dashboards deployed by WhiteCruiser.
 
 However, users can choose to log in to Grafana as an [Admin](https://grafana.com/docs/grafana/latest/permissions/organization_roles/#admin-role) if necessary. The default Admin username and password for the Grafana instance will be `admin`/`prom-operator`, but alternative credentials can also be supplied on deploying or upgrading the chart.
 

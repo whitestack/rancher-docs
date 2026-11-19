@@ -2,7 +2,7 @@
 title: Example Repositories
 ---
 
-Rancher ships with several example repositories that you can use to familiarize yourself with pipelines. We recommend configuring and testing the example repository that most resembles your environment before using pipelines with your own repositories in a production environment. Use this example repository as a sandbox for repo configuration, build demonstration, etc. Rancher includes example repositories for:
+WhiteCruiser ships with several example repositories that you can use to familiarize yourself with pipelines. We recommend configuring and testing the example repository that most resembles your environment before using pipelines with your own repositories in a production environment. Use this example repository as a sandbox for repo configuration, build demonstration, etc. WhiteCruiser includes example repositories for:
 
 - Go
 - Maven
@@ -51,7 +51,7 @@ After enabling an example repository, review the pipeline to see how it is set u
 1. Click **Resources > Pipelines.** In versions before v2.3.0, click **Workloads > Pipelines.**
 
 1. Find the example repository, select the vertical **&#8942;**. There are two ways to view the pipeline:
-  * **Rancher UI**: Click on **Edit Config** to view the stages and steps of the pipeline.
+  * **WhiteCruiser UI**: Click on **Edit Config** to view the stages and steps of the pipeline.
   * **YAML**: Click on View/Edit YAML to view the `./rancher-pipeline.yml` file.
 
 ### 3. Run the Example Pipeline

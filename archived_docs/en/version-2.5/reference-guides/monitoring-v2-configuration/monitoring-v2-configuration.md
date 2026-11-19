@@ -6,7 +6,7 @@ title: Monitoring V2 Configuration
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/reference-guides/monitoring-v2-configuration"/>
 </head>
 
-The following sections will explain important options essential to configuring Monitoring V2 in Rancher:
+The following sections will explain important options essential to configuring Monitoring V2 in WhiteCruiser:
 
 - [Receiver Configuration](receivers.md)
 - [Route Configuration](routes.md)

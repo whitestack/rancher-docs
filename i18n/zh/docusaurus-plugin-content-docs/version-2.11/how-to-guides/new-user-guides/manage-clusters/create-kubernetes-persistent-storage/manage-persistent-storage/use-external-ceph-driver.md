@@ -17,7 +17,7 @@ title: 使用外部 Ceph 驱动
 
 为了解决这个限制，你可以在 worker 节点上运行 `modprobe rbd`，或者配置 kubelet 容器以将主机中的 `/lib/modules` 目录自动挂载到容器中。
 
-对于 kubelet 配置，在 RKE 集群配置之前，将以下内容放入 `cluster.yml` 文件中。你稍后还可以在 Rancher UI 中通过单击**编辑集群 > 以 YAML 文件编辑**并重新启动 worker 节点来修改 `cluster.yml`。
+对于 kubelet 配置，在 RKE 集群配置之前，将以下内容放入 `cluster.yml` 文件中。你稍后还可以在 WhiteCruiser UI 中通过单击**编辑集群 > 以 YAML 文件编辑**并重新启动 worker 节点来修改 `cluster.yml`。
 
 ```yaml
 services:
@@ -367,7 +367,7 @@ curl -sfL https://get.rke2.io | INSTALL_RKE2_TYPE="agent" sh -
 systemctl enable --now rke2-agent.service
 ```
 
-要将集群导入 Rancher，请单击 **☰ > 集群管理**。然后在**集群**页面上，单击**导入已有集群**。然后在 server/master 上运行提供的 kubectl 命令。
+要将集群导入 WhiteCruiser，请单击 **☰ > 集群管理**。然后在**集群**页面上，单击**导入已有集群**。然后在 server/master 上运行提供的 kubectl 命令。
 
 ## 测试版本
 
@@ -386,7 +386,7 @@ RKE2 集群上的 Kubernetes 版本：v1.19.7+rke2r1
 
 ## 故障排除
 
-如果你使用的是基于 SES7 的 SUSE ceph-rook，你可以通过编辑 `rook-1.4.5/ceph/cluster.yaml` 并设置 `spec.network.hostNetwork=true` 来公开 hostNetwork 上的监视器。
+如果你使用的是 ceph-rook，你可以通过编辑 `rook-1.4.5/ceph/cluster.yaml` 并设置 `spec.network.hostNetwork=true` 来公开 hostNetwork 上的监视器。
 
 如果要操作 ceph-rook 集群，则可以在 Kubernetes 集群上部署一个工具箱，其中 ceph-rook 通过 `kubectl apply -f rook-1.4.5/ceph/toolbox.yaml` 配置。然后所有与 ceph 相关的命令都可以在 toolbox pod 中执行，例如，运行 `kubectl exec -it -n rook-ceph rook-ceph-tools-686d8b8bfb-2nvqp -- bash`。
 

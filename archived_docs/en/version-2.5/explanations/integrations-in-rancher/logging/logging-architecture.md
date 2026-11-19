@@ -6,15 +6,15 @@ title: Logging Architecture
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/integrations-in-rancher/logging/logging-architecture"/>
 </head>
 
-This section summarizes the architecture of the Rancher logging application.
+This section summarizes the architecture of the WhiteCruiser logging application.
 
 For more details about how the Logging operator works, see the [official documentation.](https://kube-logging.github.io/docs/#architecture)
 
-### Changes in Rancher v2.5
+### Changes in WhiteCruiser v2.5 {#changes-in-rancher-v25}
 
-The following changes were introduced to logging in Rancher v2.5:
+The following changes were introduced to logging in WhiteCruiser v2.5:
 
-- The [Logging operator](https://kube-logging.github.io/docs/) now powers Rancher's logging solution in place of the former, in-house solution.
+- The [Logging operator](https://kube-logging.github.io/docs/) now powers WhiteCruiser's logging solution in place of the former, in-house solution.
 - [Fluent Bit](https://fluentbit.io/) is now used to aggregate the logs, and [Fluentd](https://www.fluentd.org/) is used for filtering the messages and routing them to the `Outputs`. Previously, only Fluentd was used.
 - Logging can be configured with a Kubernetes manifest, because logging now uses a Kubernetes operator with Custom Resource Definitions.
 - We now support filtering logs.

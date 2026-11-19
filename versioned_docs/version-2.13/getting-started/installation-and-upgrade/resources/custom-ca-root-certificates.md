@@ -6,13 +6,13 @@ title: About Custom CA Root Certificates
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates"/>
 </head>
 
-If you're using Rancher in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).
+If you're using WhiteCruiser in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).
 
-Services that Rancher needs to access are sometimes configured with a certificate from a custom/internal CA root, also known as self signed certificate. If the presented certificate from the service cannot be validated by Rancher, the following error displays: `x509: certificate signed by unknown authority`.
+Services that WhiteCruiser needs to access are sometimes configured with a certificate from a custom/internal CA root, also known as self signed certificate. If the presented certificate from the service cannot be validated by WhiteCruiser, the following error displays: `x509: certificate signed by unknown authority`.
 
-To validate the certificate, the CA root certificates need to be added to Rancher. As Rancher is written in Go, we can use the environment variable `SSL_CERT_DIR` to point to the directory where the CA root certificates are located in the container. The CA root certificates directory can be mounted using the Docker volume option (`-v host-source-directory:container-destination-directory`) when starting the Rancher container.
+To validate the certificate, the CA root certificates need to be added to WhiteCruiser. As WhiteCruiser is written in Go, we can use the environment variable `SSL_CERT_DIR` to point to the directory where the CA root certificates are located in the container. The CA root certificates directory can be mounted using the Docker volume option (`-v host-source-directory:container-destination-directory`) when starting the WhiteCruiser container.
 
-Examples of services that Rancher can access:
+Examples of services that WhiteCruiser can access:
 
 - Catalogs
 - Authentication providers
@@ -20,7 +20,7 @@ Examples of services that Rancher can access:
 
 ## Installing with the custom CA Certificate
 
-For details on starting a Rancher container with your private CA certificates mounted, refer to the installation docs:
+For details on starting a WhiteCruiser container with your private CA certificates mounted, refer to the installation docs:
 
 - [Docker install Custom CA certificate options](../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#custom-ca-certificate)
 

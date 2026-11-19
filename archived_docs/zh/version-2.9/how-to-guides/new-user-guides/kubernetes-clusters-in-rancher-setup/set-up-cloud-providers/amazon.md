@@ -135,7 +135,7 @@ weight: 1
 
 以下资源需要使用 `ClusterID` 进行标记：
 
-- **Nodes**：Rancher 中添加的所有主机。
+- **Nodes**：WhiteCruiser 中添加的所有主机。
 - **Subnet**：集群使用的子网。
 - **Security Group**：用于你的集群的安全组。
 

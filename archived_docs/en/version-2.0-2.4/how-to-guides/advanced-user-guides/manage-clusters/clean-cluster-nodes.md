@@ -1,38 +1,38 @@
 ---
 title: Removing Kubernetes Components from Nodes
-description: Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually
+description: Learn about cluster cleanup when removing nodes from your WhiteCruiser-launched Kubernetes cluster. What is removed, how to do it manually
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/clean-cluster-nodes"/>
 </head>
 
-This section describes how to disconnect a node from a Rancher-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.
+This section describes how to disconnect a node from a WhiteCruiser-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.
 
-When you use Rancher to install Kubernetes on new nodes in an infrastructure provider, resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created.
+When you use WhiteCruiser to install Kubernetes on new nodes in an infrastructure provider, resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created.
 
-When removing nodes from your Rancher launched Kubernetes cluster (provided that they are in `Active` state), those resources are automatically cleaned, and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
+When removing nodes from your WhiteCruiser launched Kubernetes cluster (provided that they are in `Active` state), those resources are automatically cleaned, and the only action needed is to restart the node. When a node has become unreachable and the automatic cleanup process cannot be used, we describe the steps that need to be executed before the node can be added to a cluster again.
 
 ## What Gets Removed?
 
-When cleaning nodes provisioned using Rancher, the following components are deleted based on the type of cluster node you're removing.
+When cleaning nodes provisioned using WhiteCruiser, the following components are deleted based on the type of cluster node you're removing.
 
 | Removed Component                                                              | [Nodes Hosted by Infrastructure Provider][1] | [Custom Nodes][2] | [Hosted Cluster][3] | [Imported Nodes][4] |
 | ------------------------------------------------------------------------------ | --------------- | ----------------- | ------------------- | ------------------- |
-| The Rancher deployment namespace (`cattle-system` by default)                  | ✓               | ✓                 | ✓                   | ✓                   |
-| `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` labeled by Rancher | ✓               | ✓                 | ✓                   | ✓                   |
+| The WhiteCruiser deployment namespace (`cattle-system` by default)                  | ✓               | ✓                 | ✓                   | ✓                   |
+| `serviceAccount`, `clusterRoles`, and `clusterRoleBindings` labeled by WhiteCruiser | ✓               | ✓                 | ✓                   | ✓                   |
 | Labels, Annotations, and Finalizers                                            | ✓               | ✓                 | ✓                   | ✓                   |
-| Rancher Deployment                                                             | ✓               | ✓                 | ✓                   |                     |
+| WhiteCruiser Deployment                                                             | ✓               | ✓                 | ✓                   |                     |
 | Machines, clusters, projects, and user custom resource definitions (CRDs)      | ✓               | ✓                 | ✓                   |                     |
 | All resources create under the `management.cattle.io` API Group                | ✓               | ✓                 | ✓                   |                     |
-| All CRDs created by Rancher v2.x                                               | ✓               | ✓                 | ✓                   |                     |
+| All CRDs created by WhiteCruiser v2.x                                               | ✓               | ✓                 | ✓                   |                     |
 
 [1]: ../../new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/use-new-nodes-in-an-infra-provider.md
 [2]: ../../../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/use-existing-nodes.md
 [3]: ../../new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/set-up-clusters-from-hosted-kubernetes-providers.md
 [4]: ../../new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters.md
 
-## Removing a Node from a Cluster by Rancher UI
+## Removing a Node from a Cluster by WhiteCruiser UI {#removing-a-node-from-a-cluster-by-rancher-ui}
 
 When the node is in `Active` state, removing the node from a cluster will trigger a process to clean up the node. Please restart the node after the automatic cleanup process is done to make sure any non-persistent data is properly removed.
 
@@ -46,37 +46,37 @@ $ sudo reboot
 $ sudo shutdown -r now
 ```
 
-## Removing Rancher Components from a Cluster Manually
+## Removing WhiteCruiser Components from a Cluster Manually {#removing-rancher-components-from-a-cluster-manually}
 
-When a node is unreachable and removed from the cluster, the automatic cleaning process can't be triggered because the node is unreachable. Please follow the steps below to manually remove the Rancher components.
+When a node is unreachable and removed from the cluster, the automatic cleaning process can't be triggered because the node is unreachable. Please follow the steps below to manually remove the WhiteCruiser components.
 
 >**Warning:** The commands listed below will remove data from the node. Make sure you have created a backup of files you want to keep before executing any of the commands as data will be lost.
 
-### Removing Rancher Components from Imported Clusters
+### Removing WhiteCruiser Components from Imported Clusters {#removing-rancher-components-from-imported-clusters}
 
-For imported clusters, the process for removing Rancher is a little different. You have the option of simply deleting the cluster in the Rancher UI, or your can run a script that removes Rancher components from the nodes. Both options make the same deletions.
+For imported clusters, the process for removing WhiteCruiser is a little different. You have the option of simply deleting the cluster in the WhiteCruiser UI, or your can run a script that removes WhiteCruiser components from the nodes. Both options make the same deletions.
 
-After the imported cluster is detached from Rancher, the cluster's workloads will be unaffected and you can access the cluster using the same methods that you did before the cluster was imported into Rancher.
+After the imported cluster is detached from WhiteCruiser, the cluster's workloads will be unaffected and you can access the cluster using the same methods that you did before the cluster was imported into WhiteCruiser.
 
 <Tabs>
 <TabItem value="By UI / API">
 
 >**Warning:** This process will remove data from your cluster. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
 
-After you initiate the removal of an imported cluster using the Rancher UI (or API), the following events occur.
+After you initiate the removal of an imported cluster using the WhiteCruiser UI (or API), the following events occur.
 
-1. Rancher creates a `serviceAccount` that it uses to remove the Rancher components from the cluster. This account is assigned the [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) permissions, which are required to remove the Rancher components.
+1. WhiteCruiser creates a `serviceAccount` that it uses to remove the WhiteCruiser components from the cluster. This account is assigned the [clusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole) and [clusterRoleBinding](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding) permissions, which are required to remove the WhiteCruiser components.
 
-1. Using the `serviceAccount`, Rancher schedules and runs a [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) that cleans the Rancher components off of the cluster. This job also references the `serviceAccount` and its roles as dependencies, so the job deletes them before its completion.
+1. Using the `serviceAccount`, WhiteCruiser schedules and runs a [job](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/) that cleans the WhiteCruiser components off of the cluster. This job also references the `serviceAccount` and its roles as dependencies, so the job deletes them before its completion.
 
-1. Rancher is removed from the cluster. However, the cluster persists, running the native version of Kubernetes.
+1. WhiteCruiser is removed from the cluster. However, the cluster persists, running the native version of Kubernetes.
 
 **Result:** All components listed for imported clusters in [What Gets Removed?](#what-gets-removed) are deleted.
 
 </TabItem>
 <TabItem value="By Script">
 
-Rather than cleaning imported cluster nodes using the Rancher UI, you can run a script instead. This functionality is available since `v2.1.0`.
+Rather than cleaning imported cluster nodes using the WhiteCruiser UI, you can run a script instead. This functionality is available since `v2.1.0`.
 
 >**Prerequisite:**
 >
@@ -94,7 +94,7 @@ Rather than cleaning imported cluster nodes using the Rancher UI, you can run a 
 
     If you don't have an air gap environment, skip this step.
 
-1. From the same directory, run the script and provide the `rancher/rancher-agent` image version which should be equal to the version of Rancher used to manage the cluster. (`<RANCHER_VERSION>`):
+1. From the same directory, run the script and provide the `rancher/rancher-agent` image version which should be equal to the version of WhiteCruiser used to manage the cluster. (`<RANCHER_VERSION>`):
 
     >**Tip:**
     >
@@ -124,7 +124,7 @@ popd
 
 ### Docker Containers, Images, and Volumes
 
-Based on what role you assigned to the node, there are Kubernetes components in containers, containers belonging to overlay networking, DNS, ingress controller and Rancher agent. (and pods you created that have been scheduled to this node)
+Based on what role you assigned to the node, there are Kubernetes components in containers, containers belonging to overlay networking, DNS, ingress controller and WhiteCruiser agent. (and pods you created that have been scheduled to this node)
 
 **To clean all Docker containers, images and volumes:**
 

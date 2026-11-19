@@ -2,27 +2,27 @@
 title: K3s 集群配置参考
 ---
 
-本文介绍 Rancher 中可用于新的或现有的 K3s Kubernetes 集群的配置选项。
+本文介绍 WhiteCruiser 中可用于新的或现有的 K3s Kubernetes 集群的配置选项。
 
 ## 概述
 
 你可以通过以下两种方式之一来配置 Kubernetes 选项：
 
-- [Rancher UI](#rancher-ui-中的配置选项)：使用 Rancher UI 来选择设置 Kubernetes 集群时常用的自定义选项。
-- [集群配置文件](#集群配置文件)：高级用户可以创建一个 K3s 配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件允许你设置 K3s 安装中可用的任何[选项](https://rancher.com/docs/k3s/latest/en/installation/install-options/)。
+- [WhiteCruiser UI](#whitecruiser-ui-中的配置选项)：使用 WhiteCruiser UI 来选择设置 Kubernetes 集群时常用的自定义选项。
+- [集群配置文件](#集群配置文件)：高级用户可以创建一个 K3s 配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件允许你设置 K3s 安装中可用的任何[选项](https://rancher.com/docs/k3s/latest/en/installation/install-options/)。
 
-## Rancher UI 中的配置选项
+## WhiteCruiser UI 中的配置选项
 
 :::tip
 
-一些高级配置选项没有在 Rancher UI 表单中开放，但你可以通过在 YAML 中编辑 K3s 集群配置文件来启用这些选项。有关 YAML 中 K3s 集群的可配置选项的完整参考，请参阅 [K3s 文档](https://rancher.com/docs/k3s/latest/en/installation/install-options/)。
+一些高级配置选项没有在 WhiteCruiser UI 表单中开放，但你可以通过在 YAML 中编辑 K3s 集群配置文件来启用这些选项。有关 YAML 中 K3s 集群的可配置选项的完整参考，请参阅 [K3s 文档](https://rancher.com/docs/k3s/latest/en/installation/install-options/)。
 
 :::
 
 ### 基本信息
 #### Kubernetes 版本
 
-这指的是集群节点上安装的 Kubernetes 版本。Rancher 基于 [hyperkube](https://github.com/rancher/hyperkube) 打包了自己的 Kubernetes 版本。
+这指的是集群节点上安装的 Kubernetes 版本。WhiteCruiser 基于 [hyperkube](https://github.com/rancher/hyperkube) 打包了自己的 Kubernetes 版本。
 
 有关更多详细信息，请参阅[升级 Kubernetes](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md)。
 
@@ -102,7 +102,7 @@ title: K3s 集群配置参考
 
 将主机名截断为 15 个或更少字符。该字段只能在集群初始创建时设置。创建集群后，你无法再启用或禁用 15 个字符的限制。
 
-此设置仅影响配置了机器的集群。由于自定义集群在创建节点时设置主机名（发生在 Rancher 之外），因此该字段不限制自定义集群的主机名长度。
+此设置仅影响配置了机器的集群。由于自定义集群在创建节点时设置主机名（发生在 WhiteCruiser 之外），因此该字段不限制自定义集群的主机名长度。
 
 截断集群中的主机名可提高与基于 Windows 的系统的兼容性。虽然 Kubernetes 允许最长的主机名长度为 63 个字符，但使用 NetBIOS 的系统将主机名限制为 15 个字符之内。
 
@@ -112,7 +112,7 @@ title: K3s 集群配置参考
 
 #### 授权集群端点
 
-授权集群端点（ACE）可用于直接访问 Kubernetes API server，而无需通过 Rancher 进行通信。
+授权集群端点（ACE）可用于直接访问 Kubernetes API server，而无需通过 WhiteCruiser 进行通信。
 
 有关授权集群端点的工作原理以及使用的原因，请参阅[架构介绍](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-授权集群端点)。
 
@@ -120,7 +120,7 @@ title: K3s 集群配置参考
 
 ### 镜像仓库
 
-选择要从中拉取 Rancher 镜像的镜像仓库。有关更多详细信息和配置选项，请参阅 [K3s 文档](https://rancher.com/docs/k3s/latest/en/installation/private-registry/)。
+选择要从中拉取 WhiteCruiser 镜像的镜像仓库。有关更多详细信息和配置选项，请参阅 [K3s 文档](https://rancher.com/docs/k3s/latest/en/installation/private-registry/)。
 
 ### 升级策略
 
@@ -146,6 +146,6 @@ title: K3s 集群配置参考
 
 ## 集群配置文件
 
-高级用户可以创建一个 K3s 配置文件，而不是使用 Rancher UI 表单来为集群选择 Kubernetes 选项。配置文件允许你设置 K3s 安装中可用的任何[选项](https://rancher.com/docs/k3s/latest/en/installation/install-options/)。
+高级用户可以创建一个 K3s 配置文件，而不是使用 WhiteCruiser UI 表单来为集群选择 Kubernetes 选项。配置文件允许你设置 K3s 安装中可用的任何[选项](https://rancher.com/docs/k3s/latest/en/installation/install-options/)。
 
-要直接从 Rancher UI 编辑 K3s 配置文件，单击**以 YAML 文件编辑**。
+要直接从 WhiteCruiser UI 编辑 K3s 配置文件，单击**以 YAML 文件编辑**。

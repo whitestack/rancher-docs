@@ -1,31 +1,31 @@
 ---
-title: Rancher Agents
+title: WhiteCruiser Agents
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents"/>
 </head>
 
-There are two different agent resources deployed on Rancher managed clusters:
+There are two different agent resources deployed on WhiteCruiser managed clusters:
 
 - [cattle-cluster-agent](#cattle-cluster-agent)
 - [cattle-node-agent](#cattle-node-agent)
 
-For a conceptual overview of how the Rancher server provisions clusters and communicates with them, refer to the [architecture](../../../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md)
+For a conceptual overview of how the WhiteCruiser server provisions clusters and communicates with them, refer to the [architecture](../../../../reference-guides/rancher-manager-architecture/rancher-manager-architecture.md)
 
 ### cattle-cluster-agent
 
-The `cattle-cluster-agent` is used to connect to the Kubernetes API of [Rancher Launched Kubernetes](launch-kubernetes-with-rancher.md) clusters. The `cattle-cluster-agent` is deployed using a Deployment resource.
+The `cattle-cluster-agent` is used to connect to the Kubernetes API of [WhiteCruiser Launched Kubernetes](launch-kubernetes-with-rancher.md) clusters. The `cattle-cluster-agent` is deployed using a Deployment resource.
 
 ### cattle-node-agent
 
-The `cattle-node-agent` is used to interact with nodes in a [Rancher Launched Kubernetes](launch-kubernetes-with-rancher.md) cluster when performing cluster operations. Examples of cluster operations are upgrading Kubernetes version and creating/restoring etcd snapshots. The `cattle-node-agent` is deployed using a DaemonSet resource to make sure it runs on every node. The `cattle-node-agent` is used as fallback option to connect to the Kubernetes API of [Rancher Launched Kubernetes](launch-kubernetes-with-rancher.md) clusters when `cattle-cluster-agent` is unavailable.
+The `cattle-node-agent` is used to interact with nodes in a [WhiteCruiser Launched Kubernetes](launch-kubernetes-with-rancher.md) cluster when performing cluster operations. Examples of cluster operations are upgrading Kubernetes version and creating/restoring etcd snapshots. The `cattle-node-agent` is deployed using a DaemonSet resource to make sure it runs on every node. The `cattle-node-agent` is used as fallback option to connect to the Kubernetes API of [WhiteCruiser Launched Kubernetes](launch-kubernetes-with-rancher.md) clusters when `cattle-cluster-agent` is unavailable.
 
 ### Scheduling rules
 
 _Applies to v2.5.4 and higher_
 
-Starting with Rancher v2.5.4, the tolerations for the `cattle-cluster-agent` changed from `operator:Exists` (allowing all taints) to a fixed set of tolerations (listed below, if no controlplane nodes are visible in the cluster) or dynamically added tolerations based on taints applied to the controlplane nodes. This change was made to allow [Taint based Evictions](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions) to work properly for `cattle-cluster-agent`. The default tolerations are described below. If controlplane nodes are present the cluster, the tolerations will be replaced with tolerations matching the taints on the controlplane nodes.
+Starting with WhiteCruiser v2.5.4, the tolerations for the `cattle-cluster-agent` changed from `operator:Exists` (allowing all taints) to a fixed set of tolerations (listed below, if no controlplane nodes are visible in the cluster) or dynamically added tolerations based on taints applied to the controlplane nodes. This change was made to allow [Taint based Evictions](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions) to work properly for `cattle-cluster-agent`. The default tolerations are described below. If controlplane nodes are present the cluster, the tolerations will be replaced with tolerations matching the taints on the controlplane nodes.
 
 | Component              | nodeAffinity nodeSelectorTerms             | nodeSelector | Tolerations                                                                    |
 | ---------------------- | ------------------------------------------ | ------------ | ------------------------------------------------------------------------------ |

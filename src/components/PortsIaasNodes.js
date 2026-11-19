@@ -6,17 +6,17 @@ const PortsIaasNodes = () => (
       <thead>
           <tr>
           <th>From / To</th>
-          <th>Rancher Nodes</th>
+          <th>WhiteCruiser Nodes</th>
           <th>etcd Plane Nodes</th>
           <th>Control Plane Nodes</th>
           <th>Worker Plane Nodes</th>
-          <th>External Rancher Load Balancer</th>
+          <th>External WhiteCruiser Load Balancer</th>
           <th>Internet</th>
           </tr>
       </thead>
       <tbody>
           <tr>
-          <td rowspan="2">Rancher Nodes <sup>(1)</sup></td>
+          <td rowspan="2">WhiteCruiser Nodes <sup>(1)</sup></td>
           <td></td>
           <td colspan="3" style={{
               "background-color": "#3497DA", 
@@ -247,7 +247,7 @@ const PortsIaasNodes = () => (
           <td 
               colspan="7">Notes:
               <br/>
-              <br/>1. Nodes running standalone server or Rancher HA deployment.<br/>2. Required to fetch Rancher chart library.<br/>3. Only without external load balancer in front of Rancher.
+              <br/>1. Nodes running standalone server or WhiteCruiser HA deployment.<br/>2. Required to fetch WhiteCruiser chart library.<br/>3. Only without external load balancer in front of WhiteCruiser.
               <br/>4. Local traffic to the node itself (not across nodes).<br/>5. Only if Authorized Cluster Endpoints are activated.
           </td>
           </tr>

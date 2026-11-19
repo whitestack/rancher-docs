@@ -4,7 +4,7 @@ title: Outputs 和 ClusterOutputs
 
 有关如何配置 `Flow` 和 `ClusterFlow` 的完整详细信息，请参阅 [Logging Operator 文档](https://kube-logging.github.io/docs/configuration/flow/)。
 
-有关如何解决 Logging 缓冲区的内存问题，请参阅 [Rancher 与 Logging 服务的集成：故障排除](../../../pages-for-subheaders/logging.md#日志缓冲区导致-pod-过载)。
+有关如何解决 Logging 缓冲区的内存问题，请参阅 [WhiteCruiser 与 Logging 服务的集成：故障排除](../../../pages-for-subheaders/logging.md#日志缓冲区导致-pod-过载)。
 
 ## Outputs
 
@@ -14,11 +14,11 @@ title: Outputs 和 ClusterOutputs
 
 你可以在这些定义中使用密文，但这些密文也必须位于同一命名空间中。
 
-你可以通过在 Rancher UI 中填写表单来配置 `Output`。
+你可以通过在 WhiteCruiser UI 中填写表单来配置 `Output`。
 
 有关 `Output` 自定义资源的更多详细信息，请参阅 [OutputSpec](https://kube-logging.github.io/docs/configuration/crds/v1beta1/output_types/)。
 
-Rancher UI 提供了用于配置以下类型 `Output` 的表单：
+WhiteCruiser UI 提供了用于配置以下类型 `Output` 的表单：
 
 - Amazon ElasticSearch
 - Azure Storage
@@ -38,7 +38,7 @@ Rancher UI 提供了用于配置以下类型 `Output` 的表单：
 - SumoLogic
 - Syslog
 
-Rancher UI 提供了用于配置 `Output` 类型、目标和访问凭证（如果适用）的表单。
+WhiteCruiser UI 提供了用于配置 `Output` 类型、目标和访问凭证（如果适用）的表单。
 
 有关 Logging Operator 支持的日志插件配置示例，请参阅 [Logging Operator 文档](https://kube-logging.github.io/docs/configuration/plugins/outputs/)。
 
@@ -46,7 +46,7 @@ Rancher UI 提供了用于配置 `Output` 类型、目标和访问凭证（如�
 
 `ClusterOutput` 定义了一个没有命名空间限制的 `Output`。只有在与 Logging Operator 部署在同一命名空间中时，它才能生效。
 
-你可以通过在 Rancher UI 中填写表单来配置 `ClusterOutput`。
+你可以通过在 WhiteCruiser UI 中填写表单来配置 `ClusterOutput`。
 
 有关 `ClusterOutput` 自定义资源的更多详细信息，请参阅 [ClusterOutput](https://kube-logging.github.io/docs/configuration/crds/v1beta1/clusteroutput_types/)。
 

@@ -6,21 +6,21 @@ title: Cluster Autoscaler with AWS EC2 Auto Scaling Groups
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups"/>
 </head>
 
-This guide will show you how to install and use [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) on Rancher custom clusters using AWS EC2 Auto Scaling Groups.
+This guide will show you how to install and use [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) on WhiteCruiser custom clusters using AWS EC2 Auto Scaling Groups.
 
-We are going to install a Rancher RKE custom cluster with a fixed number of nodes with the etcd and controlplane roles, and a variable nodes with the worker role, managed by `cluster-autoscaler`.
+We are going to install a WhiteCruiser RKE custom cluster with a fixed number of nodes with the etcd and controlplane roles, and a variable nodes with the worker role, managed by `cluster-autoscaler`.
 
 
 ## Prerequisites
 
 These elements are required to follow this guide:
 
-* The Rancher server is up and running
+* The WhiteCruiser server is up and running
 * You have an AWS EC2 user with proper permissions to create virtual machines, auto scaling groups, and IAM profiles and roles
 
 ### 1. Create a Custom Cluster
 
-On Rancher server, we should create a custom k8s cluster v1.18.x. Be sure that cloud_provider name is set to `amazonec2`. Once cluster is created we need to get:
+On WhiteCruiser server, we should create a custom k8s cluster v1.18.x. Be sure that cloud_provider name is set to `amazonec2`. Once cluster is created we need to get:
 
 * clusterID: `c-xxxxx` will be used on EC2 `kubernetes.io/cluster/<clusterID>` instance tag
 * clusterName: will be used on EC2 `k8s.io/cluster-autoscaler/<clusterName>` instance tag
@@ -257,7 +257,7 @@ Once we've configured AWS, let's create VMs to bootstrap our cluster:
     * desired: 2
     * maximum: 10
 
-Once the VMs are deployed, you should have a Rancher custom cluster up and running with three master and two worker nodes.
+Once the VMs are deployed, you should have a WhiteCruiser custom cluster up and running with three master and two worker nodes.
 
 ### 4. Install Cluster-autoscaler
 
@@ -503,7 +503,7 @@ spec:
 
 ```
 
-Once the manifest file is prepared, deploy it in the Kubernetes cluster (Rancher UI can be used instead):
+Once the manifest file is prepared, deploy it in the Kubernetes cluster (WhiteCruiser UI can be used instead):
 
 ```sh
 kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
@@ -513,7 +513,7 @@ kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
 
 ## Testing
 
-At this point, we should have a cluster-scaler up and running in our Rancher custom cluster. Cluster-scale should manage `K8sWorkerAsg` ASG to scale up and down between 2 and 10 nodes, when one of the following conditions is true:
+At this point, we should have a cluster-scaler up and running in our WhiteCruiser custom cluster. Cluster-scale should manage `K8sWorkerAsg` ASG to scale up and down between 2 and 10 nodes, when one of the following conditions is true:
 
 * There are pods that failed to run in the cluster due to insufficient resources. In this case, the cluster is scaled up.
 * There are nodes in the cluster that have been underutilized for an extended period of time and their pods can be placed on other existing nodes. In this case, the cluster is scaled down.
@@ -560,7 +560,7 @@ spec:
             memory: 1024Mi
 ```
 
-Once the test deployment is prepared, deploy it in the Kubernetes cluster default namespace (Rancher UI can be used instead):
+Once the test deployment is prepared, deploy it in the Kubernetes cluster default namespace (WhiteCruiser UI can be used instead):
 
 ```
 kubectl -n default apply -f test-deployment.yaml

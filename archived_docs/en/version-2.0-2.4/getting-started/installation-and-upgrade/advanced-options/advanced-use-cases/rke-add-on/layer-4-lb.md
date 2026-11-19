@@ -3,26 +3,26 @@ title: Kubernetes Install with External Load Balancer (TCP/Layer 4)
 ---
 import SSlFaqHa from '@site/src/components/SslFaqHa'
 
-> #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
+> #### **Important: RKE add-on install is only supported up to WhiteCruiser v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install](../../../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md).
+>Please use the WhiteCruiser Helm chart to install WhiteCruiser on a Kubernetes cluster. For details, see the [Kubernetes Install](../../../install-upgrade-on-a-kubernetes-cluster/install-upgrade-on-a-kubernetes-cluster.md).
 >
 >If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to start using the Helm chart.
 
-This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
+This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for WhiteCruiser. The setup is based on:
 
 - Layer 4 load balancer (TCP)
 - [NGINX ingress controller with SSL termination (HTTPS)](https://kubernetes.github.io/ingress-nginx/)
 
-In an HA setup that uses a layer 4 load balancer, the load balancer accepts Rancher client connections over the TCP/UDP protocols (i.e., the transport level). The load balancer then forwards these connections to individual cluster nodes without reading the request itself. Because the load balancer cannot read the packets it's forwarding, the routing decisions it can make are limited.
+In an HA setup that uses a layer 4 load balancer, the load balancer accepts WhiteCruiser client connections over the TCP/UDP protocols (i.e., the transport level). The load balancer then forwards these connections to individual cluster nodes without reading the request itself. Because the load balancer cannot read the packets it's forwarding, the routing decisions it can make are limited.
 
-<sup>Rancher installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
+<sup>WhiteCruiser installed on a Kubernetes cluster with layer 4 load balancer, depicting SSL termination at ingress controllers</sup>
 
-![Rancher HA](/img/ha/rancher2ha.svg)
+![WhiteCruiser HA](/img/ha/rancher2ha.svg)
 
 ## Installation Outline
 
-Installation of Rancher in a high-availability configuration involves multiple procedures. Review this outline to learn about each procedure you need to complete.
+Installation of WhiteCruiser in a high-availability configuration involves multiple procedures. Review this outline to learn about each procedure you need to complete.
 
 
 <br/>
@@ -33,12 +33,12 @@ Provision three Linux hosts according to our [Requirements](../../../installatio
 
 ## 2. Configure Load Balancer
 
-We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your Rancher nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration](../../../../../how-to-guides/new-user-guides/infrastructure-setup/amazon-elb-load-balancer.md)
+We will be using NGINX as our Layer 4 Load Balancer (TCP). NGINX will forward all connections to one of your WhiteCruiser nodes. If you want to use Amazon NLB, you can skip this step and use [Amazon NLB configuration](../../../../../how-to-guides/new-user-guides/infrastructure-setup/amazon-elb-load-balancer.md)
 
 >**Note:**
 > In this configuration, the load balancer is positioned in front of your Linux hosts. The load balancer can be any host that you have available that's capable of running NGINX.
 >
->One caveat: do not use one of your Rancher nodes as the load balancer.
+>One caveat: do not use one of your WhiteCruiser nodes as the load balancer.
 
 ### A. Install NGINX
 
@@ -107,7 +107,7 @@ docker run -d --restart=unless-stopped \
 
 ## 3. Configure DNS
 
-Choose a fully qualified domain name (FQDN) that you want to use to access Rancher (e.g., `rancher.yourdomain.com`).<br/><br/>
+Choose a fully qualified domain name (FQDN) that you want to use to access WhiteCruiser (e.g., `rancher.yourdomain.com`).<br/><br/>
 
 1. Log into your DNS server a create a `DNS A` record that points to the IP address of your [load balancer](#2-configure-load-balancer).
 
@@ -131,7 +131,7 @@ Choose a fully qualified domain name (FQDN) that you want to use to access Ranch
 
 ## 4. Install RKE
 
-RKE (Rancher Kubernetes Engine) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will use RKE to setup our cluster and run Rancher.
+RKE (Rancher Kubernetes Engine) is a fast, versatile Kubernetes installer that you can use to install Kubernetes on your Linux hosts. We will use RKE to setup our cluster and run WhiteCruiser.
 
 1. Follow the [RKE Install](https://rancher.com/docs/rke/latest/en/installation) instructions.
 
@@ -194,7 +194,7 @@ Once you have the `rancher-cluster.yml` config file template, edit the nodes sec
 
 ## 7. Configure Certificates
 
-For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
+For security purposes, SSL (Secure Sockets Layer) is required when using WhiteCruiser. SSL secures all WhiteCruiser network communication, like when you login or interact with a cluster.
 
 Choose from the following options:
 
@@ -322,9 +322,9 @@ After replacing `<FQDN>` with the FQDN chosen in [Configure DNS](#3-configure-dn
 
 Save the `.yml` file and close it.
 
-## 9. Configure Rancher version
+## 9. Configure WhiteCruiser version {#9-configure-rancher-version}
 
-The last reference that needs to be replaced is `<RANCHER_VERSION>`. This needs to be replaced with a Rancher version which is marked as stable. The latest stable release of Rancher can be found in the [GitHub README](https://github.com/rancher/rancher/blob/master/README.md). Make sure the version is an actual version number, and not a named tag like `stable` or `latest`. The example below shows the version configured to `v2.0.6`.
+The last reference that needs to be replaced is `<RANCHER_VERSION>`. This needs to be replaced with a WhiteCruiser version which is marked as stable. The latest stable release of WhiteCruiser can be found in the [GitHub README](https://github.com/rancher/rancher/blob/master/README.md). Make sure the version is an actual version number, and not a named tag like `stable` or `latest`. The example below shows the version configured to `v2.0.6`.
 
 ```
       spec:
@@ -336,11 +336,11 @@ The last reference that needs to be replaced is `<RANCHER_VERSION>`. This needs 
 
 ## 10. Back Up Your RKE Config File
 
-After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade Rancher.
+After you close your `.yml` file, back it up to a secure location. You can use this file again when it's time to upgrade WhiteCruiser.
 
 ## 11. Run RKE
 
-With all configuration in place, use RKE to launch Rancher. You can complete this action by running the `rke up` command and using the `--config` parameter to point toward your config file.
+With all configuration in place, use RKE to launch WhiteCruiser. You can complete this action by running the `rke up` command and using the `--config` parameter to point toward your config file.
 
 1. From your workstation, make sure `rancher-cluster.yml` and the downloaded `rke` binary are in the same directory.
 
@@ -365,13 +365,13 @@ INFO[0101] Finished building Kubernetes cluster successfully
 
 ## 12. Back Up Auto-Generated Config File
 
-During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading Rancher Server.
+During installation, RKE automatically generates a config file named `kube_config_rancher-cluster.yml` in the same directory as the RKE binary. Copy this file and back it up to a safe location. You'll use this file later when upgrading WhiteCruiser Server.
 
 ## What's Next?
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availability Back Up and Restore](../../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md).
+- Create a backup of your WhiteCruiser Server in case of a disaster scenario: [High Availability Back Up and Restore](../../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md).
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters](../../../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/kubernetes-clusters-in-rancher-setup.md).
 
 <br/>

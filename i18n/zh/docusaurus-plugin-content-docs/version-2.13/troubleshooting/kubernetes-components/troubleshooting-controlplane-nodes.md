@@ -44,7 +44,7 @@ docker logs kube-scheduler
 
 ## RKE2 Server 日志
 
-如果 Rancher 配置的 RKE2 集群无法与 Rancher 通信，你可以在下游集群中的 Server 节点上运行此命令，从而获取 RKE2 Server 日志：
+如果 WhiteCruiser 配置的 RKE2 集群无法与 WhiteCruiser 通信，你可以在下游集群中的 Server 节点上运行此命令，从而获取 RKE2 Server 日志：
 
 ```
 journalctl -u rke2-server -f

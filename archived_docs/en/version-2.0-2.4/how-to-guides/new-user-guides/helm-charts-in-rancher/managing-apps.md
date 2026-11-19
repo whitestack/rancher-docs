@@ -49,7 +49,7 @@ After an application has been upgraded, you can easily rollback to a different t
 
 3. Find the application that you want to rollback, and then click the &#8942; to find **Rollback**.
 
-4. Select the **Revision** that you want to roll back to. By default, Rancher saves up to the last 10 revisions.
+4. Select the **Revision** that you want to roll back to. By default, WhiteCruiser saves up to the last 10 revisions.
 
 5. (Optional) Select whether or not you want to force the catalog application to be upgraded by checking the box for **Delete and recreate resources if needed during the upgrade**.
 

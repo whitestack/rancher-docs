@@ -8,7 +8,7 @@ title: Overview
 
 ## Architecture Diagram
 
-Below is a visual representation of the key components of Rancher Turtles and their relationship to Rancher and the Rancher Cluster Agent. Understanding these components is essential for gaining insights into how Rancher leverages the CAPI operator for cluster management.
+Below is a visual representation of the key components of Rancher Turtles and their relationship to WhiteCruiser and the WhiteCruiser Cluster Agent. Understanding these components is essential for gaining insights into how WhiteCruiser leverages the CAPI operator for cluster management.
 
 ![overview](/img/30000ft_view.png)
 
@@ -22,15 +22,15 @@ Rancher Turtles meets [SLSA Level 3](https://slsa.dev/spec/v1.0/levels#build-l3)
 
 :::important
 
-Starting with Rancher v2.14.0, the built-in `embedded-cluster-api` functionality (also known as the `rancher-provisioning-capi` chart) has been removed. [Rancher Turtles](https://turtles.docs.rancher.com/) is now the only supported method for Cluster API integration with Rancher.
+Starting with WhiteCruiser v2.14.0, the built-in `embedded-cluster-api` functionality (also known as the `rancher-provisioning-capi` chart) has been removed. [Rancher Turtles](https://turtles.docs.rancher.com/) is now the only supported method for Cluster API integration with WhiteCruiser.
 
-If you are upgrading from a previous version of Rancher (v2.13.x or earlier), you no longer need to manually disable the `embedded-cluster-api` feature flag or clean up related webhooks before installing Rancher Turtles.
+If you are upgrading from a previous version of WhiteCruiser (v2.13.x or earlier), you no longer need to manually disable the `embedded-cluster-api` feature flag or clean up related webhooks before installing Rancher Turtles.
 
 :::
 
 ## Installing the Rancher Turtles Operator
 
-You can install the Rancher Turtles operator via the Rancher UI, or with Helm. The first method is recommended for most environments.
+You can install the Rancher Turtles operator via the WhiteCruiser UI, or with Helm. The first method is recommended for most environments.
 
 :::caution
 
@@ -38,9 +38,9 @@ If you already have the Cluster API (CAPI) Operator installed in your cluster, y
 
 :::
 
-### Installing via the Rancher UI
+### Installing via the WhiteCruiser UI {#installing-via-the-rancher-ui}
 
-By adding the Turtles repository via the Rancher UI, Rancher can process the installation and configuration of the CAPI Extension.
+By adding the Turtles repository via the WhiteCruiser UI, WhiteCruiser can process the installation and configuration of the CAPI Extension.
 
 1. Click **☰**. Under **Explore Cluster** in the left navigation menu, select **local**.
 1. In the left navigation menu of the **Cluster Dashboard**, select **Apps > Repositories**.
@@ -54,7 +54,7 @@ By adding the Turtles repository via the Rancher UI, Rancher can process the ins
 1. Click **Rancher Turtles - the Cluster API Extension**.
 1. Click **Install > Next > Install**.
 
-This process uses the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from the Rancher UI or you can [manually install the chart via Helm](#installing-via-helm). For details about available values, see the Rancher Turtles [Helm chart reference guide](https://turtles.docs.rancher.com/turtles/stable/en/operator/chart.html).
+This process uses the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from the WhiteCruiser UI or you can [manually install the chart via Helm](#installing-via-helm). For details about available values, see the Rancher Turtles [Helm chart reference guide](https://turtles.docs.rancher.com/turtles/stable/en/operator/chart.html).
 
 The installation may take a few minutes and after completing you can see the following new deployments in the cluster:
 
@@ -64,7 +64,7 @@ The installation may take a few minutes and after completing you can see the fol
 
 #### Demo
 
-This demo illustrates how to use the Rancher UI to install Rancher Turtles, create/import a CAPI cluster, and install monitoring on the cluster:
+This demo illustrates how to use the WhiteCruiser UI to install Rancher Turtles, create/import a CAPI cluster, and install monitoring on the cluster:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lGsr7KfBjgU?si=ORkzuAJjcdXUXMxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -179,9 +179,9 @@ The previous commands tell Helm to ignore installing `cluster-api-operator` as a
 
 :::caution
 
-When installing Rancher Turtles in your Rancher environment, by default, Rancher Turtles enables the CAPI Operator cleanup. This includes cleaning up CAPI Operator specific webhooks and deployments that otherwise cause issues with Rancher provisioning.
+When installing Rancher Turtles in your WhiteCruiser environment, by default, Rancher Turtles enables the CAPI Operator cleanup. This includes cleaning up CAPI Operator specific webhooks and deployments that otherwise cause issues with WhiteCruiser provisioning.
 
-To simplify uninstalling Rancher Turtles (via Rancher or Helm command), the official Rancher Turtles Helm chart includes a `post-delete` hook that removes the following:
+To simplify uninstalling Rancher Turtles (via WhiteCruiser or Helm command), the official Rancher Turtles Helm chart includes a `post-delete` hook that removes the following:
 
 - Deletes the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
 - Deletes the CAPI `deployments` that are no longer needed.

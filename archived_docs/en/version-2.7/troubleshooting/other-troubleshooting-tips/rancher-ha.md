@@ -1,18 +1,18 @@
 ---
-title: Rancher HA
+title: WhiteCruiser HA
 ---
 
 <head>
   <link rel="canonical" href="https://ranchermanager.docs.rancher.com/troubleshooting/other-troubleshooting-tips/rancher-ha"/>
 </head>
 
-The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.
+The commands/steps listed on this page can be used to check your WhiteCruiser Kubernetes Installation.
 
 Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml`).
 
-## Check Rancher Pods
+## Check WhiteCruiser Pods {#check-rancher-pods}
 
-Rancher pods are deployed as a Deployment in the `cattle-system` namespace.
+WhiteCruiser pods are deployed as a Deployment in the `cattle-system` namespace.
 
 Check if the pods are running on all nodes:
 
@@ -66,7 +66,7 @@ rancher   rancher.yourdomain.com   x.x.x.x,x.x.x.x,x.x.x.x   80, 443   2m
 
 ## Check Ingress Controller Logs
 
-When accessing your configured Rancher FQDN does not show you the UI, check the ingress controller logging to see what happens when you try to access Rancher:
+When accessing your configured WhiteCruiser FQDN does not show you the UI, check the ingress controller logging to see what happens when you try to access WhiteCruiser:
 
 ```
 kubectl -n ingress-nginx logs -l app=ingress-nginx

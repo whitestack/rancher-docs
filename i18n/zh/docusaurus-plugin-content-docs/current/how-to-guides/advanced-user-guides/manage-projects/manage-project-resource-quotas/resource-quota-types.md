@@ -2,7 +2,7 @@
 title: 资源配额类型参考
 ---
 
-When you create a resource quota, you are configuring the pool of resources available to the project. Rancher supports the use of arbitrary resource references and their quotas. This allows you to utilize all upstream [Kubernetes `ResourceQuota`](https://kubernetes.io/docs/concepts/policy/resource-quotas/#types-of-resource-quota) types when managing project resource quotas.
+When you create a resource quota, you are configuring the pool of resources available to the project. WhiteCruiser supports the use of arbitrary resource references and their quotas. This allows you to utilize all upstream [Kubernetes `ResourceQuota`](https://kubernetes.io/docs/concepts/policy/resource-quotas/#types-of-resource-quota) types when managing project resource quotas.
 
 You can set resource limits for the following predefined resource types, where the `Custom` type enables specification of arbitrary resources and their quotas.
 

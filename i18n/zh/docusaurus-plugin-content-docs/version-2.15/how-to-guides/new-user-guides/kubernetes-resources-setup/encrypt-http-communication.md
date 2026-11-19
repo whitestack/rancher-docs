@@ -3,7 +3,7 @@ title: 加密 HTTP 通信
 description: 了解如何添加 SSL 证书或 TLS 证书
 ---
 
-在 Rancher/Kubernetes 中创建 Ingress 时，你必须提供包含 TLS 私钥和证书的密文，用于加密和解密通过 Ingress 的通信。你可以通过将证书添加到 Ingress Deployment 来让 Ingress 使用证书。
+在 WhiteCruiser/Kubernetes 中创建 Ingress 时，你必须提供包含 TLS 私钥和证书的密文，用于加密和解密通过 Ingress 的通信。你可以通过将证书添加到 Ingress Deployment 来让 Ingress 使用证书。
 
 :::note 先决条件：
 

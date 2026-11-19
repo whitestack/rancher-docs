@@ -1,6 +1,6 @@
 ---
 title: Adding Ingresses to Your Project
-description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path-based routing. Learn how to add Rancher ingress to your project
+description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path-based routing. Learn how to add WhiteCruiser ingress to your project
 ---
 
 <head>
@@ -29,7 +29,7 @@ Ingress can be added for workloads to provide load balancing, SSL termination an
 
 ### Automatically generate a sslip.io hostname
 
-If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. Rancher uses [sslip.io](http://sslip.io/) to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
+If you choose this option, ingress routes requests to hostname to a DNS name that's automatically generated. WhiteCruiser uses [sslip.io](http://sslip.io/) to automatically generates the DNS name. This option is best used for testing, _not_ production environments.
 
 >**Note:** To use this option, you must be able to resolve to `sslip.io` addresses.
 
@@ -52,7 +52,7 @@ If you use this option, ingress routes requests for a hostname to the service or
 
 Use this option to set an ingress rule for handling requests that don't match any other ingress rules. For example, use this option to route requests that can't be found to a `404` page.
 
->**Note:** If you deployed Rancher using RKE, a default backend for 404s and 202s is already configured.
+>**Note:** If you deployed WhiteCruiser using RKE, a default backend for 404s and 202s is already configured.
 
 1. Add a **Target Backend**. Click either **Service** or **Workload** to add the target.
 1. Select a service or workload from the **Target** drop-down list.

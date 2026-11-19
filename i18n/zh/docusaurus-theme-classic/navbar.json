@@ -3,8 +3,8 @@
     "message": "GitHub",
     "description": "Navbar item with label GitHub"
   },
-  "item.label.Rancher Home": {
-    "message": "Rancher 主页",
-    "description": "Navbar item with label Rancher Home"
+  "item.label.WhiteCruiser Home": {
+    "message": "WhiteCruiser 主页",
+    "description": "Navbar item with label WhiteCruiser Home"
   }
 }

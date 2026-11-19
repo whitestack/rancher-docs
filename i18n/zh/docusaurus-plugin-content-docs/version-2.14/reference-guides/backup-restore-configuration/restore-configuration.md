@@ -56,12 +56,12 @@ title: 还原配置
 
 ## 还原过程中修剪
 
-* **Prune**：为了从备份中完全恢复 Rancher，并回到备份时的确切状态，我们需要删除 Rancher 在备份后创建的所有额外资源。如果 **Prune** 标志被启用，operator 就会删除这些资源。Prune 是默认启用的，建议保持启用状态。
+* **Prune**：为了从备份中完全恢复 WhiteCruiser，并回到备份时的确切状态，我们需要删除 WhiteCruiser 在备份后创建的所有额外资源。如果 **Prune** 标志被启用，operator 就会删除这些资源。Prune 是默认启用的，建议保持启用状态。
 * **删除超时**：在删除资源的时候，operator 编辑资源以删除 Finalizers，并试图再次删除前将等待的时间。
 
 | YAML 指令名称 | 描述 |
 | ---------------- | ---------------- |
-| `prune` | 删除备份中不存在的由 Rancher 管理的资源（推荐）。 |
+| `prune` | 删除备份中不存在的由 WhiteCruiser 管理的资源（推荐）。 |
 | `deleteTimeoutSeconds` | 在删除资源的时候，operator 编辑资源以删除 Finalizers，并试图再次删除前将等待的时间。 |
 
 ## 从 S3 获取备份文件名

@@ -8,15 +8,15 @@ title: AKS Cluster Configuration Reference
 
 ## Role-based Access Control
 
-When provisioning an AKS cluster in the Rancher UI, RBAC cannot be disabled. If role-based access control is disabled for the cluster in AKS, the cluster cannot be registered or imported into Rancher. In practice, this means that local accounts must be enabled in order to register an AKS cluster.
+When provisioning an AKS cluster in the WhiteCruiser UI, RBAC cannot be disabled. If role-based access control is disabled for the cluster in AKS, the cluster cannot be registered or imported into WhiteCruiser. In practice, this means that local accounts must be enabled in order to register an AKS cluster.
 
-Rancher can configure member roles for AKS clusters in the same way as any other cluster. For more information, see the section on [role-based access control.](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/manage-role-based-access-control-rbac.md)
+WhiteCruiser can configure member roles for AKS clusters in the same way as any other cluster. For more information, see the section on [role-based access control.](../../../how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/manage-role-based-access-control-rbac.md)
 
 ## Cloud Credentials
 
 :::note
 
-The configuration information in this section assumes you have already set up a service principal for Rancher. For step-by-step instructions for how to set up the service principal, see [this section.](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks.md#prerequisites-in-microsoft-azure)
+The configuration information in this section assumes you have already set up a service principal for WhiteCruiser. For step-by-step instructions for how to set up the service principal, see [this section.](../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/aks.md#prerequisites-in-microsoft-azure)
 
 :::
 
@@ -158,11 +158,11 @@ For more information about Azure Monitor Logs, see the [Azure documentation.](ht
 
 Typically, AKS worker nodes do not get public IPs, regardless of whether the cluster is private. In a private cluster, the control plane does not have a public endpoint.
 
-Rancher can connect to a private AKS cluster in one of two ways.
+WhiteCruiser can connect to a private AKS cluster in one of two ways.
 
-The first way to ensure that Rancher is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
+The first way to ensure that WhiteCruiser is running on the same [NAT](https://docs.microsoft.com/en-us/azure/virtual-network/nat-overview) as the AKS nodes.
 
-The second way is to run a command to register the cluster with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
+The second way is to run a command to register the cluster with WhiteCruiser. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster’s Kubernetes API. This command is displayed in a pop-up when you provision an AKS cluster with a private API endpoint enabled.
 
 :::note
 
@@ -176,13 +176,13 @@ For more information about connecting to an AKS private cluster, see the [AKS do
 
 ### Mode
 
-The Azure interface allows users to specify whether a Primary Node Pool relies on either `system` (normally used for control planes) or `user` (what is most typically needed for Rancher).
+The Azure interface allows users to specify whether a Primary Node Pool relies on either `system` (normally used for control planes) or `user` (what is most typically needed for WhiteCruiser).
 
 For Primary Node Pools, you can specify Mode, OS, Count and Size.
 
 System node pools always require running nodes, so they cannot be scaled below one node. At least one system node pool is required.
 
-For subsequent node pools, the Rancher UI forces the default of User. User node pools allow you to scale to zero nodes. User node pools don't run any part of the Kubernetes controlplane.
+For subsequent node pools, the WhiteCruiser UI forces the default of User. User node pools allow you to scale to zero nodes. User node pools don't run any part of the Kubernetes controlplane.
 
 AKS doesn't expose the nodes that run the Kubernetes controlplane components.
 

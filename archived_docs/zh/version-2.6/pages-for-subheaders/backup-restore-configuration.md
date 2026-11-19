@@ -1,5 +1,5 @@
 ---
-title: Rancher 备份配置参考
+title: WhiteCruiser 备份配置参考
 ---
 
 - [备份配置](../reference-guides/backup-restore-configuration/backup-configuration.md)

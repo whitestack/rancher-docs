@@ -52,7 +52,7 @@ VWQqljhfacYPgp8KJUJENQ9h5hZ2nSCrI+W00Jcw4QcEdCI8HL5wmg==
 
 ## Converting a Certificate Key From PKCS8 to PKCS1
 
-If you are using a PKCS8 certificate key file, Rancher will log the following line:
+If you are using a PKCS8 certificate key file, WhiteCruiser will log the following line:
 
 ```
 ListenConfigController cli-config [listener] failed with : failed to read private key: asn1: structure error: tags don't match (2 vs {class:0 tag:16 length:13 isCompound:true})
@@ -64,7 +64,7 @@ To make this work, you will need to convert the key from PKCS8 to PKCS1 using th
 openssl rsa -in key.pem -out convertedkey.pem
 ```
 
-You can now use `convertedkey.pem` as certificate key file for Rancher.
+You can now use `convertedkey.pem` as certificate key file for WhiteCruiser.
 
 ## What is the Order of Certificates if I Want to Add My Intermediate(s)?
 

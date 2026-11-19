@@ -8,7 +8,7 @@ title: 加密密钥轮换
 
 :::
 
-要在 Rancher UI 中轮换密钥：
+要在 WhiteCruiser UI 中轮换密钥：
 
 1. 点击 **☰ > 集群管理**。
 

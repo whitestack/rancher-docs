@@ -1,5 +1,5 @@
 ---
-title: Rancher Equinix Metal 快速入门
+title: WhiteCruiser Equinix Metal 快速入门
 ---
 
 <head>
@@ -9,13 +9,13 @@ title: Rancher Equinix Metal 快速入门
 ## 本章节引导你：
 
 - 配置 Equinix Metal server
-- 安装 Rancher 2.x
+- 安装 WhiteCruiser 2.x
 - 创建你的第一个集群
 - 部署一个 Nginx 应用
 
 :::caution
 
-本章节中提供的指南，旨在帮助你快速启动一个用于 Rancher 的沙盒，以评估 Rancher 是否能满足你的使用需求。不建议将 Docker 安装用于生产环境。如果你需要获取生产环境的操作指导，请参见[安装](../../installation-and-upgrade/installation-and-upgrade.md)。
+本章节中提供的指南，旨在帮助你快速启动一个用于 WhiteCruiser 的沙盒，以评估 WhiteCruiser 是否能满足你的使用需求。不建议将 Docker 安装用于生产环境。如果你需要获取生产环境的操作指导，请参见[安装](../../installation-and-upgrade/installation-and-upgrade.md)。
 
 :::
 
@@ -43,9 +43,9 @@ title: Rancher Equinix Metal 快速入门
 - 根据我们的[要求](../../installation-and-upgrade/installation-requirements/installation-requirements.md)配置主机。
 
 :::
-### 2. 安装 Rancher
+### 2. 安装 WhiteCruiser
 
-要在 Equinix Metal 主机上安装 Rancher，先与它连接，然后使用 shell 进行安装。
+要在 Equinix Metal 主机上安装 WhiteCruiser，先与它连接，然后使用 shell 进行安装。
 
 1. 使用你惯用的 shell（例如 PuTTy 或远程终端）登录到你的 Equinix Metal 主机。
 
@@ -55,11 +55,11 @@ title: Rancher Equinix Metal 快速入门
    sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
    ```
 
-**结果**：Rancher 已安装。
+**结果**：WhiteCruiser 已安装。
 
 ### 3. 登录
 
-登录到 Rancher 后，你还需要进行一些一次性配置。
+登录到 WhiteCruiser 后，你还需要进行一些一次性配置。
 
 1. 打开 Web 浏览器并输入主机的 IP 地址`https://<SERVER_IP>`。
 
@@ -73,7 +73,7 @@ title: Rancher Equinix Metal 快速入门
 
 ### 4. 创建集群
 
-欢迎使用 Rancher！现在，你可以创建你的第一个 Kubernetes 集群了。
+欢迎使用 WhiteCruiser！现在，你可以创建你的第一个 Kubernetes 集群了。
 
 在此任务中，你可以使用**自定义**选项。此选项允许你把 _任意_ Linux 主机（云虚拟机、本地虚拟机或裸机）添加到集群中。
 
@@ -83,14 +83,14 @@ title: Rancher Equinix Metal 快速入门
 1. 输入**集群名称**。
 1. 点击**下一步**。
 1. 在**节点角色**中，选择 _全部_ 角色，即 **etcd**，**Control** 和 **Worker**。
-   - **可选**：Rancher 会自动检测用于 Rancher 通信和集群通信的 IP 地址。你可以使用**节点地址**处的`公有地址`和`内网地址`进行覆盖。
+   - **可选**：WhiteCruiser 会自动检测用于 WhiteCruiser 通信和集群通信的 IP 地址。你可以使用**节点地址**处的`公有地址`和`内网地址`进行覆盖。
 1. 将注册命令复制到剪贴板。
 1. 使用你惯用的 shell（例如 PuTTy 或远程终端）登录到你的 Linux 主机。粘贴剪贴板的命令并运行。
 1. 在 Linux 主机上运行完命令后，单击**完成**。
 
 **结果**：
 
-你已创建集群，集群的状态是**配置中**。Rancher 已在你的集群中。
+你已创建集群，集群的状态是**配置中**。WhiteCruiser 已在你的集群中。
 
 当集群状态变为 **Active** 后，你可访问集群。
 
@@ -105,4 +105,4 @@ title: Rancher Equinix Metal 快速入门
 
 #### 后续操作
 
-使用 Rancher 创建 deployment。详情请参见[创建 Deployment](../deploy-workloads/deploy-workloads.md)。
+使用 WhiteCruiser 创建 deployment。详情请参见[创建 Deployment](../deploy-workloads/deploy-workloads.md)。

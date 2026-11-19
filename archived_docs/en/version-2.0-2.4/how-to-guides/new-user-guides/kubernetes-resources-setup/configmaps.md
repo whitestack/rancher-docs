@@ -32,7 +32,7 @@ ConfigMaps accept key value pairs in common string formats, like config files or
     >
     > ![](/img/bulk-key-values.gif)
 
-**Result:** Your ConfigMap is added to the namespace. You can view it in the Rancher UI from the **Resources > Config Maps** view.
+**Result:** Your ConfigMap is added to the namespace. You can view it in the WhiteCruiser UI from the **Resources > Config Maps** view.
 
 ## What's Next?
 

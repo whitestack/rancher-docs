@@ -1,28 +1,28 @@
 ---
-title: CIS Benchmark Rancher Self-Assessment Guide v2.3
+title: CIS Benchmark WhiteCruiser Self-Assessment Guide v2.3
 ---
 
-This document is a companion to the Rancher v2.3 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+This document is a companion to the WhiteCruiser v2.3 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of WhiteCruiser, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
-This guide corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+This guide corresponds to specific versions of the hardening guide, WhiteCruiser, Kubernetes, and the CIS Benchmark:
 
-Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
+Self Assessment Guide Version | WhiteCruiser Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
 ---------------------------|----------|---------|-------|-----
-Self Assessment Guide v2.3 | Rancher v2.3.0-2.3.2 | Hardening Guide v2.3 | Kubernetes 1.15 | Benchmark v1.4.1
+Self Assessment Guide v2.3 | WhiteCruiser v2.3.0-2.3.2 | Hardening Guide v2.3 | Kubernetes 1.15 | Benchmark v1.4.1
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.3.x/Rancher_Benchmark_Assessment.pdf)
 
 > The CIS Benchmark version v1.4.1 covers the security posture of Kubernetes 1.13 clusters. This self-assessment has been run against Kubernetes 1.15, using the guidelines outlined in the CIS v1.4.1 benchmark. Updates to the CIS benchmarks will be applied to this document as they are released.
 
-Because Rancher and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in Rancher-created clusters.
+Because WhiteCruiser and RKE install Kubernetes services as Docker containers, many of the control verification checks in the CIS Kubernetes Benchmark don't apply. This guide will walk through the various controls and provide updated example commands to audit compliance in WhiteCruiser-created clusters.
 
-This document is to be used by Rancher operators, security teams, auditors and decision makers.
+This document is to be used by WhiteCruiser operators, security teams, auditors and decision makers.
 
 For more detail about each audit, including rationales and remediations for failing tests, you can refer to the corresponding section of the CIS Kubernetes Benchmark v1.4.1. You can download the benchmark after logging in to [CISecurity.org]( https://www.cisecurity.org/benchmark/kubernetes/).
 
 #### Testing controls methodology
 
-Rancher and RKE install Kubernetes services via Docker containers. Configuration is defined by arguments passed to the container at the time of initialization, not via configuration files.
+WhiteCruiser and RKE install Kubernetes services via Docker containers. Configuration is defined by arguments passed to the container at the time of initialization, not via configuration files.
 
 Scoring the commands is different in Rancher Labs than in the CIS Benchmark. Where the commands differ from the original CIS benchmark, the commands specific to Rancher Labs are provided for testing.
 
@@ -1235,24 +1235,24 @@ docker inspect etcd | jq -e '.[0].Args[] | match("--trusted-ca-file=(?:(?!/etc/k
 
 #### 1.6 - General Security Primitives
 
-These "Not Scored" controls are implementation best practices. To ease the administrative burden, we recommend that you implement these best practices on your workload clusters by creating clusters with Rancher rather than using RKE alone.
+These "Not Scored" controls are implementation best practices. To ease the administrative burden, we recommend that you implement these best practices on your workload clusters by creating clusters with WhiteCruiser rather than using RKE alone.
 
 #### 1.6.1 - Ensure that the cluster-admin role is only used where required (Not Scored)
 
 
-Rancher has built in support for maintaining and enforcing Kubernetes RBAC on your workload clusters.
+WhiteCruiser has built in support for maintaining and enforcing Kubernetes RBAC on your workload clusters.
 
-Rancher has the ability integrate with external authentication sources (LDAP, SAML, AD…) allows easy access with unique credentials to your existing users or groups.
+WhiteCruiser has the ability integrate with external authentication sources (LDAP, SAML, AD…) allows easy access with unique credentials to your existing users or groups.
 
 #### 1.6.2 - Create administrative boundaries between resources using namespaces (Not Scored)
 
-With Rancher, users or groups can be assigned access to all clusters, a single cluster or a "Project" (a group of one or more namespaces in a cluster). This allows granular access control to cluster resources.
+With WhiteCruiser, users or groups can be assigned access to all clusters, a single cluster or a "Project" (a group of one or more namespaces in a cluster). This allows granular access control to cluster resources.
 
 #### 1.6.3 - Create network segmentation using Network Policies (Not Scored)
 
-Rancher can (optionally) automatically create Network Policies to isolate "Projects" (a group of one or more namespaces) in a cluster.
+WhiteCruiser can (optionally) automatically create Network Policies to isolate "Projects" (a group of one or more namespaces) in a cluster.
 
-See "Cluster Options" when creating a cluster with Rancher to turn on Network Isolation.
+See "Cluster Options" when creating a cluster with WhiteCruiser to turn on Network Isolation.
 
 #### 1.6.4 - Ensure that the `seccomp` profile is set to `docker/default` in your pod definitions (Not Scored)
 
@@ -1262,7 +1262,7 @@ Since this requires the enabling of AllAlpha feature gates we would not recommen
 
 This practice does go against control 1.1.13, but we prefer using a PodSecurityPolicy and allowing security context to be set over a blanket deny.
 
-Rancher allows users to set various Security Context options when launching pods via the GUI interface.
+WhiteCruiser allows users to set various Security Context options when launching pods via the GUI interface.
 
 #### 1.6.6 - Configure image provenance using the `ImagePolicyWebhook` admission controller (Not Scored)
 
@@ -1270,15 +1270,15 @@ Image Policy Webhook requires a 3rd party service to enforce policy. This can be
 
 #### 1.6.7 - Configure network policies as appropriate (Not Scored)
 
-Rancher can (optionally) automatically create Network Policies to isolate projects (a group of one or more namespaces) within a cluster.
+WhiteCruiser can (optionally) automatically create Network Policies to isolate projects (a group of one or more namespaces) within a cluster.
 
-See the _Cluster Options_ section when creating a cluster with Rancher to turn on network isolation.
+See the _Cluster Options_ section when creating a cluster with WhiteCruiser to turn on network isolation.
 
 #### 1.6.8 - Place compensating controls in the form of PodSecurityPolicy (PSP) and RBAC for privileged container usage (Not Scored)
 
 Section 1.7 of this guide shows how to add and configure a default "restricted" PSP based on controls.
 
-With Rancher you can create a centrally maintained "restricted" PSP and deploy it to all of the clusters that Rancher manages.
+With WhiteCruiser you can create a centrally maintained "restricted" PSP and deploy it to all of the clusters that WhiteCruiser manages.
 
 
 #### 1.7 - Pod Security Policies (PSP)

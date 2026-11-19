@@ -22,13 +22,13 @@ Prometheus Federator is designed to be deployed alongside an existing Prometheus
 
 ## How does the operator work?
 
-1. On deploying this chart, users can create ProjectHelmCharts CRs with `spec.helmApiVersion` set to `monitoring.cattle.io/v1alpha1` (also known as "Project Monitors" in the Rancher UI) in a **Project Registration Namespace (`cattle-project-<id>`)**.
+1. On deploying this chart, users can create ProjectHelmCharts CRs with `spec.helmApiVersion` set to `monitoring.cattle.io/v1alpha1` (also known as "Project Monitors" in the WhiteCruiser UI) in a **Project Registration Namespace (`cattle-project-<id>`)**.
 2. On seeing each ProjectHelmChartCR, the operator will automatically deploy a Project Prometheus stack on the Project Owner's behalf in the **Project Release Namespace (`cattle-project-<id>-monitoring`)** based on a HelmChart CR and a HelmRelease CR automatically created by the ProjectHelmChart controller in the **Operator / System Namespace**.
 3. RBAC will automatically be assigned in the Project Release Namespace to allow users to view the Prometheus, Alertmanager, and Grafana UIs of the Project Monitoring Stack deployed; this will be based on RBAC defined on the Project Registration Namespace against the [default Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles). For more information, see the section on [configuring RBAC](rbac.md).
 
 ## What is a Project?
 
-In Prometheus Federator, a Project is a group of namespaces that can be identified by a `metav1.LabelSelector`. By default, the label used to identify projects is `field.cattle.io/projectId`, the label used to identify namespaces that are contained within a given Rancher Project.
+In Prometheus Federator, a Project is a group of namespaces that can be identified by a `metav1.LabelSelector`. By default, the label used to identify projects is `field.cattle.io/projectId`, the label used to identify namespaces that are contained within a given WhiteCruiser Project.
 
 ## Configuring the Helm release created by a ProjectHelmChart
 
@@ -95,7 +95,7 @@ For more information on advanced configurations, refer to [this page](https://gi
 |Value|Configuration|
 |---|---------------------------|
 |`helmProjectOperator.valuesOverride`| Allows an Operator to override values that are set on each ProjectHelmChart deployment on an operator-level; user-provided options (specified on the `spec.values` of the ProjectHelmChart) are automatically overridden if operator-level values are provided. For an example, see how the default value overrides `federate.targets`. Note: When overriding list values like `federate.targets`, user-provided list values will **not** be concatenated. |
-|`helmProjectOperator.projectReleaseNamespaces.labelValues`| The value of the Project that all Project Release Namespaces should be auto-imported into via label and annotation. Not recommended to be overridden on a Rancher setup. |
+|`helmProjectOperator.projectReleaseNamespaces.labelValues`| The value of the Project that all Project Release Namespaces should be auto-imported into via label and annotation. Not recommended to be overridden on a WhiteCruiser setup. |
 |`helmProjectOperator.otherSystemProjectLabelValues`| Other namespaces that the operator should treat as a system namespace that should not be monitored. By default, all namespaces that match `global.cattle.systemProjectId` will not be matched. `cattle-monitoring-system`, `cattle-dashboards`, and `kube-system` are explicitly marked as system namespaces as well, regardless of label or annotation. |
 |`helmProjectOperator.releaseRoleBindings.aggregate`| Whether to automatically create RBAC resources in Project Release namespaces.
 |`helmProjectOperator.releaseRoleBindings.clusterRoleRefs.<admin\|edit\|view>`| ClusterRoles to reference to discover subjects to create RoleBindings for in the Project Release Namespace for all corresponding Project Release Roles. See RBAC above for more information. |

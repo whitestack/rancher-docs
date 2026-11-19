@@ -8,11 +8,11 @@ title: Setting up Amazon ELB Network Load Balancer
 
 This how-to guide describes how to set up a Network Load Balancer (NLB) in Amazon's EC2 service that will direct traffic to multiple instances on EC2.
 
-These examples show the load balancer being configured to direct traffic to three Rancher server nodes. If Rancher is installed on an RKE Kubernetes cluster, three nodes are required. If Rancher is installed on a K3s Kubernetes cluster, only two nodes are required.
+These examples show the load balancer being configured to direct traffic to three WhiteCruiser server nodes. If WhiteCruiser is installed on an RKE Kubernetes cluster, three nodes are required. If WhiteCruiser is installed on a K3s Kubernetes cluster, only two nodes are required.
 
-This tutorial is about one possible way to set up your load balancer, not the only way. Other types of load balancers, such as a Classic Load Balancer or Application Load Balancer, could also direct traffic to the Rancher server nodes.
+This tutorial is about one possible way to set up your load balancer, not the only way. Other types of load balancers, such as a Classic Load Balancer or Application Load Balancer, could also direct traffic to the WhiteCruiser server nodes.
 
-Rancher only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ALB.
+WhiteCruiser only supports using the Amazon NLB when terminating traffic in `tcp` mode for port 443 rather than `tls` mode. This is due to the fact that the NLB does not inject the correct headers into requests when terminated at the NLB. This means that if you want to use certificates managed by the Amazon Certificate Manager (ACM), you should use an ALB.
 
 ## Setting up the Load Balancer
 
@@ -31,7 +31,7 @@ These instructions assume you have already created Linux instances in EC2. The l
 
 Begin by creating two target groups for the **TCP** protocol, one with TCP port 443 and one regarding TCP port 80 (providing redirect to TCP port 443). You'll add your Linux nodes to these groups.
 
-Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access Rancher, but it's convenient to add a listener for port 80, because traffic to port 80 will be automatically redirected to port 443.
+Your first NLB configuration step is to create two target groups. Technically, only port 443 is needed to access WhiteCruiser, but it's convenient to add a listener for port 80, because traffic to port 80 will be automatically redirected to port 443.
 
 Regardless of whether an NGINX Ingress or Traefik Ingress controller is used, the Ingress should redirect traffic from port 80 to port 443.
 
@@ -136,7 +136,7 @@ Use Amazon's Wizard to create a Network Load Balancer. As part of this process, 
 Set the following fields in the form:
 
 - **Name:** `rancher`
-- **Scheme:** `internal` or `internet-facing`. The scheme that you choose for your NLB is dependent on the configuration of your instances and VPC. If your instances do not have public IPs associated with them, or you will only be accessing Rancher internally, you should set your NLB Scheme to `internal` rather than `internet-facing`.
+- **Scheme:** `internal` or `internet-facing`. The scheme that you choose for your NLB is dependent on the configuration of your instances and VPC. If your instances do not have public IPs associated with them, or you will only be accessing WhiteCruiser internally, you should set your NLB Scheme to `internal` rather than `internet-facing`.
 - **Listeners:** The Load Balancer Protocol should be `TCP` and the corresponding Load Balancer Port should be set to `443`.
 - **Availability Zones:** Select Your **VPC** and **Availability Zones**.
 
@@ -179,4 +179,4 @@ For RKE Kubernetes clusters, NGINX Ingress is used by default, whereas for K3s K
 - **Traefik:** The health check path is `/ping`. By default `/ping` is always matched (regardless of Host), and a response from [Traefik itself](https://docs.traefik.io/operations/ping/) is always served.
 - **NGINX Ingress:** The default backend of the NGINX Ingress controller has a `/healthz` endpoint. By default `/healthz` is always matched (regardless of Host), and a response from [`ingress-nginx` itself](https://github.com/kubernetes/ingress-nginx/blob/0cbe783f43a9313c9c26136e888324b1ee91a72f/charts/ingress-nginx/values.yaml#L212) is always served.
 
-To simulate an accurate health check, it is a best practice to use the Host header (Rancher hostname) combined with `/ping` or `/healthz` (for K3s or for RKE clusters, respectively) wherever possible, to get a response from the Rancher Pods, not the Ingress.
+To simulate an accurate health check, it is a best practice to use the Host header (WhiteCruiser hostname) combined with `/ping` or `/healthz` (for K3s or for RKE clusters, respectively) wherever possible, to get a response from the WhiteCruiser Pods, not the Ingress.

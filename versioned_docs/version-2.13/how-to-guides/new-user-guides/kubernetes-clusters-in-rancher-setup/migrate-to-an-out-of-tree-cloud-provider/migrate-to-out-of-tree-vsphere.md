@@ -10,7 +10,7 @@ Kubernetes is moving away from maintaining cloud providers in-tree. VMware vSphe
 
 This page covers how to migrate from the in-tree vSphere cloud provider to out-of-tree, and manage the existing VMs post migration.
 
-It follows the steps provided in the official [vSphere migration documentation](https://vsphere-csi-driver.sigs.k8s.io/features/vsphere_csi_migration.html) and provides the steps to be performed in Rancher.
+It follows the steps provided in the official [vSphere migration documentation](https://vsphere-csi-driver.sigs.k8s.io/features/vsphere_csi_migration.html) and provides the steps to be performed in WhiteCruiser.
 
 ### Cloud-config Format Limitation
 
@@ -32,7 +32,7 @@ resourcepool-path: "<cluster-name>/Resources/<resource-pool-name>"
 
 Upstream bug: https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/628
 
-Rancher issue tracking this bug: https://github.com/rancher/rancher/issues/31105
+WhiteCruiser issue tracking this bug: https://github.com/rancher/rancher/issues/31105
 
 ## Prerequisites
 

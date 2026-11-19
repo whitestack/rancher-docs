@@ -4,7 +4,7 @@ title:  Project Alerts
 
 To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.
 
-Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, Rancher can notify [cluster owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) and [project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) of events they need to address.
+Notifiers and alerts are built on top of the [Prometheus Alertmanager](https://prometheus.io/docs/alerting/alertmanager/). Leveraging these tools, WhiteCruiser can notify [cluster owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) and [project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) of events they need to address.
 
 Before you can receive alerts, one or more [notifier](../../explanations/integrations-in-rancher/notifiers.md) must be configured at the cluster level.
 
@@ -15,7 +15,7 @@ Only [administrators](../../how-to-guides/advanced-user-guides/authentication-pe
 
 The scope for alerts can be set at either the [cluster level](../../explanations/integrations-in-rancher/cluster-alerts/cluster-alerts.md) or project level.
 
-At the project level, Rancher monitors specific deployments and sends alerts for:
+At the project level, WhiteCruiser monitors specific deployments and sends alerts for:
 
 * Deployment availability
 * Workloads status
@@ -29,7 +29,7 @@ When you enable monitoring for the project, some project-level alerts are provid
 | Alert | Explanation |
 |-------|-------------|
 | Less than half workload available | A critical alert is triggered if less than half of a workload is available, based on workloads where the key is `app` and the value is `workload`. |
-| Memory usage close to the quota | A warning alert is triggered if the workload's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the Rancher UI if you go to the workload under the **Security & Host Config** tab. |
+| Memory usage close to the quota | A warning alert is triggered if the workload's memory usage exceeds the memory resource quota that is set for the workload. You can see the memory limit in the WhiteCruiser UI if you go to the workload under the **Security & Host Config** tab. |
 
 For information on other default alerts, refer to the section on [cluster-level alerts.](../../explanations/integrations-in-rancher/cluster-alerts/default-alerts.md)
 
@@ -79,7 +79,7 @@ To manage project alerts, browse to the project that alerts you want to manage. 
 
 This alert type monitors for the status of a specific pod.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -117,7 +117,7 @@ You can disable these advanced options when configuring a specific rule.
 
 This alert type monitors for the availability of a workload.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -151,7 +151,7 @@ You can disable these advanced options when configuring a specific rule.
 
 This alert type monitors for the availability of all workloads marked with tags that you've specified.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When a
 
@@ -186,7 +186,7 @@ _Available as of v2.2.4_
 
 If you enable [project monitoring](rancher-project-tools.md#monitoring), this alert type monitors for the overload from Prometheus expression querying.
 
-Each of the below sections corresponds to a part of the alert rule configuration section in the Rancher UI.
+Each of the below sections corresponds to a part of the alert rule configuration section in the WhiteCruiser UI.
 
 ### When A
 

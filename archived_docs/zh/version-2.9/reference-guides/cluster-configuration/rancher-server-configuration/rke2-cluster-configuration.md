@@ -2,16 +2,16 @@
 title: RKE2 集群配置参考
 ---
 
-本文介绍 Rancher 中可用于新的或现有的 RKE2 Kubernetes 集群的配置选项。
+本文介绍 WhiteCruiser 中可用于新的或现有的 RKE2 Kubernetes 集群的配置选项。
 
 ## 概述
 
 你可以通过以下两种方式之一来配置 Kubernetes 选项：
 
-- [Rancher UI](#rancher-ui-中的配置选项)：使用 Rancher UI 来选择设置 Kubernetes 集群时常用的自定义选项。
-- [集群配置文件](#集群配置文件参考)：高级用户可以创建一个 RKE2 配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件让你能设置更多可用于 RKE2 的其他[安装选项](https://docs.rke2.io/install/configuration)。
+- [WhiteCruiser UI](#whitecruiser-ui-中的配置选项)：使用 WhiteCruiser UI 来选择设置 Kubernetes 集群时常用的自定义选项。
+- [集群配置文件](#集群配置文件参考)：高级用户可以创建一个 RKE2 配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件让你能设置更多可用于 RKE2 的其他[安装选项](https://docs.rke2.io/install/configuration)。
 
-## 在 Rancher UI 中使用表单编辑集群
+## 在 WhiteCruiser UI 中使用表单编辑集群
 
 要编辑你的集群：
 
@@ -20,19 +20,19 @@ title: RKE2 集群配置参考
 
 ## 使用 YAML 编辑集群
 
-高级用户可以创建一个 RKE2 配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件可以让你使用 YAML 来指定 RKE2 安装中可用的任何选项。
+高级用户可以创建一个 RKE2 配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件可以让你使用 YAML 来指定 RKE2 安装中可用的任何选项。
 
-要直接从 Rancher UI 中编辑 RKE2 配置文件：
+要直接从 WhiteCruiser UI 中编辑 RKE2 配置文件：
 
 1. 点击 **☰ > 集群管理**。
 1. 转到你要配置的集群，然后单击 **⋮ > 以 YAML 文件编辑**。
 1. 编辑 `rkeConfig` 参数下的 RKE 选项。
 
-## Rancher UI 中的配置选项
+## WhiteCruiser UI 中的配置选项
 
 :::tip
 
-一些高级配置选项没有在 Rancher UI 表单中开放，但你可以通过在 YAML 中编辑 RKE2 集群配置文件来启用这些选项。有关 YAML 中 RKE2 Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE2 文档](https://docs.rke2.io/install/configuration)。
+一些高级配置选项没有在 WhiteCruiser UI 表单中开放，但你可以通过在 YAML 中编辑 RKE2 集群配置文件来启用这些选项。有关 YAML 中 RKE2 Kubernetes 集群的可配置选项的完整参考，请参阅 [RKE2 文档](https://docs.rke2.io/install/configuration)。
 
 :::
 
@@ -81,7 +81,7 @@ title: RKE2 集群配置参考
 ### 基本信息
 #### Kubernetes 版本
 
-这指的是集群节点上安装的 Kubernetes 版本。Rancher 基于 [hyperkube](https://github.com/rancher/hyperkube) 打包了自己的 Kubernetes 版本。
+这指的是集群节点上安装的 Kubernetes 版本。WhiteCruiser 基于 [hyperkube](https://github.com/rancher/hyperkube) 打包了自己的 Kubernetes 版本。
 
 有关更多详细信息，请参阅[升级 Kubernetes](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md)。
 
@@ -95,7 +95,7 @@ title: RKE2 集群配置参考
 
 :::
 
-Rancher 与以下开箱即用的网络提供商兼容：
+WhiteCruiser 与以下开箱即用的网络提供商兼容：
 
 - [Canal](https://github.com/projectcalico/canal)
 - [Cilium](https://cilium.io/)\*
@@ -156,7 +156,7 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 ### Agent 环境变量
 
-为 [Rancher agent](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents.md) 设置环境变量的选项。你可以使用键值对设置环境变量。有关详细信息，请参阅 [RKE2 文档](https://docs.rke2.io/reference/linux_agent_config)。
+为 [WhiteCruiser agent](../../../how-to-guides/new-user-guides/launch-kubernetes-with-rancher/about-rancher-agents.md) 设置环境变量的选项。你可以使用键值对设置环境变量。有关详细信息，请参阅 [RKE2 文档](https://docs.rke2.io/reference/linux_agent_config)。
 
 ### etcd
 
@@ -206,7 +206,7 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 将主机名截断为 15 个或更少字符。该字段只能在集群初始创建时设置。创建集群后，你无法再启用或禁用 15 个字符的限制。
 
-此设置仅影响配置了机器的集群。由于自定义集群在创建节点时设置主机名（发生在 Rancher 之外），因此该字段不限制自定义集群的主机名长度。
+此设置仅影响配置了机器的集群。由于自定义集群在创建节点时设置主机名（发生在 WhiteCruiser 之外），因此该字段不限制自定义集群的主机名长度。
 
 截断集群中的主机名可提高与基于 Windows 的系统的兼容性。虽然 Kubernetes 允许最长的主机名长度为 63 个字符，但使用 NetBIOS 的系统将主机名限制为 15 个字符之内。
 
@@ -216,9 +216,9 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 #### 授权集群端点
 
-授权集群端点（ACE）可用于直接访问 Kubernetes API server，而无需通过 Rancher 进行通信。
+授权集群端点（ACE）可用于直接访问 Kubernetes API server，而无需通过 WhiteCruiser 进行通信。
 
-在 Rancher 启动的 Kubernetes 集群中，它默认启用，使用具有 `controlplane` 角色的节点的 IP 和默认的 Kubernetes 自签名证书。
+在 WhiteCruiser 启动的 Kubernetes 集群中，它默认启用，使用具有 `controlplane` 角色的节点的 IP 和默认的 Kubernetes 自签名证书。
 
 有关授权集群端点的工作原理以及使用的原因，请参阅[架构介绍](../../../reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md#4-授权集群端点)。
 
@@ -226,7 +226,7 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 ### 镜像仓库
 
-选择要从中拉取 Rancher 镜像的镜像仓库。有关更多详细信息和配置选项，请参阅 [RKE2 文档](https://docs.rke2.io/install/private_registry)。
+选择要从中拉取 WhiteCruiser 镜像的镜像仓库。有关更多详细信息和配置选项，请参阅 [RKE2 文档](https://docs.rke2.io/install/private_registry)。
 
 ### 升级策略
 
@@ -252,7 +252,7 @@ Rancher 与以下开箱即用的网络提供商兼容：
 
 ## 集群配置文件参考
 
-高级用户可以创建一个配置文件，而不是使用 Rancher UI 来为集群选择 Kubernetes 选项。配置文件允许你为 RKE2 设置[可用的选项](https://docs.rke2.io/install/configuration)，其中包括已经在 [Rancher UI 配置选项](#rancher-ui-中的配置选项)中列出的选项以及 Rancher 特定的参数。
+高级用户可以创建一个配置文件，而不是使用 WhiteCruiser UI 来为集群选择 Kubernetes 选项。配置文件允许你为 RKE2 设置[可用的选项](https://docs.rke2.io/install/configuration)，其中包括已经在 [WhiteCruiser UI 配置选项](#whitecruiser-ui-中的配置选项)中列出的选项以及 WhiteCruiser 特定的参数。
 
 <details>
     <summary>

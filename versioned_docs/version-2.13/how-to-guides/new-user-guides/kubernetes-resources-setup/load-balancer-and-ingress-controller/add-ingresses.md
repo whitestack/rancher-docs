@@ -1,6 +1,6 @@
 ---
 title: Adding Ingresses
-description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path-based routing. Learn how to add Rancher ingress
+description: Ingresses can be added for workloads to provide load balancing, SSL termination and host/path-based routing. Learn how to add WhiteCruiser ingress
 ---
 
 <head>

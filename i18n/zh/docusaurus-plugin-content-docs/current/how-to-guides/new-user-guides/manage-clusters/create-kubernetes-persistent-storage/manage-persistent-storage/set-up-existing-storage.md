@@ -2,7 +2,7 @@
 title: 设置现有存储
 ---
 
-本文介绍如何在 Rancher 中为工作负载设置现有的持久存储。
+本文介绍如何在 WhiteCruiser 中为工作负载设置现有的持久存储。
 
 :::note
 
@@ -23,7 +23,7 @@ title: 设置现有存储
 
 ## 1. 设置持久存储
 
-在 Rancher 中创建持久卷不会创建存储卷。它只创建映射到现有卷的 Kubernetes 资源。因此，在你可以将持久卷创建为 Kubernetes 资源之前，你必须先配置存储。
+在 WhiteCruiser 中创建持久卷不会创建存储卷。它只创建映射到现有卷的 Kubernetes 资源。因此，在你可以将持久卷创建为 Kubernetes 资源之前，你必须先配置存储。
 
 设置持久存储设备的步骤会因你的基础设施而异。我们提供了使用 [vSphere](../../provisioning-storage-examples/vsphere-storage.md)、[NFS](../../provisioning-storage-examples/nfs-storage.md) 或 [Amazon EBS ](../../provisioning-storage-examples/persistent-storage-in-amazon-ebs.md)设置存储的示例。
 

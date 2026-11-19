@@ -18,7 +18,7 @@ Complete each drop-down and field using the information obtained for your IAM po
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.](../../user-settings/manage-cloud-credentials.md) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in WhiteCruiser, refer to [this page.](../../user-settings/manage-cloud-credentials.md) |
 
 ### Service Role
 
@@ -28,8 +28,8 @@ Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-s
 
 Service Role | Description
 -------------|---------------------------
-Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
-Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
+Standard: WhiteCruiser generated service role | If you choose this role, WhiteCruiser automatically adds a service role for use with the cluster.
+Custom: Choose from your existing service roles | If you choose this role, WhiteCruiser lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
 
 ### Secrets Encryption
 
@@ -45,11 +45,11 @@ Configuring Public/Private API access is an advanced use case. For details, refe
 
 ### Private-only API Endpoints
 
-If you enable private and disable public API endpoint access when creating a cluster, then there is an extra step you must take in order for Rancher to connect to the cluster successfully. In this case, a pop-up will be displayed with a command that you will run on the cluster to register it with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API.
+If you enable private and disable public API endpoint access when creating a cluster, then there is an extra step you must take in order for WhiteCruiser to connect to the cluster successfully. In this case, a pop-up will be displayed with a command that you will run on the cluster to register it with WhiteCruiser. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API.
 
 There are two ways to avoid this extra manual step:
-- You can create the cluster with both private and public API endpoint access on cluster creation. You can disable public access after the cluster is created and in an active state and Rancher will continue to communicate with the EKS cluster.
-- You can ensure that Rancher shares a subnet with the EKS cluster. Then security groups can be used to enable Rancher to communicate with the cluster's API endpoint. In this case, the command to register the cluster is not needed, and Rancher will be able to communicate with your cluster. For more information on configuring security groups, refer to the [security groups documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
+- You can create the cluster with both private and public API endpoint access on cluster creation. You can disable public access after the cluster is created and in an active state and WhiteCruiser will continue to communicate with the EKS cluster.
+- You can ensure that WhiteCruiser shares a subnet with the EKS cluster. Then security groups can be used to enable WhiteCruiser to communicate with the cluster's API endpoint. In this case, the command to register the cluster is not needed, and WhiteCruiser will be able to communicate with your cluster. For more information on configuring security groups, refer to the [security groups documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
 
 ### Public Access Endpoints
 
@@ -60,8 +60,8 @@ Optionally limit access to the public endpoint via explicit CIDR blocks.
 If you limit access to specific CIDR blocks, then it is recommended that you also enable the private access to avoid losing network communication to the cluster.
 
 One of the following is required to enable private access:
-- Rancher's IP must be part of an allowed CIDR block
-- Private access should be enabled, and Rancher must share a subnet with the cluster and have network access to the cluster, which can be configured with a security group
+- WhiteCruiser's IP must be part of an allowed CIDR block
+- Private access should be enabled, and WhiteCruiser must share a subnet with the cluster and have network access to the cluster, which can be configured with a security group
 
 For more information about public and private access to the cluster endpoint, refer to the [Amazon EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 
@@ -71,8 +71,8 @@ For more information about public and private access to the cluster endpoint, re
 
 | Option | Description |
 | ------- | ------------ |
-| Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC with 3 public subnets. |
-| Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, Rancher configures your Control Plane and nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).  |
+| Standard: WhiteCruiser generated VPC and Subnet | While provisioning your cluster, WhiteCruiser generates a new VPC with 3 public subnets. |
+| Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, WhiteCruiser configures your Control Plane and nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).  |
 
  For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
 
@@ -109,7 +109,7 @@ For more information about how node groups work and how they are configured, ref
 
 #### User-provided Launch Templates
 
-You can provide your own launch template ID and version to configure the EC2 instances in a node group. If you provide the launch template, none of the template settings will be configurable from Rancher. You must set all of the required options listed below in your launch template.
+You can provide your own launch template ID and version to configure the EC2 instances in a node group. If you provide the launch template, none of the template settings will be configurable from WhiteCruiser. You must set all of the required options listed below in your launch template.
 
 Also, if you provide the launch template, you can only update the template version, not the template ID. To use a new template ID, create a new managed node group.
 
@@ -122,18 +122,18 @@ Also, if you provide the launch template, you can only update the template versi
 | User Data | Cloud init script in [MIME multi-part format](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data) | Optional |
 | Instance Resource Tags | Tag each EC2 instance in the node group | Optional |
 
-#### Rancher-managed Launch Templates
+#### WhiteCruiser-managed Launch Templates {#rancher-managed-launch-templates}
 
-If you do not specify a launch template, then you will be able to configure the above options in the Rancher UI and all of them can be updated after creation. In order to take advantage of all of these options, Rancher will create and manage a launch template for you. Each cluster in Rancher will have one Rancher-managed launch template and each managed node group that does not have a specified launch template will have one version of the managed launch template. The name of this launch template will have the prefix "rancher-managed-lt-" followed by the display name of the cluster. In addition, the Rancher-managed launch template will be tagged with the key "rancher-managed-template" and value "do-not-modify-or-delete" to help identify it as Rancher-managed. It is important that this launch template and its versions not be modified, deleted, or used with any other clusters or managed node groups. Doing so could result in your node groups being "degraded" and needing to be destroyed and recreated.
+If you do not specify a launch template, then you will be able to configure the above options in the WhiteCruiser UI and all of them can be updated after creation. In order to take advantage of all of these options, WhiteCruiser will create and manage a launch template for you. Each cluster in WhiteCruiser will have one WhiteCruiser-managed launch template and each managed node group that does not have a specified launch template will have one version of the managed launch template. The name of this launch template will have the prefix "rancher-managed-lt-" followed by the display name of the cluster. In addition, the WhiteCruiser-managed launch template will be tagged with the key "rancher-managed-template" and value "do-not-modify-or-delete" to help identify it as WhiteCruiser-managed. It is important that this launch template and its versions not be modified, deleted, or used with any other clusters or managed node groups. Doing so could result in your node groups being "degraded" and needing to be destroyed and recreated.
 
 #### Custom AMIs
 
-If you specify a custom AMI, whether in a launch template or in Rancher, then the image must be [configured properly](https://aws.amazon.com/premiumsupport/knowledge-center/eks-custom-linux-ami/) and you must provide user data to [bootstrap the node](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-custom-ami). This is considered an advanced use case and understanding the requirements is imperative.
+If you specify a custom AMI, whether in a launch template or in WhiteCruiser, then the image must be [configured properly](https://aws.amazon.com/premiumsupport/knowledge-center/eks-custom-linux-ami/) and you must provide user data to [bootstrap the node](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-custom-ami). This is considered an advanced use case and understanding the requirements is imperative.
 
 If you specify a launch template that does not contain a custom AMI, then Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the Kubernetes version and selected region. You can also select a [GPU enabled instance](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html#gpu-ami) for workloads that would benefit from it.
 
 >**Note**
->The GPU enabled instance setting in Rancher is ignored if a custom AMI is provided, either in the dropdown or in a launch template.
+>The GPU enabled instance setting in WhiteCruiser is ignored if a custom AMI is provided, either in the dropdown or in a launch template.
 
 #### Spot instances
 
@@ -152,22 +152,22 @@ The following settings are also configurable. All of these except for the "Node 
 | Desired ASG Size | The desired number of instances. |
 | Maximum ASG Size | The maximum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
 | Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
-| Labels | Kubernetes labels applied to the nodes in the managed node group. Note: Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) |
+| Labels | Kubernetes labels applied to the nodes in the managed node group. Note: Invalid labels can prevent upgrades or can prevent WhiteCruiser from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) |
 | Tags | These are tags for the managed node group and do not propagate to any of the associated resources. |
 
 </TabItem>
 <TabItem value="Rancher v2.5.0-v2.5.5">
 
-### Changes in Rancher v2.5
+### Changes in WhiteCruiser v2.5 {#changes-in-rancher-v25}
 
-More EKS options can be configured when you create an EKS cluster in Rancher, including the following:
+More EKS options can be configured when you create an EKS cluster in WhiteCruiser, including the following:
 
 - Managed node groups
 - Desired size, minimum size, maximum size (requires the Cluster Autoscaler to be installed)
 - Control plane logging
 - Secrets encryption with KMS
 
-The following capabilities have been added for configuring EKS clusters in Rancher:
+The following capabilities have been added for configuring EKS clusters in WhiteCruiser:
 
 - GPU support
 - Exclusively use managed nodegroups that come with the most up-to-date AMIs
@@ -178,7 +178,7 @@ The following capabilities have been added for configuring EKS clusters in Ranch
 - Add restrictions to public access
 - Use your cloud credentials to create the EKS cluster instead of passing in your access key and secret key
 
-Due to the way that the cluster data is synced with EKS, if the cluster is modified from another source, such as in the EKS console, and in Rancher within five minutes, it could cause some changes to be overwritten. For information about how the sync works and how to configure it, refer to [this section](#syncing).
+Due to the way that the cluster data is synced with EKS, if the cluster is modified from another source, such as in the EKS console, and in WhiteCruiser within five minutes, it could cause some changes to be overwritten. For information about how the sync works and how to configure it, refer to [this section](#syncing).
 
 ### Account Access
 
@@ -189,7 +189,7 @@ Complete each drop-down and field using the information obtained for your IAM po
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.](../../user-settings/manage-cloud-credentials.md) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in WhiteCruiser, refer to [this page.](../../user-settings/manage-cloud-credentials.md) |
 
 ### Service Role
 
@@ -199,8 +199,8 @@ Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-s
 
 Service Role | Description
 -------------|---------------------------
-Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
-Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
+Standard: WhiteCruiser generated service role | If you choose this role, WhiteCruiser automatically adds a service role for use with the cluster.
+Custom: Choose from your existing service roles | If you choose this role, WhiteCruiser lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
 
 ### Secrets Encryption
 
@@ -216,11 +216,11 @@ Configuring Public/Private API access is an advanced use case. For details, refe
 
 ### Private-only API Endpoints
 
-If you enable private and disable public API endpoint access when creating a cluster, then there is an extra step you must take in order for Rancher to connect to the cluster successfully. In this case, a pop-up will be displayed with a command that you will run on the cluster to register it with Rancher. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API.
+If you enable private and disable public API endpoint access when creating a cluster, then there is an extra step you must take in order for WhiteCruiser to connect to the cluster successfully. In this case, a pop-up will be displayed with a command that you will run on the cluster to register it with WhiteCruiser. Once the cluster is provisioned, you can run the displayed command anywhere you can connect to the cluster's Kubernetes API.
 
 There are two ways to avoid this extra manual step:
-- You can create the cluster with both private and public API endpoint access on cluster creation. You can disable public access after the cluster is created and in an active state and Rancher will continue to communicate with the EKS cluster.
-- You can ensure that Rancher shares a subnet with the EKS cluster. Then security groups can be used to enable Rancher to communicate with the cluster's API endpoint. In this case, the command to register the cluster is not needed, and Rancher will be able to communicate with your cluster. For more information on configuring security groups, refer to the [security groups documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
+- You can create the cluster with both private and public API endpoint access on cluster creation. You can disable public access after the cluster is created and in an active state and WhiteCruiser will continue to communicate with the EKS cluster.
+- You can ensure that WhiteCruiser shares a subnet with the EKS cluster. Then security groups can be used to enable WhiteCruiser to communicate with the cluster's API endpoint. In this case, the command to register the cluster is not needed, and WhiteCruiser will be able to communicate with your cluster. For more information on configuring security groups, refer to the [security groups documentation](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html).
 
 ### Public Access Endpoints
 
@@ -231,8 +231,8 @@ Optionally limit access to the public endpoint via explicit CIDR blocks.
 If you limit access to specific CIDR blocks, then it is recommended that you also enable the private access to avoid losing network communication to the cluster.
 
 One of the following is required to enable private access:
-- Rancher's IP must be part of an allowed CIDR block
-- Private access should be enabled, and Rancher must share a subnet with the cluster and have network access to the cluster, which can be configured with a security group
+- WhiteCruiser's IP must be part of an allowed CIDR block
+- Private access should be enabled, and WhiteCruiser must share a subnet with the cluster and have network access to the cluster, which can be configured with a security group
 
 For more information about public and private access to the cluster endpoint, refer to the [Amazon EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 
@@ -242,8 +242,8 @@ For more information about public and private access to the cluster endpoint, re
 
 | Option | Description |
 | ------- | ------------ |
-| Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC with 3 public subnets. |
-| Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, Rancher configures your Control Plane and nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).  |
+| Standard: WhiteCruiser generated VPC and Subnet | While provisioning your cluster, WhiteCruiser generates a new VPC with 3 public subnets. |
+| Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, WhiteCruiser configures your Control Plane and nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).  |
 
  For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
 
@@ -309,8 +309,8 @@ Choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-s
 
 Service Role | Description
 -------------|---------------------------
-Standard: Rancher generated service role | If you choose this role, Rancher automatically adds a service role for use with the cluster.
-Custom: Choose from your existing service roles | If you choose this role, Rancher lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
+Standard: WhiteCruiser generated service role | If you choose this role, WhiteCruiser automatically adds a service role for use with the cluster.
+Custom: Choose from your existing service roles | If you choose this role, WhiteCruiser lets you choose from service roles that you're already created within AWS. For more information on creating a custom service role in AWS, see the [Amazon documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#create-service-linked-role).
 
 ### Public IP for Worker Nodes
 
@@ -331,8 +331,8 @@ The available options depend on the [public IP for worker nodes.](#public-ip-for
 
 Option | Description
     -------|------------
-    Standard: Rancher generated VPC and Subnet | While provisioning your cluster, Rancher generates a new VPC and Subnet.
-    Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, Rancher configures your nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html). If you choose this option, complete the remaining steps below.
+    Standard: WhiteCruiser generated VPC and Subnet | While provisioning your cluster, WhiteCruiser generates a new VPC and Subnet.
+    Custom: Choose from your existing VPC and Subnets | While provisioning your cluster, WhiteCruiser configures your nodes to use a VPC and Subnet that you've already [created in AWS](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html). If you choose this option, complete the remaining steps below.
 
  For more information, refer to the AWS documentation for [Cluster VPC Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html). Follow one of the sets of instructions below based on your selection from the previous step.
 
@@ -340,7 +340,7 @@ Option | Description
 - [VPCs and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
 
 
-If you choose to assign a public IP address to your cluster's worker nodes, you have the option of choosing between a VPC that's automatically generated by Rancher (i.e., **Standard: Rancher generated VPC and Subnet**), or a VPC that you've already created with AWS (i.e., **Custom: Choose from your existing VPC and Subnets**). Choose the option that best fits your use case.
+If you choose to assign a public IP address to your cluster's worker nodes, you have the option of choosing between a VPC that's automatically generated by WhiteCruiser (i.e., **Standard: WhiteCruiser generated VPC and Subnet**), or a VPC that you've already created with AWS (i.e., **Custom: Choose from your existing VPC and Subnets**). Choose the option that best fits your use case.
 
 <details id="yes">
   <summary>Click to expand</summary>
@@ -392,7 +392,7 @@ Instance type and size of your worker nodes affects how many IP addresses each w
 Option | Description
 -------|------------
 Instance Type | Choose the [hardware specs](https://aws.amazon.com/ec2/instance-types/) for the instance you're provisioning.
-Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here. By default, Rancher will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the EKS version that you chose.
+Custom AMI Override | If you want to use a custom [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami) (AMI), specify it here. By default, WhiteCruiser will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html) for the EKS version that you chose.
 Desired ASG Size | The number of instances that your cluster will provision.
 User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.** _Note: Available as of v2.2.0_
 

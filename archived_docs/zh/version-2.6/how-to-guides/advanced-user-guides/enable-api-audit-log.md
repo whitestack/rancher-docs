@@ -2,13 +2,13 @@
 title: 启用 API 审计日志以记录系统事件
 ---
 
-你可以启用 API 审计日志来记录各个用户发起的系统事件的顺序。通过查看日志，你可以了解发生了什么事件、事件发生的时间，事件发起人，以及事件影响的集群。启用此功能后，所有 Rancher API 的请求和响应都会写入日志中。
+你可以启用 API 审计日志来记录各个用户发起的系统事件的顺序。通过查看日志，你可以了解发生了什么事件、事件发生的时间，事件发起人，以及事件影响的集群。启用此功能后，所有 WhiteCruiser API 的请求和响应都会写入日志中。
 
-API 审计可以在 Rancher 安装或升级期间启用。
+API 审计可以在 WhiteCruiser 安装或升级期间启用。
 
 ## 启用 API 审计日志
 
-你可以将环境变量传递给 Rancher Server 容器，从而启用和配置审计日志。请参见以下文档，在安装时启用该功能：
+你可以将环境变量传递给 WhiteCruiser Server 容器，从而启用和配置审计日志。请参见以下文档，在安装时启用该功能：
 
 - [Docker 安装](../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-审计日志)
 
@@ -21,7 +21,7 @@ API 审计可以在 Rancher 安装或升级期间启用。
 | 参数 | 描述 |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | <a id="audit-level"></a>`AUDIT_LEVEL` | `0` - 禁用审计日志（默认）<br /> `1` - 日志事件元数据<br /> `2` - 日志事件元数据和请求体<br /> `3` - 日志事件元数据，请求体和响应体。请求/响应对的每个日志事务都使用同一个的 `auditID`。<br /> 如需了解每个设置记录的日志内容，请参见[审计日志级别](#审核日志级别)。 |
-| `AUDIT_LOG_PATH` | Rancher Server API 的日志路径。默认路径：`/var/log/auditlog/rancher-api-audit.log`。你可以将日志目录挂载到主机。<br/><br/>示例：`AUDIT_LOG_PATH=/my/custom/path/`<br/> |
+| `AUDIT_LOG_PATH` | WhiteCruiser Server API 的日志路径。默认路径：`/var/log/auditlog/rancher-api-audit.log`。你可以将日志目录挂载到主机。<br/><br/>示例：`AUDIT_LOG_PATH=/my/custom/path/`<br/> |
 | `AUDIT_LOG_MAXAGE` | 旧审计日志文件可保留的最大天数。默认为 10 天。 |
 | `AUDIT_LOG_MAXBACKUP` | 保留的审计日志最大文件个数。默认值为 10。 |
 | `AUDIT_LOG_MAXSIZE` | 在审计日志文件被轮换前的最大容量，单位是 MB。默认大小为 100MB。 |
@@ -47,7 +47,7 @@ API 审计可以在 Rancher 安装或升级期间启用。
 
 ### Kubernetes 安装
 
-使用 Helm Chart 安装 Rancher 时启动 API 审计日志，会在 Rancher Pod 中创建一个 `rancher-audit-log` Sidecar 容器。该容器会将日志发送到标准输出 (stdout)。你可以像查看其他容器的日志一样查看 API 审计日志。
+使用 Helm Chart 安装 WhiteCruiser 时启动 API 审计日志，会在 WhiteCruiser Pod 中创建一个 `rancher-audit-log` Sidecar 容器。该容器会将日志发送到标准输出 (stdout)。你可以像查看其他容器的日志一样查看 API 审计日志。
 
 `rancher-audit-log` 容器位于 `cattle-system` 命名空间中的 `rancher` Pod 中。
 
@@ -59,15 +59,15 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 #### 发送审计日志
 
-你可以为集群启用 Rancher 的内置日志收集和传送功能，将审计日志和其他服务日志发送到支持的 endpoint。详情请参见 [Rancher 工具 - Logging](../../pages-for-subheaders/logging.md)。
+你可以为集群启用 WhiteCruiser 的内置日志收集和传送功能，将审计日志和其他服务日志发送到支持的 endpoint。详情请参见 [WhiteCruiser 工具 - Logging](../../pages-for-subheaders/logging.md)。
 
 ## 审计日志示例
 
-启用审计日志后，Rancher 会以 JSON 格式记录每个 API 的请求和响应。下文的代码示例展示了如何查看 API 事务。
+启用审计日志后，WhiteCruiser 会以 JSON 格式记录每个 API 的请求和响应。下文的代码示例展示了如何查看 API 事务。
 
 ### 元数据日志级别
 
-如果你将 `AUDIT_LEVEL` 设置为 `1`，Rancher 只会记录每个 API 请求的元数据标头，而不会记录请求体。标头记录了 API 事务的基本信息，包括 ID、发起人、发起时间等。代码示例如下：
+如果你将 `AUDIT_LEVEL` 设置为 `1`，WhiteCruiser 只会记录每个 API 请求的元数据标头，而不会记录请求体。标头记录了 API 事务的基本信息，包括 ID、发起人、发起时间等。代码示例如下：
 
 ```json
 {
@@ -86,7 +86,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 ### 元数据和请求体日志级别
 
-如果你将 `AUDIT_LEVEL` 设置为 `2`，Rancher 会记录每个 API 请求的元数据标头和请求体。
+如果你将 `AUDIT_LEVEL` 设置为 `2`，WhiteCruiser 会记录每个 API 请求的元数据标头和请求体。
 
 下面的代码示例描述了一个 API 请求，包括它的元数据标头和正文：
 
@@ -245,7 +245,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 ### 元数据、请求体和响应体日志级别
 
-如果你将 `AUDIT_LEVEL` 设置为 `3`，Rancher 会记录：
+如果你将 `AUDIT_LEVEL` 设置为 `3`，WhiteCruiser 会记录：
 
 - 每个 API 请求的元数据标头和请求体。
 - 每个 API 响应的元数据标头和响应体。
