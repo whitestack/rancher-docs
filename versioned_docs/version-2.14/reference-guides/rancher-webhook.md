@@ -20,10 +20,10 @@ Each WhiteCruiser version is designed to be compatible with a single version of 
 
 | WhiteCruiser Version | Webhook Version | Availability in Community |
 |-----------------|-----------------|---------------------------|
-| v2.14.3         |    v0.10.7      | &check;                   |
-| v2.14.2         |    v0.10.6      | &check;                   |
-| v2.14.1         |    v0.10.4      | &check;                   |
-| v2.14.0         |    v0.10.0      | &check;                   |
+| huascar         |    v0.10.7      | &check;                   |
+| huascar         |    v0.10.6      | &check;                   |
+| huascar         |    v0.10.4      | &check;                   |
+| huascar         |    v0.10.0      | &check;                   |
 
 ## Why Do We Need It?
 

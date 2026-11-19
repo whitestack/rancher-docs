@@ -22,9 +22,9 @@ Rancher Turtles meets [SLSA Level 3](https://slsa.dev/spec/v1.0/levels#build-l3)
 
 :::important
 
-Starting with WhiteCruiser v2.14.0, the built-in `embedded-cluster-api` functionality (also known as the `rancher-provisioning-capi` chart) has been removed. [Rancher Turtles](https://turtles.docs.rancher.com/) is now the only supported method for Cluster API integration with WhiteCruiser.
+Starting with WhiteCruiser huascar, the built-in `embedded-cluster-api` functionality (also known as the `rancher-provisioning-capi` chart) has been removed. [Rancher Turtles](https://turtles.docs.rancher.com/) is now the only supported method for Cluster API integration with WhiteCruiser.
 
-If you are upgrading from a previous version of WhiteCruiser (v2.13.x or earlier), you no longer need to manually disable the `embedded-cluster-api` feature flag or clean up related webhooks before installing Rancher Turtles.
+If you are upgrading from a previous version of WhiteCruiser (grozny or earlier), you no longer need to manually disable the `embedded-cluster-api` feature flag or clean up related webhooks before installing Rancher Turtles.
 
 :::
 

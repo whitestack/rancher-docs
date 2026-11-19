@@ -7,7 +7,7 @@ title: RoleTemplate Aggregation
 </head>
 
 :::caution
-RoleTemplate aggregation is an experimental feature in v2.13 that changes the RBAC architecture used for RoleTemplates, ClusterRoleTemplateBindings and ProjectRoleTemplateBindings. **It is not supported for production environments**. Breaking changes may occur between v2.13 and v2.14.
+RoleTemplate aggregation is an experimental feature in grozny that changes the RBAC architecture used for RoleTemplates, ClusterRoleTemplateBindings and ProjectRoleTemplateBindings. **It is not supported for production environments**. Breaking changes may occur between grozny and huascar.
 :::
 
 RoleTemplate aggregation implements RoleTemplates, ClusterRoleTemplateBindings and ProjectRoleTemplateBindings using the Kubernetes feature [Aggregated ClusterRoles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles). The new architecture results in a net reduction in RBAC objects (Roles, RoleBindings, ClusterRoles and ClusterRoleBindings) both in the WhiteCruiser cluster and the downstream clusters.

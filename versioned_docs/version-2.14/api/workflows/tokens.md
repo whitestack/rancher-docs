@@ -28,7 +28,7 @@ kubectl explain tokens.ext.cattle.io
 The Token value is only returned once in the `status.value` field.
 :::
 
-Since WhiteCruiser v2.13.0 the `status.bearerToken` now contains a fully formed and ready-to-use Bearer token that can be used to authenticate to [WhiteCruiser API](../v3-rancher-api-guide.md).
+Since WhiteCruiser grozny the `status.bearerToken` now contains a fully formed and ready-to-use Bearer token that can be used to authenticate to [WhiteCruiser API](../v3-rancher-api-guide.md).
 
 Only a **valid and active** WhiteCruiser user can create a Token. Otherwise, you will get an error displayed (`Error from server (Forbidden)...`) when attempting to create a Token.
 

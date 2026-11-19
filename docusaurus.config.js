@@ -71,7 +71,6 @@ module.exports = {
         {
           type: "docsVersionDropdown",
           position: "left",
-          dropdownItemsAfter: [{ to: "/versions", label: "All versions" }],
           dropdownActiveClassDisabled: false,
         },
         {
@@ -100,75 +99,12 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.js"),
           showLastUpdateTime: true,
           editUrl: "https://github.com/rancher/rancher-docs/edit/main/",
-          lastVersion: "current",
+          lastVersion: "2.14",
+          onlyIncludeVersions: ["2.14"],
           versions: {
-            current: {
-              label: "Latest",
-            },
-            '2.15': {
-              label: 'v2.15 (Preview)',
-              path: 'v2.15',
-              banner: 'unreleased'
-            },
             "2.14": {
-              label: 'v2.14',
-              path: 'v2.14',
-              banner: 'none'
-            },
-            "2.13": {
-              label: "v2.13",
-              path: "v2.13",
-              banner: 'none'
-            },
-            "2.12": {
-              label: "v2.12",
-              path: "v2.12",
-            },
-            2.11: {
-              label: "v2.11",
-              path: "v2.11"
-            },
-            "2.10": {
-              label: "v2.10 (Archived)",
-              path: "v2.10",
+              label: "huascar",
               banner: "none",
-              noIndex: true,
-            },
-            2.9: {
-              label: "v2.9 (Archived)",
-              path: "v2.9",
-              banner: "none",
-              noIndex: true,
-            },
-            2.8: {
-              label: "v2.8 (Archived)",
-              path: "v2.8",
-              banner: `none`,
-              noIndex: true,
-            },
-            2.7: {
-              label: "v2.7 (Archived)",
-              path: "v2.7",
-              banner: `none`,
-              noIndex: true,
-            },
-            2.6: {
-              label: "v2.6 (Archived)",
-              path: "v2.6",
-              banner: `none`,
-              noIndex: true,
-            },
-            2.5: {
-              label: "v2.5 (Archived)",
-              path: "v2.5",
-              banner: `none`,
-              noIndex: true,
-            },
-            "2.0-2.4": {
-              label: "v2.0-v2.4 (Archived)",
-              path: "v2.0-v2.4",
-              banner: "none",
-              noIndex: true,
             },
           },
         },
@@ -229,6 +165,10 @@ module.exports = {
       "@docusaurus/plugin-client-redirects",
       {
         fromExtensions: ["html", "htm"],
+        // huascar used to be served under /v2.14; keep those URLs working.
+        createRedirects(existingPath) {
+          return [`/v2.14${existingPath}`];
+        },
         redirects: [
           {
             // Redirects for multi-cluster apps removal (rancher-docs/issues/734)
@@ -546,19 +486,6 @@ module.exports = {
             from: "/pages-for-subheaders/workloads-and-pods",
           }, // Redirects for pages-for-subheaders removal [latest] (end)
           {
-            // Redirects for dashboard v2.11 Preview (start)
-            to: "/v2.11/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/authentication-config/configure-google-oauth",
-            from: "/v2.11/admin-settings/authentication/google",
-          },
-          {
-            to: "/v2.11/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides",
-            from: "/v2.11/monitoring-alerting/configuration",
-          },
-          {
-            to: "/v2.11/integrations-in-rancher/monitoring-and-alerting",
-            from: "/v2.11/monitoring-alerting",
-          }, // Redirects for dashboard v2.11 Preview (end)
-          {
             // Redirects for restructure from PR #234 (start)
             to: "/faq/general-faq",
             from: "/faq",
@@ -789,10 +716,6 @@ module.exports = {
               "/how-to-guides/new-user-guides/authentication-permissions-and-global-configuration/manage-cluster-templates",
               "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-cluster-templates",
             ],
-          },
-          {
-            to: "/v2.11/how-to-guides/new-user-guides/manage-clusters/nodes-and-node-pools",
-            from: "/v2.11/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools",
           },
           {
             to: "/how-to-guides/new-user-guides/manage-clusters/clean-cluster-nodes",
@@ -1061,15 +984,7 @@ module.exports = {
           },
           // Redirects for renaming nodes-and-machine-pools.md (start)
           {
-            to: "/v2.12/how-to-guides/new-user-guides/manage-clusters/nodes-and-machine-pools",
-            from: "/v2.12/how-to-guides/new-user-guides/manage-clusters/nodes-and-node-pools",
-          },
-          {
-            to: "/v2.13/how-to-guides/new-user-guides/manage-clusters/nodes-and-machine-pools",
-            from: "/v2.13/how-to-guides/new-user-guides/manage-clusters/nodes-and-node-pools",
-          },
-          {
-            to: "/v2.14/how-to-guides/new-user-guides/manage-clusters/nodes-and-machine-pools",
+            to: "/how-to-guides/new-user-guides/manage-clusters/nodes-and-machine-pools",
             from: "/v2.14/how-to-guides/new-user-guides/manage-clusters/nodes-and-node-pools",
           },
           // Redirects for renaming nodes-and-machine-pools.md (end)

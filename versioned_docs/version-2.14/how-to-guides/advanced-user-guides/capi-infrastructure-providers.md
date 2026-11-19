@@ -4,13 +4,13 @@ title: Configuring Native CAPI Infrastructure Providers to Provision RKE2 Cluste
 
 :::caution
 
-**This is a technology preview and using native CAPI infrastructure providers is an experimental feature introduced in WhiteCruiser 2.14.0.** The purpose of this guide is for evaluation and **should not** be used for production clusters, and note some configuration fields are subject to change. Future versions of this feature may be incompatible with this version.
+**This is a technology preview and using native CAPI infrastructure providers is an experimental feature introduced in WhiteCruiser huascar.** The purpose of this guide is for evaluation and **should not** be used for production clusters, and note some configuration fields are subject to change. Future versions of this feature may be incompatible with this version.
 
 :::
 
 ## Overview
 
-WhiteCruiser 2.14.0 can provision RKE2 clusters using native CAPI infrastructure providers, such as [CAPA](https://cluster-api-aws.sigs.k8s.io/) (Cluster API Provider AWS) and [CAPV](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere) (Cluster API Provider vSphere).
+WhiteCruiser huascar can provision RKE2 clusters using native CAPI infrastructure providers, such as [CAPA](https://cluster-api-aws.sigs.k8s.io/) (Cluster API Provider AWS) and [CAPV](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere) (Cluster API Provider vSphere).
 
 Standard RKE2 provisioning relies on WhiteCruiser’s internal bootstrap and control plane providers alongside WhiteCruiser Node Drivers (via `rancher/machine`) as the infrastructure provider. This new mode allows you to substitute WhiteCruiser Node Drivers with native CAPI infrastructure providers while retaining WhiteCruiser’s bootstrap and control plane logic.
 

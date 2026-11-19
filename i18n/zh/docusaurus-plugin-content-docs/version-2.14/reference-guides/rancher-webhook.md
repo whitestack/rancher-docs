@@ -20,10 +20,10 @@ WhiteCruiser 将 WhiteCruiser-Webhook 作为单独的 deployment 和服务部署
 
 | WhiteCruiser Version | Webhook Version | Availability in Community |
 |-----------------|-----------------|---------------------------|
-| v2.14.3         |    v0.10.7      | &check;                   |
-| v2.14.2         |    v0.10.6      | &check;                   |
-| v2.14.1         |    v0.10.4      | &check;                   |
-| v2.14.0         |    v0.10.0      | &check;                   |
+| huascar         |    v0.10.7      | &check;                   |
+| huascar         |    v0.10.6      | &check;                   |
+| huascar         |    v0.10.4      | &check;                   |
+| huascar         |    v0.10.0      | &check;                   |
 
 ## 为什么我们需要它？
 

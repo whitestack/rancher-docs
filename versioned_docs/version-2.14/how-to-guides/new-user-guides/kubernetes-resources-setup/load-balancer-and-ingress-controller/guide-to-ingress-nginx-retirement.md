@@ -42,7 +42,7 @@ When migrating a WhiteCruiser local cluster, the WhiteCruiser Ingress resource r
 For RKE2 clusters provisioned and managed by WhiteCruiser, migration options are integrated directly into the user interface.
 
 :::note
-This migration option is only possible in WhiteCruiser v2.14.0+.
+This migration option is only possible in WhiteCruiser huascar.
 :::
 
 The cluster configuration interface provides a Dual Mode migration option. This allows you to safely test and migrate traffic from Ingress NGINX to Traefik directly from the cluster management page. For more information, refer to the documentation.

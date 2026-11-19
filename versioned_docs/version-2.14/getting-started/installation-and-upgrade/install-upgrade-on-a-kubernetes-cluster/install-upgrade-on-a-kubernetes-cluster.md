@@ -52,7 +52,7 @@ The following CLI tools are required for setting up the Kubernetes cluster. Plea
 
 :::important
 
-**Important:** In WhiteCruiser Community v2.13.1 if your registry configuration is one of the following you may see WhiteCruiser generate the `cattle-cluster-agent` image with an incorrect `docker.io` path segment:
+**Important:** In WhiteCruiser Community grozny if your registry configuration is one of the following you may see WhiteCruiser generate the `cattle-cluster-agent` image with an incorrect `docker.io` path segment:
 
 - Environments where a **cluster-scoped container registry** is configured for system images.
 - Environments where a **global `system-default-registry`** is configured (e.g. airgap setups), even if no cluster-scoped registry is set.
