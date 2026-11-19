@@ -21,7 +21,7 @@ See our page on [best practices](../../../reference-guides/best-practices/ranche
 
 ## Kubernetes Compatibility with Rancher
 
-Rancher needs to be installed on a supported Kubernetes version. Consult the [Rancher support matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions) to ensure that your intended version of Kubernetes is supported.
+Rancher needs to be installed on a supported Kubernetes version. Consult the Rancher support matrix to ensure that your intended version of Kubernetes is supported.
 
 ### Install Rancher on a Hardened Kubernetes cluster
 
@@ -31,7 +31,7 @@ If you install Rancher on a hardened Kubernetes cluster, check the [Exempting Re
 
 All supported operating systems are 64-bit x86. Rancher should work with any modern Linux distribution.
 
-The [Rancher support matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions) lists which OS and Docker versions were tested for each Rancher version.
+The Rancher support matrix lists which OS and Docker versions were tested for each Rancher version.
 
 Docker is required for nodes that will run RKE clusters. It is not required for RKE2 or K3s clusters.
 
@@ -47,13 +47,13 @@ If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).](../.
 
 RKE2 bundles its own container runtime, containerd. Docker is not required for RKE2 installs.
 
-For details on which OS versions were tested with RKE2, refer to the [Rancher support matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions).
+For details on which OS versions were tested with RKE2, refer to the Rancher support matrix.
 
 ### K3s Specific Requirements
 
 For the container runtime, K3s bundles its own containerd by default. Alternatively, you can configure K3s to use an already installed Docker runtime. For more information on using K3s with Docker see the [K3s documentation.](https://docs.k3s.io/advanced#using-docker-as-the-container-runtime)
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [Rancher support matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions). To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the Rancher support matrix. To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps](https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
@@ -61,7 +61,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 ### RKE Specific Requirements
 
-RKE requires a Docker container runtime. Supported Docker versions are specified in the [Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/) page.
+RKE requires a Docker container runtime. Supported Docker versions are specified in the Support Matrix page.
 
 For more information, see [Installing Docker](install-docker.md).
 

@@ -24,7 +24,7 @@ For organizations ready to move, there is a supported path to Traefik. Traefik i
 
 ### Standalone RKE2 clusters
 
-For standalone or imported RKE2 clusters currently using Ingress NGINX, follow the official migration [guide for standalone RKE2 clusters](https://support.scc.suse.com/s/kb/Migrating-from-Ingress-NGINX-to-Traefik-in-a-standalone-RKE2-cluster?language=en_US).
+For standalone or imported RKE2 clusters currently using Ingress NGINX, follow the official migration guide for standalone RKE2 clusters.
 
 The migration process involves a four-phase strategy:
 
@@ -35,7 +35,7 @@ The migration process involves a four-phase strategy:
 
 ### Rancher server on RKE2 (local clusters)
 
-When migrating a Rancher local cluster, the Rancher Ingress resource requires specific handling to prevent lockouts. Follow the specific [guide for migrating the Rancher Ingress to Traefik in an RKE2 cluster](https://support.scc.suse.com/s/kb/How-to-migrate-the-Rancher-Ingress-to-Traefik-in-an-RKE2-cluster?language=en_US). This guide builds upon the standalone migration phases but includes steps tailored to the Rancher management server.
+When migrating a Rancher local cluster, the Rancher Ingress resource requires specific handling to prevent lockouts. Follow the specific guide for migrating the Rancher Ingress to Traefik in an RKE2 cluster. This guide builds upon the standalone migration phases but includes steps tailored to the Rancher management server.
 
 ### Downstream RKE2 clusters (provisioned by Rancher)
 

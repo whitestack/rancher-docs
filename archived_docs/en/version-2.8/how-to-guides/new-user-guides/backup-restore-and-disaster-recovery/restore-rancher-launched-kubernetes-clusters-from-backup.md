@@ -54,7 +54,7 @@ In a disaster recovery scenario, the control plane and etcd nodes managed by Ran
 <Tabs groupId="k8s-distro">
 <TabItem value="RKE">
 
-Follow the procedure described in the [SUSE Knowledgebase](https://www.suse.com/support/kb/doc/?id=000020695).
+Follow the procedure described in the SUSE Knowledgebase.
 
 </TabItem>
 <TabItem value="RKE2/K3s">

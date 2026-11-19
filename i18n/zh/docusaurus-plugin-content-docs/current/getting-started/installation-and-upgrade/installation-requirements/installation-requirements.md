@@ -17,7 +17,7 @@ Rancher UI 在基于 Firefox 或 Chromium 的浏览器（Chrome、Edge、Opera�
 
 ## Kubernetes 与 Rancher 的兼容性
 
-Rancher 需要安装在支持的 Kubernetes 版本上。请查阅 [Rancher 支持矩阵](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions)，确保你的 Kubernetes 版本受支持。
+Rancher 需要安装在支持的 Kubernetes 版本上。请查阅 Rancher 支持矩阵，确保你的 Kubernetes 版本受支持。
 
 ## 在安全加固的 Kubernetes 集群上安装 Rancher
 
@@ -27,7 +27,7 @@ Rancher 需要安装在支持的 Kubernetes 版本上。请查阅 [Rancher 支�
 
 所有支持的操作系统都使用 64-bit x86 架构。Rancher 兼容当前所有的主流 Linux 发行版。
 
-The [Rancher support matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions) lists which OS versions were tested for each Rancher version.
+The Rancher support matrix lists which OS versions were tested for each Rancher version.
 
 运行 RKE 集群的节点需要安装 Docker。RKE2 或 K3s 集群不需要它。
 
@@ -43,14 +43,14 @@ The [Rancher support matrix](https://www.suse.com/suse-rancher/support-matrix/al
 
 对于容器运行时，RKE2 附带了自己的 containerd.
 
-如需了解 RKE2 通过了哪些操作系统版本的测试，请参见 [Rancher 支持矩阵](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions)。
+如需了解 RKE2 通过了哪些操作系统版本的测试，请参见 Rancher 支持矩阵。
 
 
 ### K3s 要求
 
 对于容器运行时，K3s 默认附带了自己的 containerd。你也可以将 K3s 配置为使用已安装的 Docker 运行时。有关在 Docker 中使用 K3s 的更多信息，请参阅 [K3s 文档](https://docs.k3s.io/advanced#using-docker-as-the-container-runtime)。
 
-Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见 [Rancher 支持矩阵](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions)。如需指定 K3s 版本，在运行 K3s 安装脚本时，使用 `INSTALL_K3S_VERSION` 环境变量。
+Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见 Rancher 支持矩阵。如需指定 K3s 版本，在运行 K3s 安装脚本时，使用 `INSTALL_K3S_VERSION` 环境变量。
 
 如果你使用 **Raspbian Buster** 在 K3s 集群上安装 Rancher，请按照[这些步骤](https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster)切换到旧版 iptables。
 
@@ -58,7 +58,7 @@ Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的
 
 ### RKE 要求
 
-RKE 需要 Docker 容器运行时。支持的 Docker 版本请参见 [Rancher 支持矩阵](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions)
+RKE 需要 Docker 容器运行时。支持的 Docker 版本请参见 Rancher 支持矩阵
 
 有关详细信息，请参阅[安装 Docker](install-docker.md)。
 

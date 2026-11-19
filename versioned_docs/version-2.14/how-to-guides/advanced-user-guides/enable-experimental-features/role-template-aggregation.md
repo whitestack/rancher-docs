@@ -12,7 +12,7 @@ RoleTemplate aggregation is an experimental feature in v2.13 that changes the RB
 
 RoleTemplate aggregation implements RoleTemplates, ClusterRoleTemplateBindings and ProjectRoleTemplateBindings using the Kubernetes feature [Aggregated ClusterRoles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles). The new architecture results in a net reduction in RBAC objects (Roles, RoleBindings, ClusterRoles and ClusterRoleBindings) both in the Rancher cluster and the downstream clusters.
 
-For more information on how the feature can improve scalability and performance, please see the [Rancher Blog post](https://www.suse.com/c/rancher_blog/fewer-bindings-more-power-ranchers-rbac-boost-for-enhanced-performance-and-scalability/).
+For more information on how the feature can improve scalability and performance, please see the Rancher Blog post.
 
 | Environment Variable Key | Default Value | Description |
 | --- | --- | --- |

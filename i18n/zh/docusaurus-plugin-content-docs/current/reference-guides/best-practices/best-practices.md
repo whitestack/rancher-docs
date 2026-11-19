@@ -15,7 +15,7 @@ title: 最佳实践
 如需查看更多最佳实践指南，请参见：
 
 - [安全类文档](../rancher-security/rancher-security.md)
-- [Rancher 博客](https://www.suse.com/c/rancherblog/)
+- Rancher 博客
 - [Rancher 论坛](https://forums.rancher.com/)
 - [Rancher 用户的 Slack 群组](https://slack.rancher.io/)
 - [B 站](https://space.bilibili.com/430496045/)

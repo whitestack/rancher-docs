@@ -243,7 +243,7 @@ spec:
 
 ## Kubernetes 版本支持
 
-> **注意**：根据 [Rancher 2.6.7 支持矩阵](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-6-7/)，下面列出的所有版本均支持 SLA。未列出的版本都视为为已达到 EOL 且不受 SUSE SLA 支持。
+> **注意**：根据 Rancher 2.6.7 支持矩阵，下面列出的所有版本均支持 SLA。未列出的版本都视为为已达到 EOL 且不受 SUSE SLA 支持。
 
 ### 对比 Rancher 2.5 与 Rancher 2.6：Windows 集群的支持矩阵
 

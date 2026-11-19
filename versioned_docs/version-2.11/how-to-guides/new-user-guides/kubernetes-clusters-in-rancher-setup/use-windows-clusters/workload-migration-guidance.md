@@ -247,7 +247,7 @@ For more information, please see the following references:
 
 ## Kubernetes Version Support
 
->**Note:** All versions listed below are SLA Supported per the [Rancher v2.6.7 Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-6-7/). Any version not listed should be assumed as being EOL and not supported under SLA by SUSE.
+>**Note:** All versions listed below are SLA Supported per the Rancher v2.6.7 Support Matrix. Any version not listed should be assumed as being EOL and not supported under SLA by SUSE.
 
 ### Rancher 2.5 vs. Rancher 2.6 Support Matrix for Windows Clusters
 

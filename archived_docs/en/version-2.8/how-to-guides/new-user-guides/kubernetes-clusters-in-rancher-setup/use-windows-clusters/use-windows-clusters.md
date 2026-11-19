@@ -41,7 +41,7 @@ For the support lifecycle dates for Windows Server, see the [Microsoft Documenta
 
 ### Kubernetes Version
 
-For more information regarding Kubernetes component versions, see the [support matrices for RKE2 versions](https://www.suse.com/suse-rke2/support-matrix/all-supported-versions/).
+For more information regarding Kubernetes component versions, see the support matrices for RKE2 versions.
 
 ### Node Requirements
 

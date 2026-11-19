@@ -14,7 +14,7 @@ title: Rancher 安全指南
 </td>
 <td width="30%" style={{border: 'none'}}>
 <h4>报告流程</h4>
-<p style={{padding: '8px'}}>请将安全问题发送至 <a href="mailto:security-rancher@suse.com">security-rancher@suse.com</a>。</p>
+<p style={{padding: '8px'}}>请将安全问题发送至 <a href="mailto:security@whitestack.com">security@whitestack.com</a>。</p>
 </td>
 <td width="30%" style={{border: 'none'}}>
 <h4>公告</h4>

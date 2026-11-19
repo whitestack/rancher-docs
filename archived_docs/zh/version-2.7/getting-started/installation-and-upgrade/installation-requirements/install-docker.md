@@ -18,7 +18,7 @@ Docker 有几个安装方法。一种方法是参见 [Docker 官方文档](https
 curl https://releases.rancher.com/install-docker/<version-number>.sh | sh
 ```
 
-请参阅 [Rancher 支持矩阵](https://www.suse.com/suse-rancher/support-matrix)，使用匹配你的操作系统和 Rancher 版本并且经过验证的 Docker 版本。 尽管支持矩阵列出了经过验证的 Docker 版本直至补丁版本，但只有发行版的主要版本和次要版本与 Docker 安装脚本相关。
+请参阅 Rancher 支持矩阵，使用匹配你的操作系统和 Rancher 版本并且经过验证的 Docker 版本。 尽管支持矩阵列出了经过验证的 Docker 版本直至补丁版本，但只有发行版的主要版本和次要版本与 Docker 安装脚本相关。
 
 请注意，必须应用以下 sysctl 设置：
 

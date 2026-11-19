@@ -61,7 +61,7 @@ No. The PAYG listing isn't available in all countries.
 
 Your billing country is based on the cloud provider Account ID for the deployment.
 
-Please refer to [Geographical availability](https://documentation.suse.com/sle-public-cloud/all/html/public-cloud/countrylist.html) for a list of countries that can and cannot access Rancher Prime via the AWS and Azure cloud marketplaces.
+Please refer to Geographical availability for a list of countries that can and cannot access Rancher Prime via the AWS and Azure cloud marketplaces.
 
 #### My cloud provider account is in the USA, but I want to deploy Rancher in another region, a region that is in a country where I currently cannot transact Rancher Prime. Is this possible?
 
@@ -220,7 +220,7 @@ Please follow the [documentation](../../getting-started/installation-and-upgrade
 
 #### How do I contact support?
 
-It is very simple to [open a support case](https://scc.suse.com/cloudsupport) with SUSE for Rancher Prime. Create a support config via the Rancher UI and upload the output to the SUSE Customer Center. The support config bundle can be exported from the Rancher console using the **Get Support** button at the bottom of the page. For deployments where Rancher is managing multiple downstream clusters, export the support config bundle only from the primary cluster.
+It is very simple to open a support case with SUSE for Rancher Prime. Create a support config via the Rancher UI and upload the output to the SUSE Customer Center. The support config bundle can be exported from the Rancher console using the **Get Support** button at the bottom of the page. For deployments where Rancher is managing multiple downstream clusters, export the support config bundle only from the primary cluster.
 
 If the billing mechanism on the primary cluster is active, a support case will be opened. Further details can be found in the [documentation](../cloud-marketplace/supportconfig.md).
 

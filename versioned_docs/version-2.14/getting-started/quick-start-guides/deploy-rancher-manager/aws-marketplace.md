@@ -9,7 +9,7 @@ description: Learn about Rancher for AWS from the AWS Marketplace listing.
 
 SUSE Rancher for AWS (SRA/SRFA) is a fully managed Software-as-a-Service (SaaS) offering available through the [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-yrzugbpzuukww). It provides a centralized control plane to manage, monitor, and scale Kubernetes clusters within an AWS environment.
 
-For deployment prerequisites, architecture requirements, and subscription details, refer to the [AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-yrzugbpzuukww). For more information, refer to the [product documentation](https://documentation.suse.com/cloudnative/rancher-srfa/).
+For deployment prerequisites, architecture requirements, and subscription details, refer to the [AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-yrzugbpzuukww). For more information, refer to the product documentation.
 
 :::note
 

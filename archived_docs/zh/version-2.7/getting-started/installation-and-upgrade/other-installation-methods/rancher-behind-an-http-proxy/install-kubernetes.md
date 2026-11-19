@@ -28,7 +28,7 @@ NO_PROXY=127.0.0.0/8,10.0.0.0/8,cattle-system.svc,172.16.0.0/12,192.168.0.0/16,.
 EOF
 ```
 
-Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见 [Rancher 支持矩阵](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/)。
+Rancher 需要安装在支持的 Kubernetes 版本上。如需了解你使用的 Rancher 版本支持哪些 Kubernetes 版本，请参见 Rancher 支持矩阵。
 
 如需指定 K3s（Kubernetes）版本，在运行 K3s 安装脚本时使用 `INSTALL_K3S_VERSION` 环境变量（例如 `INSTALL_K3S_VERSION="v1.24.10+k3s1"`）。
 
@@ -56,7 +56,7 @@ kubectl get pods --all-namespaces
 </TabItem>
 <TabItem value="RKE2">
 
-在每个节点上，运行 RKE2 安装脚本。确保你安装的 RKE2 版本受 [Rancher 支持](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/)。
+在每个节点上，运行 RKE2 安装脚本。确保你安装的 RKE2 版本受 Rancher 支持。
 
 ```
 curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.xx sh -

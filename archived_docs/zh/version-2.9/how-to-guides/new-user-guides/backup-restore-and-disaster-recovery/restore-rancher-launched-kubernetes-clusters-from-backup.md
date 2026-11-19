@@ -50,7 +50,7 @@ Rancher UI 中提供了集群所有可用快照的列表：
 <Tabs groupId="k8s-distro">
 <TabItem value="RKE">
 
-请按照 [SUSE 知识库](https://www.suse.com/support/kb/doc/?id=000020695)中描述的流程进行操作。
+请按照 SUSE 知识库中描述的流程进行操作。
 
 </TabItem>
 <TabItem value="RKE2/K3s">

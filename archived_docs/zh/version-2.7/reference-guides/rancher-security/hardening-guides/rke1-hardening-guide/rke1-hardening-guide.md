@@ -113,7 +113,7 @@ done
 
 在同一个 Kubernetes 集群上运行不同的应用程序会带来风险，即某个受感染的应用程序可能会攻击相邻的应用程序。为确保容器只与其预期通信的容器进行通信，网络分段至关重要。网络策略规定了哪些 Pod 可以互相通信，以及与其他网络终端通信的方式。
 
-网络策略是命名空间范围的。当在特定命名空间引入网络策略时，所有未被策略允许的流量将被拒绝。然而，如果在命名空间中没有网络策略，那么所有流量将被允许进入和离开该命名空间中的 Pod。要强制执行网络策略，必须启用容器网络接口（container network interface, CNI）插件。本指南使用 [Canal](https://github.com/projectcalico/canal) 来提供策略执行。有关 CNI 提供程序的其他信息可以在[这里](https://www.suse.com/c/rancher_blog/comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)找到。
+网络策略是命名空间范围的。当在特定命名空间引入网络策略时，所有未被策略允许的流量将被拒绝。然而，如果在命名空间中没有网络策略，那么所有流量将被允许进入和离开该命名空间中的 Pod。要强制执行网络策略，必须启用容器网络接口（container network interface, CNI）插件。本指南使用 [Canal](https://github.com/projectcalico/canal) 来提供策略执行。有关 CNI 提供程序的其他信息可以在这里找到。
 
 一旦在集群上启用了 CNI 提供程序，就可以应用默认的网络策略。下面提供了一个 **permissive** 的示例供参考。如果你希望允许匹配某个命名空间中所有 Pod 的所有入站和出站流量（即使添加了策略导致某些 Pod 被视为”隔离”），你可以创建一个明确允许该命名空间中所有流量的策略。请将以下配置保存为 `default-allow-all.yaml`。有关网络策略的其他[文档](https://kubernetes.io/docs/concepts/services-networking/network-policies/)可以在 Kubernetes 站点上找到。
 

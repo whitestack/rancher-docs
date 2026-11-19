@@ -10,7 +10,7 @@ title: Troubleshooting nginx-proxy
 
 The `nginx-proxy` container is an RKE1-specific component. If you are using RKE2 or K3s, this container is not deployed, as load balancing to the API servers is handled internally by a client-side load balancer within the agent process itself.
 
-Additionally, please note that RKE1 has reached its [End of Life (EOL)](https://support.scc.suse.com/s/kb/RKE-EOL-what-when-why?language=en_US). Therefore, the information on this page is considered deprecated.
+Additionally, please note that RKE1 has reached its End of Life (EOL). Therefore, the information on this page is considered deprecated.
 
 :::
 

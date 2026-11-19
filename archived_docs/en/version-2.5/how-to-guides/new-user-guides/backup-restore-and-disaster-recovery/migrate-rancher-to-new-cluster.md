@@ -18,7 +18,7 @@ Rancher version must be v2.5.0 and up
 
 Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes clusters such as Amazon EKS clusters. For help installing Kubernetes, refer to the documentation of the Kubernetes distribution. A Rancher-created Kubernetes distributions such as, but not limited to, [RKE](https://rke.docs.rancher.com/installation) or [K3s](https://docs.k3s.io/installation) may also be used.
 
-Since Rancher can be installed on any Kubernetes cluster, you can use this backup and restore method to migrate Rancher from one Kubernetes cluster to any other Kubernetes cluster. This method *only* migrates Rancher-related resources and won't affect other applications on the cluster. Refer to the [support matrix](https://www.suse.com/lifecycle/) to identify which Kubernetes cluster types and versions are supported for your Rancher version.
+Since Rancher can be installed on any Kubernetes cluster, you can use this backup and restore method to migrate Rancher from one Kubernetes cluster to any other Kubernetes cluster. This method *only* migrates Rancher-related resources and won't affect other applications on the cluster. Refer to the support matrix to identify which Kubernetes cluster types and versions are supported for your Rancher version.
 
 ### 1. Install the rancher-backup Helm chart
 Install version 1.x.x of the rancher-backup chart. The following assumes a connected environment with access to Docker Hub:
