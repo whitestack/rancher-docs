@@ -15,7 +15,7 @@ module.exports = {
   trailingSlash: false,
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "zh"],
+    locales: ["en"],
     localeConfigs: {
       en: {
         label: "English",
@@ -50,11 +50,11 @@ module.exports = {
     },
     colorMode: {
       // 'light' | 'dark'
-      defaultMode: "light",
+      defaultMode: "dark",
 
       // Hides the switch in the navbar
       // Useful if you want to support a single color mode
-      disableSwitch: true,
+      disableSwitch: false,
     },
     prism: {
       additionalLanguages: ["rust"],
@@ -72,10 +72,6 @@ module.exports = {
           type: "docsVersionDropdown",
           position: "left",
           dropdownActiveClassDisabled: false,
-        },
-        {
-          type: "localeDropdown",
-          position: "left",
         },
         {
           type: "search",
