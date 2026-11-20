@@ -3,9 +3,9 @@
 const tailwindPlugin = require('./plugins/tailwind-plugin.cjs');
 
 module.exports = {
-  title: "WhiteCruiser",
+  title: "WhiteCruiser Manager",
   tagline: "",
-  url: "https://ranchermanager.docs.rancher.com/",
+  url: "https://whitestack.com",
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
