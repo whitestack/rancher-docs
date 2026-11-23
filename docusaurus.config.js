@@ -6,7 +6,7 @@ module.exports = {
   title: "WhiteCruiser Manager",
   tagline: "",
   url: "https://whitestack.com",
-  baseUrl: "/",
+  baseUrl: "/whitecruiser-manager/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.png",
@@ -67,17 +67,7 @@ module.exports = {
         src: "img/whitecruiser-logo.png",
         // href: 'en',
       },
-      items: [
-        {
-          type: "docsVersionDropdown",
-          position: "left",
-          dropdownActiveClassDisabled: false,
-        },
-        {
-          type: "search",
-          position: "left",
-        },
-      ],
+      items: [],
     },
     footer: {
       style: "dark",
@@ -157,6 +147,17 @@ module.exports = {
   ],
   plugins: [
     tailwindPlugin,
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        indexBlog: false,
+        docsRouteBasePath: '/',
+        docsDir: 'docs',
+        searchResultLimits: 8,
+      },
+    ],
     [
       "@docusaurus/plugin-client-redirects",
       {
